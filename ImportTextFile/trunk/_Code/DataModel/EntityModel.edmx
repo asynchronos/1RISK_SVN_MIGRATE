@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RISKModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="RISKModelStoreContainer">
+          <EntitySet Name="CIMD110" EntityType="RISKModel.Store.CIMD110" store:Type="Tables" Schema="CUSTOMER" />
+          <EntitySet Name="CIMD110_TEMP" EntityType="RISKModel.Store.CIMD110_TEMP" store:Type="Tables" Schema="CUSTOMER" />
+        </EntityContainer>
+        <EntityType Name="CIMD110">
+          <Key>
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Name="CIF" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="CUS_TITLE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUS_FIRST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CUS_LAST" Type="nvarchar" MaxLength="30" />
+          <Property Name="BUILD" Type="nvarchar" MaxLength="40" />
+          <Property Name="ADDR" Type="nvarchar" MaxLength="15" />
+          <Property Name="SOI" Type="nvarchar" MaxLength="25" />
+          <Property Name="ROAD" Type="nvarchar" MaxLength="25" />
+          <Property Name="GROUP_HOME" Type="nvarchar" MaxLength="2" />
+          <Property Name="DISTICT" Type="nvarchar" MaxLength="20" />
+          <Property Name="AMPHUR" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="2" />
+          <Property Name="TEL_HOME" Type="nvarchar" MaxLength="20" />
+          <Property Name="TEL_OFF" Type="nvarchar" MaxLength="20" />
+          <Property Name="TAX_NO" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUS_TYPE" Type="nvarchar" MaxLength="4" />
+          <Property Name="BUSI_TYPE" Type="nvarchar" MaxLength="6" />
+          <Property Name="DEBTOR_CLASS" Type="nvarchar" MaxLength="1" />
+          <Property Name="CIF_DEP" Type="nvarchar" MaxLength="1" />
+          <Property Name="MAIN_CUST" Type="nvarchar" MaxLength="9" />
+          <Property Name="GROUP_CUST" Type="nvarchar" MaxLength="1" />
+          <Property Name="UPD_DATE" Type="datetime" />
+          <Property Name="UPD_USER" Type="nvarchar" MaxLength="10" />
+          <Property Name="BOTID" Type="nvarchar" MaxLength="7" />
+          <Property Name="ID_CARD" Type="nvarchar" MaxLength="13" />
+          <Property Name="OFFICR_ID" Type="nvarchar" MaxLength="10" />
+          <Property Name="RESERVE" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="RESV_CC" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="COLL_BOT9" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="CLASS_PREV" Type="nvarchar" MaxLength="1" />
+          <Property Name="SEPE_FLAG" Type="nvarchar" MaxLength="1" />
+          <Property Name="RESVPERC" Type="nvarchar" MaxLength="13" />
+          <Property Name="FLAG_COLL" Type="nvarchar" MaxLength="1" />
+          <Property Name="BOT_TYPE" Type="nvarchar" MaxLength="1" />
+          <Property Name="CIF_TYPE" Type="nvarchar" MaxLength="1" />
+          <Property Name="DATE_FAS" Type="datetime" />
+          <Property Name="NET_FAS" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="AUTHO_CAP" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="PAID_UP" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="LABOR" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="OPER_STA" Type="nvarchar" MaxLength="1" />
+          <Property Name="CODE_STA" Type="nvarchar" MaxLength="2" />
+          <Property Name="GOVE_GUAR" Type="nvarchar" MaxLength="1" />
+          <Property Name="BEING_CUST" Type="datetime" />
+          <Property Name="BTH_DATE" Type="datetime" />
+          <Property Name="BUILD_SHOP" Type="nvarchar" MaxLength="40" />
+          <Property Name="ADDR_SHOP" Type="nvarchar" MaxLength="15" />
+          <Property Name="SOI_SHOP" Type="nvarchar" MaxLength="25" />
+          <Property Name="ROAD_SHOP" Type="nvarchar" MaxLength="25" />
+          <Property Name="GROUP_SHOP" Type="nvarchar" MaxLength="2" />
+          <Property Name="DISTRICT_S" Type="nvarchar" MaxLength="20" />
+          <Property Name="AMPHUR_S" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROV_SHOP" Type="nvarchar" MaxLength="2" />
+          <Property Name="ZIP_SHOP" Type="nvarchar" MaxLength="5" />
+          <Property Name="CIF_0" Type="numeric" Precision="10" />
+          <Property Name="CIF_1" Type="numeric" Precision="10" />
+          <Property Name="CIF_2" Type="numeric" Precision="10" />
+          <Property Name="CIF_3" Type="numeric" Precision="10" />
+          <Property Name="ZIP_CODE" Type="nvarchar" MaxLength="5" />
+          <Property Name="DEPT_FLAG" Type="numeric" Precision="1" />
+          <Property Name="DEPT_TRAN" Type="nvarchar" MaxLength="5" />
+          <Property Name="CARD_TYPE" Type="nvarchar" MaxLength="2" />
+          <Property Name="CARD_NO" Type="nvarchar" MaxLength="13" />
+          <Property Name="SEX" Type="nvarchar" MaxLength="1" />
+          <Property Name="MARITAL_STA" Type="nvarchar" MaxLength="1" />
+          <Property Name="CITIZEN" Type="nvarchar" MaxLength="3" />
+          <Property Name="GROUP_CIF" Type="numeric" Precision="10" />
+          <Property Name="DEPT_FLAG_T" Type="numeric" Precision="1" />
+          <Property Name="DEPT_TRAN_T" Type="nvarchar" MaxLength="5" />
+          <Property Name="CTITLENEW" Type="nvarchar" MaxLength="15" />
+          <Property Name="BAY_DATE" Type="datetime" />
+          <Property Name="BAY_RATING" Type="nvarchar" MaxLength="2" />
+          <Property Name="COUNTRY" Type="nvarchar" MaxLength="3" />
+          <Property Name="COUNTRY_SHOP" Type="nvarchar" MaxLength="3" />
+          <Property Name="MINOR_BUSI" Type="nvarchar" MaxLength="6" />
+          <Property Name="CUS_TITLE_E" Type="nvarchar" MaxLength="15" />
+          <Property Name="CUS_FIRST_E" Type="nvarchar" MaxLength="40" />
+          <Property Name="CUS_LAST_E" Type="nvarchar" MaxLength="40" />
+          <Property Name="COMM_NAME_THA" Type="nvarchar" MaxLength="80" />
+          <Property Name="COMM_NAME_ENG" Type="nvarchar" MaxLength="80" />
+          <Property Name="LAND_VALUE" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="SELL_PER_YEAR" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="SMEBOT_FLAG" Type="nvarchar" MaxLength="1" />
+          <Property Name="CIF_4" Type="numeric" Precision="10" />
+          <Property Name="CIF_5" Type="numeric" Precision="10" />
+          <Property Name="CIF_6" Type="numeric" Precision="10" />
+          <Property Name="CIF_7" Type="numeric" Precision="10" />
+          <Property Name="CIF_8" Type="numeric" Precision="10" />
+          <Property Name="CIF_9" Type="numeric" Precision="10" />
+          <Property Name="FIRST_NPL" Type="datetime" />
+          <Property Name="TYP_RATE" Type="nvarchar" MaxLength="1" />
+          <Property Name="OCCUPATION_CODE" Type="nvarchar" MaxLength="3" />
+          <Property Name="MOBILE_PHONE" Type="nvarchar" MaxLength="10" />
+          <Property Name="BUSI_RISK" Type="nvarchar" MaxLength="9" />
+          <Property Name="WEALTH" Type="nvarchar" MaxLength="1" />
+          <Property Name="CTRL_SIZE" Type="nvarchar" MaxLength="2" />
+          <Property Name="D_CTRL_SIZE" Type="nvarchar" MaxLength="30" />
+          <Property Name="RISK_GRADE" Type="nvarchar" MaxLength="4" />
+          <Property Name="DELETE_FLAG" Type="nvarchar" MaxLength="1" />
+          <Property Name="ETL_ASOFDATE" Type="datetime" />
+          <Property Name="ETL_STATUS" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CIMD110_TEMP">
+          <Key>
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Name="CIF" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="CUS_TITLE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUS_FIRST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CUS_LAST" Type="nvarchar" MaxLength="30" />
+          <Property Name="BUILD" Type="nvarchar" MaxLength="40" />
+          <Property Name="ADDR" Type="nvarchar" MaxLength="15" />
+          <Property Name="SOI" Type="nvarchar" MaxLength="25" />
+          <Property Name="ROAD" Type="nvarchar" MaxLength="25" />
+          <Property Name="GROUP_HOME" Type="nvarchar" MaxLength="2" />
+          <Property Name="DISTICT" Type="nvarchar" MaxLength="20" />
+          <Property Name="AMPHUR" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="2" />
+          <Property Name="TEL_HOME" Type="nvarchar" MaxLength="20" />
+          <Property Name="TEL_OFF" Type="nvarchar" MaxLength="20" />
+          <Property Name="TAX_NO" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUS_TYPE" Type="nvarchar" MaxLength="4" />
+          <Property Name="BUSI_TYPE" Type="nvarchar" MaxLength="6" />
+          <Property Name="DEBTOR_CLASS" Type="nvarchar" MaxLength="1" />
+          <Property Name="CIF_DEP" Type="nvarchar" MaxLength="1" />
+          <Property Name="MAIN_CUST" Type="nvarchar" MaxLength="9" />
+          <Property Name="GROUP_CUST" Type="nvarchar" MaxLength="1" />
+          <Property Name="UPD_DATE" Type="datetime" />
+          <Property Name="UPD_USER" Type="nvarchar" MaxLength="10" />
+          <Property Name="BOTID" Type="nvarchar" MaxLength="7" />
+          <Property Name="ID_CARD" Type="nvarchar" MaxLength="13" />
+          <Property Name="OFFICR_ID" Type="nvarchar" MaxLength="10" />
+          <Property Name="RESERVE" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="RESV_CC" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="COLL_BOT9" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="CLASS_PREV" Type="nvarchar" MaxLength="1" />
+          <Property Name="SEPE_FLAG" Type="nvarchar" MaxLength="1" />
+          <Property Name="RESVPERC" Type="nvarchar" MaxLength="13" />
+          <Property Name="FLAG_COLL" Type="nvarchar" MaxLength="1" />
+          <Property Name="BOT_TYPE" Type="nvarchar" MaxLength="1" />
+          <Property Name="CIF_TYPE" Type="nvarchar" MaxLength="1" />
+          <Property Name="DATE_FAS" Type="datetime" />
+          <Property Name="NET_FAS" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="AUTHO_CAP" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="PAID_UP" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="LABOR" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="OPER_STA" Type="nvarchar" MaxLength="1" />
+          <Property Name="CODE_STA" Type="nvarchar" MaxLength="2" />
+          <Property Name="GOVE_GUAR" Type="nvarchar" MaxLength="1" />
+          <Property Name="BEING_CUST" Type="datetime" />
+          <Property Name="BTH_DATE" Type="datetime" />
+          <Property Name="BUILD_SHOP" Type="nvarchar" MaxLength="40" />
+          <Property Name="ADDR_SHOP" Type="nvarchar" MaxLength="15" />
+          <Property Name="SOI_SHOP" Type="nvarchar" MaxLength="25" />
+          <Property Name="ROAD_SHOP" Type="nvarchar" MaxLength="25" />
+          <Property Name="GROUP_SHOP" Type="nvarchar" MaxLength="2" />
+          <Property Name="DISTRICT_S" Type="nvarchar" MaxLength="20" />
+          <Property Name="AMPHUR_S" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROV_SHOP" Type="nvarchar" MaxLength="2" />
+          <Property Name="ZIP_SHOP" Type="nvarchar" MaxLength="5" />
+          <Property Name="CIF_0" Type="numeric" Precision="10" />
+          <Property Name="CIF_1" Type="numeric" Precision="10" />
+          <Property Name="CIF_2" Type="numeric" Precision="10" />
+          <Property Name="CIF_3" Type="numeric" Precision="10" />
+          <Property Name="ZIP_CODE" Type="nvarchar" MaxLength="5" />
+          <Property Name="DEPT_FLAG" Type="numeric" Precision="1" />
+          <Property Name="DEPT_TRAN" Type="nvarchar" MaxLength="5" />
+          <Property Name="CARD_TYPE" Type="nvarchar" MaxLength="2" />
+          <Property Name="CARD_NO" Type="nvarchar" MaxLength="13" />
+          <Property Name="SEX" Type="nvarchar" MaxLength="1" />
+          <Property Name="MARITAL_STA" Type="nvarchar" MaxLength="1" />
+          <Property Name="CITIZEN" Type="nvarchar" MaxLength="3" />
+          <Property Name="GROUP_CIF" Type="numeric" Precision="10" />
+          <Property Name="DEPT_FLAG_T" Type="numeric" Precision="1" />
+          <Property Name="DEPT_TRAN_T" Type="nvarchar" MaxLength="5" />
+          <Property Name="CTITLENEW" Type="nvarchar" MaxLength="15" />
+          <Property Name="BAY_DATE" Type="datetime" />
+          <Property Name="BAY_RATING" Type="nvarchar" MaxLength="2" />
+          <Property Name="COUNTRY" Type="nvarchar" MaxLength="3" />
+          <Property Name="COUNTRY_SHOP" Type="nvarchar" MaxLength="3" />
+          <Property Name="MINOR_BUSI" Type="nvarchar" MaxLength="6" />
+          <Property Name="CUS_TITLE_E" Type="nvarchar" MaxLength="15" />
+          <Property Name="CUS_FIRST_E" Type="nvarchar" MaxLength="40" />
+          <Property Name="CUS_LAST_E" Type="nvarchar" MaxLength="40" />
+          <Property Name="COMM_NAME_THA" Type="nvarchar" MaxLength="80" />
+          <Property Name="COMM_NAME_ENG" Type="nvarchar" MaxLength="80" />
+          <Property Name="LAND_VALUE" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="SELL_PER_YEAR" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="SMEBOT_FLAG" Type="nvarchar" MaxLength="1" />
+          <Property Name="CIF_4" Type="numeric" Precision="10" />
+          <Property Name="CIF_5" Type="numeric" Precision="10" />
+          <Property Name="CIF_6" Type="numeric" Precision="10" />
+          <Property Name="CIF_7" Type="numeric" Precision="10" />
+          <Property Name="CIF_8" Type="numeric" Precision="10" />
+          <Property Name="CIF_9" Type="numeric" Precision="10" />
+          <Property Name="FIRST_NPL" Type="datetime" />
+          <Property Name="TYP_RATE" Type="nvarchar" MaxLength="1" />
+          <Property Name="OCCUPATION_CODE" Type="nvarchar" MaxLength="3" />
+          <Property Name="MOBILE_PHONE" Type="nvarchar" MaxLength="10" />
+          <Property Name="BUSI_RISK" Type="nvarchar" MaxLength="9" />
+          <Property Name="WEALTH" Type="nvarchar" MaxLength="1" />
+          <Property Name="CTRL_SIZE" Type="nvarchar" MaxLength="2" />
+          <Property Name="D_CTRL_SIZE" Type="nvarchar" MaxLength="30" />
+          <Property Name="RISK_GRADE" Type="nvarchar" MaxLength="4" />
+          <Property Name="DELETE_FLAG" Type="nvarchar" MaxLength="1" />
+          <Property Name="ETL_ASOFDATE" Type="datetime" />
+          <Property Name="ETL_STATUS" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RISKModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="RISKEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CIMD110" EntityType="RISKModel.CIMD110" />
+          <EntitySet Name="CIMD110_TEMP" EntityType="RISKModel.CIMD110_TEMP" />
+        </EntityContainer>
+        <EntityType Name="CIMD110">
+          <Key>
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Name="CIF" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="CUS_TITLE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CUS_FIRST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CUS_LAST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="BUILD" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="ADDR" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="SOI" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="ROAD" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="GROUP_HOME" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="DISTICT" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="AMPHUR" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PROV" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="TEL_HOME" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TEL_OFF" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TAX_NO" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CUS_TYPE" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="BUSI_TYPE" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="DEBTOR_CLASS" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CIF_DEP" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="MAIN_CUST" Type="String" MaxLength="9" Unicode="true" FixedLength="false" />
+          <Property Name="GROUP_CUST" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="UPD_DATE" Type="DateTime" />
+          <Property Name="UPD_USER" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="BOTID" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
+          <Property Name="ID_CARD" Type="String" MaxLength="13" Unicode="true" FixedLength="false" />
+          <Property Name="OFFICR_ID" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="RESERVE" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="RESV_CC" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="COLL_BOT9" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="CLASS_PREV" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="SEPE_FLAG" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="RESVPERC" Type="String" MaxLength="13" Unicode="true" FixedLength="false" />
+          <Property Name="FLAG_COLL" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="BOT_TYPE" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CIF_TYPE" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="DATE_FAS" Type="DateTime" />
+          <Property Name="NET_FAS" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="AUTHO_CAP" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="PAID_UP" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="LABOR" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="OPER_STA" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CODE_STA" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="GOVE_GUAR" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="BEING_CUST" Type="DateTime" />
+          <Property Name="BTH_DATE" Type="DateTime" />
+          <Property Name="BUILD_SHOP" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="ADDR_SHOP" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="SOI_SHOP" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="ROAD_SHOP" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="GROUP_SHOP" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="DISTRICT_S" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="AMPHUR_S" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PROV_SHOP" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="ZIP_SHOP" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="CIF_0" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="CIF_1" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="CIF_2" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="CIF_3" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DEPT_FLAG" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="DEPT_TRAN" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="CARD_TYPE" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="CARD_NO" Type="String" MaxLength="13" Unicode="true" FixedLength="false" />
+          <Property Name="SEX" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="MARITAL_STA" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CITIZEN" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="GROUP_CIF" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DEPT_FLAG_T" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="DEPT_TRAN_T" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="CTITLENEW" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="BAY_DATE" Type="DateTime" />
+          <Property Name="BAY_RATING" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="COUNTRY_SHOP" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="MINOR_BUSI" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="CUS_TITLE_E" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="CUS_FIRST_E" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="CUS_LAST_E" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="COMM_NAME_THA" Type="String" MaxLength="80" Unicode="true" FixedLength="false" />
+          <Property Name="COMM_NAME_ENG" Type="String" MaxLength="80" Unicode="true" FixedLength="false" />
+          <Property Name="LAND_VALUE" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="SELL_PER_YEAR" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="SMEBOT_FLAG" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CIF_4" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="CIF_5" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="CIF_6" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="CIF_7" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="CIF_8" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="CIF_9" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="FIRST_NPL" Type="DateTime" />
+          <Property Name="TYP_RATE" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="OCCUPATION_CODE" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="MOBILE_PHONE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="BUSI_RISK" Type="String" MaxLength="9" Unicode="true" FixedLength="false" />
+          <Property Name="WEALTH" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CTRL_SIZE" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="D_CTRL_SIZE" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="RISK_GRADE" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="DELETE_FLAG" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="ETL_ASOFDATE" Type="DateTime" />
+          <Property Name="ETL_STATUS" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="ZIP_CODE" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CIMD110_TEMP">
+          <Key>
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Type="Decimal" Name="CIF" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="CUS_TITLE" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CUS_FIRST" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CUS_LAST" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BUILD" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ADDR" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SOI" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ROAD" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GROUP_HOME" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DISTICT" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AMPHUR" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PROV" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TEL_HOME" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TEL_OFF" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TAX_NO" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CUS_TYPE" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BUSI_TYPE" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DEBTOR_CLASS" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CIF_DEP" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MAIN_CUST" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GROUP_CUST" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UPD_DATE" />
+          <Property Type="String" Name="UPD_USER" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BOTID" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ID_CARD" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OFFICR_ID" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="RESERVE" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="RESV_CC" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="COLL_BOT9" Precision="15" Scale="2" />
+          <Property Type="String" Name="CLASS_PREV" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SEPE_FLAG" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RESVPERC" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FLAG_COLL" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BOT_TYPE" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CIF_TYPE" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DATE_FAS" />
+          <Property Type="Decimal" Name="NET_FAS" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="AUTHO_CAP" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="PAID_UP" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="LABOR" Precision="8" Scale="2" />
+          <Property Type="String" Name="OPER_STA" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CODE_STA" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GOVE_GUAR" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="BEING_CUST" />
+          <Property Type="DateTime" Name="BTH_DATE" />
+          <Property Type="String" Name="BUILD_SHOP" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ADDR_SHOP" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SOI_SHOP" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ROAD_SHOP" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GROUP_SHOP" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DISTRICT_S" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AMPHUR_S" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PROV_SHOP" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ZIP_SHOP" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="CIF_0" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="CIF_1" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="CIF_2" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="CIF_3" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="DEPT_FLAG" Precision="1" Scale="0" />
+          <Property Type="String" Name="DEPT_TRAN" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CARD_TYPE" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CARD_NO" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SEX" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MARITAL_STA" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CITIZEN" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="GROUP_CIF" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="DEPT_FLAG_T" Precision="1" Scale="0" />
+          <Property Type="String" Name="DEPT_TRAN_T" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CTITLENEW" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="BAY_DATE" />
+          <Property Type="String" Name="BAY_RATING" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COUNTRY" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COUNTRY_SHOP" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MINOR_BUSI" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CUS_TITLE_E" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CUS_FIRST_E" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CUS_LAST_E" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COMM_NAME_THA" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COMM_NAME_ENG" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="LAND_VALUE" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="SELL_PER_YEAR" Precision="15" Scale="2" />
+          <Property Type="String" Name="SMEBOT_FLAG" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="CIF_4" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="CIF_5" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="CIF_6" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="CIF_7" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="CIF_8" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="CIF_9" Precision="10" Scale="0" />
+          <Property Type="DateTime" Name="FIRST_NPL" />
+          <Property Type="String" Name="TYP_RATE" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OCCUPATION_CODE" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MOBILE_PHONE" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BUSI_RISK" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WEALTH" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CTRL_SIZE" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="D_CTRL_SIZE" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RISK_GRADE" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DELETE_FLAG" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ETL_ASOFDATE" />
+          <Property Type="String" Name="ETL_STATUS" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ZIP_CODE" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RISKModelStoreContainer" CdmEntityContainer="RISKEntities">
+          <EntitySetMapping Name="CIMD110"><EntityTypeMapping TypeName="RISKModel.CIMD110"><MappingFragment StoreEntitySet="CIMD110">
+            <ScalarProperty Name="ZIP_CODE" ColumnName="ZIP_CODE" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="CUS_TITLE" ColumnName="CUS_TITLE" />
+            <ScalarProperty Name="CUS_FIRST" ColumnName="CUS_FIRST" />
+            <ScalarProperty Name="CUS_LAST" ColumnName="CUS_LAST" />
+            <ScalarProperty Name="BUILD" ColumnName="BUILD" />
+            <ScalarProperty Name="ADDR" ColumnName="ADDR" />
+            <ScalarProperty Name="SOI" ColumnName="SOI" />
+            <ScalarProperty Name="ROAD" ColumnName="ROAD" />
+            <ScalarProperty Name="GROUP_HOME" ColumnName="GROUP_HOME" />
+            <ScalarProperty Name="DISTICT" ColumnName="DISTICT" />
+            <ScalarProperty Name="AMPHUR" ColumnName="AMPHUR" />
+            <ScalarProperty Name="PROV" ColumnName="PROV" />
+            <ScalarProperty Name="TEL_HOME" ColumnName="TEL_HOME" />
+            <ScalarProperty Name="TEL_OFF" ColumnName="TEL_OFF" />
+            <ScalarProperty Name="TAX_NO" ColumnName="TAX_NO" />
+            <ScalarProperty Name="CUS_TYPE" ColumnName="CUS_TYPE" />
+            <ScalarProperty Name="BUSI_TYPE" ColumnName="BUSI_TYPE" />
+            <ScalarProperty Name="DEBTOR_CLASS" ColumnName="DEBTOR_CLASS" />
+            <ScalarProperty Name="CIF_DEP" ColumnName="CIF_DEP" />
+            <ScalarProperty Name="MAIN_CUST" ColumnName="MAIN_CUST" />
+            <ScalarProperty Name="GROUP_CUST" ColumnName="GROUP_CUST" />
+            <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+            <ScalarProperty Name="UPD_USER" ColumnName="UPD_USER" />
+            <ScalarProperty Name="BOTID" ColumnName="BOTID" />
+            <ScalarProperty Name="ID_CARD" ColumnName="ID_CARD" />
+            <ScalarProperty Name="OFFICR_ID" ColumnName="OFFICR_ID" />
+            <ScalarProperty Name="RESERVE" ColumnName="RESERVE" />
+            <ScalarProperty Name="RESV_CC" ColumnName="RESV_CC" />
+            <ScalarProperty Name="COLL_BOT9" ColumnName="COLL_BOT9" />
+            <ScalarProperty Name="CLASS_PREV" ColumnName="CLASS_PREV" />
+            <ScalarProperty Name="SEPE_FLAG" ColumnName="SEPE_FLAG" />
+            <ScalarProperty Name="RESVPERC" ColumnName="RESVPERC" />
+            <ScalarProperty Name="FLAG_COLL" ColumnName="FLAG_COLL" />
+            <ScalarProperty Name="BOT_TYPE" ColumnName="BOT_TYPE" />
+            <ScalarProperty Name="CIF_TYPE" ColumnName="CIF_TYPE" />
+            <ScalarProperty Name="DATE_FAS" ColumnName="DATE_FAS" />
+            <ScalarProperty Name="NET_FAS" ColumnName="NET_FAS" />
+            <ScalarProperty Name="AUTHO_CAP" ColumnName="AUTHO_CAP" />
+            <ScalarProperty Name="PAID_UP" ColumnName="PAID_UP" />
+            <ScalarProperty Name="LABOR" ColumnName="LABOR" />
+            <ScalarProperty Name="OPER_STA" ColumnName="OPER_STA" />
+            <ScalarProperty Name="CODE_STA" ColumnName="CODE_STA" />
+            <ScalarProperty Name="GOVE_GUAR" ColumnName="GOVE_GUAR" />
+            <ScalarProperty Name="BEING_CUST" ColumnName="BEING_CUST" />
+            <ScalarProperty Name="BTH_DATE" ColumnName="BTH_DATE" />
+            <ScalarProperty Name="BUILD_SHOP" ColumnName="BUILD_SHOP" />
+            <ScalarProperty Name="ADDR_SHOP" ColumnName="ADDR_SHOP" />
+            <ScalarProperty Name="SOI_SHOP" ColumnName="SOI_SHOP" />
+            <ScalarProperty Name="ROAD_SHOP" ColumnName="ROAD_SHOP" />
+            <ScalarProperty Name="GROUP_SHOP" ColumnName="GROUP_SHOP" />
+            <ScalarProperty Name="DISTRICT_S" ColumnName="DISTRICT_S" />
+            <ScalarProperty Name="AMPHUR_S" ColumnName="AMPHUR_S" />
+            <ScalarProperty Name="PROV_SHOP" ColumnName="PROV_SHOP" />
+            <ScalarProperty Name="ZIP_SHOP" ColumnName="ZIP_SHOP" />
+            <ScalarProperty Name="CIF_0" ColumnName="CIF_0" />
+            <ScalarProperty Name="CIF_1" ColumnName="CIF_1" />
+            <ScalarProperty Name="CIF_2" ColumnName="CIF_2" />
+            <ScalarProperty Name="CIF_3" ColumnName="CIF_3" />
+            <ScalarProperty Name="DEPT_FLAG" ColumnName="DEPT_FLAG" />
+            <ScalarProperty Name="DEPT_TRAN" ColumnName="DEPT_TRAN" />
+            <ScalarProperty Name="CARD_TYPE" ColumnName="CARD_TYPE" />
+            <ScalarProperty Name="CARD_NO" ColumnName="CARD_NO" />
+            <ScalarProperty Name="SEX" ColumnName="SEX" />
+            <ScalarProperty Name="MARITAL_STA" ColumnName="MARITAL_STA" />
+            <ScalarProperty Name="CITIZEN" ColumnName="CITIZEN" />
+            <ScalarProperty Name="GROUP_CIF" ColumnName="GROUP_CIF" />
+            <ScalarProperty Name="DEPT_FLAG_T" ColumnName="DEPT_FLAG_T" />
+            <ScalarProperty Name="DEPT_TRAN_T" ColumnName="DEPT_TRAN_T" />
+            <ScalarProperty Name="CTITLENEW" ColumnName="CTITLENEW" />
+            <ScalarProperty Name="BAY_DATE" ColumnName="BAY_DATE" />
+            <ScalarProperty Name="BAY_RATING" ColumnName="BAY_RATING" />
+            <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+            <ScalarProperty Name="COUNTRY_SHOP" ColumnName="COUNTRY_SHOP" />
+            <ScalarProperty Name="MINOR_BUSI" ColumnName="MINOR_BUSI" />
+            <ScalarProperty Name="CUS_TITLE_E" ColumnName="CUS_TITLE_E" />
+            <ScalarProperty Name="CUS_FIRST_E" ColumnName="CUS_FIRST_E" />
+            <ScalarProperty Name="CUS_LAST_E" ColumnName="CUS_LAST_E" />
+            <ScalarProperty Name="COMM_NAME_THA" ColumnName="COMM_NAME_THA" />
+            <ScalarProperty Name="COMM_NAME_ENG" ColumnName="COMM_NAME_ENG" />
+            <ScalarProperty Name="LAND_VALUE" ColumnName="LAND_VALUE" />
+            <ScalarProperty Name="SELL_PER_YEAR" ColumnName="SELL_PER_YEAR" />
+            <ScalarProperty Name="SMEBOT_FLAG" ColumnName="SMEBOT_FLAG" />
+            <ScalarProperty Name="CIF_4" ColumnName="CIF_4" />
+            <ScalarProperty Name="CIF_5" ColumnName="CIF_5" />
+            <ScalarProperty Name="CIF_6" ColumnName="CIF_6" />
+            <ScalarProperty Name="CIF_7" ColumnName="CIF_7" />
+            <ScalarProperty Name="CIF_8" ColumnName="CIF_8" />
+            <ScalarProperty Name="CIF_9" ColumnName="CIF_9" />
+            <ScalarProperty Name="FIRST_NPL" ColumnName="FIRST_NPL" />
+            <ScalarProperty Name="TYP_RATE" ColumnName="TYP_RATE" />
+            <ScalarProperty Name="OCCUPATION_CODE" ColumnName="OCCUPATION_CODE" />
+            <ScalarProperty Name="MOBILE_PHONE" ColumnName="MOBILE_PHONE" />
+            <ScalarProperty Name="BUSI_RISK" ColumnName="BUSI_RISK" />
+            <ScalarProperty Name="WEALTH" ColumnName="WEALTH" />
+            <ScalarProperty Name="CTRL_SIZE" ColumnName="CTRL_SIZE" />
+            <ScalarProperty Name="D_CTRL_SIZE" ColumnName="D_CTRL_SIZE" />
+            <ScalarProperty Name="RISK_GRADE" ColumnName="RISK_GRADE" />
+            <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+            <ScalarProperty Name="ETL_ASOFDATE" ColumnName="ETL_ASOFDATE" />
+            <ScalarProperty Name="ETL_STATUS" ColumnName="ETL_STATUS" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CIMD110_TEMP">
+            <EntityTypeMapping TypeName="RISKModel.CIMD110_TEMP">
+              <MappingFragment StoreEntitySet="CIMD110_TEMP">
+                <ScalarProperty Name="ZIP_CODE" ColumnName="ZIP_CODE" />
+                <ScalarProperty Name="ETL_STATUS" ColumnName="ETL_STATUS" />
+                <ScalarProperty Name="ETL_ASOFDATE" ColumnName="ETL_ASOFDATE" />
+                <ScalarProperty Name="DELETE_FLAG" ColumnName="DELETE_FLAG" />
+                <ScalarProperty Name="RISK_GRADE" ColumnName="RISK_GRADE" />
+                <ScalarProperty Name="D_CTRL_SIZE" ColumnName="D_CTRL_SIZE" />
+                <ScalarProperty Name="CTRL_SIZE" ColumnName="CTRL_SIZE" />
+                <ScalarProperty Name="WEALTH" ColumnName="WEALTH" />
+                <ScalarProperty Name="BUSI_RISK" ColumnName="BUSI_RISK" />
+                <ScalarProperty Name="MOBILE_PHONE" ColumnName="MOBILE_PHONE" />
+                <ScalarProperty Name="OCCUPATION_CODE" ColumnName="OCCUPATION_CODE" />
+                <ScalarProperty Name="TYP_RATE" ColumnName="TYP_RATE" />
+                <ScalarProperty Name="FIRST_NPL" ColumnName="FIRST_NPL" />
+                <ScalarProperty Name="CIF_9" ColumnName="CIF_9" />
+                <ScalarProperty Name="CIF_8" ColumnName="CIF_8" />
+                <ScalarProperty Name="CIF_7" ColumnName="CIF_7" />
+                <ScalarProperty Name="CIF_6" ColumnName="CIF_6" />
+                <ScalarProperty Name="CIF_5" ColumnName="CIF_5" />
+                <ScalarProperty Name="CIF_4" ColumnName="CIF_4" />
+                <ScalarProperty Name="SMEBOT_FLAG" ColumnName="SMEBOT_FLAG" />
+                <ScalarProperty Name="SELL_PER_YEAR" ColumnName="SELL_PER_YEAR" />
+                <ScalarProperty Name="LAND_VALUE" ColumnName="LAND_VALUE" />
+                <ScalarProperty Name="COMM_NAME_ENG" ColumnName="COMM_NAME_ENG" />
+                <ScalarProperty Name="COMM_NAME_THA" ColumnName="COMM_NAME_THA" />
+                <ScalarProperty Name="CUS_LAST_E" ColumnName="CUS_LAST_E" />
+                <ScalarProperty Name="CUS_FIRST_E" ColumnName="CUS_FIRST_E" />
+                <ScalarProperty Name="CUS_TITLE_E" ColumnName="CUS_TITLE_E" />
+                <ScalarProperty Name="MINOR_BUSI" ColumnName="MINOR_BUSI" />
+                <ScalarProperty Name="COUNTRY_SHOP" ColumnName="COUNTRY_SHOP" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="BAY_RATING" ColumnName="BAY_RATING" />
+                <ScalarProperty Name="BAY_DATE" ColumnName="BAY_DATE" />
+                <ScalarProperty Name="CTITLENEW" ColumnName="CTITLENEW" />
+                <ScalarProperty Name="DEPT_TRAN_T" ColumnName="DEPT_TRAN_T" />
+                <ScalarProperty Name="DEPT_FLAG_T" ColumnName="DEPT_FLAG_T" />
+                <ScalarProperty Name="GROUP_CIF" ColumnName="GROUP_CIF" />
+                <ScalarProperty Name="CITIZEN" ColumnName="CITIZEN" />
+                <ScalarProperty Name="MARITAL_STA" ColumnName="MARITAL_STA" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="CARD_NO" ColumnName="CARD_NO" />
+                <ScalarProperty Name="CARD_TYPE" ColumnName="CARD_TYPE" />
+                <ScalarProperty Name="DEPT_TRAN" ColumnName="DEPT_TRAN" />
+                <ScalarProperty Name="DEPT_FLAG" ColumnName="DEPT_FLAG" />
+                <ScalarProperty Name="CIF_3" ColumnName="CIF_3" />
+                <ScalarProperty Name="CIF_2" ColumnName="CIF_2" />
+                <ScalarProperty Name="CIF_1" ColumnName="CIF_1" />
+                <ScalarProperty Name="CIF_0" ColumnName="CIF_0" />
+                <ScalarProperty Name="ZIP_SHOP" ColumnName="ZIP_SHOP" />
+                <ScalarProperty Name="PROV_SHOP" ColumnName="PROV_SHOP" />
+                <ScalarProperty Name="AMPHUR_S" ColumnName="AMPHUR_S" />
+                <ScalarProperty Name="DISTRICT_S" ColumnName="DISTRICT_S" />
+                <ScalarProperty Name="GROUP_SHOP" ColumnName="GROUP_SHOP" />
+                <ScalarProperty Name="ROAD_SHOP" ColumnName="ROAD_SHOP" />
+                <ScalarProperty Name="SOI_SHOP" ColumnName="SOI_SHOP" />
+                <ScalarProperty Name="ADDR_SHOP" ColumnName="ADDR_SHOP" />
+                <ScalarProperty Name="BUILD_SHOP" ColumnName="BUILD_SHOP" />
+                <ScalarProperty Name="BTH_DATE" ColumnName="BTH_DATE" />
+                <ScalarProperty Name="BEING_CUST" ColumnName="BEING_CUST" />
+                <ScalarProperty Name="GOVE_GUAR" ColumnName="GOVE_GUAR" />
+                <ScalarProperty Name="CODE_STA" ColumnName="CODE_STA" />
+                <ScalarProperty Name="OPER_STA" ColumnName="OPER_STA" />
+                <ScalarProperty Name="LABOR" ColumnName="LABOR" />
+                <ScalarProperty Name="PAID_UP" ColumnName="PAID_UP" />
+                <ScalarProperty Name="AUTHO_CAP" ColumnName="AUTHO_CAP" />
+                <ScalarProperty Name="NET_FAS" ColumnName="NET_FAS" />
+                <ScalarProperty Name="DATE_FAS" ColumnName="DATE_FAS" />
+                <ScalarProperty Name="CIF_TYPE" ColumnName="CIF_TYPE" />
+                <ScalarProperty Name="BOT_TYPE" ColumnName="BOT_TYPE" />
+                <ScalarProperty Name="FLAG_COLL" ColumnName="FLAG_COLL" />
+                <ScalarProperty Name="RESVPERC" ColumnName="RESVPERC" />
+                <ScalarProperty Name="SEPE_FLAG" ColumnName="SEPE_FLAG" />
+                <ScalarProperty Name="CLASS_PREV" ColumnName="CLASS_PREV" />
+                <ScalarProperty Name="COLL_BOT9" ColumnName="COLL_BOT9" />
+                <ScalarProperty Name="RESV_CC" ColumnName="RESV_CC" />
+                <ScalarProperty Name="RESERVE" ColumnName="RESERVE" />
+                <ScalarProperty Name="OFFICR_ID" ColumnName="OFFICR_ID" />
+                <ScalarProperty Name="ID_CARD" ColumnName="ID_CARD" />
+                <ScalarProperty Name="BOTID" ColumnName="BOTID" />
+                <ScalarProperty Name="UPD_USER" ColumnName="UPD_USER" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+                <ScalarProperty Name="GROUP_CUST" ColumnName="GROUP_CUST" />
+                <ScalarProperty Name="MAIN_CUST" ColumnName="MAIN_CUST" />
+                <ScalarProperty Name="CIF_DEP" ColumnName="CIF_DEP" />
+                <ScalarProperty Name="DEBTOR_CLASS" ColumnName="DEBTOR_CLASS" />
+                <ScalarProperty Name="BUSI_TYPE" ColumnName="BUSI_TYPE" />
+                <ScalarProperty Name="CUS_TYPE" ColumnName="CUS_TYPE" />
+                <ScalarProperty Name="TAX_NO" ColumnName="TAX_NO" />
+                <ScalarProperty Name="TEL_OFF" ColumnName="TEL_OFF" />
+                <ScalarProperty Name="TEL_HOME" ColumnName="TEL_HOME" />
+                <ScalarProperty Name="PROV" ColumnName="PROV" />
+                <ScalarProperty Name="AMPHUR" ColumnName="AMPHUR" />
+                <ScalarProperty Name="DISTICT" ColumnName="DISTICT" />
+                <ScalarProperty Name="GROUP_HOME" ColumnName="GROUP_HOME" />
+                <ScalarProperty Name="ROAD" ColumnName="ROAD" />
+                <ScalarProperty Name="SOI" ColumnName="SOI" />
+                <ScalarProperty Name="ADDR" ColumnName="ADDR" />
+                <ScalarProperty Name="BUILD" ColumnName="BUILD" />
+                <ScalarProperty Name="CUS_LAST" ColumnName="CUS_LAST" />
+                <ScalarProperty Name="CUS_FIRST" ColumnName="CUS_FIRST" />
+                <ScalarProperty Name="CUS_TITLE" ColumnName="CUS_TITLE" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EntityModel" ZoomLevel="82">
+        <EntityTypeShape EntityType="RISKModel.CIMD110" Width="1.5" PointX="0.75" PointY="0.75" Height="17.533997395833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.CIMD110_TEMP" Width="1.5" PointX="3.375" PointY="0.75" Height="17.533997395833335" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
