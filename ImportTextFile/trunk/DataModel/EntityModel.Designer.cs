@@ -8,63 +8,64 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 
-namespace ImportTextFile._Code.DataModel
+namespace ImportTextFile.DataModel
 {
     #region Contexts
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
     public partial class RISKEntities : ObjectContext
     {
         #region Constructors
-    
+
         /// <summary>
         /// Initializes a new RISKEntities object using the connection string found in the 'RISKEntities' section of the application configuration file.
         /// </summary>
-        public RISKEntities() : base("name=RISKEntities", "RISKEntities")
+        public RISKEntities()
+            : base("name=RISKEntities", "RISKEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-    
+
         /// <summary>
         /// Initialize a new RISKEntities object.
         /// </summary>
-        public RISKEntities(string connectionString) : base(connectionString, "RISKEntities")
+        public RISKEntities(string connectionString)
+            : base(connectionString, "RISKEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-    
+
         /// <summary>
         /// Initialize a new RISKEntities object.
         /// </summary>
-        public RISKEntities(EntityConnection connection) : base(connection, "RISKEntities")
+        public RISKEntities(EntityConnection connection)
+            : base(connection, "RISKEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-    
+
         #endregion
-    
+
         #region Partial Methods
-    
+
         partial void OnContextCreated();
-    
+
         #endregion
-    
+
         #region ObjectSet Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -80,7 +81,7 @@ namespace ImportTextFile._Code.DataModel
             }
         }
         private ObjectSet<CIMD110> _CIMD110;
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -98,8 +99,9 @@ namespace ImportTextFile._Code.DataModel
         private ObjectSet<CIMD110_TEMP> _CIMD110_TEMP;
 
         #endregion
+
         #region AddTo Methods
-    
+
         /// <summary>
         /// Deprecated Method for adding a new object to the CIMD110 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -107,7 +109,7 @@ namespace ImportTextFile._Code.DataModel
         {
             base.AddObject("CIMD110", cIMD110);
         }
-    
+
         /// <summary>
         /// Deprecated Method for adding a new object to the CIMD110_TEMP EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -118,22 +120,21 @@ namespace ImportTextFile._Code.DataModel
 
         #endregion
     }
-    
 
     #endregion
-    
+
     #region Entities
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="RISKModel", Name="CIMD110")]
+    [EdmEntityTypeAttribute(NamespaceName = "RISKModel", Name = "CIMD110")]
     [Serializable()]
-    [DataContractAttribute(IsReference=true)]
+    [DataContractAttribute(IsReference = true)]
     public partial class CIMD110 : EntityObject
     {
         #region Factory Method
-    
+
         /// <summary>
         /// Create a new CIMD110 object.
         /// </summary>
@@ -146,12 +147,13 @@ namespace ImportTextFile._Code.DataModel
         }
 
         #endregion
+
         #region Primitive Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Decimal CIF
         {
@@ -174,11 +176,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.Decimal _CIF;
         partial void OnCIFChanging(global::System.Decimal value);
         partial void OnCIFChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_TITLE
         {
@@ -198,11 +200,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_TITLE;
         partial void OnCUS_TITLEChanging(global::System.String value);
         partial void OnCUS_TITLEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_FIRST
         {
@@ -222,11 +224,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_FIRST;
         partial void OnCUS_FIRSTChanging(global::System.String value);
         partial void OnCUS_FIRSTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_LAST
         {
@@ -246,11 +248,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_LAST;
         partial void OnCUS_LASTChanging(global::System.String value);
         partial void OnCUS_LASTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BUILD
         {
@@ -270,11 +272,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BUILD;
         partial void OnBUILDChanging(global::System.String value);
         partial void OnBUILDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ADDR
         {
@@ -294,11 +296,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ADDR;
         partial void OnADDRChanging(global::System.String value);
         partial void OnADDRChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SOI
         {
@@ -318,11 +320,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SOI;
         partial void OnSOIChanging(global::System.String value);
         partial void OnSOIChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ROAD
         {
@@ -342,11 +344,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ROAD;
         partial void OnROADChanging(global::System.String value);
         partial void OnROADChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String GROUP_HOME
         {
@@ -366,11 +368,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _GROUP_HOME;
         partial void OnGROUP_HOMEChanging(global::System.String value);
         partial void OnGROUP_HOMEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DISTICT
         {
@@ -390,11 +392,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DISTICT;
         partial void OnDISTICTChanging(global::System.String value);
         partial void OnDISTICTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String AMPHUR
         {
@@ -414,11 +416,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _AMPHUR;
         partial void OnAMPHURChanging(global::System.String value);
         partial void OnAMPHURChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String PROV
         {
@@ -438,11 +440,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _PROV;
         partial void OnPROVChanging(global::System.String value);
         partial void OnPROVChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String TEL_HOME
         {
@@ -462,11 +464,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _TEL_HOME;
         partial void OnTEL_HOMEChanging(global::System.String value);
         partial void OnTEL_HOMEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String TEL_OFF
         {
@@ -486,11 +488,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _TEL_OFF;
         partial void OnTEL_OFFChanging(global::System.String value);
         partial void OnTEL_OFFChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String TAX_NO
         {
@@ -510,11 +512,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _TAX_NO;
         partial void OnTAX_NOChanging(global::System.String value);
         partial void OnTAX_NOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_TYPE
         {
@@ -534,11 +536,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_TYPE;
         partial void OnCUS_TYPEChanging(global::System.String value);
         partial void OnCUS_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BUSI_TYPE
         {
@@ -558,11 +560,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BUSI_TYPE;
         partial void OnBUSI_TYPEChanging(global::System.String value);
         partial void OnBUSI_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DEBTOR_CLASS
         {
@@ -582,11 +584,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DEBTOR_CLASS;
         partial void OnDEBTOR_CLASSChanging(global::System.String value);
         partial void OnDEBTOR_CLASSChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CIF_DEP
         {
@@ -606,11 +608,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CIF_DEP;
         partial void OnCIF_DEPChanging(global::System.String value);
         partial void OnCIF_DEPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String MAIN_CUST
         {
@@ -630,11 +632,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _MAIN_CUST;
         partial void OnMAIN_CUSTChanging(global::System.String value);
         partial void OnMAIN_CUSTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String GROUP_CUST
         {
@@ -654,11 +656,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _GROUP_CUST;
         partial void OnGROUP_CUSTChanging(global::System.String value);
         partial void OnGROUP_CUSTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> UPD_DATE
         {
@@ -678,11 +680,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _UPD_DATE;
         partial void OnUPD_DATEChanging(Nullable<global::System.DateTime> value);
         partial void OnUPD_DATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String UPD_USER
         {
@@ -702,11 +704,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _UPD_USER;
         partial void OnUPD_USERChanging(global::System.String value);
         partial void OnUPD_USERChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BOTID
         {
@@ -726,11 +728,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BOTID;
         partial void OnBOTIDChanging(global::System.String value);
         partial void OnBOTIDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ID_CARD
         {
@@ -750,11 +752,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ID_CARD;
         partial void OnID_CARDChanging(global::System.String value);
         partial void OnID_CARDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String OFFICR_ID
         {
@@ -774,11 +776,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _OFFICR_ID;
         partial void OnOFFICR_IDChanging(global::System.String value);
         partial void OnOFFICR_IDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> RESERVE
         {
@@ -798,11 +800,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _RESERVE;
         partial void OnRESERVEChanging(Nullable<global::System.Decimal> value);
         partial void OnRESERVEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> RESV_CC
         {
@@ -822,11 +824,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _RESV_CC;
         partial void OnRESV_CCChanging(Nullable<global::System.Decimal> value);
         partial void OnRESV_CCChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> COLL_BOT9
         {
@@ -846,11 +848,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _COLL_BOT9;
         partial void OnCOLL_BOT9Changing(Nullable<global::System.Decimal> value);
         partial void OnCOLL_BOT9Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CLASS_PREV
         {
@@ -870,11 +872,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CLASS_PREV;
         partial void OnCLASS_PREVChanging(global::System.String value);
         partial void OnCLASS_PREVChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SEPE_FLAG
         {
@@ -894,11 +896,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SEPE_FLAG;
         partial void OnSEPE_FLAGChanging(global::System.String value);
         partial void OnSEPE_FLAGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String RESVPERC
         {
@@ -918,11 +920,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _RESVPERC;
         partial void OnRESVPERCChanging(global::System.String value);
         partial void OnRESVPERCChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String FLAG_COLL
         {
@@ -942,11 +944,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _FLAG_COLL;
         partial void OnFLAG_COLLChanging(global::System.String value);
         partial void OnFLAG_COLLChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BOT_TYPE
         {
@@ -966,11 +968,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BOT_TYPE;
         partial void OnBOT_TYPEChanging(global::System.String value);
         partial void OnBOT_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CIF_TYPE
         {
@@ -990,11 +992,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CIF_TYPE;
         partial void OnCIF_TYPEChanging(global::System.String value);
         partial void OnCIF_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> DATE_FAS
         {
@@ -1014,11 +1016,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _DATE_FAS;
         partial void OnDATE_FASChanging(Nullable<global::System.DateTime> value);
         partial void OnDATE_FASChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> NET_FAS
         {
@@ -1038,11 +1040,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _NET_FAS;
         partial void OnNET_FASChanging(Nullable<global::System.Decimal> value);
         partial void OnNET_FASChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> AUTHO_CAP
         {
@@ -1062,11 +1064,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _AUTHO_CAP;
         partial void OnAUTHO_CAPChanging(Nullable<global::System.Decimal> value);
         partial void OnAUTHO_CAPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> PAID_UP
         {
@@ -1086,11 +1088,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _PAID_UP;
         partial void OnPAID_UPChanging(Nullable<global::System.Decimal> value);
         partial void OnPAID_UPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> LABOR
         {
@@ -1110,11 +1112,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _LABOR;
         partial void OnLABORChanging(Nullable<global::System.Decimal> value);
         partial void OnLABORChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String OPER_STA
         {
@@ -1134,11 +1136,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _OPER_STA;
         partial void OnOPER_STAChanging(global::System.String value);
         partial void OnOPER_STAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CODE_STA
         {
@@ -1158,11 +1160,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CODE_STA;
         partial void OnCODE_STAChanging(global::System.String value);
         partial void OnCODE_STAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String GOVE_GUAR
         {
@@ -1182,11 +1184,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _GOVE_GUAR;
         partial void OnGOVE_GUARChanging(global::System.String value);
         partial void OnGOVE_GUARChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> BEING_CUST
         {
@@ -1206,11 +1208,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _BEING_CUST;
         partial void OnBEING_CUSTChanging(Nullable<global::System.DateTime> value);
         partial void OnBEING_CUSTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> BTH_DATE
         {
@@ -1230,11 +1232,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _BTH_DATE;
         partial void OnBTH_DATEChanging(Nullable<global::System.DateTime> value);
         partial void OnBTH_DATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BUILD_SHOP
         {
@@ -1254,11 +1256,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BUILD_SHOP;
         partial void OnBUILD_SHOPChanging(global::System.String value);
         partial void OnBUILD_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ADDR_SHOP
         {
@@ -1278,11 +1280,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ADDR_SHOP;
         partial void OnADDR_SHOPChanging(global::System.String value);
         partial void OnADDR_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SOI_SHOP
         {
@@ -1302,11 +1304,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SOI_SHOP;
         partial void OnSOI_SHOPChanging(global::System.String value);
         partial void OnSOI_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ROAD_SHOP
         {
@@ -1326,11 +1328,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ROAD_SHOP;
         partial void OnROAD_SHOPChanging(global::System.String value);
         partial void OnROAD_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String GROUP_SHOP
         {
@@ -1350,11 +1352,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _GROUP_SHOP;
         partial void OnGROUP_SHOPChanging(global::System.String value);
         partial void OnGROUP_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DISTRICT_S
         {
@@ -1374,11 +1376,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DISTRICT_S;
         partial void OnDISTRICT_SChanging(global::System.String value);
         partial void OnDISTRICT_SChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String AMPHUR_S
         {
@@ -1398,11 +1400,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _AMPHUR_S;
         partial void OnAMPHUR_SChanging(global::System.String value);
         partial void OnAMPHUR_SChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String PROV_SHOP
         {
@@ -1422,11 +1424,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _PROV_SHOP;
         partial void OnPROV_SHOPChanging(global::System.String value);
         partial void OnPROV_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ZIP_SHOP
         {
@@ -1446,11 +1448,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ZIP_SHOP;
         partial void OnZIP_SHOPChanging(global::System.String value);
         partial void OnZIP_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_0
         {
@@ -1470,11 +1472,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_0;
         partial void OnCIF_0Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_0Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_1
         {
@@ -1494,11 +1496,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_1;
         partial void OnCIF_1Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_1Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_2
         {
@@ -1518,11 +1520,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_2;
         partial void OnCIF_2Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_2Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_3
         {
@@ -1542,11 +1544,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_3;
         partial void OnCIF_3Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_3Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> DEPT_FLAG
         {
@@ -1566,11 +1568,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _DEPT_FLAG;
         partial void OnDEPT_FLAGChanging(Nullable<global::System.Decimal> value);
         partial void OnDEPT_FLAGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DEPT_TRAN
         {
@@ -1590,11 +1592,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DEPT_TRAN;
         partial void OnDEPT_TRANChanging(global::System.String value);
         partial void OnDEPT_TRANChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CARD_TYPE
         {
@@ -1614,11 +1616,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CARD_TYPE;
         partial void OnCARD_TYPEChanging(global::System.String value);
         partial void OnCARD_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CARD_NO
         {
@@ -1638,11 +1640,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CARD_NO;
         partial void OnCARD_NOChanging(global::System.String value);
         partial void OnCARD_NOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SEX
         {
@@ -1662,11 +1664,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SEX;
         partial void OnSEXChanging(global::System.String value);
         partial void OnSEXChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String MARITAL_STA
         {
@@ -1686,11 +1688,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _MARITAL_STA;
         partial void OnMARITAL_STAChanging(global::System.String value);
         partial void OnMARITAL_STAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CITIZEN
         {
@@ -1710,11 +1712,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CITIZEN;
         partial void OnCITIZENChanging(global::System.String value);
         partial void OnCITIZENChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> GROUP_CIF
         {
@@ -1734,11 +1736,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _GROUP_CIF;
         partial void OnGROUP_CIFChanging(Nullable<global::System.Decimal> value);
         partial void OnGROUP_CIFChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> DEPT_FLAG_T
         {
@@ -1758,11 +1760,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _DEPT_FLAG_T;
         partial void OnDEPT_FLAG_TChanging(Nullable<global::System.Decimal> value);
         partial void OnDEPT_FLAG_TChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DEPT_TRAN_T
         {
@@ -1782,11 +1784,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DEPT_TRAN_T;
         partial void OnDEPT_TRAN_TChanging(global::System.String value);
         partial void OnDEPT_TRAN_TChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CTITLENEW
         {
@@ -1806,11 +1808,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CTITLENEW;
         partial void OnCTITLENEWChanging(global::System.String value);
         partial void OnCTITLENEWChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> BAY_DATE
         {
@@ -1830,11 +1832,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _BAY_DATE;
         partial void OnBAY_DATEChanging(Nullable<global::System.DateTime> value);
         partial void OnBAY_DATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BAY_RATING
         {
@@ -1854,11 +1856,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BAY_RATING;
         partial void OnBAY_RATINGChanging(global::System.String value);
         partial void OnBAY_RATINGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String COUNTRY
         {
@@ -1878,11 +1880,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _COUNTRY;
         partial void OnCOUNTRYChanging(global::System.String value);
         partial void OnCOUNTRYChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String COUNTRY_SHOP
         {
@@ -1902,11 +1904,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _COUNTRY_SHOP;
         partial void OnCOUNTRY_SHOPChanging(global::System.String value);
         partial void OnCOUNTRY_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String MINOR_BUSI
         {
@@ -1926,11 +1928,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _MINOR_BUSI;
         partial void OnMINOR_BUSIChanging(global::System.String value);
         partial void OnMINOR_BUSIChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_TITLE_E
         {
@@ -1950,11 +1952,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_TITLE_E;
         partial void OnCUS_TITLE_EChanging(global::System.String value);
         partial void OnCUS_TITLE_EChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_FIRST_E
         {
@@ -1974,11 +1976,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_FIRST_E;
         partial void OnCUS_FIRST_EChanging(global::System.String value);
         partial void OnCUS_FIRST_EChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_LAST_E
         {
@@ -1998,11 +2000,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_LAST_E;
         partial void OnCUS_LAST_EChanging(global::System.String value);
         partial void OnCUS_LAST_EChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String COMM_NAME_THA
         {
@@ -2022,11 +2024,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _COMM_NAME_THA;
         partial void OnCOMM_NAME_THAChanging(global::System.String value);
         partial void OnCOMM_NAME_THAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String COMM_NAME_ENG
         {
@@ -2046,11 +2048,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _COMM_NAME_ENG;
         partial void OnCOMM_NAME_ENGChanging(global::System.String value);
         partial void OnCOMM_NAME_ENGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> LAND_VALUE
         {
@@ -2070,11 +2072,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _LAND_VALUE;
         partial void OnLAND_VALUEChanging(Nullable<global::System.Decimal> value);
         partial void OnLAND_VALUEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> SELL_PER_YEAR
         {
@@ -2094,11 +2096,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _SELL_PER_YEAR;
         partial void OnSELL_PER_YEARChanging(Nullable<global::System.Decimal> value);
         partial void OnSELL_PER_YEARChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SMEBOT_FLAG
         {
@@ -2118,11 +2120,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SMEBOT_FLAG;
         partial void OnSMEBOT_FLAGChanging(global::System.String value);
         partial void OnSMEBOT_FLAGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_4
         {
@@ -2142,11 +2144,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_4;
         partial void OnCIF_4Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_4Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_5
         {
@@ -2166,11 +2168,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_5;
         partial void OnCIF_5Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_5Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_6
         {
@@ -2190,11 +2192,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_6;
         partial void OnCIF_6Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_6Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_7
         {
@@ -2214,11 +2216,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_7;
         partial void OnCIF_7Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_7Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_8
         {
@@ -2238,11 +2240,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_8;
         partial void OnCIF_8Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_8Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_9
         {
@@ -2262,11 +2264,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_9;
         partial void OnCIF_9Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_9Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> FIRST_NPL
         {
@@ -2286,11 +2288,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _FIRST_NPL;
         partial void OnFIRST_NPLChanging(Nullable<global::System.DateTime> value);
         partial void OnFIRST_NPLChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String TYP_RATE
         {
@@ -2310,11 +2312,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _TYP_RATE;
         partial void OnTYP_RATEChanging(global::System.String value);
         partial void OnTYP_RATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String OCCUPATION_CODE
         {
@@ -2334,11 +2336,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _OCCUPATION_CODE;
         partial void OnOCCUPATION_CODEChanging(global::System.String value);
         partial void OnOCCUPATION_CODEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String MOBILE_PHONE
         {
@@ -2358,11 +2360,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _MOBILE_PHONE;
         partial void OnMOBILE_PHONEChanging(global::System.String value);
         partial void OnMOBILE_PHONEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BUSI_RISK
         {
@@ -2382,11 +2384,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BUSI_RISK;
         partial void OnBUSI_RISKChanging(global::System.String value);
         partial void OnBUSI_RISKChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String WEALTH
         {
@@ -2406,11 +2408,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _WEALTH;
         partial void OnWEALTHChanging(global::System.String value);
         partial void OnWEALTHChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CTRL_SIZE
         {
@@ -2430,11 +2432,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CTRL_SIZE;
         partial void OnCTRL_SIZEChanging(global::System.String value);
         partial void OnCTRL_SIZEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String D_CTRL_SIZE
         {
@@ -2454,11 +2456,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _D_CTRL_SIZE;
         partial void OnD_CTRL_SIZEChanging(global::System.String value);
         partial void OnD_CTRL_SIZEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String RISK_GRADE
         {
@@ -2478,11 +2480,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _RISK_GRADE;
         partial void OnRISK_GRADEChanging(global::System.String value);
         partial void OnRISK_GRADEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DELETE_FLAG
         {
@@ -2502,11 +2504,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DELETE_FLAG;
         partial void OnDELETE_FLAGChanging(global::System.String value);
         partial void OnDELETE_FLAGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> ETL_ASOFDATE
         {
@@ -2526,11 +2528,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _ETL_ASOFDATE;
         partial void OnETL_ASOFDATEChanging(Nullable<global::System.DateTime> value);
         partial void OnETL_ASOFDATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ETL_STATUS
         {
@@ -2550,11 +2552,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ETL_STATUS;
         partial void OnETL_STATUSChanging(global::System.String value);
         partial void OnETL_STATUSChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ZIP_CODE
         {
@@ -2576,19 +2578,18 @@ namespace ImportTextFile._Code.DataModel
         partial void OnZIP_CODEChanged();
 
         #endregion
-    
     }
-    
+
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="RISKModel", Name="CIMD110_TEMP")]
+    [EdmEntityTypeAttribute(NamespaceName = "RISKModel", Name = "CIMD110_TEMP")]
     [Serializable()]
-    [DataContractAttribute(IsReference=true)]
+    [DataContractAttribute(IsReference = true)]
     public partial class CIMD110_TEMP : EntityObject
     {
         #region Factory Method
-    
+
         /// <summary>
         /// Create a new CIMD110_TEMP object.
         /// </summary>
@@ -2601,12 +2602,13 @@ namespace ImportTextFile._Code.DataModel
         }
 
         #endregion
+
         #region Primitive Properties
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
         [DataMemberAttribute()]
         public global::System.Decimal CIF
         {
@@ -2629,11 +2631,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.Decimal _CIF;
         partial void OnCIFChanging(global::System.Decimal value);
         partial void OnCIFChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_TITLE
         {
@@ -2653,11 +2655,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_TITLE;
         partial void OnCUS_TITLEChanging(global::System.String value);
         partial void OnCUS_TITLEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_FIRST
         {
@@ -2677,11 +2679,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_FIRST;
         partial void OnCUS_FIRSTChanging(global::System.String value);
         partial void OnCUS_FIRSTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_LAST
         {
@@ -2701,11 +2703,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_LAST;
         partial void OnCUS_LASTChanging(global::System.String value);
         partial void OnCUS_LASTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BUILD
         {
@@ -2725,11 +2727,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BUILD;
         partial void OnBUILDChanging(global::System.String value);
         partial void OnBUILDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ADDR
         {
@@ -2749,11 +2751,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ADDR;
         partial void OnADDRChanging(global::System.String value);
         partial void OnADDRChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SOI
         {
@@ -2773,11 +2775,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SOI;
         partial void OnSOIChanging(global::System.String value);
         partial void OnSOIChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ROAD
         {
@@ -2797,11 +2799,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ROAD;
         partial void OnROADChanging(global::System.String value);
         partial void OnROADChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String GROUP_HOME
         {
@@ -2821,11 +2823,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _GROUP_HOME;
         partial void OnGROUP_HOMEChanging(global::System.String value);
         partial void OnGROUP_HOMEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DISTICT
         {
@@ -2845,11 +2847,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DISTICT;
         partial void OnDISTICTChanging(global::System.String value);
         partial void OnDISTICTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String AMPHUR
         {
@@ -2869,11 +2871,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _AMPHUR;
         partial void OnAMPHURChanging(global::System.String value);
         partial void OnAMPHURChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String PROV
         {
@@ -2893,11 +2895,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _PROV;
         partial void OnPROVChanging(global::System.String value);
         partial void OnPROVChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String TEL_HOME
         {
@@ -2917,11 +2919,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _TEL_HOME;
         partial void OnTEL_HOMEChanging(global::System.String value);
         partial void OnTEL_HOMEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String TEL_OFF
         {
@@ -2941,11 +2943,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _TEL_OFF;
         partial void OnTEL_OFFChanging(global::System.String value);
         partial void OnTEL_OFFChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String TAX_NO
         {
@@ -2965,11 +2967,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _TAX_NO;
         partial void OnTAX_NOChanging(global::System.String value);
         partial void OnTAX_NOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_TYPE
         {
@@ -2989,11 +2991,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_TYPE;
         partial void OnCUS_TYPEChanging(global::System.String value);
         partial void OnCUS_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BUSI_TYPE
         {
@@ -3013,11 +3015,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BUSI_TYPE;
         partial void OnBUSI_TYPEChanging(global::System.String value);
         partial void OnBUSI_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DEBTOR_CLASS
         {
@@ -3037,11 +3039,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DEBTOR_CLASS;
         partial void OnDEBTOR_CLASSChanging(global::System.String value);
         partial void OnDEBTOR_CLASSChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CIF_DEP
         {
@@ -3061,11 +3063,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CIF_DEP;
         partial void OnCIF_DEPChanging(global::System.String value);
         partial void OnCIF_DEPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String MAIN_CUST
         {
@@ -3085,11 +3087,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _MAIN_CUST;
         partial void OnMAIN_CUSTChanging(global::System.String value);
         partial void OnMAIN_CUSTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String GROUP_CUST
         {
@@ -3109,11 +3111,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _GROUP_CUST;
         partial void OnGROUP_CUSTChanging(global::System.String value);
         partial void OnGROUP_CUSTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> UPD_DATE
         {
@@ -3133,11 +3135,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _UPD_DATE;
         partial void OnUPD_DATEChanging(Nullable<global::System.DateTime> value);
         partial void OnUPD_DATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String UPD_USER
         {
@@ -3157,11 +3159,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _UPD_USER;
         partial void OnUPD_USERChanging(global::System.String value);
         partial void OnUPD_USERChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BOTID
         {
@@ -3181,11 +3183,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BOTID;
         partial void OnBOTIDChanging(global::System.String value);
         partial void OnBOTIDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ID_CARD
         {
@@ -3205,11 +3207,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ID_CARD;
         partial void OnID_CARDChanging(global::System.String value);
         partial void OnID_CARDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String OFFICR_ID
         {
@@ -3229,11 +3231,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _OFFICR_ID;
         partial void OnOFFICR_IDChanging(global::System.String value);
         partial void OnOFFICR_IDChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> RESERVE
         {
@@ -3253,11 +3255,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _RESERVE;
         partial void OnRESERVEChanging(Nullable<global::System.Decimal> value);
         partial void OnRESERVEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> RESV_CC
         {
@@ -3277,11 +3279,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _RESV_CC;
         partial void OnRESV_CCChanging(Nullable<global::System.Decimal> value);
         partial void OnRESV_CCChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> COLL_BOT9
         {
@@ -3301,11 +3303,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _COLL_BOT9;
         partial void OnCOLL_BOT9Changing(Nullable<global::System.Decimal> value);
         partial void OnCOLL_BOT9Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CLASS_PREV
         {
@@ -3325,11 +3327,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CLASS_PREV;
         partial void OnCLASS_PREVChanging(global::System.String value);
         partial void OnCLASS_PREVChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SEPE_FLAG
         {
@@ -3349,11 +3351,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SEPE_FLAG;
         partial void OnSEPE_FLAGChanging(global::System.String value);
         partial void OnSEPE_FLAGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String RESVPERC
         {
@@ -3373,11 +3375,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _RESVPERC;
         partial void OnRESVPERCChanging(global::System.String value);
         partial void OnRESVPERCChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String FLAG_COLL
         {
@@ -3397,11 +3399,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _FLAG_COLL;
         partial void OnFLAG_COLLChanging(global::System.String value);
         partial void OnFLAG_COLLChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BOT_TYPE
         {
@@ -3421,11 +3423,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BOT_TYPE;
         partial void OnBOT_TYPEChanging(global::System.String value);
         partial void OnBOT_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CIF_TYPE
         {
@@ -3445,11 +3447,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CIF_TYPE;
         partial void OnCIF_TYPEChanging(global::System.String value);
         partial void OnCIF_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> DATE_FAS
         {
@@ -3469,11 +3471,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _DATE_FAS;
         partial void OnDATE_FASChanging(Nullable<global::System.DateTime> value);
         partial void OnDATE_FASChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> NET_FAS
         {
@@ -3493,11 +3495,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _NET_FAS;
         partial void OnNET_FASChanging(Nullable<global::System.Decimal> value);
         partial void OnNET_FASChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> AUTHO_CAP
         {
@@ -3517,11 +3519,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _AUTHO_CAP;
         partial void OnAUTHO_CAPChanging(Nullable<global::System.Decimal> value);
         partial void OnAUTHO_CAPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> PAID_UP
         {
@@ -3541,11 +3543,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _PAID_UP;
         partial void OnPAID_UPChanging(Nullable<global::System.Decimal> value);
         partial void OnPAID_UPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> LABOR
         {
@@ -3565,11 +3567,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _LABOR;
         partial void OnLABORChanging(Nullable<global::System.Decimal> value);
         partial void OnLABORChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String OPER_STA
         {
@@ -3589,11 +3591,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _OPER_STA;
         partial void OnOPER_STAChanging(global::System.String value);
         partial void OnOPER_STAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CODE_STA
         {
@@ -3613,11 +3615,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CODE_STA;
         partial void OnCODE_STAChanging(global::System.String value);
         partial void OnCODE_STAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String GOVE_GUAR
         {
@@ -3637,11 +3639,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _GOVE_GUAR;
         partial void OnGOVE_GUARChanging(global::System.String value);
         partial void OnGOVE_GUARChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> BEING_CUST
         {
@@ -3661,11 +3663,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _BEING_CUST;
         partial void OnBEING_CUSTChanging(Nullable<global::System.DateTime> value);
         partial void OnBEING_CUSTChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> BTH_DATE
         {
@@ -3685,11 +3687,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _BTH_DATE;
         partial void OnBTH_DATEChanging(Nullable<global::System.DateTime> value);
         partial void OnBTH_DATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BUILD_SHOP
         {
@@ -3709,11 +3711,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BUILD_SHOP;
         partial void OnBUILD_SHOPChanging(global::System.String value);
         partial void OnBUILD_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ADDR_SHOP
         {
@@ -3733,11 +3735,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ADDR_SHOP;
         partial void OnADDR_SHOPChanging(global::System.String value);
         partial void OnADDR_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SOI_SHOP
         {
@@ -3757,11 +3759,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SOI_SHOP;
         partial void OnSOI_SHOPChanging(global::System.String value);
         partial void OnSOI_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ROAD_SHOP
         {
@@ -3781,11 +3783,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ROAD_SHOP;
         partial void OnROAD_SHOPChanging(global::System.String value);
         partial void OnROAD_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String GROUP_SHOP
         {
@@ -3805,11 +3807,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _GROUP_SHOP;
         partial void OnGROUP_SHOPChanging(global::System.String value);
         partial void OnGROUP_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DISTRICT_S
         {
@@ -3829,11 +3831,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DISTRICT_S;
         partial void OnDISTRICT_SChanging(global::System.String value);
         partial void OnDISTRICT_SChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String AMPHUR_S
         {
@@ -3853,11 +3855,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _AMPHUR_S;
         partial void OnAMPHUR_SChanging(global::System.String value);
         partial void OnAMPHUR_SChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String PROV_SHOP
         {
@@ -3877,11 +3879,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _PROV_SHOP;
         partial void OnPROV_SHOPChanging(global::System.String value);
         partial void OnPROV_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ZIP_SHOP
         {
@@ -3901,11 +3903,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ZIP_SHOP;
         partial void OnZIP_SHOPChanging(global::System.String value);
         partial void OnZIP_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_0
         {
@@ -3925,11 +3927,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_0;
         partial void OnCIF_0Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_0Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_1
         {
@@ -3949,11 +3951,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_1;
         partial void OnCIF_1Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_1Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_2
         {
@@ -3973,11 +3975,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_2;
         partial void OnCIF_2Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_2Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_3
         {
@@ -3997,11 +3999,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_3;
         partial void OnCIF_3Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_3Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> DEPT_FLAG
         {
@@ -4021,11 +4023,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _DEPT_FLAG;
         partial void OnDEPT_FLAGChanging(Nullable<global::System.Decimal> value);
         partial void OnDEPT_FLAGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DEPT_TRAN
         {
@@ -4045,11 +4047,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DEPT_TRAN;
         partial void OnDEPT_TRANChanging(global::System.String value);
         partial void OnDEPT_TRANChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CARD_TYPE
         {
@@ -4069,11 +4071,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CARD_TYPE;
         partial void OnCARD_TYPEChanging(global::System.String value);
         partial void OnCARD_TYPEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CARD_NO
         {
@@ -4093,11 +4095,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CARD_NO;
         partial void OnCARD_NOChanging(global::System.String value);
         partial void OnCARD_NOChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SEX
         {
@@ -4117,11 +4119,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SEX;
         partial void OnSEXChanging(global::System.String value);
         partial void OnSEXChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String MARITAL_STA
         {
@@ -4141,11 +4143,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _MARITAL_STA;
         partial void OnMARITAL_STAChanging(global::System.String value);
         partial void OnMARITAL_STAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CITIZEN
         {
@@ -4165,11 +4167,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CITIZEN;
         partial void OnCITIZENChanging(global::System.String value);
         partial void OnCITIZENChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> GROUP_CIF
         {
@@ -4189,11 +4191,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _GROUP_CIF;
         partial void OnGROUP_CIFChanging(Nullable<global::System.Decimal> value);
         partial void OnGROUP_CIFChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> DEPT_FLAG_T
         {
@@ -4213,11 +4215,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _DEPT_FLAG_T;
         partial void OnDEPT_FLAG_TChanging(Nullable<global::System.Decimal> value);
         partial void OnDEPT_FLAG_TChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DEPT_TRAN_T
         {
@@ -4237,11 +4239,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DEPT_TRAN_T;
         partial void OnDEPT_TRAN_TChanging(global::System.String value);
         partial void OnDEPT_TRAN_TChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CTITLENEW
         {
@@ -4261,11 +4263,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CTITLENEW;
         partial void OnCTITLENEWChanging(global::System.String value);
         partial void OnCTITLENEWChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> BAY_DATE
         {
@@ -4285,11 +4287,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _BAY_DATE;
         partial void OnBAY_DATEChanging(Nullable<global::System.DateTime> value);
         partial void OnBAY_DATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BAY_RATING
         {
@@ -4309,11 +4311,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BAY_RATING;
         partial void OnBAY_RATINGChanging(global::System.String value);
         partial void OnBAY_RATINGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String COUNTRY
         {
@@ -4333,11 +4335,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _COUNTRY;
         partial void OnCOUNTRYChanging(global::System.String value);
         partial void OnCOUNTRYChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String COUNTRY_SHOP
         {
@@ -4357,11 +4359,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _COUNTRY_SHOP;
         partial void OnCOUNTRY_SHOPChanging(global::System.String value);
         partial void OnCOUNTRY_SHOPChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String MINOR_BUSI
         {
@@ -4381,11 +4383,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _MINOR_BUSI;
         partial void OnMINOR_BUSIChanging(global::System.String value);
         partial void OnMINOR_BUSIChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_TITLE_E
         {
@@ -4405,11 +4407,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_TITLE_E;
         partial void OnCUS_TITLE_EChanging(global::System.String value);
         partial void OnCUS_TITLE_EChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_FIRST_E
         {
@@ -4429,11 +4431,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_FIRST_E;
         partial void OnCUS_FIRST_EChanging(global::System.String value);
         partial void OnCUS_FIRST_EChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CUS_LAST_E
         {
@@ -4453,11 +4455,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CUS_LAST_E;
         partial void OnCUS_LAST_EChanging(global::System.String value);
         partial void OnCUS_LAST_EChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String COMM_NAME_THA
         {
@@ -4477,11 +4479,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _COMM_NAME_THA;
         partial void OnCOMM_NAME_THAChanging(global::System.String value);
         partial void OnCOMM_NAME_THAChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String COMM_NAME_ENG
         {
@@ -4501,11 +4503,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _COMM_NAME_ENG;
         partial void OnCOMM_NAME_ENGChanging(global::System.String value);
         partial void OnCOMM_NAME_ENGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> LAND_VALUE
         {
@@ -4525,11 +4527,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _LAND_VALUE;
         partial void OnLAND_VALUEChanging(Nullable<global::System.Decimal> value);
         partial void OnLAND_VALUEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> SELL_PER_YEAR
         {
@@ -4549,11 +4551,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _SELL_PER_YEAR;
         partial void OnSELL_PER_YEARChanging(Nullable<global::System.Decimal> value);
         partial void OnSELL_PER_YEARChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String SMEBOT_FLAG
         {
@@ -4573,11 +4575,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _SMEBOT_FLAG;
         partial void OnSMEBOT_FLAGChanging(global::System.String value);
         partial void OnSMEBOT_FLAGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_4
         {
@@ -4597,11 +4599,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_4;
         partial void OnCIF_4Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_4Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_5
         {
@@ -4621,11 +4623,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_5;
         partial void OnCIF_5Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_5Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_6
         {
@@ -4645,11 +4647,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_6;
         partial void OnCIF_6Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_6Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_7
         {
@@ -4669,11 +4671,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_7;
         partial void OnCIF_7Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_7Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_8
         {
@@ -4693,11 +4695,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_8;
         partial void OnCIF_8Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_8Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Decimal> CIF_9
         {
@@ -4717,11 +4719,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.Decimal> _CIF_9;
         partial void OnCIF_9Changing(Nullable<global::System.Decimal> value);
         partial void OnCIF_9Changed();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> FIRST_NPL
         {
@@ -4741,11 +4743,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _FIRST_NPL;
         partial void OnFIRST_NPLChanging(Nullable<global::System.DateTime> value);
         partial void OnFIRST_NPLChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String TYP_RATE
         {
@@ -4765,11 +4767,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _TYP_RATE;
         partial void OnTYP_RATEChanging(global::System.String value);
         partial void OnTYP_RATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String OCCUPATION_CODE
         {
@@ -4789,11 +4791,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _OCCUPATION_CODE;
         partial void OnOCCUPATION_CODEChanging(global::System.String value);
         partial void OnOCCUPATION_CODEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String MOBILE_PHONE
         {
@@ -4813,11 +4815,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _MOBILE_PHONE;
         partial void OnMOBILE_PHONEChanging(global::System.String value);
         partial void OnMOBILE_PHONEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String BUSI_RISK
         {
@@ -4837,11 +4839,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _BUSI_RISK;
         partial void OnBUSI_RISKChanging(global::System.String value);
         partial void OnBUSI_RISKChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String WEALTH
         {
@@ -4861,11 +4863,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _WEALTH;
         partial void OnWEALTHChanging(global::System.String value);
         partial void OnWEALTHChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String CTRL_SIZE
         {
@@ -4885,11 +4887,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _CTRL_SIZE;
         partial void OnCTRL_SIZEChanging(global::System.String value);
         partial void OnCTRL_SIZEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String D_CTRL_SIZE
         {
@@ -4909,11 +4911,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _D_CTRL_SIZE;
         partial void OnD_CTRL_SIZEChanging(global::System.String value);
         partial void OnD_CTRL_SIZEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String RISK_GRADE
         {
@@ -4933,11 +4935,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _RISK_GRADE;
         partial void OnRISK_GRADEChanging(global::System.String value);
         partial void OnRISK_GRADEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String DELETE_FLAG
         {
@@ -4957,11 +4959,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _DELETE_FLAG;
         partial void OnDELETE_FLAGChanging(global::System.String value);
         partial void OnDELETE_FLAGChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> ETL_ASOFDATE
         {
@@ -4981,11 +4983,11 @@ namespace ImportTextFile._Code.DataModel
         private Nullable<global::System.DateTime> _ETL_ASOFDATE;
         partial void OnETL_ASOFDATEChanging(Nullable<global::System.DateTime> value);
         partial void OnETL_ASOFDATEChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ETL_STATUS
         {
@@ -5005,11 +5007,11 @@ namespace ImportTextFile._Code.DataModel
         private global::System.String _ETL_STATUS;
         partial void OnETL_STATUSChanging(global::System.String value);
         partial void OnETL_STATUSChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
         [DataMemberAttribute()]
         public global::System.String ZIP_CODE
         {
@@ -5031,9 +5033,112 @@ namespace ImportTextFile._Code.DataModel
         partial void OnZIP_CODEChanged();
 
         #endregion
-    
+
+        public void Debug(log4net.ILog log)
+        {
+            log.Debug("CIF:" + this.CIF);
+            log.Debug("CUS_TITLE:" + this.CUS_TITLE);
+            log.Debug("CUS_FIRST:" + this.CUS_FIRST);
+            log.Debug("CUS_LAST:" + this.CUS_LAST);
+            log.Debug("BUILD:" + this.BUILD);
+            log.Debug("ADDR:" + this.ADDR);
+            log.Debug("SOI:" + this.SOI);
+            log.Debug("ROAD:" + this.ROAD);
+            log.Debug("GROUP_HOME:" + this.GROUP_HOME);
+            log.Debug("DISTICT:" + this.DISTICT);
+            log.Debug("AMPHUR:" + this.AMPHUR);
+            log.Debug("PROV:" + this.PROV);
+            log.Debug("TEL_HOME:" + this.TEL_HOME);
+            log.Debug("TEL_OFF:" + this.TEL_OFF);
+            log.Debug("TAX_NO:" + this.TAX_NO);
+            log.Debug("CUS_TYPE:" + this.CUS_TYPE);
+            log.Debug("BUSI_TYPE:" + this.BUSI_TYPE);
+            log.Debug("DEBTOR_CLASS:" + this.DEBTOR_CLASS);
+            log.Debug("CIF_DEP:" + this.CIF_DEP);
+            log.Debug("MAIN_CUST:" + this.MAIN_CUST);
+            log.Debug("GROUP_CUST:" + this.GROUP_CUST);
+            log.Debug("UPD_DATE[datetime]:" + this.UPD_DATE);
+            log.Debug("UPD_USER:" + this.UPD_USER);
+            log.Debug("BOTID:" + this.BOTID);
+            log.Debug("ID_CARD:" + this.ID_CARD);
+            log.Debug("OFFICR_ID:" + this.OFFICR_ID);
+            log.Debug("RESERVE:" + this.RESERVE);
+            log.Debug("RESV_CC:" + this.RESV_CC);
+            log.Debug("COLL_BOT9:" + this.COLL_BOT9);
+            log.Debug("CLASS_PREV:" + this.CLASS_PREV);
+            log.Debug("SEPE_FLAG:" + this.SEPE_FLAG);
+            log.Debug("RESVPERC:" + this.RESVPERC);
+            log.Debug("FLAG_COLL:" + this.FLAG_COLL);
+            log.Debug("BOT_TYPE:" + this.BOT_TYPE);
+            log.Debug("CIF_TYPE:" + this.CIF_TYPE);
+            log.Debug("DATE_FAS[datetime]:" + this.DATE_FAS);
+            log.Debug("NET_FAS:" + this.NET_FAS);
+            log.Debug("AUTHO_CAP:" + this.AUTHO_CAP);
+            log.Debug("PAID_UP:" + this.PAID_UP);
+            log.Debug("LABOR:" + this.LABOR);
+            log.Debug("OPER_STA:" + this.OPER_STA);
+            log.Debug("CODE_STA:" + this.CODE_STA);
+            log.Debug("GOVE_GUAR:" + this.GOVE_GUAR);
+            log.Debug("BEING_CUST[datetime]:" + this.BEING_CUST);
+            log.Debug("BTH_DATE[datetime]:" + this.BTH_DATE);
+            log.Debug("BUILD_SHOP:" + this.BUILD_SHOP);
+            log.Debug("ADDR_SHOP:" + this.ADDR_SHOP);
+            log.Debug("SOI_SHOP:" + this.SOI_SHOP);
+            log.Debug("ROAD_SHOP:" + this.ROAD_SHOP);
+            log.Debug("GROUP_SHOP:" + this.GROUP_SHOP);
+            log.Debug("DISTRICT_S:" + this.DISTRICT_S);
+            log.Debug("AMPHUR_S:" + this.AMPHUR_S);
+            log.Debug("PROV_SHOP:" + this.PROV_SHOP);
+            log.Debug("ZIP_SHOP:" + this.ZIP_SHOP);
+            log.Debug("CIF_0:" + this.CIF_0);
+            log.Debug("CIF_1:" + this.CIF_1);
+            log.Debug("CIF_2:" + this.CIF_2);
+            log.Debug("CIF_3:" + this.CIF_3);
+            log.Debug("ZIP_CODE:" + this.ZIP_CODE);
+            log.Debug("DEPT_FLAG:" + this.DEPT_FLAG);
+            log.Debug("DEPT_TRAN:" + this.DEPT_TRAN);
+            log.Debug("CARD_TYPE:" + this.CARD_TYPE);
+            log.Debug("CARD_NO:" + this.CARD_NO);
+            log.Debug("SEX:" + this.SEX);
+            log.Debug("MARITAL_STA:" + this.MARITAL_STA);
+            log.Debug("CITIZEN:" + this.CITIZEN);
+            log.Debug("GROUP_CIF:" + this.GROUP_CIF);
+            log.Debug("DEPT_FLAG_T:" + this.DEPT_FLAG_T);
+            log.Debug("DEPT_TRAN_T:" + this.DEPT_TRAN_T);
+            log.Debug("CTITLENEW:" + this.CTITLENEW);
+            log.Debug("BAY_DATE[datetime]:" + this.BAY_DATE);
+            log.Debug("BAY_RATING:" + this.BAY_RATING);
+            log.Debug("COUNTRY:" + this.COUNTRY);
+            log.Debug("COUNTRY_SHOP:" + this.COUNTRY_SHOP);
+            log.Debug("MINOR_BUSI:" + this.MINOR_BUSI);
+            log.Debug("CUS_TITLE_E:" + this.CUS_TITLE_E);
+            log.Debug("CUS_FIRST_E:" + this.CUS_FIRST_E);
+            log.Debug("CUS_LAST_E:" + this.CUS_LAST_E);
+            log.Debug("COMM_NAME_THA:" + this.COMM_NAME_THA);
+            log.Debug("COMM_NAME_ENG:" + this.COMM_NAME_ENG);
+            log.Debug("LAND_VALUE:" + this.LAND_VALUE);
+            log.Debug("SELL_PER_YEAR:" + this.SELL_PER_YEAR);
+            log.Debug("SMEBOT_FLAG:" + this.SMEBOT_FLAG);
+            log.Debug("CIF_4:" + this.CIF_4);
+            log.Debug("CIF_5:" + this.CIF_5);
+            log.Debug("CIF_6:" + this.CIF_6);
+            log.Debug("CIF_7:" + this.CIF_7);
+            log.Debug("CIF_8:" + this.CIF_8);
+            log.Debug("CIF_9:" + this.CIF_9);
+            log.Debug("FIRST_NPL[datetime]:" + this.FIRST_NPL);
+            log.Debug("TYP_RATE:" + this.TYP_RATE);
+            log.Debug("OCCUPATION_CODE:" + this.OCCUPATION_CODE);
+            log.Debug("MOBILE_PHONE:" + this.MOBILE_PHONE);
+            log.Debug("BUSI_RISK:" + this.BUSI_RISK);
+            log.Debug("WEALTH:" + this.WEALTH);
+            log.Debug("CTRL_SIZE:" + this.CTRL_SIZE);
+            log.Debug("D_CTRL_SIZE:" + this.D_CTRL_SIZE);
+            log.Debug("RISK_GRADE:" + this.RISK_GRADE);
+            log.Debug("DELETE_FLAG:" + this.DELETE_FLAG);
+            log.Debug("ETL_ASOFDATE[datetime]:" + this.ETL_ASOFDATE);
+            log.Debug("ETL_STATUS:" + this.ETL_STATUS);
+        }
     }
 
     #endregion
-    
 }
