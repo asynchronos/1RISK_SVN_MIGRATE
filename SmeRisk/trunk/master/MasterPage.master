@@ -1,0 +1,33 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<%@ Register Src="~/control/webMenu/webMenuControl.ascx" TagName="WebMenuControl" TagPrefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="margin:0 0 0 0;">
+    <form id="form1" runat="server">
+        <asp:ContentPlaceHolder id="ScriptPlaceHolder" runat="server">
+            
+        </asp:ContentPlaceHolder>
+        
+        <div id="logoDiv" style='<% Response.Write("text-align:left;background-image:url(" + Page.ResolveUrl("~/images/logo/bg_yellow.gif);")) %>' >
+            <img id="logoImg" src='<% Response.Write(Page.ResolveUrl("~/images/logo/logo_yellow.gif")) %>' alt="logo" />
+        </div>
+        <uc1:WebMenuControl ID="WebMenuControl" runat="server" />
+        
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                
+        </asp:ContentPlaceHolder>
+        
+        <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+                
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
