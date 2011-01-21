@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2dd4a2a9-2467-4fb0-8778-7f1615c4b8fb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://leader1/usersystem/service/menu/menuservice.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MenuService.wsdl" MetadataType="Wsdl" ID="c808bb5d-ffac-4a11-a53d-3a991b8df693" SourceId="1" SourceUrl="http://leader1/UserSystem/service/menu/MenuService.svc?wsdl" />
+    <MetadataFile FileName="MenuService.disco" MetadataType="Disco" ID="a53c9504-d57b-4fd6-8387-53b47754aef8" SourceId="1" SourceUrl="http://leader1/UserSystem/service/menu/MenuService.svc?disco" />
+    <MetadataFile FileName="MenuService.xsd" MetadataType="Schema" ID="994d064f-fba3-4036-a444-85a5641c031a" SourceId="1" SourceUrl="http://leader1/UserSystem/service/menu/MenuService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MenuService1.xsd" MetadataType="Schema" ID="8e180c83-8465-4779-bbce-d5fa6520b5af" SourceId="1" SourceUrl="http://leader1/UserSystem/service/menu/MenuService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
