@@ -221,6 +221,109 @@
           <Property Name="ETL_ASOFDATE" Type="datetime" />
           <Property Name="ETL_STATUS" Type="nvarchar" MaxLength="1" />
         </EntityType>
+        <Function Name="P_INSERT_CIMD110_TEMP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CUSTOMER">
+          <Parameter Name="CIF" Type="numeric" Mode="In" />
+          <Parameter Name="CUS_TITLE" Type="nvarchar" Mode="In" />
+          <Parameter Name="CUS_FIRST" Type="nvarchar" Mode="In" />
+          <Parameter Name="CUS_LAST" Type="nvarchar" Mode="In" />
+          <Parameter Name="BUILD" Type="nvarchar" Mode="In" />
+          <Parameter Name="ADDR" Type="nvarchar" Mode="In" />
+          <Parameter Name="SOI" Type="nvarchar" Mode="In" />
+          <Parameter Name="ROAD" Type="nvarchar" Mode="In" />
+          <Parameter Name="GROUP_HOME" Type="nvarchar" Mode="In" />
+          <Parameter Name="DISTICT" Type="nvarchar" Mode="In" />
+          <Parameter Name="AMPHUR" Type="nvarchar" Mode="In" />
+          <Parameter Name="PROV" Type="nvarchar" Mode="In" />
+          <Parameter Name="TEL_HOME" Type="nvarchar" Mode="In" />
+          <Parameter Name="TEL_OFF" Type="nvarchar" Mode="In" />
+          <Parameter Name="TAX_NO" Type="nvarchar" Mode="In" />
+          <Parameter Name="CUS_TYPE" Type="nvarchar" Mode="In" />
+          <Parameter Name="BUSI_TYPE" Type="nvarchar" Mode="In" />
+          <Parameter Name="DEBTOR_CLASS" Type="nvarchar" Mode="In" />
+          <Parameter Name="CIF_DEP" Type="nvarchar" Mode="In" />
+          <Parameter Name="MAIN_CUST" Type="nvarchar" Mode="In" />
+          <Parameter Name="GROUP_CUST" Type="nvarchar" Mode="In" />
+          <Parameter Name="UPD_DATE" Type="datetime" Mode="In" />
+          <Parameter Name="UPD_USER" Type="nvarchar" Mode="In" />
+          <Parameter Name="BOTID" Type="nvarchar" Mode="In" />
+          <Parameter Name="ID_CARD" Type="nvarchar" Mode="In" />
+          <Parameter Name="OFFICR_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="RESERVE" Type="numeric" Mode="In" />
+          <Parameter Name="RESV_CC" Type="numeric" Mode="In" />
+          <Parameter Name="COLL_BOT9" Type="numeric" Mode="In" />
+          <Parameter Name="CLASS_PREV" Type="nvarchar" Mode="In" />
+          <Parameter Name="SEPE_FLAG" Type="nvarchar" Mode="In" />
+          <Parameter Name="RESVPERC" Type="nvarchar" Mode="In" />
+          <Parameter Name="FLAG_COLL" Type="nvarchar" Mode="In" />
+          <Parameter Name="BOT_TYPE" Type="nvarchar" Mode="In" />
+          <Parameter Name="CIF_TYPE" Type="nvarchar" Mode="In" />
+          <Parameter Name="DATE_FAS" Type="datetime" Mode="In" />
+          <Parameter Name="NET_FAS" Type="numeric" Mode="In" />
+          <Parameter Name="AUTHO_CAP" Type="numeric" Mode="In" />
+          <Parameter Name="PAID_UP" Type="numeric" Mode="In" />
+          <Parameter Name="LABOR" Type="numeric" Mode="In" />
+          <Parameter Name="OPER_STA" Type="nvarchar" Mode="In" />
+          <Parameter Name="CODE_STA" Type="nvarchar" Mode="In" />
+          <Parameter Name="GOVE_GUAR" Type="nvarchar" Mode="In" />
+          <Parameter Name="BEING_CUST" Type="datetime" Mode="In" />
+          <Parameter Name="BTH_DATE" Type="datetime" Mode="In" />
+          <Parameter Name="BUILD_SHOP" Type="nvarchar" Mode="In" />
+          <Parameter Name="ADDR_SHOP" Type="nvarchar" Mode="In" />
+          <Parameter Name="SOI_SHOP" Type="nvarchar" Mode="In" />
+          <Parameter Name="ROAD_SHOP" Type="nvarchar" Mode="In" />
+          <Parameter Name="GROUP_SHOP" Type="nvarchar" Mode="In" />
+          <Parameter Name="DISTRICT_S" Type="nvarchar" Mode="In" />
+          <Parameter Name="AMPHUR_S" Type="nvarchar" Mode="In" />
+          <Parameter Name="PROV_SHOP" Type="nvarchar" Mode="In" />
+          <Parameter Name="ZIP_SHOP" Type="nvarchar" Mode="In" />
+          <Parameter Name="CIF_0" Type="numeric" Mode="In" />
+          <Parameter Name="CIF_1" Type="numeric" Mode="In" />
+          <Parameter Name="CIF_2" Type="numeric" Mode="In" />
+          <Parameter Name="CIF_3" Type="numeric" Mode="In" />
+          <Parameter Name="ZIP_CODE" Type="nvarchar" Mode="In" />
+          <Parameter Name="DEPT_FLAG" Type="numeric" Mode="In" />
+          <Parameter Name="DEPT_TRAN" Type="nvarchar" Mode="In" />
+          <Parameter Name="CARD_TYPE" Type="nvarchar" Mode="In" />
+          <Parameter Name="CARD_NO" Type="nvarchar" Mode="In" />
+          <Parameter Name="SEX" Type="nvarchar" Mode="In" />
+          <Parameter Name="MARITAL_STA" Type="nvarchar" Mode="In" />
+          <Parameter Name="CITIZEN" Type="nvarchar" Mode="In" />
+          <Parameter Name="GROUP_CIF" Type="numeric" Mode="In" />
+          <Parameter Name="DEPT_FLAG_T" Type="numeric" Mode="In" />
+          <Parameter Name="DEPT_TRAN_T" Type="nvarchar" Mode="In" />
+          <Parameter Name="CTITLENEW" Type="nvarchar" Mode="In" />
+          <Parameter Name="BAY_DATE" Type="datetime" Mode="In" />
+          <Parameter Name="BAY_RATING" Type="nvarchar" Mode="In" />
+          <Parameter Name="COUNTRY" Type="nvarchar" Mode="In" />
+          <Parameter Name="COUNTRY_SHOP" Type="nvarchar" Mode="In" />
+          <Parameter Name="MINOR_BUSI" Type="nvarchar" Mode="In" />
+          <Parameter Name="CUS_TITLE_E" Type="nvarchar" Mode="In" />
+          <Parameter Name="CUS_FIRST_E" Type="nvarchar" Mode="In" />
+          <Parameter Name="CUS_LAST_E" Type="nvarchar" Mode="In" />
+          <Parameter Name="COMM_NAME_THA" Type="nvarchar" Mode="In" />
+          <Parameter Name="COMM_NAME_ENG" Type="nvarchar" Mode="In" />
+          <Parameter Name="LAND_VALUE" Type="numeric" Mode="In" />
+          <Parameter Name="SELL_PER_YEAR" Type="numeric" Mode="In" />
+          <Parameter Name="SMEBOT_FLAG" Type="nvarchar" Mode="In" />
+          <Parameter Name="CIF_4" Type="numeric" Mode="In" />
+          <Parameter Name="CIF_5" Type="numeric" Mode="In" />
+          <Parameter Name="CIF_6" Type="numeric" Mode="In" />
+          <Parameter Name="CIF_7" Type="numeric" Mode="In" />
+          <Parameter Name="CIF_8" Type="numeric" Mode="In" />
+          <Parameter Name="CIF_9" Type="numeric" Mode="In" />
+          <Parameter Name="FIRST_NPL" Type="datetime" Mode="In" />
+          <Parameter Name="TYP_RATE" Type="nvarchar" Mode="In" />
+          <Parameter Name="OCCUPATION_CODE" Type="nvarchar" Mode="In" />
+          <Parameter Name="MOBILE_PHONE" Type="nvarchar" Mode="In" />
+          <Parameter Name="BUSI_RISK" Type="nvarchar" Mode="In" />
+          <Parameter Name="WEALTH" Type="nvarchar" Mode="In" />
+          <Parameter Name="CTRL_SIZE" Type="nvarchar" Mode="In" />
+          <Parameter Name="D_CTRL_SIZE" Type="nvarchar" Mode="In" />
+          <Parameter Name="RISK_GRADE" Type="nvarchar" Mode="In" />
+          <Parameter Name="DELETE_FLAG" Type="nvarchar" Mode="In" />
+          <Parameter Name="ETL_ASOFDATE" Type="datetime" Mode="In" />
+          <Parameter Name="ETL_STATUS" Type="nvarchar" Mode="In" />
+        </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -656,6 +759,113 @@
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="RISKModel.CIMD110_TEMP">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="RISKModel.Store.P_INSERT_CIMD110_TEMP">
+                  <ScalarProperty Name="ETL_STATUS" ParameterName="ETL_STATUS" />
+                  <ScalarProperty Name="ETL_ASOFDATE" ParameterName="ETL_ASOFDATE" />
+                  <ScalarProperty Name="DELETE_FLAG" ParameterName="DELETE_FLAG" />
+                  <ScalarProperty Name="RISK_GRADE" ParameterName="RISK_GRADE" />
+                  <ScalarProperty Name="D_CTRL_SIZE" ParameterName="D_CTRL_SIZE" />
+                  <ScalarProperty Name="CTRL_SIZE" ParameterName="CTRL_SIZE" />
+                  <ScalarProperty Name="WEALTH" ParameterName="WEALTH" />
+                  <ScalarProperty Name="BUSI_RISK" ParameterName="BUSI_RISK" />
+                  <ScalarProperty Name="MOBILE_PHONE" ParameterName="MOBILE_PHONE" />
+                  <ScalarProperty Name="OCCUPATION_CODE" ParameterName="OCCUPATION_CODE" />
+                  <ScalarProperty Name="TYP_RATE" ParameterName="TYP_RATE" />
+                  <ScalarProperty Name="FIRST_NPL" ParameterName="FIRST_NPL" />
+                  <ScalarProperty Name="CIF_9" ParameterName="CIF_9" />
+                  <ScalarProperty Name="CIF_8" ParameterName="CIF_8" />
+                  <ScalarProperty Name="CIF_7" ParameterName="CIF_7" />
+                  <ScalarProperty Name="CIF_6" ParameterName="CIF_6" />
+                  <ScalarProperty Name="CIF_5" ParameterName="CIF_5" />
+                  <ScalarProperty Name="CIF_4" ParameterName="CIF_4" />
+                  <ScalarProperty Name="SMEBOT_FLAG" ParameterName="SMEBOT_FLAG" />
+                  <ScalarProperty Name="SELL_PER_YEAR" ParameterName="SELL_PER_YEAR" />
+                  <ScalarProperty Name="LAND_VALUE" ParameterName="LAND_VALUE" />
+                  <ScalarProperty Name="COMM_NAME_ENG" ParameterName="COMM_NAME_ENG" />
+                  <ScalarProperty Name="COMM_NAME_THA" ParameterName="COMM_NAME_THA" />
+                  <ScalarProperty Name="CUS_LAST_E" ParameterName="CUS_LAST_E" />
+                  <ScalarProperty Name="CUS_FIRST_E" ParameterName="CUS_FIRST_E" />
+                  <ScalarProperty Name="CUS_TITLE_E" ParameterName="CUS_TITLE_E" />
+                  <ScalarProperty Name="MINOR_BUSI" ParameterName="MINOR_BUSI" />
+                  <ScalarProperty Name="COUNTRY_SHOP" ParameterName="COUNTRY_SHOP" />
+                  <ScalarProperty Name="COUNTRY" ParameterName="COUNTRY" />
+                  <ScalarProperty Name="BAY_RATING" ParameterName="BAY_RATING" />
+                  <ScalarProperty Name="BAY_DATE" ParameterName="BAY_DATE" />
+                  <ScalarProperty Name="CTITLENEW" ParameterName="CTITLENEW" />
+                  <ScalarProperty Name="DEPT_TRAN_T" ParameterName="DEPT_TRAN_T" />
+                  <ScalarProperty Name="DEPT_FLAG_T" ParameterName="DEPT_FLAG_T" />
+                  <ScalarProperty Name="GROUP_CIF" ParameterName="GROUP_CIF" />
+                  <ScalarProperty Name="CITIZEN" ParameterName="CITIZEN" />
+                  <ScalarProperty Name="MARITAL_STA" ParameterName="MARITAL_STA" />
+                  <ScalarProperty Name="SEX" ParameterName="SEX" />
+                  <ScalarProperty Name="CARD_NO" ParameterName="CARD_NO" />
+                  <ScalarProperty Name="CARD_TYPE" ParameterName="CARD_TYPE" />
+                  <ScalarProperty Name="DEPT_TRAN" ParameterName="DEPT_TRAN" />
+                  <ScalarProperty Name="DEPT_FLAG" ParameterName="DEPT_FLAG" />
+                  <ScalarProperty Name="ZIP_CODE" ParameterName="ZIP_CODE" />
+                  <ScalarProperty Name="CIF_3" ParameterName="CIF_3" />
+                  <ScalarProperty Name="CIF_2" ParameterName="CIF_2" />
+                  <ScalarProperty Name="CIF_1" ParameterName="CIF_1" />
+                  <ScalarProperty Name="CIF_0" ParameterName="CIF_0" />
+                  <ScalarProperty Name="ZIP_SHOP" ParameterName="ZIP_SHOP" />
+                  <ScalarProperty Name="PROV_SHOP" ParameterName="PROV_SHOP" />
+                  <ScalarProperty Name="AMPHUR_S" ParameterName="AMPHUR_S" />
+                  <ScalarProperty Name="DISTRICT_S" ParameterName="DISTRICT_S" />
+                  <ScalarProperty Name="GROUP_SHOP" ParameterName="GROUP_SHOP" />
+                  <ScalarProperty Name="ROAD_SHOP" ParameterName="ROAD_SHOP" />
+                  <ScalarProperty Name="SOI_SHOP" ParameterName="SOI_SHOP" />
+                  <ScalarProperty Name="ADDR_SHOP" ParameterName="ADDR_SHOP" />
+                  <ScalarProperty Name="BUILD_SHOP" ParameterName="BUILD_SHOP" />
+                  <ScalarProperty Name="BTH_DATE" ParameterName="BTH_DATE" />
+                  <ScalarProperty Name="BEING_CUST" ParameterName="BEING_CUST" />
+                  <ScalarProperty Name="GOVE_GUAR" ParameterName="GOVE_GUAR" />
+                  <ScalarProperty Name="CODE_STA" ParameterName="CODE_STA" />
+                  <ScalarProperty Name="OPER_STA" ParameterName="OPER_STA" />
+                  <ScalarProperty Name="LABOR" ParameterName="LABOR" />
+                  <ScalarProperty Name="PAID_UP" ParameterName="PAID_UP" />
+                  <ScalarProperty Name="AUTHO_CAP" ParameterName="AUTHO_CAP" />
+                  <ScalarProperty Name="NET_FAS" ParameterName="NET_FAS" />
+                  <ScalarProperty Name="DATE_FAS" ParameterName="DATE_FAS" />
+                  <ScalarProperty Name="CIF_TYPE" ParameterName="CIF_TYPE" />
+                  <ScalarProperty Name="BOT_TYPE" ParameterName="BOT_TYPE" />
+                  <ScalarProperty Name="FLAG_COLL" ParameterName="FLAG_COLL" />
+                  <ScalarProperty Name="RESVPERC" ParameterName="RESVPERC" />
+                  <ScalarProperty Name="SEPE_FLAG" ParameterName="SEPE_FLAG" />
+                  <ScalarProperty Name="CLASS_PREV" ParameterName="CLASS_PREV" />
+                  <ScalarProperty Name="COLL_BOT9" ParameterName="COLL_BOT9" />
+                  <ScalarProperty Name="RESV_CC" ParameterName="RESV_CC" />
+                  <ScalarProperty Name="RESERVE" ParameterName="RESERVE" />
+                  <ScalarProperty Name="OFFICR_ID" ParameterName="OFFICR_ID" />
+                  <ScalarProperty Name="ID_CARD" ParameterName="ID_CARD" />
+                  <ScalarProperty Name="BOTID" ParameterName="BOTID" />
+                  <ScalarProperty Name="UPD_USER" ParameterName="UPD_USER" />
+                  <ScalarProperty Name="UPD_DATE" ParameterName="UPD_DATE" />
+                  <ScalarProperty Name="GROUP_CUST" ParameterName="GROUP_CUST" />
+                  <ScalarProperty Name="MAIN_CUST" ParameterName="MAIN_CUST" />
+                  <ScalarProperty Name="CIF_DEP" ParameterName="CIF_DEP" />
+                  <ScalarProperty Name="DEBTOR_CLASS" ParameterName="DEBTOR_CLASS" />
+                  <ScalarProperty Name="BUSI_TYPE" ParameterName="BUSI_TYPE" />
+                  <ScalarProperty Name="CUS_TYPE" ParameterName="CUS_TYPE" />
+                  <ScalarProperty Name="TAX_NO" ParameterName="TAX_NO" />
+                  <ScalarProperty Name="TEL_OFF" ParameterName="TEL_OFF" />
+                  <ScalarProperty Name="TEL_HOME" ParameterName="TEL_HOME" />
+                  <ScalarProperty Name="PROV" ParameterName="PROV" />
+                  <ScalarProperty Name="AMPHUR" ParameterName="AMPHUR" />
+                  <ScalarProperty Name="DISTICT" ParameterName="DISTICT" />
+                  <ScalarProperty Name="GROUP_HOME" ParameterName="GROUP_HOME" />
+                  <ScalarProperty Name="ROAD" ParameterName="ROAD" />
+                  <ScalarProperty Name="SOI" ParameterName="SOI" />
+                  <ScalarProperty Name="ADDR" ParameterName="ADDR" />
+                  <ScalarProperty Name="BUILD" ParameterName="BUILD" />
+                  <ScalarProperty Name="CUS_LAST" ParameterName="CUS_LAST" />
+                  <ScalarProperty Name="CUS_FIRST" ParameterName="CUS_FIRST" />
+                  <ScalarProperty Name="CUS_TITLE" ParameterName="CUS_TITLE" />
+                  <ScalarProperty Name="CIF" ParameterName="CIF" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
@@ -677,7 +887,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="EntityModel" ZoomLevel="82">
+      <Diagram Name="EntityModel" ZoomLevel="21">
         <EntityTypeShape EntityType="RISKModel.CIMD110" Width="1.5" PointX="0.75" PointY="0.75" Height="17.533997395833335" IsExpanded="true" />
         <EntityTypeShape EntityType="RISKModel.CIMD110_TEMP" Width="1.5" PointX="3.375" PointY="0.75" Height="17.533997395833335" />
       </Diagram>
