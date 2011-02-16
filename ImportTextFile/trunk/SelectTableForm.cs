@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using ImportTextFile.Forms.Customer;
+using ImportTextFile.Forms.RepCust;
 
 namespace ImportTextFile
 {
@@ -16,6 +17,12 @@ namespace ImportTextFile
         private void customer_button_Click(object sender, System.EventArgs e)
         {
             Form selectedForm = new CustomerForm();
+            selectedForm.ShowDialog(this);
+        }
+
+        private void table1_button_Click(object sender, System.EventArgs e)
+        {
+            Form selectedForm = new RepCustForm();
             selectedForm.ShowDialog(this);
         }
     }
