@@ -315,8 +315,9 @@
             this.table1_button.Name = "table1_button";
             this.table1_button.Size = new System.Drawing.Size(75, 23);
             this.table1_button.TabIndex = 2;
-            this.table1_button.Text = "Table1";
+            this.table1_button.Text = "RepCust";
             this.table1_button.UseVisualStyleBackColor = true;
+            this.table1_button.Click += new System.EventHandler(this.table1_button_Click);
             // 
             // SelectTableForm
             // 
