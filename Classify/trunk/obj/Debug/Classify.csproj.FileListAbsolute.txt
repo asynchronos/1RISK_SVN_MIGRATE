@@ -1,0 +1,5 @@
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\Classify\bin\Classify.dll
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\Classify\bin\Classify.pdb
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\Classify\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\Classify\obj\Debug\Classify.dll
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\Classify\obj\Debug\Classify.pdb

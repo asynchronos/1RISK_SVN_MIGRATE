@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Classify</RootNamespace>
-    <AssemblyName>Classify</AssemblyName>
+    <RootNamespace>UserSystem</RootNamespace>
+    <AssemblyName>UserSystem</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\_Library\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,11 +61,33 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UserControl\WebMenu\ChromeJs\chrome.js" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromebg-over.gif" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromebg.gif" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromebg2-over.gif" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromebg2.gif" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromebg3-over.gif" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromebg3.gif" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromebg4-over.gif" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromebg4.gif" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromestyle.css" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromestyle2.css" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromestyle3.css" />
+    <Content Include="UserControl\WebMenu\ChromeTheme\chromestyle4.css" />
+    <Content Include="UserControl\WebMenu\WebMenuControl.ascx" />
     <Content Include="Default.aspx" />
+    <Content Include="App_Code\Aspx\MyAspxPage.cs" />
     <Compile Include="ClassifyModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClassifyModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\WebMenu\WebMenuControl.ascx.cs">
+      <DependentUpon>WebMenuControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\WebMenu\WebMenuControl.ascx.designer.cs">
+      <DependentUpon>WebMenuControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -76,15 +101,24 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Content Include="Site.css" />
-    <Content Include="Site.master" />
-    <Compile Include="Site.master.cs">
+    <Content Include="MasterPage\Site.master" />
+    <Compile Include="MasterPage\BayMasterPage.Master.cs">
+      <DependentUpon>BayMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\BayMasterPage.Master.designer.cs">
+      <DependentUpon>BayMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Site.master.cs">
       <DependentUpon>Site.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site.master.designer.cs">
+    <Compile Include="MasterPage\Site.master.designer.cs">
       <DependentUpon>Site.master</DependentUpon>
     </Compile>
-    <Content Include="web.config" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </Content>
@@ -354,7 +388,10 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Browsers\" />
     <Folder Include="App_Data\" />
+    <Folder Include="App_Themes\Theme1\" />
+    <Folder Include="Aspx\" />
     <Folder Include="DynamicData\CustomPages\" />
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +399,12 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ClassifyModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPage\BayMasterPage.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UserControl\WebMenu\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
