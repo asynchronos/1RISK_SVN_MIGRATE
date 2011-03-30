@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClassifyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="RISKEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CATE_AND_APP" EntityType="ClassifyModel.CATE_AND_APP" />
+    <EntitySet Name="CATE_AND_CUS" EntityType="ClassifyModel.CATE_AND_CUS" />
+    <EntitySet Name="CATE_AND_EMP" EntityType="ClassifyModel.CATE_AND_EMP" />
+    <EntitySet Name="CATE_AND_MENU" EntityType="ClassifyModel.CATE_AND_MENU" />
+    <EntitySet Name="CATEGORies" EntityType="ClassifyModel.CATEGORY" />
+    <EntitySet Name="CATEGORY_TYPE" EntityType="ClassifyModel.CATEGORY_TYPE" />
+    <EntitySet Name="LINKED_CATEGORY" EntityType="ClassifyModel.LINKED_CATEGORY" />
+    <EntitySet Name="LINKED_CATEGORY_TYPE" EntityType="ClassifyModel.LINKED_CATEGORY_TYPE" />
+    <EntitySet Name="LINKED_TYPE" EntityType="ClassifyModel.LINKED_TYPE" />
+    <EntitySet Name="USER_DATA" EntityType="ClassifyModel.USER_DATA" />
+    <EntitySet Name="APPLICATIONs" EntityType="ClassifyModel.APPLICATION" />
+    <EntitySet Name="MENU_MASTER" EntityType="ClassifyModel.MENU_MASTER" />
+    <EntitySet Name="V_001_EXPANDED_CATEGORY_TYPE_1" EntityType="ClassifyModel.V_001_EXPANDED_CATEGORY_TYPE_1" />
+    <EntitySet Name="V_002_CATEGORY_MAP_TYPE" EntityType="ClassifyModel.V_002_CATEGORY_MAP_TYPE" />
+    <EntitySet Name="V_004_LINKED_CATEGORY_TYPE_2_INFO" EntityType="ClassifyModel.V_004_LINKED_CATEGORY_TYPE_2_INFO" />
+    <AssociationSet Name="FK_CATE_AND_APP_APPLICATION" Association="ClassifyModel.FK_CATE_AND_APP_APPLICATION">
+      <End Role="APPLICATION" EntitySet="APPLICATIONs" />
+      <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATE_AND_APP_CATEGORY" Association="ClassifyModel.FK_CATE_AND_APP_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATE_AND_CUS_CATEGORY" Association="ClassifyModel.FK_CATE_AND_CUS_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="CATE_AND_CUS" EntitySet="CATE_AND_CUS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATE_AND_EMP_CATEGORY" Association="ClassifyModel.FK_CATE_AND_EMP_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATE_AND_EMP_USER_DATA" Association="ClassifyModel.FK_CATE_AND_EMP_USER_DATA">
+      <End Role="USER_DATA" EntitySet="USER_DATA" />
+      <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATE_AND_MENU_CATEGORY" Association="ClassifyModel.FK_CATE_AND_MENU_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATE_AND_MENU_MENU_MASTER" Association="ClassifyModel.FK_CATE_AND_MENU_MENU_MASTER">
+      <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+      <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATEGORY_CATEGORY_TYPE" Association="ClassifyModel.FK_CATEGORY_CATEGORY_TYPE">
+      <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATEGORY_RECURSIVE_CATEGORY" Association="ClassifyModel.FK_CATEGORY_RECURSIVE_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="LINKED_CATEGORY" EntitySet="LINKED_CATEGORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATEGORY_RECURSIVE_CATEGORY1" Association="ClassifyModel.FK_CATEGORY_RECURSIVE_CATEGORY1">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="LINKED_CATEGORY" EntitySet="LINKED_CATEGORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE" Association="ClassifyModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE">
+      <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+      <End Role="LINKED_CATEGORY_TYPE" EntitySet="LINKED_CATEGORY_TYPE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1" Association="ClassifyModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1">
+      <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+      <End Role="LINKED_CATEGORY_TYPE" EntitySet="LINKED_CATEGORY_TYPE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE" Association="ClassifyModel.FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+      <End Role="LINKED_TYPE" EntitySet="LINKED_TYPE" />
+      <End Role="LINKED_CATEGORY" EntitySet="LINKED_CATEGORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE" Association="ClassifyModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+      <End Role="LINKED_TYPE" EntitySet="LINKED_TYPE" />
+      <End Role="LINKED_CATEGORY_TYPE" EntitySet="LINKED_CATEGORY_TYPE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MENU_MASTER_MENU_MASTER" Association="ClassifyModel.FK_MENU_MASTER_MENU_MASTER">
+      <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+      <End Role="MENU_MASTER1" EntitySet="MENU_MASTER" />
+    </AssociationSet>
+    <EntitySet Name="V_003_LINKED_CATEGORY_TYPE_1_INFO" EntityType="ClassifyModel.V_003_LINKED_CATEGORY_TYPE_1_INFO" />
+    <EntitySet Name="MASTER_EMPLOYEE" EntityType="ClassifyModel.MASTER_EMPLOYEE" />
+  </EntityContainer>
+  <EntityType Name="CATE_AND_APP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="APPLICATION" Relationship="ClassifyModel.FK_CATE_AND_APP_APPLICATION" FromRole="CATE_AND_APP" ToRole="APPLICATION" />
+    <NavigationProperty Name="CATEGORY" Relationship="ClassifyModel.FK_CATE_AND_APP_CATEGORY" FromRole="CATE_AND_APP" ToRole="CATEGORY" />
+  </EntityType>
+  <EntityType Name="CATE_AND_CUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CIF" Type="Int32" Nullable="false" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATEGORY" Relationship="ClassifyModel.FK_CATE_AND_CUS_CATEGORY" FromRole="CATE_AND_CUS" ToRole="CATEGORY" />
+  </EntityType>
+  <EntityType Name="CATE_AND_EMP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HEAD_PRIORITY" Type="Int32" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATEGORY" Relationship="ClassifyModel.FK_CATE_AND_EMP_CATEGORY" FromRole="CATE_AND_EMP" ToRole="CATEGORY" />
+    <NavigationProperty Name="USER_DATA" Relationship="ClassifyModel.FK_CATE_AND_EMP_USER_DATA" FromRole="CATE_AND_EMP" ToRole="USER_DATA" />
+  </EntityType>
+  <EntityType Name="CATE_AND_MENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATEGORY" Relationship="ClassifyModel.FK_CATE_AND_MENU_CATEGORY" FromRole="CATE_AND_MENU" ToRole="CATEGORY" />
+    <NavigationProperty Name="MENU_MASTER" Relationship="ClassifyModel.FK_CATE_AND_MENU_MENU_MASTER" FromRole="CATE_AND_MENU" ToRole="MENU_MASTER" />
+  </EntityType>
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="CATEGORY_KEY" />
+    </Key>
+    <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CATEGORY_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CATEGORY_DESC_TH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="PRIORITY" Type="Int32" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATE_AND_APP" Relationship="ClassifyModel.FK_CATE_AND_APP_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_APP" />
+    <NavigationProperty Name="CATE_AND_CUS" Relationship="ClassifyModel.FK_CATE_AND_CUS_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_CUS" />
+    <NavigationProperty Name="CATE_AND_EMP" Relationship="ClassifyModel.FK_CATE_AND_EMP_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_EMP" />
+    <NavigationProperty Name="CATE_AND_MENU" Relationship="ClassifyModel.FK_CATE_AND_MENU_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_MENU" />
+    <NavigationProperty Name="CATEGORY_TYPE" Relationship="ClassifyModel.FK_CATEGORY_CATEGORY_TYPE" FromRole="CATEGORY" ToRole="CATEGORY_TYPE" />
+    <NavigationProperty Name="LINKED_CATEGORY" Relationship="ClassifyModel.FK_CATEGORY_RECURSIVE_CATEGORY" FromRole="CATEGORY" ToRole="LINKED_CATEGORY" />
+    <NavigationProperty Name="LINKED_CATEGORY1" Relationship="ClassifyModel.FK_CATEGORY_RECURSIVE_CATEGORY1" FromRole="CATEGORY" ToRole="LINKED_CATEGORY" />
+  </EntityType>
+  <EntityType Name="CATEGORY_TYPE">
+    <Key>
+      <PropertyRef Name="CATEGORY_TYPE_KEY" />
+    </Key>
+    <Property Name="CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CATEGORY_TYPE_DESC" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CATEGORY_TYPE_DESC_TH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_TYPE_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="PRIORITY" Type="Int32" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATEGORies" Relationship="ClassifyModel.FK_CATEGORY_CATEGORY_TYPE" FromRole="CATEGORY_TYPE" ToRole="CATEGORY" />
+    <NavigationProperty Name="LINKED_CATEGORY_TYPE" Relationship="ClassifyModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE" FromRole="CATEGORY_TYPE" ToRole="LINKED_CATEGORY_TYPE" />
+    <NavigationProperty Name="LINKED_CATEGORY_TYPE1" Relationship="ClassifyModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1" FromRole="CATEGORY_TYPE" ToRole="LINKED_CATEGORY_TYPE" />
+  </EntityType>
+  <EntityType Name="LINKED_CATEGORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATEGORY" Relationship="ClassifyModel.FK_CATEGORY_RECURSIVE_CATEGORY" FromRole="LINKED_CATEGORY" ToRole="CATEGORY" />
+    <NavigationProperty Name="CATEGORY1" Relationship="ClassifyModel.FK_CATEGORY_RECURSIVE_CATEGORY1" FromRole="LINKED_CATEGORY" ToRole="CATEGORY" />
+    <NavigationProperty Name="LINKED_TYPE" Relationship="ClassifyModel.FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE" FromRole="LINKED_CATEGORY" ToRole="LINKED_TYPE" />
+  </EntityType>
+  <EntityType Name="LINKED_CATEGORY_TYPE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATEGORY_TYPE" Relationship="ClassifyModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE" FromRole="LINKED_CATEGORY_TYPE" ToRole="CATEGORY_TYPE" />
+    <NavigationProperty Name="CATEGORY_TYPE1" Relationship="ClassifyModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1" FromRole="LINKED_CATEGORY_TYPE" ToRole="CATEGORY_TYPE" />
+    <NavigationProperty Name="LINKED_TYPE" Relationship="ClassifyModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE" FromRole="LINKED_CATEGORY_TYPE" ToRole="LINKED_TYPE" />
+  </EntityType>
+  <EntityType Name="LINKED_TYPE">
+    <Key>
+      <PropertyRef Name="LINKED_TYPE_KEY" />
+    </Key>
+    <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="LINKED_CATEGORY" Relationship="ClassifyModel.FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE" FromRole="LINKED_TYPE" ToRole="LINKED_CATEGORY" />
+    <NavigationProperty Name="LINKED_CATEGORY_TYPE" Relationship="ClassifyModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE" FromRole="LINKED_TYPE" ToRole="LINKED_CATEGORY_TYPE" />
+  </EntityType>
+  <EntityType Name="USER_DATA">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="EMP_TITLE" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="EMP_NAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="EMP_SURNAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="EMP_TITLE_E" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="EMP_NAME_E" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="EMP_SURNAME_E" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PASSWD" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PHONE_OFFICE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PHONE_HOME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PHONE_MOBILE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CREATE_DATE" Type="DateTime" />
+    <Property Name="EXPIRE_DATE" Type="DateTime" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <Property Name="LAST_SIGN_ON_DATE" Type="DateTime" />
+    <Property Name="LAST_CHANGE_PASS_DATE" Type="DateTime" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATE_AND_EMP" Relationship="ClassifyModel.FK_CATE_AND_EMP_USER_DATA" FromRole="USER_DATA" ToRole="CATE_AND_EMP" />
+  </EntityType>
+  <EntityType Name="APPLICATION">
+    <Key>
+      <PropertyRef Name="APP_KEY" />
+    </Key>
+    <Property Name="APP_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="APP_DESC" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PRIORITY" Type="Int32" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATE_AND_APP" Relationship="ClassifyModel.FK_CATE_AND_APP_APPLICATION" FromRole="APPLICATION" ToRole="CATE_AND_APP" />
+  </EntityType>
+  <EntityType Name="MENU_MASTER">
+    <Key>
+      <PropertyRef Name="MENU_KEY" />
+    </Key>
+    <Property Name="MENU_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MENU_TITLE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MENU_URL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MENU_POPUP_OPT" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MENU_REL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MENU_TOOLTIP" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MENU_PRIORITY" Type="Int32" />
+    <Property Name="MENU_DEL_FLAG" Type="Boolean" />
+    <NavigationProperty Name="CATE_AND_MENU" Relationship="ClassifyModel.FK_CATE_AND_MENU_MENU_MASTER" FromRole="MENU_MASTER" ToRole="CATE_AND_MENU" />
+    <NavigationProperty Name="MENU_MASTER1" Relationship="ClassifyModel.FK_MENU_MASTER_MENU_MASTER" FromRole="MENU_MASTER" ToRole="MENU_MASTER1" />
+    <NavigationProperty Name="MENU_MASTER2" Relationship="ClassifyModel.FK_MENU_MASTER_MENU_MASTER" FromRole="MENU_MASTER1" ToRole="MENU_MASTER" />
+  </EntityType>
+  <EntityType Name="V_001_EXPANDED_CATEGORY_TYPE_1">
+    <Key>
+      <PropertyRef Name="SEARCH_CATEGORY_KEY" />
+      <PropertyRef Name="EXPANDED_CATEGORY_KEY" />
+    </Key>
+    <Property Name="SEARCH_CATEGORY_KEY" Type="Int32" Nullable="false" />
+    <Property Name="EXPANDED_CATEGORY_KEY" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="V_002_CATEGORY_MAP_TYPE">
+    <Key>
+      <PropertyRef Name="CATEGORY_KEY" />
+      <PropertyRef Name="CATEGORY_TYPE_KEY" />
+    </Key>
+    <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+    <Property Name="CATEGORY_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CATEGORY_DESC_TH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_PRIORITY" Type="Int32" />
+    <Property Name="CATEGORY_DEL_FLAG" Type="Boolean" />
+    <Property Name="CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" />
+    <Property Name="CATEGORY_TYPE_DESC" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CATEGORY_TYPE_DESC_TH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_TYPE_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_TYPE_PRIORITY" Type="Int32" />
+    <Property Name="CATEGORY_TYPE_DEL_FLAG" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="V_004_LINKED_CATEGORY_TYPE_2_INFO">
+    <Key>
+      <PropertyRef Name="CATEGORY_KEY" />
+      <PropertyRef Name="LINKED_TYPE_KEY" />
+      <PropertyRef Name="CATEGORY_KEY_LINK" />
+    </Key>
+    <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+    <Property Name="CATEGORY_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CATEGORY_DESC_TH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_TYPE_KEY" Type="Int32" />
+    <Property Name="PRIORITY" Type="Int32" />
+    <Property Name="DEL_FLAG" Type="Boolean" />
+    <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" />
+    <Property Name="CATEGORY_RECURSIVE_DEL_FLAG" Type="Boolean" />
+    <Property Name="CATEGORY_KEY_LINK" Type="Int32" Nullable="false" />
+    <Property Name="CATEGORY_DESC_LINK" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CATEGORY_DESC_TH_LINK" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_VALUE_LINK" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="CATEGORY_TYPE_KEY_LINK" Type="Int32" />
+    <Property Name="PRIORITY_LINK" Type="Int32" />
+    <Property Name="DEL_FLAG_LINK" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK_CATE_AND_APP_APPLICATION">
+    <End Role="APPLICATION" Type="ClassifyModel.APPLICATION" Multiplicity="0..1" />
+    <End Role="CATE_AND_APP" Type="ClassifyModel.CATE_AND_APP" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATE_AND_APP_CATEGORY">
+    <End Role="CATEGORY" Type="ClassifyModel.CATEGORY" Multiplicity="0..1" />
+    <End Role="CATE_AND_APP" Type="ClassifyModel.CATE_AND_APP" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATE_AND_CUS_CATEGORY">
+    <End Role="CATEGORY" Type="ClassifyModel.CATEGORY" Multiplicity="1" />
+    <End Role="CATE_AND_CUS" Type="ClassifyModel.CATE_AND_CUS" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATE_AND_EMP_CATEGORY">
+    <End Role="CATEGORY" Type="ClassifyModel.CATEGORY" Multiplicity="1" />
+    <End Role="CATE_AND_EMP" Type="ClassifyModel.CATE_AND_EMP" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATE_AND_EMP_USER_DATA">
+    <End Role="USER_DATA" Type="ClassifyModel.USER_DATA" Multiplicity="1" />
+    <End Role="CATE_AND_EMP" Type="ClassifyModel.CATE_AND_EMP" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATE_AND_MENU_CATEGORY">
+    <End Role="CATEGORY" Type="ClassifyModel.CATEGORY" Multiplicity="0..1" />
+    <End Role="CATE_AND_MENU" Type="ClassifyModel.CATE_AND_MENU" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATE_AND_MENU_MENU_MASTER">
+    <End Role="MENU_MASTER" Type="ClassifyModel.MENU_MASTER" Multiplicity="0..1" />
+    <End Role="CATE_AND_MENU" Type="ClassifyModel.CATE_AND_MENU" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATEGORY_CATEGORY_TYPE">
+    <End Role="CATEGORY_TYPE" Type="ClassifyModel.CATEGORY_TYPE" Multiplicity="0..1" />
+    <End Role="CATEGORY" Type="ClassifyModel.CATEGORY" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATEGORY_RECURSIVE_CATEGORY">
+    <End Role="CATEGORY" Type="ClassifyModel.CATEGORY" Multiplicity="1" />
+    <End Role="LINKED_CATEGORY" Type="ClassifyModel.LINKED_CATEGORY" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATEGORY_RECURSIVE_CATEGORY1">
+    <End Role="CATEGORY" Type="ClassifyModel.CATEGORY" Multiplicity="1" />
+    <End Role="LINKED_CATEGORY" Type="ClassifyModel.LINKED_CATEGORY" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE">
+    <End Role="CATEGORY_TYPE" Type="ClassifyModel.CATEGORY_TYPE" Multiplicity="1" />
+    <End Role="LINKED_CATEGORY_TYPE" Type="ClassifyModel.LINKED_CATEGORY_TYPE" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1">
+    <End Role="CATEGORY_TYPE" Type="ClassifyModel.CATEGORY_TYPE" Multiplicity="1" />
+    <End Role="LINKED_CATEGORY_TYPE" Type="ClassifyModel.LINKED_CATEGORY_TYPE" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+    <End Role="LINKED_TYPE" Type="ClassifyModel.LINKED_TYPE" Multiplicity="1" />
+    <End Role="LINKED_CATEGORY" Type="ClassifyModel.LINKED_CATEGORY" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+    <End Role="LINKED_TYPE" Type="ClassifyModel.LINKED_TYPE" Multiplicity="1" />
+    <End Role="LINKED_CATEGORY_TYPE" Type="ClassifyModel.LINKED_CATEGORY_TYPE" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_MENU_MASTER_MENU_MASTER">
+    <End Role="MENU_MASTER" Type="ClassifyModel.MENU_MASTER" Multiplicity="0..1" />
+    <End Role="MENU_MASTER1" Type="ClassifyModel.MENU_MASTER" Multiplicity="*" />
+  </Association>
+  <EntityType Name="V_003_LINKED_CATEGORY_TYPE_1_INFO">
+    <Key>
+      <PropertyRef Name="LINKED_CATEGORY_ID" />
+      <PropertyRef Name="CATEGORY_KEY" />
+      <PropertyRef Name="CATEGORY_TYPE_KEY" />
+      <PropertyRef Name="PARENT_CATEGORY_KEY" />
+    </Key>
+    <Property Type="Int32" Name="LINKED_CATEGORY_ID" Nullable="false" />
+    <Property Type="Int32" Name="CATEGORY_KEY" Nullable="false" />
+    <Property Type="String" Name="CATEGORY_DESC" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CATEGORY_DESC_TH" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CATEGORY_VALUE" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="CATEGORY_PRIORITY" />
+    <Property Type="Boolean" Name="CATEGORY_DEL_FLAG" />
+    <Property Type="Int32" Name="CATEGORY_TYPE_KEY" Nullable="false" />
+    <Property Type="String" Name="CATEGORY_TYPE_DESC" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CATEGORY_TYPE_DESC_TH" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CATEGORY_TYPE_VALUE" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="CATEGORY_TYPE_PRIORITY" />
+    <Property Type="Boolean" Name="CATEGORY_TYPE_DEL_FLAG" />
+    <Property Type="Int32" Name="PARENT_CATEGORY_KEY" Nullable="false" />
+    <Property Type="Boolean" Name="RECURSIVE_DEL_FLAG" />
+  </EntityType>
+  <EntityType Name="MASTER_EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="IEMPID" />
+    <Property Type="String" Name="NTTITLE" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NTNAME" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NTSURN" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EEPOSIT" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EESECTION" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EEDEPT" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NETITLE" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NENAME" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NESURN" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EEPOSITE" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EESECTIONE" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EEDEPE" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="POSITION" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="POSITION_CODE" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IESECTION" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PHONE_OFFICE" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EMAIL" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>
