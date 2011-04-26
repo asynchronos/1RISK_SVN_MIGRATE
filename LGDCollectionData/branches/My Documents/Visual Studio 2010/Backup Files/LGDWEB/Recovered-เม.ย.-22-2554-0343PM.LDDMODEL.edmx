@@ -1,0 +1,2226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LGDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="LGDModelStoreContainer">
+          <EntitySet Name="ADDITIONAL DRAWDOWN" EntityType="LGDModel.Store.ADDITIONAL DRAWDOWN" store:Type="Tables" store:Schema="dbo" store:Name="ADDITIONAL DRAWDOWN">
+            <DefiningQuery>SELECT 
+      [ADDITIONAL DRAWDOWN].[CIF] AS [CIF], 
+      [ADDITIONAL DRAWDOWN].[Default Date] AS [Default Date], 
+      [ADDITIONAL DRAWDOWN].[BRAN] AS [BRAN], 
+      [ADDITIONAL DRAWDOWN].[ACCGL] AS [ACCGL], 
+      [ADDITIONAL DRAWDOWN].[ACCNO] AS [ACCNO], 
+      [ADDITIONAL DRAWDOWN].[CONTNO] AS [CONTNO], 
+      [ADDITIONAL DRAWDOWN].[SEQNO] AS [SEQNO], 
+      [ADDITIONAL DRAWDOWN].[APP_ID] AS [APP_ID], 
+      [ADDITIONAL DRAWDOWN].[PRINCIPAL] AS [PRINCIPAL], 
+      [ADDITIONAL DRAWDOWN].[ACCRU] AS [ACCRU], 
+      [ADDITIONAL DRAWDOWN].[SUSP] AS [SUSP], 
+      [ADDITIONAL DRAWDOWN].[PRINCIPAL @ Last Month] AS [PRINCIPAL @ Last Month], 
+      [ADDITIONAL DRAWDOWN].[ACCRU @ Last Month] AS [ACCRU @ Last Month], 
+      [ADDITIONAL DRAWDOWN].[SUSP @ Last Month] AS [SUSP @ Last Month], 
+      [ADDITIONAL DRAWDOWN].[Additional Drawdown Date] AS [Additional Drawdown Date], 
+      [ADDITIONAL DRAWDOWN].[Additional Drawdown Currency] AS [Additional Drawdown Currency], 
+      [ADDITIONAL DRAWDOWN].[LIMITNO] AS [LIMITNO], 
+      [ADDITIONAL DRAWDOWN].[LIMITNO Changed] AS [LIMITNO Changed], 
+      [ADDITIONAL DRAWDOWN].[Previous LIMITNO] AS [Previous LIMITNO], 
+      [ADDITIONAL DRAWDOWN].[Is This an Additional Drawdown] AS [Is This an Additional Drawdown], 
+      [ADDITIONAL DRAWDOWN].[Type of Additional Drawdown] AS [Type of Additional Drawdown], 
+      [ADDITIONAL DRAWDOWN].[Other Reason of Principal Increase] AS [Other Reason of Principal Increase]
+      FROM [dbo].[ADDITIONAL DRAWDOWN] AS [ADDITIONAL DRAWDOWN]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CASHFLOW" EntityType="LGDModel.Store.CASHFLOW" store:Type="Tables" store:Schema="dbo" store:Name="CASHFLOW">
+            <DefiningQuery>SELECT 
+      [CASHFLOW].[CIF] AS [CIF], 
+      [CASHFLOW].[Default Date] AS [Default Date], 
+      [CASHFLOW].[LIMITNO] AS [LIMITNO], 
+      [CASHFLOW].[APP_ID] AS [APP_ID], 
+      [CASHFLOW].[Cashflow Currency Code] AS [Cashflow Currency Code], 
+      [CASHFLOW].[Date of Cashflow] AS [Date of Cashflow], 
+      [CASHFLOW].[Cashflow Amount: PAY_PRIN] AS [Cashflow Amount: PAY_PRIN], 
+      [CASHFLOW].[Cashflow Amount: PAY_INT] AS [Cashflow Amount: PAY_INT], 
+      [CASHFLOW].[Cashflow Amount: PAY_SUSP] AS [Cashflow Amount: PAY_SUSP], 
+      [CASHFLOW].[Cash Flow Source Description 1] AS [Cash Flow Source Description 1], 
+      [CASHFLOW].[Cash Flow Source Description 2] AS [Cash Flow Source Description 2], 
+      [CASHFLOW].[Cash Flow Source Description 3] AS [Cash Flow Source Description 3], 
+      [CASHFLOW].[Written-off / Haircut Amount] AS [Written-off / Haircut Amount], 
+      [CASHFLOW].[Collateral ID] AS [Collateral ID], 
+      [CASHFLOW].[LIMITNO Changed] AS [LIMITNO Changed], 
+      [CASHFLOW].[Previous LIMITNO] AS [Previous LIMITNO]
+      FROM [dbo].[CASHFLOW] AS [CASHFLOW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COLLATERAL INFORMATION" EntityType="LGDModel.Store.COLLATERAL INFORMATION" store:Type="Tables" store:Schema="dbo" store:Name="COLLATERAL INFORMATION">
+            <DefiningQuery>SELECT 
+      [COLLATERAL INFORMATION].[COLL_ID] AS [COLL_ID], 
+      [COLLATERAL INFORMATION].[PLED_ID] AS [PLED_ID], 
+      [COLLATERAL INFORMATION].[PLED_SEQ] AS [PLED_SEQ], 
+      [COLLATERAL INFORMATION].[APPS_ID] AS [APPS_ID], 
+      [COLLATERAL INFORMATION].[APPS_DATE] AS [APPS_DATE], 
+      [COLLATERAL INFORMATION].[Collateral Type] AS [Collateral Type], 
+      [COLLATERAL INFORMATION].[Property Type] AS [Property Type], 
+      [COLLATERAL INFORMATION].[Collateral Description] AS [Collateral Description], 
+      [COLLATERAL INFORMATION].[District of Property] AS [District of Property], 
+      [COLLATERAL INFORMATION].[Amphur of Property] AS [Amphur of Property], 
+      [COLLATERAL INFORMATION].[Province of Property] AS [Province of Property], 
+      [COLLATERAL INFORMATION].[Located Country of Property] AS [Located Country of Property], 
+      [COLLATERAL INFORMATION].[Collateral Provider] AS [Collateral Provider], 
+      [COLLATERAL INFORMATION].[Property Under Construction] AS [Property Under Construction], 
+      [COLLATERAL INFORMATION].[Leasehold Period] AS [Leasehold Period], 
+      [COLLATERAL INFORMATION].[Leasehold Start Date] AS [Leasehold Start Date]
+      FROM [dbo].[COLLATERAL INFORMATION] AS [COLLATERAL INFORMATION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FACILITY INFORMATION" EntityType="LGDModel.Store.FACILITY INFORMATION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GUARANTOR INFORMATION" EntityType="LGDModel.Store.GUARANTOR INFORMATION" store:Type="Tables" store:Schema="dbo" store:Name="GUARANTOR INFORMATION">
+            <DefiningQuery>SELECT 
+      [GUARANTOR INFORMATION].[CIF] AS [CIF], 
+      [GUARANTOR INFORMATION].[Default Date] AS [Default Date], 
+      [GUARANTOR INFORMATION].[PLED_ID] AS [PLED_ID], 
+      [GUARANTOR INFORMATION].[Guarantee Title] AS [Guarantee Title], 
+      [GUARANTOR INFORMATION].[Pledge to All Facilities] AS [Pledge to All Facilities], 
+      [GUARANTOR INFORMATION].[Facility Pledged] AS [Facility Pledged], 
+      [GUARANTOR INFORMATION].[Guarantee Amount @ D] AS [Guarantee Amount @ D], 
+      [GUARANTOR INFORMATION].[Guarantee Amount @ D-1] AS [Guarantee Amount @ D-1], 
+      [GUARANTOR INFORMATION].[Guarantee Amount Currency Code] AS [Guarantee Amount Currency Code], 
+      [GUARANTOR INFORMATION].[Guarantee Indemnity Source ID] AS [Guarantee Indemnity Source ID], 
+      [GUARANTOR INFORMATION].[Internal Rating @ D-1] AS [Internal Rating @ D-1]
+      FROM [dbo].[GUARANTOR INFORMATION] AS [GUARANTOR INFORMATION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="L_APP_ID" EntityType="LGDModel.Store.L_APP_ID" store:Type="Tables" store:Schema="dbo" store:Name="L_APP_ID">
+            <DefiningQuery>SELECT 
+      [L_APP_ID].[APP_ID] AS [APP_ID]
+      FROM [dbo].[L_APP_ID] AS [L_APP_ID]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="L_CURRENCY CODE" EntityType="LGDModel.Store.L_CURRENCY CODE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="L_IMPORT TABLE" EntityType="LGDModel.Store.L_IMPORT TABLE" store:Type="Tables" store:Schema="dbo" store:Name="L_IMPORT TABLE">
+            <DefiningQuery>SELECT 
+      [L_IMPORT TABLE].[Code] AS [Code], 
+      [L_IMPORT TABLE].[Table Name] AS [Table Name]
+      FROM [dbo].[L_IMPORT TABLE] AS [L_IMPORT TABLE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="L_INDEX" EntityType="LGDModel.Store.L_INDEX" store:Type="Tables" store:Schema="dbo" store:Name="L_INDEX">
+            <DefiningQuery>SELECT 
+      [L_INDEX].[Code] AS [Code], 
+      [L_INDEX].[Table Name] AS [Table Name]
+      FROM [dbo].[L_INDEX] AS [L_INDEX]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MERGECOS" EntityType="LGDModel.Store.MERGECOS" store:Type="Tables" store:Schema="dbo" store:Name="MERGECOS">
+            <DefiningQuery>SELECT 
+      [MERGECOS].[AS_OF] AS [AS_OF], 
+      [MERGECOS].[YM] AS [YM], 
+      [MERGECOS].[botid] AS [botid], 
+      [MERGECOS].[cif] AS [cif], 
+      [MERGECOS].[pled_id] AS [pled_id], 
+      [MERGECOS].[apps_id] AS [apps_id], 
+      [MERGECOS].[pled_seq] AS [pled_seq], 
+      [MERGECOS].[guar_amt] AS [guar_amt], 
+      [MERGECOS].[guarantee] AS [guarantee], 
+      [MERGECOS].[colltype] AS [colltype], 
+      [MERGECOS].[collval] AS [collval], 
+      [MERGECOS].[discval] AS [discval], 
+      [MERGECOS].[val_r] AS [val_r], 
+      [MERGECOS].[valdate] AS [valdate], 
+      [MERGECOS].[usevalue] AS [usevalue], 
+      [MERGECOS].[useaccru] AS [useaccru], 
+      [MERGECOS].[discpct] AS [discpct], 
+      [MERGECOS].[co_no] AS [co_no], 
+      [MERGECOS].[totamt] AS [totamt], 
+      [MERGECOS].[class] AS [class], 
+      [MERGECOS].[apps_pct] AS [apps_pct], 
+      [MERGECOS].[baypct] AS [baypct], 
+      [MERGECOS].[amcpct] AS [amcpct], 
+      [MERGECOS].[no_share] AS [no_share], 
+      [MERGECOS].[cif_share] AS [cif_share], 
+      [MERGECOS].[sharegroup] AS [sharegroup], 
+      [MERGECOS].[cif_group] AS [cif_group], 
+      [MERGECOS].[related] AS [related], 
+      [MERGECOS].[listed] AS [listed], 
+      [MERGECOS].[dep_acc] AS [dep_acc], 
+      [MERGECOS].[rm_no] AS [rm_no], 
+      [MERGECOS].[guarantor] AS [guarantor], 
+      [MERGECOS].[dep_flag] AS [dep_flag]
+      FROM [dbo].[MERGECOS] AS [MERGECOS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MISCELLANEOUS" EntityType="LGDModel.Store.MISCELLANEOUS" store:Type="Tables" store:Schema="dbo" store:Name="MISCELLANEOUS">
+            <DefiningQuery>SELECT 
+      [MISCELLANEOUS].[Running Number] AS [Running Number], 
+      [MISCELLANEOUS].[Indirect Cost] AS [Indirect Cost], 
+      [MISCELLANEOUS].[Cost of Debt] AS [Cost of Debt], 
+      [MISCELLANEOUS].[Local Risk Free Rate] AS [Local Risk Free Rate], 
+      [MISCELLANEOUS].[Hurdle Rate] AS [Hurdle Rate], 
+      [MISCELLANEOUS].[Property Price Index] AS [Property Price Index], 
+      [MISCELLANEOUS].[Exchange Rate] AS [Exchange Rate]
+      FROM [dbo].[MISCELLANEOUS] AS [MISCELLANEOUS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OBLIGOR INFORMATION" EntityType="LGDModel.Store.OBLIGOR INFORMATION" store:Type="Tables" store:Schema="dbo" store:Name="OBLIGOR INFORMATION">
+            <DefiningQuery>SELECT 
+      [OBLIGOR INFORMATION].[CIF] AS [CIF], 
+      [OBLIGOR INFORMATION].[Account Officer] AS [Account Officer], 
+      [OBLIGOR INFORMATION].[Data Inputter] AS [Data Inputter], 
+      [OBLIGOR INFORMATION].[Date of Input] AS [Date of Input], 
+      [OBLIGOR INFORMATION].[Portfolio] AS [Portfolio], 
+      [OBLIGOR INFORMATION].[Business Unit] AS [Business Unit], 
+      [OBLIGOR INFORMATION].[Default Date] AS [Default Date], 
+      [OBLIGOR INFORMATION].[1 Year Before Default Date] AS [1 Year Before Default Date], 
+      [OBLIGOR INFORMATION].[Industry Code] AS [Industry Code], 
+      [OBLIGOR INFORMATION].[Bank Group Key] AS [Bank Group Key], 
+      [OBLIGOR INFORMATION].[Last Review Date] AS [Last Review Date], 
+      [OBLIGOR INFORMATION].[Previous Default Flag] AS [Previous Default Flag], 
+      [OBLIGOR INFORMATION].[Previous Default Date] AS [Previous Default Date], 
+      [OBLIGOR INFORMATION].[Default Type] AS [Default Type], 
+      [OBLIGOR INFORMATION].[Business Reason for Default] AS [Business Reason for Default], 
+      [OBLIGOR INFORMATION].[Banking Relationship Start Date] AS [Banking Relationship Start Date], 
+      [OBLIGOR INFORMATION].[Legal Enity Type] AS [Legal Enity Type], 
+      [OBLIGOR INFORMATION].[Province of Incorporation] AS [Province of Incorporation], 
+      [OBLIGOR INFORMATION].[Date of Incorporation] AS [Date of Incorporation], 
+      [OBLIGOR INFORMATION].[Listed Status] AS [Listed Status], 
+      [OBLIGOR INFORMATION].[Internal Rating @ D-1] AS [Internal Rating @ D-1], 
+      [OBLIGOR INFORMATION].[Rating Date] AS [Rating Date], 
+      [OBLIGOR INFORMATION].[Emergence from Default] AS [Emergence from Default], 
+      [OBLIGOR INFORMATION].[Nature of Emergence] AS [Nature of Emergence], 
+      [OBLIGOR INFORMATION].[Emergence Date] AS [Emergence Date], 
+      [OBLIGOR INFORMATION].[Negative Pledge] AS [Negative Pledge]
+      FROM [dbo].[OBLIGOR INFORMATION] AS [OBLIGOR INFORMATION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PLEDGE INFORMATION" EntityType="LGDModel.Store.PLEDGE INFORMATION" store:Type="Tables" store:Schema="dbo" store:Name="PLEDGE INFORMATION">
+            <DefiningQuery>SELECT 
+      [PLEDGE INFORMATION].[CIF] AS [CIF], 
+      [PLEDGE INFORMATION].[Default Date] AS [Default Date], 
+      [PLEDGE INFORMATION].[APPS_ID] AS [APPS_ID], 
+      [PLEDGE INFORMATION].[PLED_ID] AS [PLED_ID], 
+      [PLEDGE INFORMATION].[PLED_SEQ] AS [PLED_SEQ], 
+      [PLEDGE INFORMATION].[Pledge to All Facilities] AS [Pledge to All Facilities], 
+      [PLEDGE INFORMATION].[Facility Pledged] AS [Facility Pledged], 
+      [PLEDGE INFORMATION].[Collateral Currency Code] AS [Collateral Currency Code], 
+      [PLEDGE INFORMATION].[Valuation Amount @ D] AS [Valuation Amount @ D], 
+      [PLEDGE INFORMATION].[Valuation Date @ D] AS [Valuation Date @ D], 
+      [PLEDGE INFORMATION].[Valuation Amount @ D-1] AS [Valuation Amount @ D-1], 
+      [PLEDGE INFORMATION].[Valuation Date @ D-1] AS [Valuation Date @ D-1], 
+      [PLEDGE INFORMATION].[Prior Claim by Other Bank] AS [Prior Claim by Other Bank], 
+      [PLEDGE INFORMATION].[Prior Claim Amount] AS [Prior Claim Amount], 
+      [PLEDGE INFORMATION].[Pledge Amount @ D] AS [Pledge Amount @ D], 
+      [PLEDGE INFORMATION].[Limitation Amount @ D] AS [Limitation Amount @ D], 
+      [PLEDGE INFORMATION].[Pledge Amount @ D-1] AS [Pledge Amount @ D-1], 
+      [PLEDGE INFORMATION].[Limitation Amount @ D-1] AS [Limitation Amount @ D-1]
+      FROM [dbo].[PLEDGE INFORMATION] AS [PLEDGE INFORMATION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="REPCUST" EntityType="LGDModel.Store.REPCUST" store:Type="Tables" store:Schema="dbo" store:Name="REPCUST">
+            <DefiningQuery>SELECT 
+      [REPCUST].[YM] AS [YM], 
+      [REPCUST].[botid] AS [botid], 
+      [REPCUST].[cif] AS [cif], 
+      [REPCUST].[oldcif] AS [oldcif], 
+      [REPCUST].[bran] AS [bran], 
+      [REPCUST].[area] AS [area], 
+      [REPCUST].[accgl] AS [accgl], 
+      [REPCUST].[accno] AS [accno], 
+      [REPCUST].[contno] AS [contno], 
+      [REPCUST].[seqno] AS [seqno], 
+      [REPCUST].[fcy_type] AS [fcy_type], 
+      [REPCUST].[limit] AS [limit], 
+      [REPCUST].[principal] AS [principal], 
+      [REPCUST].[accru] AS [accru], 
+      [REPCUST].[susp] AS [susp], 
+      [REPCUST].[unearnprin] AS [unearnprin], 
+      [REPCUST].[unearnint] AS [unearnint], 
+      [REPCUST].[defer] AS [defer], 
+      [REPCUST].[unearnod] AS [unearnod], 
+      [REPCUST].[unearnals] AS [unearnals], 
+      [REPCUST].[unearnpns] AS [unearnpns], 
+      [REPCUST].[uncleaprin] AS [uncleaprin], 
+      [REPCUST].[uncleaint] AS [uncleaint], 
+      [REPCUST].[gl5540620] AS [gl5540620], 
+      [REPCUST].[unearnoth] AS [unearnoth], 
+      [REPCUST].[totamt_r] AS [totamt_r], 
+      [REPCUST].[accru_r] AS [accru_r], 
+      [REPCUST].[usecoll] AS [usecoll], 
+      [REPCUST].[reserve] AS [reserve], 
+      [REPCUST].[extraresv] AS [extraresv], 
+      [REPCUST].[pvloss] AS [pvloss], 
+      [REPCUST].[bafterc] AS [bafterc], 
+      [REPCUST].[tdrloss] AS [tdrloss], 
+      [REPCUST].[totresv] AS [totresv], 
+      [REPCUST].[addresv] AS [addresv], 
+      [REPCUST].[aging] AS [aging], 
+      [REPCUST].[adjclass] AS [adjclass], 
+      [REPCUST].[class] AS [class], 
+      [REPCUST].[cladj] AS [cladj], 
+      [REPCUST].[botclass] AS [botclass], 
+      [REPCUST].[oldcladj] AS [oldcladj], 
+      [REPCUST].[int_rate] AS [int_rate], 
+      [REPCUST].[rate_type] AS [rate_type], 
+      [REPCUST].[sign] AS [sign], 
+      [REPCUST].[rate_load] AS [rate_load], 
+      [REPCUST].[pay_cond] AS [pay_cond], 
+      [REPCUST].[busi_type] AS [busi_type], 
+      [REPCUST].[dept] AS [dept], 
+      [REPCUST].[dept_appv] AS [dept_appv], 
+      [REPCUST].[dept_tran] AS [dept_tran], 
+      [REPCUST].[dept_ctrl] AS [dept_ctrl], 
+      [REPCUST].[officr_id] AS [officr_id], 
+      [REPCUST].[due_date] AS [due_date], 
+      [REPCUST].[issu_date] AS [issu_date], 
+      [REPCUST].[tdr_income] AS [tdr_income], 
+      [REPCUST].[limitno] AS [limitno], 
+      [REPCUST].[cred_date] AS [cred_date], 
+      [REPCUST].[stop_date] AS [stop_date], 
+      [REPCUST].[open_acc] AS [open_acc], 
+      [REPCUST].[pay_prin] AS [pay_prin], 
+      [REPCUST].[pay_int] AS [pay_int], 
+      [REPCUST].[pay_susp] AS [pay_susp], 
+      [REPCUST].[post_prin] AS [post_prin], 
+      [REPCUST].[post_int] AS [post_int], 
+      [REPCUST].[post_susp] AS [post_susp], 
+      [REPCUST].[rev_accru] AS [rev_accru], 
+      [REPCUST].[fee] AS [fee], 
+      [REPCUST].[avgbalance] AS [avgbalance], 
+      [REPCUST].[npl] AS [npl], 
+      [REPCUST].[app_id] AS [app_id], 
+      [REPCUST].[nplflag] AS [nplflag], 
+      [REPCUST].[tdr] AS [tdr], 
+      [REPCUST].[lawflag] AS [lawflag], 
+      [REPCUST].[resvflag] AS [resvflag], 
+      [REPCUST].[ccf1flag] AS [ccf1flag], 
+      [REPCUST].[limittyp_a] AS [limittyp_a], 
+      [REPCUST].[limitapp] AS [limitapp], 
+      [REPCUST].[last_pay] AS [last_pay], 
+      [REPCUST].[payterm] AS [payterm], 
+      [REPCUST].[unearnimx] AS [unearnimx], 
+      [REPCUST].[payperints] AS [payperints], 
+      [REPCUST].[payperint] AS [payperint], 
+      [REPCUST].[lnstype] AS [lnstype], 
+      [REPCUST].[unearncts] AS [unearncts], 
+      [REPCUST].[legalstat] AS [legalstat], 
+      [REPCUST].[legalstat2] AS [legalstat2], 
+      [REPCUST].[flagge] AS [flagge], 
+      [REPCUST].[oldaging] AS [oldaging], 
+      [REPCUST].[unearnpr] AS [unearnpr], 
+      [REPCUST].[revclass] AS [revclass], 
+      [REPCUST].[unearnipr] AS [unearnipr], 
+      [REPCUST].[geaging] AS [geaging], 
+      [REPCUST].[interbank] AS [interbank], 
+      [REPCUST].[affiliate] AS [affiliate], 
+      [REPCUST].[beforege] AS [beforege], 
+      [REPCUST].[gecustsize] AS [gecustsize], 
+      [REPCUST].[gesize2] AS [gesize2], 
+      [REPCUST].[gesize4] AS [gesize4], 
+      [REPCUST].[related] AS [related], 
+      [REPCUST].[saledate] AS [saledate], 
+      [REPCUST].[sale] AS [sale], 
+      [REPCUST].[saleclass] AS [saleclass], 
+      [REPCUST].[saleresv] AS [saleresv], 
+      [REPCUST].[ctrlsize] AS [ctrlsize], 
+      [REPCUST].[agingclass] AS [agingclass], 
+      [REPCUST].[classflag] AS [classflag], 
+      [REPCUST].[upd_user] AS [upd_user], 
+      [REPCUST].[bayadd] AS [bayadd], 
+      [REPCUST].[mortgageod] AS [mortgageod], 
+      [REPCUST].[tdr_aging] AS [tdr_aging], 
+      [REPCUST].[reverseint] AS [reverseint], 
+      [REPCUST].[group] AS [group], 
+      [REPCUST].[tobe_sale] AS [tobe_sale], 
+      [REPCUST].[otobe_sale] AS [otobe_sale], 
+      [REPCUST].[manualod] AS [manualod], 
+      [REPCUST].[manualals] AS [manualals], 
+      [REPCUST].[manualpns] AS [manualpns], 
+      [REPCUST].[manualimx] AS [manualimx], 
+      [REPCUST].[uniimx] AS [uniimx], 
+      [REPCUST].[botclass_r] AS [botclass_r], 
+      [REPCUST].[fraud] AS [fraud], 
+      [REPCUST].[deceased] AS [deceased], 
+      [REPCUST].[resv_npl] AS [resv_npl], 
+      [REPCUST].[resvaccru] AS [resvaccru], 
+      [REPCUST].[postresv] AS [postresv]
+      FROM [dbo].[REPCUST] AS [REPCUST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sysdiagrams" EntityType="LGDModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_FILE" EntityType="LGDModel.Store.TB_FILE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_FILE_TYPE" EntityType="LGDModel.Store.TB_FILE_TYPE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_LGD_SAMPLE" EntityType="LGDModel.Store.TB_LGD_SAMPLE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR" EntityType="LGDModel.Store.TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TRANSACTION INFORMATION" EntityType="LGDModel.Store.TRANSACTION INFORMATION" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_TB_FILE_TB_FILE_TYPE" Association="LGDModel.Store.FK_TB_FILE_TB_FILE_TYPE">
+            <End Role="TB_FILE_TYPE" EntitySet="TB_FILE_TYPE" />
+            <End Role="TB_FILE" EntitySet="TB_FILE" />
+          </AssociationSet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.ADDITIONAL DRAWDOWN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ADDITIONAL DRAWDOWN">
+          <Key>
+            <PropertyRef Name="LIMITNO Changed" />
+            <PropertyRef Name="Is This an Additional Drawdown" />
+          </Key>
+          <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+          <Property Name="Default Date" Type="datetime" />
+          <Property Name="BRAN" Type="nvarchar" MaxLength="255" />
+          <Property Name="ACCGL" Type="nvarchar" MaxLength="255" />
+          <Property Name="ACCNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="CONTNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="SEQNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="APP_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="PRINCIPAL" Type="float" />
+          <Property Name="ACCRU" Type="float" />
+          <Property Name="SUSP" Type="float" />
+          <Property Name="PRINCIPAL @ Last Month" Type="float" />
+          <Property Name="ACCRU @ Last Month" Type="float" />
+          <Property Name="SUSP @ Last Month" Type="float" />
+          <Property Name="Additional Drawdown Date" Type="datetime" />
+          <Property Name="Additional Drawdown Currency" Type="nvarchar" MaxLength="3" />
+          <Property Name="LIMITNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="LIMITNO Changed" Type="bit" Nullable="false" />
+          <Property Name="Previous LIMITNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="Is This an Additional Drawdown" Type="bit" Nullable="false" />
+          <Property Name="Type of Additional Drawdown" Type="nvarchar" MaxLength="255" />
+          <Property Name="Other Reason of Principal Increase" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.CASHFLOW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="CASHFLOW">
+          <Key>
+            <PropertyRef Name="LIMITNO Changed" />
+          </Key>
+          <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+          <Property Name="Default Date" Type="datetime" />
+          <Property Name="LIMITNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="APP_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cashflow Currency Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="Date of Cashflow" Type="datetime" />
+          <Property Name="Cashflow Amount: PAY_PRIN" Type="float" />
+          <Property Name="Cashflow Amount: PAY_INT" Type="float" />
+          <Property Name="Cashflow Amount: PAY_SUSP" Type="float" />
+          <Property Name="Cash Flow Source Description 1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cash Flow Source Description 2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cash Flow Source Description 3" Type="nvarchar" MaxLength="255" />
+          <Property Name="Written-off / Haircut Amount" Type="float" />
+          <Property Name="Collateral ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="LIMITNO Changed" Type="bit" Nullable="false" />
+          <Property Name="Previous LIMITNO" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.COLLATERAL INFORMATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="COLLATERAL INFORMATION">
+          <Key>
+            <PropertyRef Name="Property Under Construction" />
+          </Key>
+          <Property Name="COLL_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="PLED_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="PLED_SEQ" Type="smallint" />
+          <Property Name="APPS_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="APPS_DATE" Type="datetime" />
+          <Property Name="Collateral Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Property Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Collateral Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="District of Property" Type="nvarchar" MaxLength="255" />
+          <Property Name="Amphur of Property" Type="nvarchar" MaxLength="255" />
+          <Property Name="Province of Property" Type="nvarchar" MaxLength="255" />
+          <Property Name="Located Country of Property" Type="nvarchar" MaxLength="255" />
+          <Property Name="Collateral Provider" Type="nvarchar" MaxLength="255" />
+          <Property Name="Property Under Construction" Type="bit" Nullable="false" />
+          <Property Name="Leasehold Period" Type="smallint" />
+          <Property Name="Leasehold Start Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FACILITY INFORMATION">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="Default Date" />
+            <PropertyRef Name="LIMITNO" />
+          </Key>
+          <Property Name="CIF" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Default Date" Type="datetime" Nullable="false" />
+          <Property Name="APP_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="LIMITTYP_A" Type="nvarchar" MaxLength="1" />
+          <Property Name="LIMITNO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Limit @ D" Type="float" />
+          <Property Name="Limit @ D-1" Type="float" />
+          <Property Name="One Level Up Limit ID @ D-1" Type="nvarchar" MaxLength="255" />
+          <Property Name="One Level Up Limit Currency @ D-1" Type="nvarchar" MaxLength="3" />
+          <Property Name="One Level Up Limit Amount @ D-1" Type="float" />
+          <Property Name="Two Level Up Limit ID @ D-1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Two Level Up Limit Currency @ D-1" Type="nvarchar" MaxLength="3" />
+          <Property Name="Two Level Up Limit Amount @ D-1" Type="float" />
+          <Property Name="Three Level Up Limit ID @ D-1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Three Level Up Limit Currency @ D-1" Type="nvarchar" MaxLength="3" />
+          <Property Name="Three Level Up Limit Amount @ D-1" Type="float" />
+          <Property Name="Four Level Up Limit ID @ D-1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Four Level Up Limit Currency @ D-1" Type="nvarchar" MaxLength="3" />
+          <Property Name="Four Level Up Limit Amount @ D-1" Type="float" />
+          <Property Name="Facility Purpose Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nature of Facility" Type="nvarchar" MaxLength="255" />
+          <Property Name="Seniority" Type="nvarchar" MaxLength="255" />
+          <Property Name="Basel Committed Indicator" Type="bit" Nullable="false" />
+          <Property Name="Maturity Date" Type="datetime" />
+          <Property Name="Principal Repayment Currency Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="Principal Repayment Amount" Type="float" />
+          <Property Name="Principal Repayment Cycle" Type="nvarchar" MaxLength="255" />
+          <Property Name="Compounding Frequency of Interest" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sharing Limit with (CIF 1)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sharing Limit with (CIF 2)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sharing Limit with (CIF 3)" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.GUARANTOR INFORMATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="GUARANTOR INFORMATION">
+          <Key>
+            <PropertyRef Name="Pledge to All Facilities" />
+          </Key>
+          <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+          <Property Name="Default Date" Type="datetime" />
+          <Property Name="PLED_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Guarantee Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="Pledge to All Facilities" Type="bit" Nullable="false" />
+          <Property Name="Facility Pledged" Type="nvarchar" MaxLength="255" />
+          <Property Name="Guarantee Amount @ D" Type="float" />
+          <Property Name="Guarantee Amount @ D-1" Type="float" />
+          <Property Name="Guarantee Amount Currency Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="Guarantee Indemnity Source ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Internal Rating @ D-1" Type="nvarchar" MaxLength="4" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.L_APP_ID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="L_APP_ID">
+          <Key>
+            <PropertyRef Name="APP_ID" />
+          </Key>
+          <Property Name="APP_ID" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="L_CURRENCY CODE">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Country" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.L_IMPORT TABLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="L_IMPORT TABLE">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="Table Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.L_INDEX' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="L_INDEX">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="Table Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.MERGECOS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="MERGECOS">
+          <Key>
+            <PropertyRef Name="AS_OF" />
+            <PropertyRef Name="cif" />
+            <PropertyRef Name="pled_id" />
+            <PropertyRef Name="apps_id" />
+          </Key>
+          <Property Name="AS_OF" Type="datetime" Nullable="false" />
+          <Property Name="YM" Type="nvarchar" MaxLength="10" />
+          <Property Name="botid" Type="numeric" Precision="7" />
+          <Property Name="cif" Type="numeric" Nullable="false" Precision="9" />
+          <Property Name="pled_id" Type="numeric" Nullable="false" Precision="12" />
+          <Property Name="apps_id" Type="numeric" Nullable="false" Precision="13" />
+          <Property Name="pled_seq" Type="numeric" Precision="2" />
+          <Property Name="guar_amt" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="guarantee" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="colltype" Type="numeric" Precision="2" />
+          <Property Name="collval" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="discval" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="val_r" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="valdate" Type="datetime" />
+          <Property Name="usevalue" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="useaccru" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="discpct" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="co_no" Type="numeric" Precision="3" />
+          <Property Name="totamt" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="class" Type="char" MaxLength="1" />
+          <Property Name="apps_pct" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="baypct" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="amcpct" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="no_share" Type="numeric" Precision="10" />
+          <Property Name="cif_share" Type="numeric" Precision="10" />
+          <Property Name="sharegroup" Type="numeric" Precision="10" />
+          <Property Name="cif_group" Type="numeric" Precision="10" />
+          <Property Name="related" Type="char" MaxLength="1" />
+          <Property Name="listed" Type="char" MaxLength="1" />
+          <Property Name="dep_acc" Type="char" MaxLength="10" />
+          <Property Name="rm_no" Type="numeric" Precision="10" />
+          <Property Name="guarantor" Type="numeric" Precision="10" />
+          <Property Name="dep_flag" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.MISCELLANEOUS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="MISCELLANEOUS">
+          <Key>
+            <PropertyRef Name="Running Number" />
+          </Key>
+          <Property Name="Running Number" Type="int" Nullable="false" />
+          <Property Name="Indirect Cost" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cost of Debt" Type="int" />
+          <Property Name="Local Risk Free Rate" Type="int" />
+          <Property Name="Hurdle Rate" Type="int" />
+          <Property Name="Property Price Index" Type="int" />
+          <Property Name="Exchange Rate" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.OBLIGOR INFORMATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OBLIGOR INFORMATION">
+          <Key>
+            <PropertyRef Name="Previous Default Flag" />
+            <PropertyRef Name="Listed Status" />
+            <PropertyRef Name="Emergence from Default" />
+            <PropertyRef Name="Negative Pledge" />
+          </Key>
+          <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+          <Property Name="Account Officer" Type="nvarchar" MaxLength="255" />
+          <Property Name="Data Inputter" Type="nvarchar" MaxLength="255" />
+          <Property Name="Date of Input" Type="datetime" />
+          <Property Name="Portfolio" Type="nvarchar" MaxLength="255" />
+          <Property Name="Business Unit" Type="nvarchar" MaxLength="4" />
+          <Property Name="Default Date" Type="datetime" />
+          <Property Name="1 Year Before Default Date" Type="datetime" />
+          <Property Name="Industry Code" Type="nvarchar" MaxLength="6" />
+          <Property Name="Bank Group Key" Type="nvarchar" MaxLength="255" />
+          <Property Name="Last Review Date" Type="datetime" />
+          <Property Name="Previous Default Flag" Type="bit" Nullable="false" />
+          <Property Name="Previous Default Date" Type="datetime" />
+          <Property Name="Default Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Business Reason for Default" Type="nvarchar" MaxLength="255" />
+          <Property Name="Banking Relationship Start Date" Type="datetime" />
+          <Property Name="Legal Enity Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Province of Incorporation" Type="nvarchar" MaxLength="255" />
+          <Property Name="Date of Incorporation" Type="datetime" />
+          <Property Name="Listed Status" Type="bit" Nullable="false" />
+          <Property Name="Internal Rating @ D-1" Type="nvarchar" MaxLength="4" />
+          <Property Name="Rating Date" Type="datetime" />
+          <Property Name="Emergence from Default" Type="bit" Nullable="false" />
+          <Property Name="Nature of Emergence" Type="nvarchar" MaxLength="255" />
+          <Property Name="Emergence Date" Type="datetime" />
+          <Property Name="Negative Pledge" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.PLEDGE INFORMATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="PLEDGE INFORMATION">
+          <Key>
+            <PropertyRef Name="Pledge to All Facilities" />
+            <PropertyRef Name="Prior Claim by Other Bank" />
+          </Key>
+          <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+          <Property Name="Default Date" Type="datetime" />
+          <Property Name="APPS_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="PLED_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="PLED_SEQ" Type="smallint" />
+          <Property Name="Pledge to All Facilities" Type="bit" Nullable="false" />
+          <Property Name="Facility Pledged" Type="nvarchar" MaxLength="255" />
+          <Property Name="Collateral Currency Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="Valuation Amount @ D" Type="float" />
+          <Property Name="Valuation Date @ D" Type="datetime" />
+          <Property Name="Valuation Amount @ D-1" Type="float" />
+          <Property Name="Valuation Date @ D-1" Type="datetime" />
+          <Property Name="Prior Claim by Other Bank" Type="bit" Nullable="false" />
+          <Property Name="Prior Claim Amount" Type="float" />
+          <Property Name="Pledge Amount @ D" Type="float" />
+          <Property Name="Limitation Amount @ D" Type="float" />
+          <Property Name="Pledge Amount @ D-1" Type="float" />
+          <Property Name="Limitation Amount @ D-1" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.REPCUST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="REPCUST">
+          <Key>
+            <PropertyRef Name="YM" />
+            <PropertyRef Name="accno" />
+            <PropertyRef Name="contno" />
+            <PropertyRef Name="seqno" />
+          </Key>
+          <Property Name="YM" Type="datetime" Nullable="false" />
+          <Property Name="botid" Type="numeric" Precision="9" />
+          <Property Name="cif" Type="numeric" Precision="9" />
+          <Property Name="oldcif" Type="numeric" Precision="9" />
+          <Property Name="bran" Type="numeric" Precision="10" />
+          <Property Name="area" Type="numeric" Precision="3" />
+          <Property Name="accgl" Type="numeric" Precision="10" />
+          <Property Name="accno" Type="char" Nullable="false" MaxLength="16" />
+          <Property Name="contno" Type="char" Nullable="false" MaxLength="13" />
+          <Property Name="seqno" Type="numeric" Nullable="false" Precision="5" />
+          <Property Name="fcy_type" Type="numeric" Precision="3" />
+          <Property Name="limit" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="principal" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="accru" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="susp" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="unearnprin" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="unearnint" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="defer" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="unearnod" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="unearnals" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="unearnpns" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="uncleaprin" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="uncleaint" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="gl5540620" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="unearnoth" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="totamt_r" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="accru_r" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="usecoll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="reserve" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="extraresv" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="pvloss" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="bafterc" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="tdrloss" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="totresv" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="addresv" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="aging" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="adjclass" Type="char" MaxLength="1" />
+          <Property Name="class" Type="char" MaxLength="1" />
+          <Property Name="cladj" Type="char" MaxLength="1" />
+          <Property Name="botclass" Type="char" MaxLength="1" />
+          <Property Name="oldcladj" Type="char" MaxLength="1" />
+          <Property Name="int_rate" Type="numeric" Precision="7" Scale="5" />
+          <Property Name="rate_type" Type="char" MaxLength="3" />
+          <Property Name="sign" Type="char" MaxLength="1" />
+          <Property Name="rate_load" Type="numeric" Precision="7" Scale="5" />
+          <Property Name="pay_cond" Type="numeric" Precision="2" />
+          <Property Name="busi_type" Type="numeric" Precision="6" />
+          <Property Name="dept" Type="numeric" Precision="6" />
+          <Property Name="dept_appv" Type="numeric" Precision="6" />
+          <Property Name="dept_tran" Type="numeric" Precision="6" />
+          <Property Name="dept_ctrl" Type="numeric" Precision="6" />
+          <Property Name="officr_id" Type="numeric" Precision="10" />
+          <Property Name="due_date" Type="datetime" />
+          <Property Name="issu_date" Type="datetime" />
+          <Property Name="tdr_income" Type="numeric" Precision="1" />
+          <Property Name="limitno" Type="char" MaxLength="20" />
+          <Property Name="cred_date" Type="datetime" />
+          <Property Name="stop_date" Type="datetime" />
+          <Property Name="open_acc" Type="datetime" />
+          <Property Name="pay_prin" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="pay_int" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="pay_susp" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="post_prin" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="post_int" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="post_susp" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="rev_accru" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="fee" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="avgbalance" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="npl" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="app_id" Type="char" MaxLength="3" />
+          <Property Name="nplflag" Type="bit" />
+          <Property Name="tdr" Type="bit" />
+          <Property Name="lawflag" Type="bit" />
+          <Property Name="resvflag" Type="bit" />
+          <Property Name="ccf1flag" Type="bit" />
+          <Property Name="limittyp_a" Type="char" MaxLength="1" />
+          <Property Name="limitapp" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="last_pay" Type="datetime" />
+          <Property Name="payterm" Type="numeric" Precision="5" />
+          <Property Name="unearnimx" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="payperints" Type="char" MaxLength="1" />
+          <Property Name="payperint" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="lnstype" Type="char" MaxLength="4" />
+          <Property Name="unearncts" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="legalstat" Type="char" MaxLength="30" />
+          <Property Name="legalstat2" Type="numeric" Precision="1" />
+          <Property Name="flagge" Type="char" MaxLength="1" />
+          <Property Name="oldaging" Type="numeric" Precision="4" Scale="2" />
+          <Property Name="unearnpr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="revclass" Type="char" MaxLength="1" />
+          <Property Name="unearnipr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="geaging" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="interbank" Type="bit" />
+          <Property Name="affiliate" Type="bit" />
+          <Property Name="beforege" Type="char" MaxLength="1" />
+          <Property Name="gecustsize" Type="char" MaxLength="30" />
+          <Property Name="gesize2" Type="char" MaxLength="30" />
+          <Property Name="gesize4" Type="char" MaxLength="30" />
+          <Property Name="related" Type="bit" />
+          <Property Name="saledate" Type="datetime" />
+          <Property Name="sale" Type="char" MaxLength="1" />
+          <Property Name="saleclass" Type="char" MaxLength="1" />
+          <Property Name="saleresv" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="ctrlsize" Type="char" MaxLength="30" />
+          <Property Name="agingclass" Type="char" MaxLength="1" />
+          <Property Name="classflag" Type="char" MaxLength="7" />
+          <Property Name="upd_user" Type="char" MaxLength="4" />
+          <Property Name="bayadd" Type="char" MaxLength="1" />
+          <Property Name="mortgageod" Type="char" MaxLength="1" />
+          <Property Name="tdr_aging" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="reverseint" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="group" Type="char" MaxLength="1" />
+          <Property Name="tobe_sale" Type="bit" />
+          <Property Name="otobe_sale" Type="bit" />
+          <Property Name="manualod" Type="numeric" Precision="16" Scale="2" />
+          <Property Name="manualals" Type="numeric" Precision="16" Scale="2" />
+          <Property Name="manualpns" Type="numeric" Precision="16" Scale="2" />
+          <Property Name="manualimx" Type="numeric" Precision="16" Scale="2" />
+          <Property Name="uniimx" Type="numeric" Precision="16" Scale="2" />
+          <Property Name="botclass_r" Type="char" MaxLength="1" />
+          <Property Name="fraud" Type="char" MaxLength="1" />
+          <Property Name="deceased" Type="char" MaxLength="1" />
+          <Property Name="resv_npl" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="resvaccru" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="postresv" Type="numeric" Precision="16" Scale="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TB_FILE">
+          <Key>
+            <PropertyRef Name="FILE_ID" />
+          </Key>
+          <Property Name="FILE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="10" />
+          <Property Name="FILE_TYPE_ID" Type="int" />
+          <Property Name="FILE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="FILE_PATH" Type="nvarchar" MaxLength="100" />
+          <Property Name="FILE_CREATE_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TB_FILE_TYPE">
+          <Key>
+            <PropertyRef Name="FILE_TYPE_ID" />
+          </Key>
+          <Property Name="FILE_TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="FILE_TYPE_DESC" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TB_LGD_SAMPLE">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="YM_1" />
+          </Key>
+          <Property Name="CIF" Type="int" Nullable="false" />
+          <Property Name="YM_1" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="YM_2" Type="nvarchar" Nullable="false" MaxLength="6" />
+          <Property Name="YM" Type="nvarchar" MaxLength="6" />
+          <Property Name="CASE_" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="YM" />
+          </Key>
+          <Property Name="CIF" Type="int" Nullable="false" />
+          <Property Name="YM" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="YM_TH" Type="nvarchar" MaxLength="6" />
+          <Property Name="CASE_" Type="nvarchar" MaxLength="50" />
+          <Property Name="SIZE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TRANSACTION INFORMATION">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="Default Date" />
+            <PropertyRef Name="BRAN" />
+            <PropertyRef Name="ACCGL" />
+            <PropertyRef Name="ACCNO" />
+            <PropertyRef Name="CONTNO" />
+            <PropertyRef Name="SEQNO" />
+          </Key>
+          <Property Name="CIF" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Default Date" Type="datetime" Nullable="false" />
+          <Property Name="BRAN" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="ACCGL" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ACCNO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CONTNO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SEQNO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LIMITNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="FCY_TYPE: Original Currency Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="Currency Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="LNSTYPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="Total Interest Rate Prior to Default" Type="float" />
+          <Property Name="Interest Rate Index Prior to Default" Type="nvarchar" MaxLength="255" />
+          <Property Name="Interest Rate Spread Prior to Default (%)" Type="float" />
+          <Property Name="Rate Sign" Type="nvarchar" MaxLength="1" />
+          <Property Name="OS @ D: Principal" Type="float" />
+          <Property Name="OS @ D: Accrued" Type="float" />
+          <Property Name="OS @ D: Suspense" Type="float" />
+          <Property Name="OS @ D-1: Principal" Type="float" />
+          <Property Name="OS @ D-1: Accrued" Type="float" />
+          <Property Name="OS @ D-1: Suspense" Type="float" />
+        </EntityType>
+        <Association Name="FK_TB_FILE_TB_FILE_TYPE">
+          <End Role="TB_FILE_TYPE" Type="LGDModel.Store.TB_FILE_TYPE" Multiplicity="0..1" />
+          <End Role="TB_FILE" Type="LGDModel.Store.TB_FILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FILE_TYPE">
+              <PropertyRef Name="FILE_TYPE_ID" />
+            </Principal>
+            <Dependent Role="TB_FILE">
+              <PropertyRef Name="FILE_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.CIM_CUSTOMER' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="CIM_CUSTOMER">
+        <Property Name="CIF" Type="float" />
+        <Property Name="YYMM" Type="float" />
+        <Property Name="Upgrade Date" Type="nvarchar" MaxLength="255" />
+        <Property Name="OFFICR_ID" Type="float" />
+        <Property Name="CusDEPTFLAG" Type="float" />
+        <Property Name="CusDEPTTRAN" Type="float" />
+        <Property Name="BUSI_TYPE" Type="nvarchar" MaxLength="6" />
+        <Property Name="GROUP_CIF" Type="float" />
+        <Property Name="CUS_TITLE" Type="nvarchar" MaxLength="10" />
+        <Property Name="PROV" Type="nvarchar" MaxLength="2" />
+        <Property Name="BTHDATE" Type="datetime" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.CIM_Mergecos' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="CIM_Mergecos">
+        <Property Name="CIF" Type="float" />
+        <Property Name="FLAG" Type="nvarchar" MaxLength="30" />
+        <Property Name="YYMM" Type="nvarchar" MaxLength="4" />
+        <Property Name="APPS_ID" Type="float" />
+        <Property Name="PLED_ID" Type="float" />
+        <Property Name="PLED_SEQ" Type="float" />
+        <Property Name="COLLVAL" Type="float" />
+        <Property Name="VALDATE" Type="datetime" />
+        <Property Name="GUAR_AMT" Type="float" />
+        <Property Name="GUARANTEE" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.CIM_Repcust1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="CIM_Repcust1">
+        <Property Name="CIF" Type="float" />
+        <Property Name="FLAG" Type="nvarchar" MaxLength="30" />
+        <Property Name="YYMM" Type="nvarchar" MaxLength="4" />
+        <Property Name="APP_ID" Type="nvarchar" MaxLength="6" />
+        <Property Name="LIMITTYP_A" Type="nvarchar" MaxLength="10" />
+        <Property Name="LIMIT" Type="float" />
+        <Property Name="PAYPERINT" Type="float" />
+        <Property Name="PAYTERM" Type="float" />
+        <Property Name="BRAN" Type="float" />
+        <Property Name="ACCGL" Type="float" />
+        <Property Name="ACCNO" Type="nvarchar" MaxLength="20" />
+        <Property Name="CONTNO" Type="nvarchar" MaxLength="15" />
+        <Property Name="SEQNO" Type="float" />
+        <Property Name="LIMITNO" Type="nvarchar" MaxLength="20" />
+        <Property Name="FCY_TYPE" Type="float" />
+        <Property Name="LNSTYPE" Type="nvarchar" MaxLength="4" />
+        <Property Name="INT_RATE" Type="float" />
+        <Property Name="RATE_TYPE" Type="nvarchar" MaxLength="3" />
+        <Property Name="RATE_LOAD" Type="float" />
+        <Property Name="SIGN" Type="nvarchar" MaxLength="4" />
+        <Property Name="PRINCIPAL" Type="float" />
+        <Property Name="ACCRU" Type="float" />
+        <Property Name="SUSP" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.Commercial_Loan_LGD' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="Commercial_Loan_LGD">
+        <Property Name="Cif" Type="int" />
+        <Property Name="YM" Type="int" />
+        <Property Name="BaySize" Type="nvarchar" MaxLength="16" />
+        <Property Name="Rating" Type="nvarchar" MaxLength="3" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.COS_TL01' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="COS_TL01">
+        <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+        <Property Name="Default Date" Type="float" />
+        <Property Name="YYMM" Type="float" />
+        <Property Name="PLED_ID" Type="float" />
+        <Property Name="GUAR_AMT" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.DIRECT COST' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="DIRECT COST">
+        <Property Name="Expense Month" Type="int" />
+        <Property Name="Expense Year" Type="int" />
+        <Property Name="GL code" Type="int" />
+        <Property Name="Total Expenses" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.FINANCIAL SUMMARY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="FINANCIAL SUMMARY">
+        <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+        <Property Name="Default Date" Type="datetime" />
+        <Property Name="Financial Data Date" Type="datetime" />
+        <Property Name="Total Assets" Type="int" />
+        <Property Name="Total Liabilities" Type="int" />
+        <Property Name="Total Revenue" Type="int" />
+        <Property Name="Financial Currency Code" Type="nvarchar" MaxLength="3" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.Group_CIF' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="Group_CIF">
+        <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+        <Property Name="Group_CIF" Type="nvarchar" MaxLength="255" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.L_BUILDING TYPE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="L_BUILDING TYPE">
+        <Property Name="Code" Type="nvarchar" MaxLength="255" />
+        <Property Name="Description (Thai)" Type="nvarchar" MaxLength="255" />
+        <Property Name="Description (Eng)" Type="nvarchar" MaxLength="255" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.L_COLLATERAL TYPE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="L_COLLATERAL TYPE">
+        <Property Name="Code" Type="nvarchar" MaxLength="255" />
+        <Property Name="English Description" Type="nvarchar" MaxLength="255" />
+        <Property Name="Thai Description" Type="nvarchar" MaxLength="255" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.L_PROVINCE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="L_PROVINCE">
+        <Property Name="Code" Type="nvarchar" MaxLength="255" />
+        <Property Name="Prov (Thai)" Type="nvarchar" MaxLength="255" />
+        <Property Name="Prov (Eng)" Type="nvarchar" MaxLength="255" />
+        <Property Name="Region" Type="nvarchar" MaxLength="255" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.L_RATE TYPE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="L_RATE TYPE">
+        <Property Name="CODE" Type="nvarchar" MaxLength="255" />
+        <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+        <Property Name="INT_RATE" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.LEGAL COST' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="LEGAL COST">
+        <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+        <Property Name="Default Date" Type="datetime" />
+        <Property Name="Collateral ID" Type="nvarchar" MaxLength="255" />
+        <Property Name="Legal Cost Currency" Type="nvarchar" MaxLength="3" />
+        <Property Name="Legal Cost Amount Incurred" Type="float" />
+        <Property Name="Deduction of Legal Cost Amont" Type="float" />
+        <Property Name="Date of Legal Cost Incurred" Type="datetime" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.List of Default' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="List of Default">
+        <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+        <Property Name="BaySize" Type="nvarchar" MaxLength="255" />
+        <Property Name="Default Date" Type="int" />
+        <Property Name="Type" Type="nvarchar" MaxLength="255" />
+        <Property Name="Previous Default Date" Type="int" />
+        <Property Name="Upgrade Date" Type="int" />
+        <Property Name="Restructure Date" Type="int" />
+        <Property Name="PV Loss" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.Name AutoCorrect Log' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="Name AutoCorrect Log">
+        <Property Name="Object Type" Type="nvarchar" MaxLength="255" />
+        <Property Name="Object Name" Type="nvarchar" MaxLength="255" />
+        <Property Name="Control Name" Type="nvarchar" MaxLength="255" />
+        <Property Name="Property Name" Type="nvarchar" MaxLength="255" />
+        <Property Name="Old Value" Type="nvarchar(max)" />
+        <Property Name="New Value" Type="nvarchar(max)" />
+        <Property Name="Time" Type="datetime" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.NPA EXPENSE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="NPA EXPENSE">
+        <Property Name="Expense Year" Type="smallint" />
+        <Property Name="Appraised Value @ Beginning of Year" Type="float" />
+        <Property Name="Cost Value @ Beginning of Year" Type="float" />
+        <Property Name="Total Expense" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.NPA RECORD' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="NPA RECORD">
+        <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+        <Property Name="Default Date" Type="datetime" />
+        <Property Name="NPA: Collateral ID" Type="nvarchar" MaxLength="255" />
+        <Property Name="Collateral Type" Type="nvarchar" MaxLength="255" />
+        <Property Name="COS: Collateral ID" Type="nvarchar" MaxLength="255" />
+        <Property Name="Collateral Sale Price Currency" Type="nvarchar" MaxLength="3" />
+        <Property Name="Collateral Sale Price" Type="float" />
+        <Property Name="Collateral Sale Date" Type="datetime" />
+        <Property Name="Collateral Description" Type="nvarchar" MaxLength="255" />
+        <Property Name="District of Property" Type="nvarchar" MaxLength="255" />
+        <Property Name="Amphur of Property" Type="nvarchar" MaxLength="255" />
+        <Property Name="Province of Property" Type="nvarchar" MaxLength="255" />
+        <Property Name="Title Deed Number" Type="nvarchar" MaxLength="255" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.NPL_REQUEST' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="NPL_REQUEST">
+        <Property Name="CIF1" Type="float" />
+        <Property Name="YM_1" Type="float" />
+        <Property Name="YM1" Type="float" />
+        <Property Name="CASE_" Type="float" />
+        <Property Name="MONTH_KEY" Type="float" />
+        <Property Name="YM" Type="float" />
+        <Property Name="ASOFDATE" Type="datetime" />
+        <Property Name="BOTID" Type="float" />
+        <Property Name="CIF" Type="float" />
+        <Property Name="OLDCIF" Type="float" />
+        <Property Name="BRAN" Type="float" />
+        <Property Name="AREA" Type="float" />
+        <Property Name="ACCGL" Type="float" />
+        <Property Name="ACCNO" Type="float" />
+        <Property Name="CONTNO" Type="float" />
+        <Property Name="SEQNO" Type="float" />
+        <Property Name="FCY_TYPE" Type="float" />
+        <Property Name="LIMIT" Type="float" />
+        <Property Name="PRINCIPAL" Type="float" />
+        <Property Name="ACCRU" Type="float" />
+        <Property Name="SUSP" Type="float" />
+        <Property Name="UNEARNPRIN" Type="float" />
+        <Property Name="UNEARNINT" Type="float" />
+        <Property Name="DEFER" Type="float" />
+        <Property Name="UNEARNOD" Type="float" />
+        <Property Name="UNEARNALS" Type="float" />
+        <Property Name="UNEARNPNS" Type="float" />
+        <Property Name="UNCLEAPRIN" Type="float" />
+        <Property Name="UNCLEAINT" Type="float" />
+        <Property Name="GL5540620" Type="float" />
+        <Property Name="UNEARNOTH" Type="float" />
+        <Property Name="TOTAMT_R" Type="float" />
+        <Property Name="ACCRU_R" Type="float" />
+        <Property Name="USECOLL" Type="float" />
+        <Property Name="RESERVE" Type="float" />
+        <Property Name="EXTRARESV" Type="float" />
+        <Property Name="PVLOSS" Type="float" />
+        <Property Name="BAFTERC" Type="float" />
+        <Property Name="TDRLOSS" Type="float" />
+        <Property Name="TOTRESV" Type="float" />
+        <Property Name="ADDRESV" Type="float" />
+        <Property Name="AGING" Type="float" />
+        <Property Name="ADJCLASS" Type="nvarchar" MaxLength="255" />
+        <Property Name="CLASS" Type="nvarchar" MaxLength="255" />
+        <Property Name="CLADJ" Type="nvarchar" MaxLength="255" />
+        <Property Name="BOTCLASS" Type="nvarchar" MaxLength="255" />
+        <Property Name="OLDCLADJ" Type="nvarchar" MaxLength="255" />
+        <Property Name="INT_RATE" Type="float" />
+        <Property Name="RATE_TYPE" Type="float" />
+        <Property Name="SIGN" Type="nvarchar" MaxLength="255" />
+        <Property Name="RATE_LOAD" Type="float" />
+        <Property Name="PAY_COND" Type="float" />
+        <Property Name="BUSI_TYPE" Type="float" />
+        <Property Name="DEPT" Type="float" />
+        <Property Name="DEPT_APPV" Type="float" />
+        <Property Name="DEPT_TRAN" Type="float" />
+        <Property Name="DEPT_CTRL" Type="float" />
+        <Property Name="OFFICR_ID" Type="float" />
+        <Property Name="DUE_DATE" Type="datetime" />
+        <Property Name="ISSU_DATE" Type="datetime" />
+        <Property Name="TDR_INCOME" Type="float" />
+        <Property Name="LIMITNO" Type="nvarchar" MaxLength="255" />
+        <Property Name="CRED_DATE" Type="nvarchar" MaxLength="255" />
+        <Property Name="STOP_DATE" Type="nvarchar" MaxLength="255" />
+        <Property Name="OPEN_ACC" Type="datetime" />
+        <Property Name="PAY_PRIN" Type="float" />
+        <Property Name="PAY_INT" Type="float" />
+        <Property Name="PAY_SUSP" Type="float" />
+        <Property Name="POST_PRIN" Type="float" />
+        <Property Name="POST_INT" Type="float" />
+        <Property Name="POST_SUSP" Type="float" />
+        <Property Name="REV_ACCRU" Type="float" />
+        <Property Name="FEE" Type="float" />
+        <Property Name="AVGBALANCE" Type="float" />
+        <Property Name="NPL" Type="float" />
+        <Property Name="APP_ID" Type="nvarchar" MaxLength="255" />
+        <Property Name="NPLFLAG" Type="nvarchar" MaxLength="255" />
+        <Property Name="TDR" Type="nvarchar" MaxLength="255" />
+        <Property Name="LAWFLAG" Type="nvarchar" MaxLength="255" />
+        <Property Name="RESVFLAG" Type="nvarchar" MaxLength="255" />
+        <Property Name="CCF1FLAG" Type="nvarchar" MaxLength="255" />
+        <Property Name="LIMITTYP_A" Type="nvarchar" MaxLength="255" />
+        <Property Name="LIMITAPP" Type="float" />
+        <Property Name="LAST_PAY" Type="nvarchar" MaxLength="255" />
+        <Property Name="PAYTERM" Type="float" />
+        <Property Name="UNEARN_IMX" Type="float" />
+        <Property Name="PAYPERINTS" Type="nvarchar" MaxLength="255" />
+        <Property Name="PAYPERINT" Type="float" />
+        <Property Name="LNSTYPE" Type="nvarchar" MaxLength="255" />
+        <Property Name="UNEARNCTS" Type="float" />
+        <Property Name="LEGALSTAT" Type="nvarchar" MaxLength="255" />
+        <Property Name="LEGALSTAT2" Type="float" />
+        <Property Name="FLAGGE" Type="nvarchar" MaxLength="255" />
+        <Property Name="OLDAGING" Type="float" />
+        <Property Name="UNEARNPR" Type="float" />
+        <Property Name="REVCLASS" Type="nvarchar" MaxLength="255" />
+        <Property Name="UNEARNIPR" Type="float" />
+        <Property Name="GEAGING" Type="float" />
+        <Property Name="INTERBANK" Type="nvarchar" MaxLength="255" />
+        <Property Name="AFFILIATE" Type="nvarchar" MaxLength="255" />
+        <Property Name="BEFOREGE" Type="nvarchar" MaxLength="255" />
+        <Property Name="GECUSTSIZE" Type="nvarchar" MaxLength="255" />
+        <Property Name="GESIZE2" Type="nvarchar" MaxLength="255" />
+        <Property Name="GESIZE4" Type="nvarchar" MaxLength="255" />
+        <Property Name="RELATED" Type="nvarchar" MaxLength="255" />
+        <Property Name="SALEDATE" Type="nvarchar" MaxLength="255" />
+        <Property Name="SALE" Type="nvarchar" MaxLength="255" />
+        <Property Name="SALECLASS" Type="nvarchar" MaxLength="255" />
+        <Property Name="SALERESV" Type="float" />
+        <Property Name="BOTCLASS_R" Type="nvarchar" MaxLength="255" />
+        <Property Name="CTRLSIZE" Type="nvarchar" MaxLength="255" />
+        <Property Name="LOANAMT" Type="float" />
+        <Property Name="ACCRUAMT" Type="float" />
+        <Property Name="CONTAMT" Type="float" />
+        <Property Name="RESVACCRU" Type="float" />
+        <Property Name="AGINGCLASS" Type="nvarchar" MaxLength="255" />
+        <Property Name="CASHCOLL" Type="float" />
+        <Property Name="NEARCOLL" Type="float" />
+        <Property Name="REALCOLL" Type="float" />
+        <Property Name="MOVCOLL" Type="float" />
+        <Property Name="OTHCOLL" Type="float" />
+        <Property Name="CASH" Type="float" />
+        <Property Name="NEARCASH" Type="float" />
+        <Property Name="REALPROP" Type="float" />
+        <Property Name="MOVPROP" Type="float" />
+        <Property Name="OTHPROP" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.PV LOSS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="PV LOSS">
+        <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+        <Property Name="Default Date" Type="datetime" />
+        <Property Name="Date of Restructure" Type="datetime" />
+        <Property Name="Date of Upgrade" Type="datetime" />
+        <Property Name="Pv Loss" Type="float" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.RESTRUCTURE INFORMATION' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="RESTRUCTURE INFORMATION">
+        <Property Name="CIF" Type="nvarchar" MaxLength="255" />
+        <Property Name="Default Date" Type="datetime" />
+        <Property Name="Date of Restructure" Type="datetime" />
+        <Property Name="Date of Repayment" Type="datetime" />
+        <Property Name="Discount Rate" Type="float" />
+        <Property Name="TDR Cash Flow" Type="float" />
+        <Property Name="Present Value of Repayment" Type="float" />
+        <Property Name="Cash Flow Currency" Type="nvarchar" MaxLength="3" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.TL02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="TL02">
+        <Property Name="CIF" Type="decimal" Precision="15" />
+        <Property Name="YYMM" Type="nvarchar" MaxLength="15" />
+        <Property Name="COLL_ID" Type="decimal" Precision="9" />
+        <Property Name="PLED_ID" Type="decimal" Precision="12" />
+        <Property Name="PLED_SEQ" Type="decimal" Precision="2" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'LGD.dbo.TL03' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="TL03">
+        <Property Name="CIF" Type="decimal" Precision="15" />
+        <Property Name="YYMM" Type="nvarchar" MaxLength="15" />
+        <Property Name="COLL_ID" Type="decimal" Precision="9" />
+        <Property Name="APPS_ID" Type="decimal" Precision="9" />
+        <Property Name="APPS_DATE" Type="datetime" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LGDModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="LGDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADDITIONAL_DRAWDOWN" EntityType="LGDModel.ADDITIONAL_DRAWDOWN" />
+          <EntitySet Name="CASHFLOW" EntityType="LGDModel.CASHFLOW" />
+          <EntitySet Name="COLLATERAL_INFORMATION" EntityType="LGDModel.COLLATERAL_INFORMATION" />
+          <EntitySet Name="FACILITY_INFORMATION" EntityType="LGDModel.FACILITY_INFORMATION" />
+          <EntitySet Name="GUARANTOR_INFORMATION" EntityType="LGDModel.GUARANTOR_INFORMATION" />
+          <EntitySet Name="L_APP_ID" EntityType="LGDModel.L_APP_ID" />
+          <EntitySet Name="L_CURRENCY_CODE" EntityType="LGDModel.L_CURRENCY_CODE" />
+          <EntitySet Name="L_IMPORT_TABLE" EntityType="LGDModel.L_IMPORT_TABLE" />
+          <EntitySet Name="L_INDEX" EntityType="LGDModel.L_INDEX" />
+          <EntitySet Name="MERGECOS" EntityType="LGDModel.MERGECOS" />
+          <EntitySet Name="MISCELLANEOUS" EntityType="LGDModel.MISCELLANEOUS" />
+          <EntitySet Name="OBLIGOR_INFORMATION" EntityType="LGDModel.OBLIGOR_INFORMATION" />
+          <EntitySet Name="PLEDGE_INFORMATION" EntityType="LGDModel.PLEDGE_INFORMATION" />
+          <EntitySet Name="REPCUST" EntityType="LGDModel.REPCUST" />
+          <EntitySet Name="sysdiagrams" EntityType="LGDModel.sysdiagrams" />
+          <EntitySet Name="TB_FILE" EntityType="LGDModel.TB_FILE" />
+          <EntitySet Name="TB_FILE_TYPE" EntityType="LGDModel.TB_FILE_TYPE" />
+          <EntitySet Name="TB_LGD_SAMPLE" EntityType="LGDModel.TB_LGD_SAMPLE" />
+          <EntitySet Name="TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR" EntityType="LGDModel.TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR" />
+          <EntitySet Name="TRANSACTION_INFORMATION" EntityType="LGDModel.TRANSACTION_INFORMATION" />
+          <AssociationSet Name="FK_TB_FILE_TB_FILE_TYPE" Association="LGDModel.FK_TB_FILE_TB_FILE_TYPE">
+            <End Role="TB_FILE_TYPE" EntitySet="TB_FILE_TYPE" />
+            <End Role="TB_FILE" EntitySet="TB_FILE" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ADDITIONAL_DRAWDOWN">
+          <Key>
+            <PropertyRef Name="LIMITNO_Changed" />
+            <PropertyRef Name="Is_This_an_Additional_Drawdown" />
+          </Key>
+          <Property Name="CIF" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Default_Date" Type="DateTime" />
+          <Property Name="BRAN" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ACCGL" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ACCNO" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="CONTNO" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SEQNO" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="APP_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PRINCIPAL" Type="Double" />
+          <Property Name="ACCRU" Type="Double" />
+          <Property Name="SUSP" Type="Double" />
+          <Property Name="PRINCIPAL___Last_Month" Type="Double" />
+          <Property Name="ACCRU___Last_Month" Type="Double" />
+          <Property Name="SUSP___Last_Month" Type="Double" />
+          <Property Name="Additional_Drawdown_Date" Type="DateTime" />
+          <Property Name="Additional_Drawdown_Currency" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="LIMITNO" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="LIMITNO_Changed" Type="Boolean" Nullable="false" />
+          <Property Name="Previous_LIMITNO" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Is_This_an_Additional_Drawdown" Type="Boolean" Nullable="false" />
+          <Property Name="Type_of_Additional_Drawdown" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Other_Reason_of_Principal_Increase" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CASHFLOW">
+          <Key>
+            <PropertyRef Name="LIMITNO_Changed" />
+          </Key>
+          <Property Name="CIF" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Default_Date" Type="DateTime" />
+          <Property Name="LIMITNO" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="APP_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Cashflow_Currency_Code" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Date_of_Cashflow" Type="DateTime" />
+          <Property Name="Cashflow_Amount__PAY_PRIN" Type="Double" />
+          <Property Name="Cashflow_Amount__PAY_INT" Type="Double" />
+          <Property Name="Cashflow_Amount__PAY_SUSP" Type="Double" />
+          <Property Name="Cash_Flow_Source_Description_1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Cash_Flow_Source_Description_2" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Cash_Flow_Source_Description_3" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Written_off___Haircut_Amount" Type="Double" />
+          <Property Name="Collateral_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="LIMITNO_Changed" Type="Boolean" Nullable="false" />
+          <Property Name="Previous_LIMITNO" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="COLLATERAL_INFORMATION">
+          <Key>
+            <PropertyRef Name="Property_Under_Construction" />
+          </Key>
+          <Property Name="COLL_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PLED_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PLED_SEQ" Type="Int16" />
+          <Property Name="APPS_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="APPS_DATE" Type="DateTime" />
+          <Property Name="Collateral_Type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Property_Type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Collateral_Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="District_of_Property" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Amphur_of_Property" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Province_of_Property" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Located_Country_of_Property" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Collateral_Provider" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Property_Under_Construction" Type="Boolean" Nullable="false" />
+          <Property Name="Leasehold_Period" Type="Int16" />
+          <Property Name="Leasehold_Start_Date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="FACILITY_INFORMATION">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="Default_Date" />
+            <PropertyRef Name="LIMITNO" />
+          </Key>
+          <Property Name="CIF" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Default_Date" Type="DateTime" Nullable="false" />
+          <Property Name="APP_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="LIMITTYP_A" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="LIMITNO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Limit___D" Type="Double" />
+          <Property Name="Limit___D_1" Type="Double" />
+          <Property Name="One_Level_Up_Limit_ID___D_1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="One_Level_Up_Limit_Currency___D_1" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="One_Level_Up_Limit_Amount___D_1" Type="Double" />
+          <Property Name="Two_Level_Up_Limit_ID___D_1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Two_Level_Up_Limit_Currency___D_1" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Two_Level_Up_Limit_Amount___D_1" Type="Double" />
+          <Property Name="Three_Level_Up_Limit_ID___D_1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Three_Level_Up_Limit_Currency___D_1" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Three_Level_Up_Limit_Amount___D_1" Type="Double" />
+          <Property Name="Four_Level_Up_Limit_ID___D_1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Four_Level_Up_Limit_Currency___D_1" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Four_Level_Up_Limit_Amount___D_1" Type="Double" />
+          <Property Name="Facility_Purpose_Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Nature_of_Facility" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Seniority" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Basel_Committed_Indicator" Type="Boolean" Nullable="false" />
+          <Property Name="Maturity_Date" Type="DateTime" />
+          <Property Name="Principal_Repayment_Currency_Code" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Principal_Repayment_Amount" Type="Double" />
+          <Property Name="Principal_Repayment_Cycle" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Compounding_Frequency_of_Interest" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Sharing_Limit_with__CIF_1_" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Sharing_Limit_with__CIF_2_" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Sharing_Limit_with__CIF_3_" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GUARANTOR_INFORMATION">
+          <Key>
+            <PropertyRef Name="Pledge_to_All_Facilities" />
+          </Key>
+          <Property Name="CIF" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Default_Date" Type="DateTime" />
+          <Property Name="PLED_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Guarantee_Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Pledge_to_All_Facilities" Type="Boolean" Nullable="false" />
+          <Property Name="Facility_Pledged" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Guarantee_Amount___D" Type="Double" />
+          <Property Name="Guarantee_Amount___D_1" Type="Double" />
+          <Property Name="Guarantee_Amount_Currency_Code" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Guarantee_Indemnity_Source_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Internal_Rating___D_1" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="L_APP_ID">
+          <Key>
+            <PropertyRef Name="APP_ID" />
+          </Key>
+          <Property Name="APP_ID" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="L_CURRENCY_CODE">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="L_IMPORT_TABLE">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="Table_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="L_INDEX">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="Table_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="MERGECOS">
+          <Key>
+            <PropertyRef Name="AS_OF" />
+            <PropertyRef Name="cif" />
+            <PropertyRef Name="pled_id" />
+            <PropertyRef Name="apps_id" />
+          </Key>
+          <Property Name="AS_OF" Type="DateTime" Nullable="false" />
+          <Property Name="YM" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="botid" Type="Decimal" Precision="7" Scale="0" />
+          <Property Name="cif" Type="Decimal" Nullable="false" Precision="9" Scale="0" />
+          <Property Name="pled_id" Type="Decimal" Nullable="false" Precision="12" Scale="0" />
+          <Property Name="apps_id" Type="Decimal" Nullable="false" Precision="13" Scale="0" />
+          <Property Name="pled_seq" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="guar_amt" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="guarantee" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="colltype" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="collval" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="discval" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="val_r" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="valdate" Type="DateTime" />
+          <Property Name="usevalue" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="useaccru" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="discpct" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="co_no" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="totamt" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="class" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="apps_pct" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="baypct" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="amcpct" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="no_share" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="cif_share" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="sharegroup" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="cif_group" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="related" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="listed" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="dep_acc" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="rm_no" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="guarantor" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="dep_flag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="MISCELLANEOUS">
+          <Key>
+            <PropertyRef Name="Running_Number" />
+          </Key>
+          <Property Name="Running_Number" Type="Int32" Nullable="false" />
+          <Property Name="Indirect_Cost" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Cost_of_Debt" Type="Int32" />
+          <Property Name="Local_Risk_Free_Rate" Type="Int32" />
+          <Property Name="Hurdle_Rate" Type="Int32" />
+          <Property Name="Property_Price_Index" Type="Int32" />
+          <Property Name="Exchange_Rate" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OBLIGOR_INFORMATION">
+          <Key>
+            <PropertyRef Name="Previous_Default_Flag" />
+            <PropertyRef Name="Listed_Status" />
+            <PropertyRef Name="Emergence_from_Default" />
+            <PropertyRef Name="Negative_Pledge" />
+          </Key>
+          <Property Name="CIF" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Account_Officer" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Data_Inputter" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Date_of_Input" Type="DateTime" />
+          <Property Name="Portfolio" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Business_Unit" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="Default_Date" Type="DateTime" />
+          <Property Name="C1_Year_Before_Default_Date" Type="DateTime" />
+          <Property Name="Industry_Code" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="Bank_Group_Key" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Last_Review_Date" Type="DateTime" />
+          <Property Name="Previous_Default_Flag" Type="Boolean" Nullable="false" />
+          <Property Name="Previous_Default_Date" Type="DateTime" />
+          <Property Name="Default_Type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Business_Reason_for_Default" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Banking_Relationship_Start_Date" Type="DateTime" />
+          <Property Name="Legal_Enity_Type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Province_of_Incorporation" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Date_of_Incorporation" Type="DateTime" />
+          <Property Name="Listed_Status" Type="Boolean" Nullable="false" />
+          <Property Name="Internal_Rating___D_1" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="Rating_Date" Type="DateTime" />
+          <Property Name="Emergence_from_Default" Type="Boolean" Nullable="false" />
+          <Property Name="Nature_of_Emergence" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Emergence_Date" Type="DateTime" />
+          <Property Name="Negative_Pledge" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLEDGE_INFORMATION">
+          <Key>
+            <PropertyRef Name="Pledge_to_All_Facilities" />
+            <PropertyRef Name="Prior_Claim_by_Other_Bank" />
+          </Key>
+          <Property Name="CIF" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Default_Date" Type="DateTime" />
+          <Property Name="APPS_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PLED_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PLED_SEQ" Type="Int16" />
+          <Property Name="Pledge_to_All_Facilities" Type="Boolean" Nullable="false" />
+          <Property Name="Facility_Pledged" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Collateral_Currency_Code" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Valuation_Amount___D" Type="Double" />
+          <Property Name="Valuation_Date___D" Type="DateTime" />
+          <Property Name="Valuation_Amount___D_1" Type="Double" />
+          <Property Name="Valuation_Date___D_1" Type="DateTime" />
+          <Property Name="Prior_Claim_by_Other_Bank" Type="Boolean" Nullable="false" />
+          <Property Name="Prior_Claim_Amount" Type="Double" />
+          <Property Name="Pledge_Amount___D" Type="Double" />
+          <Property Name="Limitation_Amount___D" Type="Double" />
+          <Property Name="Pledge_Amount___D_1" Type="Double" />
+          <Property Name="Limitation_Amount___D_1" Type="Double" />
+        </EntityType>
+        <EntityType Name="REPCUST">
+          <Key>
+            <PropertyRef Name="YM" />
+            <PropertyRef Name="accno" />
+            <PropertyRef Name="contno" />
+            <PropertyRef Name="seqno" />
+          </Key>
+          <Property Name="YM" Type="DateTime" Nullable="false" />
+          <Property Name="botid" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="cif" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="oldcif" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="bran" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="area" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="accgl" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="accno" Type="String" Nullable="false" MaxLength="16" Unicode="false" FixedLength="true" />
+          <Property Name="contno" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="true" />
+          <Property Name="seqno" Type="Decimal" Nullable="false" Precision="5" Scale="0" />
+          <Property Name="fcy_type" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="limit" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="principal" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="accru" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="susp" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="unearnprin" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="unearnint" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="defer" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="unearnod" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="unearnals" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="unearnpns" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="uncleaprin" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="uncleaint" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="gl5540620" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="unearnoth" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="totamt_r" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="accru_r" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="usecoll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="reserve" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="extraresv" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="pvloss" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="bafterc" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tdrloss" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="totresv" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="addresv" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="aging" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="adjclass" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="class" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="cladj" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="botclass" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="oldcladj" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="int_rate" Type="Decimal" Precision="7" Scale="5" />
+          <Property Name="rate_type" Type="String" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="sign" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="rate_load" Type="Decimal" Precision="7" Scale="5" />
+          <Property Name="pay_cond" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="busi_type" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="dept" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="dept_appv" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="dept_tran" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="dept_ctrl" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="officr_id" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="due_date" Type="DateTime" />
+          <Property Name="issu_date" Type="DateTime" />
+          <Property Name="tdr_income" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="limitno" Type="String" MaxLength="20" Unicode="false" FixedLength="true" />
+          <Property Name="cred_date" Type="DateTime" />
+          <Property Name="stop_date" Type="DateTime" />
+          <Property Name="open_acc" Type="DateTime" />
+          <Property Name="pay_prin" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="pay_int" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="pay_susp" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="post_prin" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="post_int" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="post_susp" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="rev_accru" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="fee" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="avgbalance" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="npl" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="app_id" Type="String" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="nplflag" Type="Boolean" />
+          <Property Name="tdr" Type="Boolean" />
+          <Property Name="lawflag" Type="Boolean" />
+          <Property Name="resvflag" Type="Boolean" />
+          <Property Name="ccf1flag" Type="Boolean" />
+          <Property Name="limittyp_a" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="limitapp" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="last_pay" Type="DateTime" />
+          <Property Name="payterm" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="unearnimx" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="payperints" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="payperint" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="lnstype" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="unearncts" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="legalstat" Type="String" MaxLength="30" Unicode="false" FixedLength="true" />
+          <Property Name="legalstat2" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="flagge" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="oldaging" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="unearnpr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="revclass" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="unearnipr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="geaging" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="interbank" Type="Boolean" />
+          <Property Name="affiliate" Type="Boolean" />
+          <Property Name="beforege" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="gecustsize" Type="String" MaxLength="30" Unicode="false" FixedLength="true" />
+          <Property Name="gesize2" Type="String" MaxLength="30" Unicode="false" FixedLength="true" />
+          <Property Name="gesize4" Type="String" MaxLength="30" Unicode="false" FixedLength="true" />
+          <Property Name="related" Type="Boolean" />
+          <Property Name="saledate" Type="DateTime" />
+          <Property Name="sale" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="saleclass" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="saleresv" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ctrlsize" Type="String" MaxLength="30" Unicode="false" FixedLength="true" />
+          <Property Name="agingclass" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="classflag" Type="String" MaxLength="7" Unicode="false" FixedLength="true" />
+          <Property Name="upd_user" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="bayadd" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="mortgageod" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="tdr_aging" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="reverseint" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="group" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="tobe_sale" Type="Boolean" />
+          <Property Name="otobe_sale" Type="Boolean" />
+          <Property Name="manualod" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="manualals" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="manualpns" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="manualimx" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="uniimx" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="botclass_r" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="fraud" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="deceased" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="resv_npl" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="resvaccru" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="postresv" Type="Decimal" Precision="16" Scale="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB_FILE">
+          <Key>
+            <PropertyRef Name="FILE_ID" />
+          </Key>
+          <Property Name="FILE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="FILE_TYPE_ID" Type="Int32" />
+          <Property Name="FILE_DESC" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FILE_PATH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="FILE_CREATE_DATE" Type="DateTime" />
+          <NavigationProperty Name="TB_FILE_TYPE" Relationship="LGDModel.FK_TB_FILE_TB_FILE_TYPE" FromRole="TB_FILE" ToRole="TB_FILE_TYPE" />
+        </EntityType>
+        <EntityType Name="TB_FILE_TYPE">
+          <Key>
+            <PropertyRef Name="FILE_TYPE_ID" />
+          </Key>
+          <Property Name="FILE_TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="FILE_TYPE_DESC" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="TB_FILE" Relationship="LGDModel.FK_TB_FILE_TB_FILE_TYPE" FromRole="TB_FILE_TYPE" ToRole="TB_FILE" />
+        </EntityType>
+        <EntityType Name="TB_LGD_SAMPLE">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="YM_1" />
+          </Key>
+          <Property Name="CIF" Type="Int32" Nullable="false" />
+          <Property Name="YM_1" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="YM_2" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="YM" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="CASE_" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="YM" />
+          </Key>
+          <Property Name="CIF" Type="Int32" Nullable="false" />
+          <Property Name="YM" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="YM_TH" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="CASE_" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SIZE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TRANSACTION_INFORMATION">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="Default_Date" />
+            <PropertyRef Name="BRAN" />
+            <PropertyRef Name="ACCGL" />
+            <PropertyRef Name="ACCNO" />
+            <PropertyRef Name="CONTNO" />
+            <PropertyRef Name="SEQNO" />
+          </Key>
+          <Property Name="CIF" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Default_Date" Type="DateTime" Nullable="false" />
+          <Property Name="BRAN" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="ACCGL" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ACCNO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CONTNO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SEQNO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LIMITNO" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FCY_TYPE__Original_Currency_Code" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Currency_Code" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="LNSTYPE" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Total_Interest_Rate_Prior_to_Default" Type="Double" />
+          <Property Name="Interest_Rate_Index_Prior_to_Default" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Interest_Rate_Spread_Prior_to_Default____" Type="Double" />
+          <Property Name="Rate_Sign" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="OS___D__Principal" Type="Double" />
+          <Property Name="OS___D__Accrued" Type="Double" />
+          <Property Name="OS___D__Suspense" Type="Double" />
+          <Property Name="OS___D_1__Principal" Type="Double" />
+          <Property Name="OS___D_1__Accrued" Type="Double" />
+          <Property Name="OS___D_1__Suspense" Type="Double" />
+        </EntityType>
+        <Association Name="FK_TB_FILE_TB_FILE_TYPE">
+          <End Role="TB_FILE_TYPE" Type="LGDModel.TB_FILE_TYPE" Multiplicity="0..1" />
+          <End Role="TB_FILE" Type="LGDModel.TB_FILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FILE_TYPE">
+              <PropertyRef Name="FILE_TYPE_ID" />
+            </Principal>
+            <Dependent Role="TB_FILE">
+              <PropertyRef Name="FILE_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LGDModelStoreContainer" CdmEntityContainer="LGDEntities">
+          <EntitySetMapping Name="ADDITIONAL_DRAWDOWN"><EntityTypeMapping TypeName="LGDModel.ADDITIONAL_DRAWDOWN"><MappingFragment StoreEntitySet="ADDITIONAL DRAWDOWN">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+            <ScalarProperty Name="BRAN" ColumnName="BRAN" />
+            <ScalarProperty Name="ACCGL" ColumnName="ACCGL" />
+            <ScalarProperty Name="ACCNO" ColumnName="ACCNO" />
+            <ScalarProperty Name="CONTNO" ColumnName="CONTNO" />
+            <ScalarProperty Name="SEQNO" ColumnName="SEQNO" />
+            <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+            <ScalarProperty Name="PRINCIPAL" ColumnName="PRINCIPAL" />
+            <ScalarProperty Name="ACCRU" ColumnName="ACCRU" />
+            <ScalarProperty Name="SUSP" ColumnName="SUSP" />
+            <ScalarProperty Name="PRINCIPAL___Last_Month" ColumnName="PRINCIPAL @ Last Month" />
+            <ScalarProperty Name="ACCRU___Last_Month" ColumnName="ACCRU @ Last Month" />
+            <ScalarProperty Name="SUSP___Last_Month" ColumnName="SUSP @ Last Month" />
+            <ScalarProperty Name="Additional_Drawdown_Date" ColumnName="Additional Drawdown Date" />
+            <ScalarProperty Name="Additional_Drawdown_Currency" ColumnName="Additional Drawdown Currency" />
+            <ScalarProperty Name="LIMITNO" ColumnName="LIMITNO" />
+            <ScalarProperty Name="LIMITNO_Changed" ColumnName="LIMITNO Changed" />
+            <ScalarProperty Name="Previous_LIMITNO" ColumnName="Previous LIMITNO" />
+            <ScalarProperty Name="Is_This_an_Additional_Drawdown" ColumnName="Is This an Additional Drawdown" />
+            <ScalarProperty Name="Type_of_Additional_Drawdown" ColumnName="Type of Additional Drawdown" />
+            <ScalarProperty Name="Other_Reason_of_Principal_Increase" ColumnName="Other Reason of Principal Increase" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CASHFLOW"><EntityTypeMapping TypeName="LGDModel.CASHFLOW"><MappingFragment StoreEntitySet="CASHFLOW">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+            <ScalarProperty Name="LIMITNO" ColumnName="LIMITNO" />
+            <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+            <ScalarProperty Name="Cashflow_Currency_Code" ColumnName="Cashflow Currency Code" />
+            <ScalarProperty Name="Date_of_Cashflow" ColumnName="Date of Cashflow" />
+            <ScalarProperty Name="Cashflow_Amount__PAY_PRIN" ColumnName="Cashflow Amount: PAY_PRIN" />
+            <ScalarProperty Name="Cashflow_Amount__PAY_INT" ColumnName="Cashflow Amount: PAY_INT" />
+            <ScalarProperty Name="Cashflow_Amount__PAY_SUSP" ColumnName="Cashflow Amount: PAY_SUSP" />
+            <ScalarProperty Name="Cash_Flow_Source_Description_1" ColumnName="Cash Flow Source Description 1" />
+            <ScalarProperty Name="Cash_Flow_Source_Description_2" ColumnName="Cash Flow Source Description 2" />
+            <ScalarProperty Name="Cash_Flow_Source_Description_3" ColumnName="Cash Flow Source Description 3" />
+            <ScalarProperty Name="Written_off___Haircut_Amount" ColumnName="Written-off / Haircut Amount" />
+            <ScalarProperty Name="Collateral_ID" ColumnName="Collateral ID" />
+            <ScalarProperty Name="LIMITNO_Changed" ColumnName="LIMITNO Changed" />
+            <ScalarProperty Name="Previous_LIMITNO" ColumnName="Previous LIMITNO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="COLLATERAL_INFORMATION"><EntityTypeMapping TypeName="LGDModel.COLLATERAL_INFORMATION"><MappingFragment StoreEntitySet="COLLATERAL INFORMATION">
+            <ScalarProperty Name="COLL_ID" ColumnName="COLL_ID" />
+            <ScalarProperty Name="PLED_ID" ColumnName="PLED_ID" />
+            <ScalarProperty Name="PLED_SEQ" ColumnName="PLED_SEQ" />
+            <ScalarProperty Name="APPS_ID" ColumnName="APPS_ID" />
+            <ScalarProperty Name="APPS_DATE" ColumnName="APPS_DATE" />
+            <ScalarProperty Name="Collateral_Type" ColumnName="Collateral Type" />
+            <ScalarProperty Name="Property_Type" ColumnName="Property Type" />
+            <ScalarProperty Name="Collateral_Description" ColumnName="Collateral Description" />
+            <ScalarProperty Name="District_of_Property" ColumnName="District of Property" />
+            <ScalarProperty Name="Amphur_of_Property" ColumnName="Amphur of Property" />
+            <ScalarProperty Name="Province_of_Property" ColumnName="Province of Property" />
+            <ScalarProperty Name="Located_Country_of_Property" ColumnName="Located Country of Property" />
+            <ScalarProperty Name="Collateral_Provider" ColumnName="Collateral Provider" />
+            <ScalarProperty Name="Property_Under_Construction" ColumnName="Property Under Construction" />
+            <ScalarProperty Name="Leasehold_Period" ColumnName="Leasehold Period" />
+            <ScalarProperty Name="Leasehold_Start_Date" ColumnName="Leasehold Start Date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FACILITY_INFORMATION"><EntityTypeMapping TypeName="LGDModel.FACILITY_INFORMATION"><MappingFragment StoreEntitySet="FACILITY INFORMATION">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+            <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+            <ScalarProperty Name="LIMITTYP_A" ColumnName="LIMITTYP_A" />
+            <ScalarProperty Name="LIMITNO" ColumnName="LIMITNO" />
+            <ScalarProperty Name="Limit___D" ColumnName="Limit @ D" />
+            <ScalarProperty Name="Limit___D_1" ColumnName="Limit @ D-1" />
+            <ScalarProperty Name="One_Level_Up_Limit_ID___D_1" ColumnName="One Level Up Limit ID @ D-1" />
+            <ScalarProperty Name="One_Level_Up_Limit_Currency___D_1" ColumnName="One Level Up Limit Currency @ D-1" />
+            <ScalarProperty Name="One_Level_Up_Limit_Amount___D_1" ColumnName="One Level Up Limit Amount @ D-1" />
+            <ScalarProperty Name="Two_Level_Up_Limit_ID___D_1" ColumnName="Two Level Up Limit ID @ D-1" />
+            <ScalarProperty Name="Two_Level_Up_Limit_Currency___D_1" ColumnName="Two Level Up Limit Currency @ D-1" />
+            <ScalarProperty Name="Two_Level_Up_Limit_Amount___D_1" ColumnName="Two Level Up Limit Amount @ D-1" />
+            <ScalarProperty Name="Three_Level_Up_Limit_ID___D_1" ColumnName="Three Level Up Limit ID @ D-1" />
+            <ScalarProperty Name="Three_Level_Up_Limit_Currency___D_1" ColumnName="Three Level Up Limit Currency @ D-1" />
+            <ScalarProperty Name="Three_Level_Up_Limit_Amount___D_1" ColumnName="Three Level Up Limit Amount @ D-1" />
+            <ScalarProperty Name="Four_Level_Up_Limit_ID___D_1" ColumnName="Four Level Up Limit ID @ D-1" />
+            <ScalarProperty Name="Four_Level_Up_Limit_Currency___D_1" ColumnName="Four Level Up Limit Currency @ D-1" />
+            <ScalarProperty Name="Four_Level_Up_Limit_Amount___D_1" ColumnName="Four Level Up Limit Amount @ D-1" />
+            <ScalarProperty Name="Facility_Purpose_Description" ColumnName="Facility Purpose Description" />
+            <ScalarProperty Name="Nature_of_Facility" ColumnName="Nature of Facility" />
+            <ScalarProperty Name="Seniority" ColumnName="Seniority" />
+            <ScalarProperty Name="Basel_Committed_Indicator" ColumnName="Basel Committed Indicator" />
+            <ScalarProperty Name="Maturity_Date" ColumnName="Maturity Date" />
+            <ScalarProperty Name="Principal_Repayment_Currency_Code" ColumnName="Principal Repayment Currency Code" />
+            <ScalarProperty Name="Principal_Repayment_Amount" ColumnName="Principal Repayment Amount" />
+            <ScalarProperty Name="Principal_Repayment_Cycle" ColumnName="Principal Repayment Cycle" />
+            <ScalarProperty Name="Compounding_Frequency_of_Interest" ColumnName="Compounding Frequency of Interest" />
+            <ScalarProperty Name="Sharing_Limit_with__CIF_1_" ColumnName="Sharing Limit with (CIF 1)" />
+            <ScalarProperty Name="Sharing_Limit_with__CIF_2_" ColumnName="Sharing Limit with (CIF 2)" />
+            <ScalarProperty Name="Sharing_Limit_with__CIF_3_" ColumnName="Sharing Limit with (CIF 3)" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GUARANTOR_INFORMATION"><EntityTypeMapping TypeName="LGDModel.GUARANTOR_INFORMATION"><MappingFragment StoreEntitySet="GUARANTOR INFORMATION">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+            <ScalarProperty Name="PLED_ID" ColumnName="PLED_ID" />
+            <ScalarProperty Name="Guarantee_Title" ColumnName="Guarantee Title" />
+            <ScalarProperty Name="Pledge_to_All_Facilities" ColumnName="Pledge to All Facilities" />
+            <ScalarProperty Name="Facility_Pledged" ColumnName="Facility Pledged" />
+            <ScalarProperty Name="Guarantee_Amount___D" ColumnName="Guarantee Amount @ D" />
+            <ScalarProperty Name="Guarantee_Amount___D_1" ColumnName="Guarantee Amount @ D-1" />
+            <ScalarProperty Name="Guarantee_Amount_Currency_Code" ColumnName="Guarantee Amount Currency Code" />
+            <ScalarProperty Name="Guarantee_Indemnity_Source_ID" ColumnName="Guarantee Indemnity Source ID" />
+            <ScalarProperty Name="Internal_Rating___D_1" ColumnName="Internal Rating @ D-1" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="L_APP_ID"><EntityTypeMapping TypeName="LGDModel.L_APP_ID"><MappingFragment StoreEntitySet="L_APP_ID">
+            <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="L_CURRENCY_CODE"><EntityTypeMapping TypeName="LGDModel.L_CURRENCY_CODE"><MappingFragment StoreEntitySet="L_CURRENCY CODE">
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="L_IMPORT_TABLE"><EntityTypeMapping TypeName="LGDModel.L_IMPORT_TABLE"><MappingFragment StoreEntitySet="L_IMPORT TABLE">
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Table_Name" ColumnName="Table Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="L_INDEX"><EntityTypeMapping TypeName="LGDModel.L_INDEX"><MappingFragment StoreEntitySet="L_INDEX">
+            <ScalarProperty Name="Code" ColumnName="Code" />
+            <ScalarProperty Name="Table_Name" ColumnName="Table Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MERGECOS"><EntityTypeMapping TypeName="LGDModel.MERGECOS"><MappingFragment StoreEntitySet="MERGECOS">
+            <ScalarProperty Name="AS_OF" ColumnName="AS_OF" />
+            <ScalarProperty Name="YM" ColumnName="YM" />
+            <ScalarProperty Name="botid" ColumnName="botid" />
+            <ScalarProperty Name="cif" ColumnName="cif" />
+            <ScalarProperty Name="pled_id" ColumnName="pled_id" />
+            <ScalarProperty Name="apps_id" ColumnName="apps_id" />
+            <ScalarProperty Name="pled_seq" ColumnName="pled_seq" />
+            <ScalarProperty Name="guar_amt" ColumnName="guar_amt" />
+            <ScalarProperty Name="guarantee" ColumnName="guarantee" />
+            <ScalarProperty Name="colltype" ColumnName="colltype" />
+            <ScalarProperty Name="collval" ColumnName="collval" />
+            <ScalarProperty Name="discval" ColumnName="discval" />
+            <ScalarProperty Name="val_r" ColumnName="val_r" />
+            <ScalarProperty Name="valdate" ColumnName="valdate" />
+            <ScalarProperty Name="usevalue" ColumnName="usevalue" />
+            <ScalarProperty Name="useaccru" ColumnName="useaccru" />
+            <ScalarProperty Name="discpct" ColumnName="discpct" />
+            <ScalarProperty Name="co_no" ColumnName="co_no" />
+            <ScalarProperty Name="totamt" ColumnName="totamt" />
+            <ScalarProperty Name="class" ColumnName="class" />
+            <ScalarProperty Name="apps_pct" ColumnName="apps_pct" />
+            <ScalarProperty Name="baypct" ColumnName="baypct" />
+            <ScalarProperty Name="amcpct" ColumnName="amcpct" />
+            <ScalarProperty Name="no_share" ColumnName="no_share" />
+            <ScalarProperty Name="cif_share" ColumnName="cif_share" />
+            <ScalarProperty Name="sharegroup" ColumnName="sharegroup" />
+            <ScalarProperty Name="cif_group" ColumnName="cif_group" />
+            <ScalarProperty Name="related" ColumnName="related" />
+            <ScalarProperty Name="listed" ColumnName="listed" />
+            <ScalarProperty Name="dep_acc" ColumnName="dep_acc" />
+            <ScalarProperty Name="rm_no" ColumnName="rm_no" />
+            <ScalarProperty Name="guarantor" ColumnName="guarantor" />
+            <ScalarProperty Name="dep_flag" ColumnName="dep_flag" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MISCELLANEOUS"><EntityTypeMapping TypeName="LGDModel.MISCELLANEOUS"><MappingFragment StoreEntitySet="MISCELLANEOUS">
+            <ScalarProperty Name="Running_Number" ColumnName="Running Number" />
+            <ScalarProperty Name="Indirect_Cost" ColumnName="Indirect Cost" />
+            <ScalarProperty Name="Cost_of_Debt" ColumnName="Cost of Debt" />
+            <ScalarProperty Name="Local_Risk_Free_Rate" ColumnName="Local Risk Free Rate" />
+            <ScalarProperty Name="Hurdle_Rate" ColumnName="Hurdle Rate" />
+            <ScalarProperty Name="Property_Price_Index" ColumnName="Property Price Index" />
+            <ScalarProperty Name="Exchange_Rate" ColumnName="Exchange Rate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OBLIGOR_INFORMATION"><EntityTypeMapping TypeName="LGDModel.OBLIGOR_INFORMATION"><MappingFragment StoreEntitySet="OBLIGOR INFORMATION">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="Account_Officer" ColumnName="Account Officer" />
+            <ScalarProperty Name="Data_Inputter" ColumnName="Data Inputter" />
+            <ScalarProperty Name="Date_of_Input" ColumnName="Date of Input" />
+            <ScalarProperty Name="Portfolio" ColumnName="Portfolio" />
+            <ScalarProperty Name="Business_Unit" ColumnName="Business Unit" />
+            <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+            <ScalarProperty Name="C1_Year_Before_Default_Date" ColumnName="1 Year Before Default Date" />
+            <ScalarProperty Name="Industry_Code" ColumnName="Industry Code" />
+            <ScalarProperty Name="Bank_Group_Key" ColumnName="Bank Group Key" />
+            <ScalarProperty Name="Last_Review_Date" ColumnName="Last Review Date" />
+            <ScalarProperty Name="Previous_Default_Flag" ColumnName="Previous Default Flag" />
+            <ScalarProperty Name="Previous_Default_Date" ColumnName="Previous Default Date" />
+            <ScalarProperty Name="Default_Type" ColumnName="Default Type" />
+            <ScalarProperty Name="Business_Reason_for_Default" ColumnName="Business Reason for Default" />
+            <ScalarProperty Name="Banking_Relationship_Start_Date" ColumnName="Banking Relationship Start Date" />
+            <ScalarProperty Name="Legal_Enity_Type" ColumnName="Legal Enity Type" />
+            <ScalarProperty Name="Province_of_Incorporation" ColumnName="Province of Incorporation" />
+            <ScalarProperty Name="Date_of_Incorporation" ColumnName="Date of Incorporation" />
+            <ScalarProperty Name="Listed_Status" ColumnName="Listed Status" />
+            <ScalarProperty Name="Internal_Rating___D_1" ColumnName="Internal Rating @ D-1" />
+            <ScalarProperty Name="Rating_Date" ColumnName="Rating Date" />
+            <ScalarProperty Name="Emergence_from_Default" ColumnName="Emergence from Default" />
+            <ScalarProperty Name="Nature_of_Emergence" ColumnName="Nature of Emergence" />
+            <ScalarProperty Name="Emergence_Date" ColumnName="Emergence Date" />
+            <ScalarProperty Name="Negative_Pledge" ColumnName="Negative Pledge" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PLEDGE_INFORMATION"><EntityTypeMapping TypeName="LGDModel.PLEDGE_INFORMATION"><MappingFragment StoreEntitySet="PLEDGE INFORMATION">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+            <ScalarProperty Name="APPS_ID" ColumnName="APPS_ID" />
+            <ScalarProperty Name="PLED_ID" ColumnName="PLED_ID" />
+            <ScalarProperty Name="PLED_SEQ" ColumnName="PLED_SEQ" />
+            <ScalarProperty Name="Pledge_to_All_Facilities" ColumnName="Pledge to All Facilities" />
+            <ScalarProperty Name="Facility_Pledged" ColumnName="Facility Pledged" />
+            <ScalarProperty Name="Collateral_Currency_Code" ColumnName="Collateral Currency Code" />
+            <ScalarProperty Name="Valuation_Amount___D" ColumnName="Valuation Amount @ D" />
+            <ScalarProperty Name="Valuation_Date___D" ColumnName="Valuation Date @ D" />
+            <ScalarProperty Name="Valuation_Amount___D_1" ColumnName="Valuation Amount @ D-1" />
+            <ScalarProperty Name="Valuation_Date___D_1" ColumnName="Valuation Date @ D-1" />
+            <ScalarProperty Name="Prior_Claim_by_Other_Bank" ColumnName="Prior Claim by Other Bank" />
+            <ScalarProperty Name="Prior_Claim_Amount" ColumnName="Prior Claim Amount" />
+            <ScalarProperty Name="Pledge_Amount___D" ColumnName="Pledge Amount @ D" />
+            <ScalarProperty Name="Limitation_Amount___D" ColumnName="Limitation Amount @ D" />
+            <ScalarProperty Name="Pledge_Amount___D_1" ColumnName="Pledge Amount @ D-1" />
+            <ScalarProperty Name="Limitation_Amount___D_1" ColumnName="Limitation Amount @ D-1" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="REPCUST"><EntityTypeMapping TypeName="LGDModel.REPCUST"><MappingFragment StoreEntitySet="REPCUST">
+            <ScalarProperty Name="YM" ColumnName="YM" />
+            <ScalarProperty Name="botid" ColumnName="botid" />
+            <ScalarProperty Name="cif" ColumnName="cif" />
+            <ScalarProperty Name="oldcif" ColumnName="oldcif" />
+            <ScalarProperty Name="bran" ColumnName="bran" />
+            <ScalarProperty Name="area" ColumnName="area" />
+            <ScalarProperty Name="accgl" ColumnName="accgl" />
+            <ScalarProperty Name="accno" ColumnName="accno" />
+            <ScalarProperty Name="contno" ColumnName="contno" />
+            <ScalarProperty Name="seqno" ColumnName="seqno" />
+            <ScalarProperty Name="fcy_type" ColumnName="fcy_type" />
+            <ScalarProperty Name="limit" ColumnName="limit" />
+            <ScalarProperty Name="principal" ColumnName="principal" />
+            <ScalarProperty Name="accru" ColumnName="accru" />
+            <ScalarProperty Name="susp" ColumnName="susp" />
+            <ScalarProperty Name="unearnprin" ColumnName="unearnprin" />
+            <ScalarProperty Name="unearnint" ColumnName="unearnint" />
+            <ScalarProperty Name="defer" ColumnName="defer" />
+            <ScalarProperty Name="unearnod" ColumnName="unearnod" />
+            <ScalarProperty Name="unearnals" ColumnName="unearnals" />
+            <ScalarProperty Name="unearnpns" ColumnName="unearnpns" />
+            <ScalarProperty Name="uncleaprin" ColumnName="uncleaprin" />
+            <ScalarProperty Name="uncleaint" ColumnName="uncleaint" />
+            <ScalarProperty Name="gl5540620" ColumnName="gl5540620" />
+            <ScalarProperty Name="unearnoth" ColumnName="unearnoth" />
+            <ScalarProperty Name="totamt_r" ColumnName="totamt_r" />
+            <ScalarProperty Name="accru_r" ColumnName="accru_r" />
+            <ScalarProperty Name="usecoll" ColumnName="usecoll" />
+            <ScalarProperty Name="reserve" ColumnName="reserve" />
+            <ScalarProperty Name="extraresv" ColumnName="extraresv" />
+            <ScalarProperty Name="pvloss" ColumnName="pvloss" />
+            <ScalarProperty Name="bafterc" ColumnName="bafterc" />
+            <ScalarProperty Name="tdrloss" ColumnName="tdrloss" />
+            <ScalarProperty Name="totresv" ColumnName="totresv" />
+            <ScalarProperty Name="addresv" ColumnName="addresv" />
+            <ScalarProperty Name="aging" ColumnName="aging" />
+            <ScalarProperty Name="adjclass" ColumnName="adjclass" />
+            <ScalarProperty Name="class" ColumnName="class" />
+            <ScalarProperty Name="cladj" ColumnName="cladj" />
+            <ScalarProperty Name="botclass" ColumnName="botclass" />
+            <ScalarProperty Name="oldcladj" ColumnName="oldcladj" />
+            <ScalarProperty Name="int_rate" ColumnName="int_rate" />
+            <ScalarProperty Name="rate_type" ColumnName="rate_type" />
+            <ScalarProperty Name="sign" ColumnName="sign" />
+            <ScalarProperty Name="rate_load" ColumnName="rate_load" />
+            <ScalarProperty Name="pay_cond" ColumnName="pay_cond" />
+            <ScalarProperty Name="busi_type" ColumnName="busi_type" />
+            <ScalarProperty Name="dept" ColumnName="dept" />
+            <ScalarProperty Name="dept_appv" ColumnName="dept_appv" />
+            <ScalarProperty Name="dept_tran" ColumnName="dept_tran" />
+            <ScalarProperty Name="dept_ctrl" ColumnName="dept_ctrl" />
+            <ScalarProperty Name="officr_id" ColumnName="officr_id" />
+            <ScalarProperty Name="due_date" ColumnName="due_date" />
+            <ScalarProperty Name="issu_date" ColumnName="issu_date" />
+            <ScalarProperty Name="tdr_income" ColumnName="tdr_income" />
+            <ScalarProperty Name="limitno" ColumnName="limitno" />
+            <ScalarProperty Name="cred_date" ColumnName="cred_date" />
+            <ScalarProperty Name="stop_date" ColumnName="stop_date" />
+            <ScalarProperty Name="open_acc" ColumnName="open_acc" />
+            <ScalarProperty Name="pay_prin" ColumnName="pay_prin" />
+            <ScalarProperty Name="pay_int" ColumnName="pay_int" />
+            <ScalarProperty Name="pay_susp" ColumnName="pay_susp" />
+            <ScalarProperty Name="post_prin" ColumnName="post_prin" />
+            <ScalarProperty Name="post_int" ColumnName="post_int" />
+            <ScalarProperty Name="post_susp" ColumnName="post_susp" />
+            <ScalarProperty Name="rev_accru" ColumnName="rev_accru" />
+            <ScalarProperty Name="fee" ColumnName="fee" />
+            <ScalarProperty Name="avgbalance" ColumnName="avgbalance" />
+            <ScalarProperty Name="npl" ColumnName="npl" />
+            <ScalarProperty Name="app_id" ColumnName="app_id" />
+            <ScalarProperty Name="nplflag" ColumnName="nplflag" />
+            <ScalarProperty Name="tdr" ColumnName="tdr" />
+            <ScalarProperty Name="lawflag" ColumnName="lawflag" />
+            <ScalarProperty Name="resvflag" ColumnName="resvflag" />
+            <ScalarProperty Name="ccf1flag" ColumnName="ccf1flag" />
+            <ScalarProperty Name="limittyp_a" ColumnName="limittyp_a" />
+            <ScalarProperty Name="limitapp" ColumnName="limitapp" />
+            <ScalarProperty Name="last_pay" ColumnName="last_pay" />
+            <ScalarProperty Name="payterm" ColumnName="payterm" />
+            <ScalarProperty Name="unearnimx" ColumnName="unearnimx" />
+            <ScalarProperty Name="payperints" ColumnName="payperints" />
+            <ScalarProperty Name="payperint" ColumnName="payperint" />
+            <ScalarProperty Name="lnstype" ColumnName="lnstype" />
+            <ScalarProperty Name="unearncts" ColumnName="unearncts" />
+            <ScalarProperty Name="legalstat" ColumnName="legalstat" />
+            <ScalarProperty Name="legalstat2" ColumnName="legalstat2" />
+            <ScalarProperty Name="flagge" ColumnName="flagge" />
+            <ScalarProperty Name="oldaging" ColumnName="oldaging" />
+            <ScalarProperty Name="unearnpr" ColumnName="unearnpr" />
+            <ScalarProperty Name="revclass" ColumnName="revclass" />
+            <ScalarProperty Name="unearnipr" ColumnName="unearnipr" />
+            <ScalarProperty Name="geaging" ColumnName="geaging" />
+            <ScalarProperty Name="interbank" ColumnName="interbank" />
+            <ScalarProperty Name="affiliate" ColumnName="affiliate" />
+            <ScalarProperty Name="beforege" ColumnName="beforege" />
+            <ScalarProperty Name="gecustsize" ColumnName="gecustsize" />
+            <ScalarProperty Name="gesize2" ColumnName="gesize2" />
+            <ScalarProperty Name="gesize4" ColumnName="gesize4" />
+            <ScalarProperty Name="related" ColumnName="related" />
+            <ScalarProperty Name="saledate" ColumnName="saledate" />
+            <ScalarProperty Name="sale" ColumnName="sale" />
+            <ScalarProperty Name="saleclass" ColumnName="saleclass" />
+            <ScalarProperty Name="saleresv" ColumnName="saleresv" />
+            <ScalarProperty Name="ctrlsize" ColumnName="ctrlsize" />
+            <ScalarProperty Name="agingclass" ColumnName="agingclass" />
+            <ScalarProperty Name="classflag" ColumnName="classflag" />
+            <ScalarProperty Name="upd_user" ColumnName="upd_user" />
+            <ScalarProperty Name="bayadd" ColumnName="bayadd" />
+            <ScalarProperty Name="mortgageod" ColumnName="mortgageod" />
+            <ScalarProperty Name="tdr_aging" ColumnName="tdr_aging" />
+            <ScalarProperty Name="reverseint" ColumnName="reverseint" />
+            <ScalarProperty Name="group" ColumnName="group" />
+            <ScalarProperty Name="tobe_sale" ColumnName="tobe_sale" />
+            <ScalarProperty Name="otobe_sale" ColumnName="otobe_sale" />
+            <ScalarProperty Name="manualod" ColumnName="manualod" />
+            <ScalarProperty Name="manualals" ColumnName="manualals" />
+            <ScalarProperty Name="manualpns" ColumnName="manualpns" />
+            <ScalarProperty Name="manualimx" ColumnName="manualimx" />
+            <ScalarProperty Name="uniimx" ColumnName="uniimx" />
+            <ScalarProperty Name="botclass_r" ColumnName="botclass_r" />
+            <ScalarProperty Name="fraud" ColumnName="fraud" />
+            <ScalarProperty Name="deceased" ColumnName="deceased" />
+            <ScalarProperty Name="resv_npl" ColumnName="resv_npl" />
+            <ScalarProperty Name="resvaccru" ColumnName="resvaccru" />
+            <ScalarProperty Name="postresv" ColumnName="postresv" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="LGDModel.sysdiagrams"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB_FILE"><EntityTypeMapping TypeName="LGDModel.TB_FILE"><MappingFragment StoreEntitySet="TB_FILE">
+            <ScalarProperty Name="FILE_ID" ColumnName="FILE_ID" />
+            <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+            <ScalarProperty Name="FILE_TYPE_ID" ColumnName="FILE_TYPE_ID" />
+            <ScalarProperty Name="FILE_DESC" ColumnName="FILE_DESC" />
+            <ScalarProperty Name="FILE_PATH" ColumnName="FILE_PATH" />
+            <ScalarProperty Name="FILE_CREATE_DATE" ColumnName="FILE_CREATE_DATE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB_FILE_TYPE"><EntityTypeMapping TypeName="LGDModel.TB_FILE_TYPE"><MappingFragment StoreEntitySet="TB_FILE_TYPE">
+            <ScalarProperty Name="FILE_TYPE_ID" ColumnName="FILE_TYPE_ID" />
+            <ScalarProperty Name="FILE_TYPE_DESC" ColumnName="FILE_TYPE_DESC" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB_LGD_SAMPLE"><EntityTypeMapping TypeName="LGDModel.TB_LGD_SAMPLE"><MappingFragment StoreEntitySet="TB_LGD_SAMPLE">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="YM_1" ColumnName="YM_1" />
+            <ScalarProperty Name="YM_2" ColumnName="YM_2" />
+            <ScalarProperty Name="YM" ColumnName="YM" />
+            <ScalarProperty Name="CASE_" ColumnName="CASE_" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR"><EntityTypeMapping TypeName="LGDModel.TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR"><MappingFragment StoreEntitySet="TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="YM" ColumnName="YM" />
+            <ScalarProperty Name="YM_TH" ColumnName="YM_TH" />
+            <ScalarProperty Name="CASE_" ColumnName="CASE_" />
+            <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TRANSACTION_INFORMATION"><EntityTypeMapping TypeName="LGDModel.TRANSACTION_INFORMATION"><MappingFragment StoreEntitySet="TRANSACTION INFORMATION">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+            <ScalarProperty Name="BRAN" ColumnName="BRAN" />
+            <ScalarProperty Name="ACCGL" ColumnName="ACCGL" />
+            <ScalarProperty Name="ACCNO" ColumnName="ACCNO" />
+            <ScalarProperty Name="CONTNO" ColumnName="CONTNO" />
+            <ScalarProperty Name="SEQNO" ColumnName="SEQNO" />
+            <ScalarProperty Name="LIMITNO" ColumnName="LIMITNO" />
+            <ScalarProperty Name="FCY_TYPE__Original_Currency_Code" ColumnName="FCY_TYPE: Original Currency Code" />
+            <ScalarProperty Name="Currency_Code" ColumnName="Currency Code" />
+            <ScalarProperty Name="LNSTYPE" ColumnName="LNSTYPE" />
+            <ScalarProperty Name="Total_Interest_Rate_Prior_to_Default" ColumnName="Total Interest Rate Prior to Default" />
+            <ScalarProperty Name="Interest_Rate_Index_Prior_to_Default" ColumnName="Interest Rate Index Prior to Default" />
+            <ScalarProperty Name="Interest_Rate_Spread_Prior_to_Default____" ColumnName="Interest Rate Spread Prior to Default (%)" />
+            <ScalarProperty Name="Rate_Sign" ColumnName="Rate Sign" />
+            <ScalarProperty Name="OS___D__Principal" ColumnName="OS @ D: Principal" />
+            <ScalarProperty Name="OS___D__Accrued" ColumnName="OS @ D: Accrued" />
+            <ScalarProperty Name="OS___D__Suspense" ColumnName="OS @ D: Suspense" />
+            <ScalarProperty Name="OS___D_1__Principal" ColumnName="OS @ D-1: Principal" />
+            <ScalarProperty Name="OS___D_1__Accrued" ColumnName="OS @ D-1: Accrued" />
+            <ScalarProperty Name="OS___D_1__Suspense" ColumnName="OS @ D-1: Suspense" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="LDDMODEL" ZoomLevel="50">
+        <EntityTypeShape EntityType="LGDModel.ADDITIONAL_DRAWDOWN" Width="1.5" PointX="0.75" PointY="2.875" Height="4.5505582682291656" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.CASHFLOW" Width="1.5" PointX="2.75" PointY="2.875" Height="3.5644742838541656" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.COLLATERAL_INFORMATION" Width="1.5" PointX="4.75" PointY="2.875" Height="3.5644742838541656" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.FACILITY_INFORMATION" Width="1.625" PointX="6.75" PointY="0.75" Height="6.0296842447916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.GUARANTOR_INFORMATION" Width="1.5" PointX="6.75" PointY="7.75" Height="2.7427376302083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.L_APP_ID" Width="1.5" PointX="8.75" PointY="0.75" Height="1.0992643229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.L_CURRENCY_CODE" Width="1.875" PointX="8.75" PointY="2.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.L_IMPORT_TABLE" Width="1.5" PointX="8.75" PointY="5.75" Height="1.2636116536458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.L_INDEX" Width="1.5" PointX="8.75" PointY="7.75" Height="1.2636116536458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.MERGECOS" Width="1.5" PointX="2.625" PointY="6.875" Height="6.35837890625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.MISCELLANEOUS" Width="1.5" PointX="10.75" PointY="0.75" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.OBLIGOR_INFORMATION" Width="1.5" PointX="10.75" PointY="3.75" Height="5.2079475911458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.PLEDGE_INFORMATION" Width="1.5" PointX="10.75" PointY="9.75" Height="3.8931689453124996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.REPCUST" Width="1.5" PointX="4.625" PointY="6.875" Height="21.478333333333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.25" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.TB_FILE" Width="1.5" PointX="2.75" PointY="0.5" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.TB_FILE_TYPE" Width="1.5" PointX="0.625" PointY="0.5" Height="1.4279589843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.TB_LGD_SAMPLE" Width="1.5" PointX="12.75" PointY="0.75" Height="1.7566536458333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.TB_LGD_SAMPLE_UNION_PREVIOUS_YEAR" Width="1.5" PointX="12.75" PointY="3.75" Height="1.7566536458333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.TRANSACTION_INFORMATION" Width="1.5" PointX="12.75" PointY="6.75" Height="4.3862109375000031" IsExpanded="true" />
+        <AssociationConnector Association="LGDModel.FK_TB_FILE_TB_FILE_TYPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.125" PointY="1.2139794921875016" />
+          <ConnectorPoint PointX="2.75" PointY="1.2139794921875016" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
