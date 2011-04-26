@@ -68,6 +68,8 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Aspx\Error\DefaultError.aspx" />
     <Content Include="Aspx\Error\UnAuthorized.aspx" />
+    <Content Include="Aspx\NPA_RECORD.aspx" />
+    <Content Include="Aspx\WebForm1_Test.aspx" />
     <Content Include="Library\log4net.dll" />
     <Content Include="Library\nunit.framework.dll" />
     <Content Include="Styles\Site.css" />
@@ -76,7 +78,9 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -137,6 +141,18 @@
     <Compile Include="Aspx\MyAspxPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Aspx\NPA_RECORD.aspx.cs">
+      <DependentUpon>NPA_RECORD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\NPA_RECORD.aspx.designer.cs">
+      <DependentUpon>NPA_RECORD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\WebForm1_Test.aspx.cs">
+      <DependentUpon>WebForm1_Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\WebForm1_Test.aspx.designer.cs">
+      <DependentUpon>WebForm1_Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomMembership\MyMembershipProvider.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -163,7 +179,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
