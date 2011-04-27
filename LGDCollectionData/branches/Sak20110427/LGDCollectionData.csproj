@@ -70,6 +70,7 @@
     <Content Include="Aspx\Error\UnAuthorized.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
     <Content Include="Aspx\WebForm1_Test.aspx" />
+    <Content Include="Images\logo.jpg" />
     <Content Include="Library\log4net.dll" />
     <Content Include="Library\nunit.framework.dll" />
     <Content Include="Styles\Site.css" />
@@ -143,12 +144,14 @@
     </Compile>
     <Compile Include="Aspx\NPA_RECORD.aspx.cs">
       <DependentUpon>NPA_RECORD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\NPA_RECORD.aspx.designer.cs">
       <DependentUpon>NPA_RECORD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\WebForm1_Test.aspx.cs">
       <DependentUpon>WebForm1_Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\WebForm1_Test.aspx.designer.cs">
       <DependentUpon>WebForm1_Test.aspx</DependentUpon>
@@ -181,7 +184,6 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -195,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log\log-file.log" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
