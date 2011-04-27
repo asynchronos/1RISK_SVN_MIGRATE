@@ -7,11 +7,18 @@ using System.Web.UI.WebControls;
 
 namespace LGDCollectionData.Aspx
 {
-    public partial class SELECT_FORM : System.Web.UI.Page
+    public partial class SELECT_FORM : MyAspxPage 
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ButtonOpenForm_Click(object sender, EventArgs e)
+        {
+            if (TextBoxCIF.Text != string.Empty) {
+                Response.Redirect(DropDownListFormName.SelectedValue  + "?CIF=" + TextBoxCIF.Text);
+            }
         }
     }
 }
