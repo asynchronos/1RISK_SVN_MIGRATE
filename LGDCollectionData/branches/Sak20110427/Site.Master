@@ -13,9 +13,6 @@
     <div class="page">
         <div class="header">
             <div class="title">
-                <h1>
-                    My ASP.NET Application
-                </h1>
             </div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
@@ -27,7 +24,12 @@
                         [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
+            <div style="text-align:right; font-weight:bold;">
+            LGD DATA COLLECTION
             </div>
+            </div>
+        </div>
+
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
@@ -36,7 +38,6 @@
                     </Items>
                 </asp:Menu>
             </div>
-        </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
         </div>

@@ -17,8 +17,8 @@
             padding: 10px 1px 1px 1px;
             
             color: #fc3;
-            letter-spacing: .07em;*/
-        } 
+            letter-spacing: .07em;
+        } */
 </style>
 </head>
 <body>
