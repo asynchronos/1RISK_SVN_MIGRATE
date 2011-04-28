@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Web.Security;
 using LGDCollectionData.Entities;
@@ -16,7 +17,7 @@ namespace LGDCollectionData.CustomMembership
         {
             get
             {
-                throw new System.NotImplementedException();
+                return ConfigurationManager.AppSettings["APPLICATION_NAME"];
             }
             set
             {

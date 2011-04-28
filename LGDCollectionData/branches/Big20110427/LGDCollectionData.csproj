@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>Library\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\log4net.dll</HintPath>
@@ -66,7 +69,9 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Aspx\CASHFLOW.aspx" />
     <Content Include="Aspx\Error\DefaultError.aspx" />
+    <Content Include="Aspx\Error\NotImplemented.aspx" />
     <Content Include="Aspx\Error\UnAuthorized.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
     <Content Include="Aspx\WebForm1_Test.aspx" />
@@ -124,12 +129,26 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\CASHFLOW.aspx.cs">
+      <DependentUpon>CASHFLOW.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\CASHFLOW.aspx.designer.cs">
+      <DependentUpon>CASHFLOW.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\Error\DefaultError.aspx.cs">
       <DependentUpon>DefaultError.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Error\DefaultError.aspx.designer.cs">
       <DependentUpon>DefaultError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\Error\NotImplemented.aspx.cs">
+      <DependentUpon>NotImplemented.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\Error\NotImplemented.aspx.designer.cs">
+      <DependentUpon>NotImplemented.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Error\UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>
@@ -143,12 +162,14 @@
     </Compile>
     <Compile Include="Aspx\NPA_RECORD.aspx.cs">
       <DependentUpon>NPA_RECORD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\NPA_RECORD.aspx.designer.cs">
       <DependentUpon>NPA_RECORD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\WebForm1_Test.aspx.cs">
       <DependentUpon>WebForm1_Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\WebForm1_Test.aspx.designer.cs">
       <DependentUpon>WebForm1_Test.aspx</DependentUpon>
