@@ -70,9 +70,11 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Aspx\ADDITIONAL_DRAWDOWN.aspx" />
+    <Content Include="Aspx\CASHFLOW.aspx" />
     <Content Include="Aspx\Error\DefaultError.aspx" />
     <Content Include="Aspx\Error\NotImplemented.aspx" />
     <Content Include="Aspx\Error\UnAuthorized.aspx" />
+    <Content Include="Aspx\FINANCIAL SUMMARY.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
     <Content Include="Aspx\SELECT_FORM.aspx" />
     <Content Include="Aspx\WebForm1_Test.aspx" />
@@ -138,6 +140,12 @@
     <Compile Include="Aspx\ADDITIONAL_DRAWDOWN.aspx.designer.cs">
       <DependentUpon>ADDITIONAL_DRAWDOWN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\CASHFLOW.aspx.cs">
+      <DependentUpon>CASHFLOW.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\CASHFLOW.aspx.designer.cs">
+      <DependentUpon>CASHFLOW.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\Error\DefaultError.aspx.cs">
       <DependentUpon>DefaultError.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -158,6 +166,12 @@
     </Compile>
     <Compile Include="Aspx\Error\UnAuthorized.aspx.designer.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\FINANCIAL SUMMARY.aspx.cs">
+      <DependentUpon>FINANCIAL SUMMARY.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\FINANCIAL SUMMARY.aspx.designer.cs">
+      <DependentUpon>FINANCIAL SUMMARY.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\MyAspxPage.cs">
       <SubType>ASPXCodeBehind</SubType>
