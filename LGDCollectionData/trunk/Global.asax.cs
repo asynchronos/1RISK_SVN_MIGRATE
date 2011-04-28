@@ -41,6 +41,10 @@ namespace LGDCollectionData
             {
                 Response.Redirect("~/Aspx/Error/UnAuthorized.aspx?page=" + Server.UrlEncode(Request.RawUrl));
             }
+            else if (err.GetType().Equals(typeof(NotImplementedException)))
+            {
+                Response.Redirect("~/Aspx/Error/NotImplemented.aspx?page=" + Server.UrlEncode(Request.RawUrl));
+            }
             else
             {
                 string url = "~/Aspx/Error/DefaultError.aspx?page=" + Server.UrlEncode(Request.RawUrl) + "&msg=";
