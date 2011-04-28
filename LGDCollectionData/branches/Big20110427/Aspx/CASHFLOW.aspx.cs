@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace LGDCollectionData
+namespace LGDCollectionData.Aspx
 {
-    public partial class _Default : System.Web.UI.Page
+    public partial class CASHFLOW : MyAspxPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
