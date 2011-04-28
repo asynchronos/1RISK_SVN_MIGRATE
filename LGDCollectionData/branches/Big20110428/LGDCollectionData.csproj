@@ -142,6 +142,7 @@
     </Compile>
     <Compile Include="Aspx\CASHFLOW.aspx.cs">
       <DependentUpon>CASHFLOW.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\CASHFLOW.aspx.designer.cs">
       <DependentUpon>CASHFLOW.aspx</DependentUpon>
@@ -169,6 +170,7 @@
     </Compile>
     <Compile Include="Aspx\FINANCIAL SUMMARY.aspx.cs">
       <DependentUpon>FINANCIAL SUMMARY.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\FINANCIAL SUMMARY.aspx.designer.cs">
       <DependentUpon>FINANCIAL SUMMARY.aspx</DependentUpon>
