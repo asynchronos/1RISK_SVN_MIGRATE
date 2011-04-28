@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>Library\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\log4net.dll</HintPath>
@@ -68,6 +71,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Aspx\ADDITIONAL_DRAWDOWN.aspx" />
     <Content Include="Aspx\Error\DefaultError.aspx" />
+    <Content Include="Aspx\Error\NotImplemented.aspx" />
     <Content Include="Aspx\Error\UnAuthorized.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
     <Content Include="Aspx\SELECT_FORM.aspx" />
@@ -140,6 +144,13 @@
     </Compile>
     <Compile Include="Aspx\Error\DefaultError.aspx.designer.cs">
       <DependentUpon>DefaultError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\Error\NotImplemented.aspx.cs">
+      <DependentUpon>NotImplemented.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\Error\NotImplemented.aspx.designer.cs">
+      <DependentUpon>NotImplemented.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Error\UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>

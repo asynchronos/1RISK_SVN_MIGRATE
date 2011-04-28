@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace LGDCollectionData
+namespace LGDCollectionData.Aspx.Error
 {
-    public partial class _Default : System.Web.UI.Page
+    public partial class NotImplemented : MyAspxPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
