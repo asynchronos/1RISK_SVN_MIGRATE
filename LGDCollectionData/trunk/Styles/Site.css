@@ -90,7 +90,7 @@ first child of the left and right table columns */
 {
     width: 960px;
     background-color: #fff;
-    margin: 20px auto 0px auto;
+    margin: 0px auto 0px auto;
     border: 1px solid #496077;
 }
 
@@ -99,8 +99,11 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
+    background: #FFC20E url('../Images/logo.jpg') no-repeat 10px -10px;
     width: 100%;
+    top: 0px;
+    left: 0px;
+    height: 105px;
 }
 
 .header h1
@@ -144,7 +147,7 @@ first child of the left and right table columns */
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
+    background-color:orange;
     width:100%;
 }
 
@@ -233,7 +236,7 @@ input.passwordEntry
 
 div.accountInfo
 {
-    width: 42%;
+    width: 100%;
 }
 
 /* MISC  
