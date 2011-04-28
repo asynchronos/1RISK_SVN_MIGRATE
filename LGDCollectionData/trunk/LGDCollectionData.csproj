@@ -66,18 +66,21 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Aspx\ADDITIONAL_DRAWDOWN.aspx" />
     <Content Include="Aspx\Error\DefaultError.aspx" />
     <Content Include="Aspx\Error\UnAuthorized.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
+    <Content Include="Aspx\SELECT_FORM.aspx" />
     <Content Include="Aspx\WebForm1_Test.aspx" />
+    <Content Include="Images\logo.jpg" />
     <Content Include="Library\log4net.dll" />
     <Content Include="Library\nunit.framework.dll" />
-    <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\Site.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -124,6 +127,13 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\ADDITIONAL_DRAWDOWN.aspx.cs">
+      <DependentUpon>ADDITIONAL_DRAWDOWN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\ADDITIONAL_DRAWDOWN.aspx.designer.cs">
+      <DependentUpon>ADDITIONAL_DRAWDOWN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\Error\DefaultError.aspx.cs">
       <DependentUpon>DefaultError.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -143,12 +153,21 @@
     </Compile>
     <Compile Include="Aspx\NPA_RECORD.aspx.cs">
       <DependentUpon>NPA_RECORD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\NPA_RECORD.aspx.designer.cs">
       <DependentUpon>NPA_RECORD.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\SELECT_FORM.aspx.cs">
+      <DependentUpon>SELECT_FORM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\SELECT_FORM.aspx.designer.cs">
+      <DependentUpon>SELECT_FORM.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\WebForm1_Test.aspx.cs">
       <DependentUpon>WebForm1_Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\WebForm1_Test.aspx.designer.cs">
       <DependentUpon>WebForm1_Test.aspx</DependentUpon>
@@ -181,11 +200,10 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
+    <Folder Include="bin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
-    <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Entities\LGDModel.edmx">
@@ -195,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Site.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
