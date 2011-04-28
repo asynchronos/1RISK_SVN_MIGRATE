@@ -15,9 +15,10 @@ namespace LGDCollectionData.Aspx
         }
 
         protected void ButtonOpenForm_Click(object sender, EventArgs e)
-        {
-            if (TextBoxCIF.Text != string.Empty) {
-                Response.Redirect(DropDownListFormName.SelectedValue  + "?CIF=" + TextBoxCIF.Text);
+        {  
+            if (TextBoxCIF.Text != null)
+            {
+                Response.Redirect(DropDownListFormName.SelectedValue + "?CIF=" + TextBoxCIF.Text);
             }
         }
     }
