@@ -35,7 +35,7 @@
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" DataKeyNames="CIF,Default_Date,NPA_Collateral_ID" 
         DataSourceID="SqlDataSourceNPA_RECORD" EnableModelValidation="True" 
-        Height="50px" Width="125px">
+        Height="50px" Width="389px" DefaultMode="Edit">
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
@@ -65,16 +65,54 @@
                         Text='<%# Bind("Collateral_Sale_Price_Currency") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Collateral_Sale_Price" 
-                HeaderText="Collateral_Sale_Price" SortExpression="Collateral_Sale_Price" />
+            <asp:TemplateField HeaderText="Collateral_Sale_Price" 
+                SortExpression="Collateral_Sale_Price">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:n2}") %>' style="text-align:right;"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox3" runat="server" 
+                        Text='<%# Bind("Collateral_Sale_Price") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label3" runat="server" 
+                        Text='<%# Bind("Collateral_Sale_Price") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="Collateral_Sale_Date" 
                 HeaderText="Collateral_Sale_Date" SortExpression="Collateral_Sale_Date" />
             <asp:BoundField DataField="Collateral_Description" 
                 HeaderText="Collateral_Description" SortExpression="Collateral_Description" />
-            <asp:BoundField DataField="District_of_Property" 
-                HeaderText="District_of_Property" SortExpression="District_of_Property" />
-            <asp:BoundField DataField="Amphur_of_Property" HeaderText="Amphur_of_Property" 
-                SortExpression="Amphur_of_Property" />
+            <asp:TemplateField HeaderText="District_of_Property" 
+                SortExpression="District_of_Property">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("District_of_Property") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox4" runat="server" 
+                        Text='<%# Bind("District_of_Property") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label4" runat="server" 
+                        Text='<%# Bind("District_of_Property") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Amphur_of_Property" 
+                SortExpression="Amphur_of_Property">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Amphur_of_Property") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="TextBox3"></asp:RequiredFieldValidator>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox5" runat="server" 
+                        Text='<%# Bind("Amphur_of_Property") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Amphur_of_Property") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Province_of_Property" 
                 SortExpression="Province_of_Property">
                 <EditItemTemplate>
@@ -83,8 +121,6 @@
                         DataValueField="Prov_Thai"
                         SelectedValue='<%# Bind("Province_of_Property") %>'>
                     </asp:DropDownList>
-<%--<asp:TextBox ID="ProvinceTextBox" runat="server" 
-                        Text='<%# Bind("Province_of_Property") %>'></asp:TextBox>--%>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" 
@@ -95,8 +131,8 @@
                         Text='<%# Bind("Province_of_Property") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Title_Deed_Number" HeaderText="Title_Deed_Number" 
-                SortExpression="Title_Deed_Number" />
+            <asp:BoundField DataField="Title_Deed_Number" 
+                HeaderText="Title_Deed_Number" SortExpression="Title_Deed_Number" />
             <asp:CommandField ShowEditButton="True" />
         </Fields>
     </asp:DetailsView>
