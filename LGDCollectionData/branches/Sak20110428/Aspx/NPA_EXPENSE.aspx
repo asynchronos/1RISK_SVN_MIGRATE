@@ -6,52 +6,52 @@
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" DataKeyNames="Expense_Year" 
         DataSourceID="SqlDataSourceNPA_EXPENSE" EnableModelValidation="True" 
-        Height="50px" Width="125px" DefaultMode="Edit">
+        Height="50px" Width="420px" DefaultMode="Edit">
         <Fields>
             <asp:BoundField DataField="Expense_Year" HeaderText="Expense_Year" 
                 ReadOnly="True" SortExpression="Expense_Year" />
             <asp:TemplateField HeaderText="Appraised_Value_Beginning_of_Year" 
                 SortExpression="Appraised_Value_Beginning_of_Year">
-                <ItemStyle  HorizontalAlign="Right"/>
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" 
-                        Text='<%# Eval("Appraised_Value_Beginning_of_Year","{0:n2}") %>' style="text-align:right"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" 
+                        Text='<%# Bind("Appraised_Value_Beginning_of_Year","{0:n2}") %>' style="text-align:right"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" 
-                        Text='<%# Eval("Appraised_Value_Beginning_of_Year") %>' style="text-align:right"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" 
+                        Text='<%# Bind("Appraised_Value_Beginning_of_Year") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" 
-                        Text='<%# Bind("Appraised_Value_Beginning_of_Year","{0:n2}") %>'></asp:Label>
+                    <asp:Label ID="Label2" runat="server" 
+                        Text='<%# Bind("Appraised_Value_Beginning_of_Year","{0:n2}") %>' style="text-align:right"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cost_Value_Beginning_of_Year" 
                 SortExpression="Cost_Value_Beginning_of_Year">
-                <ItemStyle  HorizontalAlign="Right"/>
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" 
-                        Text='<%# Eval("Cost_Value_Beginning_of_Year","{0:n2}") %>' style="text-align:right"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" 
+                        Text='<%# Bind("Cost_Value_Beginning_of_Year","{0:n2}") %>' style="text-align:right"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TextBox3"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" 
-                        Text='<%# Eval("Cost_Value_Beginning_of_Year","{0:n2}") %>' style="text-align:right"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" 
+                        Text='<%# Bind("Cost_Value_Beginning_of_Year") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label2" runat="server" 
-                        Text='<%# Bind("Cost_Value_Beginning_of_Year") %>'></asp:Label>
+                    <asp:Label ID="Label3" runat="server" 
+                        Text='<%# Bind("Cost_Value_Beginning_of_Year","{0:n2}") %>' style="text-align:right"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total_Expense" SortExpression="Total_Expense">
-            <ItemStyle  HorizontalAlign="Right"/>
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Eval("Total_Expense","{0:n2}") %>' style="text-align:right"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Total_Expense","{0:n2}") %>' style="text-align:right"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Eval("Total_Expense","{0:n2}") %>' style="text-align:right"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Total_Expense") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Total_Expense") %>'></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("Total_Expense","{0:n2}") %>' style="text-align:right"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />
