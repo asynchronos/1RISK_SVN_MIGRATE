@@ -7,7 +7,7 @@
         <td>
             <asp:DetailsView ID="DetailsView2" runat="server" AllowPaging="True" 
                 AutoGenerateRows="False" DataSourceID="SqlDataSourceGur_Info" 
-                EnableModelValidation="True" Height="50px" Width="125px" 
+                EnableModelValidation="True" Height="50px" Width="408px" 
                 DefaultMode="Edit">
                 <Fields>
                     <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
@@ -53,10 +53,34 @@
                         SortExpression="Pledge_to_All_Facilities" />
                     <asp:BoundField DataField="Facility_Pledged" HeaderText="Facility_Pledged" 
                         SortExpression="Facility_Pledged" />
-                    <asp:BoundField DataField="Guarantee_Amount_D" HeaderText="Guarantee_Amount_D" 
-                        SortExpression="Guarantee_Amount_D" />
-                    <asp:BoundField DataField="Guarantee_Amount_D1" 
-                        HeaderText="Guarantee_Amount_D1" SortExpression="Guarantee_Amount_D1" />
+                    <asp:TemplateField HeaderText="Guarantee_Amount_D" 
+                        SortExpression="Guarantee_Amount_D">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Guarantee_Amount_D","{0:n2}") %>' Style="text-align:right;"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="TextBox6"></asp:RequiredFieldValidator>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox7" runat="server" 
+                                Text='<%# Bind("Guarantee_Amount_D") %>'></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("Guarantee_Amount_D") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Guarantee_Amount_D1" 
+                        SortExpression="Guarantee_Amount_D1">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Guarantee_Amount_D1","{0:n2}") %>' Style="text-align:right;"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TextBox7"></asp:RequiredFieldValidator>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox8" runat="server" 
+                                Text='<%# Bind("Guarantee_Amount_D1") %>'></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Guarantee_Amount_D1") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Guarantee_Amount_Currency_Code" 
                         SortExpression="Guarantee_Amount_Currency_Code">
                         <EditItemTemplate>
@@ -164,8 +188,6 @@
         SelectCommand="GUARANTOR_INFORMATION_INDEMNITY_SELECT" 
         SelectCommandType="StoredProcedure"></asp:SqlDataSource>
         </td>
-        <td>
-            &nbsp;</td>
     </tr>
 </table>
 
