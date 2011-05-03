@@ -75,8 +75,13 @@
     <Content Include="Aspx\Error\DefaultError.aspx" />
     <Content Include="Aspx\Error\NotImplemented.aspx" />
     <Content Include="Aspx\Error\UnAuthorized.aspx" />
+    <Content Include="Aspx\FACILITY_INFORMATION.aspx" />
     <Content Include="Aspx\FINANCIAL SUMMARY.aspx" />
+    <Content Include="Aspx\GUARANTOR_INFORMATION.aspx" />
+    <Content Include="Aspx\LIMIT_STRUCTURE.aspx" />
+    <Content Include="Aspx\NPA_EXPENSE.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
+    <Content Include="Aspx\NPA_RECORD_NEW.aspx" />
     <Content Include="Aspx\SELECT_FORM.aspx" />
     <Content Include="Aspx\WebForm1_Test.aspx" />
     <Content Include="ExtJS\adapter\ext\ext-base-debug.js" />
@@ -4668,6 +4673,12 @@
     <Compile Include="Aspx\Error\UnAuthorized.aspx.designer.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\FACILITY_INFORMATION.aspx.cs">
+      <DependentUpon>FACILITY_INFORMATION.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\FACILITY_INFORMATION.aspx.designer.cs">
+      <DependentUpon>FACILITY_INFORMATION.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\FINANCIAL SUMMARY.aspx.cs">
       <DependentUpon>FINANCIAL SUMMARY.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4675,8 +4686,26 @@
     <Compile Include="Aspx\FINANCIAL SUMMARY.aspx.designer.cs">
       <DependentUpon>FINANCIAL SUMMARY.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\GUARANTOR_INFORMATION.aspx.cs">
+      <DependentUpon>GUARANTOR_INFORMATION.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\GUARANTOR_INFORMATION.aspx.designer.cs">
+      <DependentUpon>GUARANTOR_INFORMATION.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\LIMIT_STRUCTURE.aspx.cs">
+      <DependentUpon>LIMIT_STRUCTURE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\LIMIT_STRUCTURE.aspx.designer.cs">
+      <DependentUpon>LIMIT_STRUCTURE.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\MyAspxPage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\NPA_EXPENSE.aspx.cs">
+      <DependentUpon>NPA_EXPENSE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\NPA_EXPENSE.aspx.designer.cs">
+      <DependentUpon>NPA_EXPENSE.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\NPA_RECORD.aspx.cs">
       <DependentUpon>NPA_RECORD.aspx</DependentUpon>
@@ -4684,6 +4713,12 @@
     </Compile>
     <Compile Include="Aspx\NPA_RECORD.aspx.designer.cs">
       <DependentUpon>NPA_RECORD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\NPA_RECORD_NEW.aspx.cs">
+      <DependentUpon>NPA_RECORD_NEW.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\NPA_RECORD_NEW.aspx.designer.cs">
+      <DependentUpon>NPA_RECORD_NEW.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\SELECT_FORM.aspx.cs">
       <DependentUpon>SELECT_FORM.aspx</DependentUpon>
