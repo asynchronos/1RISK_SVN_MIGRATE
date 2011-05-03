@@ -13,6 +13,15 @@ namespace LGDCollectionData.Aspx {
     public partial class SELECT_FORM {
         
         /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// SqlDataSource1 control.
         /// </summary>
         /// <remarks>
@@ -49,22 +58,13 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// TextBoxCIF control.
+        /// ComboBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxCIF;
-        
-        /// <summary>
-        /// TextBoxCIF_AutoCompleteExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender TextBoxCIF_AutoCompleteExtender;
+        protected global::AjaxControlToolkit.ComboBox ComboBox1;
         
         /// <summary>
         /// Label1 control.

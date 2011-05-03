@@ -83,6 +83,7 @@
     <Content Include="Aspx\NPA_RECORD.aspx" />
     <Content Include="Aspx\NPA_RECORD_NEW.aspx" />
     <Content Include="Aspx\SELECT_FORM.aspx" />
+    <Content Include="Aspx\TRANSACTION_INFORMATION.aspx" />
     <Content Include="Aspx\WebForm1_Test.aspx" />
     <Content Include="ExtJS\adapter\ext\ext-base-debug.js" />
     <Content Include="ExtJS\adapter\ext\ext-base.js" />
@@ -4732,6 +4733,13 @@
     <Compile Include="Aspx\SELECT_FORM.aspx.designer.cs">
       <DependentUpon>SELECT_FORM.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\TRANSACTION_INFORMATION.aspx.cs">
+      <DependentUpon>TRANSACTION_INFORMATION.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\TRANSACTION_INFORMATION.aspx.designer.cs">
+      <DependentUpon>TRANSACTION_INFORMATION.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\WebForm1_Test.aspx.cs">
       <DependentUpon>WebForm1_Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4746,6 +4754,11 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LGDModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LGDModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4763,7 +4776,6 @@
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="Entities\" />
     <Folder Include="ExtJS\examples\spinner\images\" />
     <Folder Include="ExtJS\resources\images\vista\dd\" />
     <Folder Include="ExtJS\resources\images\vista\tree\" />
@@ -4789,6 +4801,10 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Entities\LGDModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LGDModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="ExtJS\docs\resources\images\access\form\clear-trigger.psd" />
     <None Include="ExtJS\docs\resources\images\access\form\date-trigger.psd" />
     <None Include="ExtJS\docs\resources\images\access\form\search-trigger.psd" />
