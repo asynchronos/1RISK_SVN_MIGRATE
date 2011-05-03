@@ -13,6 +13,15 @@ namespace LGDCollectionData.Aspx {
     public partial class CASHFLOW {
         
         /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// CASHFLOW_DetailsView control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace LGDCollectionData.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource Currency_DataSource;
+        
+        /// <summary>
+        /// PreviousLimitNo_DataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource PreviousLimitNo_DataSource;
     }
 }
