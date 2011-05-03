@@ -1,13 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="CASHFLOW.aspx.cs" Inherits="LGDCollectionData.Aspx.CASHFLOW" %>
+    CodeBehind="CASHFLOW.aspx.cs" Inherits="LGDCollectionData.Aspx.CASHFLOW" UICulture="Auto"
+    Culture="Auto" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:DetailsView ID="CASHFLOW_DetailsView" runat="server"
-        AllowPaging="True" AutoGenerateRows="False" CellPadding="4" DataKeyNames="CIF,DefaultDate,LIMITNO,DateofCashflow"
-        DataSourceID="CASHFLOW_DATASOURCE" DefaultMode="Edit" EnableModelValidation="True"
-        ForeColor="#333333" GridLines="None">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
+    <asp:DetailsView ID="CASHFLOW_DetailsView" runat="server" AllowPaging="True" AutoGenerateRows="False"
+        CellPadding="4" DataKeyNames="CIF,DefaultDate,LIMITNO,DateofCashflow" DataSourceID="CASHFLOW_DATASOURCE"
+        DefaultMode="Edit" EnableModelValidation="True" ForeColor="#333333" GridLines="None"
+        OnPageIndexChanging="CASHFLOW_DetailsView_PageIndexChanging" OnItemUpdating="CASHFLOW_DetailsView_ItemUpdating">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
@@ -181,15 +185,27 @@
                         <asp:ListItem Value=""></asp:ListItem>
                         <asp:ListItem Value="N/A">N/A</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:ComboBox ID="PreviousLIMITNO_ComboBox" runat="server" AutoCompleteMode="SuggestAppend"
+                        DataSourceID="PreviousLimitNo_DataSource" DataTextField="LIMITNO" DataValueField="LIMITNO"
+                        DropDownStyle="DropDownList" MaxLength="0" Style="display: inline;" AppendDataBoundItems="true"
+                        SelectedValue='<%# Bind("PreviousLIMITNO") %>'>
+                        <asp:ListItem Value=""></asp:ListItem>
+                        <asp:ListItem Value="N/A">N/A</asp:ListItem>
+                    </asp:ComboBox>
+                    <asp:TextBox ID="PreviousLIMITNO_TextBox" runat="server"></asp:TextBox>
+                    <asp:AutoCompleteExtender ID="PreviousLIMITNO_TextBox_AutoCompleteExtender" runat="server"
+                        DelimiterCharacters="" Enabled="True" ServiceMethod="GetCompletionList" ServicePath=""
+                        TargetControlID="PreviousLIMITNO_TextBox" UseContextKey="True">
+                    </asp:AutoCompleteExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("PreviousLIMITNO") %>'></asp:TextBox>
+                    <asp:TextBox ID="PreviousLIMITNO_TextBox" runat="server" Text='<%# Bind("PreviousLIMITNO") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label10" runat="server" Text='<%# Bind("PreviousLIMITNO") %>'></asp:Label>
+                    <asp:Label ID="PreviousLIMITNO_Label" runat="server" Text='<%# Bind("PreviousLIMITNO") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CommandField ShowEditButton="True" />
+            <asp:CommandField ShowEditButton="false" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
