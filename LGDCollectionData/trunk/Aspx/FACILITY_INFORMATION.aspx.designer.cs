@@ -10,7 +10,7 @@
 namespace LGDCollectionData.Aspx {
     
     
-    public partial class ADDITIONAL_DRAWDOWN {
+    public partial class FACILITY_INFORMATION {
         
         /// <summary>
         /// Label1 control.
@@ -22,13 +22,22 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// DetailsView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
+        
+        /// <summary>
+        /// SqlDataSourceFacility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceFacility;
         
         /// <summary>
         /// SqlDataSourceAppID control.
@@ -40,48 +49,75 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAppID;
         
         /// <summary>
-        /// SqlDataSourceAddCurrency control.
+        /// SqlDataSourceLimitType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAddCurrency;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceLimitType;
         
         /// <summary>
-        /// SqlDataSourceLimitNo control.
+        /// SqlDataSourcePurpose control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceLimitNo;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourcePurpose;
         
         /// <summary>
-        /// SqlDataSourceDrawDownType control.
+        /// SqlDataSourceNature control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDrawDownType;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceNature;
         
         /// <summary>
-        /// SqlDataSourceReason control.
+        /// SqlDataSourceSiniority control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceReason;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSiniority;
         
         /// <summary>
-        /// DetailsView1 control.
+        /// SqlDataSourceCurrency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCurrency;
+        
+        /// <summary>
+        /// SqlDataSourceFrequency control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceFrequency;
+        
+        /// <summary>
+        /// SqlDataSourceCycle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCycle;
+        
+        /// <summary>
+        /// SqlDataSourceCIF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCIF;
     }
 }
