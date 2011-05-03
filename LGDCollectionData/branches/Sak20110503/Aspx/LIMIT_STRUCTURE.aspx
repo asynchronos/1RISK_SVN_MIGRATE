@@ -6,7 +6,7 @@
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" DataKeyNames="CIF,Default_Date,LIMITNO" 
         DataSourceID="SqlDataSourceLIMIT_STRUCTURE" EnableModelValidation="True" 
-        Height="50px" Width="125px">
+        Height="50px" Width="125px" DefaultMode="Edit">
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
