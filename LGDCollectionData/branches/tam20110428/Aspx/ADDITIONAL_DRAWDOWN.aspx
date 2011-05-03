@@ -11,36 +11,9 @@
     </h1>
 &nbsp;<asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-            SelectCommand="ADDITIONAL_DRAWDOWN_SELECT" 
-            SelectCommandType="StoredProcedure" InsertCommand="ADDITIONAL_DRAWDOWN_INSERT" 
-            InsertCommandType="StoredProcedure" UpdateCommand="ADDITIONAL_DRAWDOWN_UPDATE" 
-            UpdateCommandType="StoredProcedure"
-             OnUpdating="updateRecord"
+            SelectCommand="ADDITIONAL_DRAWDOWN_SELECT"    SelectCommandType="StoredProcedure" 
+            UpdateCommand="ADDITIONAL_DRAWDOWN_UPDATE"  UpdateCommandType="StoredProcedure"
             >
-            <InsertParameters>
-                <asp:Parameter Name="CIF" Type="String" />
-                <asp:Parameter Name="Default_Date" Type="DateTime" />
-                <asp:Parameter Name="BRAN" Type="String" />
-                <asp:Parameter Name="ACCGL" Type="String" />
-                <asp:Parameter Name="ACCNO" Type="String" />
-                <asp:Parameter Name="CONTNO" Type="String" />
-                <asp:Parameter Name="SEQNO" Type="String" />
-                <asp:Parameter Name="APP_ID" Type="String" />
-                <asp:Parameter Name="PRINCIPAL" Type="Double" />
-                <asp:Parameter Name="ACCRU" Type="Double" />
-                <asp:Parameter Name="SUSP" Type="Double" />
-                <asp:Parameter Name="PRINCIPAL_AT_Last_Month" Type="Double" />
-                <asp:Parameter Name="ACCRU_AT_Last_Month" Type="Double" />
-                <asp:Parameter Name="SUSP_AT_Last_Month" Type="Double" />
-                <asp:Parameter Name="Additional_Drawdown_Date" Type="DateTime" />
-                <asp:Parameter Name="Additional_Drawdown_Currency" Type="String" />
-                <asp:Parameter Name="LIMITNO" Type="String" />
-                <asp:Parameter Name="LIMITNO_Changed" Type="Boolean" />
-                <asp:Parameter Name="Previous_LIMITNO" Type="String" />
-                <asp:Parameter Name="Is_This_an_Additional_Drawdown" Type="Boolean" />
-                <asp:Parameter Name="Type_of_Additional_Drawdown" Type="String" />
-                <asp:Parameter Name="Other_Reason_of_Principal_Increase" Type="String" />
-            </InsertParameters>
             <SelectParameters>
                 <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
             </SelectParameters>
@@ -81,16 +54,21 @@
     <asp:SqlDataSource ID="SqlDataSourceLimitNo" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" SelectCommand="FACILITY_INFORMATION_SELECT" 
         SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourceDrawDownType" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
+        SelectCommand="ADDITIONAL_DRAWDOWN_TYPE_SELECT" 
+        SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourceReason" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
+        SelectCommand="ADDITIONAL_DRAWDOWN_REASON_SELECT" 
+        SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     </div>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" 
         DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO,Additional_Drawdown_Date" 
         DataSourceID="SqlDataSource1" EnableModelValidation="True" Height="50px" 
-        Width="442px" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" 
-        BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" 
-        style="font-size: small; font-family: Tahoma">
-        <AlternatingRowStyle BackColor="White" />
-        <EditRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+        Width="442px" 
+        style="font-size: small; font-family: Tahoma" DefaultMode="Edit">
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
@@ -144,7 +122,7 @@
                         DataSourceID="SqlDataSourceAddCurrency" DataTextField="Description" 
                         DataValueField="Code"  AppendDataBoundItems="true"
                         SelectedValue='<%# Bind("Additional_Drawdown_Currency") %>'>
-                       <asp:ListItem Value="">Please Select</asp:ListItem>
+                       <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <InsertItemTemplate>
@@ -169,14 +147,14 @@
                     <asp:DropDownList ID="DropDownList5" runat="server" AppendDataBoundItems="true" 
                         DataSourceID="SqlDataSourceLimitNo" DataTextField="LIMITNO" 
                         DataValueField="LIMITNO" SelectedValue='<%# Bind("Previous_LIMITNO") %>'>
-                      <asp:ListItem Value="">Please Select</asp:ListItem>
+                      <asp:ListItem Value="">...Please Select...</asp:ListItem>
                      </asp:DropDownList>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:DropDownList ID="DropDownList6" runat="server"  AppendDataBoundItems="true" 
                         DataSourceID="SqlDataSourceLimitNo" DataTextField="LIMITNO" 
                         DataValueField="LIMITNO" SelectedValue='<%# Bind("Previous_LIMITNO") %>'>
-                    <asp:ListItem Value="">Please Select</asp:ListItem>
+                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -186,16 +164,55 @@
             <asp:CheckBoxField DataField="Is_This_an_Additional_Drawdown" 
                 HeaderText="Is_This_an_Additional_Drawdown" 
                 SortExpression="Is_This_an_Additional_Drawdown" />
-            <asp:BoundField DataField="Type_of_Additional_Drawdown" HeaderText="Type_of_Additional_Drawdown" 
-                SortExpression="Type_of_Additional_Drawdown" />
-            <asp:BoundField DataField="Other_Reason_of_Principal_Increase" 
-                HeaderText="Other_Reason_of_Principal_Increase" 
-                SortExpression="Other_Reason_of_Principal_Increase" />
+            <asp:TemplateField HeaderText="Type_of_Additional_Drawdown" 
+                SortExpression="Type_of_Additional_Drawdown">
+                <EditItemTemplate>
+                    <asp:DropDownList ID="DropDownList7" runat="server"  AppendDataBoundItems="true" 
+                         DataSourceID="SqlDataSourceDrawDownType" 
+                       DataTextField="ADDITIONAL_DRAWDOWN_TYPE" 
+                        DataValueField="ADDITIONAL_DRAWDOWN_TYPE" 
+                        SelectedValue='<%# Bind("Type_of_Additional_Drawdown") %>'>
+                            <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                    </asp:DropDownList>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:DropDownList ID="DropDownList8" runat="server"  AppendDataBoundItems="true" 
+                        DataSourceID="SqlDataSourceDrawDownType" 
+                        DataTextField="ADDITIONAL_DRAWDOWN_TYPE" 
+                        DataValueField="ADDITIONAL_DRAWDOWN_TYPE" 
+                        SelectedValue='<%# Bind("Type_of_Additional_Drawdown") %>'>
+                            <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                    </asp:DropDownList>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label4" runat="server" 
+                        Text='<%# Bind("Type_of_Additional_Drawdown") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Other_Reason_of_Principal_Increase" 
+                SortExpression="Other_Reason_of_Principal_Increase">
+                <EditItemTemplate>
+                    <asp:DropDownList ID="DropDownList9" runat="server"  AppendDataBoundItems="true" 
+                        DataSourceID="SqlDataSourceReason" DataTextField="ADDITIONAL_DRAWDOWN_REASON" 
+                        DataValueField="ADDITIONAL_DRAWDOWN_REASON" 
+                        SelectedValue='<%# Bind("Other_Reason_of_Principal_Increase") %>'>
+                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                    </asp:DropDownList>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:DropDownList ID="DropDownList10" runat="server"  AppendDataBoundItems="true" 
+                        DataSourceID="SqlDataSourceReason" DataTextField="ADDITIONAL_DRAWDOWN_REASON" 
+                        DataValueField="ADDITIONAL_DRAWDOWN_REASON" 
+                        SelectedValue='<%# Bind("Other_Reason_of_Principal_Increase") %>'>
+                  <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                    </asp:DropDownList>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label5" runat="server" 
+                        Text='<%# Bind("Other_Reason_of_Principal_Increase") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" ShowInsertButton="True" />
         </Fields>
-        <FooterStyle BackColor="#CCCC99" />
-        <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-        <RowStyle BackColor="#F7F7DE" />
     </asp:DetailsView>
 </asp:Content>
