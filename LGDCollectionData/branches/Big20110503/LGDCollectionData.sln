@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LGDCollectionData", "LGDCollectionData.csproj", "{1DE2C270-9C09-4FF3-8364-F35E05345A2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DUMMY", "..\DUMMY\DUMMY.csproj", "{52DF87A7-32C5-4537-B50C-E5D6CB344BAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{1DE2C270-9C09-4FF3-8364-F35E05345A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DE2C270-9C09-4FF3-8364-F35E05345A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DE2C270-9C09-4FF3-8364-F35E05345A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52DF87A7-32C5-4537-B50C-E5D6CB344BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52DF87A7-32C5-4537-B50C-E5D6CB344BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52DF87A7-32C5-4537-B50C-E5D6CB344BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52DF87A7-32C5-4537-B50C-E5D6CB344BAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

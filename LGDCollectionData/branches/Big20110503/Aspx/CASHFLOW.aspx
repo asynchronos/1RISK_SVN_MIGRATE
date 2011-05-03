@@ -121,10 +121,6 @@
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:CascadingDropDown ID="CashFlowSourceDescription2_DropDownList_CascadingDropDown"
-                        runat="server" Enabled="True" Category="CashFlowSourceDescription2" ParentControlID="CashFlowSourceDescription1_DropDownList"
-                        TargetControlID="CashFlowSourceDescription2_DropDownList">
-                    </asp:CascadingDropDown>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription2_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription2") %>'></asp:TextBox>
@@ -149,10 +145,6 @@
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:CascadingDropDown ID="CashFlowSourceDescription3_DropDownList_CascadingDropDown"
-                        runat="server" Enabled="True" Category="CashFlowSourceDescription3" ParentControlID="CashFlowSourceDescription2_DropDownList"
-                        TargetControlID="CashFlowSourceDescription3_DropDownList">
-                    </asp:CascadingDropDown>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription3_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription3") %>'></asp:TextBox>
