@@ -190,18 +190,6 @@
           <Property Name="LIMITNO" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="Limit @ D" Type="float" />
           <Property Name="Limit @ D-1" Type="float" />
-          <Property Name="One Level Up Limit ID @ D-1" Type="nvarchar" MaxLength="255" />
-          <Property Name="One Level Up Limit Currency @ D-1" Type="nvarchar" MaxLength="3" />
-          <Property Name="One Level Up Limit Amount @ D-1" Type="float" />
-          <Property Name="Two Level Up Limit ID @ D-1" Type="nvarchar" MaxLength="255" />
-          <Property Name="Two Level Up Limit Currency @ D-1" Type="nvarchar" MaxLength="3" />
-          <Property Name="Two Level Up Limit Amount @ D-1" Type="float" />
-          <Property Name="Three Level Up Limit ID @ D-1" Type="nvarchar" MaxLength="255" />
-          <Property Name="Three Level Up Limit Currency @ D-1" Type="nvarchar" MaxLength="3" />
-          <Property Name="Three Level Up Limit Amount @ D-1" Type="float" />
-          <Property Name="Four Level Up Limit ID @ D-1" Type="nvarchar" MaxLength="255" />
-          <Property Name="Four Level Up Limit Currency @ D-1" Type="nvarchar" MaxLength="3" />
-          <Property Name="Four Level Up Limit Amount @ D-1" Type="float" />
           <Property Name="Facility Purpose Description" Type="nvarchar" MaxLength="255" />
           <Property Name="Nature of Facility" Type="nvarchar" MaxLength="255" />
           <Property Name="Seniority" Type="nvarchar" MaxLength="255" />
@@ -535,7 +523,6 @@
           <EntitySet Name="COLLATERAL_INFORMATION" EntityType="LGDModel.COLLATERAL_INFORMATION" />
           <EntitySet Name="DATA_LOG" EntityType="LGDModel.DATA_LOG" />
           <EntitySet Name="DIRECT_COST" EntityType="LGDModel.DIRECT_COST" />
-          <EntitySet Name="FACILITY_INFORMATION" EntityType="LGDModel.FACILITY_INFORMATION" />
           <EntitySet Name="FINANCIAL_SUMMARY" EntityType="LGDModel.FINANCIAL_SUMMARY" />
           <EntitySet Name="Group_CIF" EntityType="LGDModel.Group_CIF" />
           <EntitySet Name="GUARANTOR_INFORMATION" EntityType="LGDModel.GUARANTOR_INFORMATION" />
@@ -555,6 +542,7 @@
           <EntitySet Name="PV_LOSS" EntityType="LGDModel.PV_LOSS" />
           <EntitySet Name="RESTRUCTURE_INFORMATION" EntityType="LGDModel.RESTRUCTURE_INFORMATION" />
           <EntitySet Name="TRANSACTION_INFORMATION" EntityType="LGDModel.TRANSACTION_INFORMATION" />
+          <EntitySet Name="FACILITY_INFORMATION" EntityType="LGDModel.FACILITY_INFORMATION" />
         </EntityContainer>
         <EntityType Name="USER_DATA">
           <Key>
@@ -687,44 +675,6 @@
           <Property Type="Int32" Name="Expense_Year" Nullable="false" />
           <Property Type="Int32" Name="GL_code" Nullable="false" />
           <Property Type="Double" Name="Total_Expenses" />
-        </EntityType>
-        <EntityType Name="FACILITY_INFORMATION">
-          <Key>
-            <PropertyRef Name="CIF" />
-            <PropertyRef Name="Default_Date" />
-            <PropertyRef Name="LIMITNO" />
-          </Key>
-          <Property Type="String" Name="CIF" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="Default_Date" Nullable="false" />
-          <Property Type="String" Name="APP_ID" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LIMITTYP_A" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LIMITNO" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="Limit___D" />
-          <Property Type="Double" Name="Limit___D_1" />
-          <Property Type="String" Name="One_Level_Up_Limit_ID___D_1" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="One_Level_Up_Limit_Currency___D_1" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="One_Level_Up_Limit_Amount___D_1" />
-          <Property Type="String" Name="Two_Level_Up_Limit_ID___D_1" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Two_Level_Up_Limit_Currency___D_1" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="Two_Level_Up_Limit_Amount___D_1" />
-          <Property Type="String" Name="Three_Level_Up_Limit_ID___D_1" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Three_Level_Up_Limit_Currency___D_1" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="Three_Level_Up_Limit_Amount___D_1" />
-          <Property Type="String" Name="Four_Level_Up_Limit_ID___D_1" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Four_Level_Up_Limit_Currency___D_1" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="Four_Level_Up_Limit_Amount___D_1" />
-          <Property Type="String" Name="Facility_Purpose_Description" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Nature_of_Facility" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Seniority" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="Basel_Committed_Indicator" Nullable="false" />
-          <Property Type="DateTime" Name="Maturity_Date" />
-          <Property Type="String" Name="Principal_Repayment_Currency_Code" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="Principal_Repayment_Amount" />
-          <Property Type="String" Name="Principal_Repayment_Cycle" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Compounding_Frequency_of_Interest" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Sharing_Limit_with__CIF_1_" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Sharing_Limit_with__CIF_2_" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Sharing_Limit_with__CIF_3_" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FINANCIAL_SUMMARY">
           <Key>
@@ -995,6 +945,32 @@
           <Property Type="Double" Name="OS___D_1__Accrued" />
           <Property Type="Double" Name="OS___D_1__Suspense" />
         </EntityType>
+        <EntityType Name="FACILITY_INFORMATION">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="Default_Date" />
+            <PropertyRef Name="LIMITNO" />
+          </Key>
+          <Property Type="String" Name="CIF" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Default_Date" Nullable="false" />
+          <Property Type="String" Name="APP_ID" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LIMITTYP_A" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LIMITNO" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Limit___D" />
+          <Property Type="Double" Name="Limit___D_1" />
+          <Property Type="String" Name="Facility_Purpose_Description" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nature_of_Facility" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Seniority" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Basel_Committed_Indicator" Nullable="false" />
+          <Property Type="DateTime" Name="Maturity_Date" />
+          <Property Type="String" Name="Principal_Repayment_Currency_Code" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Principal_Repayment_Amount" />
+          <Property Type="String" Name="Principal_Repayment_Cycle" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Compounding_Frequency_of_Interest" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sharing_Limit_with__CIF_1_" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sharing_Limit_with__CIF_2_" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sharing_Limit_with__CIF_3_" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1119,43 +1095,6 @@
                 <ScalarProperty Name="GL_code" ColumnName="GL code" />
                 <ScalarProperty Name="Expense_Year" ColumnName="Expense Year" />
                 <ScalarProperty Name="Expense_Month" ColumnName="Expense Month" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FACILITY_INFORMATION">
-            <EntityTypeMapping TypeName="LGDModel.FACILITY_INFORMATION">
-              <MappingFragment StoreEntitySet="FACILITY INFORMATION">
-                <ScalarProperty Name="Sharing_Limit_with__CIF_3_" ColumnName="Sharing Limit with (CIF 3)" />
-                <ScalarProperty Name="Sharing_Limit_with__CIF_2_" ColumnName="Sharing Limit with (CIF 2)" />
-                <ScalarProperty Name="Sharing_Limit_with__CIF_1_" ColumnName="Sharing Limit with (CIF 1)" />
-                <ScalarProperty Name="Compounding_Frequency_of_Interest" ColumnName="Compounding Frequency of Interest" />
-                <ScalarProperty Name="Principal_Repayment_Cycle" ColumnName="Principal Repayment Cycle" />
-                <ScalarProperty Name="Principal_Repayment_Amount" ColumnName="Principal Repayment Amount" />
-                <ScalarProperty Name="Principal_Repayment_Currency_Code" ColumnName="Principal Repayment Currency Code" />
-                <ScalarProperty Name="Maturity_Date" ColumnName="Maturity Date" />
-                <ScalarProperty Name="Basel_Committed_Indicator" ColumnName="Basel Committed Indicator" />
-                <ScalarProperty Name="Seniority" ColumnName="Seniority" />
-                <ScalarProperty Name="Nature_of_Facility" ColumnName="Nature of Facility" />
-                <ScalarProperty Name="Facility_Purpose_Description" ColumnName="Facility Purpose Description" />
-                <ScalarProperty Name="Four_Level_Up_Limit_Amount___D_1" ColumnName="Four Level Up Limit Amount @ D-1" />
-                <ScalarProperty Name="Four_Level_Up_Limit_Currency___D_1" ColumnName="Four Level Up Limit Currency @ D-1" />
-                <ScalarProperty Name="Four_Level_Up_Limit_ID___D_1" ColumnName="Four Level Up Limit ID @ D-1" />
-                <ScalarProperty Name="Three_Level_Up_Limit_Amount___D_1" ColumnName="Three Level Up Limit Amount @ D-1" />
-                <ScalarProperty Name="Three_Level_Up_Limit_Currency___D_1" ColumnName="Three Level Up Limit Currency @ D-1" />
-                <ScalarProperty Name="Three_Level_Up_Limit_ID___D_1" ColumnName="Three Level Up Limit ID @ D-1" />
-                <ScalarProperty Name="Two_Level_Up_Limit_Amount___D_1" ColumnName="Two Level Up Limit Amount @ D-1" />
-                <ScalarProperty Name="Two_Level_Up_Limit_Currency___D_1" ColumnName="Two Level Up Limit Currency @ D-1" />
-                <ScalarProperty Name="Two_Level_Up_Limit_ID___D_1" ColumnName="Two Level Up Limit ID @ D-1" />
-                <ScalarProperty Name="One_Level_Up_Limit_Amount___D_1" ColumnName="One Level Up Limit Amount @ D-1" />
-                <ScalarProperty Name="One_Level_Up_Limit_Currency___D_1" ColumnName="One Level Up Limit Currency @ D-1" />
-                <ScalarProperty Name="One_Level_Up_Limit_ID___D_1" ColumnName="One Level Up Limit ID @ D-1" />
-                <ScalarProperty Name="Limit___D_1" ColumnName="Limit @ D-1" />
-                <ScalarProperty Name="Limit___D" ColumnName="Limit @ D" />
-                <ScalarProperty Name="LIMITNO" ColumnName="LIMITNO" />
-                <ScalarProperty Name="LIMITTYP_A" ColumnName="LIMITTYP_A" />
-                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
-                <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
-                <ScalarProperty Name="CIF" ColumnName="CIF" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1427,6 +1366,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="FACILITY_INFORMATION">
+            <EntityTypeMapping TypeName="LGDModel.FACILITY_INFORMATION">
+              <MappingFragment StoreEntitySet="FACILITY INFORMATION">
+                <ScalarProperty Name="Sharing_Limit_with__CIF_3_" ColumnName="Sharing Limit with (CIF 3)" />
+                <ScalarProperty Name="Sharing_Limit_with__CIF_2_" ColumnName="Sharing Limit with (CIF 2)" />
+                <ScalarProperty Name="Sharing_Limit_with__CIF_1_" ColumnName="Sharing Limit with (CIF 1)" />
+                <ScalarProperty Name="Compounding_Frequency_of_Interest" ColumnName="Compounding Frequency of Interest" />
+                <ScalarProperty Name="Principal_Repayment_Cycle" ColumnName="Principal Repayment Cycle" />
+                <ScalarProperty Name="Principal_Repayment_Amount" ColumnName="Principal Repayment Amount" />
+                <ScalarProperty Name="Principal_Repayment_Currency_Code" ColumnName="Principal Repayment Currency Code" />
+                <ScalarProperty Name="Maturity_Date" ColumnName="Maturity Date" />
+                <ScalarProperty Name="Basel_Committed_Indicator" ColumnName="Basel Committed Indicator" />
+                <ScalarProperty Name="Seniority" ColumnName="Seniority" />
+                <ScalarProperty Name="Nature_of_Facility" ColumnName="Nature of Facility" />
+                <ScalarProperty Name="Facility_Purpose_Description" ColumnName="Facility Purpose Description" />
+                <ScalarProperty Name="Limit___D_1" ColumnName="Limit @ D-1" />
+                <ScalarProperty Name="Limit___D" ColumnName="Limit @ D" />
+                <ScalarProperty Name="LIMITNO" ColumnName="LIMITNO" />
+                <ScalarProperty Name="LIMITTYP_A" ColumnName="LIMITTYP_A" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1449,31 +1413,31 @@
     <Diagrams>
       <Diagram Name="LGDModel" ZoomLevel="91">
         <EntityTypeShape EntityType="LGDModel.USER_DATA" Width="1.5" PointX="0.75" PointY="0.75" Height="4.1128384761015564" IsExpanded="true" />
-        <EntityTypeShape EntityType="LGDModel.ADDITIONAL_DRAWDOWN" Width="1.5" PointX="3.75" PointY="0.75" Height="4.61342440466086" />
-        <EntityTypeShape EntityType="LGDModel.CASHFLOW" Width="1.5" PointX="5.75" PointY="0.75" Height="3.6122525475422531" />
-        <EntityTypeShape EntityType="LGDModel.COLLATERAL_INFORMATION" Width="1.5" PointX="0.75" PointY="5.75" Height="3.6122525475422531" />
-        <EntityTypeShape EntityType="LGDModel.DATA_LOG" Width="1.5" PointX="5.75" PointY="5.75" Height="2.944804642796516" />
-        <EntityTypeShape EntityType="LGDModel.DIRECT_COST" Width="1.5" PointX="2.75" PointY="6.75" Height="1.6099088333050418" />
-        <EntityTypeShape EntityType="LGDModel.FACILITY_INFORMATION" Width="1.5" PointX="7.75" PointY="0.75" Height="6.1151821903387713" />
-        <EntityTypeShape EntityType="LGDModel.FINANCIAL_SUMMARY" Width="1.5" PointX="7.75" PointY="7.75" Height="2.110494761864345" />
-        <EntityTypeShape EntityType="LGDModel.Group_CIF" Width="1.5" PointX="9.75" PointY="0.75" Height="1.2761848809321705" />
-        <EntityTypeShape EntityType="LGDModel.GUARANTOR_INFORMATION" Width="1.5" PointX="2.75" PointY="9.75" Height="2.7779426666100839" />
-        <EntityTypeShape EntityType="LGDModel.L_APP_ID" Width="1.5" PointX="9.75" PointY="3.75" Height="1.1093229047457385" />
-        <EntityTypeShape EntityType="LGDModel.L_BUILDING_TYPE" Width="1.5" PointX="4.75" PointY="9.75" Height="1.4430468571186097" />
-        <EntityTypeShape EntityType="LGDModel.L_COLLATERAL_TYPE" Width="1.5" PointX="9.75" PointY="5.75" Height="1.4430468571186097" />
-        <EntityTypeShape EntityType="LGDModel.L_CURRENCY_CODE" Width="1.5" PointX="9.75" PointY="8.75" Height="1.4430468571186097" />
-        <EntityTypeShape EntityType="LGDModel.L_IMPORT_TABLE" Width="1.5" PointX="6.75" PointY="10.75" Height="1.2761848809321776" />
-        <EntityTypeShape EntityType="LGDModel.L_INDEX" Width="1.5" PointX="11.75" PointY="0.75" Height="1.2761848809321776" />
-        <EntityTypeShape EntityType="LGDModel.L_PROVINCE" Width="1.5" PointX="11.75" PointY="3.75" Height="1.6099088333050418" />
-        <EntityTypeShape EntityType="LGDModel.L_RATE_TYPE" Width="1.5" PointX="11.75" PointY="6.75" Height="1.4430468571186097" />
-        <EntityTypeShape EntityType="LGDModel.LIMIT_STRUCTURE" Width="1.5" PointX="8.75" PointY="11.75" Height="3.9459764999151261" />
-        <EntityTypeShape EntityType="LGDModel.NPA_EXPENSE" Width="1.5" PointX="11.75" PointY="9.75" Height="1.6099088333050418" />
-        <EntityTypeShape EntityType="LGDModel.NPA_RECORD" Width="1.5" PointX="10.75" PointY="12.75" Height="3.1116666189829516" />
-        <EntityTypeShape EntityType="LGDModel.OBLIGOR_INFORMATION" Width="1.5" PointX="12.75" PointY="12.75" Height="5.2808723094065932" />
-        <EntityTypeShape EntityType="LGDModel.PLEDGE_INFORMATION" Width="1.5" PointX="13.75" PointY="0.75" Height="3.9459764999151332" />
-        <EntityTypeShape EntityType="LGDModel.PV_LOSS" Width="1.5" PointX="0.75" PointY="13.75" Height="1.7767708094914667" />
-        <EntityTypeShape EntityType="LGDModel.RESTRUCTURE_INFORMATION" Width="1.5" PointX="2.75" PointY="13.75" Height="2.27735673805077" />
-        <EntityTypeShape EntityType="LGDModel.TRANSACTION_INFORMATION" Width="1.5" PointX="4.75" PointY="13.75" Height="4.4465624284744365" />
+        <EntityTypeShape EntityType="LGDModel.ADDITIONAL_DRAWDOWN" Width="1.5" PointX="2.75" PointY="0.75" Height="4.61342440466086" />
+        <EntityTypeShape EntityType="LGDModel.CASHFLOW" Width="1.5" PointX="4.75" PointY="0.75" Height="3.6122525475422531" />
+        <EntityTypeShape EntityType="LGDModel.COLLATERAL_INFORMATION" Width="1.5" PointX="4.75" PointY="5.75" Height="3.6122525475422531" />
+        <EntityTypeShape EntityType="LGDModel.DATA_LOG" Width="1.5" PointX="6.75" PointY="0.75" Height="2.944804642796516" />
+        <EntityTypeShape EntityType="LGDModel.DIRECT_COST" Width="1.5" PointX="0.75" PointY="6.75" Height="1.6099088333050418" />
+        <EntityTypeShape EntityType="LGDModel.FINANCIAL_SUMMARY" Width="1.5" PointX="6.75" PointY="4.75" Height="2.110494761864345" />
+        <EntityTypeShape EntityType="LGDModel.Group_CIF" Width="1.5" PointX="6.75" PointY="7.75" Height="1.2761848809321705" />
+        <EntityTypeShape EntityType="LGDModel.GUARANTOR_INFORMATION" Width="1.5" PointX="8.75" PointY="0.75" Height="2.7779426666100839" />
+        <EntityTypeShape EntityType="LGDModel.L_APP_ID" Width="1.5" PointX="8.75" PointY="4.75" Height="1.1093229047457385" />
+        <EntityTypeShape EntityType="LGDModel.L_BUILDING_TYPE" Width="1.5" PointX="8.75" PointY="6.75" Height="1.4430468571186097" />
+        <EntityTypeShape EntityType="LGDModel.L_COLLATERAL_TYPE" Width="1.5" PointX="0.75" PointY="9.75" Height="1.4430468571186097" />
+        <EntityTypeShape EntityType="LGDModel.L_CURRENCY_CODE" Width="1.5" PointX="8.75" PointY="9.75" Height="1.4430468571186097" />
+        <EntityTypeShape EntityType="LGDModel.L_IMPORT_TABLE" Width="1.5" PointX="10.75" PointY="0.75" Height="1.2761848809321776" />
+        <EntityTypeShape EntityType="LGDModel.L_INDEX" Width="1.5" PointX="2.75" PointY="10.75" Height="1.2761848809321776" />
+        <EntityTypeShape EntityType="LGDModel.L_PROVINCE" Width="1.5" PointX="10.75" PointY="3.75" Height="1.6099088333050418" />
+        <EntityTypeShape EntityType="LGDModel.L_RATE_TYPE" Width="1.5" PointX="4.75" PointY="10.75" Height="1.4430468571186097" />
+        <EntityTypeShape EntityType="LGDModel.LIMIT_STRUCTURE" Width="1.5" PointX="10.75" PointY="6.75" Height="3.9459764999151261" />
+        <EntityTypeShape EntityType="LGDModel.NPA_EXPENSE" Width="1.5" PointX="10.75" PointY="11.75" Height="1.6099088333050418" />
+        <EntityTypeShape EntityType="LGDModel.NPA_RECORD" Width="1.5" PointX="12.75" PointY="0.75" Height="3.1116666189829516" />
+        <EntityTypeShape EntityType="LGDModel.OBLIGOR_INFORMATION" Width="1.5" PointX="12.75" PointY="4.75" Height="5.28087230940659" />
+        <EntityTypeShape EntityType="LGDModel.PLEDGE_INFORMATION" Width="1.5" PointX="6.75" PointY="12.75" Height="3.9459764999151332" />
+        <EntityTypeShape EntityType="LGDModel.PV_LOSS" Width="1.5" PointX="12.75" PointY="11.75" Height="1.7767708094914667" />
+        <EntityTypeShape EntityType="LGDModel.RESTRUCTURE_INFORMATION" Width="1.5" PointX="0.75" PointY="13.75" Height="2.27735673805077" />
+        <EntityTypeShape EntityType="LGDModel.TRANSACTION_INFORMATION" Width="1.5" PointX="2.75" PointY="13.75" Height="4.4465624284744365" />
+        <EntityTypeShape EntityType="LGDModel.FACILITY_INFORMATION" Width="1.5" PointX="14.75" PointY="0.75" Height="4.1128384761015582" />
       </Diagram>
     </Diagrams>
   </Designer>
