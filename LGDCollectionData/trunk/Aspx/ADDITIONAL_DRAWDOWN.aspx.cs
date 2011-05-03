@@ -15,15 +15,17 @@ namespace LGDCollectionData.Aspx
         {
 
         }
-        protected void updateRecord(object sender, SqlDataSourceCommandEventArgs e)
-        {
-            MessageBox.Show(e.Command.Parameters.Count.ToString());
-            String text = string.Empty;
-            foreach (System.Data.Common.DbParameter p in e.Command.Parameters)
-            {
-                text = text + p.ParameterName + "\n";
-            }
-            MessageBox.Show(text);
-        }
+        //protected void updateRecord(object sender, SqlDataSourceCommandEventArgs e)
+        //{
+        //    MessageBox.Show(e.Command.Parameters.Count.ToString());
+        //    String text = string.Empty;
+        //    foreach (System.Data.Common.DbParameter p in e.Command.Parameters)
+        //    {
+        //        text = text + p.ParameterName + "\n";
+        //    }
+        //    MessageBox.Show(text);
+        //}
+
+
     }
 }
