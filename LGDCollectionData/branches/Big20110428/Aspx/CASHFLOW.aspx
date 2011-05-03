@@ -179,12 +179,6 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Previous LIMITNO:" SortExpression="PreviousLIMITNO">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="PreviousLIMITNO_DropDownList" runat="server" DataSourceID="PreviousLimitNo_DataSource"
-                        DataTextField="LIMITNO" DataValueField="LIMITNO" SelectedValue='<%# Bind("PreviousLIMITNO") %>'
-                        AppendDataBoundItems="true">
-                        <asp:ListItem Value=""></asp:ListItem>
-                        <asp:ListItem Value="N/A">N/A</asp:ListItem>
-                    </asp:DropDownList>
                     <asp:ComboBox ID="PreviousLIMITNO_ComboBox" runat="server" AutoCompleteMode="SuggestAppend"
                         DataSourceID="PreviousLimitNo_DataSource" DataTextField="LIMITNO" DataValueField="LIMITNO"
                         DropDownStyle="DropDownList" MaxLength="0" Style="display: inline;" AppendDataBoundItems="true"
@@ -192,11 +186,6 @@
                         <asp:ListItem Value=""></asp:ListItem>
                         <asp:ListItem Value="N/A">N/A</asp:ListItem>
                     </asp:ComboBox>
-                    <asp:TextBox ID="PreviousLIMITNO_TextBox" runat="server"></asp:TextBox>
-                    <asp:AutoCompleteExtender ID="PreviousLIMITNO_TextBox_AutoCompleteExtender" runat="server"
-                        DelimiterCharacters="" Enabled="True" ServiceMethod="GetCompletionList" ServicePath=""
-                        TargetControlID="PreviousLIMITNO_TextBox" UseContextKey="True">
-                    </asp:AutoCompleteExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="PreviousLIMITNO_TextBox" runat="server" Text='<%# Bind("PreviousLIMITNO") %>'></asp:TextBox>

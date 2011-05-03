@@ -8,13 +8,6 @@ namespace LGDCollectionData.Aspx
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
 
-        [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
-        public static string[] GetCompletionList(string prefixText, int count, string contextKey)
-        {
-            //System.Windows.Forms.MessageBox.Show();
-            return default(string[]);
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
         }
