@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 3/5/2554 13:39:17
+// Generation date: 3/5/2554 13:43:22
 namespace LGDCollectionData.Entities
 {
     
