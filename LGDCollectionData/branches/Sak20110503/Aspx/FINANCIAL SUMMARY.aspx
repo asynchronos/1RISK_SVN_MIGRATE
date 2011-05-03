@@ -107,7 +107,26 @@
                         Text='<%# Bind("Financial_Currency_Code") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CommandField ShowEditButton="True" ShowInsertButton="True" />
+            <asp:TemplateField ShowHeader="False">
+                <EditItemTemplate>
+                    <asp:LinkButton ID="LinkButton1" runat="server" OnClientClick="if(confirm('Are you sure to update this item?') == false){return false;}"
+CausesValidation="False" CommandName="Update" Text="Update"></asp:LinkButton>
+                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
+                        CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" 
+                        CommandName="Insert" Text="Insert"></asp:LinkButton>
+                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
+                        CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" 
+                        CommandName="Edit" Text="Edit"></asp:LinkButton>
+                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
+                        CommandName="New" Text="New"></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Fields>
     </asp:DetailsView>                  
       <asp:SqlDataSource ID="SqlDataSourceCurrentcy" runat="server" 
