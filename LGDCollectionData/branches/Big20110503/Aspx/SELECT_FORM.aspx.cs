@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using LGDCollectionData.Entities;
 using log4net;
 
@@ -12,23 +13,12 @@ namespace LGDCollectionData.Aspx
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[] GetCompletionList(string prefixText, int count, string contextKey)
         {
+            string[] result = null;
             using (LGDEntities en = new LGDEntities())
             {
-                //var queryUser = (from user in en.lis
-                //                 where user.EMP_ID == username
-                //                 && user.EXPIRE_DATE >= DateTime.Now
-                //                 && user.DEL_FLAG == false
-                //                 select user);
-
-                //if (!(queryUser.FirstOrDefault() == null))
-                //{
-                //    if (queryUser.FirstOrDefault().PASSWD.Equals(password))
-                //    {
-                //        result = true;
-                //    }
-                //}
+                result = en.List_of_Default.Where(n => n.CIF.StartsWith(prefixText)).OrderBy(n => n.CIF).Select(n => n.CIF).Take(count).ToArray();
             }
-            return default(string[]);
+            return result;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -37,9 +27,9 @@ namespace LGDCollectionData.Aspx
 
         protected void ButtonOpenForm_Click(object sender, EventArgs e)
         {
-            if (TextBoxCIF.Text != null)
+            if (ComboBox1.Text != null)
             {
-                Response.Redirect(DropDownListFormName.SelectedValue + "?CIF=" + TextBoxCIF.Text);
+                Response.Redirect(DropDownListFormName.SelectedValue + "?CIF=" + ComboBox1.Text);
             }
         }
     }
