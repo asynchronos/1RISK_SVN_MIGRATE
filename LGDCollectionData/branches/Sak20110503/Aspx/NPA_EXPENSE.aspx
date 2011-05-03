@@ -54,7 +54,18 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Total_Expense","{0:n2}") %>' style="text-align:right"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CommandField ShowEditButton="True" />
+            <asp:TemplateField ShowHeader="False">
+                <EditItemTemplate>
+                    <asp:LinkButton ID="LinkButton1" runat="server" OnClientClick="if(confirm('Are you sure to update this item?') == false){return false;}"
+CausesValidation="False" CommandName="Update" Text="Update"></asp:LinkButton>
+                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
+                        CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" 
+                        CommandName="Edit" Text="Edit"></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Fields>
     </asp:DetailsView>
     <asp:SqlDataSource ID="SqlDataSourceNPA_EXPENSE" runat="server" 
