@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GUARANTOR_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.GUARANTOR_INFORMATION" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<script type="text/javascript">
+    function popupAlert(msg) {
+        alert(msg);
+    }
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <table>
@@ -24,7 +29,6 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
                         <EditItemTemplate>
-                            <%--<asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Default_Date") %>'></asp:TextBox>--%>
                             <asp:Label ID="Default_DateLabel2" runat="server" Text='<%# Bind("Default_Date") %>'></asp:Label>
                         </EditItemTemplate>
                         <InsertItemTemplate>
@@ -36,7 +40,6 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="PLED_ID" SortExpression="PLED_ID">
                         <EditItemTemplate>
-                            <%--<asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("PLED_ID") %>'></asp:TextBox>--%>
                             <asp:Label ID="PLED_IDLabel3" runat="server" Text='<%# Bind("PLED_ID") %>'></asp:Label>
                         </EditItemTemplate>
                         <InsertItemTemplate>
@@ -46,18 +49,41 @@
                             <asp:Label ID="Label3" runat="server" Text='<%# Bind("PLED_ID") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Guarantee_Title" HeaderText="Guarantee_Title" 
-                        SortExpression="Guarantee_Title" />
+                    <asp:TemplateField HeaderText="Guarantee_Title" 
+                        SortExpression="Guarantee_Title">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Guarantee_Title") %>'></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input Guarantee Title" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox8"></asp:RequiredFieldValidator>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("Guarantee_Title") %>'></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("Guarantee_Title") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:CheckBoxField DataField="Pledge_to_All_Facilities" 
                         HeaderText="Pledge_to_All_Facilities" 
                         SortExpression="Pledge_to_All_Facilities" />
-                    <asp:BoundField DataField="Facility_Pledged" HeaderText="Facility_Pledged" 
-                        SortExpression="Facility_Pledged" />
+                    <asp:TemplateField HeaderText="Facility_Pledged" 
+                        SortExpression="Facility_Pledged">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("Facility_Pledged","{0:n2}") %>' Style="text-align:right;"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Please input Facility Pledged" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox9"></asp:RequiredFieldValidator>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox10" runat="server" 
+                                Text='<%# Bind("Facility_Pledged") %>'></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label10" runat="server" Text='<%# Bind("Facility_Pledged","{0:n2}") %>' Style="text-align:right;"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Guarantee_Amount_D" 
                         SortExpression="Guarantee_Amount_D">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Guarantee_Amount_D","{0:n2}") %>' Style="text-align:right;"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="TextBox6"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please input Guarantee Amount D" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox6"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox7" runat="server" 
@@ -71,7 +97,7 @@
                         SortExpression="Guarantee_Amount_D1">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Guarantee_Amount_D1","{0:n2}") %>' Style="text-align:right;"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TextBox7"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input Guarantee Amount D1" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox7"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox8" runat="server" 
@@ -127,7 +153,7 @@
                             <asp:TextBox ID="Internal_Rating_DTextBox" runat="server" 
                                 Text='<%# Bind("Internal_Rating_D") %>'>
                             </asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorInternal_Rating" runat="server" ErrorMessage="*" ControlToValidate="Internal_Rating_DTextBox"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorInternal_Rating" runat="server" ErrorMessage="Please input Internal Rating D" Text="*" ValidationGroup="UpdateValidation" ControlToValidate="Internal_Rating_DTextBox"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox6" runat="server" 
@@ -137,9 +163,20 @@
                             <asp:Label ID="Label6" runat="server" Text='<%# Bind("Internal_Rating_D") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="True" />
+                    <asp:TemplateField ShowHeader="False">
+                        <EditItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="true" CommandName="Update" Text="Update" ValidationGroup="UpdateValidation"></asp:LinkButton>
+                            &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
+                                CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" 
+                                CommandName="Edit" Text="Edit"></asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Fields>
             </asp:DetailsView>
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ValidationGroup="UpdateValidation" ShowSummary="False"/>
       <asp:SqlDataSource ID="SqlDataSourceCurrentcy" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
                         SelectCommand="L_CURRENCY_CODE_SELECT" 
@@ -152,7 +189,8 @@
                 SelectCommand="GUARANTOR_INFORMATION_SELECT" 
                 SelectCommandType="StoredProcedure" 
                 UpdateCommand="GUARANTOR_INFORMATION_UPDATE" 
-                UpdateCommandType="StoredProcedure">
+                UpdateCommandType="StoredProcedure"
+                OnUpdated="SqlDataSource1_Updated">
                 <InsertParameters>
                     <asp:Parameter Name="CIF" Type="String" />
                     <asp:Parameter Name="Default_Date" Type="DateTime" />

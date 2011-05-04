@@ -4675,6 +4675,7 @@
     </Compile>
     <Compile Include="Aspx\FACILITY_INFORMATION.aspx.cs">
       <DependentUpon>FACILITY_INFORMATION.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\FACILITY_INFORMATION.aspx.designer.cs">
       <DependentUpon>FACILITY_INFORMATION.aspx</DependentUpon>
@@ -4688,12 +4689,14 @@
     </Compile>
     <Compile Include="Aspx\GUARANTOR_INFORMATION.aspx.cs">
       <DependentUpon>GUARANTOR_INFORMATION.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\GUARANTOR_INFORMATION.aspx.designer.cs">
       <DependentUpon>GUARANTOR_INFORMATION.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\LIMIT_STRUCTURE.aspx.cs">
       <DependentUpon>LIMIT_STRUCTURE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\LIMIT_STRUCTURE.aspx.designer.cs">
       <DependentUpon>LIMIT_STRUCTURE.aspx</DependentUpon>
@@ -4703,6 +4706,7 @@
     </Compile>
     <Compile Include="Aspx\NPA_EXPENSE.aspx.cs">
       <DependentUpon>NPA_EXPENSE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\NPA_EXPENSE.aspx.designer.cs">
       <DependentUpon>NPA_EXPENSE.aspx</DependentUpon>
@@ -4716,6 +4720,7 @@
     </Compile>
     <Compile Include="Aspx\NPA_RECORD_NEW.aspx.cs">
       <DependentUpon>NPA_RECORD_NEW.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\NPA_RECORD_NEW.aspx.designer.cs">
       <DependentUpon>NPA_RECORD_NEW.aspx</DependentUpon>
