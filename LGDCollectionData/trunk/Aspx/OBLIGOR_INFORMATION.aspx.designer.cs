@@ -10,7 +10,7 @@
 namespace LGDCollectionData.Aspx {
     
     
-    public partial class SELECT_FORM {
+    public partial class OBLIGOR_INFORMATION {
         
         /// <summary>
         /// ToolkitScriptManager1 control.
@@ -22,75 +22,48 @@ namespace LGDCollectionData.Aspx {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// OBLIGOR_INFORMATION_DetailsView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.DetailsView OBLIGOR_INFORMATION_DetailsView;
         
         /// <summary>
-        /// SqlDataSource2 control.
+        /// OBLIGOR_INFORMATION_SqlDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        protected global::System.Web.UI.WebControls.SqlDataSource OBLIGOR_INFORMATION_SqlDataSource;
         
         /// <summary>
-        /// Label3 control.
+        /// L_PROVINCE_SqlDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.SqlDataSource L_PROVINCE_SqlDataSource;
         
         /// <summary>
-        /// Label2 control.
+        /// Business_Reason_for_Default_SqlDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.SqlDataSource Business_Reason_for_Default_SqlDataSource;
         
         /// <summary>
-        /// ComboBox1 control.
+        /// Nature_of_Emergence_SqlDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ComboBox ComboBox1;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// DropDownListFormName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListFormName;
-        
-        /// <summary>
-        /// ButtonOpenForm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonOpenForm;
+        protected global::System.Web.UI.WebControls.SqlDataSource Nature_of_Emergence_SqlDataSource;
     }
 }

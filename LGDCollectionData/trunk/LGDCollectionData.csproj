@@ -82,7 +82,9 @@
     <Content Include="Aspx\NPA_EXPENSE.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
     <Content Include="Aspx\NPA_RECORD_NEW.aspx" />
+    <Content Include="Aspx\OBLIGOR_INFORMATION.aspx" />
     <Content Include="Aspx\SELECT_FORM.aspx" />
+    <Content Include="Aspx\TRANSACTION_INFORMATION.aspx" />
     <Content Include="Aspx\WebForm1_Test.aspx" />
     <Content Include="ExtJS\adapter\ext\ext-base-debug.js" />
     <Content Include="ExtJS\adapter\ext\ext-base.js" />
@@ -4588,6 +4590,7 @@
     <Content Include="Library\nunit.framework.dll" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
@@ -4725,12 +4728,26 @@
     <Compile Include="Aspx\NPA_RECORD_NEW.aspx.designer.cs">
       <DependentUpon>NPA_RECORD_NEW.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\OBLIGOR_INFORMATION.aspx.cs">
+      <DependentUpon>OBLIGOR_INFORMATION.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\OBLIGOR_INFORMATION.aspx.designer.cs">
+      <DependentUpon>OBLIGOR_INFORMATION.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\SELECT_FORM.aspx.cs">
       <DependentUpon>SELECT_FORM.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\SELECT_FORM.aspx.designer.cs">
       <DependentUpon>SELECT_FORM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\TRANSACTION_INFORMATION.aspx.cs">
+      <DependentUpon>TRANSACTION_INFORMATION.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\TRANSACTION_INFORMATION.aspx.designer.cs">
+      <DependentUpon>TRANSACTION_INFORMATION.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\WebForm1_Test.aspx.cs">
       <DependentUpon>WebForm1_Test.aspx</DependentUpon>
@@ -4787,18 +4804,16 @@
     <Content Include="Account\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Entities\LGDModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LGDModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Log4net.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Entities\LGDModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LGDModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="ExtJS\docs\resources\images\access\form\clear-trigger.psd" />
     <None Include="ExtJS\docs\resources\images\access\form\date-trigger.psd" />
     <None Include="ExtJS\docs\resources\images\access\form\search-trigger.psd" />

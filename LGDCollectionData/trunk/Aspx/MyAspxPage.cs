@@ -58,5 +58,59 @@ namespace LGDCollectionData.Aspx
 
             return authTicket;
         }
+
+        protected virtual void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
+        {
+            ((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
+        }
+
+        protected virtual void DetailsView_ItemUpdating(object sender, System.Web.UI.WebControls.DetailsViewUpdateEventArgs e)
+        {
+            bool hasChanged = false;
+            for (int i = 0; i < e.OldValues.Count; i++)
+            {
+                if (e.OldValues[i] == null && e.NewValues[i] == null)
+                {
+                    if (isDebugEnabled)
+                    {
+                        log.Debug(i + ":both null");
+                    }
+                    //do nothing
+                }
+                else if (e.OldValues[i] != null && e.NewValues[i] != null)
+                {
+                    if (isDebugEnabled)
+                    {
+                        log.Debug(i + ":both not null");
+                    }
+
+                    if (!e.OldValues[i].Equals(e.NewValues[i]))
+                    {
+                        hasChanged = true;
+                        break;
+                    }
+                }
+                else //null one value
+                {
+                    if (isDebugEnabled)
+                    {
+                        log.Debug(i + ":null one");
+                    }
+
+                    hasChanged = true;
+                    break;
+                }
+            }
+
+            if (isDebugEnabled)
+            {
+                log.Debug("hasChanged:" + hasChanged.ToString());
+            }
+
+            if (!hasChanged)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

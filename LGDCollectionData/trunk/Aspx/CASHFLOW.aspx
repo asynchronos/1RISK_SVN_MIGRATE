@@ -10,8 +10,9 @@
     </asp:ToolkitScriptManager>
     <asp:DetailsView ID="CASHFLOW_DetailsView" runat="server" AllowPaging="True" AutoGenerateRows="False"
         CellPadding="4" DataKeyNames="CIF,DefaultDate,LIMITNO,DateofCashflow" DataSourceID="CASHFLOW_DATASOURCE"
-        DefaultMode="Edit" EnableModelValidation="True" ForeColor="#333333" GridLines="None"
-        OnPageIndexChanging="CASHFLOW_DetailsView_PageIndexChanging" OnItemUpdating="CASHFLOW_DetailsView_ItemUpdating">
+        DefaultMode="Edit" EnableModelValidation="True" ForeColor="#333333"
+        OnPageIndexChanging="DetailsView_PageIndexChanging"
+        OnItemUpdating="DetailsView_ItemUpdating">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
@@ -121,10 +122,6 @@
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:CascadingDropDown ID="CashFlowSourceDescription2_DropDownList_CascadingDropDown"
-                        runat="server" Enabled="True" Category="CashFlowSourceDescription2" ParentControlID="CashFlowSourceDescription1_DropDownList"
-                        TargetControlID="CashFlowSourceDescription2_DropDownList">
-                    </asp:CascadingDropDown>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription2_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription2") %>'></asp:TextBox>
@@ -149,10 +146,6 @@
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:CascadingDropDown ID="CashFlowSourceDescription3_DropDownList_CascadingDropDown"
-                        runat="server" Enabled="True" Category="CashFlowSourceDescription3" ParentControlID="CashFlowSourceDescription2_DropDownList"
-                        TargetControlID="CashFlowSourceDescription3_DropDownList">
-                    </asp:CascadingDropDown>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription3_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription3") %>'></asp:TextBox>
@@ -172,7 +165,9 @@
                     <asp:Label ID="WrittenoffOrHaircutAmount_Label" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="CollateralID" HeaderText="Collateral ID:" SortExpression="CollateralID" />
+            <asp:BoundField DataField="CollateralID"
+                HeaderText="Collateral ID: (*Please enter &quot;N/A&quot; if not applicable)"
+                SortExpression="CollateralID" />
             <asp:TemplateField HeaderText="LIMITNO Changed:" SortExpression="LIMITNOChanged">
                 <EditItemTemplate>
                     <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>' />
