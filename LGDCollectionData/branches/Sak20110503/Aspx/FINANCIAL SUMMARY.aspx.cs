@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace LGDCollectionData.Aspx
 {
+
     public partial class FINANCIAL_SUMMARY : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -40,16 +41,34 @@ namespace LGDCollectionData.Aspx
             //if ((e.Command.Parameters["@Default_Date"] != null) && (e.Command.Parameters["@Default_Date"].Value != null))
             // MessageBox.Show(e.Command.Parameters["@Default_Date"].Value.ToString());
         }
-        protected void CheckDate(object sender, GridViewSelectEventArgs e)
+
+        protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e)
         {
-            
+            //MessageBox.Show(e.AffectedRows.ToString());
+            if (e.AffectedRows.ToString() == "-1") 
+            {
+                //MessageBox.Show("aaa1");
+                // Perform any additional processing, such as sending an e-mail notification.
+                //Label1.Text = Request.LogonUserIdentity.Name + " changed user information sucessfully!";
+
+                string Message = "Update Successed";
+                string sb = "<script language='javascript'>" +
+                                     "popupAlert('" + Message + "');" +
+                                     "</script>";
+
+               //MessageBox.Show(sb.ToString());
+                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(),  false);
+
+          }
+            else
+            {
+                //Label1.Text = "No data updated!";
+                string Message = "Update Failed";
+                string sb = "<script language='javascript'>" +
+                                     "popupAlert('" + Message + "');" +
+                                     "</script>";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
+            }
         }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-
     }
 }
