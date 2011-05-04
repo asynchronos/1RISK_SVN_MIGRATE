@@ -1,14 +1,22 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FINANCIAL SUMMARY.aspx.cs" Inherits="LGDCollectionData.Aspx.FINANCIAL_SUMMARY" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FINANCIAL SUMMARY.aspx.cs" Inherits="LGDCollectionData.Aspx.FINANCIAL_SUMMARY" Culture="th-TH" UICulture="th-TH" %>
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<script type="text/javascript">
+    function popupAlert(msg) {
+        alert(msg);
+    }
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
+    </asp:ToolkitScriptManager>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
         SelectCommand="FINANCIAL_SUMMARY_SELECT" 
-        SelectCommandType="StoredProcedure" onselecting="SqlDataSource1_Selecting" 
+        SelectCommandType="StoredProcedure" 
         InsertCommand="ADDITIONAL_DRAWDOWN_SELECT" InsertCommandType="StoredProcedure" 
-        UpdateCommand="FINANCIAL_SUMMARY_UPDATE" UpdateCommandType="StoredProcedure">
+        UpdateCommand="FINANCIAL_SUMMARY_UPDATE" UpdateCommandType="StoredProcedure"
+        OnUpdated="SqlDataSource1_Updated">
         <InsertParameters>
             <asp:Parameter Name="CIF" Type="String" />
         </InsertParameters>
@@ -37,7 +45,10 @@
             <asp:TemplateField HeaderText="Financial_Data_Date" 
                 SortExpression="Financial_Data_Date">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxFinancial_Data_Date" runat="server" Text='<%# Bind("Financial_Data_Date") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBoxFinancial_Data_Date" runat="server" Text='<%# Bind("Financial_Data_Date","{0:d}") %>'></asp:TextBox>
+                    <asp:CalendarExtender ID="TextBoxFinancial_Data_Date_CalendarExtender" 
+                        runat="server" TargetControlID="TextBoxFinancial_Data_Date" >
+                    </asp:CalendarExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" 
@@ -50,7 +61,7 @@
             <asp:TemplateField HeaderText="Total_Assets" SortExpression="Total_Assets">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Total_Assets") %>' style="text-align:right;"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please input Total Assets" Text="*" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Total_Assets") %>'></asp:TextBox>
@@ -63,7 +74,7 @@
                 SortExpression="Total_Liabilities">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Total_Liabilities") %>' style="text-align:right;"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TextBox3"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input Total Liabilities" Text="*" ControlToValidate="TextBox3" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>
 
                 </EditItemTemplate>
                 <InsertItemTemplate>
@@ -77,7 +88,7 @@
             <asp:TemplateField HeaderText="Total_Revenue" SortExpression="Total_Revenue">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Total_Revenue") %>' style="text-align:right;"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="TextBox4"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input Total Revenue" Text="*" ControlToValidate="TextBox4" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Total_Revenue") %>'></asp:TextBox>
@@ -109,8 +120,9 @@
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
                 <EditItemTemplate>
-                    <asp:LinkButton ID="LinkButton1" runat="server" OnClientClick="if(confirm('Are you sure to update this item?') == false){return false;}"
-CausesValidation="False" CommandName="Update" Text="Update"></asp:LinkButton>
+<%--                    <asp:LinkButton ID="LinkButton1" runat="server" OnClientClick="if(confirm('Are you sure to update this item?') == false){return false;}"
+CausesValidation="False" CommandName="Update" Text="Update"></asp:LinkButton>--%>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="true" CommandName="Update" Text="Update" ValidationGroup="UpdateValidation"></asp:LinkButton>
                     &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
                         CommandName="Cancel" Text="Cancel"></asp:LinkButton>
                 </EditItemTemplate>
@@ -129,6 +141,7 @@ CausesValidation="False" CommandName="Update" Text="Update"></asp:LinkButton>
             </asp:TemplateField>
         </Fields>
     </asp:DetailsView>                  
+      <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ValidationGroup="UpdateValidation" ShowSummary="False" />
       <asp:SqlDataSource ID="SqlDataSourceCurrentcy" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
                         SelectCommand="L_CURRENCY_CODE_SELECT" 
