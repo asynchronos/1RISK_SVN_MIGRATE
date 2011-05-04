@@ -12,7 +12,9 @@
         }
 
     }
-
+    function popupAlert(msg) {
+        alert(msg);
+    }
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -20,7 +22,8 @@
     </asp:ToolkitScriptManager>
     <asp:SqlDataSource ID="SqlDataSourceNPA_RECORD" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         InsertCommand="NPA_EXPENSE_INSERT" InsertCommandType="StoredProcedure" SelectCommand="NPA_RECORD_SELECT"
-        SelectCommandType="StoredProcedure" UpdateCommand="NPA_RECORD_UPDATE" UpdateCommandType="StoredProcedure">
+        SelectCommandType="StoredProcedure" UpdateCommand="NPA_RECORD_UPDATE" UpdateCommandType="StoredProcedure"
+         OnUpdated="SqlDataSource1_Updated">
         <InsertParameters>
             <asp:Parameter Name="Expense_Year" Type="Int16" />
             <asp:Parameter Name="Appraised_Value_Beginning_of_Year" Type="Double" />
@@ -74,7 +77,7 @@
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:n2}") %>'
                         Style="text-align: right;"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Collateral Sale Price" Text="*" ValidationGroup="UpdateValidation"
                         ControlToValidate="TextBox1"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
@@ -103,7 +106,7 @@
             <asp:TemplateField HeaderText="District_of_Property" SortExpression="District_of_Property">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("District_of_Property") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input District of Property" Text="*" ValidationGroup="UpdateValidation"
                         ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
@@ -116,7 +119,7 @@
             <asp:TemplateField HeaderText="Amphur_of_Property" SortExpression="Amphur_of_Property">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Amphur_of_Property") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*"
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input District of Property" Text="*" ValidationGroup="UpdateValidation"
                         ControlToValidate="TextBox3"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
@@ -142,8 +145,7 @@
             <asp:BoundField DataField="Title_Deed_Number" HeaderText="Title_Deed_Number" SortExpression="Title_Deed_Number" />
             <asp:TemplateField ShowHeader="False">
                 <EditItemTemplate>
-                    <asp:LinkButton ID="LinkButton1" runat="server" OnClientClick="if(confirm('Are you sure to update this item?') == false){return false;}"
-CausesValidation="False" CommandName="Update" Text="Update"></asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="true" CommandName="Update" Text="Update" ValidationGroup="UpdateValidation"></asp:LinkButton>
                     &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="true" 
                         CommandName="Cancel" Text="Cancel"></asp:LinkButton>
                 </EditItemTemplate>
@@ -154,6 +156,7 @@ CausesValidation="False" CommandName="Update" Text="Update"></asp:LinkButton>
             </asp:TemplateField>
         </Fields>
     </asp:DetailsView>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ValidationGroup="UpdateValidation" ShowSummary="False" />
     <asp:SqlDataSource ID="SqlDataSourceCurrentcy" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="L_CURRENCY_CODE_SELECT" EnableCaching="True" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
