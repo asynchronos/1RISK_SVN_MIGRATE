@@ -29,5 +29,23 @@ namespace LGDCollectionData.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource TRANSACTION_INFORMATION_SqlDataSource;
+        
+        /// <summary>
+        /// Currency_DataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Currency_DataSource;
+        
+        /// <summary>
+        /// Rate_Type_SqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Rate_Type_SqlDataSource;
     }
 }
