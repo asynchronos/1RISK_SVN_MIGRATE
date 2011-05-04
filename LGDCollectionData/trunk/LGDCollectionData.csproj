@@ -81,7 +81,6 @@
     <Content Include="Aspx\LIMIT_STRUCTURE.aspx" />
     <Content Include="Aspx\NPA_EXPENSE.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
-    <Content Include="Aspx\NPA_RECORD_NEW.aspx" />
     <Content Include="Aspx\OBLIGOR_INFORMATION.aspx" />
     <Content Include="Aspx\SELECT_FORM.aspx" />
     <Content Include="Aspx\TRANSACTION_INFORMATION.aspx" />
@@ -4720,13 +4719,6 @@
     </Compile>
     <Compile Include="Aspx\NPA_RECORD.aspx.designer.cs">
       <DependentUpon>NPA_RECORD.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Aspx\NPA_RECORD_NEW.aspx.cs">
-      <DependentUpon>NPA_RECORD_NEW.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aspx\NPA_RECORD_NEW.aspx.designer.cs">
-      <DependentUpon>NPA_RECORD_NEW.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\OBLIGOR_INFORMATION.aspx.cs">
       <DependentUpon>OBLIGOR_INFORMATION.aspx</DependentUpon>
