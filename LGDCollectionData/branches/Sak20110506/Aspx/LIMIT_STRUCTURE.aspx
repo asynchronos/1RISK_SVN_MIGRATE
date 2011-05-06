@@ -15,7 +15,7 @@
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
-            <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" 
+            <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" DataFormatString="{0:d}"
                 ReadOnly="True" SortExpression="Default_Date" />
             <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
                 <EditItemTemplate>
@@ -211,7 +211,7 @@
         InsertCommand="LIMIT_STRUCTURE_INSERT" InsertCommandType="StoredProcedure" 
         SelectCommand="LIMIT_STRUCTURE_SELECT" SelectCommandType="StoredProcedure" 
         UpdateCommand="LIMIT_STRUCTURE_UPDATE" UpdateCommandType="StoredProcedure"
-        OnUnload="SqlDataSource1_Updated" >
+        OnUpdated="SqlDataSource1_Updated" >
         <InsertParameters>
             <asp:Parameter Name="CIF" Type="String" />
             <asp:Parameter Name="Default_Date" Type="DateTime" />

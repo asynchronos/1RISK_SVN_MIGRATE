@@ -29,7 +29,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
                         <EditItemTemplate>
-                            <asp:Label ID="Default_DateLabel2" runat="server" Text='<%# Bind("Default_Date") %>'></asp:Label>
+                            <asp:Label ID="Default_DateLabel2" runat="server" Text='<%# Bind("Default_Date","{0:d}") %>'> %>'></asp:Label>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Default_Date") %>'></asp:TextBox>
