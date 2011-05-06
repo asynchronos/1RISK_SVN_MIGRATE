@@ -54,7 +54,7 @@
         EnableModelValidation="True" Height="50px" Width="389px" DefaultMode="Edit">
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
-            <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" ReadOnly="True"
+            <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" ReadOnly="True" DataFormatString="{0:d}"
                 SortExpression="Default_Date" />
             <asp:BoundField DataField="NPA_Collateral_ID" HeaderText="NPA_Collateral_ID" ReadOnly="True"
                 SortExpression="NPA_Collateral_ID" />

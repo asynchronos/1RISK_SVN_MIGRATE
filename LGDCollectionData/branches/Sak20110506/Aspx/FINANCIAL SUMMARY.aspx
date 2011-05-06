@@ -40,7 +40,7 @@
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
-            <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" 
+            <asp:BoundField DataField="Default_Date" DataFormatString="{0:d}" HeaderText="Default_Date" 
                 ReadOnly="True" SortExpression="Default_Date" />
             <asp:TemplateField HeaderText="Financial_Data_Date" 
                 SortExpression="Financial_Data_Date">
@@ -55,7 +55,7 @@
                         Text='<%# Bind("Financial_Data_Date") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Financial_Data_Date") %>'></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Financial_Data_Date","{0:d}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total_Assets" SortExpression="Total_Assets">
