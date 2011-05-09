@@ -72,6 +72,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Aspx\ADDITIONAL_DRAWDOWN.aspx" />
     <Content Include="Aspx\CASHFLOW.aspx" />
+    <Content Include="Aspx\DIRECT_COST.aspx" />
     <Content Include="Aspx\Error\DefaultError.aspx" />
     <Content Include="Aspx\Error\NotImplemented.aspx" />
     <Content Include="Aspx\Error\UnAuthorized.aspx" />
@@ -82,7 +83,7 @@
     <Content Include="Aspx\NPA_EXPENSE.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
     <Content Include="Aspx\OBLIGOR_INFORMATION.aspx" />
-    <Content Include="Aspx\PLEDGE_INFORMATION.aspx" />
+    <Content Include="Aspx\PV_LOSS.aspx" />
     <Content Include="Aspx\SELECT_FORM.aspx" />
     <Content Include="Aspx\TRANSACTION_INFORMATION.aspx" />
     <Content Include="Aspx\WebForm1_Test.aspx" />
@@ -4655,6 +4656,13 @@
     <Compile Include="Aspx\CASHFLOW.aspx.designer.cs">
       <DependentUpon>CASHFLOW.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\DIRECT_COST.aspx.cs">
+      <DependentUpon>DIRECT_COST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\DIRECT_COST.aspx.designer.cs">
+      <DependentUpon>DIRECT_COST.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\Error\DefaultError.aspx.cs">
       <DependentUpon>DefaultError.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4728,12 +4736,12 @@
     <Compile Include="Aspx\OBLIGOR_INFORMATION.aspx.designer.cs">
       <DependentUpon>OBLIGOR_INFORMATION.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aspx\PLEDGE_INFORMATION.aspx.cs">
-      <DependentUpon>PLEDGE_INFORMATION.aspx</DependentUpon>
+    <Compile Include="Aspx\PV_LOSS.aspx.cs">
+      <DependentUpon>PV_LOSS.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Aspx\PLEDGE_INFORMATION.aspx.designer.cs">
-      <DependentUpon>PLEDGE_INFORMATION.aspx</DependentUpon>
+    <Compile Include="Aspx\PV_LOSS.aspx.designer.cs">
+      <DependentUpon>PV_LOSS.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\SELECT_FORM.aspx.cs">
       <DependentUpon>SELECT_FORM.aspx</DependentUpon>
@@ -4814,6 +4822,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LGDModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Aspx\Error\Web.config" />
     <None Include="ExtJS\docs\resources\images\access\form\clear-trigger.psd" />
     <None Include="ExtJS\docs\resources\images\access\form\date-trigger.psd" />
     <None Include="ExtJS\docs\resources\images\access\form\search-trigger.psd" />
@@ -4939,6 +4948,9 @@
     <None Include="ExtJS\resources\images\yourtheme\window\left-right.psd" />
     <None Include="ExtJS\resources\images\yourtheme\window\right-corners.psd" />
     <None Include="ExtJS\resources\images\yourtheme\window\top-bottom.psd" />
+    <Content Include="ExtJS\Web.config" />
+    <Content Include="Scripts\Web.config" />
+    <Content Include="Styles\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
