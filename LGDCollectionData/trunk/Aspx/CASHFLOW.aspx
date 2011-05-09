@@ -10,15 +10,14 @@
     </asp:ToolkitScriptManager>
     <asp:DetailsView ID="CASHFLOW_DetailsView" runat="server" AllowPaging="True" AutoGenerateRows="False"
         CellPadding="4" DataKeyNames="CIF,DefaultDate,LIMITNO,DateofCashflow" DataSourceID="CASHFLOW_DATASOURCE"
-        DefaultMode="Edit" EnableModelValidation="True" ForeColor="#333333"
-        OnPageIndexChanging="DetailsView_PageIndexChanging"
+        DefaultMode="Edit" EnableModelValidation="True" ForeColor="#333333" OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnItemUpdating="DetailsView_ItemUpdating">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
-            <asp:BoundField DataField="DefaultDate" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Default Date:"
+            <asp:BoundField DataField="DefaultDate" DataFormatString="{0:d/M/yyyy}" HeaderText="Default Date:"
                 ReadOnly="True" SortExpression="DefaultDate" />
             <asp:BoundField DataField="LIMITNO" HeaderText="LIMITNO:" ReadOnly="True" SortExpression="LIMITNO" />
             <asp:TemplateField HeaderText="APP_ID:" SortExpression="APP_ID">
@@ -48,7 +47,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="DateofCashflow" HeaderText="Date of Cashflow:" SortExpression="DateofCashflow"
-                DataFormatString="{0:dd/MM/yyyy}" ReadOnly="True" />
+                DataFormatString="{0:d/M/yyyy}" ReadOnly="True" />
             <asp:TemplateField HeaderText="Cashflow Amount: PAY_PRIN:" SortExpression="CashflowAmountPAY_PRIN">
                 <EditItemTemplate>
                     <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN") %>'></asp:TextBox>
@@ -165,8 +164,7 @@
                     <asp:Label ID="WrittenoffOrHaircutAmount_Label" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="CollateralID"
-                HeaderText="Collateral ID: (*Please enter &quot;N/A&quot; if not applicable)"
+            <asp:BoundField DataField="CollateralID" HeaderText="Collateral ID: (*Please enter &quot;N/A&quot; if not applicable)"
                 SortExpression="CollateralID" />
             <asp:TemplateField HeaderText="LIMITNO Changed:" SortExpression="LIMITNOChanged">
                 <EditItemTemplate>
