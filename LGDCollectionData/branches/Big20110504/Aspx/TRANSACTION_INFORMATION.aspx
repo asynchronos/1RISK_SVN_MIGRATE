@@ -15,7 +15,7 @@
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
             <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" ReadOnly="True"
-                SortExpression="Default_Date" DataFormatString="{0:dd/MM/yyyy}" />
+                SortExpression="Default_Date" DataFormatString="{0:d/M/yyyy}" />
             <asp:BoundField DataField="BRAN" HeaderText="BRAN" ReadOnly="True" SortExpression="BRAN" />
             <asp:BoundField DataField="ACCGL" HeaderText="ACCGL" ReadOnly="True" SortExpression="ACCGL" />
             <asp:BoundField DataField="ACCNO" HeaderText="ACCNO" ReadOnly="True" SortExpression="ACCNO" />
@@ -102,10 +102,8 @@
         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
     </asp:DetailsView>
     <asp:SqlDataSource ID="TRANSACTION_INFORMATION_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        SelectCommand="P_TRANSACTION_INFORMATION_SELECT"
-        SelectCommandType="StoredProcedure"
-        UpdateCommand="P_TRANSACTION_INFORMATION_UPDATE"
-        UpdateCommandType="StoredProcedure">
+        SelectCommand="P_TRANSACTION_INFORMATION_SELECT" SelectCommandType="StoredProcedure"
+        UpdateCommand="P_TRANSACTION_INFORMATION_UPDATE" UpdateCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="cif" Type="String" />
         </SelectParameters>
@@ -123,8 +121,7 @@
             <asp:Parameter Name="LNSTYPE" Type="String" />
             <asp:Parameter Name="Total_Interest_Rate_Prior_to_Default" Type="Double" />
             <asp:Parameter Name="Interest_Rate_Index_Prior_to_Default" Type="String" />
-            <asp:Parameter Name="Interest_Rate_Spread_Prior_to_Default_Percentage"
-                Type="Double" />
+            <asp:Parameter Name="Interest_Rate_Spread_Prior_to_Default_Percentage" Type="Double" />
             <asp:Parameter Name="Rate_Sign" Type="String" />
             <asp:Parameter Name="OS_AT_D_Principal" Type="Double" />
             <asp:Parameter Name="OS_AT_D_Accrued" Type="Double" />

@@ -24,7 +24,7 @@ namespace LGDCollectionData
         {
             Exception err = Server.GetLastError();
             //Insert log by log4net
-            log.Error(err.Message, err);
+            log.Error(err.StackTrace, err);
 
             //send mail
             //System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
@@ -39,15 +39,15 @@ namespace LGDCollectionData
             //redirect to error page
             if (err.GetType().Equals(typeof(System.Security.SecurityException)))
             {
-                Response.Redirect("Error/UnAuthorized.aspx?page=" + Server.UrlEncode(Request.RawUrl));
+                Server.Transfer("/Aspx/Error/UnAuthorized.aspx?page=" + Server.UrlEncode(Request.RawUrl));
             }
             else if (err.GetType().Equals(typeof(NotImplementedException)))
             {
-                Response.Redirect("Error/NotImplemented.aspx?page=" + Server.UrlEncode(Request.RawUrl));
+                Server.Transfer("/Aspx/Error/NotImplemented.aspx?page=" + Server.UrlEncode(Request.RawUrl));
             }
             else
             {
-                Response.Redirect("Error/DefaultError.aspx?page=" + Server.UrlEncode(Request.RawUrl) + "&msg=" + err.InnerException.Message);
+                Server.Transfer("/Aspx/Error/DefaultError.aspx?page=" + Server.UrlEncode(Request.RawUrl) + "&msg=" + err.Message);
             }
         }
 
