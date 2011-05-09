@@ -59,6 +59,16 @@ namespace LGDCollectionData.Aspx
             return authTicket;
         }
 
+        protected override void InitializeCulture()
+        {
+            const string enCulture = "en-US";
+
+            UICulture = enCulture;
+            Culture = enCulture;
+
+            base.InitializeCulture();
+        }
+
         protected virtual void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
         {
             ((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
@@ -73,7 +83,7 @@ namespace LGDCollectionData.Aspx
                 {
                     if (isDebugEnabled)
                     {
-                        log.Debug(i + ":both null");
+                        log.Debug("Parameter[" + i + "]:both null");
                     }
                     //do nothing
                 }
@@ -81,11 +91,13 @@ namespace LGDCollectionData.Aspx
                 {
                     if (isDebugEnabled)
                     {
-                        log.Debug(i + ":both not null");
+                        log.Debug("Parameter[" + i + "]:both not null");
                     }
 
                     if (!e.OldValues[i].Equals(e.NewValues[i]))
                     {
+                        log.Debug("   OldValues" + e.OldValues[i].ToString());
+                        log.Debug("   NewValues" + e.NewValues[i].ToString());
                         hasChanged = true;
                         break;
                     }
@@ -94,7 +106,7 @@ namespace LGDCollectionData.Aspx
                 {
                     if (isDebugEnabled)
                     {
-                        log.Debug(i + ":null one");
+                        log.Debug("Parameter[" + i + "]:null one");
                     }
 
                     hasChanged = true;
@@ -110,6 +122,11 @@ namespace LGDCollectionData.Aspx
             if (!hasChanged)
             {
                 e.Cancel = true;
+            }
+            else
+            {
+                e.NewValues["UpdateUser"] = User.Identity.Name;
+                e.NewValues["UpdateDate"] = DateTime.Now;
             }
         }
     }
