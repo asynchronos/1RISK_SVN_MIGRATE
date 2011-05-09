@@ -83,6 +83,7 @@
     <Content Include="Aspx\NPA_EXPENSE.aspx" />
     <Content Include="Aspx\NPA_RECORD.aspx" />
     <Content Include="Aspx\OBLIGOR_INFORMATION.aspx" />
+    <Content Include="Aspx\PLEDGE_INFORMATION.aspx" />
     <Content Include="Aspx\PV_LOSS.aspx" />
     <Content Include="Aspx\SELECT_FORM.aspx" />
     <Content Include="Aspx\TRANSACTION_INFORMATION.aspx" />
@@ -4735,6 +4736,12 @@
     </Compile>
     <Compile Include="Aspx\OBLIGOR_INFORMATION.aspx.designer.cs">
       <DependentUpon>OBLIGOR_INFORMATION.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\PLEDGE_INFORMATION.aspx.cs">
+      <DependentUpon>PLEDGE_INFORMATION.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\PLEDGE_INFORMATION.aspx.designer.cs">
+      <DependentUpon>PLEDGE_INFORMATION.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\PV_LOSS.aspx.cs">
       <DependentUpon>PV_LOSS.aspx</DependentUpon>
