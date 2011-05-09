@@ -4739,6 +4739,7 @@
     </Compile>
     <Compile Include="Aspx\PLEDGE_INFORMATION.aspx.cs">
       <DependentUpon>PLEDGE_INFORMATION.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\PLEDGE_INFORMATION.aspx.designer.cs">
       <DependentUpon>PLEDGE_INFORMATION.aspx</DependentUpon>
