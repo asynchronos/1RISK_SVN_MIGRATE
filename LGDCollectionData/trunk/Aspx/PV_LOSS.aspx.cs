@@ -76,43 +76,43 @@ namespace LGDCollectionData.Aspx
             GridView gv = (GridView)sender;
             SqlDataSource ds = RESTRUCTURE_INFORMATION_SqlDataSource;
 
-            if (e.CommandName.Equals("EmptyDataTemplateInsert"))
-            {
-                // Retrieve row
-                GridViewRow gvr = gv.Controls[0].Controls[1] as GridViewRow;
+            //if (e.CommandName.Equals("EmptyDataTemplateInsert"))
+            //{
+            //    // Retrieve row
+            //    GridViewRow gvr = gv.Controls[0].Controls[1] as GridViewRow;
 
-                if (gvr == null) { return; }
+            //    if (gvr == null) { return; }
 
-                // Retrieve controls
-                TextBox txtCompanyName = gvr.FindControl("txtCompanyName") as TextBox;
-                TextBox txtPhone = gvr.FindControl("txtPhone") as TextBox;
+            //    // Retrieve controls
+            //    TextBox txtCompanyName = gvr.FindControl("txtCompanyName") as TextBox;
+            //    TextBox txtPhone = gvr.FindControl("txtPhone") as TextBox;
 
-                if (txtCompanyName == null) { return; }
-                if (txtPhone == null) { return; }
+            //    if (txtCompanyName == null) { return; }
+            //    if (txtPhone == null) { return; }
 
-                // Set parameters
-                ds.InsertParameters["CompanyName"].DefaultValue = txtCompanyName.Text;
-                ds.InsertParameters["Phone"].DefaultValue = txtPhone.Text;
+            //    // Set parameters
+            //    ds.InsertParameters["CompanyName"].DefaultValue = txtCompanyName.Text;
+            //    ds.InsertParameters["Phone"].DefaultValue = txtPhone.Text;
 
-                // Perform insert
-                ds.Insert();
-            }
-            else if (e.CommandName.Equals("FooterInsert"))
-            {
-                // Retrieve controls
-                TextBox txtCompanyName = gvSuppliers.FooterRow.FindControl("txtCompanyName") as TextBox;
-                TextBox txtPhone = gvSuppliers.FooterRow.FindControl("txtPhone") as TextBox;
+            //    // Perform insert
+            //    ds.Insert();
+            //}
+            //else if (e.CommandName.Equals("FooterInsert"))
+            //{
+            //    // Retrieve controls
+            //    TextBox txtCompanyName = gvSuppliers.FooterRow.FindControl("txtCompanyName") as TextBox;
+            //    TextBox txtPhone = gvSuppliers.FooterRow.FindControl("txtPhone") as TextBox;
 
-                if (txtCompanyName == null) { return; }
-                if (txtPhone == null) { return; }
+            //    if (txtCompanyName == null) { return; }
+            //    if (txtPhone == null) { return; }
 
-                // Set parameters
-                sdsSuppliers.InsertParameters["CompanyName"].DefaultValue = txtCompanyName.Text;
-                sdsSuppliers.InsertParameters["Phone"].DefaultValue = txtPhone.Text;
+            //    // Set parameters
+            //    sdsSuppliers.InsertParameters["CompanyName"].DefaultValue = txtCompanyName.Text;
+            //    sdsSuppliers.InsertParameters["Phone"].DefaultValue = txtPhone.Text;
 
-                // Perform insert
-                sdsSuppliers.Insert();
-            }
+            //    // Perform insert
+            //    sdsSuppliers.Insert();
+            //}
         }
     }
 }
