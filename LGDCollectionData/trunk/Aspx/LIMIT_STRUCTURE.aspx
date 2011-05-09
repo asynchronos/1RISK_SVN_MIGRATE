@@ -11,11 +11,12 @@
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" DataKeyNames="CIF,Default_Date,LIMITNO" 
         DataSourceID="SqlDataSourceLIMIT_STRUCTURE" EnableModelValidation="True" 
-        Height="50px" Width="405px" DefaultMode="Edit">
+        Height="50px" Width="405px" DefaultMode="Edit"
+        OnDataBound="DetailsView_Databound">
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
-            <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" 
+            <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" DataFormatString="{0:d}"
                 ReadOnly="True" SortExpression="Default_Date" />
             <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
                 <EditItemTemplate>
@@ -191,6 +192,28 @@
             <asp:BoundField DataField="Four_Level_Up_Limit_Amount_D1" 
                 HeaderText="Four_Level_Up_Limit_Amount_D1" 
                 SortExpression="Four_Level_Up_Limit_Amount_D1" />
+            <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_DATE" SortExpression="UPDATE_DATE">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
                 <EditItemTemplate>
                     <asp:LinkButton ID="LinkButton1" runat="server"  CommandName="Update" Text="Update" ValidationGroup="UpdateValidation"></asp:LinkButton>
@@ -211,7 +234,7 @@
         InsertCommand="LIMIT_STRUCTURE_INSERT" InsertCommandType="StoredProcedure" 
         SelectCommand="LIMIT_STRUCTURE_SELECT" SelectCommandType="StoredProcedure" 
         UpdateCommand="LIMIT_STRUCTURE_UPDATE" UpdateCommandType="StoredProcedure"
-        OnUnload="SqlDataSource1_Updated" >
+        OnUpdated="SqlDataSource1_Updated" >
         <InsertParameters>
             <asp:Parameter Name="CIF" Type="String" />
             <asp:Parameter Name="Default_Date" Type="DateTime" />
@@ -231,6 +254,8 @@
             <asp:Parameter Name="Four_Level_Up_Limit_ID_D1" Type="String" />
             <asp:Parameter Name="Four_Level_Up_Limit_Currency_D1" Type="String" />
             <asp:Parameter Name="Four_Level_Up_Limit_Amount_D1" Type="Double" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </InsertParameters>
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
@@ -254,6 +279,8 @@
             <asp:Parameter Name="Four_Level_Up_Limit_ID_D1" Type="String" />
             <asp:Parameter Name="Four_Level_Up_Limit_Currency_D1" Type="String" />
             <asp:Parameter Name="Four_Level_Up_Limit_Amount_D1" Type="Double" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
 

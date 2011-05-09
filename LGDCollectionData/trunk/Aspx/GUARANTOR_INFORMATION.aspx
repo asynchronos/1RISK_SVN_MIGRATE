@@ -13,7 +13,8 @@
             <asp:DetailsView ID="DetailsView2" runat="server" AllowPaging="True" 
                 AutoGenerateRows="False" DataSourceID="SqlDataSourceGur_Info" 
                 EnableModelValidation="True" Height="50px" Width="408px" 
-                DefaultMode="Edit">
+                DefaultMode="Edit"
+                OnDataBound="DetailsView_Databound">
                 <Fields>
                     <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
                         <EditItemTemplate>
@@ -29,7 +30,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
                         <EditItemTemplate>
-                            <asp:Label ID="Default_DateLabel2" runat="server" Text='<%# Bind("Default_Date") %>'></asp:Label>
+                            <asp:Label ID="Default_DateLabel2" runat="server" Text='<%# Bind("Default_Date","{0:d}") %>'> %>'></asp:Label>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Default_Date") %>'></asp:TextBox>
@@ -163,6 +164,28 @@
                             <asp:Label ID="Label6" runat="server" Text='<%# Bind("Internal_Rating_D") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_DATE" SortExpression="UPDATE_DATE">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">
                         <EditItemTemplate>
                             <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="true" CommandName="Update" Text="Update" ValidationGroup="UpdateValidation"></asp:LinkButton>
@@ -203,6 +226,8 @@
                     <asp:Parameter Name="Guarantee_Amount_Currency_Code" Type="String" />
                     <asp:Parameter Name="Guarantee_Indemnity_Source_ID" Type="String" />
                     <asp:Parameter Name="Internal_Rating_D" Type="String" />
+                    <asp:Parameter Name="UPDATE_USER" Type="String" />
+                    <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
                 </InsertParameters>
                 <SelectParameters>
                     <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
@@ -219,6 +244,8 @@
                     <asp:Parameter Name="Guarantee_Amount_Currency_Code" Type="String" />
                     <asp:Parameter Name="Guarantee_Indemnity_Source_ID" Type="String" />
                     <asp:Parameter Name="Internal_Rating_D" Type="String" />
+                    <asp:Parameter Name="UPDATE_USER" Type="String" />
+                    <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
                 </UpdateParameters>
             </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceGar_Ind" runat="server" 

@@ -11,7 +11,8 @@
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" DataKeyNames="Expense_Year" 
         DataSourceID="SqlDataSourceNPA_EXPENSE" EnableModelValidation="True" 
-        Height="50px" Width="420px" DefaultMode="Edit">
+        Height="50px" Width="420px" DefaultMode="Edit"
+        OnDataBound="DetailsView_Databound">
         <Fields>
             <asp:BoundField DataField="Expense_Year" HeaderText="Expense_Year" 
                 ReadOnly="True" SortExpression="Expense_Year" />
@@ -59,6 +60,28 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Total_Expense","{0:n2}") %>' style="text-align:right"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_DATE" SortExpression="UPDATE_DATE">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
                 <EditItemTemplate>
                     <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="true" CommandName="Update" Text="Update"></asp:LinkButton>
@@ -84,12 +107,16 @@
             <asp:Parameter Name="Appraised_Value_Beginning_of_Year" Type="Double" />
             <asp:Parameter Name="Cost_Value_Beginning_of_Year" Type="Double" />
             <asp:Parameter Name="Total_Expense" Type="Double" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="Expense_Year" Type="Int16" />
             <asp:Parameter Name="Appraised_Value_Beginning_of_Year" Type="Double" />
             <asp:Parameter Name="Cost_Value_Beginning_of_Year" Type="Double" />
             <asp:Parameter Name="Total_Expense" Type="Double" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
 

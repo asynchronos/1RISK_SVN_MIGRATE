@@ -19,6 +19,14 @@
         OnUpdated="SqlDataSource1_Updated">
         <InsertParameters>
             <asp:Parameter Name="CIF" Type="String" />
+            <asp:Parameter Name="Default_Date" Type="DateTime" />
+            <asp:Parameter Name="Financial_Data_Date" Type="DateTime" />
+            <asp:Parameter Name="Total_Assets" Type="Int32" />
+            <asp:Parameter Name="Total_Liabilities" Type="Int32" />
+            <asp:Parameter Name="Total_Revenue" Type="Int32" />
+            <asp:Parameter Name="Financial_Currency_Code" Type="String" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </InsertParameters>
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
@@ -31,16 +39,20 @@
             <asp:Parameter Name="Total_Liabilities" Type="Int32" />
             <asp:Parameter Name="Total_Revenue" Type="Int32" />
             <asp:Parameter Name="Financial_Currency_Code" Type="String" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" DataKeyNames="CIF,Default_Date" 
-        DataSourceID="SqlDataSource1" EnableModelValidation="True" Height="50px" 
-        Width="340px" DefaultMode="Edit">
+        DataSourceID="SqlDataSource1" 
+        EnableModelValidation="True" Height="50px" 
+        Width="340px" DefaultMode="Edit"
+        OnDataBound="DetailsView_Databound">
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
-            <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" 
+            <asp:BoundField DataField="Default_Date" DataFormatString="{0:d}" HeaderText="Default_Date" 
                 ReadOnly="True" SortExpression="Default_Date" />
             <asp:TemplateField HeaderText="Financial_Data_Date" 
                 SortExpression="Financial_Data_Date">
@@ -55,7 +67,7 @@
                         Text='<%# Bind("Financial_Data_Date") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Financial_Data_Date") %>'></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Financial_Data_Date","{0:d}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total_Assets" SortExpression="Total_Assets">
@@ -116,6 +128,28 @@
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" 
                         Text='<%# Bind("Financial_Currency_Code") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_DATE" SortExpression="UPDATE_DATE">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
