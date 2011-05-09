@@ -25,10 +25,21 @@
         SelectCommandType="StoredProcedure" UpdateCommand="NPA_RECORD_UPDATE" UpdateCommandType="StoredProcedure"
          OnUpdated="SqlDataSource1_Updated">
         <InsertParameters>
-            <asp:Parameter Name="Expense_Year" Type="Int16" />
-            <asp:Parameter Name="Appraised_Value_Beginning_of_Year" Type="Double" />
-            <asp:Parameter Name="Cost_Value_Beginning_of_Year" Type="Double" />
-            <asp:Parameter Name="Total_Expense" Type="Double" />
+            <asp:Parameter Name="CIF" Type="String" />
+            <asp:Parameter Name="Default_Date" Type="DateTime" />
+            <asp:Parameter Name="NPA_Collateral_ID" Type="String" />
+            <asp:Parameter Name="Collateral_Type" Type="String" />
+            <asp:Parameter Name="COS_Collateral_ID" Type="String" />
+            <asp:Parameter Name="Collateral_Sale_Price_Currency" Type="String" />
+            <asp:Parameter Name="Collateral_Sale_Price" Type="Double" />
+            <asp:Parameter Name="Collateral_Sale_Date" Type="DateTime" />
+            <asp:Parameter Name="Collateral_Description" Type="String" />
+            <asp:Parameter Name="District_of_Property" Type="String" />
+            <asp:Parameter Name="Amphur_of_Property" Type="String" />
+            <asp:Parameter Name="Province_of_Property" Type="String" />
+            <asp:Parameter Name="Title_Deed_Number" Type="String" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </InsertParameters>
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
@@ -47,11 +58,14 @@
             <asp:Parameter Name="Amphur_of_Property" Type="String" />
             <asp:Parameter Name="Province_of_Property" Type="String" />
             <asp:Parameter Name="Title_Deed_Number" Type="String" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,Default_Date,NPA_Collateral_ID" DataSourceID="SqlDataSourceNPA_RECORD"
-        EnableModelValidation="True" Height="50px" Width="389px" DefaultMode="Edit">
+        EnableModelValidation="True" Height="50px" Width="389px" DefaultMode="Edit"
+        OnDataBound="DetailsView_Databound">
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
             <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" ReadOnly="True" DataFormatString="{0:d}"
@@ -143,6 +157,28 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Title_Deed_Number" HeaderText="Title_Deed_Number" SortExpression="Title_Deed_Number" />
+            <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_DATE" SortExpression="UPDATE_DATE">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
                 <EditItemTemplate>
                     <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="true" CommandName="Update" Text="Update" ValidationGroup="UpdateValidation"></asp:LinkButton>
