@@ -42,5 +42,19 @@ namespace LGDCollectionData.Aspx
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
             }
         }
+
+        protected void DetailsView_Databound(Object sender, EventArgs e)
+        {
+
+            if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
+            {
+                System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
+                System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
+                userId.Text = User.Identity.Name.ToString();
+                dateLabel.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+
     }
 }
