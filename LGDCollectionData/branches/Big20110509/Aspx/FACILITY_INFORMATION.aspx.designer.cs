@@ -13,6 +13,15 @@ namespace LGDCollectionData.Aspx {
     public partial class FACILITY_INFORMATION {
         
         /// <summary>
+        /// SelectFormWebUserControl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LGDCollectionData.UserControls.SelectFormWebUserControl SelectFormWebUserControl1;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>

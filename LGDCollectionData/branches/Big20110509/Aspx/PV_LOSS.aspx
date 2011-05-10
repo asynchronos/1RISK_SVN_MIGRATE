@@ -2,11 +2,16 @@
     CodeBehind="PV_LOSS.aspx.cs" Inherits="LGDCollectionData.Aspx.PV_LOSS" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
+    <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
+    <h2>
+        <asp:Label ID="FormName_Label" runat="server" Text="PV LOSS"></asp:Label>
+    </h2>
     <asp:DetailsView ID="PV_LOSS_DetailsView" runat="server" AllowPaging="True" AutoGenerateRows="False"
         CellPadding="4" DataKeyNames="CIF,Default_Date,Date_of_Restructure" DataSourceID="PV_LOSS_SqlDataSource"
         EnableModelValidation="True" ForeColor="#333333" OnPageIndexChanging="DetailsView_PageIndexChanging"
@@ -32,67 +37,68 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d/M/yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Default_Date_TextBox" runat="server" Text='<%# Bind("Default_Date", "{0:d/M/yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Default_Date_TextBox" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
                     <asp:CalendarExtender ID="Default_Date_TextBox_CalendarExtender" runat="server" Enabled="True"
-                        TargetControlID="Default_Date_TextBox">
+                        TargetControlID="Default_Date_TextBox" Format="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d/M/yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Date_of_Restructure" SortExpression="Date_of_Restructure">
                 <EditItemTemplate>
-                    <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Eval("Date_of_Restructure", "{0:d/M/yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Eval("Date_of_Restructure", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Date_of_Restructure_TextBox" runat="server" Text='<%# Bind("Date_of_Restructure", "{0:d/M/yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Date_of_Restructure_TextBox" runat="server" Text='<%# Bind("Date_of_Restructure", "{0:d MMMM yyyy}") %>'></asp:TextBox>
                     <asp:CalendarExtender ID="Date_of_Restructure_TextBox_CalendarExtender" runat="server"
-                        Enabled="True" TargetControlID="Date_of_Restructure_TextBox">
+                        Enabled="True" TargetControlID="Date_of_Restructure_TextBox" Format="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Bind("Date_of_Restructure", "{0:d/M/yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Bind("Date_of_Restructure", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Date_of_Upgrade" SortExpression="Date_of_Upgrade">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Date_of_Upgrade_TextBox" runat="server" Text='<%# Bind("Date_of_Upgrade") %>'></asp:TextBox>
+                    <asp:TextBox ID="Date_of_Upgrade_TextBox" runat="server" Text='<%# Bind("Date_of_Upgrade", "{0:d MMMM yyyy}") %>'></asp:TextBox>
                     <asp:CalendarExtender ID="Date_of_Upgrade_TextBox_CalendarExtender" runat="server"
-                        Enabled="True" TargetControlID="Date_of_Upgrade_TextBox">
+                        Enabled="True" TargetControlID="Date_of_Upgrade_TextBox" Format="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Date_of_Upgrade_TextBox" runat="server" Text='<%# Bind("Date_of_Upgrade", "{0:d/M/yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Date_of_Upgrade_TextBox" runat="server" Text='<%# Bind("Date_of_Upgrade", "{0:d MMMM yyyy}") %>'></asp:TextBox>
                     <asp:CalendarExtender ID="Date_of_Upgrade_TextBox_CalendarExtender" runat="server"
-                        Enabled="True" TargetControlID="Date_of_Upgrade_TextBox">
+                        Enabled="True" TargetControlID="Date_of_Upgrade_TextBox" Format="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Date_of_Upgrade_Label" runat="server" Text='<%# Bind("Date_of_Upgrade", "{0:d/M/yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Date_of_Upgrade_Label" runat="server" Text='<%# Bind("Date_of_Upgrade", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Pv_Loss" HeaderText="Pv_Loss" SortExpression="Pv_Loss" />
             <asp:TemplateField ShowHeader="False">
                 <EditItemTemplate>
-                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update"
+                    <asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" CommandName="New"
+                        Text="New"></asp:LinkButton>
+                    <%--&nbsp;<asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True" CommandName="Update"
                         Text="Update"></asp:LinkButton>
-                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel"
-                        Text="Cancel"></asp:LinkButton>
+                    &nbsp;<asp:LinkButton ID="Cancel_LinkButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>--%>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Insert"
+                    <asp:LinkButton ID="Insert_LinkButton" runat="server" CausesValidation="True" CommandName="Insert"
                         Text="Insert"></asp:LinkButton>
-                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel"
+                    &nbsp;<asp:LinkButton ID="Cancel_LinkButton" runat="server" CausesValidation="False" CommandName="Cancel"
                         Text="Cancel"></asp:LinkButton>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit"
+                    <asp:LinkButton ID="Edit_LinkButton" runat="server" CausesValidation="False" CommandName="Edit"
                         Text="Edit"></asp:LinkButton>
-                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="New"
+                    &nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" CommandName="New"
                         Text="New"></asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -131,7 +137,7 @@
     <asp:GridView ID="RESTRUCTURE_INFORMATION_GridView" runat="server" AllowPaging="True"
         AutoGenerateColumns="False" CellPadding="4" DataKeyNames="CIF,Default_Date,Date_of_Repayment"
         DataSourceID="RESTRUCTURE_INFORMATION_SqlDataSource" EnableModelValidation="True"
-        ForeColor="#333333" ShowFooter="True" OnRowCommand="RESTRUCTURE_INFORMATION_GridView_RowCommand">
+        ForeColor="#333333" ShowFooter="True" OnRowCommand="RESTRUCTURE_INFORMATION_GridView_RowCommand" OnRowUpdating="GridView_RowUpdating">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:TemplateField ShowHeader="False">
@@ -164,40 +170,43 @@
                     <asp:Label ID="CIF_Label" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:Label ID="CIF_Label" runat="server"></asp:Label>
+                    <asp:Label ID="CIF_Label" runat="server" OnPreRender="CIF_Label_PreRender"></asp:Label>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server"></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" OnPreRender="Default_Date_Label_PreRender"></asp:Label>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Date_of_Restructure" SortExpression="Date_of_Restructure">
                 <EditItemTemplate>
-                    <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Bind("Date_of_Restructure") %>'></asp:Label>
+                    <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Bind("Date_of_Restructure", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Bind("Date_of_Restructure") %>'></asp:Label>
+                    <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Bind("Date_of_Restructure", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:Label ID="Date_of_Restructure_Label" runat="server"></asp:Label>
+                    <asp:Label ID="Date_of_Restructure_Label" runat="server" OnPreRender="Date_of_Restructure_Label_PreRender"></asp:Label>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Date_of_Repayment" SortExpression="Date_of_Repayment">
                 <EditItemTemplate>
-                    <asp:Label ID="Date_of_Repayment_Label" runat="server" Text='<%# Eval("Date_of_Repayment") %>'></asp:Label>
+                    <asp:Label ID="Date_of_Repayment_Label" runat="server" Text='<%# Eval("Date_of_Repayment", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Date_of_Repayment_Label" runat="server" Text='<%# Bind("Date_of_Repayment") %>'></asp:Label>
+                    <asp:Label ID="Date_of_Repayment_Label" runat="server" Text='<%# Bind("Date_of_Repayment", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="Date_of_Repayment_TextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="Date_of_Repayment_TextBox" runat="server" Width="17ex"></asp:TextBox>
+                    <asp:CalendarExtender ID="Date_of_Repayment_TextBox_CalendarExtender" 
+                        runat="server" Enabled="True" TargetControlID="Date_of_Repayment_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Discount_Rate" SortExpression="Discount_Rate">
@@ -235,13 +244,22 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cash_Flow_Currency" SortExpression="Cash_Flow_Currency">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Cash_Flow_Currency_TextBox" runat="server" Text='<%# Bind("Cash_Flow_Currency") %>'></asp:TextBox>
+                    <asp:DropDownList ID="Cash_Flow_Currency_DropDownList" runat="server" 
+                        DataSourceID="Currency_DataSource" DataTextField="Description" 
+                        DataValueField="Code" SelectedValue='<%# Bind("Cash_Flow_Currency") %>'>
+                    </asp:DropDownList>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Cash_Flow_Currency_Label" runat="server" Text='<%# Bind("Cash_Flow_Currency") %>'></asp:Label>
+                    <asp:DropDownList ID="Cash_Flow_Currency_DropDownList" runat="server" 
+                        DataSourceID="Currency_DataSource" DataTextField="Description" 
+                        DataValueField="Code" SelectedValue='<%# Bind("Cash_Flow_Currency") %>'>
+                    </asp:DropDownList>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="Cash_Flow_Currency_TextBox" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="Cash_Flow_Currency_DropDownList" runat="server" 
+                        DataSourceID="Currency_DataSource" DataTextField="Description" 
+                        DataValueField="Code">
+                    </asp:DropDownList>
                 </FooterTemplate>
             </asp:TemplateField>
         </Columns>
@@ -299,9 +317,9 @@
                         <asp:Label ID="Date_of_Restructure_Label" runat="server" OnPreRender="Date_of_Restructure_Label_PreRender"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Date_of_Repayment_TextBox" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="Date_of_Repayment_TextBox" runat="server" Width="17ex"></asp:TextBox>
                         <asp:CalendarExtender ID="Date_of_Repayment_TextBox_CalendarExtender" 
-                            runat="server" Enabled="True" TargetControlID="Date_of_Repayment_TextBox">
+                            runat="server" Enabled="True" TargetControlID="Date_of_Repayment_TextBox" Format="d MMMM yyyy">
                         </asp:CalendarExtender>
                     </td>
                     <td>
@@ -346,12 +364,9 @@
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </InsertParameters>
         <SelectParameters>
-            <asp:ControlParameter ControlID="CIF_HiddenField" Name="CIF" PropertyName="Value"
-                Type="String" />
-            <asp:ControlParameter ControlID="Default_Date_HiddenField" Name="Default_Date" PropertyName="Value"
-                Type="String" />
-            <asp:ControlParameter ControlID="Date_of_Restructure_HiddenField" Name="Date_of_Restructure"
-                PropertyName="Value" Type="String" />
+            <asp:Parameter Name="CIF" Type="String" />
+            <asp:Parameter Name="Default_Date" Type="DateTime" />
+            <asp:Parameter Name="Date_of_Restructure" Type="DateTime" />
         </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="CIF" Type="String" />
@@ -368,7 +383,7 @@
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="Currency_DataSource" runat="server" EnableCaching="True" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="L_CURRENCY_CODE_SELECT" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-    <asp:HiddenField ID="CIF_HiddenField" runat="server" OnPreRender="CIF_HiddenField_PreRender" />
+    <%--<asp:HiddenField ID="CIF_HiddenField" runat="server" OnPreRender="CIF_HiddenField_PreRender" />
     <asp:HiddenField ID="Default_Date_HiddenField" runat="server" OnPreRender="Default_Date_HiddenField_PreRender" />
-    <asp:HiddenField ID="Date_of_Restructure_HiddenField" runat="server" OnPreRender="Date_of_Restructure_HiddenField_PreRender" />
+    <asp:HiddenField ID="Date_of_Restructure_HiddenField" runat="server" OnPreRender="Date_of_Restructure_HiddenField_PreRender" />--%>
 </asp:Content>

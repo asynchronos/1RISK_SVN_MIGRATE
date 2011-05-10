@@ -1,18 +1,22 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Site.master" 
 CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACILITY_INFORMATION" %>
 
+<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h1>
-    <asp:Label ID="Label1" runat="server" Text="FACILITY INFORMATION" 
-            style="font-weight: 700"></asp:Label>
-    </h1>
+
+    <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
+    <h2>
+    <asp:Label ID="Label1" runat="server" Text="FACILITY INFORMATION"></asp:Label>
+    </h2>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" DataKeyNames="CIF,DefaultDate,LIMITNO" 
         DataSourceID="SqlDataSourceFacility" DefaultMode="Edit"  
         PagerSettings-Mode="Numeric" RowStyle-Wrap="true"
-        EnableModelValidation="True" Height="38px" Width="465px">
+        EnableModelValidation="True" Height="38px" Width="465px" OnPageIndexChanging="DetailsView_PageIndexChanging"
+        OnItemUpdating="DetailsView_ItemUpdating">
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
