@@ -36,6 +36,11 @@ namespace LGDCollectionData
             //mail.Body = ErrorMessage;
             //System.Web.Mail.SmtpMail.Send(mail);
 
+            if (err.InnerException != null)
+            {
+                err = err.InnerException;
+            }
+
             //redirect to error page
             if (err.GetType().Equals(typeof(System.Security.SecurityException)))
             {
