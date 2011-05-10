@@ -8,6 +8,6 @@
         About
     </h2>
     <p>
-        Put content here.
+        LGD Collection Data Web
     </p>
 </asp:Content>

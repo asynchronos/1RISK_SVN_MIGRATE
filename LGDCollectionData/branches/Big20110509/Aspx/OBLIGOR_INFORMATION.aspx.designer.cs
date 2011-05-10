@@ -22,6 +22,24 @@ namespace LGDCollectionData.Aspx {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
+        /// SelectFormWebUserControl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LGDCollectionData.UserControls.SelectFormWebUserControl SelectFormWebUserControl1;
+        
+        /// <summary>
+        /// FormName_Label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FormName_Label;
+        
+        /// <summary>
         /// OBLIGOR_INFORMATION_DetailsView control.
         /// </summary>
         /// <remarks>

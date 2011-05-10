@@ -2,6 +2,7 @@
     CodeBehind="NPA_RECORD.aspx.cs" Inherits="LGDCollectionData.Aspx.NPA_RECORD_NEW" UICulture="th-TH" Culture="th-TH" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <script type="text/javascript">
     function updateMessage() {
@@ -20,6 +21,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
     </asp:ToolkitScriptManager>
+    <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
+    <h2>
+        <asp:Label ID="FormName_Label" runat="server" Text="NPA RECORD"></asp:Label>
+    </h2>
     <asp:SqlDataSource ID="SqlDataSourceNPA_RECORD" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         InsertCommand="NPA_EXPENSE_INSERT" InsertCommandType="StoredProcedure" SelectCommand="NPA_RECORD_SELECT"
         SelectCommandType="StoredProcedure" UpdateCommand="NPA_RECORD_UPDATE" UpdateCommandType="StoredProcedure"

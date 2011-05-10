@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GUARANTOR_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.GUARANTOR_INFORMATION" %>
+<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <script type="text/javascript">
     function popupAlert(msg) {
@@ -7,6 +8,10 @@
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
+    <h2>
+        <asp:Label ID="FormName_Label" runat="server" Text="GUARANTOR INFORMATION"></asp:Label>
+    </h2>
 <table>
     <tr>
         <td>

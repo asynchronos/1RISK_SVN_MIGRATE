@@ -27,8 +27,12 @@ namespace LGDCollectionData.Aspx
 
         protected void ButtonOpenForm_Click(object sender, EventArgs e)
         {
-            if (ComboBox1.Text != null)
+            int cif = 0;
+            int.TryParse(ComboBox1.Text, out cif);
+
+            if (cif != 0)
             {
+                Session.Add("CIF", cif);
                 Response.Redirect(DropDownListFormName.SelectedValue + "?CIF=" + ComboBox1.Text);
             }
         }

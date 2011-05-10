@@ -18,5 +18,7 @@ namespace LGDCollectionData
         {
             HeadContent.Controls.AddAt(index, new LiteralControl("<script type='text/javascript' src='" + Page.ResolveUrl(src) + "'></script>"));
         }
+
+        
     }
 }
