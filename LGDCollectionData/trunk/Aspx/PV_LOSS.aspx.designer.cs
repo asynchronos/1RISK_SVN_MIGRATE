@@ -22,6 +22,24 @@ namespace LGDCollectionData.Aspx {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
+        /// SelectFormWebUserControl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LGDCollectionData.UserControls.SelectFormWebUserControl SelectFormWebUserControl1;
+        
+        /// <summary>
+        /// FormName_Label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FormName_Label;
+        
+        /// <summary>
         /// PV_LOSS_DetailsView control.
         /// </summary>
         /// <remarks>
@@ -65,32 +83,5 @@ namespace LGDCollectionData.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource Currency_DataSource;
-        
-        /// <summary>
-        /// CIF_HiddenField control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField CIF_HiddenField;
-        
-        /// <summary>
-        /// Default_Date_HiddenField control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Default_Date_HiddenField;
-        
-        /// <summary>
-        /// Date_of_Restructure_HiddenField control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Date_of_Restructure_HiddenField;
     }
 }

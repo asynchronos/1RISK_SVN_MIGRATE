@@ -1,9 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="TRANSACTION_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.TRANSACTION_INFORMATION" %>
 
+<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
+    <h2>
+        <asp:Label ID="FormName_Label" runat="server" Text="TRANSACTION INFORMATION"></asp:Label>
+    </h2>
     <asp:DetailsView ID="TRANSACTION_INFORMATION_DetailsView" runat="server" AutoGenerateRows="False"
         CellPadding="4" DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO"
         DataSourceID="TRANSACTION_INFORMATION_SqlDataSource" EnableModelValidation="True"

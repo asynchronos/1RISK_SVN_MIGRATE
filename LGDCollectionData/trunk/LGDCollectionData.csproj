@@ -87,7 +87,6 @@
     <Content Include="Aspx\PV_LOSS.aspx" />
     <Content Include="Aspx\SELECT_FORM.aspx" />
     <Content Include="Aspx\TRANSACTION_INFORMATION.aspx" />
-    <Content Include="Aspx\WebForm1_Test.aspx" />
     <Content Include="ExtJS\adapter\ext\ext-base-debug.js" />
     <Content Include="ExtJS\adapter\ext\ext-base.js" />
     <Content Include="ExtJS\adapter\jquery\ext-jquery-adapter-debug.js" />
@@ -4597,6 +4596,7 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Styles\Site.css" />
+    <Content Include="UserControls\SelectFormWebUserControl.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -4764,13 +4764,6 @@
     </Compile>
     <Compile Include="Aspx\TRANSACTION_INFORMATION.aspx.designer.cs">
       <DependentUpon>TRANSACTION_INFORMATION.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Aspx\WebForm1_Test.aspx.cs">
-      <DependentUpon>WebForm1_Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aspx\WebForm1_Test.aspx.designer.cs">
-      <DependentUpon>WebForm1_Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomMembership\MyMembershipProvider.cs" />
     <Compile Include="Default.aspx.cs">
