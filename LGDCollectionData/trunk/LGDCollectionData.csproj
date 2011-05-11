@@ -70,6 +70,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Account\UserManage.aspx" />
     <Content Include="Aspx\ADDITIONAL_DRAWDOWN.aspx" />
     <Content Include="Aspx\CASHFLOW.aspx" />
     <Content Include="Aspx\DIRECT_COST.aspx" />
@@ -4642,6 +4643,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\UserManage.aspx.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UserManage.aspx.designer.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\ADDITIONAL_DRAWDOWN.aspx.cs">
       <DependentUpon>ADDITIONAL_DRAWDOWN.aspx</DependentUpon>

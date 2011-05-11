@@ -54,7 +54,6 @@
                         <asp:ListItem>CORPORATE</asp:ListItem>
                         <asp:ListItem>SME_S</asp:ListItem>
                         <asp:ListItem>SME_M</asp:ListItem>
-                        <asp:ListItem>Large Corporate</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <InsertItemTemplate>
