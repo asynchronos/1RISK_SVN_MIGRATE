@@ -23,6 +23,12 @@ namespace LGDCollectionData
         private void Application_Error(object sender, EventArgs e)
         {
             Exception err = Server.GetLastError();
+
+            if (err.InnerException != null)
+            {
+                err = err.InnerException;
+            }
+
             //Insert log by log4net
             log.Error(err.StackTrace, err);
 
@@ -47,7 +53,7 @@ namespace LGDCollectionData
             }
             else
             {
-                Response.Redirect("~/Aspx/Error/DefaultError.aspx?page=" + Server.UrlEncode(Request.CurrentExecutionFilePath) + "&msg=" + err.InnerException.Message);
+                Response.Redirect("~/Aspx/Error/DefaultError.aspx?page=" + Server.UrlEncode(Request.CurrentExecutionFilePath) + "&msg=" + err.Message);
             }
         }
 
