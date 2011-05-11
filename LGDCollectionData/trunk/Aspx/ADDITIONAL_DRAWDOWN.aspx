@@ -7,6 +7,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
+
     <h2>
         <asp:Label ID="Label1" runat="server" Text="ADDITIONAL DRAWDOWN"></asp:Label>
     </h2>
@@ -39,6 +40,8 @@
             <asp:Parameter Name="Is_This_an_Additional_Drawdown" Type="Boolean" />
             <asp:Parameter Name="Type_of_Additional_Drawdown" Type="String" />
             <asp:Parameter Name="Other_Reason_of_Principal_Increase" Type="String" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceAppID" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
@@ -60,8 +63,14 @@
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO,Additional_Drawdown_Date"
         DataSourceID="SqlDataSource1" EnableModelValidation="True" Height="50px" Width="442px"
-        Style="font-size: small; font-family: Tahoma" DefaultMode="Edit" OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnItemUpdating="DetailsView_ItemUpdating">
+        Style="font-size: small; font-family: Tahoma" 
+        DefaultMode="Edit" 
+        OnPageIndexChanging="DetailsView_PageIndexChanging"
+        OnDataBound="DetailsView_Databound" CellPadding="4" ForeColor="#333333" GridLines="None" 
+      >
+        <AlternatingRowStyle BackColor="White" />
+        <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
+        <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
             <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" ReadOnly="True"
@@ -172,7 +181,21 @@
                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("Other_Reason_of_Principal_Increase") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+          <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_DATE" SortExpression="UPDATE_DATE">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </EditItemTemplate>
+            </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" ShowInsertButton="True" />
         </Fields>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
     </asp:DetailsView>
 </asp:Content>
