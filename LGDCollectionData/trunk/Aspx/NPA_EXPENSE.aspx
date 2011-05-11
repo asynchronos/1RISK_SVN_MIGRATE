@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NPA_EXPENSE.aspx.cs" Inherits="LGDCollectionData.Aspx.NPA_EXPENSE" %>
+<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <script type="text/javascript">
     function popupAlert(msg) {
@@ -7,7 +8,10 @@
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
+    <h2>
+        <asp:Label ID="FormName_Label" runat="server" Text="NPA EXPENSE"></asp:Label>
+    </h2>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" DataKeyNames="Expense_Year" 
         DataSourceID="SqlDataSourceNPA_EXPENSE" EnableModelValidation="True" 

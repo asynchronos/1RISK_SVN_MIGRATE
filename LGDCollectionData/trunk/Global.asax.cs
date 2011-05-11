@@ -39,15 +39,15 @@ namespace LGDCollectionData
             //redirect to error page
             if (err.GetType().Equals(typeof(System.Security.SecurityException)))
             {
-                Server.Transfer("/Aspx/Error/UnAuthorized.aspx?page=" + Server.UrlEncode(Request.RawUrl));
+                Response.Redirect("~/Aspx/Error/UnAuthorized.aspx?page=" + Server.UrlEncode(Request.CurrentExecutionFilePath));
             }
             else if (err.GetType().Equals(typeof(NotImplementedException)))
             {
-                Server.Transfer("/Aspx/Error/NotImplemented.aspx?page=" + Server.UrlEncode(Request.RawUrl));
+                Response.Redirect("~/Aspx/Error/NotImplemented.aspx?page=" + Server.UrlEncode(Request.CurrentExecutionFilePath));
             }
             else
             {
-                Server.Transfer("/Aspx/Error/DefaultError.aspx?page=" + Server.UrlEncode(Request.RawUrl) + "&msg=" + err.Message);
+                Response.Redirect("~/Aspx/Error/DefaultError.aspx?page=" + Server.UrlEncode(Request.CurrentExecutionFilePath) + "&msg=" + err.InnerException.Message);
             }
         }
 

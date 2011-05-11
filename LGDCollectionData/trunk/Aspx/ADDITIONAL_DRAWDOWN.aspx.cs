@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace LGDCollectionData.Aspx
 {
-    public partial class ADDITIONAL_DRAWDOWN : System.Web.UI.Page
+    public partial class ADDITIONAL_DRAWDOWN : MyAspxPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

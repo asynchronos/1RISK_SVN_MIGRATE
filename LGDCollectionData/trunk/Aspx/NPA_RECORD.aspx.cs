@@ -50,8 +50,10 @@ namespace LGDCollectionData.Aspx
             {
                 System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
                 System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
-                userId.Text = User.Identity.Name.ToString();
-                dateLabel.Text = Convert.ToString(DateTime.Now);
+                if (userId != null)
+                    userId.Text = User.Identity.Name.ToString();
+                if (dateLabel != null)
+                    dateLabel.Text = Convert.ToString(DateTime.Now);
             }
         }
 

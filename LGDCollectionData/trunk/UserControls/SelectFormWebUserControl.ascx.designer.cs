@@ -7,63 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LGDCollectionData.Aspx {
+namespace LGDCollectionData.UserControls {
     
     
-    public partial class TRANSACTION_INFORMATION {
+    public partial class SelectFormWebUserControl {
         
         /// <summary>
-        /// SelectFormWebUserControl1 control.
+        /// LinkDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::LGDCollectionData.UserControls.SelectFormWebUserControl SelectFormWebUserControl1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LinkDiv;
         
         /// <summary>
-        /// FormName_Label control.
+        /// Form_DropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FormName_Label;
+        protected global::System.Web.UI.WebControls.DropDownList Form_DropDownList;
         
         /// <summary>
-        /// TRANSACTION_INFORMATION_DetailsView control.
+        /// GoTo_Button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView TRANSACTION_INFORMATION_DetailsView;
+        protected global::System.Web.UI.WebControls.Button GoTo_Button;
         
         /// <summary>
-        /// TRANSACTION_INFORMATION_SqlDataSource control.
+        /// CIFList_SqlDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TRANSACTION_INFORMATION_SqlDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource CIFList_SqlDataSource;
         
         /// <summary>
-        /// Currency_DataSource control.
+        /// FormList_SqlDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Currency_DataSource;
-        
-        /// <summary>
-        /// Rate_Type_SqlDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Rate_Type_SqlDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource FormList_SqlDataSource;
     }
 }
