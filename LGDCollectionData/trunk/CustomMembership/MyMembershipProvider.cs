@@ -107,7 +107,7 @@ namespace LGDCollectionData.CustomMembership
 
         public override int MinRequiredPasswordLength
         {
-            get { throw new System.NotImplementedException(); }
+            get { return 8; }
         }
 
         public override int PasswordAttemptWindow
@@ -127,7 +127,7 @@ namespace LGDCollectionData.CustomMembership
 
         public override bool RequiresQuestionAndAnswer
         {
-            get { return true; }
+            get { return false; }
         }
 
         public override bool RequiresUniqueEmail

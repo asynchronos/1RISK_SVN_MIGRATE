@@ -100,6 +100,7 @@
                 SortExpression="OS_AT_D_MINUS_1_Accrued" />
             <asp:BoundField DataField="OS_AT_D_MINUS_1_Suspense" HeaderText="OS_AT_D_MINUS_1_Suspense"
                 SortExpression="OS_AT_D_MINUS_1_Suspense" />
+            <asp:CommandField ShowEditButton="True" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
