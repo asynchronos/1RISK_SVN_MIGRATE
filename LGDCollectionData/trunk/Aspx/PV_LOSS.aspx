@@ -85,9 +85,9 @@
                 <EditItemTemplate>
                     <asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" CommandName="New"
                         Text="New"></asp:LinkButton>
-                    <%--&nbsp;<asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True" CommandName="Update"
+                    &nbsp;<asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True" CommandName="Update"
                         Text="Update"></asp:LinkButton>
-                    &nbsp;<asp:LinkButton ID="Cancel_LinkButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>--%>
+                    &nbsp;<asp:LinkButton ID="Cancel_LinkButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:LinkButton ID="Insert_LinkButton" runat="server" CausesValidation="True" CommandName="Insert"

@@ -270,6 +270,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:CheckBoxField DataField="Negative_Pledge" HeaderText="Negative_Pledge" SortExpression="Negative_Pledge" />
+            <asp:CommandField ShowEditButton="True" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
