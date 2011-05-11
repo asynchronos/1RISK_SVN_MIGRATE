@@ -26,6 +26,18 @@ namespace LGDCollectionData.Aspx
         //    MessageBox.Show(text);
         //}
 
+        protected void DetailsView_Databound(Object sender, EventArgs e)
+        {
+            if (getQueryString("CIF")  != null ) {
+                if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
+                {
+                    System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
+                    System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
+                    userId.Text = User.Identity.Name.ToString();
+                    dateLabel.Text = Convert.ToString(DateTime.Now);
+                }
+            }
 
+        }
     }
 }

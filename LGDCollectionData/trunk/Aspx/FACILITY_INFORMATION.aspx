@@ -1,11 +1,14 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Site.master" 
 CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACILITY_INFORMATION" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
 
     <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
     <h2>
@@ -15,8 +18,12 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
         AutoGenerateRows="False" DataKeyNames="CIF,DefaultDate,LIMITNO" 
         DataSourceID="SqlDataSourceFacility" DefaultMode="Edit"  
         PagerSettings-Mode="Numeric" RowStyle-Wrap="true"
-        EnableModelValidation="True" Height="38px" Width="465px" OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnItemUpdating="DetailsView_ItemUpdating">
+        EnableModelValidation="True" Height="38px" Width="465px" 
+        OnDataBound="DetailsView_Databound" CellPadding="4" ForeColor="#333333" GridLines="None"
+        >
+        <AlternatingRowStyle BackColor="White" />
+        <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
+        <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
@@ -29,12 +36,6 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                         DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'>
                     </asp:DropDownList>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("APP_ID") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("APP_ID") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMITTYP_A" SortExpression="LIMITTYP_A">
                 <EditItemTemplate>
@@ -43,12 +44,6 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                         DataValueField="LIMITTYP_A" SelectedValue='<%# Bind("LIMITTYP_A") %>'>
                     </asp:DropDownList>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("LIMITTYP_A") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("LIMITTYP_A") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="LIMITNO" HeaderText="LIMITNO" ReadOnly="True" 
                 SortExpression="LIMITNO" />
@@ -66,14 +61,6 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" 
-                        Text='<%# Bind("FacilityPurposeDescription") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" 
-                        Text='<%# Bind("FacilityPurposeDescription") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="NatureofFacility" 
                 SortExpression="NatureofFacility">
@@ -86,13 +73,6 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox4" runat="server" 
-                        Text='<%# Bind("NatureofFacility") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("NatureofFacility") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Seniority" SortExpression="Seniority">
                 <EditItemTemplate>
@@ -103,12 +83,6 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Seniority") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Seniority") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:CheckBoxField DataField="BaselCommittedIndicator" 
                 HeaderText="BaselCommittedIndicator" SortExpression="BaselCommittedIndicator" />
@@ -124,14 +98,6 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox6" runat="server" 
-                        Text='<%# Bind("PrincipalRepaymentCurrencyCode") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label6" runat="server" 
-                        Text='<%# Bind("PrincipalRepaymentCurrencyCode") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="PrincipalRepaymentAmount" 
                 HeaderText="PrincipalRepaymentAmount" 
@@ -147,14 +113,6 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                   
                     </asp:DropDownList>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox7" runat="server" 
-                        Text='<%# Bind("PrincipalRepaymentCycle") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label7" runat="server" 
-                        Text='<%# Bind("PrincipalRepaymentCycle") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="CompoundingFrequencyofInterest" 
                 SortExpression="CompoundingFrequencyofInterest">
@@ -168,77 +126,58 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                   
                     </asp:DropDownList>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox8" runat="server" 
-                        Text='<%# Bind("CompoundingFrequencyofInterest") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label8" runat="server" 
-                        Text='<%# Bind("CompoundingFrequencyofInterest") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="SharingLimitwithCIF1" 
                 SortExpression="SharingLimitwithCIF1">
-                <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList9" runat="server" 
-                        DataSourceID="SqlDataSourceCIF" DataTextField="CIF" DataValueField="CIF" 
-                        SelectedValue='<%# Bind("SharingLimitwithCIF1") %>'      AppendDataBoundItems="true" >
-                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                  
-                    </asp:DropDownList>
+                      <EditItemTemplate>
+                    <asp:ComboBox ID="ComboBox3" runat="server" AutoCompleteMode="SuggestAppend" DataSourceID="SqlDataSourceCIF"
+                            DataTextField="CIF" DataValueField="CIF" MaxLength="0" Style="display: inline;"
+                            SelectedValue='<%# Bind("SharingLimitwithCIF1") %>' 
+                            AppendDataBoundItems="true">
+                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                     </asp:ComboBox>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox9" runat="server" 
-                        Text='<%# Bind("SharingLimitwithCIF1") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label9" runat="server" 
-                        Text='<%# Bind("SharingLimitwithCIF1") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="SharingLimitwithCIF2" 
                 SortExpression="SharingLimitwithCIF2">
-                <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList10" runat="server" 
-                        DataSourceID="SqlDataSourceCIF" DataTextField="CIF" DataValueField="CIF" 
-                        SelectedValue='<%# Bind("SharingLimitwithCIF2") %>'      AppendDataBoundItems="true" >
-                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                  
-                    </asp:DropDownList>
+                        <EditItemTemplate>
+                    <asp:ComboBox ID="ComboBox2" runat="server" AutoCompleteMode="SuggestAppend" DataSourceID="SqlDataSourceCIF"
+                            DataTextField="CIF" DataValueField="CIF" MaxLength="0" Style="display: inline;"
+                            SelectedValue='<%# Bind("SharingLimitwithCIF2") %>' 
+                            AppendDataBoundItems="true">
+                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                     </asp:ComboBox>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox10" runat="server" 
-                        Text='<%# Bind("SharingLimitwithCIF2") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label10" runat="server" 
-                        Text='<%# Bind("SharingLimitwithCIF2") %>'></asp:Label>
-                </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="SharingLimitwithCIF3" 
                 SortExpression="SharingLimitwithCIF3">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList11" runat="server" 
-                        DataSourceID="SqlDataSourceCIF" DataTextField="CIF" DataValueField="CIF" 
-                        SelectedValue='<%# Bind("SharingLimitwithCIF3") %>'       
-                        AppendDataBoundItems="true" >
-                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                  
-                    </asp:DropDownList>
+                    <asp:ComboBox ID="ComboBox1" runat="server" AutoCompleteMode="SuggestAppend" DataSourceID="SqlDataSourceCIF"
+                            DataTextField="CIF" DataValueField="CIF" MaxLength="0" Style="display: inline;"
+                            SelectedValue='<%# Bind("SharingLimitwithCIF3") %>' 
+                            AppendDataBoundItems="true">
+                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                     </asp:ComboBox>
                 </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox11" runat="server" 
-                        Text='<%# Bind("SharingLimitwithCIF3") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label11" runat="server" 
-                        Text='<%# Bind("SharingLimitwithCIF3") %>'></asp:Label>
-                </ItemTemplate>
+            </asp:TemplateField>
+             <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE_DATE" SortExpression="UPDATE_DATE">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                </EditItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />
         </Fields>
 
-<RowStyle Wrap="True"></RowStyle>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+
+<RowStyle Wrap="True" BackColor="#FFFBD6" ForeColor="#333333"></RowStyle>
     </asp:DetailsView>
     <asp:SqlDataSource ID="SqlDataSourceFacility" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
@@ -267,42 +206,53 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
             <asp:Parameter Name="SharingLimitwithCIF1" Type="String" />
             <asp:Parameter Name="SharingLimitwithCIF2" Type="String" />
             <asp:Parameter Name="SharingLimitwithCIF3" Type="String" />
+            <asp:Parameter Name="UPDATE_USER" Type="String" />
+            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceAppID" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-        SelectCommand="L_APP_ID_SELECT" SelectCommandType="StoredProcedure">
+        SelectCommand="L_APP_ID_SELECT" SelectCommandType="StoredProcedure" 
+        EnableCaching="True">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceLimitType" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-        SelectCommand="LIMIT_TYPE_SELECT" SelectCommandType="StoredProcedure">
+        SelectCommand="LIMIT_TYPE_SELECT" SelectCommandType="StoredProcedure" 
+        EnableCaching="True">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourcePurpose" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-        SelectCommand="FACILITY_PURPOSE_SELECT" SelectCommandType="StoredProcedure">
+        SelectCommand="FACILITY_PURPOSE_SELECT" 
+        SelectCommandType="StoredProcedure" EnableCaching="True">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceNature" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-        SelectCommand="FACILITY_NATURE_SELECT" SelectCommandType="StoredProcedure">
+        SelectCommand="FACILITY_NATURE_SELECT" SelectCommandType="StoredProcedure" 
+        EnableCaching="True">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceSiniority" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-        SelectCommand="FACILITY_SENIORITY_SELECT" SelectCommandType="StoredProcedure">
+        SelectCommand="FACILITY_SENIORITY_SELECT" 
+        SelectCommandType="StoredProcedure" EnableCaching="True">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceCurrency" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-        SelectCommand="L_CURRENCY_CODE_SELECT" SelectCommandType="StoredProcedure">
+        SelectCommand="L_CURRENCY_CODE_SELECT" SelectCommandType="StoredProcedure" 
+        EnableCaching="True">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceFrequency" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-        SelectCommand="FACILITY_FREQUENCY_SELECT" SelectCommandType="StoredProcedure">
+        SelectCommand="FACILITY_FREQUENCY_SELECT" 
+        SelectCommandType="StoredProcedure" EnableCaching="True">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceCycle" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-        SelectCommand="FACILITY_CYCLE_SELECT" SelectCommandType="StoredProcedure">
+        SelectCommand="FACILITY_CYCLE_SELECT" SelectCommandType="StoredProcedure" 
+        EnableCaching="True">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceCIF" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
-        SelectCommand="GROUP_CIF_SELECT" SelectCommandType="StoredProcedure">
+        SelectCommand="GROUP_CIF_SELECT" SelectCommandType="StoredProcedure" 
+        EnableCaching="True">
     </asp:SqlDataSource>
 </asp:Content>
