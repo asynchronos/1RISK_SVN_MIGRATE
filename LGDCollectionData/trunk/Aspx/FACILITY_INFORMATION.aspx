@@ -31,30 +31,46 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                 ReadOnly="True" SortExpression="DefaultDate" />
             <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList1" runat="server" 
+                    <asp:DropDownList ID="DropDownListAPP_ID" runat="server" 
                         DataSourceID="SqlDataSourceAppID" DataTextField="APP_ID" 
-                        DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'>
+                        DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'
+                        AppendDataBoundItems="true" >
+                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMITTYP_A" SortExpression="LIMITTYP_A">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList2" runat="server" 
+                    <asp:DropDownList ID="DropDownListLIMITTYP_A" runat="server" 
                         DataSourceID="SqlDataSourceLimitType" DataTextField="LIMITTYP_A" 
-                        DataValueField="LIMITTYP_A" SelectedValue='<%# Bind("LIMITTYP_A") %>'>
+                        DataValueField="LIMITTYP_A" SelectedValue='<%# Bind("LIMITTYP_A") %>'
+                        AppendDataBoundItems="true" >
+                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="LIMITNO" HeaderText="LIMITNO" ReadOnly="True" 
                 SortExpression="LIMITNO" />
-            <asp:BoundField DataField="LimitAtD" HeaderText="LimitAtD" 
-                SortExpression="LimitAtD" />
-            <asp:BoundField DataField="LimitAtD1" HeaderText="LimitAtD1" 
-                SortExpression="LimitAtD1" />
+             <asp:TemplateField HeaderText="Limit @ D" 
+                SortExpression="LimitAtD">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBoxLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:N}") %>'>
+                    </asp:TextBox>
+                    <asp:Label ID="LabelStar" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                </EditItemTemplate>
+            </asp:TemplateField>
+               <asp:TemplateField HeaderText="Limit @ D1" 
+                SortExpression="LimitAtD1">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBoxLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:N}") %>'>
+                    </asp:TextBox>
+                    <asp:Label ID="LabelStar21" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                </EditItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="FacilityPurposeDescription" 
                 SortExpression="FacilityPurposeDescription">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList3" runat="server" 
+                    <asp:DropDownList ID="DropDownListFACILITY_PURPOSE" runat="server" 
                         DataSourceID="SqlDataSourcePurpose" DataTextField="FACILITY_PURPOSE" 
                         DataValueField="FACILITY_PURPOSE" 
                         SelectedValue='<%# Bind("FacilityPurposeDescription") %>' AppendDataBoundItems="true" >
@@ -65,7 +81,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
             <asp:TemplateField HeaderText="NatureofFacility" 
                 SortExpression="NatureofFacility">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList4" runat="server" 
+                    <asp:DropDownList ID="DropDownListFACILITY_NATURE_CODE" runat="server" 
                         DataSourceID="SqlDataSourceNature" DataTextField="FACILITY_NATURE" 
                         DataValueField="FACILITY_NATURE_CODE" 
                         SelectedValue='<%# Bind("NatureofFacility") %>' 
@@ -76,7 +92,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Seniority" SortExpression="Seniority">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList5" runat="server" 
+                    <asp:DropDownList ID="DropDownListSeniority_CODE" runat="server" 
                         DataSourceID="SqlDataSourceSiniority" DataTextField="Seniority_CODE" 
                         DataValueField="Seniority_CODE" SelectedValue='<%# Bind("Seniority") %>'
                         AppendDataBoundItems="true" >
@@ -86,12 +102,21 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
             </asp:TemplateField>
             <asp:CheckBoxField DataField="BaselCommittedIndicator" 
                 HeaderText="BaselCommittedIndicator" SortExpression="BaselCommittedIndicator" />
-            <asp:BoundField DataField="MaturityDate" HeaderText="MaturityDate" 
-                SortExpression="MaturityDate" />
+            <asp:TemplateField HeaderText="MaturityDate" 
+                SortExpression="MaturityDate">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBoxMaturityDate" runat="server" Text='<%# Bind("MaturityDate","{0:d}") %>'>
+                    </asp:TextBox>
+                    <asp:Label ID="LabelStar2" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:CalendarExtender ID="TextBoxMaturityDate_CalendarExtender" 
+                        runat="server" TargetControlID="TextBoxMaturityDate" >
+                    </asp:CalendarExtender>
+                </EditItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="PrincipalRepaymentCurrencyCode" 
                 SortExpression="PrincipalRepaymentCurrencyCode">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList6" runat="server" 
+                    <asp:DropDownList ID="DropDownListPrincipalRepaymentCurrencyCode" runat="server" 
                         DataSourceID="SqlDataSourceCurrency" DataTextField="Description" 
                         DataValueField="Code"      AppendDataBoundItems="True" 
                         SelectedValue='<%# Bind("PrincipalRepaymentCurrencyCode") %>'>      
@@ -105,7 +130,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
             <asp:TemplateField HeaderText="PrincipalRepaymentCycle" 
                 SortExpression="PrincipalRepaymentCycle">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList7" runat="server" 
+                    <asp:DropDownList ID="DropDownListPrincipalRepaymentCycle" runat="server" 
                         DataSourceID="SqlDataSourceCycle" DataTextField="CYCLE" DataValueField="CYCLE" 
                         SelectedValue='<%# Bind("PrincipalRepaymentCycle") %>'      
                         AppendDataBoundItems="True" >
@@ -117,7 +142,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
             <asp:TemplateField HeaderText="CompoundingFrequencyofInterest" 
                 SortExpression="CompoundingFrequencyofInterest">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList8" runat="server" 
+                    <asp:DropDownList ID="DropDownListFREQUENCY_CODE" runat="server" 
                         DataSourceID="SqlDataSourceFrequency" DataTextField="FREQUENCY_CODE" 
                         DataValueField="FREQUENCY_CODE" 
                         SelectedValue='<%# Bind("CompoundingFrequencyofInterest") %>'      
@@ -127,39 +152,37 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="SharingLimitwithCIF1" 
-                SortExpression="SharingLimitwithCIF1">
+            <asp:TemplateField HeaderText="SharingLimitwithCIF1"                 SortExpression="SharingLimitwithCIF1">
                       <EditItemTemplate>
-                    <asp:ComboBox ID="ComboBox3" runat="server" AutoCompleteMode="SuggestAppend" DataSourceID="SqlDataSourceCIF"
-                            DataTextField="CIF" DataValueField="CIF" MaxLength="0" Style="display: inline;"
-                            SelectedValue='<%# Bind("SharingLimitwithCIF1") %>' 
-                            AppendDataBoundItems="true">
-                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                     </asp:ComboBox>
-                </EditItemTemplate>
+                        <asp:TextBox runat="server" ID="tbSharingCIF1" Text='<%# Bind("SharingLimitwithCIF1") %>'></asp:TextBox><asp:Label ID="LabelStar3" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                   </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="SharingLimitwithCIF2" 
-                SortExpression="SharingLimitwithCIF2">
-                        <EditItemTemplate>
-                    <asp:ComboBox ID="ComboBox2" runat="server" AutoCompleteMode="SuggestAppend" DataSourceID="SqlDataSourceCIF"
-                            DataTextField="CIF" DataValueField="CIF" MaxLength="0" Style="display: inline;"
-                            SelectedValue='<%# Bind("SharingLimitwithCIF2") %>' 
-                            AppendDataBoundItems="true">
-                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                     </asp:ComboBox>
-                </EditItemTemplate>
+            <asp:TemplateField HeaderText="SharingLimitwithCIF2"               SortExpression="SharingLimitwithCIF2">
+                      <EditItemTemplate>
+                        <asp:TextBox runat="server" ID="tbSharingCIF2" Text='<%# Bind("SharingLimitwithCIF2") %>'></asp:TextBox><asp:Label ID="LabelStar4" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                   </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="SharingLimitwithCIF3" 
-                SortExpression="SharingLimitwithCIF3">
-                <EditItemTemplate>
-                    <asp:ComboBox ID="ComboBox1" runat="server" AutoCompleteMode="SuggestAppend" DataSourceID="SqlDataSourceCIF"
-                            DataTextField="CIF" DataValueField="CIF" MaxLength="0" Style="display: inline;"
-                            SelectedValue='<%# Bind("SharingLimitwithCIF3") %>' 
-                            AppendDataBoundItems="true">
-                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                     </asp:ComboBox>
-                </EditItemTemplate>
+            <asp:TemplateField HeaderText="SharingLimitwithCIF3"                 SortExpression="SharingLimitwithCIF3">
+                    <EditItemTemplate>
+                        <asp:TextBox runat="server" ID="tbSharingCIF3" Text='<%# Bind("SharingLimitwithCIF3") %>'></asp:TextBox><asp:Label ID="LabelStar5" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                   </EditItemTemplate>
+           
             </asp:TemplateField>
+           <asp:TemplateField HeaderText="SharingLimitwithCIF4"   SortExpression="SharingLimitwithCIF4">
+                    <EditItemTemplate>
+                        <asp:TextBox runat="server" ID="tbSharingCIF4" Text='<%# Bind("SharingLimitwithCIF4") %>'></asp:TextBox><asp:Label ID="LabelStar6" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                   </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="SharingLimitwithCIF5"   SortExpression="SharingLimitwithCIF5">
+                    <EditItemTemplate>
+                        <asp:TextBox runat="server" ID="tbSharingCIF5" Text='<%# Bind("SharingLimitwithCIF5") %>'></asp:TextBox><asp:Label ID="LabelStar7" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                   </EditItemTemplate>
+            </asp:TemplateField>
+           <asp:TemplateField HeaderText="SharingLimitwithCIF6"   SortExpression="SharingLimitwithCIF6">
+                    <EditItemTemplate>
+                        <asp:TextBox runat="server" ID="tbSharingCIF6" Text='<%# Bind("SharingLimitwithCIF6") %>'></asp:TextBox><asp:Label ID="LabelStar8" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                   </EditItemTemplate>
+             </asp:TemplateField>
              <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
                 <EditItemTemplate>
                     <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
@@ -206,6 +229,9 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
             <asp:Parameter Name="SharingLimitwithCIF1" Type="String" />
             <asp:Parameter Name="SharingLimitwithCIF2" Type="String" />
             <asp:Parameter Name="SharingLimitwithCIF3" Type="String" />
+            <asp:Parameter Name="SharingLimitwithCIF4" Type="String" />
+            <asp:Parameter Name="SharingLimitwithCIF5" Type="String" />
+            <asp:Parameter Name="SharingLimitwithCIF6" Type="String" />
             <asp:Parameter Name="UPDATE_USER" Type="String" />
             <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </UpdateParameters>
@@ -213,7 +239,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
     <asp:SqlDataSource ID="SqlDataSourceAppID" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
         SelectCommand="L_APP_ID_SELECT" SelectCommandType="StoredProcedure" 
-        EnableCaching="True">
+        EnableCaching="FALSE">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceLimitType" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
