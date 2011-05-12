@@ -1,5 +1,6 @@
 ﻿using System;
 using log4net;
+using System.Web;
 
 namespace LGDCollectionData
 {
@@ -27,10 +28,19 @@ namespace LGDCollectionData
             if (err.InnerException != null)
             {
                 err = err.InnerException;
+                HttpContext.Current.Session.Add("LastError",err);
             }
 
+            if (HttpContext.Current.Session != null)
+                HttpContext.Current.Session.Add("PageError", HttpContext.Current.Request.Url.ToString());
+
+            if (HttpContext.Current.User != null)
+            {
+                MDC.Set("user", HttpContext.Current.User.Identity.Name);
+            }
+            MDC.Set("url", HttpContext.Current.Request.Url.ToString());
             //Insert log by log4net
-            log.Error(err.StackTrace, err);
+            log.Error(err.Message, err);
 
             //send mail
             //System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
@@ -45,15 +55,15 @@ namespace LGDCollectionData
             //redirect to error page
             if (err.GetType().Equals(typeof(System.Security.SecurityException)))
             {
-                Response.Redirect("~/Aspx/Error/UnAuthorized.aspx?page=" + Server.UrlEncode(Request.CurrentExecutionFilePath));
+                Response.Redirect("~/Aspx/Error/UnAuthorized.aspx");
             }
             else if (err.GetType().Equals(typeof(NotImplementedException)))
             {
-                Response.Redirect("~/Aspx/Error/NotImplemented.aspx?page=" + Server.UrlEncode(Request.CurrentExecutionFilePath));
+                Response.Redirect("~/Aspx/Error/NotImplemented.aspx");
             }
             else
             {
-                Response.Redirect("~/Aspx/Error/DefaultError.aspx?page=" + Server.UrlEncode(Request.CurrentExecutionFilePath) + "&msg=" + err.Message);
+                Response.Redirect("~/Aspx/Error/DefaultError.aspx");
             }
         }
 
