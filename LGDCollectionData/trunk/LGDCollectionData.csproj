@@ -4846,7 +4846,9 @@
     <Content Include="Account\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Log4net.config" />
+    <Content Include="Log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
