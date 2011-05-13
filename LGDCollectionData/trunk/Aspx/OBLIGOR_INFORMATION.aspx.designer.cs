@@ -83,5 +83,23 @@ namespace LGDCollectionData.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource Nature_of_Emergence_SqlDataSource;
+        
+        /// <summary>
+        /// Portfolio_SqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Portfolio_SqlDataSource;
+        
+        /// <summary>
+        /// Default_Type_SqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Default_Type_SqlDataSource;
     }
 }
