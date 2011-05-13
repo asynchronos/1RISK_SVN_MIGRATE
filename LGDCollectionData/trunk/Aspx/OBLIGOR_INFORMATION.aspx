@@ -2,11 +2,12 @@
     CodeBehind="OBLIGOR_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.OBLIGOR_INFORMATION" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
+<%@ Register Src="../UserControls/SelectFormWebUserControl.ascx" TagName="SelectFormWebUserControl"
+    TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
     </asp:ToolkitScriptManager>
     <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
     <h2>
@@ -20,28 +21,57 @@
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
         <Fields>
-            <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
-            <asp:BoundField DataField="Account_Officer" HeaderText="Account_Officer" SortExpression="Account_Officer" />
-            <asp:TemplateField HeaderText="Data_Inputter" SortExpression="Data_Inputter">
+            <asp:TemplateField HeaderText="CIF" SortExpression="CIF" HeaderStyle-Width="30%">
+                <EditItemTemplate>
+                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="CIF_TextBox" runat="server" Text='<%# Bind("CIF") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Account Officer" SortExpression="Account_Officer">
+                <EditItemTemplate>
+                    <asp:TextBox ID="Account_Officer_TextBox" runat="server" Text='<%# Bind("Account_Officer") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="Account_Officer_TextBox" runat="server" Text='<%# Bind("Account_Officer") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Account_Officer_Label" runat="server" Text='<%# Bind("Account_Officer") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Data Inputter" SortExpression="Data_Inputter">
                 <EditItemTemplate>
                     <asp:TextBox ID="Data_Inputter_TextBox" runat="server" Text='<%# Bind("Data_Inputter") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Data_Inputter_TextBox" runat="server" Text='<%# Bind("Data_Inputter") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Data_Inputter_Label" runat="server" Text='<%# Bind("Data_Inputter") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Date_of_Input" SortExpression="Date_of_Input">
+            <asp:TemplateField HeaderText="Date of Input" SortExpression="Date_of_Input">
                 <EditItemTemplate>
                     <asp:TextBox ID="Date_of_Input_TextBox" runat="server" Text='<%# Bind("Date_of_Input", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
                     <asp:CalendarExtender ID="Date_of_Input_TextBox_CalendarExtender" runat="server"
-                        Enabled="True" TargetControlID="Date_of_Input_TextBox">
+                        Enabled="True" TargetControlID="Date_of_Input_TextBox" Format="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Date_of_Input_TextBox" runat="server" Text='<%# Bind("Date_of_Input", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Date_of_Input_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Date_of_Input_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Date_of_Input_Label" runat="server" Text='<%# Bind("Date_of_Input", "{0:d MMMM yyyy}") %>'></asp:Label>
@@ -49,106 +79,189 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Portfolio" SortExpression="Portfolio">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="Portfolio_DropDownList" runat="server" SelectedValue='<%# Bind("Portfolio") %>'>
-                        <asp:ListItem></asp:ListItem>
-                        <asp:ListItem>CORPORATE</asp:ListItem>
-                        <asp:ListItem>SME_S</asp:ListItem>
-                        <asp:ListItem>SME_M</asp:ListItem>
+                    <asp:DropDownList ID="Portfolio_DropDownList" runat="server" SelectedValue='<%# Bind("Portfolio") %>'
+                        DataSourceID="Portfolio_SqlDataSource" AppendDataBoundItems="True" 
+                        DataTextField="Portfolio" DataValueField="Portfolio" style="text-align:center;">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                     </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Portfolio_TextBox" runat="server" Text='<%# Bind("Portfolio") %>'></asp:TextBox>
+                    <asp:DropDownList ID="Portfolio_DropDownList" runat="server" SelectedValue='<%# Bind("Portfolio") %>'
+                        DataSourceID="Portfolio_SqlDataSource" AppendDataBoundItems="True" 
+                        DataTextField="Portfolio" DataValueField="Portfolio" style="text-align:center;">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
+                    </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Portfolio_Label" runat="server" Text='<%# Bind("Portfolio") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Business_Unit" HeaderText="Business_Unit" SortExpression="Business_Unit" />
-            <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
+            <asp:TemplateField HeaderText="Business Unit" SortExpression="Business_Unit">
                 <EditItemTemplate>
-                    <asp:Label ID="Label1" runat="server" 
-                        Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:TextBox ID="Business_Unit_TextBox" runat="server" Text='<%# Bind("Business_Unit") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" 
-                        Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Business_Unit_TextBox" runat="server" Text='<%# Bind("Business_Unit") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" 
-                        Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Business_Unit_Label" runat="server" Text='<%# Bind("Business_Unit") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="One_Year_Before_Default_Date" 
-                SortExpression="One_Year_Before_Default_Date">
+            <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" 
-                        Text='<%# Bind("One_Year_Before_Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" 
-                        Text='<%# Bind("One_Year_Before_Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Default_Date_TextBox" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Default_Date_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Default_Date_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label2" runat="server" 
-                        Text='<%# Bind("One_Year_Before_Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Industry_Code" HeaderText="Industry_Code" 
-                SortExpression="Industry_Code" />
-            <asp:BoundField DataField="Bank_Group_Key" HeaderText="Bank_Group_Key" SortExpression="Bank_Group_Key" />
-            <asp:TemplateField HeaderText="Last_Review_Date (*Please enter &quot;1/1/9999&quot; if not applicable)"
+            <asp:TemplateField HeaderText="Upgrade Date" SortExpression="Upgrade_Date">
+                <EditItemTemplate>
+                    <asp:TextBox ID="Upgrade_Date_TextBox" runat="server" Text='<%# Bind("Upgrade_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Upgrade_Date_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Upgrade_Date_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="Upgrade_Date_TextBox" runat="server" Text='<%# Bind("Upgrade_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Upgrade_Date_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Upgrade_Date_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Upgrade_Date_Label" runat="server" Text='<%# Bind("Upgrade_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="1 Year Before Default Date" SortExpression="One_Year_Before_Default_Date">
+                <EditItemTemplate>
+                    <asp:Label ID="One_Year_Before_Default_Date_Label" runat="server" Text='<%# Bind("One_Year_Before_Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:Label ID="One_Year_Before_Default_Date_Label" runat="server" Text='<%# Bind("One_Year_Before_Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="One_Year_Before_Default_Date_Label" runat="server" Text='<%# Bind("One_Year_Before_Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Industry Code" SortExpression="Industry_Code">
+                <EditItemTemplate>
+                    <asp:TextBox ID="Industry_Code_TextBox" runat="server" Text='<%# Bind("Industry_Code") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="Industry_Code_TextBox" runat="server" Text='<%# Bind("Industry_Code") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Industry_Code_Label" runat="server" Text='<%# Bind("Industry_Code") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Bank Group Key" SortExpression="Bank_Group_Key">
+                <EditItemTemplate>
+                    <asp:TextBox ID="Bank_Group_Key_TextBox" runat="server" Text='<%# Bind("Bank_Group_Key") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="Bank_Group_Key_TextBox" runat="server" Text='<%# Bind("Bank_Group_Key") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Bank_Group_Key_Label" runat="server" Text='<%# Bind("Bank_Group_Key") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Last Review Date"
                 SortExpression="Last_Review_Date">
                 <EditItemTemplate>
                     <asp:TextBox ID="Last_Review_Date_TextBox" runat="server" Text='<%# Bind("Last_Review_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    (*Please enter &quot;1/1/9999&quot; if not applicable)
                     <asp:CalendarExtender ID="Last_Review_Date_TextBox_CalendarExtender" runat="server"
-                        Enabled="True" TargetControlID="Last_Review_Date_TextBox">
+                        Enabled="True" TargetControlID="Last_Review_Date_TextBox" Format="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Last_Review_Date_TextBox" runat="server" Text='<%# Bind("Last_Review_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Last_Review_Date_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Last_Review_Date_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Last_Review_Date_Label" runat="server" Text='<%# Bind("Last_Review_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CheckBoxField DataField="Previous_Default_Flag" HeaderText="Previous_Default_Flag"
-                SortExpression="Previous_Default_Flag" />
-            <asp:TemplateField HeaderText="Previous_Default_Date" SortExpression="Previous_Default_Date">
+            <asp:TemplateField HeaderText="Previous Default Flag" SortExpression="Previous_Default_Flag">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Previous_Default_Date_TextBox" runat="server" Text='<%# Bind("Previous_Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
-                    <asp:CalendarExtender ID="Previous_Default_Date_TextBox_CalendarExtender" runat="server"
-                        Enabled="True" TargetControlID="Previous_Default_Date_TextBox">
-                    </asp:CalendarExtender>
+                    <asp:CheckBox ID="Previous_Default_Flag_CheckBox" runat="server" Checked='<%# Bind("Previous_Default_Flag") %>' Enabled="false" />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="Previous_Default_Flag_CheckBox" runat="server" Checked='<%# Bind("Previous_Default_Flag") %>' />
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="Previous_Default_Flag_CheckBox" runat="server" Checked='<%# Bind("Previous_Default_Flag") %>'
+                        Enabled="false" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Previous Default Date" SortExpression="Previous_Default_Date">
+                <EditItemTemplate>
+                    <asp:Label ID="Previous_Default_Date_Label" runat="server" Text='<%# Bind("Previous_Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Previous_Default_Date_TextBox" runat="server" Text='<%# Bind("Previous_Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Previous_Default_Date_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Previous_Default_Date_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Previous_Default_Date_Label" runat="server" Text='<%# Bind("Previous_Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Default_Type" SortExpression="Default_Type">
+            <asp:TemplateField HeaderText="Default Type" SortExpression="Default_Type">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="Default_Type_DropDownList" runat="server" SelectedValue='<%# Bind("Default_Type") %>'>
-                        <asp:ListItem></asp:ListItem>
-                        <asp:ListItem>Subjective Default</asp:ListItem>
-                        <asp:ListItem>Technical Default</asp:ListItem>
+                    <asp:DropDownList ID="Default_Type_DropDownList" runat="server" 
+                        SelectedValue='<%# Bind("Default_Type") %>' 
+                        DataSourceID="Default_Type_SqlDataSource" AppendDataBoundItems="True" 
+                        DataTextField="Default_Type" DataValueField="Default_Type" 
+                        style="text-align:center;">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                     </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Default_Type_TextBox" runat="server" Text='<%# Bind("Default_Type") %>'></asp:TextBox>
+                    <asp:DropDownList ID="Default_Type_DropDownList" runat="server" 
+                        SelectedValue='<%# Bind("Default_Type") %>' 
+                        DataSourceID="Default_Type_SqlDataSource" AppendDataBoundItems="True" 
+                        DataTextField="Portfolio" DataValueField="Portfolio" 
+                        style="text-align:center;">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
+                    </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Default_Type_Label" runat="server" Text='<%# Bind("Default_Type") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Business_Reason_for_Default" SortExpression="Business_Reason_for_Default">
+            <asp:TemplateField HeaderText="Business Reason for Default" SortExpression="Business_Reason_for_Default">
                 <EditItemTemplate>
                     <asp:ComboBox ID="Business_Reason_for_ComboBox" runat="server" AppendDataBoundItems="True"
-                        MaxLength="0" SelectedValue='<%# Bind("Business_Reason_for_Default") %>' Style="display: inline;"
-                        DataSourceID="Business_Reason_for_Default_SqlDataSource" DataTextField="Business Reason for Default"
-                        DataValueField="Business Reason for Default">
-                        <asp:ListItem></asp:ListItem>
+                        MaxLength="0" SelectedValue='<%# Bind("Business_Reason_for_Default") %>' Style="display: inline;text-align:center;"
+                        DataSourceID="Business_Reason_for_Default_SqlDataSource" DataTextField="Business_Reason_for_Default"
+                        DataValueField="Business_Reason_for_Default" >
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem>Cease of business</asp:ListItem>
                         <asp:ListItem>Ligitation</asp:ListItem>
                         <asp:ListItem>Changing economic conditions</asp:ListItem>
@@ -159,79 +272,166 @@
                         <asp:ListItem>Cross default due to related company</asp:ListItem>
                         <asp:ListItem>Others: (please add)</asp:ListItem>
                     </asp:ComboBox>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Business_Reason_for_Default_TextBox" runat="server" Text='<%# Bind("Business_Reason_for_Default") %>'></asp:TextBox>
+                    <asp:ComboBox ID="Business_Reason_for_ComboBox" runat="server" AppendDataBoundItems="True"
+                        MaxLength="0" SelectedValue='<%# Bind("Business_Reason_for_Default") %>' Style="display: inline;text-align:center;"
+                        DataSourceID="Business_Reason_for_Default_SqlDataSource" DataTextField="Business_Reason_for_Default"
+                        DataValueField="Business_Reason_for_Default" >
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
+                        <asp:ListItem>Cease of business</asp:ListItem>
+                        <asp:ListItem>Ligitation</asp:ListItem>
+                        <asp:ListItem>Changing economic conditions</asp:ListItem>
+                        <asp:ListItem>Changing government regulation</asp:ListItem>
+                        <asp:ListItem>Over-expanding in business</asp:ListItem>
+                        <asp:ListItem>Default/late payments of buyers</asp:ListItem>
+                        <asp:ListItem>Decease or illness of key person</asp:ListItem>
+                        <asp:ListItem>Cross default due to related company</asp:ListItem>
+                        <asp:ListItem>Others: (please add)</asp:ListItem>
+                    </asp:ComboBox>
+                    <span style="color:Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Business_Reason_for_Default_Label" runat="server" Text='<%# Bind("Business_Reason_for_Default") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Banking_Relationship_Start_Date" 
-                SortExpression="Banking_Relationship_Start_Date">
+            <asp:TemplateField HeaderText="Banking Relationship Start Date" SortExpression="Banking_Relationship_Start_Date">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" 
-                        Text='<%# Bind("Banking_Relationship_Start_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Banking_Relationship_Start_Date_TextBox" runat="server" Text='<%# Bind("Banking_Relationship_Start_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Banking_Relationship_Start_Date_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Banking_Relationship_Start_Date_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" 
-                        Text='<%# Bind("Banking_Relationship_Start_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Banking_Relationship_Start_Date_TextBox" runat="server" Text='<%# Bind("Banking_Relationship_Start_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Banking_Relationship_Start_Date_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Banking_Relationship_Start_Date_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" 
-                        Text='<%# Bind("Banking_Relationship_Start_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Banking_Relationship_Start_Date_Label" runat="server" Text='<%# Bind("Banking_Relationship_Start_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Legal_Enity_Type" HeaderText="Legal_Enity_Type" SortExpression="Legal_Enity_Type" />
-            <asp:TemplateField HeaderText="Province_of_Incorporation" SortExpression="Province_of_Incorporation">
+            <asp:TemplateField HeaderText="Title Name(Ex. &quot;บจก.&quot;,&quot;หจก.&quot; )" SortExpression="Legal_Enity_Type">
+                <EditItemTemplate>
+                    <asp:TextBox ID="Legal_Enity_Type_TextBox" runat="server" Text='<%# Bind("Legal_Enity_Type") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="Legal_Enity_Type_TextBox" runat="server" Text='<%# Bind("Legal_Enity_Type") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Legal_Enity_Type_Label" runat="server" Text='<%# Bind("Legal_Enity_Type") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Province of Incorporation" SortExpression="Province_of_Incorporation">
                 <EditItemTemplate>
                     <asp:DropDownList ID="Province_of_Incorporation_DropDownList" runat="server" AppendDataBoundItems="True"
                         DataSourceID="L_PROVINCE_SqlDataSource" DataTextField="Prov_Thai" DataValueField="Code"
-                        SelectedValue='<%# Bind("Province_of_Incorporation") %>'>
-                        <asp:ListItem></asp:ListItem>
+                        SelectedValue='<%# Bind("Province_of_Incorporation") %>' style="text-align:center;">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                     </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Province_of_Incorporation_TextBox" runat="server" Text='<%# Bind("Province_of_Incorporation") %>'></asp:TextBox>
+                    <asp:DropDownList ID="Province_of_Incorporation_DropDownList" runat="server" AppendDataBoundItems="True"
+                        DataSourceID="L_PROVINCE_SqlDataSource" DataTextField="Prov_Thai" DataValueField="Code"
+                        SelectedValue='<%# Bind("Province_of_Incorporation") %>' style="text-align:center;">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
+                    </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Province_of_Incorporation_Label" runat="server" Text='<%# Bind("Province_of_Incorporation") %>'></asp:Label>
+                    <asp:DropDownList ID="Province_of_Incorporation_DropDownList" runat="server" AppendDataBoundItems="True"
+                        DataSourceID="L_PROVINCE_SqlDataSource" DataTextField="Prov_Thai" DataValueField="Code"
+                        SelectedValue='<%# Bind("Province_of_Incorporation") %>' style="text-align:center;" Enabled="false">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
+                    </asp:DropDownList>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Date_of_Incorporation" SortExpression="Date_of_Incorporation">
+            <asp:TemplateField HeaderText="Date of Incorporation" SortExpression="Date_of_Incorporation">
                 <EditItemTemplate>
                     <asp:TextBox ID="Date_of_Incorporation_TextBox" runat="server" Text='<%# Bind("Date_of_Incorporation", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
                     <asp:CalendarExtender ID="Date_of_Incorporation_TextBox_CalendarExtender" runat="server"
-                        Enabled="True" TargetControlID="Date_of_Incorporation_TextBox">
+                        Enabled="True" TargetControlID="Date_of_Incorporation_TextBox" Format="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Date_of_Incorporation_TextBox" runat="server" Text='<%# Bind("Date_of_Incorporation", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Date_of_Incorporation_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Date_of_Incorporation_TextBox" Format="d MMMM yyyy">
+                    </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Date_of_Incorporation_Label" runat="server" Text='<%# Bind("Date_of_Incorporation", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CheckBoxField DataField="Listed_Status" HeaderText="Listed_Status" SortExpression="Listed_Status" />
-            <asp:BoundField DataField="Internal_Rating_At_D_MINUS_1" HeaderText="Internal_Rating_At_D_MINUS_1"
-                SortExpression="Internal_Rating_At_D_MINUS_1" />
-            <asp:TemplateField HeaderText="Rating_Date (*Please enter &quot;1/1/9999&quot; if not applicable)"
+            <asp:TemplateField HeaderText="Listed Status" SortExpression="Listed_Status">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="Listed_Status_CheckBox" runat="server" Checked='<%# Bind("Listed_Status") %>' />
+                    <span style="color:Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="Listed_Status_CheckBox" runat="server" Checked='<%# Bind("Listed_Status") %>' />
+                    <span style="color:Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="Listed_Status_CheckBox" runat="server" Checked='<%# Bind("Listed_Status") %>'
+                        Enabled="false" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Internal Rating @ D-1" SortExpression="Internal_Rating_At_D_MINUS_1">
+                <EditItemTemplate>
+                    <asp:TextBox ID="Internal_Rating_At_D_MINUS_1_TextBox" runat="server" Text='<%# Bind("Internal_Rating_At_D_MINUS_1") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="Internal_Rating_At_D_MINUS_1_TextBox" runat="server" Text='<%# Bind("Internal_Rating_At_D_MINUS_1") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Internal_Rating_At_D_MINUS_1_Label" runat="server" Text='<%# Bind("Internal_Rating_At_D_MINUS_1") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Rating Date"
                 SortExpression="Rating_Date">
                 <EditItemTemplate>
                     <asp:TextBox ID="Rating_Date_TextBox" runat="server" Text='<%# Bind("Rating_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    (*Please enter &quot;1/1/9999&quot; if not applicable)
                     <asp:CalendarExtender ID="Rating_Date_TextBox_CalendarExtender" runat="server" Enabled="True"
                         TargetControlID="Rating_Date_TextBox">
                     </asp:CalendarExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Rating_Date_TextBox" runat="server" Text='<%# Bind("Rating_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    <asp:CalendarExtender ID="Rating_Date_TextBox_CalendarExtender" runat="server" Enabled="True"
+                        TargetControlID="Rating_Date_TextBox">
+                    </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Rating_Date_Label" runat="server" Text='<%# Bind("Rating_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CheckBoxField DataField="Emergence_from_Default" HeaderText="Emergence_from_Default"
-                SortExpression="Emergence_from_Default" />
+            <asp:TemplateField HeaderText="Emergence_from_Default" SortExpression="Emergence_from_Default">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="CheckBox3" runat="server" Checked='<%# Bind("Emergence_from_Default") %>' />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="CheckBox3" runat="server" Checked='<%# Bind("Emergence_from_Default") %>' />
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckBox3" runat="server" Checked='<%# Bind("Emergence_from_Default") %>'
+                        Enabled="false" />
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Nature_of_Emergence" SortExpression="Nature_of_Emergence">
                 <EditItemTemplate>
                     <asp:ComboBox ID="Emergence_from_Default_ComboBox" runat="server" AppendDataBoundItems="True"
@@ -269,7 +469,40 @@
                     <asp:Label ID="Emergence_Date_Label" runat="server" Text='<%# Bind("Emergence_Date") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CheckBoxField DataField="Negative_Pledge" HeaderText="Negative_Pledge" SortExpression="Negative_Pledge" />
+            <asp:TemplateField HeaderText="Negative_Pledge" SortExpression="Negative_Pledge">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="CheckBox4" runat="server" Checked='<%# Bind("Negative_Pledge") %>' />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="CheckBox4" runat="server" Checked='<%# Bind("Negative_Pledge") %>' />
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckBox4" runat="server" Checked='<%# Bind("Negative_Pledge") %>'
+                        Enabled="false" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UpdateUser" SortExpression="UpdateUser">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label12" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UpdateDate" SortExpression="UpdateDate">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox13" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label13" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -292,6 +525,7 @@
             <asp:Parameter Name="Portfolio" Type="String" />
             <asp:Parameter Name="Business_Unit" Type="String" />
             <asp:Parameter Name="Default_Date" Type="DateTime" />
+            <asp:Parameter Name="Upgrade_Date" Type="DateTime" />
             <asp:Parameter Name="One_Year_Before_Default_Date" Type="DateTime" />
             <asp:Parameter Name="Industry_Code" Type="String" />
             <asp:Parameter Name="Bank_Group_Key" Type="String" />
@@ -320,8 +554,16 @@
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="Business_Reason_for_Default_SqlDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" SelectCommand="P_Business_Reason_for_Default_DISTINCT"
-        SelectCommandType="StoredProcedure" EnableCaching="True"></asp:SqlDataSource>
+        SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="Nature_of_Emergence_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        SelectCommand="P_Nature_of_Emergence_DISTINCT" SelectCommandType="StoredProcedure"
-        EnableCaching="True"></asp:SqlDataSource>
+        SelectCommand="P_Nature_of_Emergence_DISTINCT" 
+        SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="Portfolio_SqlDataSource" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
+        SelectCommand="P_OBLIGOR_INFORMATION_PORTFOLIO_SELECT" 
+        SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="Default_Type_SqlDataSource" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>" 
+        SelectCommand="P_OBLIGOR_INFORMATION_DEFAULT_TYPE_SELECT" 
+        SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 </asp:Content>

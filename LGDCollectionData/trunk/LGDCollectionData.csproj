@@ -4594,6 +4594,7 @@
     <Content Include="ExtJS\welcome\images\logo-sencha-sm.png" />
     <Content Include="ExtJS\welcome\images\social_sprite.gif" />
     <Content Include="ExtJS\welcome\images\social_sprite.png" />
+    <Content Include="favicon.ico" />
     <Content Include="Images\logo.jpg" />
     <Content Include="Library\AjaxControlToolkit.dll" />
     <Content Include="Library\Ionic.Zip.dll" />
