@@ -8,7 +8,72 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
 </asp:ToolkitScriptManager>
+  <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
+    <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
 
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            
+            var CheckBoxLIMITNO_Changed = Ext.DotNetControl.CheckBox.getDotNetCheckBox("domId", "CheckBoxLIMITNO_Changed");
+            var DropDownListPrevious_LIMITNO = Ext.DotNetControl.CheckBox.getDotNetDropDownList("domId", "DropDownListPrevious_LIMITNO");
+               
+            var CheckBoxIs_This_an_Additional_Drawdown = Ext.DotNetControl.CheckBox.getDotNetCheckBox("domId", "CheckBoxIs_This_an_Additional_Drawdown");
+            var ComboBoxAdditional = Ext.DotNetControl.CheckBox.getDotNetComboBox("domId", "ComboBoxAdditional");
+            var ComboBoxOtherReason = Ext.DotNetControl.CheckBox.getDotNetComboBox("domId", "ComboBoxOtherReason");
+          
+
+            CheckBoxLIMITNO_Changed.element.on({
+                "click": function (e, t, o) {
+                    if (t.checked) {
+                        o.targetElement.DropDownListPrevious_LIMITNO.disabled(false);
+                     } else {
+                        o.targetElement.DropDownListPrevious_LIMITNO.disabled(true);
+                    }
+                },
+                scope: this,
+                targetElement: { "DropDownListPrevious_LIMITNO": DropDownListPrevious_LIMITNO }
+            });
+
+            //init CheckBoxLIMITNO_Changed
+            if (CheckBoxLIMITNO_Changed.element.dom.checked) {
+                DropDownListPrevious_LIMITNO.disabled(false);
+            } else {
+                DropDownListPrevious_LIMITNO.disabled(true);
+             }
+            //end init CheckBoxLIMITNO_Changed
+
+            
+            CheckBoxIs_This_an_Additional_Drawdown.element.on({
+                "click": function (e, t, o) {
+                    if (t.checked) {
+                        o.targetElement.ComboBoxAdditional.disabled(false);   
+                        o.targetElement.ComboBoxOtherReason.disabled(true);
+                    } else {
+                        o.targetElement.ComboBoxAdditional.disabled(true);
+                        o.targetElement.ComboBoxOtherReason.disabled(false);
+                   }
+                },
+                scope: this,
+                targetElement: { "ComboBoxAdditional": ComboBoxAdditional, "ComboBoxOtherReason": ComboBoxOtherReason }
+            });
+
+            //init CheckBoxIs_This_an_Additional_Drawdown
+            if (CheckBoxIs_This_an_Additional_Drawdown.element.dom.checked) {
+                ComboBoxAdditional.disabled(false);
+                ComboBoxOtherReason.disabled(true);
+            } else {
+                ComboBoxAdditional.disabled(true);
+                ComboBoxOtherReason.disabled(false);
+            }
+            //end init CheckBoxIs_This_an_Additional_Drawdown
+
+
+
+
+
+        });
+    </script>
 <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
 
     <h2>
@@ -55,7 +120,8 @@
         SelectCommandType="StoredProcedure" EnableCaching="True"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceLimitNo" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="FACILITY_INFORMATION_LIMITNO_SELECT" SelectCommandType="StoredProcedure"
-        EnableCaching="False"></asp:SqlDataSource>
+        EnableCaching="False">
+        </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceDrawDownType" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="ADDITIONAL_DRAWDOWN_TYPE_SELECT" SelectCommandType="StoredProcedure"
         EnableCaching="False"></asp:SqlDataSource>
@@ -154,21 +220,35 @@
           </asp:TemplateField>
             <asp:BoundField DataField="LIMITNO" HeaderText="LIMIT NO" 
                 SortExpression="LIMITNO" />
-            <asp:CheckBoxField DataField="LIMITNO_Changed" HeaderText="LIMITNO Changed" SortExpression="LIMITNO_Changed" />
+            <asp:TemplateField HeaderText="LIMITNO Changed" 
+                SortExpression="LIMITNO_Changed">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="CheckBoxLIMITNO_Changed" runat="server" 
+                        Checked='<%# Bind("LIMITNO_Changed") %>'  domId = "CheckBoxLIMITNO_Changed"/>
+                </EditItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Previous_LIMITNO" SortExpression="Previous_LIMITNO">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList5" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSourceLimitNo"
+                    <asp:DropDownList  ID="DropDownListPrevious_LIMITNO" domId="DropDownListPrevious_LIMITNO" runat="server" 
+                       AppendDataBoundItems="true" DataSourceID="SqlDataSourceLimitNo"
                         DataTextField="LIMITNO" DataValueField="LIMITNO" SelectedValue='<%# Bind("Previous_LIMITNO") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList><asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
               </asp:TemplateField>
-            <asp:CheckBoxField DataField="Is_This_an_Additional_Drawdown" HeaderText="Is This an Additional Drawdown"
-                SortExpression="Is_This_an_Additional_Drawdown" />
+            <asp:TemplateField HeaderText="Is This an Additional Drawdown" 
+                SortExpression="Is_This_an_Additional_Drawdown">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="CheckBoxIs_This_an_Additional_Drawdown" runat="server"  domId="CheckBoxIs_This_an_Additional_Drawdown"
+                        Checked='<%# Bind("Is_This_an_Additional_Drawdown") %>' />
+                </EditItemTemplate>
+            </asp:TemplateField>
+
+
             <asp:TemplateField HeaderText="Type of Additional Drawdown" SortExpression="Type_of_Additional_Drawdown">
                 <EditItemTemplate>
                   
-                    <asp:ComboBox ID="ComboBoxAdditional" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSourceDrawDownType"
+                    <asp:ComboBox ID="ComboBoxAdditional" domId="ComboBoxAdditional" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSourceDrawDownType"
                         DataTextField="ADDITIONAL_DRAWDOWN_TYPE" DataValueField="ADDITIONAL_DRAWDOWN_TYPE"
                         SelectedValue='<%# Bind("Type_of_Additional_Drawdown") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
@@ -177,7 +257,7 @@
              </asp:TemplateField>
             <asp:TemplateField HeaderText="Other Reason of Principal Increase " SortExpression="Other_Reason_of_Principal_Increase">
                 <EditItemTemplate>
-                    <asp:ComboBox ID="ComboBoxOtherReason" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSourceReason"
+                    <asp:ComboBox ID="ComboBoxOtherReason" domId="ComboBoxOtherReason" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSourceReason"
                         DataTextField="ADDITIONAL_DRAWDOWN_REASON" DataValueField="ADDITIONAL_DRAWDOWN_REASON"
                         SelectedValue='<%# Bind("Other_Reason_of_Principal_Increase") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
