@@ -1,10 +1,10 @@
 ﻿Ext.namespace("Ext.DotNetControl");
 
-var DotNetElement = function (extElement) {
+Ext.DotNetControl.Element = function (extElement) {
     this.element = extElement;
 };
 
-DotNetElement.prototype = {
+Ext.DotNetControl.Element.prototype = {
     disabled: function (bool) {
         if (this.element) {
             this.element.dom.disabled = bool;
@@ -12,29 +12,24 @@ DotNetElement.prototype = {
     }
 };
 
-Ext.DotNetControl.CheckBox = Ext.extend(DotNetElement, {
-});
+Ext.DotNetControl.Element.mapElement = function (tagName, myAttributeName, myAttributeValue) {
+    var dotNetElement = Ext.select(tagName + "[" + myAttributeName + "=" + myAttributeValue + "]").first();
 
-Ext.DotNetControl.ComboBox = Ext.extend(DotNetElement, {
-    disabled: function (bool) {
-        if (this.element) {
-            this.element.TextBox.dom.disabled = bool;
-            this.element.DropList.dom.disabled = bool;
-        }
+    if (dotNetElement) {
+        //find element success
+    } else {
+        alert("Can not find element has " + tagName + ":" + myAttributeName + "=" + myAttributeValue);
     }
+
+    return new Ext.DotNetControl.Element(dotNetElement);
+};
+
+//checkbox
+Ext.DotNetControl.CheckBox = Ext.extend(Ext.DotNetControl.Element, {
 });
-
-Ext.DotNetControl.CheckBox.getDotNetSimpleElement = function (myAttributeName, myAttributeValue) {
-    return new DotNetElement(Ext.select("input[" + myAttributeName + "=" + myAttributeValue + "]").first());
-};
-
-Ext.DotNetControl.CheckBox.getDotNetDropDownList = function (myAttributeName, myAttributeValue) {
-    return new DotNetElement(Ext.select("select[" + myAttributeName + "=" + myAttributeValue + "]").first());
-};
-
-Ext.DotNetControl.CheckBox.getDotNetCheckBox = function (myAttributeName, myAttributeValue) {
+Ext.DotNetControl.CheckBox.mapElement = function (myAttributeName, myAttributeValue) {
     var dotNetCheckBox = Ext.select("span[" + myAttributeName + "=" + myAttributeValue + "] > input[type=checkbox]").first();
-
+    
     if (dotNetCheckBox) {
         //find element success
     } else {
@@ -45,7 +40,16 @@ Ext.DotNetControl.CheckBox.getDotNetCheckBox = function (myAttributeName, myAttr
     return new Ext.DotNetControl.CheckBox(dotNetCheckBox);
 };
 
-Ext.DotNetControl.CheckBox.getDotNetComboBox = function (myAttributeName, myAttributeValue) {
+//combobox
+Ext.DotNetControl.ComboBox = Ext.extend(Ext.DotNetControl.Element, {
+    disabled: function (bool) {
+        if (this.element) {
+            this.element.TextBox.dom.disabled = bool;
+            this.element.DropList.dom.disabled = bool;
+        }
+    }
+});
+Ext.DotNetControl.ComboBox.mapElement = function (myAttributeName, myAttributeValue) {
     var tableOfComboBox = Ext.select("div[" + myAttributeName + "=" + myAttributeValue + "] > table").first();
 
     if (tableOfComboBox) {

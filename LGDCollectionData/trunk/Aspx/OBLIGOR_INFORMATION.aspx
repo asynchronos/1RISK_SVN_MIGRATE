@@ -16,10 +16,9 @@
             Ext.select("input[type=text]").setWidth("200px");
             Ext.select("input[type=text]").set({ "maxlength": "255" });
 
-            var emergenceFromDefaultCheckBox = Ext.DotNetControl.CheckBox.getDotNetCheckBox("domId", "Emergence_from_Default_CheckBox");
-            var natureOfEmergenceComboBox = Ext.DotNetControl.CheckBox.getDotNetComboBox("domId", "Nature_of_Emergence_ComboBox");
-            var emergenceDateTextBox = Ext.DotNetControl.CheckBox.getDotNetSimpleElement("domId", "Emergence_Date_TextBox");
-             //Ext.select("input[domId=Emergence_Date_TextBox]").first();
+            var emergenceFromDefaultCheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Emergence_from_Default_CheckBox");
+            var natureOfEmergenceComboBox = Ext.DotNetControl.ComboBox.mapElement("domId", "Nature_of_Emergence_ComboBox");
+            var emergenceDateTextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Emergence_Date_TextBox");
             
             emergenceFromDefaultCheckBox.element.on({
                 "click": function (e, t, o) {
