@@ -28,6 +28,10 @@ Ext.DotNetControl.CheckBox.getDotNetSimpleElement = function (myAttributeName, m
     return new DotNetElement(Ext.select("input[" + myAttributeName + "=" + myAttributeValue + "]").first());
 };
 
+Ext.DotNetControl.CheckBox.getDotNetDropDownList = function (myAttributeName, myAttributeValue) {
+    return new DotNetElement(Ext.select("select[" + myAttributeName + "=" + myAttributeValue + "]").first());
+};
+
 Ext.DotNetControl.CheckBox.getDotNetCheckBox = function (myAttributeName, myAttributeValue) {
     var dotNetCheckBox = Ext.select("span[" + myAttributeName + "=" + myAttributeValue + "] > input[type=checkbox]").first();
 
