@@ -5,9 +5,153 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <!-- Ext includes -->
+    <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
+    <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
+    <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            Ext.select("input[type=text]").setWidth("200px");
+            Ext.select("input[type=text]").set({ "maxlength": "255" });
+
+            var cashFlowSourceDescription1DDL = Ext.DotNetControl.Element.mapElement("select", "domId", "CashFlowSourceDescription1_DropDownList");
+            var cashFlowSourceDescription2DDL = Ext.DotNetControl.Element.mapElement("select", "domId", "CashFlowSourceDescription2_DropDownList");
+            var cashFlowSourceDescription3DDL = Ext.DotNetControl.Element.mapElement("select", "domId", "CashFlowSourceDescription3_DropDownList");
+
+            var writtenoffOrHaircutAmountTextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "WrittenoffOrHaircutAmount_TextBox");
+            var collateralIDTextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "CollateralID_TextBox");
+
+            var limitNoChangedCheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "LIMITNOChanged_CheckBox");
+            var previousLimitNoComboBox = Ext.DotNetControl.ComboBox.mapElement("domId", "PreviousLIMITNO_ComboBox");
+
+            //Element list
+            var cashFlowSourceDDLList = new Ext.CompositeElement().add([
+                cashFlowSourceDescription1DDL.element,
+                cashFlowSourceDescription2DDL.element,
+                cashFlowSourceDescription3DDL.element
+            ]);
+
+            cashFlowSourceDDLList.on({
+                "change": function (e, t, o) {
+                    //find next index of this element
+                    var nextIndex = 0;
+                    for (var i = 0; i < o.srcElement.getCount(); i++) {
+                        if (t.id == o.srcElement.item(i).dom.id) {
+                            nextIndex = i + 1;
+                            break;
+                        }
+                    }
+                    
+                    //disable next dropdown if this dropdown index = 0
+                    if (nextIndex < o.srcElement.getCount()) {
+                        if (t.selectedIndex == 0) {
+                            for (var i = nextIndex; i < o.srcElement.getCount(); i++) {
+                                o.srcElement.item(i).dom.selectedIndex = 0;
+                                o.srcElement.item(i).dom.disabled = true;
+                            }
+                        } else {
+                            o.srcElement.item(nextIndex).dom.disabled = false;
+                        }
+                    }
+
+                    var notIndex0Count = 0;
+                    var writeenOffDisable = true;
+                    var collateralDisable = true;
+
+                    for (var i = 0; i < o.srcElement.getCount(); i++) {
+                        if (o.srcElement.item(i).dom.selectedIndex != 0) {
+                            notIndex0Count = notIndex0Count + 1;
+
+                            if (o.srcElement.item(i).dom.selectedIndex == 10
+                            || o.srcElement.item(i).dom.selectedIndex == 11) {
+                                writeenOffDisable = false;
+                            }
+
+                            if (o.srcElement.item(i).dom.selectedIndex == 2
+                            || o.srcElement.item(i).dom.selectedIndex == 3
+                            || o.srcElement.item(i).dom.selectedIndex == 4) {
+                                collateralDisable = false;
+                            }
+                        }
+                    }
+                    
+                    if (notIndex0Count > 1)
+                        o.targetElement.WrittenoffOrHaircutAmountTextBox.disabled(writeenOffDisable);
+                    else
+                        o.targetElement.WrittenoffOrHaircutAmountTextBox.disabled(true);
+                    o.targetElement.CollateralIDTextBox.disabled(collateralDisable);
+                },
+                scope: this,
+                srcElement: cashFlowSourceDDLList,
+                targetElement: { "WrittenoffOrHaircutAmountTextBox": writtenoffOrHaircutAmountTextBox, "CollateralIDTextBox": collateralIDTextBox }
+            });
+
+            //limit no checkbox
+            limitNoChangedCheckBox.element.on({
+                "click": function (e, t, o) {
+                    if (t.checked) {
+                        o.targetElement.PreviousLimitNoComboBox.disabled(false);
+                    } else {
+                        o.targetElement.PreviousLimitNoComboBox.disabled(true);
+                    }
+                },
+                scope: this,
+                targetElement: { "PreviousLimitNoComboBox": previousLimitNoComboBox }
+            });
+
+            //init section
+
+            ////cascade dropdown
+            if (cashFlowSourceDescription1DDL) {
+                var notIndex0Count = 0;
+                var writeenOffDisable = true;
+                var collateralDisable = true;
+
+                for (var i = 0; i < cashFlowSourceDDLList.getCount() - 1; i++) {
+                    if (cashFlowSourceDDLList.item(i).dom.selectedIndex == 0) {
+                        cashFlowSourceDDLList.item(i + 1).dom.disabled = true;
+                    }
+                }
+
+                for (var i = 0; i < cashFlowSourceDDLList.getCount(); i++) {
+                    if (cashFlowSourceDDLList.item(i).dom.selectedIndex != 0) {
+                        notIndex0Count = notIndex0Count + 1;
+
+                        if (cashFlowSourceDDLList.item(i).dom.selectedIndex == 10
+                            || cashFlowSourceDDLList.item(i).dom.selectedIndex == 11) {
+                            writeenOffDisable = false;
+                        }
+
+                        if (cashFlowSourceDDLList.item(i).dom.selectedIndex == 2
+                            || cashFlowSourceDDLList.item(i).dom.selectedIndex == 3
+                            || cashFlowSourceDDLList.item(i).dom.selectedIndex == 4) {
+                            collateralDisable = false;
+                        }
+                    }
+                }
+
+                if (notIndex0Count > 1)
+                    writtenoffOrHaircutAmountTextBox.disabled(writeenOffDisable);
+                else
+                    writtenoffOrHaircutAmountTextBox.disabled(true);
+                collateralIDTextBox.disabled(collateralDisable);
+            }
+
+            ////limit no checkbox
+            if (limitNoChangedCheckBox.element.dom.checked) {
+                previousLimitNoComboBox.disabled(false);
+            } else {
+                previousLimitNoComboBox.disabled(true);
+            }
+            //end init section
+
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
     </asp:ToolkitScriptManager>
     <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
     <h2>
@@ -21,11 +165,43 @@
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
         <Fields>
-            <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
-            <asp:BoundField DataField="DefaultDate" DataFormatString="{0:d/M/yyyy}" HeaderText="Default Date:"
-                ReadOnly="True" SortExpression="DefaultDate" />
-            <asp:BoundField DataField="LIMITNO" HeaderText="LIMITNO:" ReadOnly="True" SortExpression="LIMITNO" />
-            <asp:TemplateField HeaderText="APP_ID:" SortExpression="APP_ID">
+            <asp:TemplateField HeaderText="CIF" SortExpression="CIF" HeaderStyle-Width="35%">
+                <EditItemTemplate>
+                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="CIF_TextBox" runat="server" Text='<%# Bind("CIF") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Default Date" SortExpression="DefaultDate">
+                <EditItemTemplate>
+                    <asp:Label ID="DefaultDate_Label" runat="server" 
+                        Text='<%# Eval("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="DefaultDate_TextBox" runat="server" 
+                        Text='<%# Bind("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="DefaultDate_Label" runat="server" 
+                        Text='<%# Bind("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="LIMITNO" SortExpression="LIMITNO">
+                <EditItemTemplate>
+                    <asp:Label ID="LIMITNO_Label" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="LIMITNO_TextBox" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="LIMITNO_Label" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
                 <EditItemTemplate>
                     <asp:DropDownList ID="APP_ID_DropDownList" runat="server" DataSourceID="APP_ID_DataSource"
                         DataTextField="APP_ID" DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'>
@@ -38,7 +214,7 @@
                     <asp:Label ID="APP_ID_Label" runat="server" Text='<%# Bind("APP_ID") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Cashflow Currency Code:" SortExpression="CashflowCurrencyCode">
+            <asp:TemplateField HeaderText="Cashflow Currency Code" SortExpression="CashflowCurrencyCode">
                 <EditItemTemplate>
                     <asp:DropDownList ID="Currency_DropDownList" runat="server" DataSourceID="Currency_DataSource"
                         DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("CashflowCurrencyCode") %>'>
@@ -51,45 +227,58 @@
                     <asp:Label ID="CashflowCurrencyCode_Label" runat="server" Text='<%# Bind("CashflowCurrencyCode") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="DateofCashflow" HeaderText="Date of Cashflow:" SortExpression="DateofCashflow"
-                DataFormatString="{0:d/M/yyyy}" ReadOnly="True" />
-            <asp:TemplateField HeaderText="Cashflow Amount: PAY_PRIN:" SortExpression="CashflowAmountPAY_PRIN">
+            <asp:TemplateField HeaderText="Date of Cashflow" 
+                SortExpression="DateofCashflow">
                 <EditItemTemplate>
-                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN") %>'></asp:TextBox>
+                    <asp:Label ID="DateofCashflow_Label" runat="server" 
+                        Text='<%# Eval("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN") %>'></asp:TextBox>
+                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" 
+                        Text='<%# Bind("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="DateofCashflow_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN") %>'></asp:Label>
+                    <asp:Label ID="DateofCashflow_Label" runat="server" 
+                        Text='<%# Bind("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Cashflow Amount: PAY_INT:" SortExpression="CashflowAmountPAY_INT">
+            <asp:TemplateField HeaderText="Cashflow Amount: PAY_PRIN" SortExpression="CashflowAmountPAY_PRIN">
                 <EditItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT") %>'></asp:TextBox>
+                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT") %>'></asp:TextBox>
+                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="CashflowAmountPAY_INT_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_INT") %>'></asp:Label>
+                    <asp:Label ID="DateofCashflow_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Cashflow Amount: PAY_SUSP:" SortExpression="CashflowAmountPAY_SUSP">
+            <asp:TemplateField HeaderText="Cashflow Amount: PAY_INT" SortExpression="CashflowAmountPAY_INT">
                 <EditItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP") %>'></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP") %>'></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="CashflowAmountPAY_SUSP_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP") %>'></asp:Label>
+                    <asp:Label ID="CashflowAmountPAY_INT_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Cash Flow Source Description 1:" SortExpression="CashFlowSourceDescription1">
+            <asp:TemplateField HeaderText="Cashflow Amount: PAY_SUSP" SortExpression="CashflowAmountPAY_SUSP">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="CashFlowSourceDescription1_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription1") %>'>
-                        <asp:ListItem></asp:ListItem>
+                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="CashflowAmountPAY_SUSP_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Cash Flow Source Description 1" SortExpression="CashFlowSourceDescription1">
+                <EditItemTemplate>
+                    <asp:DropDownList ID="CashFlowSourceDescription1_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription1") %>' domId="CashFlowSourceDescription1_DropDownList">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem>Repayment from borrower</asp:ListItem>
                         <asp:ListItem>Repayment from guarantor</asp:ListItem>
                         <asp:ListItem>Voluntary transfer collaterals to the bank</asp:ListItem>
@@ -102,6 +291,7 @@
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
                     </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription1_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription1") %>'></asp:TextBox>
@@ -110,10 +300,10 @@
                     <asp:Label ID="CashFlowSourceDescription1_Label" runat="server" Text='<%# Bind("CashFlowSourceDescription1") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Cash Flow Source Description 2:" SortExpression="CashFlowSourceDescription2">
+            <asp:TemplateField HeaderText="Cash Flow Source Description 2" SortExpression="CashFlowSourceDescription2">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="CashFlowSourceDescription2_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription2") %>'>
-                        <asp:ListItem></asp:ListItem>
+                    <asp:DropDownList ID="CashFlowSourceDescription2_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription2") %>' domId="CashFlowSourceDescription2_DropDownList">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem>Repayment from borrower</asp:ListItem>
                         <asp:ListItem>Repayment from guarantor</asp:ListItem>
                         <asp:ListItem>Voluntary transfer collaterals to the bank</asp:ListItem>
@@ -126,6 +316,7 @@
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
                     </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription2_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription2") %>'></asp:TextBox>
@@ -134,10 +325,10 @@
                     <asp:Label ID="CashFlowSourceDescription2_Label" runat="server" Text='<%# Bind("CashFlowSourceDescription2") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Cash Flow Source Description 3:" SortExpression="CashFlowSourceDescription3">
+            <asp:TemplateField HeaderText="Cash Flow Source Description 3" SortExpression="CashFlowSourceDescription3">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="CashFlowSourceDescription3_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription3") %>'>
-                        <asp:ListItem></asp:ListItem>
+                    <asp:DropDownList ID="CashFlowSourceDescription3_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription3") %>' domId="CashFlowSourceDescription3_DropDownList">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem>Repayment from borrower</asp:ListItem>
                         <asp:ListItem>Repayment from guarantor</asp:ListItem>
                         <asp:ListItem>Voluntary transfer collaterals to the bank</asp:ListItem>
@@ -150,6 +341,7 @@
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
                     </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription3_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription3") %>'></asp:TextBox>
@@ -158,9 +350,10 @@
                     <asp:Label ID="CashFlowSourceDescription3_Label" runat="server" Text='<%# Bind("CashFlowSourceDescription3") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Written-off / Haircut Amount:" SortExpression="WrittenoffOrHaircutAmount">
+            <asp:TemplateField HeaderText="Written-off / Haircut Amount" SortExpression="WrittenoffOrHaircutAmount">
                 <EditItemTemplate>
-                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount") %>'></asp:TextBox>
+                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount") %>' domId="WrittenoffOrHaircutAmount_TextBox"></asp:TextBox>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount") %>'></asp:TextBox>
@@ -169,11 +362,24 @@
                     <asp:Label ID="WrittenoffOrHaircutAmount_Label" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="CollateralID" HeaderText="Collateral ID: (*Please enter &quot;N/A&quot; if not applicable)"
-                SortExpression="CollateralID" />
-            <asp:TemplateField HeaderText="LIMITNO Changed:" SortExpression="LIMITNOChanged">
+            <asp:TemplateField HeaderText="Collateral ID/Pledge ID" 
+                SortExpression="CollateralID">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>' />
+                    <asp:TextBox ID="CollateralID_TextBox" runat="server" Text='<%# Bind("CollateralID","{0:#,##0.00}") %>' domId="CollateralID_TextBox"></asp:TextBox>
+                    <span style="color:Red">*</span>
+                    (*Please enter &quot;N/A&quot; if not applicable)
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="CollateralID_TextBox" runat="server" Text='<%# Bind("CollateralID","{0:#,##0.00}") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="CollateralID_Label" runat="server" Text='<%# Bind("CollateralID","{0:#,##0.00}") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="LIMITNO Changed" SortExpression="LIMITNOChanged">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>' domId="LIMITNOChanged_CheckBox"/>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>' />
@@ -183,15 +389,16 @@
                         Enabled="false" />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Previous LIMITNO:" SortExpression="PreviousLIMITNO">
+            <asp:TemplateField HeaderText="Previous LIMITNO" SortExpression="PreviousLIMITNO">
                 <EditItemTemplate>
                     <asp:ComboBox ID="PreviousLIMITNO_ComboBox" runat="server" AutoCompleteMode="SuggestAppend"
                         DataSourceID="PreviousLimitNo_DataSource" DataTextField="LIMITNO" DataValueField="LIMITNO"
                         DropDownStyle="DropDownList" MaxLength="0" Style="display: inline;" AppendDataBoundItems="true"
-                        SelectedValue='<%# Bind("PreviousLIMITNO") %>'>
-                        <asp:ListItem Value=""></asp:ListItem>
+                        SelectedValue='<%# Bind("PreviousLIMITNO") %>' domId="PreviousLIMITNO_ComboBox">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem Value="N/A">N/A</asp:ListItem>
                     </asp:ComboBox>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="PreviousLIMITNO_TextBox" runat="server" Text='<%# Bind("PreviousLIMITNO") %>'></asp:TextBox>
