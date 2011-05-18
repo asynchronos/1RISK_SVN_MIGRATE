@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FINANCIAL SUMMARY.aspx.cs" Inherits="LGDCollectionData.Aspx.FINANCIAL_SUMMARY" Culture="th-TH" UICulture="th-TH" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FINANCIAL SUMMARY.aspx.cs" Inherits="LGDCollectionData.Aspx.FINANCIAL_SUMMARY" Culture="en-US" UICulture="en-US" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 <%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -30,6 +30,7 @@
             <asp:Parameter Name="Total_Liabilities" Type="Int32" />
             <asp:Parameter Name="Total_Revenue" Type="Int32" />
             <asp:Parameter Name="Financial_Currency_Code" Type="String" />
+            <asp:Parameter Name="DATA_NOT_AVAILABLE" Type="Boolean" />
             <asp:Parameter Name="UPDATE_USER" Type="String" />
             <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </InsertParameters>
@@ -44,6 +45,7 @@
             <asp:Parameter Name="Total_Liabilities" Type="Int32" />
             <asp:Parameter Name="Total_Revenue" Type="Int32" />
             <asp:Parameter Name="Financial_Currency_Code" Type="String" />
+            <asp:Parameter Name="DATA_NOT_AVAILABLE" Type="Boolean" />
             <asp:Parameter Name="UPDATE_USER" Type="String" />
             <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </UpdateParameters>
@@ -57,14 +59,14 @@
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
-            <asp:BoundField DataField="Default_Date" DataFormatString="{0:d}" HeaderText="Default_Date" 
+            <asp:BoundField DataField="Default_Date"  HeaderText="Default Date"  DataFormatString="{0:d MMMM yyyy}" 
                 ReadOnly="True" SortExpression="Default_Date" />
-            <asp:TemplateField HeaderText="Financial_Data_Date" 
+            <asp:TemplateField HeaderText="Financial Data Date" 
                 SortExpression="Financial_Data_Date">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxFinancial_Data_Date" runat="server" Text='<%# Bind("Financial_Data_Date","{0:d}") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBoxFinancial_Data_Date" runat="server" Text='<%# Bind("Financial_Data_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
                     <asp:CalendarExtender ID="TextBoxFinancial_Data_Date_CalendarExtender" 
-                        runat="server" TargetControlID="TextBoxFinancial_Data_Date" >
+                        runat="server" TargetControlID="TextBoxFinancial_Data_Date" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy"  >
                     </asp:CalendarExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
@@ -72,13 +74,14 @@
                         Text='<%# Bind("Financial_Data_Date") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Financial_Data_Date","{0:d}") %>'></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Financial_Data_Date") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Total_Assets" SortExpression="Total_Assets">
+            <asp:TemplateField HeaderText="Total Assets(in thousand)" SortExpression="Total_Assets">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Total_Assets") %>' style="text-align:right;"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please input Total Assets" Text="*" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please input Total Assets" Text="*" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>--%>
+                    <span>*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Total_Assets") %>'></asp:TextBox>
@@ -87,12 +90,11 @@
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Total_Assets","{0:n2}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Total_Liabilities" 
-                SortExpression="Total_Liabilities">
+            <asp:TemplateField HeaderText="Total Liabilities(in thousand)" SortExpression="Total_Liabilities">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Total_Liabilities") %>' style="text-align:right;"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input Total Liabilities" Text="*" ControlToValidate="TextBox3" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>
-
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input Total Liabilities" Text="*" ControlToValidate="TextBox3" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>--%>
+                    <span>*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox3" runat="server" 
@@ -102,10 +104,11 @@
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("Total_Liabilities") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Total_Revenue" SortExpression="Total_Revenue">
+            <asp:TemplateField HeaderText="Total Revenue(in thousand)" SortExpression="Total_Revenue">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Total_Revenue") %>' style="text-align:right;"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input Total Revenue" Text="*" ControlToValidate="TextBox4" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input Total Revenue" Text="*" ControlToValidate="TextBox4" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>--%>
+                    <span>*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Total_Revenue") %>'></asp:TextBox>
@@ -114,7 +117,7 @@
                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("Total_Revenue") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Financial_Currency_Code" 
+            <asp:TemplateField HeaderText="Financial Currency Code" 
                 SortExpression="Financial_Currency_Code">
                 <EditItemTemplate>
 <%--                    <asp:TextBox ID="TextBox1" runat="server" 
@@ -124,7 +127,6 @@
                         DataValueField="Code"
                         SelectedValue='<%# Bind("Financial_Currency_Code")%>'>
                     </asp:DropDownList>
-
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" 
@@ -135,7 +137,10 @@
                         Text='<%# Bind("Financial_Currency_Code") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
+            <asp:CheckBoxField DataField="DATA_NOT_AVAILABLE" 
+                HeaderText="DATA NOT AVAILABLE" 
+                SortExpression="DATA_NOT_AVAILABLE" />
+            <asp:TemplateField HeaderText="UPDATE USER" SortExpression="UPDATE_USER">
                 <EditItemTemplate>
                     <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
                 </EditItemTemplate>
@@ -146,15 +151,15 @@
                     <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="UPDATE_DATE" SortExpression="UPDATE_DATE">
+            <asp:TemplateField HeaderText="UPDATE DATE" SortExpression="UPDATE_DATE">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">

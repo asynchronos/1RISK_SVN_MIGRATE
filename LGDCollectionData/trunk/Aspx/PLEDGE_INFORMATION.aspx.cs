@@ -22,39 +22,70 @@ namespace LGDCollectionData.Aspx
             
             //TextBox Name = (TextBox)sender.FindControl("nameBox");
             //MessageBox.Show(DetailsView1.Rows.Count.ToString());
-            //MessageBox.Show(User.Identity.Name);
+            //MessageBox.Show(DetailsView1.Rows.Count.ToString());
             String text = string.Empty;
-            if (DetailsView1.Rows.Count > 0) { 
-                HiddenFieldAPPS_ID.Value = ((DataRowView)DetailsView1.DataItem).Row.ItemArray[2].ToString();
-                HiddenFieldPLED_ID.Value = ((DataRowView)DetailsView1.DataItem).Row.ItemArray[3].ToString();
-                HiddenFieldPLED_SEQ.Value = ((DataRowView)DetailsView1.DataItem).Row.ItemArray[4].ToString();
-            } //end if
+            
 
             //MessageBox.Show(text);
 
             if (DetailsView1.CurrentMode == DetailsViewMode.Edit) {
+                if (DetailsView1.Rows.Count > 0)
+                {
+                    HiddenFieldAPPS_ID.Value = ((DataRowView)DetailsView1.DataItem).Row.ItemArray[2].ToString();
+                    HiddenFieldPLED_ID.Value = ((DataRowView)DetailsView1.DataItem).Row.ItemArray[3].ToString();
+                    HiddenFieldPLED_SEQ.Value = ((DataRowView)DetailsView1.DataItem).Row.ItemArray[4].ToString();
+                } //end if
+
                 System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
                 System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
-                userId.Text = User.Identity.Name.ToString();
-                dateLabel.Text = Convert.ToString(DateTime.Now);
+                if (userId != null)
+                    userId.Text = User.Identity.Name.ToString();
+                if (dateLabel != null)
+                    dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
             }
         }
 
         protected void DetailsView_Prerender(Object sender, EventArgs e)
         {
             //MessageBox.Show("DetailsView_Prerender:" + HiddenFieldAPPS_ID.Value.ToString());
-            if (HiddenFieldPLED_ID.Value=="" || HiddenFieldPLED_SEQ.Value=="" ||HiddenFieldAPPS_ID.Value == "")
-            { 
+            DetailsView dv = (DetailsView)sender;
+            if (dv.CurrentMode == DetailsViewMode.Edit)
+            {
+                //((TextBox)myDetailsView.FindControl("TextBox2")).Text = DateTime.Now.ToString("g");
+                if (dv.Rows.Count > 0)
+                {
+                    if (HiddenFieldPLED_ID.Value == "" || HiddenFieldPLED_SEQ.Value == "" || HiddenFieldAPPS_ID.Value == "")
+                    {
 
-            }else {
-            DataSet DS_COLL = GET_COLLATERAL_INFORMATION(HiddenFieldPLED_ID.Value.ToString(),Convert.ToInt32(HiddenFieldPLED_SEQ.Value) , HiddenFieldAPPS_ID.Value.ToString());
-            //Cache("COLLATERAL") = DS_COLL.Tables[0].DefaultView;
-            GridView1.DataSource = DS_COLL.Tables[0];
-            GridView1.DataBind();
+                    }
+                    else
+                    {
+                        DataSet DS_COLL = GET_COLLATERAL_INFORMATION(HiddenFieldPLED_ID.Value.ToString(), Convert.ToInt32(HiddenFieldPLED_SEQ.Value), HiddenFieldAPPS_ID.Value.ToString());
+                        //Cache("COLLATERAL") = DS_COLL.Tables[0].DefaultView;
+                        GridView1.DataSource = DS_COLL.Tables[0];
+                        GridView1.DataBind();
+                    }
+                }
+                else
+                {
+                    dv.ChangeMode(DetailsViewMode.Insert);
+                    ((System.Web.UI.WebControls.Label)dv.FindControl("LabelCif_Insert")).Text = Request.QueryString.Get("CIF");
+                    ((System.Web.UI.WebControls.Label)dv.FindControl("LabelUserId_Insert")).Text = User.Identity.Name.ToString();
+                    ((System.Web.UI.WebControls.Label)dv.FindControl("LabelDate_Insert")).Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+                }
             }
 
-            
+            //if (HiddenFieldPLED_ID.Value=="" || HiddenFieldPLED_SEQ.Value=="" ||HiddenFieldAPPS_ID.Value == "")
+            //{ 
+
+            //}else {
+            //DataSet DS_COLL = GET_COLLATERAL_INFORMATION(HiddenFieldPLED_ID.Value.ToString(),Convert.ToInt32(HiddenFieldPLED_SEQ.Value) , HiddenFieldAPPS_ID.Value.ToString());
+            ////Cache("COLLATERAL") = DS_COLL.Tables[0].DefaultView;
+            //GridView1.DataSource = DS_COLL.Tables[0];
+            //GridView1.DataBind();
+            //}
         }
+
         protected void DetailsView_PageIndexChanged(Object sender, EventArgs e)
         { 
 
@@ -124,7 +155,25 @@ namespace LGDCollectionData.Aspx
             }
         }
 
-
+        //protected void DetailsView_OnPreRender(object sender, EventArgs e)
+        //{
+        //    DetailsView dv = (DetailsView)sender;
+        //    if (dv.CurrentMode == DetailsViewMode.Edit)
+        //    {
+        //        //((TextBox)myDetailsView.FindControl("TextBox2")).Text = DateTime.Now.ToString("g");
+        //        if (dv.Rows.Count > 0)
+        //        {
+        //            dv.ChangeMode(DetailsViewMode.Edit);
+        //        }
+        //        else
+        //        {
+        //            dv.ChangeMode(DetailsViewMode.Insert);
+        //            ((Label)dv.FindControl("LabelCif_Insert")).Text = Request.QueryString.Get("CIF");
+        //            ((Label)dv.FindControl("LabelUserId_Insert")).Text = User.Identity.Name.ToString();
+        //            ((Label)dv.FindControl("LabelDate_Insert")).Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+        //        }
+        //    }
+        //}
 
 
     }

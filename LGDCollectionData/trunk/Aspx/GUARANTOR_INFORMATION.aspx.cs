@@ -9,10 +9,6 @@ namespace LGDCollectionData.Aspx
 {
     public partial class GUARANTOR_INFORMATION : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
 
         protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e)
         {
@@ -51,8 +47,38 @@ namespace LGDCollectionData.Aspx
             {
                 System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView2.FindControl("LabelUserId");
                 System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView2.FindControl("LabelDate");
-                userId.Text = User.Identity.Name.ToString();
-                dateLabel.Text = Convert.ToString(DateTime.Now);
+                if (userId != null)
+                    userId.Text = User.Identity.Name.ToString();
+                if (dateLabel != null)
+                    dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+            }
+        }
+
+        protected void SqlDataSourceGur_Info_Selected(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            if ((e.Exception == null) && (e.AffectedRows > 0))
+            {
+                // Place your code here
+                //DetailsView2.CurrentMode == DetailsViewMode.Insert;
+            }
+        }
+
+        protected void DetailsView2_OnPreRender(object sender, EventArgs e)
+        {
+            DetailsView dv = (DetailsView)sender;
+            if (dv.CurrentMode == DetailsViewMode.Edit)
+            {
+                //((TextBox)myDetailsView.FindControl("TextBox2")).Text = DateTime.Now.ToString("g");
+                if (dv.Rows.Count > 0)
+                {
+                    dv.ChangeMode(DetailsViewMode.Edit);
+                }
+                else {
+                    dv.ChangeMode(DetailsViewMode.Insert);
+                    ((Label)dv.FindControl("LabelCif_Insert")).Text = Request.QueryString.Get("CIF");
+                    ((Label)dv.FindControl("LabelUserId_Insert")).Text = User.Identity.Name.ToString();
+                    ((Label)dv.FindControl("LabelDate_Insert")).Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+                }
             }
         }
 
