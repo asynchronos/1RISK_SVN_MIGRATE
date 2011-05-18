@@ -75,7 +75,6 @@
             <asp:TemplateField HeaderText="Account Officer" SortExpression="Account_Officer">
                 <EditItemTemplate>
                     <asp:TextBox ID="Account_Officer_TextBox" runat="server" Text='<%# Bind("Account_Officer") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Account_Officer_TextBox" runat="server" Text='<%# Bind("Account_Officer") %>'></asp:TextBox>
@@ -124,7 +123,6 @@
                         DataTextField="Portfolio" DataValueField="Portfolio">
                         <asp:ListItem Value="">Please Select</asp:ListItem>
                     </asp:DropDownList>
-                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:DropDownList ID="Portfolio_DropDownList" runat="server" SelectedValue='<%# Bind("Portfolio") %>'
@@ -141,7 +139,6 @@
             <asp:TemplateField HeaderText="Business Unit" SortExpression="Business_Unit">
                 <EditItemTemplate>
                     <asp:TextBox ID="Business_Unit_TextBox" runat="server" Text='<%# Bind("Business_Unit") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Business_Unit_TextBox" runat="server" Text='<%# Bind("Business_Unit") %>'></asp:TextBox>
@@ -169,7 +166,6 @@
             <asp:TemplateField HeaderText="Upgrade Date" SortExpression="Upgrade_Date">
                 <EditItemTemplate>
                     <asp:TextBox ID="Upgrade_Date_TextBox" runat="server" Text='<%# Bind("Upgrade_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
                     <asp:CalendarExtender ID="Upgrade_Date_TextBox_CalendarExtender" runat="server"
                         Enabled="True" TargetControlID="Upgrade_Date_TextBox" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
@@ -199,7 +195,6 @@
             <asp:TemplateField HeaderText="Industry Code" SortExpression="Industry_Code">
                 <EditItemTemplate>
                     <asp:TextBox ID="Industry_Code_TextBox" runat="server" Text='<%# Bind("Industry_Code") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Industry_Code_TextBox" runat="server" Text='<%# Bind("Industry_Code") %>'></asp:TextBox>
@@ -212,7 +207,6 @@
             <asp:TemplateField HeaderText="Bank Group Key" SortExpression="Bank_Group_Key">
                 <EditItemTemplate>
                     <asp:TextBox ID="Bank_Group_Key_TextBox" runat="server" Text='<%# Bind("Bank_Group_Key") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Bank_Group_Key_TextBox" runat="server" Text='<%# Bind("Bank_Group_Key") %>'></asp:TextBox>
@@ -279,7 +273,6 @@
                         DataTextField="Default_Type" DataValueField="Default_Type">
                         <asp:ListItem Value="">Please Select</asp:ListItem>
                     </asp:DropDownList>
-                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:DropDownList ID="Default_Type_DropDownList" runat="server" 
@@ -333,7 +326,6 @@
             <asp:TemplateField HeaderText="Banking Relationship Start Date" SortExpression="Banking_Relationship_Start_Date">
                 <EditItemTemplate>
                     <asp:TextBox ID="Banking_Relationship_Start_Date_TextBox" runat="server" Text='<%# Bind("Banking_Relationship_Start_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
                     <asp:CalendarExtender ID="Banking_Relationship_Start_Date_TextBox_CalendarExtender" runat="server"
                         Enabled="True" TargetControlID="Banking_Relationship_Start_Date_TextBox" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
@@ -352,8 +344,6 @@
             <asp:TemplateField HeaderText="Title Name" SortExpression="Legal_Enity_Type">
                 <EditItemTemplate>
                     <asp:TextBox ID="Legal_Enity_Type_TextBox" runat="server" Text='<%# Bind("Legal_Enity_Type") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
-                    (Example &quot;บจก.&quot;,&quot;หจก.&quot; )
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Legal_Enity_Type_TextBox" runat="server" Text='<%# Bind("Legal_Enity_Type") %>'></asp:TextBox>
@@ -371,7 +361,6 @@
                         SelectedValue='<%# Bind("Province_of_Incorporation") %>'>
                         <asp:ListItem Value="">Please Select</asp:ListItem>
                     </asp:DropDownList>
-                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:DropDownList ID="Province_of_Incorporation_DropDownList" runat="server" AppendDataBoundItems="True"
@@ -390,7 +379,6 @@
             <asp:TemplateField HeaderText="Date of Incorporation" SortExpression="Date_of_Incorporation">
                 <EditItemTemplate>
                     <asp:TextBox ID="Date_of_Incorporation_TextBox" runat="server" Text='<%# Bind("Date_of_Incorporation", "{0:d MMMM yyyy}") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
                     <asp:CalendarExtender ID="Date_of_Incorporation_TextBox_CalendarExtender" runat="server"
                         Enabled="True" TargetControlID="Date_of_Incorporation_TextBox" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
@@ -423,7 +411,6 @@
             <asp:TemplateField HeaderText="Internal Rating @ D-1" SortExpression="Internal_Rating_At_D_MINUS_1">
                 <EditItemTemplate>
                     <asp:TextBox ID="Internal_Rating_At_D_MINUS_1_TextBox" runat="server" Text='<%# Bind("Internal_Rating_At_D_MINUS_1") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Internal_Rating_At_D_MINUS_1_TextBox" runat="server" Text='<%# Bind("Internal_Rating_At_D_MINUS_1") %>'></asp:TextBox>
