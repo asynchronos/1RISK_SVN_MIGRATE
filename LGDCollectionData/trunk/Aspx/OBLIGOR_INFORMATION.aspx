@@ -474,10 +474,10 @@
                         <asp:ListItem>Arrears (Past Due) Repaid</asp:ListItem>
                         <asp:ListItem>Full Redemption - File Closed</asp:ListItem>
                         <asp:ListItem>Restructuring: Partial repayment / haircut the remaining balance and close the account (within 1 year)</asp:ListItem>
-                        <asp:ListItem>Restructuring: Installment payment - Continuing Obligation&quot;;&quot;Written off (No more recovery expected)</asp:ListItem>
-                        <asp:ListItem>Sell loan to AAMC</asp:ListItem>
-                        <asp:ListItem>Sell loan to the 3rd party</asp:ListItem>
-                        <%--<asp:ListItem>Others: (please add)</asp:ListItem>--%>
+                        <asp:ListItem>Restructuring: Installment payment - Continuing Obligation</asp:ListItem>
+                        <asp:ListItem>Sell loan to AAMC and written off</asp:ListItem>
+                        <asp:ListItem>Sell loan to the 3rd party and written off</asp:ListItem>
+                        <asp:ListItem>Written off(No more recovery expected)</asp:ListItem>
                     </asp:ComboBox>
                     <span style="color:Red">*</span>
                 </EditItemTemplate>
