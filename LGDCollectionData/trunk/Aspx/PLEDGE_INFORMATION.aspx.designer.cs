@@ -40,6 +40,15 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Label FormName_Label;
         
         /// <summary>
+        /// FormCollateral_Label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FormCollateral_Label;
+        
+        /// <summary>
         /// DetailsView1 control.
         /// </summary>
         /// <remarks>

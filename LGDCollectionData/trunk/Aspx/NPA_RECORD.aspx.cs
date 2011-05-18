@@ -57,6 +57,25 @@ namespace LGDCollectionData.Aspx
             }
         }
 
+        protected void DetailsView_OnPreRender(object sender, EventArgs e)
+        {
+            DetailsView dv = (DetailsView)sender;
+            if (dv.CurrentMode == DetailsViewMode.Edit)
+            {
+                //((TextBox)myDetailsView.FindControl("TextBox2")).Text = DateTime.Now.ToString("g");
+                if (dv.Rows.Count > 0)
+                {
+                    dv.ChangeMode(DetailsViewMode.Edit);
+                }
+                else
+                {
+                    dv.ChangeMode(DetailsViewMode.Insert);
+                    ((Label)dv.FindControl("LabelCif_Insert")).Text = Request.QueryString.Get("CIF");
+                    ((Label)dv.FindControl("LabelUserId_Insert")).Text = User.Identity.Name.ToString();
+                    ((Label)dv.FindControl("LabelDate_Insert")).Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+                }
+            }
+        }
 
     }
 }

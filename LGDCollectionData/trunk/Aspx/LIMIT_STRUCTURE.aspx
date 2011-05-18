@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LIMIT_STRUCTURE.aspx.cs" Inherits="LGDCollectionData.Aspx.LIMIT_STRUCTURE" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LIMIT_STRUCTURE.aspx.cs" Inherits="LGDCollectionData.Aspx.LIMIT_STRUCTURE" Culture="en-US" UICulture="en-US"%>
 <%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <script type="text/javascript">
@@ -20,9 +20,9 @@
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
-            <asp:BoundField DataField="Default_Date" HeaderText="Default_Date" DataFormatString="{0:d}"
+            <asp:BoundField DataField="Default_Date" HeaderText="Default Date" DataFormatString="{0:d MMMM yyyy}"
                 ReadOnly="True" SortExpression="Default_Date" />
-            <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
+            <asp:TemplateField HeaderText="APP ID" SortExpression="APP_ID">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListAPP" runat="server" 
                         DataSourceID="SqlDataSourceAPP" DataTextField="APP_ID" DataValueField="APP_ID"
@@ -36,7 +36,7 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("APP_ID") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="LIMITTYP_A" SortExpression="LIMITTYP_A">
+            <asp:TemplateField HeaderText="LIMITTYPE A" SortExpression="LIMITTYP_A">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListLIMITTYPE" runat="server" 
                         DataSourceID="SqlDataSourceLIMIT_TYPE" DataTextField="LIMITTYP_A" 
@@ -51,12 +51,12 @@
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("LIMITTYP_A") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="LIMITNO" HeaderText="LIMITNO" ReadOnly="True" 
+            <asp:BoundField DataField="LIMITNO" HeaderText="LIMIT NO." ReadOnly="True" 
                 SortExpression="LIMITNO" />
-            <asp:TemplateField HeaderText="Limit_D1" SortExpression="Limit_D1">
+            <asp:TemplateField HeaderText="Limit D1" SortExpression="Limit_D1">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Limit_D1","{0:n2}") %>' style="text-align:right;"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Input Limit_D1" ControlToValidate="TextBox1" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Input Limit_D1" ControlToValidate="TextBox1" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Limit_D1") %>'></asp:TextBox>
@@ -65,11 +65,12 @@
                     <asp:Label ID="Label7" runat="server" Text='<%# Bind("Limit_D1") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="One_Level_Up_Limit_ID_D1" 
+            <asp:TemplateField HeaderText="One Level Up Limit ID @ D-1" 
                 SortExpression="One_Level_Up_Limit_ID_D1">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("One_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Input One_Level_Up_Limit_ID_D1" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Input One_Level_Up_Limit_ID_D1" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
+                    <span>*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox8" runat="server" 
@@ -80,7 +81,7 @@
                         Text='<%# Bind("One_Level_Up_Limit_ID_D1") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="One_Level_Up_Limit_Currency_D1" 
+            <asp:TemplateField HeaderText="One Level Up Limit Currency @ D-1" 
                 SortExpression="One_Level_Up_Limit_Currency_D1">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListCurrency1" runat="server" 
@@ -98,11 +99,13 @@
                         Text='<%# Bind("One_Level_Up_Limit_Currency_D1") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="One_Level_Up_Limit_Amount_D1" 
+            <asp:TemplateField HeaderText="One Level Up Limit Amount @ D-1" 
                 SortExpression="One_Level_Up_Limit_Amount_D1">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox3" runat="server" 
-                        Text='<%# Bind("One_Level_Up_Limit_Amount_D1") %>'></asp:TextBox>
+                        Text='<%# Bind("One_Level_Up_Limit_Amount_D1") %>'>
+                    </asp:TextBox>
+                    <span>*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox9" runat="server" 
@@ -113,11 +116,12 @@
                         Text='<%# Bind("One_Level_Up_Limit_Amount_D1") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Two_Level_Up_Limit_ID_D1" 
+            <asp:TemplateField HeaderText="Two Level Up Limit ID @ D-1" 
                 SortExpression="Two_Level_Up_Limit_ID_D1">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" 
                         Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                        <span>*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox10" runat="server" 
@@ -128,7 +132,7 @@
                         Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Two_Level_Up_Limit_Currency_D1" 
+            <asp:TemplateField HeaderText="Two Level Up Limit Currency @ D-1" 
                 SortExpression="Two_Level_Up_Limit_Currency_D1">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListCurrency2" runat="server"
@@ -146,12 +150,37 @@
                         Text='<%# Bind("Two_Level_Up_Limit_Currency_D1") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Two_Level_Up_Limit_Amount_D1" HeaderText="Two_Level_Up_Limit_Amount_D1" 
-                SortExpression="Two_Level_Up_Limit_Amount_D1" />
-            <asp:BoundField DataField="Three_Level_Up_Limit_ID_D1" 
-                HeaderText="Three_Level_Up_Limit_ID_D1" 
-                SortExpression="Three_Level_Up_Limit_ID_D1" />
-            <asp:TemplateField HeaderText="Three_Level_Up_Limit_Currency_D1" 
+            <asp:TemplateField HeaderText="Two Level Up Limit Amount @ D-1" 
+                SortExpression="Two_Level_Up_Limit_Amount_D1">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox5" runat="server" 
+                        Text='<%# Bind("Two_Level_Up_Limit_Amount_D1") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox11" runat="server" 
+                        Text='<%# Bind("Two_Level_Up_Limit_Amount_D1") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label11" runat="server" 
+                        Text='<%# Bind("Two_Level_Up_Limit_Amount_D1") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Three Level Up Limit ID @ D-1" 
+                SortExpression="Three_Level_Up_Limit_ID_D1">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox6" runat="server" 
+                        Text='<%# Bind("Three_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox12" runat="server" 
+                        Text='<%# Bind("Three_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label12" runat="server" 
+                        Text='<%# Bind("Three_Level_Up_Limit_ID_D1") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Three Level Up Limit Currency @ D-1" 
                 SortExpression="Three_Level_Up_Limit_Currency_D1">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListCurrency3" runat="server"
@@ -169,13 +198,37 @@
                         Text='<%# Bind("Three_Level_Up_Limit_Currency_D1") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Three_Level_Up_Limit_Amount_D1" 
-                HeaderText="Three_Level_Up_Limit_Amount_D1" 
-                SortExpression="Three_Level_Up_Limit_Amount_D1" />
-            <asp:BoundField DataField="Four_Level_Up_Limit_ID_D1" 
-                HeaderText="Four_Level_Up_Limit_ID_D1" 
-                SortExpression="Four_Level_Up_Limit_ID_D1" />
-            <asp:TemplateField HeaderText="Four_Level_Up_Limit_Currency_D1" 
+            <asp:TemplateField HeaderText="Three Level Up Limit Amount @ D-1" 
+                SortExpression="Three_Level_Up_Limit_Amount_D1">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox7" runat="server" 
+                        Text='<%# Bind("Three_Level_Up_Limit_Amount_D1") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox13" runat="server" 
+                        Text='<%# Bind("Three_Level_Up_Limit_Amount_D1") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label13" runat="server" 
+                        Text='<%# Bind("Three_Level_Up_Limit_Amount_D1") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Four Level Up Limit ID @ D-1" 
+                SortExpression="Four_Level_Up_Limit_ID_D1">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox8" runat="server" 
+                        Text='<%# Bind("Four_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox14" runat="server" 
+                        Text='<%# Bind("Four_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label14" runat="server" 
+                        Text='<%# Bind("Four_Level_Up_Limit_ID_D1") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Four Level Up Limit Currency @ D-1" 
                 SortExpression="Four_Level_Up_Limit_Currency_D1">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListCurrency4" runat="server"
@@ -193,10 +246,22 @@
                         Text='<%# Bind("Four_Level_Up_Limit_Currency_D1") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Four_Level_Up_Limit_Amount_D1" 
-                HeaderText="Four_Level_Up_Limit_Amount_D1" 
-                SortExpression="Four_Level_Up_Limit_Amount_D1" />
-            <asp:TemplateField HeaderText="UPDATE_USER" SortExpression="UPDATE_USER">
+            <asp:TemplateField HeaderText="Four Level Up Limit Amount @ D-1" 
+                SortExpression="Four_Level_Up_Limit_Amount_D1">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox9" runat="server" 
+                        Text='<%# Bind("Four_Level_Up_Limit_Amount_D1") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox15" runat="server" 
+                        Text='<%# Bind("Four_Level_Up_Limit_Amount_D1") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label15" runat="server" 
+                        Text='<%# Bind("Four_Level_Up_Limit_Amount_D1") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="UPDATE USER" SortExpression="UPDATE_USER">
                 <EditItemTemplate>
                     <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
                 </EditItemTemplate>
@@ -207,7 +272,7 @@
                     <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="UPDATE_DATE" SortExpression="UPDATE_DATE">
+            <asp:TemplateField HeaderText="UPDATE DATE" SortExpression="UPDATE_DATE">
                 <EditItemTemplate>
                     <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
                 </EditItemTemplate>
