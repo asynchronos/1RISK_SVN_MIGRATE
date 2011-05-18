@@ -67,7 +67,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                     <asp:Label ID="LabelStar21" runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Facility Purpose Description (Other:Please add)" 
+            <asp:TemplateField HeaderText="Facility Purpose Description" 
                 SortExpression="FacilityPurposeDescription">
                 <EditItemTemplate>
                     <asp:ComboBox  ID="DropDownListFACILITY_PURPOSE" runat="server" 
