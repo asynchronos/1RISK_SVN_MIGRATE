@@ -14,13 +14,14 @@
 
     <script type="text/javascript">
         Ext.onReady(function () {
-            
-            var CheckBoxLIMITNO_Changed = Ext.DotNetControl.CheckBox.getDotNetCheckBox("domId", "CheckBoxLIMITNO_Changed");
-            var DropDownListPrevious_LIMITNO = Ext.DotNetControl.CheckBox.getDotNetDropDownList("domId", "DropDownListPrevious_LIMITNO");
-               
-            var CheckBoxIs_This_an_Additional_Drawdown = Ext.DotNetControl.CheckBox.getDotNetCheckBox("domId", "CheckBoxIs_This_an_Additional_Drawdown");
-            var ComboBoxAdditional = Ext.DotNetControl.CheckBox.getDotNetComboBox("domId", "ComboBoxAdditional");
-            var ComboBoxOtherReason = Ext.DotNetControl.CheckBox.getDotNetComboBox("domId", "ComboBoxOtherReason");
+            Ext.DotNetControl.Element.mapElement
+
+            var CheckBoxLIMITNO_Changed = Ext.DotNetControl.CheckBox.mapElement("domId", "CheckBoxLIMITNO_Changed");
+            var DropDownListPrevious_LIMITNO = Ext.DotNetControl.Element.mapElement("select","domId", "DropDownListPrevious_LIMITNO");
+
+            var CheckBoxIs_This_an_Additional_Drawdown = Ext.DotNetControl.CheckBox.mapElement("domId", "CheckBoxIs_This_an_Additional_Drawdown");
+            var ComboBoxAdditional = Ext.DotNetControl.ComboBox.mapElement("domId", "ComboBoxAdditional");
+            var ComboBoxOtherReason = Ext.DotNetControl.ComboBox.mapElement("domId", "ComboBoxOtherReason");
           
 
             CheckBoxLIMITNO_Changed.element.on({
