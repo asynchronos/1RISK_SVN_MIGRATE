@@ -6,6 +6,65 @@
 <%@ Register Src="../UserControls/SelectFormWebUserControl.ascx" TagName="SelectFormWebUserControl"
     TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <!-- Ext includes -->
+    <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
+    <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
+    <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            Ext.select("input[type=text]").setWidth("200px");
+            Ext.select("input[type=text]").set({ "maxlength": "255" });
+
+            var Pledge_to_All_Facilities_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Pledge_to_All_Facilities_CheckBox");
+            var Facility_Pledged_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Facility_Pledged_TextBox");
+            var Prior_Claim_by_Other_Bank_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Prior_Claim_by_Other_Bank_CheckBox");
+            var Prior_Claim_Amount_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Prior_Claim_Amount_TextBox");
+
+            Pledge_to_All_Facilities_CheckBox.element.on({
+                "click": function (e, t, o) {
+                    if (t.checked) {
+                        o.targetElement.Facility_Pledged_TextBox.element.dom.value = '';
+                        o.targetElement.Facility_Pledged_TextBox.disabled(true);
+                    } else {
+                        o.targetElement.Facility_Pledged_TextBox.disabled(false);
+                    }
+                },
+                scope: this,
+                targetElement: { "Facility_Pledged_TextBox": Facility_Pledged_TextBox }
+            });
+
+            //init Pledge_to_All_Facilities_CheckBox
+            if (Pledge_to_All_Facilities_CheckBox.element.dom.checked) {
+                Facility_Pledged_TextBox.disabled(true);
+            } else {
+                Facility_Pledged_TextBox.disabled(false);
+            }
+            //end init Pledge_to_All_Facilities_CheckBox
+
+
+            Prior_Claim_by_Other_Bank_CheckBox.element.on({
+                "click": function (e, t, o) {
+                    if (t.checked) {
+                        o.targetElement.Prior_Claim_Amount_TextBox.disabled(false);
+                    } else {
+                        o.targetElement.Prior_Claim_Amount_TextBox.disabled(true);
+                    }
+                },
+                scope: this,
+                targetElement: { "Prior_Claim_Amount_TextBox": Prior_Claim_Amount_TextBox }
+            });
+
+            //init Prior_Claim_by_Other_Bank_CheckBox
+            if (Prior_Claim_by_Other_Bank_CheckBox.element.dom.checked) {
+                Prior_Claim_Amount_TextBox.disabled(false);
+            } else {
+                Prior_Claim_Amount_TextBox.disabled(true);
+            }
+            //end init Prior_Claim_by_Other_Bank_CheckBox
+        });
+    </script>
+
     <script type="text/javascript">
         function popupAlert(msg) {
             alert(msg);
@@ -103,11 +162,24 @@
                                 <asp:Label ID="Label18" runat="server" Text='<%# Bind("PLED_SEQ") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CheckBoxField DataField="Pledge_to_All_Facilities" HeaderText="Pledge to All Facilities"
-                            SortExpression="Pledge_to_All_Facilities" />
+                        <asp:TemplateField HeaderText="Pledge to All Facilities" 
+                            SortExpression="Pledge_to_All_Facilities">
+                            <EditItemTemplate>
+                                <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" 
+                                    Checked='<%# Bind("Pledge_to_All_Facilities") %>' domId="Pledge_to_All_Facilities_CheckBox"/>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:CheckBox ID="CheckBox1" runat="server" 
+                                    Checked='<%# Bind("Pledge_to_All_Facilities") %>' />
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:CheckBox ID="CheckBox1" runat="server" 
+                                    Checked='<%# Bind("Pledge_to_All_Facilities") %>' Enabled="false" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Facility Pledged" SortExpression="Facility_Pledged">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("Facility_Pledged") %>'></asp:TextBox>
+                                <asp:TextBox ID="Facility_Pledged_TextBox" runat="server" Text='<%# Bind("Facility_Pledged") %>' domId="Facility_Pledged_TextBox"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </EditItemTemplate>
                             <InsertItemTemplate>
@@ -193,12 +265,25 @@
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Valuation_Date_D1") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CheckBoxField DataField="Prior_Claim_by_Other_Bank" HeaderText="Prior Claim by Other Bank"
-                            SortExpression="Prior_Claim_by_Other_Bank" />
+                        <asp:TemplateField HeaderText="Prior Claim by Other Bank" 
+                            SortExpression="Prior_Claim_by_Other_Bank">
+                            <EditItemTemplate>
+                                <asp:CheckBox ID="Prior_Claim_by_Other_Bank_CheckBox" runat="server" 
+                                    Checked='<%# Bind("Prior_Claim_by_Other_Bank") %>' domId="Prior_Claim_by_Other_Bank_CheckBox" />
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:CheckBox ID="CheckBox2" runat="server" 
+                                    Checked='<%# Bind("Prior_Claim_by_Other_Bank") %>' />
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:CheckBox ID="CheckBox2" runat="server" 
+                                    Checked='<%# Bind("Prior_Claim_by_Other_Bank") %>' Enabled="false" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Prior Claim Amount" SortExpression="Prior_Claim_Amount">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:n2}") %>'
-                                    Width="150px" Style="text-align: right"></asp:TextBox>
+                                <asp:TextBox ID="Prior_Claim_Amount_TextBox" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:n2}") %>'
+                                    Width="150px" Style="text-align: right" domId="Prior_Claim_Amount_TextBox"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </EditItemTemplate>
                             <InsertItemTemplate>

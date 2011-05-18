@@ -2,6 +2,45 @@
 <%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <!-- Ext includes -->
+    <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
+    <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
+    <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            Ext.select("input[type=text]").setWidth("200px");
+            Ext.select("input[type=text]").set({ "maxlength": "255" });
+
+            var Pledge_to_All_Facilities_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Pledge_to_All_Facilities_CheckBox");
+            var TextBoxFacility_Pledged = Ext.DotNetControl.Element.mapElement("input", "domId", "TextBoxFacility_Pledged");
+
+
+            Pledge_to_All_Facilities_CheckBox.element.on({
+                "click": function (e, t, o) {
+                    if (t.checked) {
+                        o.targetElement.TextBoxFacility_Pledged.element.dom.value ='';
+                        o.targetElement.TextBoxFacility_Pledged.disabled(true);
+
+                    } else {
+                        o.targetElement.TextBoxFacility_Pledged.disabled(false);
+
+                    }
+                },
+                scope: this,
+                targetElement: { "TextBoxFacility_Pledged": TextBoxFacility_Pledged }
+            });
+
+            //init Pledge_to_All_Facilities_CheckBox
+            if (Pledge_to_All_Facilities_CheckBox.element.dom.checked) {
+                TextBoxFacility_Pledged.disabled(true);
+            } else {
+                TextBoxFacility_Pledged.disabled(false);
+            }
+            //end init Pledge_to_All_Facilities_CheckBox
+
+        });
+    </script>
 <script type="text/javascript">
     function popupAlert(msg) {
         alert(msg);
@@ -20,7 +59,7 @@
         <td>
             <asp:DetailsView ID="DetailsView2" runat="server" AllowPaging="True" 
                 AutoGenerateRows="False" DataSourceID="SqlDataSourceGur_Info" 
-                EnableModelValidation="True" Height="50px" Width="430px" 
+                EnableModelValidation="True" Height="50px" Width="457px" 
                 DefaultMode="Edit"
                 OnDataBound="DetailsView_Databound" CellPadding="4" ForeColor="#333333" 
                 GridLines="None"
@@ -83,13 +122,25 @@
                             <asp:Label ID="Label9" runat="server" Text='<%# Bind("Guarantee_Title") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CheckBoxField DataField="Pledge_to_All_Facilities" 
-                        HeaderText="Pledge to All Facilities" 
-                        SortExpression="Pledge_to_All_Facilities" />
+                    <asp:TemplateField HeaderText="Pledge to All Facilities" 
+                        SortExpression="Pledge_to_All_Facilities">
+                        <EditItemTemplate>
+                            <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" 
+                                Checked='<%# Bind("Pledge_to_All_Facilities") %>' domId="Pledge_to_All_Facilities_CheckBox" />
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:CheckBox ID="CheckBox1" runat="server" 
+                                Checked='<%# Bind("Pledge_to_All_Facilities") %>' />
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:CheckBox ID="CheckBox1" runat="server" 
+                                Checked='<%# Bind("Pledge_to_All_Facilities") %>' Enabled="false" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Facility Pledged" 
                         SortExpression="Facility_Pledged">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBoxFacility_Pledged" runat="server" Text='<%# Bind("Facility_Pledged","{0:n2}") %>' Style="text-align:right;"></asp:TextBox>
+                            <asp:TextBox ID="TextBoxFacility_Pledged" runat="server" Text='<%# Bind("Facility_Pledged","{0:n2}") %>' domId="TextBoxFacility_Pledged"></asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Please input Facility Pledged" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox9"></asp:RequiredFieldValidator>--%>
                             <span>*</span>
                         </EditItemTemplate>
