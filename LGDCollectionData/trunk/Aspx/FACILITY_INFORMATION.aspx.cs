@@ -30,5 +30,24 @@ namespace LGDCollectionData.Aspx
             }
 
         }
+
+        protected void BtnLinkToLimitStructure_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LIMIT_STRUCTURE.aspx?" + BtnLinkToLimitStructure.ToolTip);
+        }
+
+        protected void DetailsView_OnPreRender(object sender, EventArgs e)
+        {
+            DetailsView dv = (DetailsView)sender;
+            if (dv.CurrentMode == DetailsViewMode.Edit)
+            {
+                //((TextBox)myDetailsView.FindControl("TextBox2")).Text = DateTime.Now.ToString("g");
+                if (dv.Rows.Count > 0)
+                {
+                    BtnLinkToLimitStructure.ToolTip = "CIF=" + Request.QueryString["CIF"] + "&Default_Date=" + ((Label)dv.FindControl("LabelDefaultDate")).Text;
+                }
+            }
+        }
+
     }
 }
