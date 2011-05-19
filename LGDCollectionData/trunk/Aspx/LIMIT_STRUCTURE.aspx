@@ -15,8 +15,12 @@
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" 
         AutoGenerateRows="False" DataKeyNames="CIF,Default_Date,LIMITNO" 
         DataSourceID="SqlDataSourceLIMIT_STRUCTURE" EnableModelValidation="True" 
-        Height="50px" Width="405px" DefaultMode="Edit"
-        OnDataBound="DetailsView_Databound">
+        Height="50px" Width="526px" DefaultMode="Edit"
+        OnDataBound="DetailsView_Databound" CellPadding="4" ForeColor="#333333" 
+        GridLines="None">
+        <AlternatingRowStyle BackColor="White" />
+        <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
+        <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
@@ -295,6 +299,10 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Fields>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
     </asp:DetailsView>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
         ShowMessageBox="true" ValidationGroup="UpdateValidation" ShowSummary="False" />
@@ -328,6 +336,7 @@
         </InsertParameters>
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
+            <asp:QueryStringParameter Name="Default_Date" QueryStringField="Default_Date"  Type="DateTime" />
         </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="CIF" Type="String" />

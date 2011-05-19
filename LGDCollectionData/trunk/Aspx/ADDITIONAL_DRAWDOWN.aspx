@@ -157,25 +157,25 @@
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSourceAppID"
                         DataTextField="APP_ID" DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'>
-                    </asp:DropDownList><asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    </asp:DropDownList><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="PRINCIPAL" SortExpression="PRINCIPAL">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PRINCIPAL","{0:N}") %>'></asp:TextBox>
-                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ACCRU" SortExpression="ACCRU">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("ACCRU","{0:N}") %>'></asp:TextBox>
-                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="SUSP" SortExpression="SUSP">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("SUSP","{0:N}") %>'></asp:TextBox>
-                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
                </asp:TemplateField>
             <asp:TemplateField HeaderText="PRINCIPAL AT Last Month" 
@@ -183,7 +183,7 @@
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" 
                         Text='<%# Bind("PRINCIPAL_AT_Last_Month","{0:N}") %>'></asp:TextBox>
-                        <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                        <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                
                 </EditItemTemplate>
             </asp:TemplateField>
@@ -192,7 +192,7 @@
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" 
                         Text='<%# Bind("ACCRU_AT_Last_Month","{0:N}") %>'></asp:TextBox>
-                        <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                        <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="SUSP AT Last Month" 
@@ -200,7 +200,7 @@
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox6" runat="server" 
                         Text='<%# Bind("SUSP_AT_Last_Month","{0:N}") %>'></asp:TextBox>
-                        <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                        <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Additional Drawdown Date" 
@@ -216,7 +216,7 @@
                         DataTextField="Description" DataValueField="Code" AppendDataBoundItems="true"
                         SelectedValue='<%# Bind("Additional_Drawdown_Currency","{0:N}") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:DropDownList><asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    </asp:DropDownList><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
           </asp:TemplateField>
             <asp:BoundField DataField="LIMITNO" HeaderText="LIMIT NO" 
@@ -234,7 +234,7 @@
                        AppendDataBoundItems="true" DataSourceID="SqlDataSourceLimitNo"
                         DataTextField="LIMITNO" DataValueField="LIMITNO" SelectedValue='<%# Bind("Previous_LIMITNO") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:DropDownList><asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    </asp:DropDownList><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
               </asp:TemplateField>
             <asp:TemplateField HeaderText="Is This an Additional Drawdown" 
@@ -253,7 +253,7 @@
                         DataTextField="ADDITIONAL_DRAWDOWN_TYPE" DataValueField="ADDITIONAL_DRAWDOWN_TYPE"
                         SelectedValue='<%# Bind("Type_of_Additional_Drawdown") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:ComboBox><asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    </asp:ComboBox><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
              </asp:TemplateField>
             <asp:TemplateField HeaderText="Other Reason of Principal Increase " SortExpression="Other_Reason_of_Principal_Increase">
@@ -262,7 +262,7 @@
                         DataTextField="ADDITIONAL_DRAWDOWN_REASON" DataValueField="ADDITIONAL_DRAWDOWN_REASON"
                         SelectedValue='<%# Bind("Other_Reason_of_Principal_Increase") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:ComboBox><asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    </asp:ComboBox><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
           
             </asp:TemplateField>

@@ -19,7 +19,9 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
         DataSourceID="SqlDataSourceFacility" DefaultMode="Edit"  
         PagerSettings-Mode="Numeric" RowStyle-Wrap="true"
         EnableModelValidation="True" Height="38px" Width="577px" 
-        OnDataBound="DetailsView_Databound" CellPadding="4" ForeColor="#333333" GridLines="None"
+        OnDataBound="DetailsView_Databound" 
+         OnPreRender="DetailsView_OnPreRender"
+        CellPadding="4" ForeColor="#333333" GridLines="None"
         >
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -27,8 +29,12 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" 
                 SortExpression="CIF" />
-            <asp:BoundField DataField="DefaultDate" HeaderText="Default Date" 
-                ReadOnly="True" SortExpression="DefaultDate"  DataFormatString="{0:d MMMM yyyy}"/>
+            <asp:TemplateField HeaderText="Default Date" SortExpression="DefaultDate">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelDefaultDate" runat="server" 
+                        Text='<%# Eval("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
+                </EditItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListAPP_ID" runat="server" 
@@ -49,14 +55,13 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="LIMITNO" HeaderText="LIMIT NO" ReadOnly="True" 
-                SortExpression="LIMITNO" />
+            <asp:BoundField DataField="LIMITNO" HeaderText="LIMIT NO" 
+                ReadOnly="True" SortExpression="LIMITNO"/>
              <asp:TemplateField HeaderText="Limit @ D" 
                 SortExpression="LimitAtD">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBoxLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:N}") %>'>
                     </asp:TextBox>
-                    <asp:Label ID="LabelStar" runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
                <asp:TemplateField HeaderText="Limit @ D1" 
@@ -64,7 +69,6 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBoxLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:N}") %>'>
                     </asp:TextBox>
-                    <asp:Label ID="LabelStar21" runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Facility Purpose Description" 
@@ -76,7 +80,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                         SelectedValue='<%# Bind("FacilityPurposeDescription") %>' AppendDataBoundItems="true" >
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:ComboBox>
-                      <asp:Label ID="LabelStarFac" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                      <asp:Label ID="LabelStarFac" runat="server" Text="  " ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Nature of Facility" 
@@ -89,7 +93,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                         AppendDataBoundItems="true" >
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
-                      <asp:Label ID="LabelStarNature" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                      <asp:Label ID="LabelStarNature" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Seniority" SortExpression="Seniority">
@@ -100,7 +104,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                         AppendDataBoundItems="true" >
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
-                      <asp:Label ID="LabelStarSec" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                      <asp:Label ID="LabelStarSec" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:CheckBoxField DataField="BaselCommittedIndicator" 
@@ -111,7 +115,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBoxMaturityDate" runat="server" Text='<%# Bind("MaturityDate","{0:d MMMM yyyy}") %>'>
                     </asp:TextBox>
-                    <asp:Label ID="LabelStar2" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="LabelStar2" runat="server" Text=" " ForeColor="Red"></asp:Label>
                     <asp:CalendarExtender ID="TextBoxMaturityDate_CalendarExtender" 
                         runat="server" TargetControlID="TextBoxMaturityDate"  Format="d MMMM yyyy" >
                     </asp:CalendarExtender>
@@ -126,7 +130,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                         SelectedValue='<%# Bind("PrincipalRepaymentCurrencyCode") %>'>      
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
-                      <asp:Label ID="LabelStarPrin" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                      <asp:Label ID="LabelStarPrin" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Principal Repayment Amount" 
@@ -134,7 +138,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" 
                         Text='<%# Bind("PrincipalRepaymentAmount","{0:N}") %>'></asp:TextBox>
-                 <asp:Label ID="LabelStarRepayment" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                 <asp:Label ID="LabelStarRepayment" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" 
@@ -154,7 +158,7 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                         AppendDataBoundItems="True" >
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
-                   <asp:Label ID="LabelStarCyc" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                   <asp:Label ID="LabelStarCyc" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Compounding Frequency of Interest" 
@@ -167,44 +171,44 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
                         AppendDataBoundItems="true" >
                     <asp:ListItem Value="">...Please Select...</asp:ListItem>
                      </asp:DropDownList>
-                      <asp:Label ID="LabelStarQue" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                      <asp:Label ID="LabelStarQue" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Sharing Limit with CIF 1"   SortExpression="SharingLimitwithCIF1">
                       <EditItemTemplate>
                         <asp:TextBox runat="server" ID="tbSharingCIF1" Text='<%# Bind("SharingLimitwithCIF1") %>'></asp:TextBox>
-                        <asp:Label ID="LabelStar3" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="LabelStar3" runat="server" Text=" " ForeColor="Red"></asp:Label>
                    </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Sharing Limit with CIF 2"               SortExpression="SharingLimitwithCIF2">
                       <EditItemTemplate>
                         <asp:TextBox runat="server" ID="tbSharingCIF2" Text='<%# Bind("SharingLimitwithCIF2") %>'></asp:TextBox>
-                        <asp:Label ID="LabelStar4" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="LabelStar4" runat="server" Text=" " ForeColor="Red"></asp:Label>
                    </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Sharing Limit with CIF 3"                 SortExpression="SharingLimitwithCIF3">
                     <EditItemTemplate>
                         <asp:TextBox runat="server" ID="tbSharingCIF3" Text='<%# Bind("SharingLimitwithCIF3") %>'></asp:TextBox>
-                        <asp:Label ID="LabelStar5" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="LabelStar5" runat="server" Text=" " ForeColor="Red"></asp:Label>
                    </EditItemTemplate>
            
             </asp:TemplateField>
            <asp:TemplateField HeaderText="Sharing Limit with CIF 4"   SortExpression="SharingLimitwithCIF4">
                     <EditItemTemplate>
                         <asp:TextBox runat="server" ID="tbSharingCIF4" Text='<%# Bind("SharingLimitwithCIF4") %>'></asp:TextBox>
-                        <asp:Label ID="LabelStar6" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="LabelStar6" runat="server" Text=" " ForeColor="Red"></asp:Label>
                    </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Sharing Limit with CIF 5"   SortExpression="SharingLimitwithCIF5">
                     <EditItemTemplate>
                         <asp:TextBox runat="server" ID="tbSharingCIF5" Text='<%# Bind("SharingLimitwithCIF5") %>'></asp:TextBox>
-                        <asp:Label ID="LabelStar7" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="LabelStar7" runat="server" Text=" " ForeColor="Red"></asp:Label>
                    </EditItemTemplate>
             </asp:TemplateField>
            <asp:TemplateField HeaderText="Sharing Limit with CIF 6"   SortExpression="SharingLimitwithCIF6">
                     <EditItemTemplate>
                         <asp:TextBox runat="server" ID="tbSharingCIF6" Text='<%# Bind("SharingLimitwithCIF6") %>'></asp:TextBox>
-                        <asp:Label ID="LabelStarCIF6" runat="server" Text="*" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="LabelStarCIF6" runat="server" Text=" " ForeColor="Red"></asp:Label>
                    </EditItemTemplate>
              </asp:TemplateField>
              <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">
@@ -305,4 +309,6 @@ CodeBehind="FACILITY_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.FACIL
         SelectCommand="GROUP_CIF_SELECT" SelectCommandType="StoredProcedure" 
         EnableCaching="True">
     </asp:SqlDataSource>
+<asp:Button  runat="server" ID="BtnLinkToLimitStructure" 
+        Text="Link To Limit Structure" onclick="BtnLinkToLimitStructure_Click"/>
 </asp:Content>
