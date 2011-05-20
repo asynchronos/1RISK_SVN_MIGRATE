@@ -58,6 +58,78 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.SqlDataSource PV_LOSS_SqlDataSource;
         
         /// <summary>
+        /// Upload_Panel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Upload_Panel;
+        
+        /// <summary>
+        /// RESTRUCTURE_INFORMATION_FileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.AsyncFileUpload RESTRUCTURE_INFORMATION_FileUpload;
+        
+        /// <summary>
+        /// myThrobber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label myThrobber;
+        
+        /// <summary>
+        /// uploadResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label uploadResult;
+        
+        /// <summary>
+        /// resultTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable resultTable;
+        
+        /// <summary>
+        /// FromName_Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FromName_Label2;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// Refresh_Button control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Refresh_Button;
+        
+        /// <summary>
         /// RESTRUCTURE_INFORMATION_GridView control.
         /// </summary>
         /// <remarks>
@@ -83,5 +155,14 @@ namespace LGDCollectionData.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource Currency_DataSource;
+        
+        /// <summary>
+        /// UpdatePanel1_UpdatePanelAnimationExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.UpdatePanelAnimationExtender UpdatePanel1_UpdatePanelAnimationExtender;
     }
 }
