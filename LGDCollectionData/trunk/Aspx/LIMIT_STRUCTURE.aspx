@@ -8,6 +8,8 @@
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Button ID="BtnLinktoFacility" text="Link To Facility Information" 
+        runat="server" onclick="BtnLinktoFacility_Click" />
     <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
     <h2>
         <asp:Label ID="FormName_Label" runat="server" Text="LIMIT STRUCTURE"></asp:Label>

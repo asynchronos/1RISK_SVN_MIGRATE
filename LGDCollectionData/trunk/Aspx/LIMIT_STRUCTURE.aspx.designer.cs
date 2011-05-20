@@ -13,6 +13,15 @@ namespace LGDCollectionData.Aspx {
     public partial class LIMIT_STRUCTURE {
         
         /// <summary>
+        /// BtnLinktoFacility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnLinktoFacility;
+        
+        /// <summary>
         /// SelectFormWebUserControl1 control.
         /// </summary>
         /// <remarks>

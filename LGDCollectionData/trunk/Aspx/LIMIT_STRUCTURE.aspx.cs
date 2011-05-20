@@ -56,5 +56,10 @@ namespace LGDCollectionData.Aspx
             }
         }
 
+        protected void BtnLinktoFacility_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FACILITY_INFORMATION.aspx?cif=" + Request.QueryString["cif"]);
+        }
+
     }
 }
