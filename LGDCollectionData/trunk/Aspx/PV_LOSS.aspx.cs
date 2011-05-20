@@ -1,12 +1,237 @@
 ﻿using System;
 using System.Web.UI.WebControls;
+using AjaxControlToolkit;
+using System.IO;
+using System.Web.UI;
+using log4net;
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
 
 namespace LGDCollectionData.Aspx
 {
     public partial class PV_LOSS : MyAspxPage
     {
+        private static readonly ILog log = LogManager.GetLogger(
+            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly bool isDebugEnabled = log.IsDebugEnabled;
+
+        private static readonly string cellMap = "ABCDEFG";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            //RESTRUCTURE_INFORMATION_FileUpload.UploaderStyle = AjaxControlToolkit.AsyncFileUpload.UploaderStyleEnum.Modern;
+            //RESTRUCTURE_INFORMATION_FileUpload.UploadedComplete += new EventHandler<AsyncFileUploadEventArgs>(RESTRUCTURE_INFORMATION_FileUpload_UploadedComplete);
+            //RESTRUCTURE_INFORMATION_FileUpload.UploadedFileError += new EventHandler<AsyncFileUploadEventArgs>(RESTRUCTURE_INFORMATION_FileUpload_UploadedFileError);
+        }
+
+        protected object GetCellValue()
+        {
+            return null;
+        }
+
+        protected void RESTRUCTURE_INFORMATION_FileUpload_UploadedComplete(object sender, AsyncFileUploadEventArgs e)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "size", "top.$get(\"" + uploadResult.ClientID + "\").innerHTML = 'Uploaded size: " + RESTRUCTURE_INFORMATION_FileUpload.FileBytes.Length.ToString() + "';", true);
+
+            string cif = null;
+            DateTime? defaultDate = null;
+            DateTime? dateOfRestructure = null;
+
+            HSSFWorkbook wb = null;
+            HSSFSheet sh = null;
+
+            Row r = null;
+            Cell c = null;
+
+            Entities.LGDEntities en = null;
+            Entities.RESTRUCTURE_INFORMATION ri = null;
+
+            try
+            {
+                if (RESTRUCTURE_INFORMATION_FileUpload.FileContent != null)
+                {
+                    en = new Entities.LGDEntities();
+                    wb = new HSSFWorkbook(RESTRUCTURE_INFORMATION_FileUpload.FileContent, true);
+
+                    for (var i = 0; i < wb.NumberOfSheets; i++)
+                    {
+                        sh = (HSSFSheet)wb.GetSheetAt(i);
+                        r = sh.GetRow(sh.FirstRowNum);
+
+                        if (r != null)
+                        {
+                            c = r.GetCell(r.FirstCellNum);
+                            if (c != null && sh.FirstRowNum == 1 && r.FirstCellNum == 1)
+                            {
+                                //the last check text before read
+                                if (c.StringCellValue.Equals("CIF"))
+                                {
+                                    c = sh.GetRow(2 - 1).GetCell(cellMap.IndexOf('C'));
+
+                                    if (c.CellType == CellType.NUMERIC)
+                                    {
+                                        cif = c.NumericCellValue.ToString();
+
+                                        c = (r = sh.GetRow(3 - 1)).GetCell(cellMap.IndexOf('C'));
+                                        if (c.CellType == CellType.NUMERIC)
+                                        {
+                                            defaultDate = new DateTime?(c.DateCellValue);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception("C3 is not numeric.");
+                                        }
+
+                                        c = (r = sh.GetRow(4 - 1)).GetCell(cellMap.IndexOf('C'));
+                                        if (c.CellType == CellType.NUMERIC)
+                                        {
+                                            dateOfRestructure = new DateTime?(c.DateCellValue);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception("C4 is not numeric.");
+                                        }
+
+                                        int rowIndex = 7;
+
+                                        while (true)
+                                        {
+                                            if (isDebugEnabled)
+                                                log.Debug("rowIndex:" + rowIndex);
+
+                                            r = sh.GetRow(rowIndex - 1);
+                                            if (r == null) break;
+                                            else if (isDebugEnabled)
+                                                log.Debug("row null");
+
+                                            c = r.GetCell(cellMap.IndexOf('B'));
+                                            if (c.CellType == CellType.BLANK) break;
+                                            else if (isDebugEnabled)
+                                                log.Debug("row blank");
+
+                                            ri = new Entities.RESTRUCTURE_INFORMATION();
+                                            ri.CIF = cif;
+                                            ri.Default_Date = defaultDate.Value;
+                                            ri.Date_of_Restructure = dateOfRestructure.Value;
+
+                                            if (c.CellType == CellType.NUMERIC)
+                                            {
+                                                ri.Date_of_Repayment = c.DateCellValue;
+                                            }
+                                            else
+                                            {
+                                                throw new Exception("B" + rowIndex + " is not numeric.");
+                                            }
+
+                                            c = r.GetCell(cellMap.IndexOf('C'));
+                                            if (c.CellType == CellType.NUMERIC)
+                                            {
+                                                ri.Discount_Rate = c.NumericCellValue;
+                                            }
+                                            else
+                                            {
+                                                throw new Exception("C" + rowIndex + " is not numeric.");
+                                            }
+
+                                            c = r.GetCell(cellMap.IndexOf('D'));
+                                            if (c.CellType == CellType.NUMERIC)
+                                            {
+                                                ri.TDR_Cash_Flow = c.NumericCellValue;
+                                            }
+                                            else
+                                            {
+                                                throw new Exception("D" + rowIndex + " is not numeric.");
+                                            }
+
+                                            c = r.GetCell(cellMap.IndexOf('E'));
+                                            if (c.CellType == CellType.NUMERIC)
+                                            {
+                                                ri.Present_Value_of_Repayment = c.NumericCellValue;
+                                            }
+                                            else
+                                            {
+                                                throw new Exception("E" + rowIndex + " is not numeric.");
+                                            }
+
+                                            c = r.GetCell(cellMap.IndexOf('F'));
+                                            if (c.CellType == CellType.STRING)
+                                            {
+                                                ri.Cash_Flow_Currency = c.StringCellValue.Substring(c.StringCellValue.IndexOf(':')+1, 3);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception("F" + rowIndex + " is not string.");
+                                            }
+
+                                            ri.UPDATE_USER = User.Identity.Name;
+                                            ri.UPDATE_DATE = DateTime.Now;
+                                            en.AddToRESTRUCTURE_INFORMATION(ri);
+
+                                            rowIndex = rowIndex + 1;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("C2 is not numeric.");
+                                    }
+                                }
+                                else
+                                {
+                                    throw new Exception("Value in cell B2 is not CIF.");
+                                }
+                            }
+                            else
+                            {
+                                throw new Exception("First Cell in excel is not B2.");
+                            }
+                        }
+                        else
+                        {
+                            log.Info("Can not find first row in " + wb.GetSheetName(i) + ".");
+                        }
+                        //save every sheet
+                        en.SaveChanges();
+                    }
+                }
+                else
+                {
+                    throw new Exception("Can not find file content in RESTRUCTURE_INFORMATION_FileUpload.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // ASP.NET must have the necessary permissions to write to the file system.
+                log.Info("Write Unsuccess Excel.[" + Path.GetFileName(e.filename) + "]");
+                string savePath = MapPath("~/Excel/RestructureInformation/Uploads/" + Path.GetFileName(e.filename));
+                RESTRUCTURE_INFORMATION_FileUpload.SaveAs(savePath);
+                throw ex;
+            }
+            finally
+            {
+                try
+                {
+                    en.Connection.Close();
+                }
+                catch (Exception clsEx)
+                {
+                    //ignore
+                }
+                en = null;
+                ri = null;
+                c = null;
+                r = null;
+                sh = null;
+                wb = null;
+            }
+
+            //UpdatePanel1.Update();
+            //RESTRUCTURE_INFORMATION_SqlDataSource.DataBind();
+            RESTRUCTURE_INFORMATION_GridView.DataBind();
+        }
+
+        protected void RESTRUCTURE_INFORMATION_FileUpload_UploadedFileError(object sender, AsyncFileUploadEventArgs e)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "error", "top.$get(\"" + uploadResult.ClientID + "\").innerHTML = 'Error: " + e.statusMessage + "';", true);
         }
 
         protected virtual void CIF_TextBox_PreRender(object sender, EventArgs e)

@@ -4,53 +4,87 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LGDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="LGDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="LGDModelStoreContainer">
           <EntitySet Name="ADDITIONAL DRAWDOWN" EntityType="LGDModel.Store.ADDITIONAL DRAWDOWN" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CASHFLOW" EntityType="LGDModel.Store.CASHFLOW" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="COLLATERAL INFORMATION" EntityType="LGDModel.Store.COLLATERAL INFORMATION" store:Type="Tables" store:Schema="dbo" store:Name="COLLATERAL INFORMATION">
-            <DefiningQuery>
-              SELECT
-              [COLLATERAL INFORMATION].[COLL_ID] AS [COLL_ID],
-              [COLLATERAL INFORMATION].[PLED_ID] AS [PLED_ID],
-              [COLLATERAL INFORMATION].[PLED_SEQ] AS [PLED_SEQ],
-              [COLLATERAL INFORMATION].[APPS_ID] AS [APPS_ID],
-              [COLLATERAL INFORMATION].[APPS_DATE] AS [APPS_DATE],
-              [COLLATERAL INFORMATION].[Collateral Type] AS [Collateral Type],
-              [COLLATERAL INFORMATION].[Property Type] AS [Property Type],
-              [COLLATERAL INFORMATION].[Collateral Description] AS [Collateral Description],
-              [COLLATERAL INFORMATION].[District of Property] AS [District of Property],
-              [COLLATERAL INFORMATION].[Amphur of Property] AS [Amphur of Property],
-              [COLLATERAL INFORMATION].[Province of Property] AS [Province of Property],
-              [COLLATERAL INFORMATION].[Located Country of Property] AS [Located Country of Property],
-              [COLLATERAL INFORMATION].[Collateral Provider] AS [Collateral Provider],
-              [COLLATERAL INFORMATION].[Property Under Construction] AS [Property Under Construction],
-              [COLLATERAL INFORMATION].[Leasehold Period] AS [Leasehold Period],
-              [COLLATERAL INFORMATION].[Leasehold Start Date] AS [Leasehold Start Date]
-              FROM [dbo].[COLLATERAL INFORMATION] AS [COLLATERAL INFORMATION]
-            </DefiningQuery>
+            <DefiningQuery>SELECT 
+      [COLLATERAL INFORMATION].[COLL_ID] AS [COLL_ID], 
+      [COLLATERAL INFORMATION].[PLED_ID] AS [PLED_ID], 
+      [COLLATERAL INFORMATION].[PLED_SEQ] AS [PLED_SEQ], 
+      [COLLATERAL INFORMATION].[APPS_ID] AS [APPS_ID], 
+      [COLLATERAL INFORMATION].[APPS_DATE] AS [APPS_DATE], 
+      [COLLATERAL INFORMATION].[Collateral Type] AS [Collateral Type], 
+      [COLLATERAL INFORMATION].[Property Type] AS [Property Type], 
+      [COLLATERAL INFORMATION].[Collateral Description] AS [Collateral Description], 
+      [COLLATERAL INFORMATION].[District of Property] AS [District of Property], 
+      [COLLATERAL INFORMATION].[Amphur of Property] AS [Amphur of Property], 
+      [COLLATERAL INFORMATION].[Province of Property] AS [Province of Property], 
+      [COLLATERAL INFORMATION].[Located Country of Property] AS [Located Country of Property], 
+      [COLLATERAL INFORMATION].[Collateral Provider] AS [Collateral Provider], 
+      [COLLATERAL INFORMATION].[Property Under Construction] AS [Property Under Construction], 
+      [COLLATERAL INFORMATION].[Leasehold Period] AS [Leasehold Period], 
+      [COLLATERAL INFORMATION].[Leasehold Start Date] AS [Leasehold Start Date], 
+      [COLLATERAL INFORMATION].[UPDATE_USER] AS [UPDATE_USER], 
+      [COLLATERAL INFORMATION].[UPDATE_DATE] AS [UPDATE_DATE]
+      FROM [dbo].[COLLATERAL INFORMATION] AS [COLLATERAL INFORMATION]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="DATA LOG" EntityType="LGDModel.Store.DATA LOG" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DATA LOG" EntityType="LGDModel.Store.DATA LOG" store:Type="Tables" store:Schema="dbo" store:Name="DATA LOG">
+            <DefiningQuery>SELECT 
+      [DATA LOG].[CIF] AS [CIF], 
+      [DATA LOG].[OBLIGOR INFORMATION] AS [OBLIGOR INFORMATION], 
+      [DATA LOG].[FINANCIAL SUMMARY] AS [FINANCIAL SUMMARY], 
+      [DATA LOG].[FACILITY INFORMATION] AS [FACILITY INFORMATION], 
+      [DATA LOG].[TRANSACTION INFORMATION] AS [TRANSACTION INFORMATION], 
+      [DATA LOG].[PLEDGE INFORMATION] AS [PLEDGE INFORMATION], 
+      [DATA LOG].[GUARANTOR INFORMATION] AS [GUARANTOR INFORMATION], 
+      [DATA LOG].[NPA RECORD] AS [NPA RECORD], 
+      [DATA LOG].[CASHFLOW] AS [CASHFLOW], 
+      [DATA LOG].[ADDITIONAL DRAWDOWN] AS [ADDITIONAL DRAWDOWN], 
+      [DATA LOG].[PV LOSS] AS [PV LOSS], 
+      [DATA LOG].[tOBLIGOR INFORMATION] AS [tOBLIGOR INFORMATION], 
+      [DATA LOG].[tFINANCIAL SUMMARY] AS [tFINANCIAL SUMMARY], 
+      [DATA LOG].[tFACILITY INFORMATION] AS [tFACILITY INFORMATION], 
+      [DATA LOG].[tTRANSACTION INFORMATION] AS [tTRANSACTION INFORMATION], 
+      [DATA LOG].[tPLEDGE INFORMATION] AS [tPLEDGE INFORMATION], 
+      [DATA LOG].[tGUARANTOR INFORMATION] AS [tGUARANTOR INFORMATION], 
+      [DATA LOG].[tNPA RECORD] AS [tNPA RECORD], 
+      [DATA LOG].[tCASHFLOW] AS [tCASHFLOW], 
+      [DATA LOG].[tADDITIONAL DRAWDOWN] AS [tADDITIONAL DRAWDOWN], 
+      [DATA LOG].[tPV LOSS] AS [tPV LOSS], 
+      [DATA LOG].[checkOBLIGOR INFORMATION] AS [checkOBLIGOR INFORMATION], 
+      [DATA LOG].[checkFINANCIAL SUMMARY] AS [checkFINANCIAL SUMMARY], 
+      [DATA LOG].[checkFACILITY INFORMATION] AS [checkFACILITY INFORMATION], 
+      [DATA LOG].[checkTRANSACTION INFORMATION] AS [checkTRANSACTION INFORMATION], 
+      [DATA LOG].[checkPLEDGE INFORMATION] AS [checkPLEDGE INFORMATION], 
+      [DATA LOG].[checkGUARANTOR INFORMATION] AS [checkGUARANTOR INFORMATION], 
+      [DATA LOG].[checkNPA RECORD] AS [checkNPA RECORD], 
+      [DATA LOG].[checkCASHFLOW] AS [checkCASHFLOW], 
+      [DATA LOG].[checkADDITIONAL DRAWDOWN] AS [checkADDITIONAL DRAWDOWN], 
+      [DATA LOG].[checkPV LOSS] AS [checkPV LOSS]
+      FROM [dbo].[DATA LOG] AS [DATA LOG]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="DIRECT COST" EntityType="LGDModel.Store.DIRECT COST" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FACILITY INFORMATION" EntityType="LGDModel.Store.FACILITY INFORMATION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FINANCIAL SUMMARY" EntityType="LGDModel.Store.FINANCIAL SUMMARY" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Group_CIF" EntityType="LGDModel.Store.Group_CIF" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GUARANTOR INFORMATION" EntityType="LGDModel.Store.GUARANTOR INFORMATION" store:Type="Tables" store:Schema="dbo" store:Name="GUARANTOR INFORMATION">
-            <DefiningQuery>
-              SELECT
-              [GUARANTOR INFORMATION].[CIF] AS [CIF],
-              [GUARANTOR INFORMATION].[Default Date] AS [Default Date],
-              [GUARANTOR INFORMATION].[PLED_ID] AS [PLED_ID],
-              [GUARANTOR INFORMATION].[Guarantee Title] AS [Guarantee Title],
-              [GUARANTOR INFORMATION].[Pledge to All Facilities] AS [Pledge to All Facilities],
-              [GUARANTOR INFORMATION].[Facility Pledged] AS [Facility Pledged],
-              [GUARANTOR INFORMATION].[Guarantee Amount @ D] AS [Guarantee Amount @ D],
-              [GUARANTOR INFORMATION].[Guarantee Amount @ D-1] AS [Guarantee Amount @ D-1],
-              [GUARANTOR INFORMATION].[Guarantee Amount Currency Code] AS [Guarantee Amount Currency Code],
-              [GUARANTOR INFORMATION].[Guarantee Indemnity Source ID] AS [Guarantee Indemnity Source ID],
-              [GUARANTOR INFORMATION].[Internal Rating @ D-1] AS [Internal Rating @ D-1]
-              FROM [dbo].[GUARANTOR INFORMATION] AS [GUARANTOR INFORMATION]
-            </DefiningQuery>
+            <DefiningQuery>SELECT 
+      [GUARANTOR INFORMATION].[CIF] AS [CIF], 
+      [GUARANTOR INFORMATION].[Default Date] AS [Default Date], 
+      [GUARANTOR INFORMATION].[PLED_ID] AS [PLED_ID], 
+      [GUARANTOR INFORMATION].[Guarantee Title] AS [Guarantee Title], 
+      [GUARANTOR INFORMATION].[Pledge to All Facilities] AS [Pledge to All Facilities], 
+      [GUARANTOR INFORMATION].[Facility Pledged] AS [Facility Pledged], 
+      [GUARANTOR INFORMATION].[Guarantee Amount @ D] AS [Guarantee Amount @ D], 
+      [GUARANTOR INFORMATION].[Guarantee Amount @ D-1] AS [Guarantee Amount @ D-1], 
+      [GUARANTOR INFORMATION].[Guarantee Amount Currency Code] AS [Guarantee Amount Currency Code], 
+      [GUARANTOR INFORMATION].[Guarantee Indemnity Source ID] AS [Guarantee Indemnity Source ID], 
+      [GUARANTOR INFORMATION].[Internal Rating @ D-1] AS [Internal Rating @ D-1], 
+      [GUARANTOR INFORMATION].[UPDATE_USER] AS [UPDATE_USER], 
+      [GUARANTOR INFORMATION].[UPDATE_DATE] AS [UPDATE_DATE]
+      FROM [dbo].[GUARANTOR INFORMATION] AS [GUARANTOR INFORMATION]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="L_APP_ID" EntityType="LGDModel.Store.L_APP_ID" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="L_BUILDING TYPE" EntityType="LGDModel.Store.L_BUILDING TYPE" store:Type="Tables" Schema="dbo" />
@@ -106,6 +140,8 @@
           <Property Name="Is This an Additional Drawdown" Type="bit" Nullable="false" />
           <Property Name="Type of Additional Drawdown" Type="nvarchar" MaxLength="255" />
           <Property Name="Other Reason of Principal Increase" Type="nvarchar" MaxLength="255" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="CASHFLOW">
           <Key>
@@ -127,9 +163,11 @@
           <Property Name="Cash Flow Source Description 2" Type="nvarchar" MaxLength="255" />
           <Property Name="Cash Flow Source Description 3" Type="nvarchar" MaxLength="255" />
           <Property Name="Written-off / Haircut Amount" Type="float" />
-          <Property Name="Collateral ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="Collateral ID / Pledge ID" Type="nvarchar" MaxLength="15" />
           <Property Name="LIMITNO Changed" Type="bit" Nullable="false" />
           <Property Name="Previous LIMITNO" Type="nvarchar" MaxLength="20" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'LGD.dbo.COLLATERAL INFORMATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -142,7 +180,7 @@
           <Property Name="COLL_ID" Type="nvarchar" Nullable="false" MaxLength="15" />
           <Property Name="PLED_ID" Type="nvarchar" MaxLength="15" />
           <Property Name="PLED_SEQ" Type="smallint" />
-          <Property Name="APPS_ID" Type="nvarchar" MaxLength="5" />
+          <Property Name="APPS_ID" Type="nvarchar" MaxLength="20" />
           <Property Name="APPS_DATE" Type="datetime" />
           <Property Name="Collateral Type" Type="nvarchar" MaxLength="5" />
           <Property Name="Property Type" Type="nvarchar" MaxLength="5" />
@@ -155,12 +193,26 @@
           <Property Name="Property Under Construction" Type="bit" Nullable="false" />
           <Property Name="Leasehold Period" Type="smallint" />
           <Property Name="Leasehold Start Date" Type="datetime" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LGD.dbo.DATA LOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
         <EntityType Name="DATA LOG">
           <Key>
-            <PropertyRef Name="CIF" />
+            <PropertyRef Name="checkOBLIGOR INFORMATION" />
+            <PropertyRef Name="checkFINANCIAL SUMMARY" />
+            <PropertyRef Name="checkFACILITY INFORMATION" />
+            <PropertyRef Name="checkTRANSACTION INFORMATION" />
+            <PropertyRef Name="checkPLEDGE INFORMATION" />
+            <PropertyRef Name="checkGUARANTOR INFORMATION" />
+            <PropertyRef Name="checkNPA RECORD" />
+            <PropertyRef Name="checkCASHFLOW" />
+            <PropertyRef Name="checkADDITIONAL DRAWDOWN" />
+            <PropertyRef Name="checkPV LOSS" />
           </Key>
-          <Property Name="CIF" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="CIF" Type="nvarchar" MaxLength="20" />
           <Property Name="OBLIGOR INFORMATION" Type="int" />
           <Property Name="FINANCIAL SUMMARY" Type="int" />
           <Property Name="FACILITY INFORMATION" Type="int" />
@@ -170,8 +222,27 @@
           <Property Name="NPA RECORD" Type="int" />
           <Property Name="CASHFLOW" Type="int" />
           <Property Name="ADDITIONAL DRAWDOWN" Type="int" />
-          <Property Name="LEGAL COST" Type="int" />
           <Property Name="PV LOSS" Type="int" />
+          <Property Name="tOBLIGOR INFORMATION" Type="int" />
+          <Property Name="tFINANCIAL SUMMARY" Type="int" />
+          <Property Name="tFACILITY INFORMATION" Type="int" />
+          <Property Name="tTRANSACTION INFORMATION" Type="int" />
+          <Property Name="tPLEDGE INFORMATION" Type="int" />
+          <Property Name="tGUARANTOR INFORMATION" Type="int" />
+          <Property Name="tNPA RECORD" Type="int" />
+          <Property Name="tCASHFLOW" Type="int" />
+          <Property Name="tADDITIONAL DRAWDOWN" Type="int" />
+          <Property Name="tPV LOSS" Type="int" />
+          <Property Name="checkOBLIGOR INFORMATION" Type="bit" Nullable="false" />
+          <Property Name="checkFINANCIAL SUMMARY" Type="bit" Nullable="false" />
+          <Property Name="checkFACILITY INFORMATION" Type="bit" Nullable="false" />
+          <Property Name="checkTRANSACTION INFORMATION" Type="bit" Nullable="false" />
+          <Property Name="checkPLEDGE INFORMATION" Type="bit" Nullable="false" />
+          <Property Name="checkGUARANTOR INFORMATION" Type="bit" Nullable="false" />
+          <Property Name="checkNPA RECORD" Type="bit" Nullable="false" />
+          <Property Name="checkCASHFLOW" Type="bit" Nullable="false" />
+          <Property Name="checkADDITIONAL DRAWDOWN" Type="bit" Nullable="false" />
+          <Property Name="checkPV LOSS" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="DIRECT COST">
           <Key>
@@ -183,6 +254,8 @@
           <Property Name="Expense Year" Type="int" Nullable="false" />
           <Property Name="GL code" Type="int" Nullable="false" />
           <Property Name="Total Expenses" Type="float" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="FACILITY INFORMATION">
           <Key>
@@ -209,6 +282,11 @@
           <Property Name="Sharing Limit with (CIF 1)" Type="nvarchar" MaxLength="255" />
           <Property Name="Sharing Limit with (CIF 2)" Type="nvarchar" MaxLength="255" />
           <Property Name="Sharing Limit with (CIF 3)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sharing Limit with (CIF 4)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sharing Limit with (CIF 5)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sharing Limit with (CIF 6)" Type="nvarchar" MaxLength="255" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="FINANCIAL SUMMARY">
           <Key>
@@ -222,13 +300,16 @@
           <Property Name="Total Liabilities" Type="int" />
           <Property Name="Total Revenue" Type="int" />
           <Property Name="Financial Currency Code" Type="nvarchar" MaxLength="3" />
+          <Property Name="DATA_NOT_AVAILABLE" Type="bit" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="Group_CIF">
           <Key>
             <PropertyRef Name="CIF" />
           </Key>
           <Property Name="CIF" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Group_CIF" Type="nvarchar" MaxLength="20" />
+          <Property Name="Group_CIF" Type="nvarchar" Nullable="false" MaxLength="20" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'LGD.dbo.GUARANTOR INFORMATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -248,6 +329,8 @@
           <Property Name="Guarantee Amount Currency Code" Type="nvarchar" MaxLength="3" />
           <Property Name="Guarantee Indemnity Source ID" Type="nvarchar" MaxLength="255" />
           <Property Name="Internal Rating @ D-1" Type="nvarchar" MaxLength="4" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="L_APP_ID">
           <Key>
@@ -348,6 +431,8 @@
           <Property Name="Four Level Up Limit ID @ D-1" Type="nvarchar" MaxLength="255" />
           <Property Name="Four Level Up Limit Currency @ D-1" Type="nvarchar" MaxLength="3" />
           <Property Name="Four Level Up Limit Amount @ D-1" Type="float" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="List of Default">
           <Key>
@@ -371,6 +456,8 @@
           <Property Name="Appraised Value @ Beginning of Year" Type="float" />
           <Property Name="Cost Value @ Beginning of Year" Type="float" />
           <Property Name="Total Expense" Type="float" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="NPA RECORD">
           <Key>
@@ -391,6 +478,8 @@
           <Property Name="Amphur of Property" Type="nvarchar" MaxLength="255" />
           <Property Name="Province of Property" Type="nvarchar" MaxLength="255" />
           <Property Name="Title Deed Number" Type="nvarchar" MaxLength="255" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="OBLIGOR INFORMATION">
           <Key>
@@ -404,6 +493,7 @@
           <Property Name="Portfolio" Type="nvarchar" MaxLength="20" />
           <Property Name="Business Unit" Type="nvarchar" MaxLength="4" />
           <Property Name="Default Date" Type="datetime" Nullable="false" />
+          <Property Name="Upgrade Date" Type="datetime" />
           <Property Name="1 Year Before Default Date" Type="datetime" />
           <Property Name="Industry Code" Type="nvarchar" MaxLength="6" />
           <Property Name="Bank Group Key" Type="nvarchar" MaxLength="255" />
@@ -413,7 +503,7 @@
           <Property Name="Default Type" Type="nvarchar" MaxLength="255" />
           <Property Name="Business Reason for Default" Type="nvarchar" MaxLength="255" />
           <Property Name="Banking Relationship Start Date" Type="datetime" />
-          <Property Name="Legal Enity Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Legal Entity Type" Type="nvarchar" MaxLength="255" />
           <Property Name="Province of Incorporation" Type="nvarchar" MaxLength="255" />
           <Property Name="Date of Incorporation" Type="datetime" />
           <Property Name="Listed Status" Type="bit" Nullable="false" />
@@ -423,6 +513,9 @@
           <Property Name="Nature of Emergence" Type="nvarchar" MaxLength="255" />
           <Property Name="Emergence Date" Type="datetime" />
           <Property Name="Negative Pledge" Type="bit" Nullable="false" />
+          <Property Name="AgingMax" Type="numeric" Scale="2" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="PLEDGE INFORMATION">
           <Key>
@@ -450,6 +543,8 @@
           <Property Name="Limitation Amount @ D" Type="float" />
           <Property Name="Pledge Amount @ D-1" Type="float" />
           <Property Name="Limitation Amount @ D-1" Type="float" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="PV LOSS">
           <Key>
@@ -462,6 +557,8 @@
           <Property Name="Date of Restructure" Type="datetime" Nullable="false" />
           <Property Name="Date of Upgrade" Type="datetime" />
           <Property Name="Pv Loss" Type="float" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="RESTRUCTURE INFORMATION">
           <Key>
@@ -477,6 +574,8 @@
           <Property Name="TDR Cash Flow" Type="float" />
           <Property Name="Present Value of Repayment" Type="float" />
           <Property Name="Cash Flow Currency" Type="nvarchar" MaxLength="3" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="TRANSACTION INFORMATION">
           <Key>
@@ -509,6 +608,8 @@
           <Property Name="OS @ D-1: Principal" Type="float" />
           <Property Name="OS @ D-1: Accrued" Type="float" />
           <Property Name="OS @ D-1: Suspense" Type="float" />
+          <Property Name="UPDATE_USER" Type="varchar" MaxLength="10" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="USER_DATA">
           <Key>
@@ -544,20 +645,16 @@
           <Property Name="PIORITY" Type="int" />
           <Property Name="VISIBLE" Type="bit" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LGDModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="LGDEntities">
           <EntitySet Name="ADDITIONAL_DRAWDOWN" EntityType="LGDModel.ADDITIONAL_DRAWDOWN" />
-          <EntitySet Name="CASHFLOW" EntityType="LGDModel.CASHFLOW" />
           <EntitySet Name="COLLATERAL_INFORMATION" EntityType="LGDModel.COLLATERAL_INFORMATION" />
-          <EntitySet Name="DATA_LOG" EntityType="LGDModel.DATA_LOG" />
           <EntitySet Name="DIRECT_COST" EntityType="LGDModel.DIRECT_COST" />
           <EntitySet Name="FACILITY_INFORMATION" EntityType="LGDModel.FACILITY_INFORMATION" />
           <EntitySet Name="FINANCIAL_SUMMARY" EntityType="LGDModel.FINANCIAL_SUMMARY" />
-          <EntitySet Name="Group_CIF" EntityType="LGDModel.Group_CIF" />
           <EntitySet Name="GUARANTOR_INFORMATION" EntityType="LGDModel.GUARANTOR_INFORMATION" />
           <EntitySet Name="L_APP_ID" EntityType="LGDModel.L_APP_ID" />
           <EntitySet Name="L_BUILDING_TYPE" EntityType="LGDModel.L_BUILDING_TYPE" />
@@ -572,13 +669,16 @@
           <EntitySet Name="List_of_Default" EntityType="LGDModel.List_of_Default" />
           <EntitySet Name="NPA_EXPENSE" EntityType="LGDModel.NPA_EXPENSE" />
           <EntitySet Name="NPA_RECORD" EntityType="LGDModel.NPA_RECORD" />
-          <EntitySet Name="OBLIGOR_INFORMATION" EntityType="LGDModel.OBLIGOR_INFORMATION" />
           <EntitySet Name="PLEDGE_INFORMATION" EntityType="LGDModel.PLEDGE_INFORMATION" />
           <EntitySet Name="PV_LOSS" EntityType="LGDModel.PV_LOSS" />
           <EntitySet Name="RESTRUCTURE_INFORMATION" EntityType="LGDModel.RESTRUCTURE_INFORMATION" />
           <EntitySet Name="TRANSACTION_INFORMATION" EntityType="LGDModel.TRANSACTION_INFORMATION" />
           <EntitySet Name="USER_DATA" EntityType="LGDModel.USER_DATA" />
           <EntitySet Name="FORM_NAME" EntityType="LGDModel.FORM_NAME" />
+          <EntitySet Name="CASHFLOW" EntityType="LGDModel.CASHFLOW" />
+          <EntitySet Name="DATA_LOG" EntityType="LGDModel.DATA_LOG" />
+          <EntitySet Name="OBLIGOR_INFORMATION" EntityType="LGDModel.OBLIGOR_INFORMATION" />
+          <EntitySet Name="Group_CIF" EntityType="LGDModel.Group_CIF" />
         </EntityContainer>
         <EntityType Name="ADDITIONAL_DRAWDOWN">
           <Key>
@@ -613,30 +713,8 @@
           <Property Name="Is_This_an_Additional_Drawdown" Type="Boolean" Nullable="false" />
           <Property Name="Type_of_Additional_Drawdown" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Other_Reason_of_Principal_Increase" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="CASHFLOW">
-          <Key>
-            <PropertyRef Name="CIF" />
-            <PropertyRef Name="Default_Date" />
-            <PropertyRef Name="LIMITNO" />
-            <PropertyRef Name="Date_of_Cashflow" />
-          </Key>
-          <Property Name="CIF" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Default_Date" Type="DateTime" Nullable="false" />
-          <Property Name="LIMITNO" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="APP_ID" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
-          <Property Name="Cashflow_Currency_Code" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
-          <Property Name="Date_of_Cashflow" Type="DateTime" Nullable="false" />
-          <Property Name="Cashflow_Amount__PAY_PRIN" Type="Double" />
-          <Property Name="Cashflow_Amount__PAY_INT" Type="Double" />
-          <Property Name="Cashflow_Amount__PAY_SUSP" Type="Double" />
-          <Property Name="Cash_Flow_Source_Description_1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Cash_Flow_Source_Description_2" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Cash_Flow_Source_Description_3" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Written_off___Haircut_Amount" Type="Double" />
-          <Property Name="Collateral_ID" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
-          <Property Name="LIMITNO_Changed" Type="Boolean" Nullable="false" />
-          <Property Name="Previous_LIMITNO" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="COLLATERAL_INFORMATION">
           <Key>
@@ -659,23 +737,8 @@
           <Property Name="Property_Under_Construction" Type="Boolean" Nullable="false" />
           <Property Name="Leasehold_Period" Type="Int16" />
           <Property Name="Leasehold_Start_Date" Type="DateTime" />
-        </EntityType>
-        <EntityType Name="DATA_LOG">
-          <Key>
-            <PropertyRef Name="CIF" />
-          </Key>
-          <Property Name="CIF" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="OBLIGOR_INFORMATION" Type="Int32" />
-          <Property Name="FINANCIAL_SUMMARY" Type="Int32" />
-          <Property Name="FACILITY_INFORMATION" Type="Int32" />
-          <Property Name="TRANSACTION_INFORMATION" Type="Int32" />
-          <Property Name="PLEDGE_INFORMATION" Type="Int32" />
-          <Property Name="GUARANTOR_INFORMATION" Type="Int32" />
-          <Property Name="NPA_RECORD" Type="Int32" />
-          <Property Name="CASHFLOW" Type="Int32" />
-          <Property Name="ADDITIONAL_DRAWDOWN" Type="Int32" />
-          <Property Name="LEGAL_COST" Type="Int32" />
-          <Property Name="PV_LOSS" Type="Int32" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="DIRECT_COST">
           <Key>
@@ -687,6 +750,8 @@
           <Property Name="Expense_Year" Type="Int32" Nullable="false" />
           <Property Name="GL_code" Type="Int32" Nullable="false" />
           <Property Name="Total_Expenses" Type="Double" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="FACILITY_INFORMATION">
           <Key>
@@ -713,6 +778,11 @@
           <Property Name="Sharing_Limit_with__CIF_1_" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Sharing_Limit_with__CIF_2_" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Sharing_Limit_with__CIF_3_" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Sharing_Limit_with__CIF_4_" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sharing_Limit_with__CIF_5_" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sharing_Limit_with__CIF_6_" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="FINANCIAL_SUMMARY">
           <Key>
@@ -726,13 +796,9 @@
           <Property Name="Total_Liabilities" Type="Int32" />
           <Property Name="Total_Revenue" Type="Int32" />
           <Property Name="Financial_Currency_Code" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Group_CIF">
-          <Key>
-            <PropertyRef Name="CIF" />
-          </Key>
-          <Property Name="CIF" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Group_CIF1" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Type="Boolean" Name="DATA_NOT_AVAILABLE" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="GUARANTOR_INFORMATION">
           <Key>
@@ -749,6 +815,8 @@
           <Property Name="Guarantee_Amount_Currency_Code" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
           <Property Name="Guarantee_Indemnity_Source_ID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Internal_Rating___D_1" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="L_APP_ID">
           <Key>
@@ -849,6 +917,8 @@
           <Property Name="Four_Level_Up_Limit_ID___D_1" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Four_Level_Up_Limit_Currency___D_1" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
           <Property Name="Four_Level_Up_Limit_Amount___D_1" Type="Double" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="List_of_Default">
           <Key>
@@ -872,6 +942,8 @@
           <Property Name="Appraised_Value___Beginning_of_Year" Type="Double" />
           <Property Name="Cost_Value___Beginning_of_Year" Type="Double" />
           <Property Name="Total_Expense" Type="Double" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="NPA_RECORD">
           <Key>
@@ -892,38 +964,8 @@
           <Property Name="Amphur_of_Property" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Province_of_Property" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Title_Deed_Number" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="OBLIGOR_INFORMATION">
-          <Key>
-            <PropertyRef Name="CIF" />
-            <PropertyRef Name="Default_Date" />
-          </Key>
-          <Property Name="CIF" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Account_Officer" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="Data_Inputter" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="Date_of_Input" Type="DateTime" />
-          <Property Name="Portfolio" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Business_Unit" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
-          <Property Name="Default_Date" Type="DateTime" Nullable="false" />
-          <Property Name="C1_Year_Before_Default_Date" Type="DateTime" />
-          <Property Name="Industry_Code" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
-          <Property Name="Bank_Group_Key" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Last_Review_Date" Type="DateTime" />
-          <Property Name="Previous_Default_Flag" Type="Boolean" Nullable="false" />
-          <Property Name="Previous_Default_Date" Type="DateTime" />
-          <Property Name="Default_Type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Business_Reason_for_Default" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Banking_Relationship_Start_Date" Type="DateTime" />
-          <Property Name="Legal_Enity_Type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Province_of_Incorporation" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Date_of_Incorporation" Type="DateTime" />
-          <Property Name="Listed_Status" Type="Boolean" Nullable="false" />
-          <Property Name="Internal_Rating___D_1" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
-          <Property Name="Rating_Date" Type="DateTime" />
-          <Property Name="Emergence_from_Default" Type="Boolean" Nullable="false" />
-          <Property Name="Nature_of_Emergence" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Emergence_Date" Type="DateTime" />
-          <Property Name="Negative_Pledge" Type="Boolean" Nullable="false" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="PLEDGE_INFORMATION">
           <Key>
@@ -951,6 +993,8 @@
           <Property Name="Limitation_Amount___D" Type="Double" />
           <Property Name="Pledge_Amount___D_1" Type="Double" />
           <Property Name="Limitation_Amount___D_1" Type="Double" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="PV_LOSS">
           <Key>
@@ -963,6 +1007,8 @@
           <Property Name="Date_of_Restructure" Type="DateTime" Nullable="false" />
           <Property Name="Date_of_Upgrade" Type="DateTime" />
           <Property Name="Pv_Loss1" Type="Double" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="RESTRUCTURE_INFORMATION">
           <Key>
@@ -978,6 +1024,8 @@
           <Property Name="TDR_Cash_Flow" Type="Double" />
           <Property Name="Present_Value_of_Repayment" Type="Double" />
           <Property Name="Cash_Flow_Currency" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="TRANSACTION_INFORMATION">
           <Key>
@@ -1010,6 +1058,8 @@
           <Property Name="OS___D_1__Principal" Type="Double" />
           <Property Name="OS___D_1__Accrued" Type="Double" />
           <Property Name="OS___D_1__Suspense" Type="Double" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
         </EntityType>
         <EntityType Name="USER_DATA">
           <Key>
@@ -1045,6 +1095,120 @@
           <Property Name="PIORITY" Type="Int32" />
           <Property Name="VISIBLE" Type="Boolean" />
         </EntityType>
+        <EntityType Name="CASHFLOW">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="Default_Date" />
+            <PropertyRef Name="LIMITNO" />
+            <PropertyRef Name="Date_of_Cashflow" />
+          </Key>
+          <Property Type="String" Name="CIF" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Default_Date" Nullable="false" />
+          <Property Type="String" Name="LIMITNO" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="APP_ID" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Cashflow_Currency_Code" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Date_of_Cashflow" Nullable="false" />
+          <Property Type="Double" Name="Cashflow_Amount__PAY_PRIN" />
+          <Property Type="Double" Name="Cashflow_Amount__PAY_INT" />
+          <Property Type="Double" Name="Cashflow_Amount__PAY_SUSP" />
+          <Property Type="String" Name="Cash_Flow_Source_Description_1" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Cash_Flow_Source_Description_2" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Cash_Flow_Source_Description_3" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Written_off___Haircut_Amount" />
+          <Property Type="String" Name="Collateral_ID___Pledge_ID" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="LIMITNO_Changed" Nullable="false" />
+          <Property Type="String" Name="Previous_LIMITNO" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
+        </EntityType>
+        <EntityType Name="DATA_LOG">
+          <Key>
+            <PropertyRef Name="checkOBLIGOR_INFORMATION" />
+            <PropertyRef Name="checkFINANCIAL_SUMMARY" />
+            <PropertyRef Name="checkFACILITY_INFORMATION" />
+            <PropertyRef Name="checkTRANSACTION_INFORMATION" />
+            <PropertyRef Name="checkPLEDGE_INFORMATION" />
+            <PropertyRef Name="checkGUARANTOR_INFORMATION" />
+            <PropertyRef Name="checkNPA_RECORD" />
+            <PropertyRef Name="checkCASHFLOW" />
+            <PropertyRef Name="checkADDITIONAL_DRAWDOWN" />
+            <PropertyRef Name="checkPV_LOSS" />
+          </Key>
+          <Property Type="String" Name="CIF" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="OBLIGOR_INFORMATION" />
+          <Property Type="Int32" Name="FINANCIAL_SUMMARY" />
+          <Property Type="Int32" Name="FACILITY_INFORMATION" />
+          <Property Type="Int32" Name="TRANSACTION_INFORMATION" />
+          <Property Type="Int32" Name="PLEDGE_INFORMATION" />
+          <Property Type="Int32" Name="GUARANTOR_INFORMATION" />
+          <Property Type="Int32" Name="NPA_RECORD" />
+          <Property Type="Int32" Name="CASHFLOW" />
+          <Property Type="Int32" Name="ADDITIONAL_DRAWDOWN" />
+          <Property Type="Int32" Name="PV_LOSS" />
+          <Property Type="Int32" Name="tOBLIGOR_INFORMATION" />
+          <Property Type="Int32" Name="tFINANCIAL_SUMMARY" />
+          <Property Type="Int32" Name="tFACILITY_INFORMATION" />
+          <Property Type="Int32" Name="tTRANSACTION_INFORMATION" />
+          <Property Type="Int32" Name="tPLEDGE_INFORMATION" />
+          <Property Type="Int32" Name="tGUARANTOR_INFORMATION" />
+          <Property Type="Int32" Name="tNPA_RECORD" />
+          <Property Type="Int32" Name="tCASHFLOW" />
+          <Property Type="Int32" Name="tADDITIONAL_DRAWDOWN" />
+          <Property Type="Int32" Name="tPV_LOSS" />
+          <Property Type="Boolean" Name="checkOBLIGOR_INFORMATION" Nullable="false" />
+          <Property Type="Boolean" Name="checkFINANCIAL_SUMMARY" Nullable="false" />
+          <Property Type="Boolean" Name="checkFACILITY_INFORMATION" Nullable="false" />
+          <Property Type="Boolean" Name="checkTRANSACTION_INFORMATION" Nullable="false" />
+          <Property Type="Boolean" Name="checkPLEDGE_INFORMATION" Nullable="false" />
+          <Property Type="Boolean" Name="checkGUARANTOR_INFORMATION" Nullable="false" />
+          <Property Type="Boolean" Name="checkNPA_RECORD" Nullable="false" />
+          <Property Type="Boolean" Name="checkCASHFLOW" Nullable="false" />
+          <Property Type="Boolean" Name="checkADDITIONAL_DRAWDOWN" Nullable="false" />
+          <Property Type="Boolean" Name="checkPV_LOSS" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OBLIGOR_INFORMATION">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="Default_Date" />
+          </Key>
+          <Property Type="String" Name="CIF" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Account_Officer" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Data_Inputter" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Date_of_Input" />
+          <Property Type="String" Name="Portfolio" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Business_Unit" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Default_Date" Nullable="false" />
+          <Property Type="DateTime" Name="Upgrade_Date" />
+          <Property Type="DateTime" Name="C1_Year_Before_Default_Date" />
+          <Property Type="String" Name="Industry_Code" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Bank_Group_Key" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Last_Review_Date" />
+          <Property Type="Boolean" Name="Previous_Default_Flag" Nullable="false" />
+          <Property Type="DateTime" Name="Previous_Default_Date" />
+          <Property Type="String" Name="Default_Type" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Business_Reason_for_Default" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Banking_Relationship_Start_Date" />
+          <Property Type="String" Name="Legal_Entity_Type" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Province_of_Incorporation" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Date_of_Incorporation" />
+          <Property Type="Boolean" Name="Listed_Status" Nullable="false" />
+          <Property Type="String" Name="Internal_Rating___D_1" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Rating_Date" />
+          <Property Type="Boolean" Name="Emergence_from_Default" Nullable="false" />
+          <Property Type="String" Name="Nature_of_Emergence" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Emergence_Date" />
+          <Property Type="Boolean" Name="Negative_Pledge" Nullable="false" />
+          <Property Type="Decimal" Name="AgingMax" Precision="18" Scale="2" />
+          <Property Type="String" Name="UPDATE_USER" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
+        </EntityType>
+        <EntityType Name="Group_CIF">
+          <Key>
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Type="String" Name="CIF" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Group_CIF1" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1054,6 +1218,8 @@
           <EntitySetMapping Name="ADDITIONAL_DRAWDOWN">
             <EntityTypeMapping TypeName="LGDModel.ADDITIONAL_DRAWDOWN">
               <MappingFragment StoreEntitySet="ADDITIONAL DRAWDOWN">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="BRAN" ColumnName="BRAN" />
@@ -1079,31 +1245,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CASHFLOW">
-            <EntityTypeMapping TypeName="LGDModel.CASHFLOW">
-              <MappingFragment StoreEntitySet="CASHFLOW">
-                <ScalarProperty Name="CIF" ColumnName="CIF" />
-                <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
-                <ScalarProperty Name="LIMITNO" ColumnName="LIMITNO" />
-                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
-                <ScalarProperty Name="Cashflow_Currency_Code" ColumnName="Cashflow Currency Code" />
-                <ScalarProperty Name="Date_of_Cashflow" ColumnName="Date of Cashflow" />
-                <ScalarProperty Name="Cashflow_Amount__PAY_PRIN" ColumnName="Cashflow Amount: PAY_PRIN" />
-                <ScalarProperty Name="Cashflow_Amount__PAY_INT" ColumnName="Cashflow Amount: PAY_INT" />
-                <ScalarProperty Name="Cashflow_Amount__PAY_SUSP" ColumnName="Cashflow Amount: PAY_SUSP" />
-                <ScalarProperty Name="Cash_Flow_Source_Description_1" ColumnName="Cash Flow Source Description 1" />
-                <ScalarProperty Name="Cash_Flow_Source_Description_2" ColumnName="Cash Flow Source Description 2" />
-                <ScalarProperty Name="Cash_Flow_Source_Description_3" ColumnName="Cash Flow Source Description 3" />
-                <ScalarProperty Name="Written_off___Haircut_Amount" ColumnName="Written-off / Haircut Amount" />
-                <ScalarProperty Name="Collateral_ID" ColumnName="Collateral ID" />
-                <ScalarProperty Name="LIMITNO_Changed" ColumnName="LIMITNO Changed" />
-                <ScalarProperty Name="Previous_LIMITNO" ColumnName="Previous LIMITNO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="COLLATERAL_INFORMATION">
             <EntityTypeMapping TypeName="LGDModel.COLLATERAL_INFORMATION">
               <MappingFragment StoreEntitySet="COLLATERAL INFORMATION">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="COLL_ID" ColumnName="COLL_ID" />
                 <ScalarProperty Name="PLED_ID" ColumnName="PLED_ID" />
                 <ScalarProperty Name="PLED_SEQ" ColumnName="PLED_SEQ" />
@@ -1123,27 +1269,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DATA_LOG">
-            <EntityTypeMapping TypeName="LGDModel.DATA_LOG">
-              <MappingFragment StoreEntitySet="DATA LOG">
-                <ScalarProperty Name="CIF" ColumnName="CIF" />
-                <ScalarProperty Name="OBLIGOR_INFORMATION" ColumnName="OBLIGOR INFORMATION" />
-                <ScalarProperty Name="FINANCIAL_SUMMARY" ColumnName="FINANCIAL SUMMARY" />
-                <ScalarProperty Name="FACILITY_INFORMATION" ColumnName="FACILITY INFORMATION" />
-                <ScalarProperty Name="TRANSACTION_INFORMATION" ColumnName="TRANSACTION INFORMATION" />
-                <ScalarProperty Name="PLEDGE_INFORMATION" ColumnName="PLEDGE INFORMATION" />
-                <ScalarProperty Name="GUARANTOR_INFORMATION" ColumnName="GUARANTOR INFORMATION" />
-                <ScalarProperty Name="NPA_RECORD" ColumnName="NPA RECORD" />
-                <ScalarProperty Name="CASHFLOW" ColumnName="CASHFLOW" />
-                <ScalarProperty Name="ADDITIONAL_DRAWDOWN" ColumnName="ADDITIONAL DRAWDOWN" />
-                <ScalarProperty Name="LEGAL_COST" ColumnName="LEGAL COST" />
-                <ScalarProperty Name="PV_LOSS" ColumnName="PV LOSS" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DIRECT_COST">
             <EntityTypeMapping TypeName="LGDModel.DIRECT_COST">
               <MappingFragment StoreEntitySet="DIRECT COST">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="Expense_Month" ColumnName="Expense Month" />
                 <ScalarProperty Name="Expense_Year" ColumnName="Expense Year" />
                 <ScalarProperty Name="GL_code" ColumnName="GL code" />
@@ -1154,6 +1284,11 @@
           <EntitySetMapping Name="FACILITY_INFORMATION">
             <EntityTypeMapping TypeName="LGDModel.FACILITY_INFORMATION">
               <MappingFragment StoreEntitySet="FACILITY INFORMATION">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
+                <ScalarProperty Name="Sharing_Limit_with__CIF_6_" ColumnName="Sharing Limit with (CIF 6)" />
+                <ScalarProperty Name="Sharing_Limit_with__CIF_5_" ColumnName="Sharing Limit with (CIF 5)" />
+                <ScalarProperty Name="Sharing_Limit_with__CIF_4_" ColumnName="Sharing Limit with (CIF 4)" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
@@ -1179,6 +1314,9 @@
           <EntitySetMapping Name="FINANCIAL_SUMMARY">
             <EntityTypeMapping TypeName="LGDModel.FINANCIAL_SUMMARY">
               <MappingFragment StoreEntitySet="FINANCIAL SUMMARY">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
+                <ScalarProperty Name="DATA_NOT_AVAILABLE" ColumnName="DATA_NOT_AVAILABLE" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="Financial_Data_Date" ColumnName="Financial Data Date" />
@@ -1189,17 +1327,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Group_CIF">
-            <EntityTypeMapping TypeName="LGDModel.Group_CIF">
-              <MappingFragment StoreEntitySet="Group_CIF">
-                <ScalarProperty Name="CIF" ColumnName="CIF" />
-                <ScalarProperty Name="Group_CIF1" ColumnName="Group_CIF" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GUARANTOR_INFORMATION">
             <EntityTypeMapping TypeName="LGDModel.GUARANTOR_INFORMATION">
               <MappingFragment StoreEntitySet="GUARANTOR INFORMATION">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="PLED_ID" ColumnName="PLED_ID" />
@@ -1299,6 +1431,8 @@
           <EntitySetMapping Name="LIMIT_STRUCTURE">
             <EntityTypeMapping TypeName="LGDModel.LIMIT_STRUCTURE">
               <MappingFragment StoreEntitySet="LIMIT STRUCTURE">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
@@ -1337,6 +1471,8 @@
           <EntitySetMapping Name="NPA_EXPENSE">
             <EntityTypeMapping TypeName="LGDModel.NPA_EXPENSE">
               <MappingFragment StoreEntitySet="NPA EXPENSE">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="Expense_Year" ColumnName="Expense Year" />
                 <ScalarProperty Name="Appraised_Value___Beginning_of_Year" ColumnName="Appraised Value @ Beginning of Year" />
                 <ScalarProperty Name="Cost_Value___Beginning_of_Year" ColumnName="Cost Value @ Beginning of Year" />
@@ -1347,6 +1483,8 @@
           <EntitySetMapping Name="NPA_RECORD">
             <EntityTypeMapping TypeName="LGDModel.NPA_RECORD">
               <MappingFragment StoreEntitySet="NPA RECORD">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="NPA__Collateral_ID" ColumnName="NPA: Collateral ID" />
@@ -1363,41 +1501,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OBLIGOR_INFORMATION">
-            <EntityTypeMapping TypeName="LGDModel.OBLIGOR_INFORMATION">
-              <MappingFragment StoreEntitySet="OBLIGOR INFORMATION">
-                <ScalarProperty Name="CIF" ColumnName="CIF" />
-                <ScalarProperty Name="Account_Officer" ColumnName="Account Officer" />
-                <ScalarProperty Name="Data_Inputter" ColumnName="Data Inputter" />
-                <ScalarProperty Name="Date_of_Input" ColumnName="Date of Input" />
-                <ScalarProperty Name="Portfolio" ColumnName="Portfolio" />
-                <ScalarProperty Name="Business_Unit" ColumnName="Business Unit" />
-                <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
-                <ScalarProperty Name="C1_Year_Before_Default_Date" ColumnName="1 Year Before Default Date" />
-                <ScalarProperty Name="Industry_Code" ColumnName="Industry Code" />
-                <ScalarProperty Name="Bank_Group_Key" ColumnName="Bank Group Key" />
-                <ScalarProperty Name="Last_Review_Date" ColumnName="Last Review Date" />
-                <ScalarProperty Name="Previous_Default_Flag" ColumnName="Previous Default Flag" />
-                <ScalarProperty Name="Previous_Default_Date" ColumnName="Previous Default Date" />
-                <ScalarProperty Name="Default_Type" ColumnName="Default Type" />
-                <ScalarProperty Name="Business_Reason_for_Default" ColumnName="Business Reason for Default" />
-                <ScalarProperty Name="Banking_Relationship_Start_Date" ColumnName="Banking Relationship Start Date" />
-                <ScalarProperty Name="Legal_Enity_Type" ColumnName="Legal Enity Type" />
-                <ScalarProperty Name="Province_of_Incorporation" ColumnName="Province of Incorporation" />
-                <ScalarProperty Name="Date_of_Incorporation" ColumnName="Date of Incorporation" />
-                <ScalarProperty Name="Listed_Status" ColumnName="Listed Status" />
-                <ScalarProperty Name="Internal_Rating___D_1" ColumnName="Internal Rating @ D-1" />
-                <ScalarProperty Name="Rating_Date" ColumnName="Rating Date" />
-                <ScalarProperty Name="Emergence_from_Default" ColumnName="Emergence from Default" />
-                <ScalarProperty Name="Nature_of_Emergence" ColumnName="Nature of Emergence" />
-                <ScalarProperty Name="Emergence_Date" ColumnName="Emergence Date" />
-                <ScalarProperty Name="Negative_Pledge" ColumnName="Negative Pledge" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PLEDGE_INFORMATION">
             <EntityTypeMapping TypeName="LGDModel.PLEDGE_INFORMATION">
               <MappingFragment StoreEntitySet="PLEDGE INFORMATION">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="APPS_ID" ColumnName="APPS_ID" />
@@ -1422,6 +1530,8 @@
           <EntitySetMapping Name="PV_LOSS">
             <EntityTypeMapping TypeName="LGDModel.PV_LOSS">
               <MappingFragment StoreEntitySet="PV LOSS">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="Date_of_Restructure" ColumnName="Date of Restructure" />
@@ -1433,6 +1543,8 @@
           <EntitySetMapping Name="RESTRUCTURE_INFORMATION">
             <EntityTypeMapping TypeName="LGDModel.RESTRUCTURE_INFORMATION">
               <MappingFragment StoreEntitySet="RESTRUCTURE INFORMATION">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="Date_of_Restructure" ColumnName="Date of Restructure" />
@@ -1447,6 +1559,8 @@
           <EntitySetMapping Name="TRANSACTION_INFORMATION">
             <EntityTypeMapping TypeName="LGDModel.TRANSACTION_INFORMATION">
               <MappingFragment StoreEntitySet="TRANSACTION INFORMATION">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
                 <ScalarProperty Name="CIF" ColumnName="CIF" />
                 <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
                 <ScalarProperty Name="BRAN" ColumnName="BRAN" />
@@ -1507,6 +1621,111 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CASHFLOW">
+            <EntityTypeMapping TypeName="LGDModel.CASHFLOW">
+              <MappingFragment StoreEntitySet="CASHFLOW">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
+                <ScalarProperty Name="Previous_LIMITNO" ColumnName="Previous LIMITNO" />
+                <ScalarProperty Name="LIMITNO_Changed" ColumnName="LIMITNO Changed" />
+                <ScalarProperty Name="Collateral_ID___Pledge_ID" ColumnName="Collateral ID / Pledge ID" />
+                <ScalarProperty Name="Written_off___Haircut_Amount" ColumnName="Written-off / Haircut Amount" />
+                <ScalarProperty Name="Cash_Flow_Source_Description_3" ColumnName="Cash Flow Source Description 3" />
+                <ScalarProperty Name="Cash_Flow_Source_Description_2" ColumnName="Cash Flow Source Description 2" />
+                <ScalarProperty Name="Cash_Flow_Source_Description_1" ColumnName="Cash Flow Source Description 1" />
+                <ScalarProperty Name="Cashflow_Amount__PAY_SUSP" ColumnName="Cashflow Amount: PAY_SUSP" />
+                <ScalarProperty Name="Cashflow_Amount__PAY_INT" ColumnName="Cashflow Amount: PAY_INT" />
+                <ScalarProperty Name="Cashflow_Amount__PAY_PRIN" ColumnName="Cashflow Amount: PAY_PRIN" />
+                <ScalarProperty Name="Date_of_Cashflow" ColumnName="Date of Cashflow" />
+                <ScalarProperty Name="Cashflow_Currency_Code" ColumnName="Cashflow Currency Code" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="LIMITNO" ColumnName="LIMITNO" />
+                <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_LOG">
+            <EntityTypeMapping TypeName="LGDModel.DATA_LOG">
+              <MappingFragment StoreEntitySet="DATA LOG">
+                <ScalarProperty Name="checkPV_LOSS" ColumnName="checkPV LOSS" />
+                <ScalarProperty Name="checkADDITIONAL_DRAWDOWN" ColumnName="checkADDITIONAL DRAWDOWN" />
+                <ScalarProperty Name="checkCASHFLOW" ColumnName="checkCASHFLOW" />
+                <ScalarProperty Name="checkNPA_RECORD" ColumnName="checkNPA RECORD" />
+                <ScalarProperty Name="checkGUARANTOR_INFORMATION" ColumnName="checkGUARANTOR INFORMATION" />
+                <ScalarProperty Name="checkPLEDGE_INFORMATION" ColumnName="checkPLEDGE INFORMATION" />
+                <ScalarProperty Name="checkTRANSACTION_INFORMATION" ColumnName="checkTRANSACTION INFORMATION" />
+                <ScalarProperty Name="checkFACILITY_INFORMATION" ColumnName="checkFACILITY INFORMATION" />
+                <ScalarProperty Name="checkFINANCIAL_SUMMARY" ColumnName="checkFINANCIAL SUMMARY" />
+                <ScalarProperty Name="checkOBLIGOR_INFORMATION" ColumnName="checkOBLIGOR INFORMATION" />
+                <ScalarProperty Name="tPV_LOSS" ColumnName="tPV LOSS" />
+                <ScalarProperty Name="tADDITIONAL_DRAWDOWN" ColumnName="tADDITIONAL DRAWDOWN" />
+                <ScalarProperty Name="tCASHFLOW" ColumnName="tCASHFLOW" />
+                <ScalarProperty Name="tNPA_RECORD" ColumnName="tNPA RECORD" />
+                <ScalarProperty Name="tGUARANTOR_INFORMATION" ColumnName="tGUARANTOR INFORMATION" />
+                <ScalarProperty Name="tPLEDGE_INFORMATION" ColumnName="tPLEDGE INFORMATION" />
+                <ScalarProperty Name="tTRANSACTION_INFORMATION" ColumnName="tTRANSACTION INFORMATION" />
+                <ScalarProperty Name="tFACILITY_INFORMATION" ColumnName="tFACILITY INFORMATION" />
+                <ScalarProperty Name="tFINANCIAL_SUMMARY" ColumnName="tFINANCIAL SUMMARY" />
+                <ScalarProperty Name="tOBLIGOR_INFORMATION" ColumnName="tOBLIGOR INFORMATION" />
+                <ScalarProperty Name="PV_LOSS" ColumnName="PV LOSS" />
+                <ScalarProperty Name="ADDITIONAL_DRAWDOWN" ColumnName="ADDITIONAL DRAWDOWN" />
+                <ScalarProperty Name="CASHFLOW" ColumnName="CASHFLOW" />
+                <ScalarProperty Name="NPA_RECORD" ColumnName="NPA RECORD" />
+                <ScalarProperty Name="GUARANTOR_INFORMATION" ColumnName="GUARANTOR INFORMATION" />
+                <ScalarProperty Name="PLEDGE_INFORMATION" ColumnName="PLEDGE INFORMATION" />
+                <ScalarProperty Name="TRANSACTION_INFORMATION" ColumnName="TRANSACTION INFORMATION" />
+                <ScalarProperty Name="FACILITY_INFORMATION" ColumnName="FACILITY INFORMATION" />
+                <ScalarProperty Name="FINANCIAL_SUMMARY" ColumnName="FINANCIAL SUMMARY" />
+                <ScalarProperty Name="OBLIGOR_INFORMATION" ColumnName="OBLIGOR INFORMATION" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OBLIGOR_INFORMATION">
+            <EntityTypeMapping TypeName="LGDModel.OBLIGOR_INFORMATION">
+              <MappingFragment StoreEntitySet="OBLIGOR INFORMATION">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="UPDATE_USER" ColumnName="UPDATE_USER" />
+                <ScalarProperty Name="AgingMax" ColumnName="AgingMax" />
+                <ScalarProperty Name="Negative_Pledge" ColumnName="Negative Pledge" />
+                <ScalarProperty Name="Emergence_Date" ColumnName="Emergence Date" />
+                <ScalarProperty Name="Nature_of_Emergence" ColumnName="Nature of Emergence" />
+                <ScalarProperty Name="Emergence_from_Default" ColumnName="Emergence from Default" />
+                <ScalarProperty Name="Rating_Date" ColumnName="Rating Date" />
+                <ScalarProperty Name="Internal_Rating___D_1" ColumnName="Internal Rating @ D-1" />
+                <ScalarProperty Name="Listed_Status" ColumnName="Listed Status" />
+                <ScalarProperty Name="Date_of_Incorporation" ColumnName="Date of Incorporation" />
+                <ScalarProperty Name="Province_of_Incorporation" ColumnName="Province of Incorporation" />
+                <ScalarProperty Name="Legal_Entity_Type" ColumnName="Legal Entity Type" />
+                <ScalarProperty Name="Banking_Relationship_Start_Date" ColumnName="Banking Relationship Start Date" />
+                <ScalarProperty Name="Business_Reason_for_Default" ColumnName="Business Reason for Default" />
+                <ScalarProperty Name="Default_Type" ColumnName="Default Type" />
+                <ScalarProperty Name="Previous_Default_Date" ColumnName="Previous Default Date" />
+                <ScalarProperty Name="Previous_Default_Flag" ColumnName="Previous Default Flag" />
+                <ScalarProperty Name="Last_Review_Date" ColumnName="Last Review Date" />
+                <ScalarProperty Name="Bank_Group_Key" ColumnName="Bank Group Key" />
+                <ScalarProperty Name="Industry_Code" ColumnName="Industry Code" />
+                <ScalarProperty Name="C1_Year_Before_Default_Date" ColumnName="1 Year Before Default Date" />
+                <ScalarProperty Name="Upgrade_Date" ColumnName="Upgrade Date" />
+                <ScalarProperty Name="Default_Date" ColumnName="Default Date" />
+                <ScalarProperty Name="Business_Unit" ColumnName="Business Unit" />
+                <ScalarProperty Name="Portfolio" ColumnName="Portfolio" />
+                <ScalarProperty Name="Date_of_Input" ColumnName="Date of Input" />
+                <ScalarProperty Name="Data_Inputter" ColumnName="Data Inputter" />
+                <ScalarProperty Name="Account_Officer" ColumnName="Account Officer" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_CIF">
+            <EntityTypeMapping TypeName="LGDModel.Group_CIF">
+              <MappingFragment StoreEntitySet="Group_CIF">
+                <ScalarProperty Name="Group_CIF1" ColumnName="Group_CIF" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1527,15 +1746,12 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="LGDModel" ZoomLevel="81">
+      <Diagram Name="LGDModel" ZoomLevel="73">
         <EntityTypeShape EntityType="LGDModel.ADDITIONAL_DRAWDOWN" Width="1.5" PointX="0.75" PointY="0.75" Height="4.61342440466086" IsExpanded="true" />
-        <EntityTypeShape EntityType="LGDModel.CASHFLOW" Width="1.5" PointX="2.75" PointY="0.75" Height="3.6122525475422531" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.COLLATERAL_INFORMATION" Width="1.5" PointX="4.75" PointY="0.75" Height="3.6122525475422531" IsExpanded="true" />
-        <EntityTypeShape EntityType="LGDModel.DATA_LOG" Width="1.5" PointX="2.75" PointY="5.75" Height="2.944804642796516" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.DIRECT_COST" Width="1.5" PointX="4.75" PointY="5.75" Height="1.6099088333050418" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.FACILITY_INFORMATION" Width="1.5" PointX="6.75" PointY="0.75" Height="4.1128384761015573" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.FINANCIAL_SUMMARY" Width="1.5" PointX="6.75" PointY="5.75" Height="2.110494761864345" IsExpanded="true" />
-        <EntityTypeShape EntityType="LGDModel.Group_CIF" Width="1.5" PointX="8.75" PointY="0.75" Height="1.2761848809321705" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.GUARANTOR_INFORMATION" Width="1.5" PointX="8.75" PointY="3.75" Height="2.7779426666100804" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.L_APP_ID" Width="1.5" PointX="4.75" PointY="8.75" Height="1.1093229047457385" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.L_BUILDING_TYPE" Width="1.5" PointX="6.75" PointY="8.75" Height="1.4430468571186097" IsExpanded="true" />
@@ -1550,13 +1766,16 @@
         <EntityTypeShape EntityType="LGDModel.List_of_Default" Width="1.5" PointX="4.75" PointY="11.75" Height="2.2773567380507842" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.NPA_EXPENSE" Width="1.5" PointX="12.75" PointY="0.75" Height="1.6099088333050418" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.NPA_RECORD" Width="1.5" PointX="12.75" PointY="3.75" Height="3.1116666189829516" IsExpanded="true" />
-        <EntityTypeShape EntityType="LGDModel.OBLIGOR_INFORMATION" Width="1.5" PointX="12.75" PointY="7.75" Height="5.28087230940659" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.PLEDGE_INFORMATION" Width="1.5" PointX="0.75" PointY="13.75" Height="3.9459764999151332" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.PV_LOSS" Width="1.5" PointX="6.75" PointY="13.75" Height="1.7767708094914667" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.RESTRUCTURE_INFORMATION" Width="1.5" PointX="14.75" PointY="0.75" Height="2.27735673805077" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.TRANSACTION_INFORMATION" Width="1.5" PointX="14.75" PointY="4.75" Height="4.4465624284744365" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.USER_DATA" Width="1.5" PointX="8.75" PointY="14.75" Height="4.1128384761015582" IsExpanded="true" />
         <EntityTypeShape EntityType="LGDModel.FORM_NAME" Width="1.5" PointX="14.75" PointY="10.75" Height="1.7767708094914667" IsExpanded="true" />
+        <EntityTypeShape EntityType="LGDModel.CASHFLOW" Width="1.5" PointX="13.375" PointY="13.75" Height="3.9459764999151332" />
+        <EntityTypeShape EntityType="LGDModel.DATA_LOG" Width="1.5" PointX="3.375" PointY="15.75" Height="6.1151821903387713" />
+        <EntityTypeShape EntityType="LGDModel.OBLIGOR_INFORMATION" Width="1.5" PointX="15.375" PointY="13.75" Height="5.9483202141523464" />
+        <EntityTypeShape EntityType="LGDModel.Group_CIF" Width="1.5" PointX="0.75" PointY="6.75" Height="1.2761848809321634" />
       </Diagram>
     </Diagrams>
   </Designer>
