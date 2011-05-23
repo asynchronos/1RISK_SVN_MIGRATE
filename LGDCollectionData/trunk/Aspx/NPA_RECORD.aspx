@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="NPA_RECORD.aspx.cs" Inherits="LGDCollectionData.Aspx.NPA_RECORD_NEW"
-    UICulture="th-TH" Culture="th-TH" %>
+    CodeBehind="NPA_RECORD.aspx.cs" Inherits="LGDCollectionData.Aspx.NPA_RECORD_NEW" Culture="en-US" UICulture="en-US" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="../UserControls/SelectFormWebUserControl.ascx" TagName="SelectFormWebUserControl"
@@ -28,7 +27,7 @@
         <asp:Label ID="FormName_Label" runat="server" Text="NPA RECORD"></asp:Label>
     </h2>
     <asp:SqlDataSource ID="SqlDataSourceNPA_RECORD" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        InsertCommand="NPA_EXPENSE_INSERT" InsertCommandType="StoredProcedure" SelectCommand="NPA_RECORD_SELECT"
+        InsertCommand="NPA_RECORD_INSERT" InsertCommandType="StoredProcedure" SelectCommand="NPA_RECORD_SELECT"
         SelectCommandType="StoredProcedure" UpdateCommand="NPA_RECORD_UPDATE" UpdateCommandType="StoredProcedure"
         OnUpdated="SqlDataSource1_Updated">
         <InsertParameters>
@@ -146,7 +145,9 @@
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Collateral_Sale_Price_Currency") %>'></asp:TextBox>
+                    <asp:DropDownList ID="DropDownListCurrency_Insert" runat="server" DataSourceID="SqlDataSourceCurrentcy"
+                        DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Collateral_Sale_Price_Currency")%>'>
+                    </asp:DropDownList>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -177,6 +178,9 @@
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Collateral_Sale_Date") %>'></asp:TextBox>
+                                        <asp:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Enabled="True"
+                        TargetControlID="TextBox6">
+                    </asp:CalendarExtender>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -187,16 +191,16 @@
                 SortExpression="Collateral_Description">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox8" runat="server" 
-                        Text='<%# Bind("[Collateral Description]") %>'></asp:TextBox>
+                        Text='<%# Bind("Collateral_Description") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox7" runat="server" 
-                        Text='<%# Bind("[Collateral Description]") %>'></asp:TextBox>
+                        Text='<%# Bind("Collateral_Description") %>'></asp:TextBox>
                         <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label15" runat="server" 
-                        Text='<%# Bind("[Collateral Description]") %>'></asp:Label>
+                        Text='<%# Bind("Collateral_Description") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="District of Property" SortExpression="District_of_Property">
@@ -234,7 +238,9 @@
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Province_of_Property") %>'></asp:TextBox>
+                    <asp:DropDownList ID="DropDownListProvince" runat="server" DataSourceID="SqlDataSourcePROVINCE"
+                        DataTextField="Prov_Thai" DataValueField="Prov_Thai" SelectedValue='<%# Bind("Province_of_Property") %>'>
+                    </asp:DropDownList>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>

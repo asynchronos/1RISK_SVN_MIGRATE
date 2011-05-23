@@ -294,7 +294,7 @@
                                 <asp:Label ID="Label12" runat="server" Text='<%# Bind("Prior_Claim_Amount") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Pledge Amount @ D-1" SortExpression="Pledge_Amount_D">
+                        <asp:TemplateField HeaderText="Pledge Amount @ D" SortExpression="Pledge_Amount_D">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:n2}") %>'
                                     Width="150px" Style="text-align: right"></asp:TextBox>
