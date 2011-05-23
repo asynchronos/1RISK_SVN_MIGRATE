@@ -79,7 +79,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total Assets(in thousand)" SortExpression="Total_Assets">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Total_Assets") %>' style="text-align:right;"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Total_Assets","{0:n2}") %>' style="text-align:right;"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please input Total Assets" Text="*" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>--%>
                     <span>*</span>
                 </EditItemTemplate>
@@ -92,7 +92,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total Liabilities(in thousand)" SortExpression="Total_Liabilities">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Total_Liabilities") %>' style="text-align:right;"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Total_Liabilities","{0:n2}") %>' style="text-align:right;"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input Total Liabilities" Text="*" ControlToValidate="TextBox3" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>--%>
                     <span>*</span>
                 </EditItemTemplate>
@@ -106,7 +106,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total Revenue(in thousand)" SortExpression="Total_Revenue">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Total_Revenue") %>' style="text-align:right;"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Total_Revenue","{0:n2}") %>' style="text-align:right;"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input Total Revenue" Text="*" ControlToValidate="TextBox4" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>--%>
                     <span>*</span>
                 </EditItemTemplate>
