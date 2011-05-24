@@ -41,7 +41,7 @@
 
     <script type="text/javascript">
         function returnNum(event,sender) {
-            sender.value = (new MyNumber(sender.value)).toCurrency();
+            sender.value = (new MyNumber(sender.value)).toCurrency(2);
         }
 
         function onUpdating() {

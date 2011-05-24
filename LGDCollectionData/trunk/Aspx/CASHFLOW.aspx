@@ -10,6 +10,7 @@
     <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
 
     <script type="text/javascript">
         Ext.onReady(function () {
@@ -17,7 +18,7 @@
             Ext.select("input[type=text]").set({ "maxlength": "255" });
 
             //format IsNumeric Element onblur event
-            var numericElements = Ext.select("input[IsNumeric=Yes]");
+            var numericElements = Ext.select("input[type=text][IsNumeric=Yes]");
             numericElements.on({
                 "keyup": {
                     fn: function (e, t, o) {
@@ -72,7 +73,7 @@
                 },
                 "blur": {
                     fn: function (e, t, o) {
-                        t.value = (new MyNumber(t.value)).toCurrency();
+                        t.value = (new MyNumber(t.value)).toCurrency(2);
                     }
                 }
             });
@@ -442,8 +443,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMITNO Changed" SortExpression="LIMITNOChanged">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>' domId="LIMITNOChanged_CheckBox"/>
-                    <span style="color:Red">*</span>
+                    <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>' domId="LIMITNOChanged_CheckBox" Enabled="false"/>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>' />
@@ -471,6 +471,28 @@
                     <asp:Label ID="PreviousLIMITNO_Label" runat="server" Text='<%# Bind("PreviousLIMITNO") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
+                        <EditItemTemplate>
+                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
+                        <EditItemTemplate>
+                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

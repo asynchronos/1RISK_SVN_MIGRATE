@@ -23,7 +23,7 @@
 
 
             //format IsNumeric Element onblur event
-            var numericElements = Ext.select("input[IsNumeric=Yes]");
+            var numericElements = Ext.select("input[type=text][IsNumeric=Yes]");
             numericElements.on({
                 "keyup": {
                     fn: function (e, t, o) {
@@ -78,7 +78,7 @@
                 },
                 "blur": {
                     fn: function (e, t, o) {
-                        t.value = (new MyNumber(t.value)).toCurrency();
+                        t.value = (new MyNumber(t.value)).toCurrency(2);
                     }
                 }
             });

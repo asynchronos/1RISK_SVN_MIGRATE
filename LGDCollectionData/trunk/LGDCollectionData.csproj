@@ -4595,6 +4595,7 @@
     <Content Include="ExtJS\welcome\images\social_sprite.gif" />
     <Content Include="ExtJS\welcome\images\social_sprite.png" />
     <Content Include="favicon.ico" />
+    <Content Include="Images\3MA_loadingcontent.gif" />
     <Content Include="Images\logo.jpg" />
     <Content Include="Images\uploading.gif" />
     <Content Include="Library\AjaxControlToolkit.dll" />
