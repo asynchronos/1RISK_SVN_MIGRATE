@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SelectFormWebUserControl.ascx.cs"
     Inherits="LGDCollectionData.UserControls.SelectFormWebUserControl" %>
-<div id="LinkDiv" runat="server" style="float: right; white-space: nowrap; display: inline;">
+<div id="LinkDiv" runat="server" style="float: right; white-space: nowrap; display: inline;text-align:right;">
     <%--CIF :
     <asp:ComboBox ID="CIF_ComboBox" runat="server" AutoCompleteMode="SuggestAppend" DataSourceID="CIFList_SqlDataSource"
         DataTextField="CIF" DataValueField="CIF" MaxLength="0" Style="display: inline;"

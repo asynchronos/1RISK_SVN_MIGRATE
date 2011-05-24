@@ -388,7 +388,7 @@ function formatCurrency(strValue) {
 function formatCurrencyOnkeyup(sender, e) {
     //alert("keyup");
     try {
-        var keyNum = MyTextBox_eventKeyCode(e);
+        var keyNum = eventKeyCode(e);
 
         if (keyNum == 109) return;
         if (sender.value.length == 0) return;

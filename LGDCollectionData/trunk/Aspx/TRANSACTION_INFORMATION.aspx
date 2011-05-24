@@ -9,11 +9,81 @@
     <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
 
     <script type="text/javascript">
         Ext.onReady(function () {
             Ext.select("input[type=text]").setWidth("200px");
             Ext.select("input[type=text]").set({ "maxlength": "255" });
+
+            //check percentage digit
+            //var percentageElements = Ext.select("input[IsPercentage=Yes]");
+            //percentageElements.set({ maxLength: 3 });
+            //end check percentage digit
+
+
+            //format IsNumeric Element onblur event
+            var numericElements = Ext.select("input[IsNumeric=Yes]");
+            numericElements.on({
+                "keyup": {
+                    fn: function (e, t, o) {
+                        try {
+                            var keyNum = eventKeyCode(e);
+
+                            if (keyNum == 109) return;
+                            if (t.value.length == 0) return;
+                            if (keyNum <= 40 && keyNum != 8) return;
+
+                            var valueArray = t.value.split(".");
+                            var intValueStrArray = valueArray[0].split(",");
+                            var intValueStr = "";
+
+                            for (var i = 0; i < intValueStrArray.length; i++) {
+                                intValueStr += intValueStrArray[i];
+                            }
+
+                            intValueStr = String(Number(intValueStr));
+
+                            var result = "";
+                            var splitCount = 0;
+                            var isMinus = (Number(intValueStr) < 0) ? true : false;
+                            var absoluteValue = intValueStr.replace("-", "");
+
+                            for (var i = (absoluteValue.length - 1); i >= 0; i--) {
+                                if (splitCount == 3) {
+                                    result = "," + result
+                                    splitCount = 0;
+                                    i++;
+                                    continue;
+                                }
+
+                                result = absoluteValue.charAt(i) + result;
+                                splitCount++;
+                            }
+
+                            if (valueArray.length > 1) {
+                                result = result + "." + valueArray[1];
+                            }
+
+                            if (isMinus) {
+                                result = "-" + result;
+                            }
+
+                            t.value = result;
+
+                        } catch (err) {
+                            alert("error : " + err);
+                        }
+                    }
+                },
+                "blur": {
+                    fn: function (e, t, o) {
+                        t.value = (new MyNumber(t.value)).toCurrency();
+                    }
+                }
+            });
+            //end format IsNumeric Element onblur event
+            numericElements.applyStyles({ "text-align": "right" });
         });
     </script>
 </asp:Content>
@@ -26,12 +96,12 @@
         CellPadding="4" DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO"
         DataSourceID="TRANSACTION_INFORMATION_SqlDataSource" EnableModelValidation="True"
         ForeColor="#333333" AllowPaging="True" DefaultMode="Edit" OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnItemUpdating="DetailsView_ItemUpdating">
+        OnItemUpdating="DetailsView_ItemUpdating" Width="800px">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
         <Fields>
-            <asp:TemplateField HeaderText="CIF" SortExpression="CIF" HeaderStyle-Width="30%">
+            <asp:TemplateField HeaderText="CIF" SortExpression="CIF" HeaderStyle-Width="35%">
                 <EditItemTemplate>
                     <asp:Label ID="CIF_Label" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
                 </EditItemTemplate>
@@ -113,7 +183,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMITNO" SortExpression="LIMITNO">
                 <EditItemTemplate>
-                    <asp:TextBox ID="LIMITNO_TextBox" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:TextBox>
+                    <asp:Label ID="LIMITNO_Label" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="LIMITNO_TextBox" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:TextBox>
@@ -160,7 +230,6 @@
             <asp:TemplateField HeaderText="LNSTYPE" SortExpression="LNSTYPE">
                 <EditItemTemplate>
                     <asp:TextBox ID="LNSTYPE_TextBox" runat="server" Text='<%# Bind("LNSTYPE") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="LNSTYPE_TextBox" runat="server" Text='<%# Bind("LNSTYPE") %>'></asp:TextBox>
@@ -169,19 +238,21 @@
                     <asp:Label ID="LNSTYPE_Label" runat="server" Text='<%# Bind("LNSTYPE") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Total Interest Rate Prior to Default" 
+            <asp:TemplateField HeaderText="Total Interest Rate Prior to Default(%)" 
                 SortExpression="Total_Interest_Rate_Prior_to_Default">
                 <EditItemTemplate>
                     <asp:TextBox ID="Total_Interest_Rate_Prior_to_Default_TextBox" runat="server" 
-                        Text='<%# Eval("Total_Interest_Rate_Prior_to_Default", "{0:P}") %>'></asp:TextBox>
+                        Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.##}") %>'
+                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Total_Interest_Rate_Prior_to_Default_TextBox" runat="server" 
-                        Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:P}") %>'></asp:TextBox>
+                        Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.##}") %>'
+                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Total_Interest_Rate_Prior_to_Default_Label" runat="server" 
-                        Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:P}") %>'></asp:Label>
+                        Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.##}") %>'></asp:Label>%
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Interest Rate Index Prior to Default" 
@@ -204,15 +275,17 @@
                 SortExpression="Interest_Rate_Spread_Prior_to_Default_Percentage">
                 <EditItemTemplate>
                     <asp:TextBox ID="Interest_Rate_Spread_Prior_to_Default_Percentage_TextBox" runat="server" 
-                        Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:P}") %>'></asp:TextBox>
+                        Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:#,##0.##}") %>'
+                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Interest_Rate_Spread_Prior_to_Default_Percentage_TextBox" runat="server" 
-                        Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:P}") %>'></asp:TextBox>
+                        Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:#,##0.##}") %>'
+                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Interest_Rate_Spread_Prior_to_Default_Percentage_Label" runat="server" 
-                        Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:P}") %>'></asp:Label>
+                        Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:#,##0.##}") %>'></asp:Label>%
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Rate Sign" SortExpression="Rate_Sign">
@@ -233,41 +306,47 @@
                 SortExpression="OS_AT_D_Principal">
                 <EditItemTemplate>
                     <asp:TextBox ID="OS_AT_D_Principal_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.##}") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
+                        Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="OS_AT_D_Principal_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.##}") %>'></asp:TextBox>
+                        Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="OS_AT_D_Principal_Label" runat="server" Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="OS_AT_D_Principal_Label" runat="server"
+                        Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.##}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="OS @ D: Accrued" 
                 SortExpression="OS_AT_D_Accrued">
                 <EditItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_Accrued_TextBox" runat="server" Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.##}") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
+                    <asp:TextBox ID="OS_AT_D_Accrued_TextBox" runat="server"
+                        Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="OS_AT_D_Accrued_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.##}") %>'></asp:TextBox>
+                        Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="OS_AT_D_Accrued_Label" runat="server" Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="OS_AT_D_Accrued_Label" runat="server"
+                        Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.##}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="OS @ D: Suspense" 
                 SortExpression="OS_AT_D_Suspense">
                 <EditItemTemplate>
                     <asp:TextBox ID="OS_AT_D_Suspense_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.##}") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
+                        Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="OS_AT_D_Suspense_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.##}") %>'></asp:TextBox>
+                        Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="OS_AT_D_Suspense_Label" runat="server" Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.##}") %>'></asp:Label>
@@ -277,12 +356,13 @@
                 SortExpression="OS_AT_D_MINUS_1_Principal">
                 <EditItemTemplate>
                     <asp:TextBox ID="OS_AT_D_MINUS_1_Principal_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.##}") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
+                        Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="OS_AT_D_MINUS_1_Principal_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.##}") %>'></asp:TextBox>
+                        Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="OS_AT_D_MINUS_1_Principal_Label" runat="server" 
@@ -293,12 +373,13 @@
                 SortExpression="OS_AT_D_MINUS_1_Accrued">
                 <EditItemTemplate>
                     <asp:TextBox ID="OS_AT_D_MINUS_1_Accrued_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.##}") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
+                        Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="OS_AT_D_MINUS_1_Accrued_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.##}") %>'></asp:TextBox>
+                        Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="OS_AT_D_MINUS_1_Accrued_Label" runat="server" 
@@ -309,18 +390,41 @@
                 SortExpression="OS_AT_D_MINUS_1_Suspense">
                 <EditItemTemplate>
                     <asp:TextBox ID="OS_AT_D_MINUS_1_Suspense_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.##}") %>'></asp:TextBox>
-                    <span style="color:Red">*</span>
+                        Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="OS_AT_D_MINUS_1_Suspense_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.##}") %>'></asp:TextBox>
+                        Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="OS_AT_D_MINUS_1_Suspense_Label" runat="server" 
                         Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.##}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
+                        <EditItemTemplate>
+                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
+                        <EditItemTemplate>
+                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
