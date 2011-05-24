@@ -35,7 +35,7 @@ namespace LGDCollectionData.Aspx
                     System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
                     if (userId != null) { 
                          userId.Text = User.Identity.Name.ToString();
-                         dateLabel.Text = Convert.ToString(DateTime.Now);
+                         dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
                     }
                 }
             }
