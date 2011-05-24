@@ -40,22 +40,22 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Label FormName_Label;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// Financial_Summary_SqlDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource Financial_Summary_SqlDataSource;
         
         /// <summary>
-        /// DetailsView1 control.
+        /// Financial_Summary_DetailsView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
+        protected global::System.Web.UI.WebControls.DetailsView Financial_Summary_DetailsView;
         
         /// <summary>
         /// ValidationSummary1 control.

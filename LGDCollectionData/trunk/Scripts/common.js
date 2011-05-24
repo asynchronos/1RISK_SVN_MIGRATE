@@ -542,42 +542,52 @@ var MyNumber = function(numInput) {
 };
 
 MyNumber.prototype = {
-    addition: function(myNumberObj) {
+    addition: function (myNumberObj) {
         var operand1 = this.getValue();
         var operand2 = this.toNumber(myNumberObj);
 
         return new MyNumber(this.afterArithmetic(this.prepareArithmetic(operand1) + this.prepareArithmetic(operand2)));
     },
-    subtraction: function(myNumberObj) {
+    subtraction: function (myNumberObj) {
         var operand1 = this.getValue();
         var operand2 = this.toNumber(myNumberObj);
 
         return new MyNumber(this.afterArithmetic(this.prepareArithmetic(operand1) - this.prepareArithmetic(operand2)));
     },
-    multiplication: function(myNumberObj) {
+    multiplication: function (myNumberObj) {
         var operand1 = this.getValue();
         var operand2 = this.toNumber(myNumberObj);
 
         return new MyNumber(operand1 * operand2);
     },
-    division: function(myNumberObj) {
+    division: function (myNumberObj) {
         var operand1 = this.getValue();
         var operand2 = this.toNumber(myNumberObj);
 
         return new MyNumber(operand1 / operand2);
     },
-    modulus: function(myNumberObj) {
+    modulus: function (myNumberObj) {
         var operand1 = this.getValue();
         var operand2 = this.toNumber(myNumberObj);
 
         return new MyNumber(operand1 % operand2);
     },
-    toCurrency: function() {
+    toCurrency: function (precision) {
         var result;
         var leftDot = "0";
-        var rightDot = "00";
+        var rightDot = "";
 
-        var inputStr = this.getValue().toFixed(2);
+        if (precision) {
+            if (typeof (precision) == "number") {
+                for (var i = 0; i < precision; i++) {
+                    rightDot = rightDot + "0";
+                }
+            } else {
+                rightDot = "00";
+            }
+        }
+        
+        var inputStr = this.getValue().toFixed(precision);
         if (inputStr.search(/[.]/) == -1) {
             inputStr = inputStr + "." + rightDot;
         }
@@ -590,7 +600,7 @@ MyNumber.prototype = {
         if (leftDot.length < 1) {
             leftDot = "0";
         }
-        for (var i = rightDot.length; i < 2; i++) {
+        for (var i = rightDot.length; i < precision; i++) {
             rightDot = rightDot + "0";
         }
 
@@ -614,8 +624,13 @@ MyNumber.prototype = {
         if (isMinus) {
             newLeftDot = "-" + newLeftDot;
         }
+        
+        if (rightDot.length > 0) {
+            result = newLeftDot + "." + rightDot;
+        } else {
+            result = newLeftDot;
+        }
 
-        result = newLeftDot + "." + rightDot;
         return result;
     }
 }
