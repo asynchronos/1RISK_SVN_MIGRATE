@@ -115,6 +115,12 @@ namespace LGDCollectionData.Aspx
         {
             ((TextBox)sender).Text = getQueryString("Default_Date");
         }
-      
+
+        protected void GridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            e.NewValues["Update_User"] = User.Identity.Name;
+            e.NewValues["Update_Date"] = DateTime.Now;
+        }
+
     }
 }

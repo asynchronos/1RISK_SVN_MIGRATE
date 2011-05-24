@@ -127,7 +127,6 @@
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBoxOne_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Input One_Level_Up_Limit_ID_D1" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
-                    <span>*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBoxOne_Level_Up_Limit_ID_D1" runat="server" 
@@ -470,6 +469,7 @@
         BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" 
         GridLines="Vertical" AutoGenerateColumns="false"
         DataKeyNames="CIF,Default_Date,LIMITNO" 
+        OnRowUpdating="GridView_RowUpdating"
         >
         <AlternatingRowStyle BackColor="White" />
         <Columns>
