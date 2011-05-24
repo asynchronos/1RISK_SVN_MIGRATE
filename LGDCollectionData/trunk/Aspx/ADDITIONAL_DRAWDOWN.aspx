@@ -4,31 +4,31 @@
 <%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-<asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
-</asp:ToolkitScriptManager>
-  <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
+<!-- Ext includes -->
+    <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
+    <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
 
     <script type="text/javascript">
         Ext.onReady(function () {
-            Ext.DotNetControl.Element.mapElement
+            Ext.select("input[type=text]").setWidth("200px");
+            Ext.select("input[type=text]").set({ "maxlength": "255" });
 
             var CheckBoxLIMITNO_Changed = Ext.DotNetControl.CheckBox.mapElement("domId", "CheckBoxLIMITNO_Changed");
-            var DropDownListPrevious_LIMITNO = Ext.DotNetControl.Element.mapElement("select","domId", "DropDownListPrevious_LIMITNO");
+            var DropDownListPrevious_LIMITNO = Ext.DotNetControl.Element.mapElement("select", "domId", "DropDownListPrevious_LIMITNO");
 
             var CheckBoxIs_This_an_Additional_Drawdown = Ext.DotNetControl.CheckBox.mapElement("domId", "CheckBoxIs_This_an_Additional_Drawdown");
             var ComboBoxAdditional = Ext.DotNetControl.ComboBox.mapElement("domId", "ComboBoxAdditional");
             var ComboBoxOtherReason = Ext.DotNetControl.ComboBox.mapElement("domId", "ComboBoxOtherReason");
-          
+
 
             CheckBoxLIMITNO_Changed.element.on({
                 "click": function (e, t, o) {
                     if (t.checked) {
                         o.targetElement.DropDownListPrevious_LIMITNO.disabled(false);
-                     } else {
+                    } else {
                         o.targetElement.DropDownListPrevious_LIMITNO.disabled(true);
                     }
                 },
@@ -41,19 +41,19 @@
                 DropDownListPrevious_LIMITNO.disabled(false);
             } else {
                 DropDownListPrevious_LIMITNO.disabled(true);
-             }
+            }
             //end init CheckBoxLIMITNO_Changed
 
-            
+
             CheckBoxIs_This_an_Additional_Drawdown.element.on({
                 "click": function (e, t, o) {
                     if (t.checked) {
-                        o.targetElement.ComboBoxAdditional.disabled(false);   
+                        o.targetElement.ComboBoxAdditional.disabled(false);
                         o.targetElement.ComboBoxOtherReason.disabled(true);
                     } else {
                         o.targetElement.ComboBoxAdditional.disabled(true);
                         o.targetElement.ComboBoxOtherReason.disabled(false);
-                   }
+                    }
                 },
                 scope: this,
                 targetElement: { "ComboBoxAdditional": ComboBoxAdditional, "ComboBoxOtherReason": ComboBoxOtherReason }
@@ -69,12 +69,75 @@
             }
             //end init CheckBoxIs_This_an_Additional_Drawdown
 
+            //format IsNumeric Element onblur event
+            var numericElements = Ext.select("input[type=text][IsNumeric=Yes]");
+            numericElements.on({
+                "keyup": {
+                    fn: function (e, t, o) {
+                        try {
+                            var keyNum = eventKeyCode(e);
 
+                            if (keyNum == 109) return;
+                            if (t.value.length == 0) return;
+                            if (keyNum <= 40 && keyNum != 8) return;
 
+                            var valueArray = t.value.split(".");
+                            var intValueStrArray = valueArray[0].split(",");
+                            var intValueStr = "";
 
+                            for (var i = 0; i < intValueStrArray.length; i++) {
+                                intValueStr += intValueStrArray[i];
+                            }
 
+                            intValueStr = String(Number(intValueStr));
+
+                            var result = "";
+                            var splitCount = 0;
+                            var isMinus = (Number(intValueStr) < 0) ? true : false;
+                            var absoluteValue = intValueStr.replace("-", "");
+
+                            for (var i = (absoluteValue.length - 1); i >= 0; i--) {
+                                if (splitCount == 3) {
+                                    result = "," + result
+                                    splitCount = 0;
+                                    i++;
+                                    continue;
+                                }
+
+                                result = absoluteValue.charAt(i) + result;
+                                splitCount++;
+                            }
+
+                            if (valueArray.length > 1) {
+                                result = result + "." + valueArray[1];
+                            }
+
+                            if (isMinus) {
+                                result = "-" + result;
+                            }
+
+                            t.value = result;
+
+                        } catch (err) {
+                            alert("error : " + err);
+                        }
+                    }
+                },
+                "blur": {
+                    fn: function (e, t, o) {
+                        t.value = (new MyNumber(t.value)).toCurrency(2);
+                    }
+                }
+            });
+            //end format IsNumeric Element onblur event
+            numericElements.applyStyles({ "text-align": "right" });
         });
     </script>
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
+</asp:ToolkitScriptManager>
+  
 <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
 
     <h2>
@@ -132,15 +195,14 @@
         EnableCaching="False"></asp:SqlDataSource>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO,Additional_Drawdown_Date"
-        DataSourceID="SqlDataSource1" EnableModelValidation="True" Height="50px" Width="729px"
-        Style="font-size: small; font-family: Tahoma" 
+        DataSourceID="SqlDataSource1" EnableModelValidation="True" Width="800px"
         DefaultMode="Edit" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnDataBound="DetailsView_Databound" CellPadding="4" ForeColor="#333333" GridLines="None" 
-      >
+        OnDataBound="DetailsView_Databound" ForeColor="#333333" GridLines="Both" 
+      PagerSettings-Mode="NumericFirstLast">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
-        <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
+        <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%"/>
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
             <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
@@ -162,19 +224,19 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="PRINCIPAL" SortExpression="PRINCIPAL">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PRINCIPAL","{0:N}") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PRINCIPAL","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ACCRU" SortExpression="ACCRU">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("ACCRU","{0:N}") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("ACCRU","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="SUSP" SortExpression="SUSP">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("SUSP","{0:N}") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("SUSP","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
                </asp:TemplateField>
@@ -182,7 +244,7 @@
                 SortExpression="PRINCIPAL_AT_Last_Month">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" 
-                        Text='<%# Bind("PRINCIPAL_AT_Last_Month","{0:N}") %>'></asp:TextBox>
+                        Text='<%# Bind("PRINCIPAL_AT_Last_Month","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                         <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                
                 </EditItemTemplate>
@@ -191,7 +253,7 @@
                 SortExpression="ACCRU_AT_Last_Month">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" 
-                        Text='<%# Bind("ACCRU_AT_Last_Month","{0:N}") %>'></asp:TextBox>
+                        Text='<%# Bind("ACCRU_AT_Last_Month","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                         <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
@@ -199,7 +261,7 @@
                 SortExpression="SUSP_AT_Last_Month">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox6" runat="server" 
-                        Text='<%# Bind("SUSP_AT_Last_Month","{0:N}") %>'></asp:TextBox>
+                        Text='<%# Bind("SUSP_AT_Last_Month","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                         <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
@@ -221,12 +283,12 @@
                 </EditItemTemplate>
           </asp:TemplateField>
             <asp:BoundField DataField="LIMITNO" HeaderText="LIMIT NO" 
-                SortExpression="LIMITNO" />
+                SortExpression="LIMITNO" ReadOnly="true" />
             <asp:TemplateField HeaderText="LIMITNO Changed" 
                 SortExpression="LIMITNO_Changed">
                 <EditItemTemplate>
                     <asp:CheckBox ID="CheckBoxLIMITNO_Changed" runat="server" 
-                        Checked='<%# Bind("LIMITNO_Changed") %>'  domId = "CheckBoxLIMITNO_Changed"/>
+                        Checked='<%# Bind("LIMITNO_Changed") %>'  domId = "CheckBoxLIMITNO_Changed" Enabled="false"/>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Previous_LIMITNO" SortExpression="Previous_LIMITNO">
@@ -282,7 +344,7 @@
             <asp:CommandField ShowEditButton="True" ShowInsertButton="True" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White"/>
         <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
     </asp:DetailsView>
