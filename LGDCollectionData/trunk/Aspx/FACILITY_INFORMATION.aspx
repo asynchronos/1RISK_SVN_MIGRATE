@@ -11,6 +11,25 @@
             position: relative;
         }
     </style>
+    <style type="text/css">
+        .NumTextBox
+        {
+            text-align:right;
+        }
+        .loadingStyle
+        {
+	        position: absolute; 
+	        left: 47%;
+	        top: 10%;
+	        background-image: url(../images/progress/cicle/indicator_verybig.gif);
+	        background-repeat: no-repeat;
+	        text-align: center;
+	        vertical-align: middle;
+	        z-index: 99999;
+	        width: 128px;
+	        height: 128px;
+        }
+    </style>
     <!-- Ext includes -->
     <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
     <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
@@ -544,7 +563,7 @@
         SelectCommand="FACILITY_FREQUENCY_SELECT" SelectCommandType="StoredProcedure"
         EnableCaching="True"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceCycle" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        SelectCommand="FACILITY_CYCLE_SELECT" SelectCommandType="StoredProcedure" EnableCaching="True">
+        SelectCommand="FACILITY_CYCLE_SELECT" SelectCommandType="StoredProcedure" EnableCaching="false">
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceCIF" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="GROUP_CIF_SELECT" SelectCommandType="StoredProcedure" EnableCaching="True">
@@ -609,7 +628,11 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="LIMIT TYP_A" SortExpression="LIMITTYP_A">
                             <ItemTemplate>
-                                <asp:Label ID="LabelLIMITTYP_A" runat="server" Text='<%# Bind("LIMITTYP_A") %>'></asp:Label>
+                                <asp:DropDownList ID="DropDownListLIMITTYP_A" runat="server" DataSourceID="SqlDataSourceLimitType"
+                                    DataTextField="LIMITTYP_A" DataValueField="LIMITTYP_A" SelectedValue='<%# Bind("LIMITTYP_A") %>'
+                                    AppendDataBoundItems="true" Enabled="false">
+                                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:DropDownList ID="DropDownListLIMITTYP_A" runat="server" DataSourceID="SqlDataSourceLimitType"
@@ -629,21 +652,19 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Limit @ D" SortExpression="LimitAtD">
                             <ItemTemplate>
-                                <asp:Label ID="LabelLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:N}") %>'></asp:Label>
+                                <asp:Label ID="LabelLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.00}") %>' CssClass="NumTextBox"></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBoxLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:N}") %>'>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:TextBox ID="TextBoxLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox">
                                 </asp:TextBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Limit @ D-1" SortExpression="LimitAtD1">
                             <ItemTemplate>
-                                <asp:Label ID="LabelLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:N}") %>'></asp:Label>
+                                <asp:Label ID="LabelLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.00}") %>' CssClass="NumTextBox"></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBoxLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:N}") %>'>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:TextBox ID="TextBoxLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox">
                                 </asp:TextBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
@@ -662,7 +683,11 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Nature of Facility" SortExpression="NatureofFacility">
                             <ItemTemplate>
-                                <asp:Label ID="LabelNatureofFacility" runat="server" Text='<%# Eval("NatureofFacility") %>'></asp:Label>
+                                <asp:DropDownList ID="DropDownListFACILITY_NATURE_CODE" runat="server" DataSourceID="SqlDataSourceNature"
+                                    DataTextField="FACILITY_NATURE" DataValueField="FACILITY_NATURE_CODE" SelectedValue='<%# Bind("NatureofFacility") %>'
+                                    AppendDataBoundItems="true" Enabled="false">
+                                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:DropDownList ID="DropDownListFACILITY_NATURE_CODE" runat="server" DataSourceID="SqlDataSourceNature"
@@ -675,7 +700,11 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Seniority" SortExpression="Seniority">
                             <ItemTemplate>
-                                <asp:Label ID="LabelSeniority" runat="server" Text='<%# Eval("Seniority") %>'></asp:Label>
+                                <asp:DropDownList ID="DropDownListSeniority_CODE" runat="server" DataSourceID="SqlDataSourceSiniority"
+                                    DataTextField="Seniority_CODE" DataValueField="Seniority_CODE" SelectedValue='<%# Bind("Seniority") %>'
+                                    AppendDataBoundItems="true" Enabled="false">
+                                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:DropDownList ID="DropDownListSeniority_CODE" runat="server" DataSourceID="SqlDataSourceSiniority"
@@ -711,7 +740,11 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Principal Repayment Currency Code" SortExpression="PrincipalRepaymentCurrencyCode">
                             <ItemTemplate>
-                                <asp:Label ID="LabelPrincipalRepaymentCurrencyCode" runat="server" Text='<%# Eval("PrincipalRepaymentCurrencyCode") %>'></asp:Label>
+                                <asp:DropDownList ID="DropDownListPrincipalRepaymentCurrencyCode" runat="server"
+                                    DataSourceID="SqlDataSourceCurrency" DataTextField="Description" DataValueField="Code"
+                                    AppendDataBoundItems="True" SelectedValue='<%# Bind("PrincipalRepaymentCurrencyCode") %>' Enabled="false">
+                                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:DropDownList ID="DropDownListPrincipalRepaymentCurrencyCode" runat="server"
@@ -724,10 +757,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Principal Repayment Amount" SortExpression="PrincipalRepaymentAmount">
                             <ItemTemplate>
-                                <asp:Label ID="LabelPrincipalRepaymentAmount" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:N}") %>'></asp:Label>
+                                <asp:Label ID="LabelPrincipalRepaymentAmount" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.00}") %>' CssClass="NumTextBox"></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:N}") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
                                 <asp:Label ID="LabelStarRepayment" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
@@ -746,7 +779,11 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Compounding Frequency of Interest" SortExpression="CompoundingFrequencyofInterest">
                             <ItemTemplate>
-                                <asp:Label ID="LabelCompoundingFrequencyofInterest" runat="server" Text='<%# Bind("CompoundingFrequencyofInterest") %>'></asp:Label>
+                                <asp:DropDownList ID="DropDownListFREQUENCY_CODE" runat="server" DataSourceID="SqlDataSourceFrequency"
+                                    DataTextField="FREQUENCY_CODE" DataValueField="FREQUENCY_CODE" SelectedValue='<%# Bind("CompoundingFrequencyofInterest") %>'
+                                    AppendDataBoundItems="true" Enabled="false">
+                                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:DropDownList ID="DropDownListFREQUENCY_CODE" runat="server" DataSourceID="SqlDataSourceFrequency"
@@ -762,7 +799,7 @@
                                 <asp:Label runat="server" ID="LabelSharingCIF1" Text='<%# Bind("SharingLimitwithCIF1") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="tbSharingCIF1" Text='<%# Bind("SharingLimitwithCIF1") %>'></asp:TextBox>
+                                <asp:TextBox runat="server" ID="tbSharingCIF1" Text='<%# Bind("SharingLimitwithCIF1") %>' CssClass="NumTextBox"></asp:TextBox>
                                 <asp:Label ID="LabelStar3" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
@@ -771,7 +808,7 @@
                                 <asp:Label runat="server" ID="LabelSharingCIF2" Text='<%# Bind("SharingLimitwithCIF2") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="tbSharingCIF2" Text='<%# Bind("SharingLimitwithCIF2") %>'></asp:TextBox>
+                                <asp:TextBox runat="server" ID="tbSharingCIF2" Text='<%# Bind("SharingLimitwithCIF2") %>' CssClass="NumTextBox"></asp:TextBox>
                                 <asp:Label ID="LabelStar4" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
@@ -780,7 +817,7 @@
                                 <asp:Label runat="server" ID="LabelSharingCIF3" Text='<%# Bind("SharingLimitwithCIF3") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="tbSharingCIF3" Text='<%# Bind("SharingLimitwithCIF3") %>'></asp:TextBox>
+                                <asp:TextBox runat="server" ID="tbSharingCIF3" Text='<%# Bind("SharingLimitwithCIF3") %>' CssClass="NumTextBox"></asp:TextBox>
                                 <asp:Label ID="LabelStar5" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
@@ -789,7 +826,7 @@
                                 <asp:Label runat="server" ID="LabelSharingCIF4" Text='<%# Bind("SharingLimitwithCIF4") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="tbSharingCIF4" Text='<%# Bind("SharingLimitwithCIF4") %>'></asp:TextBox>
+                                <asp:TextBox runat="server" ID="tbSharingCIF4" Text='<%# Bind("SharingLimitwithCIF4") %>' CssClass="NumTextBox"></asp:TextBox>
                                 <asp:Label ID="LabelStar6" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
@@ -798,7 +835,7 @@
                                 <asp:Label runat="server" ID="LabelSharingCIF5" Text='<%# Bind("SharingLimitwithCIF5") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="tbSharingCIF5" Text='<%# Bind("SharingLimitwithCIF5") %>'></asp:TextBox>
+                                <asp:TextBox runat="server" ID="tbSharingCIF5" Text='<%# Bind("SharingLimitwithCIF5") %>' CssClass="NumTextBox"></asp:TextBox>
                                 <asp:Label ID="LabelStar7" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
@@ -807,7 +844,7 @@
                                 <asp:Label runat="server" ID="LabelSharingCIF6" Text='<%# Bind("SharingLimitwithCIF6") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="tbSharingCIF6" Text='<%# Bind("SharingLimitwithCIF6") %>'></asp:TextBox>
+                                <asp:TextBox runat="server" ID="tbSharingCIF6" Text='<%# Bind("SharingLimitwithCIF6") %>' CssClass="NumTextBox"></asp:TextBox>
                                 <asp:Label ID="LabelStarCIF6" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
@@ -838,4 +875,32 @@
             </asp:Panel>
         </ContentTemplate>
     </asp:UpdatePanel>
+    <asp:UpdatePanelAnimationExtender ID="UpdatePanel1_UpdatePanelAnimationExtender"
+        runat="server" Enabled="True" TargetControlID="UpdatePanel1">
+        <Animations>
+        <OnUpdating>
+            <Parallel duration="0">
+                <%-- place the update progress div over the gridview control --%>
+                <ScriptAction Script="onUpdating();" />  
+                <%-- disable the search button --%>                       
+                <EnableAction AnimationTarget="BtnLinkToLimitStructure" Enabled="false" />
+                <%-- fade-out the GridView --%>
+                <FadeOut minimumOpacity=".5" />
+             </Parallel>
+        </OnUpdating>
+        <OnUpdated>
+            <Parallel duration="0">
+                <%-- fade back in the GridView --%>
+                <FadeIn minimumOpacity=".5" />
+                <%-- re-enable the search button --%> 
+                <EnableAction AnimationTarget="BtnLinkToLimitStructure" Enabled="true" />
+                <%--find the update progress div and place it over the gridview control--%>
+                <ScriptAction Script="onUpdated();" /> 
+            </Parallel> 
+        </OnUpdated>
+    </Animations>
+    </asp:UpdatePanelAnimationExtender>
+    <div id="updateProgressDiv" style="display: none; width:199px;height:64px;">
+        <img alt="Loading" src="../Images/3MA_loadingcontent.gif" />
+    </div>
 </asp:Content>
