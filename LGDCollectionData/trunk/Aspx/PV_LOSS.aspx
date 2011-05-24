@@ -31,6 +31,25 @@
             addToClientTable(args.get_fileName(), text);
         }
     </script>
+
+    <!-- Ext includes -->
+    <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
+    <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
+    <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
+
+    <script type="text/javascript">
+        function returnNum(event,sender) {
+            sender.value = (new MyNumber(sender.value)).toCurrency();
+        }
+    </script>
+    <style type="text/css">
+        .NumTextBox
+        {
+            text-align:right;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
@@ -53,7 +72,7 @@
                 <asp:DetailsView ID="PV_LOSS_DetailsView" runat="server" AllowPaging="True" AutoGenerateRows="False"
                     CellPadding="4" DataKeyNames="CIF,Default_Date,Date_of_Restructure" DataSourceID="PV_LOSS_SqlDataSource"
                     EnableModelValidation="True" ForeColor="#333333" OnPageIndexChanging="DetailsView_PageIndexChanging"
-                    OnItemUpdating="DetailsView_ItemUpdating" OnPreRender="DetailsView_PreRender">
+                    OnItemUpdating="DetailsView_ItemUpdating" OnPreRender="DetailsView_PreRender" Width="350px">
                     <AlternatingRowStyle BackColor="White" />
                     <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
                     <EmptyDataTemplate>
@@ -122,12 +141,22 @@
                                 <asp:Label ID="Date_of_Upgrade_Label" runat="server" Text='<%# Bind("Date_of_Upgrade", "{0:d MMMM yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Pv_Loss" HeaderText="Pv Loss" SortExpression="Pv_Loss" />
+                        <asp:TemplateField HeaderText="Pv Gain(Loss)" SortExpression="Pv_Loss">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="Pv_Loss_TextBox" runat="server" Text='<%# Bind("Pv_Loss","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="Pv_Loss_TextBox" runat="server" Text='<%# Bind("Pv_Loss","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Pv_Loss_Label" runat="server" Text='<%# Bind("Pv_Loss","{0:#,##0.00}") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField ShowHeader="False">
                             <EditItemTemplate>
-                                <asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" CommandName="New"
+                                <%--<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" CommandName="New"
                                     Text="New"></asp:LinkButton>
-                                &nbsp;<asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True"
+                                &nbsp;--%><asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True"
                                     CommandName="Update" Text="Update"></asp:LinkButton>
                                 &nbsp;<asp:LinkButton ID="Cancel_LinkButton" runat="server" CausesValidation="False"
                                     CommandName="Cancel" Text="Cancel"></asp:LinkButton>
@@ -141,8 +170,8 @@
                             <ItemTemplate>
                                 <asp:LinkButton ID="Edit_LinkButton" runat="server" CausesValidation="False" CommandName="Edit"
                                     Text="Edit"></asp:LinkButton>
-                                &nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False"
-                                    CommandName="New" Text="New"></asp:LinkButton>
+                                <%--&nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False"
+                                    CommandName="New" Text="New"></asp:LinkButton>--%>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Fields>
@@ -284,35 +313,35 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Discount_Rate" SortExpression="Discount_Rate">
                         <EditItemTemplate>
-                            <asp:TextBox ID="Discount_Rate_TextBox" runat="server" Text='<%# Bind("Discount_Rate") %>'></asp:TextBox>
+                            <asp:TextBox ID="Discount_Rate_TextBox" runat="server" Text='<%# Bind("Discount_Rate","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this)" CssClass="NumTextBox"></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Discount_Rate_Label" runat="server" Text='<%# Bind("Discount_Rate") %>'></asp:Label>
+                            <asp:Label ID="Discount_Rate_Label" runat="server" Text='<%# Bind("Discount_Rate","{0:#,##0.00}") %>'></asp:Label>
                         </ItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="Discount_Rate_TextBox" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="Discount_Rate_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="TDR_Cash_Flow" SortExpression="TDR_Cash_Flow">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TDR_Cash_Flow_TextBox" runat="server" Text='<%# Bind("TDR_Cash_Flow") %>'></asp:TextBox>
+                            <asp:TextBox ID="TDR_Cash_Flow_TextBox" runat="server" Text='<%# Bind("TDR_Cash_Flow","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="TDR_Cash_Flow_Label" runat="server" Text='<%# Bind("TDR_Cash_Flow") %>'></asp:Label>
+                            <asp:Label ID="TDR_Cash_Flow_Label" runat="server" Text='<%# Bind("TDR_Cash_Flow","{0:#,##0.00}") %>'></asp:Label>
                         </ItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="TDR_Cash_Flow_TextBox" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TDR_Cash_Flow_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Present_Value_of_Repayment" SortExpression="Present_Value_of_Repayment">
                         <EditItemTemplate>
-                            <asp:TextBox ID="Present_Value_of_Repayment_TextBox" runat="server" Text='<%# Bind("Present_Value_of_Repayment") %>'></asp:TextBox>
+                            <asp:TextBox ID="Present_Value_of_Repayment_TextBox" runat="server" Text='<%# Bind("Present_Value_of_Repayment","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Present_Value_of_Repayment_Label" runat="server" Text='<%# Bind("Present_Value_of_Repayment") %>'></asp:Label>
+                            <asp:Label ID="Present_Value_of_Repayment_Label" runat="server" Text='<%# Bind("Present_Value_of_Repayment","{0:#,##0.00}") %>'></asp:Label>
                         </ItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="Present_Value_of_Repayment_TextBox" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="Present_Value_of_Repayment_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Cash_Flow_Currency" SortExpression="Cash_Flow_Currency">
@@ -393,13 +422,13 @@
                                 </asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:TextBox ID="Discount_Rate_TextBox" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="Discount_Rate_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TDR_Cash_Flow_TextBox" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="TDR_Cash_Flow_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="Present_Value_of_Repayment_TextBox" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="Present_Value_of_Repayment_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:DropDownList ID="Cash_Flow_Currency_DropDownList" runat="server" DataSourceID="Currency_DataSource"

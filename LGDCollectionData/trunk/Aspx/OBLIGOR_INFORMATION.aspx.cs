@@ -2,6 +2,8 @@
 using log4net;
 using AjaxControlToolkit;
 using System.Web.UI.WebControls;
+using System.Web.UI;
+using System.Globalization;
 
 namespace LGDCollectionData.Aspx
 {
@@ -31,6 +33,32 @@ namespace LGDCollectionData.Aspx
             {
                 ((TextBox)((ComboBox)sender).Parent.FindControl("Emergence_Date_TextBox")).Text = String.Empty;
             }
+        }
+
+        protected void Last_Review_Date_TextBox_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ITextControl t = (((CustomValidator)source).Parent.FindControl("Default_Date_Label") != null) ? (ITextControl)((CustomValidator)source).Parent.FindControl("Default_Date_Label") : (ITextControl)((CustomValidator)source).Parent.FindControl("Default_Date_TextBox");
+
+            CalendarExtender cal = ((CalendarExtender)((CustomValidator)source).Parent.FindControl("Last_Review_Date_TextBox_CalendarExtender"));
+
+            CultureInfo cul = new CultureInfo("en-US");
+            DateTime inputDate = DateTime.ParseExact(args.Value, cal.Format, cul);
+            DateTime compareDate = DateTime.ParseExact(t.Text, cal.Format, cul);
+
+            args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
+        }
+
+        protected void Rating_Date_TextBox_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ITextControl t = (((CustomValidator)source).Parent.FindControl("Default_Date_Label") != null) ? (ITextControl)((CustomValidator)source).Parent.FindControl("Default_Date_Label") : (ITextControl)((CustomValidator)source).Parent.FindControl("Default_Date_TextBox");
+
+            CalendarExtender cal = ((CalendarExtender)((CustomValidator)source).Parent.FindControl("Rating_Date_TextBox_CalendarExtender"));
+
+            CultureInfo cul = new CultureInfo("en-US");
+            DateTime inputDate = DateTime.ParseExact(args.Value, cal.Format, cul);
+            DateTime compareDate = DateTime.ParseExact(t.Text, cal.Format, cul);
+
+            args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
         }
 
     }

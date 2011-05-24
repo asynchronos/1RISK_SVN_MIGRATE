@@ -18,6 +18,11 @@ namespace LGDCollectionData.UserControls
         {
             int cif = 0;
             //int.TryParse(CIF_ComboBox.Text, out cif);
+            if (Session["CIF"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+
             int.TryParse(Session["CIF"].ToString(), out cif);
 
             if (!cif.Equals(0))

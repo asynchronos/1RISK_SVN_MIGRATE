@@ -40,6 +40,15 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Label FormName_Label;
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// OBLIGOR_INFORMATION_DetailsView control.
         /// </summary>
         /// <remarks>
@@ -101,5 +110,23 @@ namespace LGDCollectionData.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource Default_Type_SqlDataSource;
+        
+        /// <summary>
+        /// BusinessUnit_SqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource BusinessUnit_SqlDataSource;
+        
+        /// <summary>
+        /// IndustryCode_SqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource IndustryCode_SqlDataSource;
     }
 }

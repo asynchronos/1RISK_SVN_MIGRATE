@@ -127,7 +127,10 @@ namespace LGDCollectionData.CustomMembership
 
         public override bool RequiresQuestionAndAnswer
         {
-            get { return false; }
+            get { 
+                throw new System.NotImplementedException(); 
+                //return false; 
+            }
         }
 
         public override bool RequiresUniqueEmail

@@ -16,6 +16,69 @@
             Ext.select("input[type=text]").setWidth("200px");
             Ext.select("input[type=text]").set({ "maxlength": "255" });
 
+            //format IsNumeric Element onblur event
+            var numericElements = Ext.select("input[IsNumeric=Yes]");
+            numericElements.on({
+                "keyup": {
+                    fn: function (e, t, o) {
+                        try {
+                            var keyNum = eventKeyCode(e);
+
+                            if (keyNum == 109) return;
+                            if (t.value.length == 0) return;
+                            if (keyNum <= 40 && keyNum != 8) return;
+
+                            var valueArray = t.value.split(".");
+                            var intValueStrArray = valueArray[0].split(",");
+                            var intValueStr = "";
+
+                            for (var i = 0; i < intValueStrArray.length; i++) {
+                                intValueStr += intValueStrArray[i];
+                            }
+
+                            intValueStr = String(Number(intValueStr));
+
+                            var result = "";
+                            var splitCount = 0;
+                            var isMinus = (Number(intValueStr) < 0) ? true : false;
+                            var absoluteValue = intValueStr.replace("-", "");
+
+                            for (var i = (absoluteValue.length - 1); i >= 0; i--) {
+                                if (splitCount == 3) {
+                                    result = "," + result
+                                    splitCount = 0;
+                                    i++;
+                                    continue;
+                                }
+
+                                result = absoluteValue.charAt(i) + result;
+                                splitCount++;
+                            }
+
+                            if (valueArray.length > 1) {
+                                result = result + "." + valueArray[1];
+                            }
+
+                            if (isMinus) {
+                                result = "-" + result;
+                            }
+
+                            t.value = result;
+
+                        } catch (err) {
+                            alert("error : " + err);
+                        }
+                    }
+                },
+                "blur": {
+                    fn: function (e, t, o) {
+                        t.value = (new MyNumber(t.value)).toCurrency();
+                    }
+                }
+            });
+            //end format IsNumeric Element onblur event
+            numericElements.applyStyles({ "text-align": "right" });
+
             var cashFlowSourceDescription1DDL = Ext.DotNetControl.Element.mapElement("select", "domId", "CashFlowSourceDescription1_DropDownList");
             var cashFlowSourceDescription2DDL = Ext.DotNetControl.Element.mapElement("select", "domId", "CashFlowSourceDescription2_DropDownList");
             var cashFlowSourceDescription3DDL = Ext.DotNetControl.Element.mapElement("select", "domId", "CashFlowSourceDescription3_DropDownList");
@@ -214,11 +277,12 @@
                     <asp:Label ID="APP_ID_Label" runat="server" Text='<%# Bind("APP_ID") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Cashflow Currency Code" SortExpression="CashflowCurrencyCode">
+            <asp:TemplateField HeaderText="Cashflow Currency" SortExpression="CashflowCurrencyCode">
                 <EditItemTemplate>
                     <asp:DropDownList ID="Currency_DropDownList" runat="server" DataSourceID="Currency_DataSource"
                         DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("CashflowCurrencyCode") %>'>
                     </asp:DropDownList>
+                    <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashflowCurrencyCode_TextBox" runat="server" Text='<%# Bind("CashflowCurrencyCode") %>'></asp:TextBox>
@@ -244,10 +308,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cashflow Amount: PAY_PRIN" SortExpression="CashflowAmountPAY_PRIN">
                 <EditItemTemplate>
-                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>'></asp:TextBox>
+                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>'></asp:TextBox>
+                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="DateofCashflow_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>'></asp:Label>
@@ -255,10 +319,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cashflow Amount: PAY_INT" SortExpression="CashflowAmountPAY_INT">
                 <EditItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>'></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>'></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="CashflowAmountPAY_INT_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>'></asp:Label>
@@ -266,10 +330,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cashflow Amount: PAY_SUSP" SortExpression="CashflowAmountPAY_SUSP">
                 <EditItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>'></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>'></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="CashflowAmountPAY_SUSP_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>'></asp:Label>
@@ -352,14 +416,14 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Written-off / Haircut Amount" SortExpression="WrittenoffOrHaircutAmount">
                 <EditItemTemplate>
-                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount") %>' domId="WrittenoffOrHaircutAmount_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount","{0:#,##0.00}") %>' domId="WrittenoffOrHaircutAmount_TextBox" IsNumeric="Yes"></asp:TextBox>
                     <span style="color:Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount") %>'></asp:TextBox>
+                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="WrittenoffOrHaircutAmount_Label" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount") %>'></asp:Label>
+                    <asp:Label ID="WrittenoffOrHaircutAmount_Label" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Collateral ID/Pledge ID" 
