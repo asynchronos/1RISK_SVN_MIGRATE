@@ -216,7 +216,8 @@
                         DataTextField="Description" DataValueField="Code" AppendDataBoundItems="true"
                         SelectedValue='<%# Bind("Additional_Drawdown_Currency","{0:N}") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:DropDownList><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
+                    </asp:DropDownList>
+                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
           </asp:TemplateField>
             <asp:BoundField DataField="LIMITNO" HeaderText="LIMIT NO" 
@@ -234,7 +235,8 @@
                        AppendDataBoundItems="true" DataSourceID="SqlDataSourceLimitNo"
                         DataTextField="LIMITNO" DataValueField="LIMITNO" SelectedValue='<%# Bind("Previous_LIMITNO") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:DropDownList><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
+                    </asp:DropDownList>
+                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
               </asp:TemplateField>
             <asp:TemplateField HeaderText="Is This an Additional Drawdown" 
@@ -242,10 +244,9 @@
                 <EditItemTemplate>
                     <asp:CheckBox ID="CheckBoxIs_This_an_Additional_Drawdown" runat="server"  domId="CheckBoxIs_This_an_Additional_Drawdown"
                         Checked='<%# Bind("Is_This_an_Additional_Drawdown") %>' />
+                        <asp:Label ID="Label3"  runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
-
-
             <asp:TemplateField HeaderText="Type of Additional Drawdown" SortExpression="Type_of_Additional_Drawdown">
                 <EditItemTemplate>
                   
@@ -253,7 +254,8 @@
                         DataTextField="ADDITIONAL_DRAWDOWN_TYPE" DataValueField="ADDITIONAL_DRAWDOWN_TYPE"
                         SelectedValue='<%# Bind("Type_of_Additional_Drawdown") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:ComboBox><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
+                    </asp:ComboBox>
+                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
              </asp:TemplateField>
             <asp:TemplateField HeaderText="Other Reason of Principal Increase " SortExpression="Other_Reason_of_Principal_Increase">
@@ -262,7 +264,8 @@
                         DataTextField="ADDITIONAL_DRAWDOWN_REASON" DataValueField="ADDITIONAL_DRAWDOWN_REASON"
                         SelectedValue='<%# Bind("Other_Reason_of_Principal_Increase") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:ComboBox><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
+                    </asp:ComboBox>
+                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
           
             </asp:TemplateField>
