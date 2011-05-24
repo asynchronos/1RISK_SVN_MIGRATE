@@ -43,11 +43,52 @@
         function returnNum(event,sender) {
             sender.value = (new MyNumber(sender.value)).toCurrency();
         }
+
+        function onUpdating() {
+            // get the update progress div
+            var updateProgressDiv = $get('updateProgressDiv');
+            // make it visible
+            updateProgressDiv.style.display = '';
+
+            //  get the gridview element        
+            var gridView = $get('<%= this.RESTRUCTURE_INFORMATION_GridView.ClientID %>');
+
+            // get the bounds of both the gridview and the progress div
+            var gridViewBounds = Sys.UI.DomElement.getBounds(gridView);
+            var updateProgressDivBounds = Sys.UI.DomElement.getBounds(updateProgressDiv);
+
+            //    do the math to figure out where to position the element (the center of the gridview)
+            var x = gridViewBounds.x + Math.round(gridViewBounds.width / 2) - Math.round(updateProgressDivBounds.width / 2);
+            var y = gridViewBounds.y + Math.round(gridViewBounds.height / 2) - Math.round(updateProgressDivBounds.height / 2);
+
+            //    set the progress element to this position
+            Sys.UI.DomElement.setLocation(updateProgressDiv, x, y);
+        }
+
+        function onUpdated() {
+            // get the update progress div
+            var updateProgressDiv = $get('updateProgressDiv');
+            // make it invisible
+            updateProgressDiv.style.display = 'none';
+        }
     </script>
     <style type="text/css">
         .NumTextBox
         {
             text-align:right;
+        }
+        .loadingStyle
+        {
+	        position: absolute; 
+	        left: 47%;
+	        top: 10%;
+	        background-image: url(../images/progress/cicle/indicator_verybig.gif);
+	        background-repeat: no-repeat;
+	        text-align: center;
+	        vertical-align: middle;
+	        z-index: 99999;
+	        width: 128px;
+	        height: 128px;
         }
     </style>
 </asp:Content>
@@ -244,8 +285,7 @@
                 <Columns>
                     <asp:TemplateField ShowHeader="False">
                         <EditItemTemplate>
-                            <asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True" CommandName="Update"
-                                Text="Update"></asp:LinkButton>
+                            <asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update"></asp:LinkButton>
                             &nbsp;<asp:LinkButton ID="Cancel_LinkButton" runat="server" CausesValidation="False"
                                 CommandName="Cancel" Text="Cancel"></asp:LinkButton>
                         </EditItemTemplate>
@@ -254,14 +294,12 @@
                                 Text="Edit"></asp:LinkButton>
                         </ItemTemplate>
                         <FooterTemplate>
-                            <asp:LinkButton ID="Insert_LinkButton" runat="server" CausesValidation="True" CommandName="FooterInsert"
-                                Text="Insert"></asp:LinkButton>
+                            <asp:LinkButton ID="Insert_LinkButton" runat="server" CausesValidation="True" CommandName="FooterInsert" Text="Insert" ValidationGroup="BeforeInsert"></asp:LinkButton>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>
-                            <asp:LinkButton ID="Delete_LinkButton" runat="server" CausesValidation="False" CommandName="Delete"
-                                Text="Delete"></asp:LinkButton>
+                            <asp:LinkButton ID="Delete_LinkButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" OnClientClick="return confirm('คุณต้องการลบข้อมูล Record นี้?');"></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
@@ -275,7 +313,7 @@
                             <asp:Label ID="CIF_Label" runat="server" OnPreRender="CIF_Label_PreRender"></asp:Label>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
+                    <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                         <EditItemTemplate>
                             <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                         </EditItemTemplate>
@@ -286,7 +324,7 @@
                             <asp:Label ID="Default_Date_Label" runat="server" OnPreRender="Default_Date_Label_PreRender"></asp:Label>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Date_of_Restructure" SortExpression="Date_of_Restructure">
+                    <asp:TemplateField HeaderText="Date of Restructure" SortExpression="Date_of_Restructure">
                         <EditItemTemplate>
                             <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Bind("Date_of_Restructure", "{0:d MMMM yyyy}") %>'></asp:Label>
                         </EditItemTemplate>
@@ -297,7 +335,7 @@
                             <asp:Label ID="Date_of_Restructure_Label" runat="server" OnPreRender="Date_of_Restructure_Label_PreRender"></asp:Label>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Date_of_Repayment" SortExpression="Date_of_Repayment">
+                    <asp:TemplateField HeaderText="Date of Repayment" SortExpression="Date_of_Repayment">
                         <EditItemTemplate>
                             <asp:Label ID="Date_of_Repayment_Label" runat="server" Text='<%# Eval("Date_of_Repayment", "{0:d MMMM yyyy}") %>'></asp:Label>
                         </EditItemTemplate>
@@ -309,6 +347,7 @@
                             <asp:CalendarExtender ID="Date_of_Repayment_TextBox_CalendarExtender" runat="server"
                                 Enabled="True" TargetControlID="Date_of_Repayment_TextBox" Format="d MMMM yyyy">
                             </asp:CalendarExtender>
+                            <asp:RequiredFieldValidator ID="Date_of_Repayment_TextBox_RequiredFieldValidator" runat="server" ErrorMessage="*" ControlToValidate="Date_of_Repayment_TextBox" ValidationGroup="BeforeInsert"></asp:RequiredFieldValidator>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Discount_Rate" SortExpression="Discount_Rate">
@@ -320,6 +359,7 @@
                         </ItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="Discount_Rate_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="Discount_Rate_TextBox_RequiredFieldValidator" runat="server" ErrorMessage="*" ControlToValidate="Discount_Rate_TextBox" ValidationGroup="BeforeInsert"></asp:RequiredFieldValidator>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="TDR_Cash_Flow" SortExpression="TDR_Cash_Flow">
@@ -331,6 +371,7 @@
                         </ItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="TDR_Cash_Flow_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="TDR_Cash_Flow_TextBox_RequiredFieldValidator" runat="server" ErrorMessage="*" ControlToValidate="TDR_Cash_Flow_TextBox" ValidationGroup="BeforeInsert"></asp:RequiredFieldValidator>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Present_Value_of_Repayment" SortExpression="Present_Value_of_Repayment">
@@ -342,6 +383,7 @@
                         </ItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="Present_Value_of_Repayment_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="Present_Value_of_Repayment_TextBox_RequiredFieldValidator" runat="server" ErrorMessage="*" ControlToValidate="Present_Value_of_Repayment_TextBox" ValidationGroup="BeforeInsert"></asp:RequiredFieldValidator>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Cash_Flow_Currency" SortExpression="Cash_Flow_Currency">
@@ -420,15 +462,19 @@
                                 <asp:CalendarExtender ID="Date_of_Repayment_TextBox_CalendarExtender" runat="server"
                                     Enabled="True" TargetControlID="Date_of_Repayment_TextBox" Format="d MMMM yyyy">
                                 </asp:CalendarExtender>
+                                <asp:RequiredFieldValidator ID="Date_of_Repayment_TextBox_RequiredFieldValidator" runat="server" ErrorMessage="*" ControlToValidate="Date_of_Repayment_TextBox" ValidationGroup="BeforeInsert"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Discount_Rate_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="Discount_Rate_TextBox_RequiredFieldValidator" runat="server" ErrorMessage="*" ControlToValidate="Discount_Rate_TextBox" ValidationGroup="BeforeInsert"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="TDR_Cash_Flow_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="TDR_Cash_Flow_TextBox_RequiredFieldValidator" runat="server" ErrorMessage="*" ControlToValidate="TDR_Cash_Flow_TextBox" ValidationGroup="BeforeInsert"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Present_Value_of_Repayment_TextBox" runat="server" onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="Present_Value_of_Repayment_TextBox_RequiredFieldValidator" runat="server" ErrorMessage="*" ControlToValidate="Present_Value_of_Repayment_TextBox" ValidationGroup="BeforeInsert"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:DropDownList ID="Cash_Flow_Currency_DropDownList" runat="server" DataSourceID="Currency_DataSource"
@@ -448,7 +494,16 @@
             <asp:SqlDataSource ID="RESTRUCTURE_INFORMATION_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
                 SelectCommand="P_RESTRUCTURE_INFORMATION_SELECT" SelectCommandType="StoredProcedure"
                 InsertCommand="P_RESTRUCTURE_INFORMATION_INSERT" InsertCommandType="StoredProcedure"
-                UpdateCommand="P_RESTRUCTURE_INFORMATION_UPDATE" UpdateCommandType="StoredProcedure">
+                UpdateCommand="P_RESTRUCTURE_INFORMATION_UPDATE" 
+                UpdateCommandType="StoredProcedure" 
+                DeleteCommand="P_RESTRUCTURE_INFORMATION_DELETE" 
+                DeleteCommandType="StoredProcedure">
+                <DeleteParameters>
+                    <asp:Parameter Name="CIF" Type="String" />
+                    <asp:Parameter Name="Default_Date" Type="DateTime" />
+                    <asp:Parameter Name="Date_of_Restructure" Type="DateTime" />
+                    <asp:Parameter Name="Date_of_Repayment" Type="DateTime" />
+                </DeleteParameters>
                 <InsertParameters>
                     <asp:Parameter Name="CIF" Type="String" />
                     <asp:Parameter Name="Default_Date" Type="DateTime" />
@@ -483,9 +538,43 @@
                 SelectCommand="L_CURRENCY_CODE_SELECT" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
         </ContentTemplate>
     </asp:UpdatePanel>
+    <%--<asp:UpdateProgress ID="pdatePanel1_UpdateProgress" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
+        DisplayAfter="0">
+        <ProgressTemplate>
+            <div class="loadingStyle" style="width:199px;height:64px;top: 25%;left:40%;background-image: url(../Images/3MA_loadingcontent.gif);">
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>--%>
     <asp:UpdatePanelAnimationExtender ID="UpdatePanel1_UpdatePanelAnimationExtender"
         runat="server" Enabled="True" TargetControlID="UpdatePanel1">
+        <Animations>
+        <OnUpdating>
+            <Parallel duration="0">
+                <%-- place the update progress div over the gridview control --%>
+                <ScriptAction Script="onUpdating();" />  
+                <%-- disable the search button --%>                       
+                <EnableAction AnimationTarget="RESTRUCTURE_INFORMATION_FileUpload" Enabled="false" />
+                <EnableAction AnimationTarget="Update_LinkButton" Enabled="false" />
+                <%-- fade-out the GridView --%>
+                <FadeOut minimumOpacity=".5" />
+             </Parallel>
+        </OnUpdating>
+        <OnUpdated>
+            <Parallel duration="0">
+                <%-- fade back in the GridView --%>
+                <FadeIn minimumOpacity=".5" />
+                <%-- re-enable the search button --%> 
+                <EnableAction AnimationTarget="RESTRUCTURE_INFORMATION_FileUpload" Enabled="true" />
+                <EnableAction AnimationTarget="Update_LinkButton" Enabled="true" />
+                <%--find the update progress div and place it over the gridview control--%>
+                <ScriptAction Script="onUpdated();" /> 
+            </Parallel> 
+        </OnUpdated>
+    </Animations>
     </asp:UpdatePanelAnimationExtender>
+    <div id="updateProgressDiv" style="display: none; width:199px;height:64px;">
+        <img alt="Loading" src="../Images/3MA_loadingcontent.gif" />
+    </div>
     <%--<asp:HiddenField ID="CIF_HiddenField" runat="server" OnPreRender="CIF_HiddenField_PreRender" />
     <asp:HiddenField ID="Default_Date_HiddenField" runat="server" OnPreRender="Default_Date_HiddenField_PreRender" />
     <asp:HiddenField ID="Date_of_Restructure_HiddenField" runat="server" OnPreRender="Date_of_Restructure_HiddenField_PreRender" />--%>
