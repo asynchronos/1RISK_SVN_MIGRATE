@@ -149,7 +149,7 @@
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBoxDefault_Date_Insert" runat="server" Text='<%# Bind("Default_Date") %>'></asp:TextBox>
-                            <span>*</span>
+                            <span style="color:Red">*</span>
                     <asp:CalendarExtender ID="TextBoxDefault_Date_Insert_CalendarExtender" 
                         runat="server" TargetControlID="TextBoxDefault_Date_Insert" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
@@ -164,7 +164,7 @@
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("PLED_ID") %>'></asp:TextBox>
-                            <span>*</span>
+                            <span style="color:Red">*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label3" runat="server" Text='<%# Bind("PLED_ID") %>'></asp:Label>
@@ -175,11 +175,10 @@
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Guarantee_Title") %>'></asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input Guarantee Title" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox8"></asp:RequiredFieldValidator>--%>
-                            <span>*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBoxGuarantee_Title_Insert" runat="server" Text='<%# Bind("Guarantee_Title") %>'></asp:TextBox>
-                            <span>*</span>
+                            <span style="color:Red">*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label9" runat="server" Text='<%# Bind("Guarantee_Title") %>'></asp:Label>
@@ -190,6 +189,7 @@
                         <EditItemTemplate>
                             <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" 
                                 Checked='<%# Bind("Pledge_to_All_Facilities") %>' domId="Pledge_to_All_Facilities_CheckBox" />
+                            <span style="color:Red">*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:CheckBox ID="CheckBox1" runat="server" 
@@ -205,12 +205,12 @@
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBoxFacility_Pledged" runat="server" Text='<%# Bind("Facility_Pledged") %>' domId="TextBoxFacility_Pledged"></asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Please input Facility Pledged" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox9"></asp:RequiredFieldValidator>--%>
-                            <span>*</span>
+                            <span style="color:Red">*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox10" runat="server" 
                                 Text='<%# Bind("Facility_Pledged") %>'></asp:TextBox>
-                                <span>*</span>
+                                <span style="color:Red">*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label10" runat="server" Text='<%# Bind("Facility_Pledged") %>'></asp:Label>
@@ -221,13 +221,12 @@
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Guarantee_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Style="text-align:right;"></asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please input Guarantee Amount D" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox6"></asp:RequiredFieldValidator>--%>
-                            <span>*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox7" runat="server" 
                                 Text='<%# Bind("Guarantee_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Style="text-align:right;">
                             </asp:TextBox>
-                            <span>*</span>
+                            <span style="color:Red">*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label7" runat="server" Text='<%# Bind("Guarantee_Amount_D","{0:#,##0.00}") %>'></asp:Label>
@@ -238,14 +237,13 @@
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Guarantee_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Style="text-align:right;"></asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input Guarantee Amount D1" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox7"></asp:RequiredFieldValidator>--%>
-                            <span>*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBoxGuarantee_Amount_D1_Insert" runat="server" 
                                 Text='<%# Bind("Guarantee_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Style="text-align:right;">
                             </asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidatorTextBoxGuarantee_Amount_D1" runat="server" ErrorMessage="Please input Guarantee Amount @ D-1" Text ="*" ValidationGroup="InsertValidation" ControlToValidate="TextBoxGuarantee_Amount_D1_Insert"></asp:RequiredFieldValidator>--%>
-                            <span>*</span>
+                            <span style="color:Red">*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label8" runat="server" Text='<%# Bind("Guarantee_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
@@ -262,6 +260,7 @@
                                 DataValueField="Code"
                                 SelectedValue='<%# Bind("Guarantee_Amount_Currency_Code")%>'>
                             </asp:DropDownList>
+                            <span style="color:Red">*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:DropDownList ID="DropDownList1_Insert" runat="server" 
@@ -270,7 +269,7 @@
                                 DataValueField="Code"
                                 SelectedValue='<%# Bind("Guarantee_Amount_Currency_Code")%>'>
                             </asp:DropDownList>
-                            <span>*</span>
+                            <span style="color:Red">*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label4" runat="server" 
@@ -317,7 +316,6 @@
                                 Text='<%# Bind("Internal_Rating_D") %>'>
                             </asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidatorInternal_Rating" runat="server" ErrorMessage="Please input Internal Rating D" Text="*" ValidationGroup="UpdateValidation" ControlToValidate="Internal_Rating_DTextBox"></asp:RequiredFieldValidator>--%>
-                            <span>*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox6" runat="server" 
@@ -367,6 +365,7 @@
                 </Fields>
                 <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Mode="NumericFirstLast" />
                 <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
                 <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
             </asp:DetailsView>
