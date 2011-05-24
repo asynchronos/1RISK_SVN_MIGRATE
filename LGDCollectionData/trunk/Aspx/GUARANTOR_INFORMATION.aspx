@@ -7,6 +7,7 @@
     <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
     <script type="text/javascript">
         Ext.onReady(function () {
             Ext.select("input[type=text]").setWidth("200px");
@@ -39,6 +40,68 @@
             }
             //end init Pledge_to_All_Facilities_CheckBox
 
+            //format IsNumeric Element onblur event
+            var numericElements = Ext.select("input[type=text][IsNumeric=Yes]");
+            numericElements.on({
+                "keyup": {
+                    fn: function (e, t, o) {
+                        try {
+                            var keyNum = eventKeyCode(e);
+
+                            if (keyNum == 109) return;
+                            if (t.value.length == 0) return;
+                            if (keyNum <= 40 && keyNum != 8) return;
+
+                            var valueArray = t.value.split(".");
+                            var intValueStrArray = valueArray[0].split(",");
+                            var intValueStr = "";
+
+                            for (var i = 0; i < intValueStrArray.length; i++) {
+                                intValueStr += intValueStrArray[i];
+                            }
+
+                            intValueStr = String(Number(intValueStr));
+
+                            var result = "";
+                            var splitCount = 0;
+                            var isMinus = (Number(intValueStr) < 0) ? true : false;
+                            var absoluteValue = intValueStr.replace("-", "");
+
+                            for (var i = (absoluteValue.length - 1); i >= 0; i--) {
+                                if (splitCount == 3) {
+                                    result = "," + result
+                                    splitCount = 0;
+                                    i++;
+                                    continue;
+                                }
+
+                                result = absoluteValue.charAt(i) + result;
+                                splitCount++;
+                            }
+
+                            if (valueArray.length > 1) {
+                                result = result + "." + valueArray[1];
+                            }
+
+                            if (isMinus) {
+                                result = "-" + result;
+                            }
+
+                            t.value = result;
+
+                        } catch (err) {
+                            alert("error : " + err);
+                        }
+                    }
+                },
+                "blur": {
+                    fn: function (e, t, o) {
+                        t.value = (new MyNumber(t.value)).toCurrency(2);
+                    }
+                }
+            });
+            //end format IsNumeric Element onblur event
+            numericElements.applyStyles({ "text-align": "right" });
         });
     </script>
 <script type="text/javascript">
@@ -59,10 +122,10 @@
         <td>
             <asp:DetailsView ID="DetailsView2" runat="server" AllowPaging="True" 
                 AutoGenerateRows="False" DataSourceID="SqlDataSourceGur_Info" 
-                EnableModelValidation="True" Height="50px" Width="457px" 
+                EnableModelValidation="True"
                 DefaultMode="Edit"
                 OnDataBound="DetailsView_Databound" CellPadding="4" ForeColor="#333333" 
-                GridLines="None"
+                GridLines="Both"
                 OnPreRender="DetailsView2_OnPreRender">
                 <AlternatingRowStyle BackColor="White" />
                 <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -140,52 +203,52 @@
                     <asp:TemplateField HeaderText="Facility Pledged" 
                         SortExpression="Facility_Pledged">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBoxFacility_Pledged" runat="server" Text='<%# Bind("Facility_Pledged","{0:n2}") %>' domId="TextBoxFacility_Pledged"></asp:TextBox>
+                            <asp:TextBox ID="TextBoxFacility_Pledged" runat="server" Text='<%# Bind("Facility_Pledged") %>' domId="TextBoxFacility_Pledged"></asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Please input Facility Pledged" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox9"></asp:RequiredFieldValidator>--%>
                             <span>*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox10" runat="server" 
-                                Text='<%# Bind("Facility_Pledged","{0:n2}") %>' Style="text-align:right;"></asp:TextBox>
+                                Text='<%# Bind("Facility_Pledged") %>'></asp:TextBox>
                                 <span>*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label10" runat="server" Text='<%# Bind("Facility_Pledged","{0:n2}") %>' Style="text-align:right;"></asp:Label>
+                            <asp:Label ID="Label10" runat="server" Text='<%# Bind("Facility_Pledged") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Guarantee Amount @ D" 
                         SortExpression="Guarantee_Amount_D">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Guarantee_Amount_D","{0:n2}") %>' Style="text-align:right;"></asp:TextBox>
+                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Guarantee_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Style="text-align:right;"></asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please input Guarantee Amount D" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox6"></asp:RequiredFieldValidator>--%>
                             <span>*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox7" runat="server" 
-                                Text='<%# Bind("Guarantee_Amount_D","{0:n2}") %>' Style="text-align:right;">
+                                Text='<%# Bind("Guarantee_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Style="text-align:right;">
                             </asp:TextBox>
                             <span>*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("Guarantee_Amount_D") %>'></asp:Label>
+                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("Guarantee_Amount_D","{0:#,##0.00}") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Guarantee Amount @ D-1" 
                         SortExpression="Guarantee_Amount_D1">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Guarantee_Amount_D1","{0:n2}") %>' Style="text-align:right;"></asp:TextBox>
+                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Guarantee_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Style="text-align:right;"></asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input Guarantee Amount D1" Text ="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox7"></asp:RequiredFieldValidator>--%>
                             <span>*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBoxGuarantee_Amount_D1_Insert" runat="server" 
-                                Text='<%# Bind("Guarantee_Amount_D1","{0:n2}") %>' Style="text-align:right;">
+                                Text='<%# Bind("Guarantee_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Style="text-align:right;">
                             </asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidatorTextBoxGuarantee_Amount_D1" runat="server" ErrorMessage="Please input Guarantee Amount @ D-1" Text ="*" ValidationGroup="InsertValidation" ControlToValidate="TextBoxGuarantee_Amount_D1_Insert"></asp:RequiredFieldValidator>--%>
                             <span>*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Guarantee_Amount_D1") %>'></asp:Label>
+                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Guarantee_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Guarantee Amount Currency Code" 
@@ -227,12 +290,15 @@
                                 DataSourceID="SqlDataSourceGar_Ind" DataTextField="Guarantee_Indemnity_Source_ID"
                                 DataValueField="Guarantee_Indemnity_Source_ID" >
                                     <asp:ListItem Value="">Please Select</asp:ListItem>
+                                    <asp:ListItem>Director / Proprietor</asp:ListItem>
+                                    <asp:ListItem>Family Member</asp:ListItem>
+                                    <asp:ListItem>Related Company</asp:ListItem>
+                                    <asp:ListItem>Bank / Insurance Company</asp:ListItem>
                             </asp:ComboBox>
                             <span style="color:Red">*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:ComboBox ID="Guarantee_Indemnity_Source_ID_for_ComboBox" runat="server" AppendDataBoundItems="True"
-                                MaxLength="0" SelectedValue='<%# Bind("Guarantee_Indemnity_Source_ID") %>' Style="display: inline;text-align:center;"
+                            <asp:ComboBox ID="Guarantee_Indemnity_Source_ID_for_ComboBox" runat="server" AppendDataBoundItems="True" SelectedValue='<%# Bind("Guarantee_Indemnity_Source_ID") %>' 
                                 DataSourceID="SqlDataSourceGar_Ind" DataTextField="Guarantee_Indemnity_Source_ID"
                                 DataValueField="Guarantee_Indemnity_Source_ID" >
                                     <asp:ListItem Value="">Please Select</asp:ListItem>
