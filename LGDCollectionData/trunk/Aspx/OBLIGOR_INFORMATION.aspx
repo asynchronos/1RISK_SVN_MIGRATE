@@ -889,6 +889,36 @@
             </asp:Panel>--%>
         </ContentTemplate>
     </asp:UpdatePanel>
+    <asp:UpdatePanelAnimationExtender ID="UpdatePanel1_UpdatePanelAnimationExtender"
+        runat="server" Enabled="True" TargetControlID="UpdatePanel1">
+        <Animations>
+        <OnUpdating>
+            <Parallel duration="0">
+                <%-- place the update progress div over the gridview control --%>
+                <ScriptAction Script="onUpdating();" />  
+                <%-- disable the search button --%>                       
+                <%--<EnableAction AnimationTarget="RESTRUCTURE_INFORMATION_FileUpload" Enabled="false" />
+                <EnableAction AnimationTarget="Update_LinkButton" Enabled="false" />--%>
+                <%-- fade-out the GridView --%>
+                <FadeOut minimumOpacity=".5" />
+             </Parallel>
+        </OnUpdating>
+        <OnUpdated>
+            <Parallel duration="0">
+                <%-- fade back in the GridView --%>
+                <FadeIn minimumOpacity=".5" />
+                <%-- re-enable the search button --%> 
+                <%--<EnableAction AnimationTarget="RESTRUCTURE_INFORMATION_FileUpload" Enabled="true" />
+                <EnableAction AnimationTarget="Update_LinkButton" Enabled="true" />--%>
+                <%--find the update progress div and place it over the gridview control--%>
+                <ScriptAction Script="onUpdated();" /> 
+            </Parallel> 
+        </OnUpdated>
+    </Animations>
+    </asp:UpdatePanelAnimationExtender>
+    <div id="updateProgressDiv" style="display: none; width:199px;height:64px;">
+        <img alt="Loading" src="../Images/3MA_loadingcontent.gif" />
+    </div>
     <asp:SqlDataSource ID="OBLIGOR_INFORMATION_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="P_OBLIGOR_INFORMATION_SELECT" SelectCommandType="StoredProcedure"
         UpdateCommand="P_OBLIGOR_INFORMATION_UPDATE" UpdateCommandType="StoredProcedure">

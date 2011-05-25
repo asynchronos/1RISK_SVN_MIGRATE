@@ -8,7 +8,7 @@
     <style type="text/css">
         .gvFixedHeader
         {
-            position: relative;
+            white-space:nowrap;
         }
     </style>
     <style type="text/css">
@@ -572,14 +572,14 @@
         OnClick="BtnLinkToLimitStructure_Click" />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <asp:Panel ID="Wrapper_Panel" runat="server" Width="800px" ScrollBars="Auto">
+            <asp:Panel ID="Wrapper_Panel" runat="server" Width="800px" ScrollBars="Horizontal">
                 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
                     AutoGenerateColumns="False" DataKeyNames="CIF,DefaultDate,LIMITNO" DataSourceID="SqlDataSourceFacility"
                     EnableModelValidation="True" ForeColor="Black" BackColor="White" CellPadding="4" 
                     BorderColor="#DEDFDE">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:TemplateField ShowHeader="False">
+                        <asp:TemplateField ItemStyle-Wrap="false" ShowHeader="False">
                             <EditItemTemplate>
                                 <asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True" CommandName="Update"
                                     Text="Update"></asp:LinkButton>
@@ -591,13 +591,13 @@
                                     Text="Edit"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField ShowHeader="False">
+                        <asp:TemplateField ItemStyle-Wrap="false" ShowHeader="False">
                             <ItemTemplate>
                                 <asp:LinkButton ID="Delete_LinkButton" runat="server" OnClientClick="return confirm('คุณต้องการลบข้อมูล Record นี้?');"
                                     CausesValidation="False" CommandName="Delete" Text="Delete"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="CIF" SortExpression="CIF">
                             <EditItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
                             </EditItemTemplate>
@@ -605,7 +605,7 @@
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Default Date" SortExpression="DefaultDate" ControlStyle-Width="150px">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Default Date" SortExpression="DefaultDate" ControlStyle-Width="150px">
                             <ItemTemplate>
                                 <asp:Label ID="LabelDefaultDate" runat="server" Text='<%# Eval("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
                             </ItemTemplate>
@@ -614,7 +614,7 @@
                             </EditItemTemplate>
                             <ControlStyle Width="150px"></ControlStyle>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="APP_ID" SortExpression="APP_ID">
                             <ItemTemplate>
                                 <asp:Label ID="LabelAPP_ID" runat="server" Text='<%# Bind("APP_ID") %>'></asp:Label>
                             </ItemTemplate>
@@ -626,7 +626,7 @@
                                 </asp:DropDownList>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="LIMIT TYP_A" SortExpression="LIMITTYP_A">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="LIMIT TYP_A" SortExpression="LIMITTYP_A">
                             <ItemTemplate>
                                 <asp:DropDownList ID="DropDownListLIMITTYP_A" runat="server" DataSourceID="SqlDataSourceLimitType"
                                     DataTextField="LIMITTYP_A" DataValueField="LIMITTYP_A" SelectedValue='<%# Bind("LIMITTYP_A") %>'
@@ -642,7 +642,7 @@
                                 </asp:DropDownList>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="LIMIT NO" SortExpression="LIMITNO">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="LIMIT NO" SortExpression="LIMITNO">
                             <EditItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
                             </EditItemTemplate>
@@ -650,7 +650,7 @@
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Limit @ D" SortExpression="LimitAtD">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Limit @ D" SortExpression="LimitAtD">
                             <ItemTemplate>
                                 <asp:Label ID="LabelLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.00}") %>' CssClass="NumTextBox"></asp:Label>
                             </ItemTemplate>
@@ -659,7 +659,7 @@
                                 </asp:TextBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Limit @ D-1" SortExpression="LimitAtD1">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Limit @ D-1" SortExpression="LimitAtD1">
                             <ItemTemplate>
                                 <asp:Label ID="LabelLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.00}") %>' CssClass="NumTextBox"></asp:Label>
                             </ItemTemplate>
@@ -668,7 +668,7 @@
                                 </asp:TextBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Facility Purpose Description" SortExpression="FacilityPurposeDescription">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Facility Purpose Description" SortExpression="FacilityPurposeDescription">
                             <ItemTemplate>
                                 <asp:Label ID="LabelFacilityPurposeDescription" runat="server" Text='<%# Eval("FacilityPurposeDescription") %>'></asp:Label>
                             </ItemTemplate>
@@ -681,7 +681,7 @@
                                 <asp:Label ID="LabelStarFac" runat="server" Text="  " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Nature of Facility" SortExpression="NatureofFacility">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Nature of Facility" SortExpression="NatureofFacility">
                             <ItemTemplate>
                                 <asp:DropDownList ID="DropDownListFACILITY_NATURE_CODE" runat="server" DataSourceID="SqlDataSourceNature"
                                     DataTextField="FACILITY_NATURE" DataValueField="FACILITY_NATURE_CODE" SelectedValue='<%# Bind("NatureofFacility") %>'
@@ -698,7 +698,7 @@
                                 <asp:Label ID="LabelStarNature" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Seniority" SortExpression="Seniority">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Seniority" SortExpression="Seniority">
                             <ItemTemplate>
                                 <asp:DropDownList ID="DropDownListSeniority_CODE" runat="server" DataSourceID="SqlDataSourceSiniority"
                                     DataTextField="Seniority_CODE" DataValueField="Seniority_CODE" SelectedValue='<%# Bind("Seniority") %>'
@@ -715,7 +715,7 @@
                                 <asp:Label ID="LabelStarSec" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Basel Committed Indicator" SortExpression="BaselCommittedIndicator">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Basel Committed Indicator" SortExpression="BaselCommittedIndicator">
                             <EditItemTemplate>
                                 <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("BaselCommittedIndicator") %>' />
                             </EditItemTemplate>
@@ -724,13 +724,12 @@
                                     Enabled="false" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Maturity Date" SortExpression="MaturityDate">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Maturity Date" SortExpression="MaturityDate">
                             <ItemTemplate>
                                 <asp:Label ID="LabelMaturityDate" runat="server" Text='<%# Eval("MaturityDate","{0:d MMMM yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBoxMaturityDate" runat="server" Text='<%# Bind("MaturityDate","{0:d MMMM yyyy}") %>'>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </asp:TextBox>
                                 <asp:Label ID="LabelStarMaturity" runat="server" Text=" " ForeColor="Red"></asp:Label>
                                 <asp:CalendarExtender ID="TextBoxMaturityDate_CalendarExtender" runat="server" TargetControlID="TextBoxMaturityDate"
@@ -738,7 +737,7 @@
                                 </asp:CalendarExtender>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Principal Repayment Currency Code" SortExpression="PrincipalRepaymentCurrencyCode">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Principal Repayment Currency Code" SortExpression="PrincipalRepaymentCurrencyCode">
                             <ItemTemplate>
                                 <asp:DropDownList ID="DropDownListPrincipalRepaymentCurrencyCode" runat="server"
                                     DataSourceID="SqlDataSourceCurrency" DataTextField="Description" DataValueField="Code"
@@ -755,7 +754,7 @@
                                 <asp:Label ID="LabelStarPrin" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Principal Repayment Amount" SortExpression="PrincipalRepaymentAmount">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Principal Repayment Amount" SortExpression="PrincipalRepaymentAmount">
                             <ItemTemplate>
                                 <asp:Label ID="LabelPrincipalRepaymentAmount" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.00}") %>' CssClass="NumTextBox"></asp:Label>
                             </ItemTemplate>
@@ -764,7 +763,7 @@
                                 <asp:Label ID="LabelStarRepayment" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Principal Repayment Cycle" SortExpression="PrincipalRepaymentCycle">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Principal Repayment Cycle" SortExpression="PrincipalRepaymentCycle">
                             <ItemTemplate>
                                 <asp:Label ID="LabelPrincipalRepaymentCycle" runat="server" Text='<%# Bind("PrincipalRepaymentCycle") %>'></asp:Label>
                             </ItemTemplate>
@@ -777,7 +776,7 @@
                                 <asp:Label ID="LabelStarCyc" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Compounding Frequency of Interest" SortExpression="CompoundingFrequencyofInterest">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Compounding Frequency of Interest" SortExpression="CompoundingFrequencyofInterest">
                             <ItemTemplate>
                                 <asp:DropDownList ID="DropDownListFREQUENCY_CODE" runat="server" DataSourceID="SqlDataSourceFrequency"
                                     DataTextField="FREQUENCY_CODE" DataValueField="FREQUENCY_CODE" SelectedValue='<%# Bind("CompoundingFrequencyofInterest") %>'
@@ -794,7 +793,7 @@
                                 <asp:Label ID="LabelStarQue" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sharing Limit with CIF 1" SortExpression="SharingLimitwithCIF1">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Sharing Limit with CIF 1" SortExpression="SharingLimitwithCIF1">
                             <ItemTemplate>
                                 <asp:Label runat="server" ID="LabelSharingCIF1" Text='<%# Bind("SharingLimitwithCIF1") %>'></asp:Label>
                             </ItemTemplate>
@@ -803,7 +802,7 @@
                                 <asp:Label ID="LabelStar3" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sharing Limit with CIF 2" SortExpression="SharingLimitwithCIF2">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Sharing Limit with CIF 2" SortExpression="SharingLimitwithCIF2">
                             <ItemTemplate>
                                 <asp:Label runat="server" ID="LabelSharingCIF2" Text='<%# Bind("SharingLimitwithCIF2") %>'></asp:Label>
                             </ItemTemplate>
@@ -812,7 +811,7 @@
                                 <asp:Label ID="LabelStar4" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sharing Limit with CIF 3" SortExpression="SharingLimitwithCIF3">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Sharing Limit with CIF 3" SortExpression="SharingLimitwithCIF3">
                             <ItemTemplate>
                                 <asp:Label runat="server" ID="LabelSharingCIF3" Text='<%# Bind("SharingLimitwithCIF3") %>'></asp:Label>
                             </ItemTemplate>
@@ -821,7 +820,7 @@
                                 <asp:Label ID="LabelStar5" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sharing Limit with CIF 4" SortExpression="SharingLimitwithCIF4">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Sharing Limit with CIF 4" SortExpression="SharingLimitwithCIF4">
                             <ItemTemplate>
                                 <asp:Label runat="server" ID="LabelSharingCIF4" Text='<%# Bind("SharingLimitwithCIF4") %>'></asp:Label>
                             </ItemTemplate>
@@ -830,7 +829,7 @@
                                 <asp:Label ID="LabelStar6" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sharing Limit with CIF 5" SortExpression="SharingLimitwithCIF5">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Sharing Limit with CIF 5" SortExpression="SharingLimitwithCIF5">
                             <ItemTemplate>
                                 <asp:Label runat="server" ID="LabelSharingCIF5" Text='<%# Bind("SharingLimitwithCIF5") %>'></asp:Label>
                             </ItemTemplate>
@@ -839,7 +838,7 @@
                                 <asp:Label ID="LabelStar7" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sharing Limit with CIF 6" SortExpression="SharingLimitwithCIF6">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Sharing Limit with CIF 6" SortExpression="SharingLimitwithCIF6">
                             <ItemTemplate>
                                 <asp:Label runat="server" ID="LabelSharingCIF6" Text='<%# Bind("SharingLimitwithCIF6") %>'></asp:Label>
                             </ItemTemplate>
@@ -848,7 +847,7 @@
                                 <asp:Label ID="LabelStarCIF6" runat="server" Text=" " ForeColor="Red"></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Update User" SortExpression="UPDATE_USER">
                             <ItemTemplate>
                                 <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
                             </ItemTemplate>
@@ -856,7 +855,7 @@
                                 <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Update Date" SortExpression="UPDATE_DATE">
+                        <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Update Date" SortExpression="UPDATE_DATE">
                             <ItemTemplate>
                                 <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
                             </ItemTemplate>
@@ -866,7 +865,7 @@
                         </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#CCCC99" />
-                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" CssClass="gvFixedHeader" Wrap="false"/>
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" CssClass="gvFixedHeader"/>
                     <PagerSettings Mode="NumericFirstLast" />
                     <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Left" />
                     <RowStyle BackColor="#F7F7DE" />
