@@ -572,10 +572,10 @@
         OnClick="BtnLinkToLimitStructure_Click" />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <asp:Panel ID="Wrapper_Panel" runat="server" Width="800px" ScrollBars="Vertical">
+            <asp:Panel ID="Wrapper_Panel" runat="server" Width="800px" ScrollBars="Auto">
                 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
                     AutoGenerateColumns="False" DataKeyNames="CIF,DefaultDate,LIMITNO" DataSourceID="SqlDataSourceFacility"
-                    EnableModelValidation="True" ForeColor="Black" BackColor="White"
+                    EnableModelValidation="True" ForeColor="Black" BackColor="White" CellPadding="4" 
                     BorderColor="#DEDFDE">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
@@ -866,7 +866,7 @@
                         </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#CCCC99" />
-                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" CssClass="gvFixedHeader" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" CssClass="gvFixedHeader" Wrap="false"/>
                     <PagerSettings Mode="NumericFirstLast" />
                     <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Left" />
                     <RowStyle BackColor="#F7F7DE" />
