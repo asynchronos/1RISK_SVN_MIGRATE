@@ -459,8 +459,8 @@
                 <asp:Label ID="FormCollateral_Label" runat="server" Text="COLLATERAL INFORMATION"></asp:Label>
                 <asp:GridView ID="GridView_COLL_INFO" runat="server" AutoGenerateColumns="False"
                     DataSourceID="SqlDataSourceCOLL_INFO" EnableModelValidation="True" CellPadding="4"
-                    ForeColor="#333333" OnRowUpdating="GridView_RowUpdating" ShowFooter="True" OnRowCommand="GridView_COLL_INFO_RowCommand"
-                    AllowPaging="True">
+                    DataKeyNames="COLL_ID,PLED_ID,PLED_SEQ,APPS_ID" ForeColor="#333333" OnRowUpdating="GridView_RowUpdating"
+                    ShowFooter="True" OnRowCommand="GridView_COLL_INFO_RowCommand" AllowPaging="True">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
@@ -479,6 +479,12 @@
                                     CommandName="FooterInsert" Text="Insert"></asp:LinkButton>
                             </FooterTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButtonDelete" runat="server" CausesValidation="False" 
+                                    CommandName="Delete" Text="Delete"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="COLL_ID" SortExpression="COLL_ID">
                             <ItemStyle Width="100px" />
                             <EditItemTemplate>
@@ -489,9 +495,6 @@
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:TextBox ID="LabelCOLL_ID_Footer" runat="server" Width="100px"></asp:TextBox>
-                                <%--<asp:RequiredFieldValidator ID="LabelCOLL_ID_Insert_RequiredFieldValidator" runat="server"
-                                    ErrorMessage="*" Text="*" ControlToValidate="LabelCOLL_ID_Insert" ValidationGroup="InsertGroup"
-                                    ForeColor="Yellow"></asp:RequiredFieldValidator>--%>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="PLED_ID" SortExpression="PLED_ID">
@@ -754,10 +757,6 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="TextBoxCOLL_ID" runat="server" Width="100px"></asp:TextBox>
-                                    <%--<asp:RequiredFieldValidator ID="LabelCOLL_ID_Insert_RequiredFieldValidator" runat="server"
-                                        ErrorMessage="*" Text="*" ControlToValidate="LabelCOLL_ID_Insert" ValidationGroup="InsertGroup"
-                                        ForeColor="Yellow">
-                                    </asp:RequiredFieldValidator>--%>
                                 </td>
                                 <td>
                                     <asp:Label ID="LabelPLED_ID" runat="server" OnPreRender="LabelPLED_ID_PreRender"></asp:Label>
@@ -802,7 +801,7 @@
                                     <asp:TextBox ID="TextBoxCollateral_Provider" runat="server"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:CheckBox ID="Property_Under_Construction_CheckBox" runat="server" />
+                                    <asp:CheckBox ID="Property_Under_Construction_CheckBox" runat="server" Checked="false" />
                                 </td>
                                 <td>
                                     <asp:TextBox ID="TextBoxLeasehold_Period" runat="server"></asp:TextBox>
@@ -888,7 +887,8 @@
                 <asp:SqlDataSource ID="SqlDataSourceCOLL_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
                     SelectCommand="COLLATERAL_INFORMATION_SELECT" SelectCommandType="StoredProcedure"
                     InsertCommand="COLLATERAL_INFORMATION_INSERT" InsertCommandType="StoredProcedure"
-                    UpdateCommand="COLLATERAL_INFORMATION_UPDATE" UpdateCommandType="StoredProcedure">
+                    UpdateCommand="COLLATERAL_INFORMATION_UPDATE" UpdateCommandType="StoredProcedure"
+                    DeleteCommand="COLLATERAL_INFORMATION_DELETE" DeleteCommandType="StoredProcedure">
                     <InsertParameters>
                         <asp:Parameter Name="COLL_ID" Type="String" />
                         <asp:Parameter Name="PLED_ID" Type="String" />
@@ -934,6 +934,12 @@
                         <asp:Parameter Name="UPDATE_USER" Type="String" />
                         <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
                     </UpdateParameters>
+                    <DeleteParameters>
+                        <asp:Parameter Name="COLL_ID" Type="String" />
+                        <asp:Parameter Name="PLED_ID" Type="String" />
+                        <asp:Parameter Name="PLED_SEQ" Type="Int16" />
+                        <asp:Parameter Name="APPS_ID" Type="String" />
+                    </DeleteParameters>
                 </asp:SqlDataSource>
             </td>
         </tr>
