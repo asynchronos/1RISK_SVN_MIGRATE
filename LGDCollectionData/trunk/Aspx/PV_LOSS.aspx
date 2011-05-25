@@ -273,7 +273,7 @@
         <ContentTemplate>
             <asp:Button ID="Refresh_Button" runat="server" Text="Refresh Data" />
             <asp:GridView ID="RESTRUCTURE_INFORMATION_GridView" runat="server" AllowPaging="True"
-                AutoGenerateColumns="False" CellPadding="4" DataKeyNames="CIF,Default_Date,Date_of_Repayment"
+                AutoGenerateColumns="False" CellPadding="4" DataKeyNames="CIF,Default_Date,Date_of_Restructure,Date_of_Repayment"
                 DataSourceID="RESTRUCTURE_INFORMATION_SqlDataSource" EnableModelValidation="True"
                 ForeColor="#333333" ShowFooter="True" OnRowCommand="RESTRUCTURE_INFORMATION_GridView_RowCommand"
                 OnRowUpdating="GridView_RowUpdating">
