@@ -80,6 +80,69 @@
             //end format IsNumeric Element onblur event
             numericElements.applyStyles({ "text-align": "right" });
 
+            //format IsNumeric Element onblur event
+            var numberElements = Ext.select("input[type=text][IsNumber=Yes]");
+            numberElements.on({
+                "keyup": {
+                    fn: function (e, t, o) {
+                        try {
+                            var keyNum = eventKeyCode(e);
+
+                            if (keyNum == 109) return;
+                            if (t.value.length == 0) return;
+                            if (keyNum <= 40 && keyNum != 8) return;
+
+                            var valueArray = t.value.split(".");
+                            var intValueStrArray = valueArray[0].split(",");
+                            var intValueStr = "";
+
+                            for (var i = 0; i < intValueStrArray.length; i++) {
+                                intValueStr += intValueStrArray[i];
+                            }
+
+                            intValueStr = String(Number(intValueStr));
+
+                            var result = "";
+                            var splitCount = 0;
+                            var isMinus = (Number(intValueStr) < 0) ? true : false;
+                            var absoluteValue = intValueStr.replace("-", "");
+
+                            for (var i = (absoluteValue.length - 1); i >= 0; i--) {
+                                if (splitCount == 3) {
+                                    result = "," + result
+                                    splitCount = 0;
+                                    i++;
+                                    continue;
+                                }
+
+                                result = absoluteValue.charAt(i) + result;
+                                splitCount++;
+                            }
+
+                            if (valueArray.length > 1) {
+                                result = result + "." + valueArray[1];
+                            }
+
+                            if (isMinus) {
+                                result = "-" + result;
+                            }
+
+                            t.value = result;
+
+                        } catch (err) {
+                            alert("error : " + err);
+                        }
+                    }
+                },
+                "blur": {
+                    fn: function (e, t, o) {
+                        t.value = (new MyNumber(t.value)).toCurrency(0);
+                    }
+                }
+            });
+            //end format IsNumeric Element onblur event
+            numberElements.applyStyles({ "text-align": "right" });
+
             var Pledge_to_All_Facilities_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Pledge_to_All_Facilities_CheckBox");
             var Facility_Pledged_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Facility_Pledged_TextBox");
             var Prior_Claim_by_Other_Bank_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Prior_Claim_by_Other_Bank_CheckBox");
@@ -457,6 +520,7 @@
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                 </asp:DetailsView>
                 <asp:Label ID="FormCollateral_Label" runat="server" Text="COLLATERAL INFORMATION"></asp:Label>
+                <asp:Panel ID="Wrapper_Panel" runat="server" Width="800px" ScrollBars="Horizontal">
                 <asp:GridView ID="GridView_COLL_INFO" runat="server" AutoGenerateColumns="False"
                     DataSourceID="SqlDataSourceCOLL_INFO" EnableModelValidation="True" CellPadding="4"
                     DataKeyNames="COLL_ID,PLED_ID,PLED_SEQ,APPS_ID" ForeColor="#333333" OnRowUpdating="GridView_RowUpdating"
@@ -664,13 +728,13 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Leasehold_Period" SortExpression="Leasehold_Period">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox14" runat="server" Text='<%# Bind("Leasehold_Period") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox14" runat="server" Text='<%# Bind("Leasehold_Period") %>' IsNumber="Yes"></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label32" runat="server" Text='<%# Bind("Leasehold_Period") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="TextBoxLeasehold_Period_Footer" runat="server" Text='<%# Bind("Leasehold_Period") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBoxLeasehold_Period_Footer" runat="server" Text='<%# Bind("Leasehold_Period") %>' IsNumber="Yes"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Leasehold_Start_Date" SortExpression="Leasehold_Start_Date">
@@ -804,7 +868,7 @@
                                     <asp:CheckBox ID="Property_Under_Construction_CheckBox" runat="server" Checked="false" />
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TextBoxLeasehold_Period" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="TextBoxLeasehold_Period" runat="server" IsNumber="Yes"></asp:TextBox>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="TextBoxLeasehold_Start_Date" runat="server" Format="d MMMM yyyy"></asp:TextBox>
@@ -822,6 +886,7 @@
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                     <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
                 </asp:GridView>
+                </asp:Panel>
                 <asp:SqlDataSource ID="SqlDataSourcePLEDGE_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
                     InsertCommand="PLEDGE_INFORMATION_INSERT" InsertCommandType="StoredProcedure"
                     SelectCommand="PLEDGE_INFORMATION_SELECT" SelectCommandType="StoredProcedure"
