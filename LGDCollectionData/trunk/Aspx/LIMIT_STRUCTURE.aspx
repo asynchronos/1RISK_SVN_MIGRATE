@@ -25,7 +25,7 @@
     <script type="text/javascript">
         Ext.onReady(function () {
             //format IsNumeric Element onblur event
-            var numericElements = Ext.select("input[type=text][IsCurrency=Yes]");
+            var numericElements = Ext.select("input[type=text][IsNumeric=Yes]");
             numericElements.on({
                 "keyup": {
                     fn: function (e, t, o) {
@@ -180,12 +180,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Limit D1" SortExpression="Limit_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>' IsCurrency="Yes"
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>' IsNumeric="Yes"
                         Style="text-align: right;"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Input Limit_D1" ControlToValidate="TextBox1" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>'></asp:Label>
@@ -224,11 +224,11 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="One Level Up Limit Amount @ D-1" SortExpression="One_Level_Up_Limit_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes">
+                    <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes">
                     </asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label9" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
@@ -255,10 +255,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Two Level Up Limit Amount @ D-1" SortExpression="Two_Level_Up_Limit_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label11" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
@@ -296,10 +296,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Three Level Up Limit Amount @ D-1" SortExpression="Three_Level_Up_Limit_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label13" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
@@ -337,10 +337,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Four Level Up Limit Amount @ D-1" SortExpression="Four_Level_Up_Limit_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label15" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
@@ -576,11 +576,11 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Limit D1" SortExpression="Limit_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>' IsCurrency="Yes" Style="text-align: right;"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Style="text-align: right;"></asp:TextBox>
                         <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Input Limit_D1" ControlToValidate="TextBox1" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.##}") %>'></asp:Label>
@@ -623,11 +623,11 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="One Level Up Limit Amount @ D-1" SortExpression="One_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes">
+                        <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes">
                         </asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label9" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
@@ -658,10 +658,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Two Level Up Limit Amount @ D-1" SortExpression="Two_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label11" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
@@ -703,10 +703,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Three Level Up Limit Amount @ D-1" SortExpression="Three_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label13" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
@@ -748,10 +748,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Four Level Up Limit Amount @ D-1" SortExpression="Four_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsCurrency="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label15" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>

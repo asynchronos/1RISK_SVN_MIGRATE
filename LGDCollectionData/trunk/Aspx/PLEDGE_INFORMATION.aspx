@@ -258,11 +258,11 @@
                                 </asp:CalendarExtender>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d}") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("Valuation_Date_D1") %>'></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Prior Claim by Other Bank" 

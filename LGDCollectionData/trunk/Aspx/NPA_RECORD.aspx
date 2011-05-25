@@ -18,6 +18,78 @@
             alert(msg);
         }
     </script>
+    <!-- Ext includes -->
+    <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
+    <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
+    <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            //format IsNumeric Element onblur event
+            var numericElements = Ext.select("input[type=text][IsNumeric=Yes]");
+            numericElements.on({
+                "keyup": {
+                    fn: function (e, t, o) {
+                        try {
+                            var keyNum = eventKeyCode(e);
+
+                            if (keyNum == 109) return;
+                            if (t.value.length == 0) return;
+                            if (keyNum <= 40 && keyNum != 8) return;
+
+                            var valueArray = t.value.split(".");
+                            var intValueStrArray = valueArray[0].split(",");
+                            var intValueStr = "";
+
+                            for (var i = 0; i < intValueStrArray.length; i++) {
+                                intValueStr += intValueStrArray[i];
+                            }
+
+                            intValueStr = String(Number(intValueStr));
+
+                            var result = "";
+                            var splitCount = 0;
+                            var isMinus = (Number(intValueStr) < 0) ? true : false;
+                            var absoluteValue = intValueStr.replace("-", "");
+
+                            for (var i = (absoluteValue.length - 1); i >= 0; i--) {
+                                if (splitCount == 3) {
+                                    result = "," + result
+                                    splitCount = 0;
+                                    i++;
+                                    continue;
+                                }
+
+                                result = absoluteValue.charAt(i) + result;
+                                splitCount++;
+                            }
+
+                            if (valueArray.length > 1) {
+                                result = result + "." + valueArray[1];
+                            }
+
+                            if (isMinus) {
+                                result = "-" + result;
+                            }
+
+                            t.value = result;
+
+                        } catch (err) {
+                            alert("error : " + err);
+                        }
+                    }
+                },
+                "blur": {
+                    fn: function (e, t, o) {
+                        t.value = (new MyNumber(t.value)).toCurrency(2);
+                    }
+                }
+            });
+            //end format IsNumeric Element onblur event
+            numericElements.applyStyles({ "text-align": "right" });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
@@ -70,11 +142,11 @@
     </asp:SqlDataSource>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,Default_Date,NPA_Collateral_ID" DataSourceID="SqlDataSourceNPA_RECORD"
-        EnableModelValidation="True" Height="50px" Width="389px" DefaultMode="Edit" OnDataBound="DetailsView_Databound"
-        CellPadding="4" ForeColor="#333333" GridLines="None" OnPreRender="DetailsView_OnPreRender">
+        EnableModelValidation="True" DefaultMode="Edit" OnDataBound="DetailsView_Databound"
+        CellPadding="4" ForeColor="#333333" GridLines="Both" OnPreRender="DetailsView_OnPreRender" Width="600px">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
-        <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
+        <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%" />
         <Fields>
             <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
                 <EditItemTemplate>
@@ -129,6 +201,7 @@
             <asp:TemplateField HeaderText="COS Collateral ID" SortExpression="COS_Collateral_ID">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("COS_Collateral_ID") %>'></asp:TextBox>
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox13" runat="server" Text='<%# Bind("COS_Collateral_ID") %>'></asp:TextBox>
@@ -156,35 +229,36 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Collateral Sale Price" SortExpression="Collateral_Sale_Price">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:n2}") %>'
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"
                         Style="text-align: right;"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Collateral Sale Price"
-                        Text="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Collateral Sale Price"
+                        Text="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>--%>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Collateral_Sale_Price") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.##}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Collateral_Sale_Price") %>'></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.##}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Collateral Sale Date" SortExpression="Collateral_Sale_Date">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d}") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
                     <asp:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Enabled="True"
                         TargetControlID="TextBox4">
                     </asp:CalendarExtender>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Collateral_Sale_Date") %>'></asp:TextBox>
-                                        <asp:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Enabled="True"
-                        TargetControlID="TextBox6">
+                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Enabled="True" TargetControlID="TextBox6" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label6" runat="server" Text='<%# Bind("Collateral_Sale_Date") %>'></asp:Label>
+                    <asp:Label ID="Label6" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Collateral Description" 
@@ -249,17 +323,17 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Title Deed Number" SortExpression="Title_Deed_Number">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Title_Deed_Number") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Title_Deed_Number") %>' Width="300px" MaxLength="255"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox14" runat="server" Text='<%# Bind("Title_Deed_Number") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox14" runat="server" Text='<%# Bind("Title_Deed_Number") %>' Width="300px" MaxLength="255"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label14" runat="server" Text='<%# Bind("Title_Deed_Number") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="UPDATE USER" SortExpression="UPDATE_USER">
+            <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">
                 <EditItemTemplate>
                     <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
                 </EditItemTemplate>
@@ -270,7 +344,7 @@
                     <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="UPDATE DATE" SortExpression="UPDATE_DATE">
+            <asp:TemplateField HeaderText="Update Date" SortExpression="UPDATE_DATE">
                 <EditItemTemplate>
                     <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
                 </EditItemTemplate>

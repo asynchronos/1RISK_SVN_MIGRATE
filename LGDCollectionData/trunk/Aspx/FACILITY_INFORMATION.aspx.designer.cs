@@ -157,15 +157,6 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Button BtnLinkToLimitStructure;
         
         /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
         /// Wrapper_Panel control.
         /// </summary>
         /// <remarks>
@@ -182,14 +173,5 @@ namespace LGDCollectionData.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// UpdatePanel1_UpdatePanelAnimationExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.UpdatePanelAnimationExtender UpdatePanel1_UpdatePanelAnimationExtender;
     }
 }
