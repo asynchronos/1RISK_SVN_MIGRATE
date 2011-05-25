@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using AjaxControlToolkit;
+using System.Globalization;
 
 namespace LGDCollectionData.Aspx
 {
@@ -433,6 +435,32 @@ namespace LGDCollectionData.Aspx
                 // Perform insert
                 ds.Insert();
             }
+        }
+
+        protected void Valuation_Date_D_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ITextControl t = (((CustomValidator)source).Parent.FindControl("Default_Date_Label") != null) ? (ITextControl)((CustomValidator)source).Parent.FindControl("Default_Date_Label") : (ITextControl)((CustomValidator)source).Parent.FindControl("TextBoxDefault_Date_Insert");
+
+            CalendarExtender cal = ((CalendarExtender)((CustomValidator)source).Parent.FindControl("Valuation_Date_D_CalendarExtender"));
+
+            CultureInfo cul = new CultureInfo("en-US");
+            DateTime inputDate = DateTime.ParseExact(args.Value, cal.Format, cul);
+            DateTime compareDate = DateTime.ParseExact(t.Text, cal.Format, cul);
+
+            args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
+        }
+
+        protected void Valuation_Date_D1_TextBox_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ITextControl t = (((CustomValidator)source).Parent.FindControl("Valuation_Date_D_Label") != null) ? (ITextControl)((CustomValidator)source).Parent.FindControl("Valuation_Date_D_Label") : (ITextControl)((CustomValidator)source).Parent.FindControl("Valuation_Date_D_TextBox");
+
+            CalendarExtender cal = ((CalendarExtender)((CustomValidator)source).Parent.FindControl("Valuation_Date_D1_TextBox_CalendarExtender"));
+
+            CultureInfo cul = new CultureInfo("en-US");
+            DateTime inputDate = DateTime.ParseExact(args.Value, cal.Format, cul);
+            DateTime compareDate = DateTime.ParseExact(t.Text, cal.Format, cul);
+
+            args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
         }
     }
 }

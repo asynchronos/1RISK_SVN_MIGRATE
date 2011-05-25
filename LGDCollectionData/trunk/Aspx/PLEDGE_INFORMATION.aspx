@@ -11,10 +11,74 @@
     <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
+    <script type="text/javascript" src="../Scripts/common.js"></script>
     <script type="text/javascript">
         Ext.onReady(function () {
-            Ext.select("input[type=text]").setWidth("200px");
-            Ext.select("input[type=text]").set({ "maxlength": "255" });
+            //Ext.select("input[type=text]").setWidth("200px");
+            //Ext.select("input[type=text]").set({ "maxlength": "255" });
+
+            //format IsNumeric Element onblur event
+            var numericElements = Ext.select("input[type=text][IsNumeric=Yes]");
+            numericElements.on({
+                "keyup": {
+                    fn: function (e, t, o) {
+                        try {
+                            var keyNum = eventKeyCode(e);
+
+                            if (keyNum == 109) return;
+                            if (t.value.length == 0) return;
+                            if (keyNum <= 40 && keyNum != 8) return;
+
+                            var valueArray = t.value.split(".");
+                            var intValueStrArray = valueArray[0].split(",");
+                            var intValueStr = "";
+
+                            for (var i = 0; i < intValueStrArray.length; i++) {
+                                intValueStr += intValueStrArray[i];
+                            }
+
+                            intValueStr = String(Number(intValueStr));
+
+                            var result = "";
+                            var splitCount = 0;
+                            var isMinus = (Number(intValueStr) < 0) ? true : false;
+                            var absoluteValue = intValueStr.replace("-", "");
+
+                            for (var i = (absoluteValue.length - 1); i >= 0; i--) {
+                                if (splitCount == 3) {
+                                    result = "," + result
+                                    splitCount = 0;
+                                    i++;
+                                    continue;
+                                }
+
+                                result = absoluteValue.charAt(i) + result;
+                                splitCount++;
+                            }
+
+                            if (valueArray.length > 1) {
+                                result = result + "." + valueArray[1];
+                            }
+
+                            if (isMinus) {
+                                result = "-" + result;
+                            }
+
+                            t.value = result;
+
+                        } catch (err) {
+                            alert("error : " + err);
+                        }
+                    }
+                },
+                "blur": {
+                    fn: function (e, t, o) {
+                        t.value = (new MyNumber(t.value)).toCurrency(2);
+                    }
+                }
+            });
+            //end format IsNumeric Element onblur event
+            numericElements.applyStyles({ "text-align": "right" });
 
             var Pledge_to_All_Facilities_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Pledge_to_All_Facilities_CheckBox");
             var Facility_Pledged_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Facility_Pledged_TextBox");
@@ -62,6 +126,8 @@
                 Prior_Claim_Amount_TextBox.disabled(true);
             }
             //end init Prior_Claim_by_Other_Bank_CheckBox
+
+            
         });
     </script>
     <script type="text/javascript">
@@ -90,12 +156,12 @@
             <td valign="top">
                 <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
                     DataKeyNames="CIF,Default_Date,APPS_ID,PLED_ID,PLED_SEQ" DataSourceID="SqlDataSourcePLEDGE_INFO"
-                    EnableModelValidation="True" Height="50px" Width="377px" OnDataBound="DetailsView_Databound"
+                    EnableModelValidation="True" OnDataBound="DetailsView_Databound"
                     OnPageIndexChanged="DetailsView_PageIndexChanged" OnPreRender="DetailsView_Prerender"
-                    DefaultMode="Edit" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    DefaultMode="Edit" CellPadding="4" ForeColor="#333333" GridLines="Both" Width="550px" PagerSettings-Mode="NumericFirstLast">
                     <AlternatingRowStyle BackColor="White" />
                     <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
-                    <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
+                    <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%" />
                     <Fields>
                         <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
                             <EditItemTemplate>
@@ -110,7 +176,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                             <EditItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                                <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                             </EditItemTemplate>
                             <InsertItemTemplate>
                                 <asp:TextBox ID="TextBoxDefault_Date_Insert" runat="server" Text='<%# Bind("Default_Date") %>'></asp:TextBox>
@@ -121,7 +187,7 @@
                                 </asp:CalendarExtender>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label15" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                                <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="APPS ID" SortExpression="APPS_ID">
@@ -162,29 +228,27 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Pledge to All Facilities" SortExpression="Pledge_to_All_Facilities">
                             <EditItemTemplate>
-                                <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" Checked='<%# Bind("Pledge_to_All_Facilities") %>'
-                                    domId="Pledge_to_All_Facilities_CheckBox" />
+                                <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" Checked='<%# Bind("Pledge_to_All_Facilities") %>' domId="Pledge_to_All_Facilities_CheckBox" />
+                                <span style="color: Red">*</span>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("Pledge_to_All_Facilities") %>' />
+                                <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" Checked='<%# Bind("Pledge_to_All_Facilities") %>' domId="Pledge_to_All_Facilities_CheckBox"/>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("Pledge_to_All_Facilities") %>'
-                                    Enabled="false" />
+                                <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" Checked='<%# Bind("Pledge_to_All_Facilities") %>' Enabled="false" domId="Pledge_to_All_Facilities_CheckBox"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Facility Pledged" SortExpression="Facility_Pledged">
                             <EditItemTemplate>
-                                <asp:TextBox ID="Facility_Pledged_TextBox" runat="server" Text='<%# Bind("Facility_Pledged") %>'
-                                    domId="Facility_Pledged_TextBox"></asp:TextBox>
+                                <asp:TextBox ID="Facility_Pledged_TextBox" runat="server" Text='<%# Bind("Facility_Pledged") %>' domId="Facility_Pledged_TextBox"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox13" runat="server" Text='<%# Bind("Facility_Pledged") %>'></asp:TextBox>
+                                <asp:TextBox ID="Facility_Pledged_TextBox" runat="server" Text='<%# Bind("Facility_Pledged") %>' domId="Facility_Pledged_TextBox"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label13" runat="server" Text='<%# Bind("Facility_Pledged") %>'></asp:Label>
+                                <asp:Label ID="Facility_Pledged_Label" runat="server" Text='<%# Bind("Facility_Pledged") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Collateral Currency Code" SortExpression="Collateral_Currency_Code">
@@ -195,77 +259,87 @@
                                 <span style="color: Red">*</span>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Collateral_Currency_Code") %>'></asp:TextBox>
+                                <asp:DropDownList ID="DropDownListCurrency" runat="server" DataSourceID="SqlDataSourceCurrentcy"
+                                    DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Collateral_Currency_Code")%>'>
+                                </asp:DropDownList>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("Collateral_Currency_Code") %>'></asp:Label>
+                                <asp:DropDownList ID="DropDownListCurrency" runat="server" DataSourceID="SqlDataSourceCurrentcy"
+                                    DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Collateral_Currency_Code")%>' Enabled="false">
+                                </asp:DropDownList>
+                                <span style="color: Red">*</span>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Valuation Amount @ D" SortExpression="Valuation_Amount_D">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:n2}") %>'
-                                    Width="150px" Style="text-align: right"></asp:TextBox>
-                                <span style="color: Red">*</span>
+                                <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("Valuation_Amount_D") %>'></asp:TextBox>
+                                <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label10" runat="server" Text='<%# Bind("Valuation_Amount_D") %>'></asp:Label>
+                                <asp:Label ID="Valuation_Amount_D_Label" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Valuation Date @ D" SortExpression="Valuation_Date_D">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Valuation_Date_D","{0:d MMMM yyyy}") %>'></asp:TextBox>
-                                <span style="color: Red">*</span>
-                                <asp:CalendarExtender ID="TextBox1_CalendarExtender" runat="server" TargetControlID="TextBox1"
+                                <asp:TextBox ID="Valuation_Date_D_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                                <asp:CalendarExtender ID="Valuation_Date_D_CalendarExtender" runat="server" TargetControlID="Valuation_Date_D_TextBox"
                                     Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                                 </asp:CalendarExtender>
+                                <asp:CustomValidator ID="Valuation_Date_D_Validator" runat="server" ErrorMessage="Must earlier than default date." ControlToValidate="Valuation_Date_D_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Valuation_Date_D_ServerValidate"></asp:CustomValidator>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Valuation_Date_D") %>'></asp:TextBox>
+                                <asp:TextBox ID="Valuation_Date_D_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D","{0:d MMMM yyyy}") %>'></asp:TextBox>
                                 <span style="color: Red">*</span>
+                                <asp:CalendarExtender ID="Valuation_Date_D_CalendarExtender" runat="server" TargetControlID="Valuation_Date_D_TextBox"
+                                    Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
+                                </asp:CalendarExtender>
+                                <asp:CustomValidator ID="Valuation_Date_D_Validator" runat="server" ErrorMessage="Must earlier than default date." ControlToValidate="Valuation_Date_D_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Valuation_Date_D_ServerValidate"></asp:CustomValidator>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Valuation_Date_D","{0:d MMMM yyyy}") %>'></asp:Label>
+                                <asp:Label ID="Valuation_Date_D_Label" runat="server" Text='<%# Bind("Valuation_Date_D","{0:d MMMM yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Valuation Amount @ D-1" SortExpression="Valuation_Amount_D1">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:n2}") %>'
-                                    Width="150px" Style="text-align: right"></asp:TextBox>
-                                <span style="color: Red">*</span>
+                                <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("Valuation_Amount_D1") %>'></asp:TextBox>
+                                <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label11" runat="server" Text='<%# Bind("Valuation_Amount_D1") %>'></asp:Label>
+                                <asp:Label ID="Valuation_Amount_D1_Label" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Valuation Date @ D-1" SortExpression="Valuation_Date_D1">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:TextBox>
-                                <span style="color: Red">*</span>
-                                <asp:CalendarExtender ID="TextBox2_CalendarExtender" runat="server" TargetControlID="TextBox2"
+                                <asp:TextBox ID="Valuation_Date_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                                <asp:CalendarExtender ID="Valuation_Date_D1_TextBox_CalendarExtender" runat="server" TargetControlID="Valuation_Date_D1_TextBox"
                                     Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                                 </asp:CalendarExtender>
+                                <asp:CustomValidator ID="Valuation_Date_D1_TextBox_Validator" runat="server" ErrorMessage="Must earlier than default date." ControlToValidate="Valuation_Date_D1_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Valuation_Date_D1_TextBox_ServerValidate"></asp:CustomValidator>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:TextBox>
-                                <span style="color: Red">*</span>
+                                 <asp:TextBox ID="Valuation_Date_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                                 <span style="color: Red">*</span>
+                                <asp:CalendarExtender ID="Valuation_Date_D1_TextBox_CalendarExtender" runat="server" TargetControlID="Valuation_Date_D1_TextBox"
+                                    Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
+                                </asp:CalendarExtender>
+                                <asp:CustomValidator ID="Valuation_Date_D1_TextBox_Validator" runat="server" ErrorMessage="Must earlier than default date." ControlToValidate="Valuation_Date_D1_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Valuation_Date_D1_TextBox_ServerValidate"></asp:CustomValidator>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:Label>
+                                <asp:Label ID="Valuation_Date_D1_Label" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Prior Claim by Other Bank" SortExpression="Prior_Claim_by_Other_Bank">
                             <EditItemTemplate>
                                 <asp:CheckBox ID="Prior_Claim_by_Other_Bank_CheckBox" runat="server" Checked='<%# Bind("Prior_Claim_by_Other_Bank") %>'
                                     domId="Prior_Claim_by_Other_Bank_CheckBox" />
+                                <span style="color: Red">*</span>
                             </EditItemTemplate>
                             <InsertItemTemplate>
                                 <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("Prior_Claim_by_Other_Bank") %>' />
@@ -277,75 +351,67 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Prior Claim Amount" SortExpression="Prior_Claim_Amount">
                             <EditItemTemplate>
-                                <asp:TextBox ID="Prior_Claim_Amount_TextBox" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:n2}") %>'
-                                    Width="150px" Style="text-align: right" domId="Prior_Claim_Amount_TextBox"></asp:TextBox>
+                                <asp:TextBox ID="Prior_Claim_Amount_TextBox" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Prior_Claim_Amount_TextBox"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("Prior_Claim_Amount") %>'></asp:TextBox>
+                                <asp:TextBox ID="Prior_Claim_Amount_TextBox" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Prior_Claim_Amount_TextBox"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label12" runat="server" Text='<%# Bind("Prior_Claim_Amount") %>'></asp:Label>
+                                <asp:Label ID="Prior_Claim_Amount_Label" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:#,##0.##}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Pledge Amount @ D" SortExpression="Pledge_Amount_D">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:n2}") %>'
-                                    Width="150px" Style="text-align: right"></asp:TextBox>
-                                <span style="color: Red">*</span>
+                                <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Pledge_Amount_D") %>'></asp:TextBox>
+                                <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("Pledge_Amount_D") %>'></asp:Label>
+                                <asp:Label ID="Pledge_Amount_D_Label" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Limitation Amount @ D" SortExpression="Limitation_Amount_D">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:n2}") %>'
-                                    Width="150px" Style="text-align: right"></asp:TextBox>
-                                <span style="color: Red">*</span>
+                                <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Limitation_Amount_D") %>'></asp:TextBox>
+                                <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("Limitation_Amount_D") %>'></asp:Label>
+                                <asp:Label ID="Limitation_Amount_D_Label" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Pledge Amount @ D-1" SortExpression="Pledge_Amount_D1">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:n2}") %>'
-                                    Width="150px" Style="text-align: right"></asp:TextBox>
-                                <span style="color: Red">*</span>
+                                <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Pledge_Amount_D1") %>'></asp:TextBox>
+                                <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label6" runat="server" Text='<%# Bind("Pledge_Amount_D1") %>'></asp:Label>
+                                <asp:Label ID="Pledge_Amount_D1_Label" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Limitation Amount @ D-1" SortExpression="Limitation_Amount_D1">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:n2}") %>'
-                                    Width="150px" Style="text-align: right"></asp:TextBox>
-                                <span style="color: Red">*</span>
+                                <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Limitation_Amount_D1") %>'></asp:TextBox>
+                                <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                            </EditItemTemplate>
                                 <span style="color: Red">*</span>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label7" runat="server" Text='<%# Bind("Limitation_Amount_D1") %>'></asp:Label>
+                                <asp:Label ID="Limitation_Amount_D1_Label" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="UPDATE USER" SortExpression="UPDATE_USER">
+                        <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">
                             <EditItemTemplate>
                                 <%--<asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:TextBox>--%>
                                 <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
@@ -357,7 +423,7 @@
                                 <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="UPDATE DATE" SortExpression="UPDATE_DATE">
+                        <asp:TemplateField HeaderText="Update Date" SortExpression="UPDATE_DATE">
                             <EditItemTemplate>
                                 <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
                             </EditItemTemplate>
@@ -371,7 +437,7 @@
                         <asp:TemplateField ShowHeader="False">
                             <EditItemTemplate>
                                 <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update"
-                                    Text="Update"></asp:LinkButton>
+                                    Text="Update" ValidationGroup="detailviewValidation"></asp:LinkButton>
                                 &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel"
                                     Text="Cancel"></asp:LinkButton>
                             </EditItemTemplate>
@@ -381,7 +447,7 @@
                             </ItemTemplate>
                             <InsertItemTemplate>
                                 <asp:LinkButton ID="LinkButtonSave" runat="server" CausesValidation="true" CommandName="Insert"
-                                    Text="Insert" ValidationGroup="InsertValidation"></asp:LinkButton>
+                                    Text="Insert" ValidationGroup="detailviewValidation"></asp:LinkButton>
                             </InsertItemTemplate>
                         </asp:TemplateField>
                     </Fields>
@@ -423,9 +489,9 @@
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:TextBox ID="LabelCOLL_ID_Footer" runat="server" Width="100px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="LabelCOLL_ID_Insert_RequiredFieldValidator" runat="server"
+                                <%--<asp:RequiredFieldValidator ID="LabelCOLL_ID_Insert_RequiredFieldValidator" runat="server"
                                     ErrorMessage="*" Text="*" ControlToValidate="LabelCOLL_ID_Insert" ValidationGroup="InsertGroup"
-                                    ForeColor="Yellow"></asp:RequiredFieldValidator>
+                                    ForeColor="Yellow"></asp:RequiredFieldValidator>--%>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="PLED_ID" SortExpression="PLED_ID">
@@ -688,10 +754,10 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="TextBoxCOLL_ID" runat="server" Width="100px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="LabelCOLL_ID_Insert_RequiredFieldValidator" runat="server"
+                                    <%--<asp:RequiredFieldValidator ID="LabelCOLL_ID_Insert_RequiredFieldValidator" runat="server"
                                         ErrorMessage="*" Text="*" ControlToValidate="LabelCOLL_ID_Insert" ValidationGroup="InsertGroup"
                                         ForeColor="Yellow">
-                                    </asp:RequiredFieldValidator>
+                                    </asp:RequiredFieldValidator>--%>
                                 </td>
                                 <td>
                                     <asp:Label ID="LabelPLED_ID" runat="server" OnPreRender="LabelPLED_ID_PreRender"></asp:Label>
