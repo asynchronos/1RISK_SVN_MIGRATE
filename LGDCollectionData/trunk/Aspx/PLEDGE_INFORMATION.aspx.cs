@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -17,18 +17,20 @@ namespace LGDCollectionData.Aspx
         {
 
         }
+
         protected void DetailsView_Databound(Object sender, EventArgs e)
         {
-            
+
             //TextBox Name = (TextBox)sender.FindControl("nameBox");
             //MessageBox.Show(DetailsView1.Rows.Count.ToString());
             //MessageBox.Show(DetailsView1.Rows.Count.ToString());
             String text = string.Empty;
-            
+
 
             //MessageBox.Show(text);
 
-            if (DetailsView1.CurrentMode == DetailsViewMode.Edit) {
+            if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
+            {
                 if (DetailsView1.Rows.Count > 0)
                 {
                     HiddenFieldAPPS_ID.Value = ((DataRowView)DetailsView1.DataItem).Row.ItemArray[2].ToString();
@@ -60,10 +62,29 @@ namespace LGDCollectionData.Aspx
                     }
                     else
                     {
-                        DataSet DS_COLL = GET_COLLATERAL_INFORMATION(HiddenFieldPLED_ID.Value.ToString(), Convert.ToInt32(HiddenFieldPLED_SEQ.Value), HiddenFieldAPPS_ID.Value.ToString());
-                        //Cache("COLLATERAL") = DS_COLL.Tables[0].DefaultView;
-                        GridView1.DataSource = DS_COLL.Tables[0];
-                        GridView1.DataBind();
+                        //set parameter to grid and bind
+                        SqlDataSourceCOLL_INFO.SelectParameters["PLED_ID"].DefaultValue = ((Label)DetailsView1.FindControl("LabelPLED_ID")).Text;
+                        SqlDataSourceCOLL_INFO.SelectParameters["PLED_SEQ"].DefaultValue = ((Label)DetailsView1.FindControl("LabelPLED_SEQ")).Text;
+                        SqlDataSourceCOLL_INFO.SelectParameters["APPS_ID"].DefaultValue = ((Label)DetailsView1.FindControl("LabelAPPS_ID")).Text;
+
+                        GridView_COLL_INFO.DataBind();
+                        //DataSet DS_COLL = GET_COLLATERAL_INFORMATION(HiddenFieldPLED_ID.Value.ToString(), Convert.ToInt32(HiddenFieldPLED_SEQ.Value), HiddenFieldAPPS_ID.Value.ToString());
+                        //if (DS_COLL.Tables[0].Rows.Count > 0)
+                        //{
+                        //GridView1.DataSource = DS_COLL.Tables[0];
+                        //GridView1.DataBind();
+
+                        //DetailsView2.Visible = true;
+                        //DetailsView2.ChangeMode(DetailsViewMode.Edit);
+                        //}
+                        //else {
+                        //GridView1.DataSource = DS_COLL.Tables[0];
+                        //GridView1.DataBind();
+
+                        //DetailsView2.Visible = true;
+                        //DetailsView2.ChangeMode(DetailsViewMode.Insert);
+                        //}
+
                     }
                 }
                 else
@@ -72,6 +93,7 @@ namespace LGDCollectionData.Aspx
                     ((System.Web.UI.WebControls.Label)dv.FindControl("LabelCif_Insert")).Text = Request.QueryString.Get("CIF");
                     ((System.Web.UI.WebControls.Label)dv.FindControl("LabelUserId_Insert")).Text = User.Identity.Name.ToString();
                     ((System.Web.UI.WebControls.Label)dv.FindControl("LabelDate_Insert")).Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+
                 }
             }
 
@@ -86,8 +108,14 @@ namespace LGDCollectionData.Aspx
             //}
         }
 
+        protected void GridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            e.NewValues["UPDATE_USER"] = User.Identity.Name;
+            e.NewValues["UPDATE_DATE"] = DateTime.Now;
+        }
+
         protected void DetailsView_PageIndexChanged(Object sender, EventArgs e)
-        { 
+        {
 
         }
 
@@ -100,7 +128,7 @@ namespace LGDCollectionData.Aspx
             //}
         }
 
-        public static DataSet GET_COLLATERAL_INFORMATION(string PLED_ID, int PLED_SEQ,string APPS_ID)
+        public static DataSet GET_COLLATERAL_INFORMATION(string PLED_ID, int PLED_SEQ, string APPS_ID)
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["LGDConnectionString1"].ConnectionString))
             {
@@ -115,23 +143,94 @@ namespace LGDCollectionData.Aspx
                     SqlDataAdapter list = new SqlDataAdapter(command);
                     DataSet ds = new DataSet();
                     list.Fill(ds);
-                    connection.Close();  
+                    connection.Close();
                     return ds;
-                } 
+                }
             }
 
         }
 
-        protected void GridView1_OnRowDataBound(object sender, GridViewRowEventArgs e)
-        {
+        //protected void GridView1_OnRowDataBound(object sender, GridViewRowEventArgs e)
+        //{
 
-            if (e.Row.RowType == DataControlRowType.Header || e.Row.RowType == DataControlRowType.DataRow)
+        //    if (e.Row.RowType == DataControlRowType.Header || e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        // กำหนดให้ fix column
+        //        e.Row.Cells[0].Style["position"] = "relative";
+        //        e.Row.Cells[1].Style["position"] = "relative";
+        //        e.Row.Cells[2].Style["position"] = "relative";
+
+        //    }
+
+        //}
+
+        //protected void ButtonEdit_Click(object sender, EventArgs e)
+        //{
+
+        //    System.Web.UI.WebControls.Button btn = (System.Web.UI.WebControls.Button)sender;
+        //    string[] CommandArgument = btn.CommandArgument.Split(',');
+        //    string CommandArgument1 = CommandArgument[0];
+        //    string CommandArgument2 = CommandArgument[1];
+        //    string CommandArgument3 = CommandArgument[2];
+        //    string CommandArgument4 = CommandArgument[3];
+
+        //    DataSet DS_COLL2 = GET_COLLATERAL_INFORMATION_EDIT(CommandArgument1, CommandArgument2, Convert.ToInt32(CommandArgument3), CommandArgument4);
+        //    if (DS_COLL2.Tables[0].Rows.Count > 0)
+        //    {
+
+        //        //DetailsView2.DataSource = DS_COLL2;
+        //        //DetailsView2.DataBind();
+
+        //        //DetailsView2.ChangeMode(DetailsViewMode.Edit);
+        //    }
+        //    else {
+        //        //DetailsView2.ChangeMode(DetailsViewMode.Insert );
+        //    }
+
+
+        //    //MessageBox.Show(CommandArgument1);
+        //    //MessageBox.Show(CommandArgument2);
+        //    //MessageBox.Show(CommandArgument3);
+        //    //MessageBox.Show(CommandArgument4);
+
+        //}
+
+        //protected void DetailsView2_Databound(Object sender, EventArgs e)
+        //{
+        //    String text = string.Empty;
+        //    if (DetailsView2.CurrentMode == DetailsViewMode.Edit)
+        //    {
+        //        System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView2.FindControl("LabelUserId2");
+        //        System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView2.FindControl("LabelDate2");
+        //        if (userId != null)
+        //            userId.Text = User.Identity.Name.ToString();
+        //        if (dateLabel != null)
+        //            dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+        //    }
+        //}
+
+        public static DataSet GET_COLLATERAL_INFORMATION_EDIT(string COLL_ID, string PLED_ID, int PLED_SEQ, string APPS_ID)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["LGDConnectionString1"].ConnectionString))
             {
-                // กำหนดให้ fix column
-                e.Row.Cells[0].Style["position"] = "relative";
-                e.Row.Cells[1].Style["position"] = "relative";
-                e.Row.Cells[2].Style["position"] = "relative";
+                using (SqlCommand command = new SqlCommand("COLLATERAL_INFORMATION_SELECT_2", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandTimeout = 60;
+
+                    command.Parameters.Add(new SqlParameter("@COLL_ID", COLL_ID));
+                    command.Parameters.Add(new SqlParameter("@PLED_ID", PLED_ID));
+                    command.Parameters.Add(new SqlParameter("@PLED_SEQ", PLED_SEQ));
+                    command.Parameters.Add(new SqlParameter("@APPS_ID", APPS_ID));
+                    connection.Open();
+                    SqlDataAdapter list = new SqlDataAdapter(command);
+                    DataSet ds = new DataSet();
+                    list.Fill(ds);
+                    connection.Close();
+                    return ds;
+                }
             }
+
         }
 
         protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e)
@@ -176,5 +275,164 @@ namespace LGDCollectionData.Aspx
         //}
 
 
+        protected void LabelCOLL_ID_PreRender(object sender, EventArgs e)
+        {
+            if (DetailsView1.FindControl("LabelCOLL_ID") != null)
+            {
+                ((Label)sender).Text = ((Label)DetailsView1.FindControl("LabelCOLL_ID")).Text;
+            }
+        }
+
+        protected void LabelPLED_ID_PreRender(object sender, EventArgs e)
+        {
+            if (DetailsView1.FindControl("LabelPLED_ID") != null)
+            {
+                ((Label)sender).Text = ((Label)DetailsView1.FindControl("LabelPLED_ID")).Text;
+            }
+        }
+
+        protected void LabelAPPS_ID_PreRender(object sender, EventArgs e)
+        {
+            if (DetailsView1.FindControl("LabelAPPS_ID") != null)
+            {
+                ((Label)sender).Text = ((Label)DetailsView1.FindControl("LabelAPPS_ID")).Text;
+            }
+        }
+
+        protected void LabelPLED_SEQ_PreRender(object sender, EventArgs e)
+        {
+            if (DetailsView1.FindControl("LabelPLED_SEQ") != null)
+            {
+                ((Label)sender).Text = ((Label)DetailsView1.FindControl("LabelPLED_SEQ")).Text;
+            }
+        }
+
+
+        protected void GridView_COLL_INFO_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridView gv = (GridView)sender;
+            SqlDataSource ds = SqlDataSourceCOLL_INFO;
+            if (e.CommandName.Equals("EmptyDataTemplateInsert"))
+            {
+                // Retrieve row
+                GridViewRow gvr = gv.Controls[0].Controls[0] as GridViewRow;
+
+                //if (gvr == null) { return; }
+
+                // Retrieve data from controls
+                TextBox LabelCOLL_ID_Insert = (TextBox)gv.FooterRow.FindControl("TextBoxCOLL_ID_Insert");
+                Label LabelPLED_ID_Fotter = (Label)gv.FooterRow.FindControl("LabelPLED_ID_Fotter");
+                Label LabelPLED_SEQ = (Label)gv.FooterRow.FindControl("LabelPLED_SEQ");
+                Label LabelAPPS_ID = (Label)gv.FooterRow.FindControl("LabelAPPS_ID");
+                TextBox TextBoxAPPS_DATE = (TextBox)gv.FooterRow.FindControl("TextBoxAPPS_DATE");
+                TextBox TextBoxCollateral_Type = (TextBox)gv.FooterRow.FindControl("TextBoxCollateral_Type");
+                TextBox TextBoxProperty_Type = (TextBox)gv.FooterRow.FindControl("TextBoxProperty_Type");
+                TextBox TextBoxCollateral_Description = (TextBox)gv.FooterRow.FindControl("TextBoxCollateral_Description");
+                TextBox TextBoxDistrict_of_Property = (TextBox)gv.FooterRow.FindControl("TextBoxDistrict_of_Property");
+                TextBox TextBoxAmphur_of_Property = (TextBox)gv.FooterRow.FindControl("TextBoxAmphur_of_Property");
+                DropDownList DropDownListProvince_Add = (DropDownList)gv.FooterRow.FindControl("DropDownListProvince_Add");
+                TextBox TextBoxLocated_Country_of_Property = (TextBox)gv.FooterRow.FindControl("TextBoxLocated_Country_of_Property");
+                TextBox TextBoxCollateral_Provider = (TextBox)gv.FooterRow.FindControl("TextBoxCollateral_Provider");
+                CheckBox Property_Under_Construction_CheckBox = (CheckBox)gv.FooterRow.FindControl("Property_Under_Construction_CheckBox");
+                TextBox TextBoxLeasehold_Period = (TextBox)gv.FooterRow.FindControl("TextBoxLeasehold_Period");
+                TextBox TextBoxLeasehold_Start_Date = (TextBox)gv.FooterRow.FindControl("TextBoxLeasehold_Start_Date");
+
+                string chk = string.Empty;
+                if (Property_Under_Construction_CheckBox.Checked == true)
+                {
+                    chk = "1";
+                }
+                else
+                {
+                    chk = "0";
+                }
+
+                // Set parameters
+                ds.InsertParameters["COLL_ID"].DefaultValue = LabelCOLL_ID_Insert.Text;
+                ds.InsertParameters["PLED_ID"].DefaultValue = LabelPLED_ID_Fotter.Text;
+                ds.InsertParameters["PLED_SEQ"].DefaultValue = LabelPLED_SEQ.Text;
+                ds.InsertParameters["APPS_ID"].DefaultValue = LabelAPPS_ID.Text;
+                ds.InsertParameters["APPS_DATE"].DefaultValue = TextBoxAPPS_DATE.Text;
+                ds.InsertParameters["Collateral_Type"].DefaultValue = TextBoxCollateral_Type.Text;
+                ds.InsertParameters["Property_Type"].DefaultValue = TextBoxProperty_Type.Text;
+                ds.InsertParameters["Collateral_Description"].DefaultValue = TextBoxCollateral_Description.Text;
+                ds.InsertParameters["District_of_Property"].DefaultValue = TextBoxDistrict_of_Property.Text;
+                ds.InsertParameters["Amphur_of_Property"].DefaultValue = TextBoxAmphur_of_Property.Text;
+                ds.InsertParameters["Province_of_Property"].DefaultValue = DropDownListProvince_Add.SelectedValue;
+                ds.InsertParameters["Located_Country_of_Property"].DefaultValue = TextBoxLocated_Country_of_Property.Text;
+                ds.InsertParameters["Collateral_Provider"].DefaultValue = TextBoxCollateral_Provider.Text;
+                ds.InsertParameters["Property_Under_Construction"].DefaultValue = chk;
+                ds.InsertParameters["Leasehold_Period"].DefaultValue = TextBoxLeasehold_Period.Text;
+                ds.InsertParameters["Leasehold_Start_Date"].DefaultValue = TextBoxLeasehold_Start_Date.Text;
+                ds.InsertParameters["UPDATE_USER"].DefaultValue = User.Identity.Name;
+                ds.InsertParameters["UPDATE_DATE"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
+
+                // Perform insert
+                ds.Insert();
+            }
+            else if (e.CommandName.Equals("FooterInsert"))
+            {
+                // Retrieve data from controls
+                TextBox LabelCOLL_ID_Footer = (TextBox)gv.FooterRow.FindControl("LabelCOLL_ID_Footer");
+                Label LabelPLED_ID_Footer = (Label)gv.FooterRow.FindControl("LabelPLED_ID_Footer");
+                Label LabelPLED_SEQ_Footer = (Label)gv.FooterRow.FindControl("LabelPLED_SEQ_Footer");
+                Label LabelAPPS_ID_Footer = (Label)gv.FooterRow.FindControl("LabelAPPS_ID_Footer");
+                TextBox TextBoxAPPS_DATE_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxAPPS_DATE_Footer");
+                TextBox TextBoxCollateral_Type_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxCollateral_Type_Footer");
+                TextBox TextBoxProperty_Type_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxProperty_Type_Footer");
+                TextBox TextBoxCollateral_Description_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxCollateral_Description_Footer");
+                TextBox TextBoxDistrict_of_Property_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxDistrict_of_Property_Footer");
+                TextBox TextBoxAmphur_of_Property_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxAmphur_of_Property_Footer");
+                DropDownList DropDownListProvince_Footer = (DropDownList)gv.FooterRow.FindControl("DropDownListProvince_Footer");
+                TextBox TextBoxLocated_Country_of_Property_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxLocated_Country_of_Property_Footer");
+                TextBox TextBoxCollateral_Provider_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxCollateral_Provider_Footer");
+                CheckBox Property_Under_Construction_CheckBox_Footer = (CheckBox)gv.FooterRow.FindControl("Property_Under_Construction_CheckBox_Footer");
+                TextBox TextBoxLeasehold_Period_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxLeasehold_Period_Footer");
+                TextBox TextBoxLeasehold_Start_Date_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxLeasehold_Start_Date_Footer");
+
+                // Set parameters
+                //ds.InsertParameters["CIF"].DefaultValue = cifLabel.Text;
+                //ds.InsertParameters["Default_Date"].DefaultValue = defaultDateLabel.Text;
+                //ds.InsertParameters["Date_of_Restructure"].DefaultValue = dateOfRestructureLabel.Text;
+                //ds.InsertParameters["Date_of_Repayment"].DefaultValue = dateOfRepaymentTextBox.Text;
+                //ds.InsertParameters["Discount_Rate"].DefaultValue = discountRateTextBox.Text;
+                //ds.InsertParameters["TDR_Cash_Flow"].DefaultValue = tdrCashFlowTextBox.Text;
+                //ds.InsertParameters["Present_Value_of_Repayment"].DefaultValue = presentValueOfRepaymentTextBox.Text;
+                //ds.InsertParameters["Cash_Flow_Currency"].DefaultValue = cashFlowCurrencyDropDownList.SelectedValue;
+                //ds.InsertParameters["UpdateUser"].DefaultValue = User.Identity.Name;
+                //ds.InsertParameters["UpdateDate"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
+
+                string chk=string.Empty;
+                if (Property_Under_Construction_CheckBox_Footer.Checked == true)
+                {
+                    chk = "1";
+                }
+                else
+                {
+                    chk = "0";
+                }
+                ds.InsertParameters["COLL_ID"].DefaultValue = LabelCOLL_ID_Footer.Text;
+                ds.InsertParameters["PLED_ID"].DefaultValue = LabelPLED_ID_Footer.Text;
+                ds.InsertParameters["PLED_SEQ"].DefaultValue = LabelPLED_SEQ_Footer.Text;
+                ds.InsertParameters["APPS_ID"].DefaultValue = LabelAPPS_ID_Footer.Text;
+                ds.InsertParameters["APPS_DATE"].DefaultValue = TextBoxAPPS_DATE_Footer.Text;
+                ds.InsertParameters["Collateral_Type"].DefaultValue = TextBoxCollateral_Type_Footer.Text;
+                ds.InsertParameters["Property_Type"].DefaultValue = TextBoxProperty_Type_Footer.Text;
+                ds.InsertParameters["Collateral_Description"].DefaultValue = TextBoxCollateral_Description_Footer.Text;
+                ds.InsertParameters["District_of_Property"].DefaultValue = TextBoxDistrict_of_Property_Footer.Text;
+                ds.InsertParameters["Amphur_of_Property"].DefaultValue = TextBoxAmphur_of_Property_Footer.Text;
+                ds.InsertParameters["Province_of_Property"].DefaultValue = DropDownListProvince_Footer.SelectedValue;
+                ds.InsertParameters["Located_Country_of_Property"].DefaultValue = TextBoxLocated_Country_of_Property_Footer.Text;
+                ds.InsertParameters["Collateral_Provider"].DefaultValue = TextBoxCollateral_Provider_Footer.Text;
+                ds.InsertParameters["Property_Under_Construction"].DefaultValue = chk;
+                ds.InsertParameters["Leasehold_Period"].DefaultValue = TextBoxLeasehold_Period_Footer.Text;
+                ds.InsertParameters["Leasehold_Start_Date"].DefaultValue = TextBoxLeasehold_Start_Date_Footer.Text;
+                ds.InsertParameters["UPDATE_USER"].DefaultValue = User.Identity.Name;
+                ds.InsertParameters["UPDATE_DATE"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
+
+                // Perform insert
+                ds.Insert();
+            }
+        }
     }
 }
