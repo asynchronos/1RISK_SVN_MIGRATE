@@ -161,17 +161,17 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Default_Date", "{0:d}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-<asp:TextBox ID="TextBoxDefault_Date_Insert" runat="server" Text='<%# Bind("Default_Date") %>'></asp:TextBox>
-                            <span>*</span>
+<asp:TextBox ID="TextBoxDefault_Date_Insert" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                           <span style="color: Red">*</span>
                     <asp:CalendarExtender ID="TextBoxDefault_Date_Insert_CalendarExtender" 
                         runat="server" TargetControlID="TextBoxDefault_Date_Insert" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label10" runat="server" Text='<%# Bind("Default_Date", "{0:d}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="NPA Collateral ID" SortExpression="NPA_Collateral_ID">
@@ -233,7 +233,7 @@
                         IsNumeric="Yes"
                         Style="text-align: right;"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Collateral Sale Price"
-                        Text="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>--%>
+                        Text="*" ValidationGroup="detailviewValidation" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>--%>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.##}") %>'
@@ -246,15 +246,20 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Collateral Sale Date" SortExpression="Collateral_Sale_Date">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
-                    <asp:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Enabled="True"
-                        TargetControlID="TextBox4">
+                    <asp:TextBox ID="Collateral_Sale_Date_TextBox" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:CalendarExtender ID="Collateral_Sale_Date_TextBox_CalendarExtender" runat="server" Enabled="True"
+                        TargetControlID="Collateral_Sale_Date_TextBox" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy"
+                                TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
+                    <asp:CustomValidator ID="Collateral_Sale_Date_TextBox_Validator" runat="server" ErrorMessage="Must later than default date." ControlToValidate="Collateral_Sale_Date_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Collateral_Sale_Date_TextBox_ServerValidate"></asp:CustomValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
-                    <asp:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Enabled="True" TargetControlID="TextBox6" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
+                    <asp:TextBox ID="Collateral_Sale_Date_TextBox" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:CalendarExtender ID="Collateral_Sale_Date_TextBox_CalendarExtender" runat="server" Enabled="True"
+                        TargetControlID="Collateral_Sale_Date_TextBox" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy"
+                                TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
+                    <asp:CustomValidator ID="Collateral_Sale_Date_TextBox_Validator" runat="server" ErrorMessage="Must later than default date." ControlToValidate="Collateral_Sale_Date_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Collateral_Sale_Date_TextBox_ServerValidate"></asp:CustomValidator>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -281,7 +286,7 @@
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("District_of_Property") %>'></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input District of Property"
-                        Text="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
+                        Text="*" ValidationGroup="detailviewValidation" ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("District_of_Property") %>'></asp:TextBox>
@@ -295,7 +300,7 @@
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Amphur_of_Property") %>'></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input District of Property"
-                        Text="*" ValidationGroup="UpdateValidation" ControlToValidate="TextBox3"></asp:RequiredFieldValidator>
+                        Text="*" ValidationGroup="detailviewValidation" ControlToValidate="TextBox3"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Amphur_of_Property") %>'></asp:TextBox>
@@ -358,7 +363,7 @@
             <asp:TemplateField ShowHeader="False">
                 <EditItemTemplate>
                     <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="true" CommandName="Update"
-                        Text="Update" ValidationGroup="UpdateValidation"></asp:LinkButton>
+                        Text="Update" ValidationGroup="detailviewValidation"></asp:LinkButton>
                     &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="true" CommandName="Cancel"
                         Text="Cancel"></asp:LinkButton>
                 </EditItemTemplate>
@@ -368,7 +373,7 @@
                 </ItemTemplate>
                 <InsertItemTemplate>
                     <asp:LinkButton ID="LinkButtonSave" runat="server" CausesValidation="true" CommandName="Insert"
-                        Text="Insert" ValidationGroup="InsertValidation"></asp:LinkButton>
+                        Text="Insert" ValidationGroup="detailviewValidation"></asp:LinkButton>
                 </InsertItemTemplate>
             </asp:TemplateField>
         </Fields>
@@ -378,7 +383,7 @@
         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
     </asp:DetailsView>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true"
-        ValidationGroup="UpdateValidation" ShowSummary="False" />
+        ValidationGroup="detailviewValidation" ShowSummary="False" />
     <asp:SqlDataSource ID="SqlDataSourceCurrentcy" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="L_CURRENCY_CODE_SELECT" EnableCaching="True" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
