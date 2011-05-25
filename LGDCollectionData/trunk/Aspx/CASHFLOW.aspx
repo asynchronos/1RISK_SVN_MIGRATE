@@ -532,7 +532,7 @@
         SelectCommand="L_CURRENCY_CODE_SELECT" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="PreviousLimitNo_DataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="P_LIMITNO_IN_FACILITY_INFORMATION_BY_CIF" SelectCommandType="StoredProcedure"
-        EnableCaching="True">
+        EnableCaching="false">
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="cif" Type="String" />
         </SelectParameters>

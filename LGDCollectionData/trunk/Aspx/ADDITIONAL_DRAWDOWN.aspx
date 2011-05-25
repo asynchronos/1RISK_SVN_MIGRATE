@@ -17,7 +17,7 @@
             Ext.select("input[type=text]").set({ "maxlength": "255" });
 
             var CheckBoxLIMITNO_Changed = Ext.DotNetControl.CheckBox.mapElement("domId", "CheckBoxLIMITNO_Changed");
-            var DropDownListPrevious_LIMITNO = Ext.DotNetControl.Element.mapElement("select", "domId", "DropDownListPrevious_LIMITNO");
+            var DropDownListPrevious_LIMITNO = Ext.DotNetControl.ComboBox.mapElement("domId", "DropDownListPrevious_LIMITNO");
 
             var CheckBoxIs_This_an_Additional_Drawdown = Ext.DotNetControl.CheckBox.mapElement("domId", "CheckBoxIs_This_an_Additional_Drawdown");
             var ComboBoxAdditional = Ext.DotNetControl.ComboBox.mapElement("domId", "ComboBoxAdditional");
@@ -183,8 +183,11 @@
         ProviderName="<%$ ConnectionStrings:LGDConnectionString1.ProviderName %>" SelectCommand="L_CURRENCY_CODE_SELECT"
         SelectCommandType="StoredProcedure" EnableCaching="True"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceLimitNo" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        SelectCommand="FACILITY_INFORMATION_LIMITNO_SELECT" SelectCommandType="StoredProcedure"
+        SelectCommand="P_LIMITNO_IN_FACILITY_INFORMATION_BY_CIF" SelectCommandType="StoredProcedure"
         EnableCaching="False">
+        <SelectParameters>
+            <asp:QueryStringParameter Name="CIF" QueryStringField="cif" Type="String" />
+        </SelectParameters>
         </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceDrawDownType" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="ADDITIONAL_DRAWDOWN_TYPE_SELECT" SelectCommandType="StoredProcedure"
@@ -291,13 +294,15 @@
                         Checked='<%# Bind("LIMITNO_Changed") %>'  domId = "CheckBoxLIMITNO_Changed" Enabled="false"/>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Previous_LIMITNO" SortExpression="Previous_LIMITNO">
+            <asp:TemplateField HeaderText="Previous LIMITNO" SortExpression="Previous_LIMITNO">
                 <EditItemTemplate>
-                    <asp:DropDownList  ID="DropDownListPrevious_LIMITNO" domId="DropDownListPrevious_LIMITNO" runat="server" 
-                       AppendDataBoundItems="true" DataSourceID="SqlDataSourceLimitNo"
-                        DataTextField="LIMITNO" DataValueField="LIMITNO" SelectedValue='<%# Bind("Previous_LIMITNO") %>'>
-                        <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:DropDownList>
+                    <asp:ComboBox ID="DropDownListPrevious_LIMITNO" runat="server" AutoCompleteMode="SuggestAppend"
+                        DataSourceID="SqlDataSourceLimitNo" DataTextField="LIMITNO" DataValueField="LIMITNO"
+                        DropDownStyle="DropDownList" MaxLength="0" Style="display: inline;" AppendDataBoundItems="true"
+                        SelectedValue='<%# Bind("Previous_LIMITNO") %>' domId="DropDownListPrevious_LIMITNO">
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
+                        <asp:ListItem Value="N/A">N/A</asp:ListItem>
+                    </asp:ComboBox>
                     <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
               </asp:TemplateField>
