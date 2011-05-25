@@ -370,7 +370,7 @@
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
                 <EditItemTemplate>
-                    <asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" CommandName="New"
+                    <asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" visible="false" CommandName="New"
                         Text="New"></asp:LinkButton>
                     &nbsp;<asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True"
                         CommandName="Update" Text="Update"></asp:LinkButton>
@@ -386,7 +386,7 @@
                 <ItemTemplate>
                     <asp:LinkButton ID="Edit_LinkButton" runat="server" CausesValidation="False" CommandName="Edit"
                         Text="Edit"></asp:LinkButton>
-                    &nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False"
+                    &nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" Visible="false"
                         CommandName="New" Text="New"></asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -483,7 +483,7 @@
                             Text="Edit"></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" ShowHeader="False">
+                <asp:TemplateField ItemStyle-Wrap="false" ShowHeader="False" Visible="false">
                     <ItemTemplate>
                         <asp:LinkButton ID="Delete_LinkButton" runat="server" OnClientClick="return confirm('คุณต้องการลบข้อมูล Record นี้?');"
                             CausesValidation="False" CommandName="Delete" Text="Delete"></asp:LinkButton>
