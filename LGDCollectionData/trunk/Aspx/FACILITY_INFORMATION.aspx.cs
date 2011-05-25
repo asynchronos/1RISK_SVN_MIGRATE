@@ -58,7 +58,7 @@ namespace LGDCollectionData.Aspx
             {
                 GridView1.Visible = false;
                 BtnLinkToLimitStructure.Visible = false;
-                ((DetailsView)sender).ChangeMode(DetailsViewMode.Insert);
+               // ((DetailsView)sender).ChangeMode(DetailsViewMode.Insert);
             }
             else
             {
