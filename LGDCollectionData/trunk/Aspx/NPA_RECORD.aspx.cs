@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AjaxControlToolkit;
+using System.Globalization;
 
 namespace LGDCollectionData.Aspx
 {
@@ -77,5 +79,17 @@ namespace LGDCollectionData.Aspx
             }
         }
 
+        protected void Collateral_Sale_Date_TextBox_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ITextControl t = (((CustomValidator)source).Parent.FindControl("Default_Date_Label") != null) ? (ITextControl)((CustomValidator)source).Parent.FindControl("Default_Date_Label") : (ITextControl)((CustomValidator)source).Parent.FindControl("TextBoxDefault_Date_Insert");
+
+            CalendarExtender cal = ((CalendarExtender)((CustomValidator)source).Parent.FindControl("Collateral_Sale_Date_TextBox_CalendarExtender"));
+
+            CultureInfo cul = new CultureInfo("en-US");
+            DateTime inputDate = DateTime.ParseExact(args.Value, cal.Format, cul);
+            DateTime compareDate = DateTime.ParseExact(t.Text, cal.Format, cul);
+
+            args.IsValid = (inputDate.CompareTo(compareDate) == 1) ? true : false;
+        }
     }
 }
