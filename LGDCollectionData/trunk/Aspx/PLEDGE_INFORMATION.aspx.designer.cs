@@ -40,6 +40,15 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Label FormName_Label;
         
         /// <summary>
+        /// DetailsView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
+        
+        /// <summary>
         /// FormCollateral_Label control.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,13 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Label FormCollateral_Label;
         
         /// <summary>
-        /// DetailsView1 control.
+        /// GridView_COLL_INFO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
+        protected global::System.Web.UI.WebControls.GridView GridView_COLL_INFO;
         
         /// <summary>
         /// SqlDataSourcePLEDGE_INFO control.
@@ -103,30 +112,30 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.HiddenField HiddenFieldPLED_SEQ;
         
         /// <summary>
-        /// Panel1 control.
+        /// HiddenFieldCOLL_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldCOLL_ID;
         
         /// <summary>
-        /// GridView1 control.
+        /// SqlDataSourcePROVINCE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourcePROVINCE;
         
         /// <summary>
-        /// SqlDataSourceCOLLATERAL_INFO control.
+        /// SqlDataSourceCOLL_INFO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCOLLATERAL_INFO;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCOLL_INFO;
     }
 }
