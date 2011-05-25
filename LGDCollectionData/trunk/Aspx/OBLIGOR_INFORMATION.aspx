@@ -633,7 +633,7 @@
                 <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
             </asp:DetailsView>
         
-            <%--<asp:Panel ID="Wrapper_Panel" runat="server" Width="800px" ScrollBars="Vertical">
+            <%--<asp:Panel ID="Wrapper_Panel" runat="server" Width="800px" ScrollBars="Auto">
                 <asp:GridView ID="OBLIGOR_INFORMATION_GridView" runat="server" AutoGenerateColumns="False"
                     CellPadding="4" DataKeyNames="CIF,Default_Date" DataSourceID="OBLIGOR_INFORMATION_SqlDataSource"
                     EnableModelValidation="True" ForeColor="#333333" BorderWidth="1px" BorderStyle="Solid"

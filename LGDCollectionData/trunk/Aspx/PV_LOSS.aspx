@@ -165,11 +165,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Date of Upgrade" SortExpression="Date_of_Upgrade">
                             <EditItemTemplate>
-                                <asp:TextBox ID="Date_of_Upgrade_TextBox" runat="server" Text='<%# Bind("Date_of_Upgrade", "{0:d MMMM yyyy}") %>'></asp:TextBox>
-                                <asp:CalendarExtender ID="Date_of_Upgrade_TextBox_CalendarExtender" runat="server"
-                                    Enabled="True" TargetControlID="Date_of_Upgrade_TextBox" Format="d MMMM yyyy"
-                                    DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
-                                </asp:CalendarExtender>
+                                <asp:Label ID="Date_of_Upgrade_Label" runat="server" Text='<%# Bind("Date_of_Upgrade", "{0:d MMMM yyyy}") %>'></asp:Label>
                             </EditItemTemplate>
                             <InsertItemTemplate>
                                 <asp:TextBox ID="Date_of_Upgrade_TextBox" runat="server" Text='<%# Bind("Date_of_Upgrade", "{0:d MMMM yyyy}") %>'></asp:TextBox>
@@ -184,7 +180,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Pv Gain(Loss)" SortExpression="Pv_Loss">
                             <EditItemTemplate>
-                                <asp:TextBox ID="Pv_Loss_TextBox" runat="server" Text='<%# Bind("Pv_Loss","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>
+                                <asp:Label ID="Pv_Loss_Label" runat="server" Text='<%# Bind("Pv_Loss","{0:#,##0.00}") %>'></asp:Label>
                             </EditItemTemplate>
                             <InsertItemTemplate>
                                 <asp:TextBox ID="Pv_Loss_TextBox" runat="server" Text='<%# Bind("Pv_Loss","{0:#,##0.00}") %>' onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);" CssClass="NumTextBox"></asp:TextBox>

@@ -196,7 +196,7 @@
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO,Additional_Drawdown_Date"
         DataSourceID="SqlDataSource1" EnableModelValidation="True" Width="800px"
-        DefaultMode="Edit" 
+        DefaultMode="Edit" CellPadding="4" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnDataBound="DetailsView_Databound" ForeColor="#333333" GridLines="Both" 
       PagerSettings-Mode="NumericFirstLast">
