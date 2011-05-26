@@ -393,7 +393,7 @@
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Left" />
         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
     </asp:DetailsView>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true"
@@ -467,7 +467,9 @@
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
             DataSourceID="SqlDataSourceLIMIT_STRUCTURE" EnableModelValidation="True" BackColor="White"
             BorderColor="#DEDFDE" ForeColor="Black" GridLines="Both" AutoGenerateColumns="false"
-            DataKeyNames="CIF,Default_Date,LIMITNO" OnRowUpdating="GridView_RowUpdating" CellPadding="4"
+            DataKeyNames="CIF,Default_Date,LIMITNO" 
+            OnRowUpdating="GridView_RowUpdating" CellPadding="4"
+            OnRowDataBound="GridView_RowDataBound"   
             HeaderStyle-Wrap="false" PagerSettings-Mode="NumericFirstLast">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -515,11 +517,12 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="APP ID" SortExpression="APP_ID" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListAPP" runat="server" DataSourceID="SqlDataSourceAPP"
+                       <asp:DropDownList ID="DropDownListAPP" runat="server" DataSourceID="SqlDataSourceAPP" 
                             DataTextField="APP_ID" DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID")%>'
                             AppendDataBoundItems="true">
                             <asp:ListItem Value="">...Please Select...</asp:ListItem>
                         </asp:DropDownList>
+              
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:DropDownList ID="DropDownListAPP" runat="server" DataSourceID="SqlDataSourceAPP"
@@ -770,19 +773,19 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update Date" SortExpression="UPDATE_DATE" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBoxUPDATE_DATE" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBoxUPDATE_DATE" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="LabelUPDATE_DATE" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                        <asp:Label ID="LabelUPDATE_DATE" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White"/>
-            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Left" />
             <RowStyle BackColor="#F7F7DE" />
             <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
         </asp:GridView>
