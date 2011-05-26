@@ -75,7 +75,7 @@ namespace LGDCollectionData.Aspx
             if (((DetailsView)sender).FindControl("Empty_TextBox") != null)
             {
                 //GridView1.Visible = false;
-                ((DetailsView)sender).ChangeMode(DetailsViewMode.Insert);
+              //  ((DetailsView)sender).ChangeMode(DetailsViewMode.Insert);
             }
             else
             {
