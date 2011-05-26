@@ -244,11 +244,13 @@
                     <asp:TextBox ID="Total_Interest_Rate_Prior_to_Default_TextBox" runat="server" 
                         Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.##}") %>'
                         IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Total_Interest_Rate_Prior_to_Default_TextBox" runat="server" 
                         Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.##}") %>'
                         IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
+                    <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Total_Interest_Rate_Prior_to_Default_Label" runat="server" 
@@ -277,11 +279,13 @@
                     <asp:TextBox ID="Interest_Rate_Spread_Prior_to_Default_Percentage_TextBox" runat="server" 
                         Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:#,##0.##}") %>'
                         IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Interest_Rate_Spread_Prior_to_Default_Percentage_TextBox" runat="server" 
                         Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:#,##0.##}") %>'
                         IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
+                    <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Interest_Rate_Spread_Prior_to_Default_Percentage_Label" runat="server" 

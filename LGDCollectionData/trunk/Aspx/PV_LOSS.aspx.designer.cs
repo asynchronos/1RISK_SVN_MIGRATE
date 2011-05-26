@@ -130,6 +130,15 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Button Refresh_Button;
         
         /// <summary>
+        /// Delete_All_Button control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Delete_All_Button;
+        
+        /// <summary>
         /// RESTRUCTURE_INFORMATION_GridView control.
         /// </summary>
         /// <remarks>

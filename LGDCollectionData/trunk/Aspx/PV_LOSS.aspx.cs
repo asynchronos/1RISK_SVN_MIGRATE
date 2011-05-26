@@ -6,6 +6,9 @@ using System.Web.UI;
 using log4net;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using System.Linq;
+using System.Globalization;
+using System.Data.SqlClient;
 
 namespace LGDCollectionData.Aspx
 {
@@ -204,7 +207,18 @@ namespace LGDCollectionData.Aspx
                 log.Info("Write Unsuccess Excel.[" + Path.GetFileName(e.filename) + "]");
                 string savePath = MapPath("~/Excel/RestructureInformation/Uploads/" + Path.GetFileName(e.filename));
                 RESTRUCTURE_INFORMATION_FileUpload.SaveAs(savePath);
-                throw ex;
+
+                string msg = ex.Message;
+                if (ex.InnerException != null)
+                {
+                    //ex = ex.InnerException;
+                    if (ex.InnerException.GetType().Equals(typeof(SqlException)))
+                    {
+                        msg = ((SqlException)ex.InnerException).Message.Replace("\'", "&quot;").Replace("\r", "").Replace("\n", "<br/>");
+                    }
+                }
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "error", "top.$get(\"" + uploadResult.ClientID + "\").innerHTML = '<span style=\"color:red;\">Error: " + msg + "</span>';", true);
+                log.Error(ex.Message,ex);
             }
             finally
             {
@@ -376,6 +390,42 @@ namespace LGDCollectionData.Aspx
         {
             e.NewValues["UpdateUser"] = User.Identity.Name;
             e.NewValues["UpdateDate"] = DateTime.Now;
+        }
+
+        protected void Delete_All_Button_Click(object sender, EventArgs e)
+        {
+            string cif = "", defaultDateText = "", restructureDateText = "";
+            if (PV_LOSS_DetailsView.FindControl("CIF_Label") != null)
+            {
+                cif = ((Label)PV_LOSS_DetailsView.FindControl("CIF_Label")).Text;
+            }
+            if (PV_LOSS_DetailsView.FindControl("Default_Date_Label") != null)
+            {
+                defaultDateText = ((Label)PV_LOSS_DetailsView.FindControl("Default_Date_Label")).Text;
+            }
+            if (PV_LOSS_DetailsView.FindControl("Date_of_Restructure_Label") != null)
+            {
+                restructureDateText = ((Label)PV_LOSS_DetailsView.FindControl("Date_of_Restructure_Label")).Text;
+            }
+
+            DateTime? defaultDate = DateTime.ParseExact(defaultDateText, "d MMMM yyyy", new CultureInfo("en-US"));
+            DateTime? restructureDate = DateTime.ParseExact(restructureDateText, "d MMMM yyyy", new CultureInfo("en-US"));
+
+            using(Entities.LGDEntities en = new Entities.LGDEntities()){
+                System.Data.Objects.ObjectQuery<Entities.RESTRUCTURE_INFORMATION> ri = en.RESTRUCTURE_INFORMATION;
+
+                var queryRecord = from r in ri 
+                                  where r.CIF == cif
+                                  && r.Default_Date == defaultDate.Value
+                                  && r.Date_of_Restructure == restructureDate.Value
+                                  select r;
+
+                foreach (Entities.RESTRUCTURE_INFORMATION r in queryRecord)
+                {
+                    en.DeleteObject(r);
+                }
+                en.SaveChanges();
+            }
         }
     }
 }
