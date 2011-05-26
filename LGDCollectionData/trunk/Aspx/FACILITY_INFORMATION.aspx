@@ -131,7 +131,7 @@
         <Fields>
             <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
                 <EditItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                    <asp:Label ID="LabelCIF" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBoxCIF" runat="server" Text='<%# Bind("CIF") %>' OnPreRender="CIF_TextBox_PreRender"
@@ -478,7 +478,7 @@
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         <PagerSettings Mode="NumericFirstLast" />
-        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Left" />
         <RowStyle Wrap="True" BackColor="#FFFBD6" ForeColor="#333333"></RowStyle>
     </asp:DetailsView>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />

@@ -121,6 +121,17 @@ namespace LGDCollectionData.Aspx
             e.NewValues["Update_User"] = User.Identity.Name;
             e.NewValues["Update_Date"] = DateTime.Now;
         }
+       
+        protected void GridView_RowDataBound(object sender, GridViewRowEventArgs  e )
+        {
+            //if ( e.Row.RowType == DataControlRowType.Header ||  e.Row.RowType == DataControlRowType.DataRow) {
+            //      e.Row.Cells[0].Style["position"] = "relative";  // edit
+            //      e.Row.Cells[2].Style["position"] = "relative"; // cif
+            //}
+   
+        }
+
+
 
     }
 }
