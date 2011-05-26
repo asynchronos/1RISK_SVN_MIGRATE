@@ -79,7 +79,7 @@
                 },
                 "blur": {
                     fn: function (e, t, o) {
-                        t.value = (new MyNumber(t.value)).toCurrency(0);
+                        t.value = (new MyNumber(t.value)).toCurrency(2);
                     }
                 }
             });
@@ -218,50 +218,50 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total Assets(in thousand)" SortExpression="Total_Assets">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Total_Assets_TextBox" runat="server" Text='<%# Bind("Total_Assets","{0:#,##0}") %>'
+                    <asp:TextBox ID="Total_Assets_TextBox" runat="server" Text='<%# Bind("Total_Assets","{0:#,##0.##}") %>'
                         Style="text-align: right;" IsNumeric="Yes" domId="Total_Assets_TextBox"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please input Total Assets" Text="*" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>--%>
                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Total_Assets_TextBox" runat="server" Text='<%# Bind("Total_Assets","{0:#,##0}") %>'
+                    <asp:TextBox ID="Total_Assets_TextBox" runat="server" Text='<%# Bind("Total_Assets","{0:#,##0.##}") %>'
                         Style="text-align: right;" IsNumeric="Yes" domId="Total_Assets_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Total_Assets_Label" runat="server" Text='<%# Bind("Total_Assets","{0:#,##0}") %>'></asp:Label>
+                    <asp:Label ID="Total_Assets_Label" runat="server" Text='<%# Bind("Total_Assets","{0:#,##0.##}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total Liabilities(in thousand)" SortExpression="Total_Liabilities">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Total_Liabilities_TextBox" runat="server" Text='<%# Bind("Total_Liabilities","{0:#,##0}") %>'
+                    <asp:TextBox ID="Total_Liabilities_TextBox" runat="server" Text='<%# Bind("Total_Liabilities","{0:#,##0.##}") %>'
                         Style="text-align: right;" IsNumeric="Yes" domId="Total_Liabilities_TextBox"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please input Total Liabilities" Text="*" ControlToValidate="TextBox3" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>--%>
                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Total_Liabilities_TextBox" runat="server" Text='<%# Bind("Total_Liabilities","{0:#,##0}") %>'
+                    <asp:TextBox ID="Total_Liabilities_TextBox" runat="server" Text='<%# Bind("Total_Liabilities","{0:#,##0.##}") %>'
                         Style="text-align: right;" IsNumeric="Yes" domId="Total_Liabilities_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Total_Liabilities_Label" runat="server" Text='<%# Bind("Total_Liabilities","{0:#,##0}") %>'></asp:Label>
+                    <asp:Label ID="Total_Liabilities_Label" runat="server" Text='<%# Bind("Total_Liabilities","{0:#,##0.##}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total Revenue(in thousand)" SortExpression="Total_Revenue">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Total_Revenue_TextBox" runat="server" Text='<%# Bind("Total_Revenue","{0:#,##0}") %>'
+                    <asp:TextBox ID="Total_Revenue_TextBox" runat="server" Text='<%# Bind("Total_Revenue","{0:#,##0.##}") %>'
                         Style="text-align: right;" IsNumeric="Yes" domId="Total_Revenue_TextBox"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input Total Revenue" Text="*" ControlToValidate="TextBox4" ValidationGroup="UpdateValidation"></asp:RequiredFieldValidator>--%>
                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Total_Revenue_TextBox" runat="server" Text='<%# Bind("Total_Revenue","{0:#,##0}") %>'
+                    <asp:TextBox ID="Total_Revenue_TextBox" runat="server" Text='<%# Bind("Total_Revenue","{0:#,##0.##}") %>'
                         Style="text-align: right;" IsNumeric="Yes" domId="Total_Revenue_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="LabelTotal_Revenue" runat="server" Text='<%# Bind("Total_Revenue","{0:#,##0}") %>'></asp:Label>
+                    <asp:Label ID="LabelTotal_Revenue" runat="server" Text='<%# Bind("Total_Revenue","{0:#,##0.##}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">

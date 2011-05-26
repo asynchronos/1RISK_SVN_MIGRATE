@@ -272,6 +272,9 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:Button ID="Refresh_Button" runat="server" Text="Refresh Data" />
+            <asp:Button ID="Delete_All_Button" runat="server" 
+                onclick="Delete_All_Button_Click" Text="Delete All"
+                OnClientClick="return confirm('คุณต้องการลบข้อมูลที่แสดงด้านล่างนี้ทั้งหมด?');" />
             <asp:GridView ID="RESTRUCTURE_INFORMATION_GridView" runat="server" AllowPaging="True"
                 AutoGenerateColumns="False" CellPadding="4" DataKeyNames="CIF,Default_Date,Date_of_Restructure,Date_of_Repayment"
                 DataSourceID="RESTRUCTURE_INFORMATION_SqlDataSource" EnableModelValidation="True"
@@ -534,13 +537,9 @@
                 SelectCommand="L_CURRENCY_CODE_SELECT" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <%--<asp:UpdateProgress ID="pdatePanel1_UpdateProgress" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
-        DisplayAfter="0">
-        <ProgressTemplate>
-            <div class="loadingStyle" style="width:199px;height:64px;top: 25%;left:40%;background-image: url(../Images/3MA_loadingcontent.gif);">
-            </div>
-        </ProgressTemplate>
-    </asp:UpdateProgress>--%>
+    <%--<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" CommandName="New"
+                                    Text="New"></asp:LinkButton>
+                                &nbsp;--%>
     <asp:UpdatePanelAnimationExtender ID="UpdatePanel1_UpdatePanelAnimationExtender"
         runat="server" Enabled="True" TargetControlID="UpdatePanel1">
         <Animations>
@@ -571,7 +570,6 @@
     <div id="updateProgressDiv" style="display: none; width:199px;height:64px;">
         <img alt="Loading" src="../Images/3MA_loadingcontent.gif" />
     </div>
-    <%--<asp:HiddenField ID="CIF_HiddenField" runat="server" OnPreRender="CIF_HiddenField_PreRender" />
-    <asp:HiddenField ID="Default_Date_HiddenField" runat="server" OnPreRender="Default_Date_HiddenField_PreRender" />
-    <asp:HiddenField ID="Date_of_Restructure_HiddenField" runat="server" OnPreRender="Date_of_Restructure_HiddenField_PreRender" />--%>
+    <%--&nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False"
+                                    CommandName="New" Text="New"></asp:LinkButton>--%>
 </asp:Content>
