@@ -333,8 +333,8 @@ namespace LGDCollectionData.Aspx
                 Label LabelPLED_SEQ = (Label)gvr.FindControl("LabelPLED_SEQ");
                 Label LabelAPPS_ID = (Label)gvr.FindControl("LabelAPPS_ID");
                 TextBox TextBoxAPPS_DATE = (TextBox)gvr.FindControl("TextBoxAPPS_DATE");
-                TextBox TextBoxCollateral_Type = (TextBox)gvr.FindControl("TextBoxCollateral_Type");
-                TextBox TextBoxProperty_Type = (TextBox)gvr.FindControl("TextBoxProperty_Type");
+                DropDownList DropDownListCollateral_Type = (DropDownList)gvr.FindControl("DropDownListCollateral_Type");
+                DropDownList DropDownListProperty_Type = (DropDownList)gvr.FindControl("DropDownListProperty_Type");
                 TextBox TextBoxCollateral_Description = (TextBox)gvr.FindControl("TextBoxCollateral_Description");
                 TextBox TextBoxDistrict_of_Property = (TextBox)gvr.FindControl("TextBoxDistrict_of_Property");
                 TextBox TextBoxAmphur_of_Property = (TextBox)gvr.FindControl("TextBoxAmphur_of_Property");
@@ -345,15 +345,15 @@ namespace LGDCollectionData.Aspx
                 TextBox TextBoxLeasehold_Period = (TextBox)gvr.FindControl("TextBoxLeasehold_Period");
                 TextBox TextBoxLeasehold_Start_Date = (TextBox)gvr.FindControl("TextBoxLeasehold_Start_Date");
 
-                string chk = string.Empty;
-                if (Property_Under_Construction_CheckBox.Checked == true)
-                {
-                    chk = "1";
-                }
-                else
-                {
-                    chk = "0";
-                }
+                //string chk = string.Empty;
+                //if (Property_Under_Construction_CheckBox.Checked == true)
+                //{
+                //    chk = "1";
+                //}
+                //else
+                //{
+                //    chk = "0";
+                //}
 
                 //Boolean chk = false;
                 //if (Property_Under_Construction_CheckBox.Checked == true)
@@ -371,8 +371,8 @@ namespace LGDCollectionData.Aspx
                 ds.InsertParameters["PLED_SEQ"].DefaultValue = LabelPLED_SEQ.Text;
                 ds.InsertParameters["APPS_ID"].DefaultValue = LabelAPPS_ID.Text;
                 ds.InsertParameters["APPS_DATE"].DefaultValue = TextBoxAPPS_DATE.Text;
-                ds.InsertParameters["Collateral_Type"].DefaultValue = TextBoxCollateral_Type.Text;
-                ds.InsertParameters["Property_Type"].DefaultValue = TextBoxProperty_Type.Text;
+                ds.InsertParameters["Collateral_Type"].DefaultValue = DropDownListCollateral_Type.SelectedValue;
+                ds.InsertParameters["Property_Type"].DefaultValue = DropDownListProperty_Type.SelectedValue;
                 ds.InsertParameters["Collateral_Description"].DefaultValue = TextBoxCollateral_Description.Text;
                 ds.InsertParameters["District_of_Property"].DefaultValue = TextBoxDistrict_of_Property.Text;
                 ds.InsertParameters["Amphur_of_Property"].DefaultValue = TextBoxAmphur_of_Property.Text;
@@ -398,15 +398,15 @@ namespace LGDCollectionData.Aspx
                 Label LabelPLED_SEQ_Footer = (Label)gv.FooterRow.FindControl("LabelPLED_SEQ_Footer");
                 Label LabelAPPS_ID_Footer = (Label)gv.FooterRow.FindControl("LabelAPPS_ID_Footer");
                 TextBox TextBoxAPPS_DATE_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxAPPS_DATE_Footer");
-                TextBox TextBoxCollateral_Type_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxCollateral_Type_Footer");
-                TextBox TextBoxProperty_Type_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxProperty_Type_Footer");
+                DropDownList DropDownListCollateral_Type_Footer = (DropDownList)gv.FooterRow.FindControl("DropDownListCollateral_Type");
+                DropDownList DropDownListProperty_Type_Footer = (DropDownList)gv.FooterRow.FindControl("DropDownListProperty_Type");
                 TextBox TextBoxCollateral_Description_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxCollateral_Description_Footer");
                 TextBox TextBoxDistrict_of_Property_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxDistrict_of_Property_Footer");
                 TextBox TextBoxAmphur_of_Property_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxAmphur_of_Property_Footer");
                 DropDownList DropDownListProvince_Footer = (DropDownList)gv.FooterRow.FindControl("DropDownListProvince_Footer");
                 TextBox TextBoxLocated_Country_of_Property_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxLocated_Country_of_Property_Footer");
                 TextBox TextBoxCollateral_Provider_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxCollateral_Provider_Footer");
-                CheckBox Property_Under_Construction_CheckBox_Footer = (CheckBox)gv.FooterRow.FindControl("Property_Under_Construction_CheckBox_Footer");
+                CheckBox Property_Under_Construction_CheckBox_Footer = (CheckBox)gv.FooterRow.FindControl("CheckBoxProperty_Under_Construction_Footer");
                 TextBox TextBoxLeasehold_Period_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxLeasehold_Period_Footer");
                 TextBox TextBoxLeasehold_Start_Date_Footer = (TextBox)gv.FooterRow.FindControl("TextBoxLeasehold_Start_Date_Footer");
 
@@ -422,29 +422,29 @@ namespace LGDCollectionData.Aspx
                 //ds.InsertParameters["UpdateUser"].DefaultValue = User.Identity.Name;
                 //ds.InsertParameters["UpdateDate"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
 
-                string chk=string.Empty;
-                if (Property_Under_Construction_CheckBox_Footer.Checked == true)
-                {
-                    chk = "1";
-                }
-                else
-                {
-                    chk = "0";
-                }
+                //string chk=string.Empty;
+                //if (Property_Under_Construction_CheckBox_Footer.Checked == true)
+                //{
+                //    chk = "1";
+                //}
+                //else
+                //{
+                //    chk = "0";
+                //}
                 ds.InsertParameters["COLL_ID"].DefaultValue = LabelCOLL_ID_Footer.Text;
                 ds.InsertParameters["PLED_ID"].DefaultValue = LabelPLED_ID_Footer.Text;
                 ds.InsertParameters["PLED_SEQ"].DefaultValue = LabelPLED_SEQ_Footer.Text;
                 ds.InsertParameters["APPS_ID"].DefaultValue = LabelAPPS_ID_Footer.Text;
                 ds.InsertParameters["APPS_DATE"].DefaultValue = TextBoxAPPS_DATE_Footer.Text;
-                ds.InsertParameters["Collateral_Type"].DefaultValue = TextBoxCollateral_Type_Footer.Text;
-                ds.InsertParameters["Property_Type"].DefaultValue = TextBoxProperty_Type_Footer.Text;
+                ds.InsertParameters["Collateral_Type"].DefaultValue = DropDownListCollateral_Type_Footer.SelectedValue;
+                ds.InsertParameters["Property_Type"].DefaultValue = DropDownListProperty_Type_Footer.SelectedValue;
                 ds.InsertParameters["Collateral_Description"].DefaultValue = TextBoxCollateral_Description_Footer.Text;
                 ds.InsertParameters["District_of_Property"].DefaultValue = TextBoxDistrict_of_Property_Footer.Text;
                 ds.InsertParameters["Amphur_of_Property"].DefaultValue = TextBoxAmphur_of_Property_Footer.Text;
                 ds.InsertParameters["Province_of_Property"].DefaultValue = DropDownListProvince_Footer.SelectedValue;
                 ds.InsertParameters["Located_Country_of_Property"].DefaultValue = TextBoxLocated_Country_of_Property_Footer.Text;
                 ds.InsertParameters["Collateral_Provider"].DefaultValue = TextBoxCollateral_Provider_Footer.Text;
-                ds.InsertParameters["Property_Under_Construction"].DefaultValue = chk;
+                ds.InsertParameters["Property_Under_Construction"].DefaultValue = Property_Under_Construction_CheckBox_Footer.Checked == true ? "true" : "false";
                 ds.InsertParameters["Leasehold_Period"].DefaultValue = TextBoxLeasehold_Period_Footer.Text;
                 ds.InsertParameters["Leasehold_Start_Date"].DefaultValue = TextBoxLeasehold_Start_Date_Footer.Text;
                 ds.InsertParameters["UPDATE_USER"].DefaultValue = User.Identity.Name;
