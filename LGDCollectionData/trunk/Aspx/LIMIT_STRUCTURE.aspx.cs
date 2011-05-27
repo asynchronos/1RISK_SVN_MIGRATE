@@ -120,8 +120,8 @@ namespace LGDCollectionData.Aspx
 
         protected void GridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            e.NewValues["Update_User"] = User.Identity.Name;
-            e.NewValues["Update_Date"] = DateTime.Now;
+            e.NewValues["UpdateUser"] = User.Identity.Name;
+            e.NewValues["UpdateDate"] = DateTime.Now;
         }
        
         protected void GridView_RowDataBound(object sender, GridViewRowEventArgs  e )

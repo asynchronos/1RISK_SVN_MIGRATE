@@ -502,17 +502,17 @@ function ExtGetElementByProp(tagName, propertyName, propertyValue) {
 }
 
 //My Class
-var MyNumber = function(numInput) {
+var MyNumber = function (numInput) {
     this.className = "MyNumber";
 
-    this.prepareArithmetic = function(numValue) {
+    this.prepareArithmetic = function (numValue) {
         return Math.round(numValue * (Math.pow(10, _precisionDigit)));
     };
-    this.afterArithmetic = function(numValue) {
+    this.afterArithmetic = function (numValue) {
         return numValue / (Math.pow(10, _precisionDigit));
     };
 
-    this.toNumber = function(input) {
+    this.toNumber = function (input) {
         if (typeof (input) == "number") {
             result = input;
         } else if ((typeof (input) == "object") && (input.className == this.className)) {
@@ -525,17 +525,21 @@ var MyNumber = function(numInput) {
     };
 
     //properties
+    var _src = numInput;
+    this.getSrc = function () {
+        return _src;
+    };
 
     var _value = this.toNumber(numInput);
-    this.getValue = function() {
+    this.getValue = function () {
         return _value;
     };
 
     var _precisionDigit = 2;
-    this.getPrecisionDigit = function() {
+    this.getPrecisionDigit = function () {
         return _value;
     };
-    this.setPrecisionDigit = function(value) {
+    this.setPrecisionDigit = function (value) {
         _precisionDigit = value;
     };
 
@@ -586,7 +590,7 @@ MyNumber.prototype = {
                 rightDot = "00";
             }
         }
-        
+
         var inputStr = this.getValue().toFixed(precision);
         if (inputStr.search(/[.]/) == -1) {
             inputStr = inputStr + "." + rightDot;
@@ -624,11 +628,15 @@ MyNumber.prototype = {
         if (isMinus) {
             newLeftDot = "-" + newLeftDot;
         }
-        
+
         if (rightDot.length > 0) {
             result = newLeftDot + "." + rightDot;
         } else {
             result = newLeftDot;
+        }
+
+        if (this.getSrc().length == 0) {
+            result = this.getSrc();
         }
 
         return result;

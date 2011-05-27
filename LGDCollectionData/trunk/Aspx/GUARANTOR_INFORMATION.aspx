@@ -124,7 +124,7 @@
                 AutoGenerateRows="False" DataSourceID="SqlDataSourceGur_Info" 
                 EnableModelValidation="True"
                 DefaultMode="Edit"
-                OnDataBound="DetailsView_Databound" CellPadding="4" ForeColor="#333333" 
+                CellPadding="4" ForeColor="#333333" 
                 GridLines="Both"
                 OnPreRender="DetailsView2_OnPreRender"
                 OnPageIndexChanging="DetailsView_PageIndexChanged">

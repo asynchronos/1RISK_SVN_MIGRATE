@@ -142,8 +142,10 @@
     </asp:SqlDataSource>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,Default_Date,NPA_Collateral_ID" DataSourceID="SqlDataSourceNPA_RECORD"
-        EnableModelValidation="True" DefaultMode="Edit" OnDataBound="DetailsView_Databound"
-        CellPadding="4" ForeColor="#333333" GridLines="Both" OnPreRender="DetailsView_OnPreRender" Width="600px">
+        EnableModelValidation="True" DefaultMode="Edit"
+        CellPadding="4" ForeColor="#333333" GridLines="Both" OnPreRender="DetailsView_OnPreRender"
+        OnPageIndexChanging="DetailsView_PageIndexChanging"
+        OnItemUpdating="DetailsView_ItemUpdating" Width="600px">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%" />
@@ -229,19 +231,19 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Collateral Sale Price" SortExpression="Collateral_Sale_Price">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.##}") %>'
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.00}") %>'
                         IsNumeric="Yes"
                         Style="text-align: right;"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Collateral Sale Price"
                         Text="*" ValidationGroup="detailviewValidation" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>--%>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.##}") %>'
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Collateral Sale Date" SortExpression="Collateral_Sale_Date">

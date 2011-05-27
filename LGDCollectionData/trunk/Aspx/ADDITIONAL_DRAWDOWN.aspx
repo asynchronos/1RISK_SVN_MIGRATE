@@ -202,7 +202,7 @@
         DefaultMode="Edit" CellPadding="4" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnItemUpdating="DetailsView_ItemUpdating"
-        OnDataBound="DetailsView_Databound" ForeColor="#333333" GridLines="Both" 
+        ForeColor="#333333" GridLines="Both" 
       PagerSettings-Mode="NumericFirstLast">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -228,19 +228,19 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="PRINCIPAL" SortExpression="PRINCIPAL">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PRINCIPAL","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PRINCIPAL","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                     <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ACCRU" SortExpression="ACCRU">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("ACCRU","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("ACCRU","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                     <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="SUSP" SortExpression="SUSP">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("SUSP","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("SUSP","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                     <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
                </asp:TemplateField>
@@ -248,7 +248,7 @@
                 SortExpression="PRINCIPAL_AT_Last_Month">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" 
-                        Text='<%# Bind("PRINCIPAL_AT_Last_Month","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
+                        Text='<%# Bind("PRINCIPAL_AT_Last_Month","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                         <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                
                 </EditItemTemplate>
@@ -257,7 +257,7 @@
                 SortExpression="ACCRU_AT_Last_Month">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" 
-                        Text='<%# Bind("ACCRU_AT_Last_Month","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
+                        Text='<%# Bind("ACCRU_AT_Last_Month","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                         <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
@@ -265,7 +265,7 @@
                 SortExpression="SUSP_AT_Last_Month">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox6" runat="server" 
-                        Text='<%# Bind("SUSP_AT_Last_Month","{0:#,##0.##}") %>' IsNumeric="Yes"></asp:TextBox>
+                        Text='<%# Bind("SUSP_AT_Last_Month","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
                         <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
