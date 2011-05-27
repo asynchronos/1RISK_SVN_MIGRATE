@@ -28,17 +28,17 @@ namespace LGDCollectionData.Aspx
 
         protected void DetailsView_Databound(Object sender, EventArgs e)
         {
-            if (getQueryString("CIF")  != null ) {
-                if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
-                {
-                    System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
-                    System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
-                    if (userId != null) { 
-                         userId.Text = User.Identity.Name.ToString();
-                         dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
-                    }
-                }
-            }
+            //if (getQueryString("CIF")  != null ) {
+            //    if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
+            //    {
+            //        System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
+            //        System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
+            //        if (userId != null) { 
+            //             userId.Text = User.Identity.Name.ToString();
+            //             dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+            //        }
+            //    }
+            //}
 
         }
     }
