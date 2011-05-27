@@ -136,10 +136,104 @@
             //end format IsNumber Element onblur event
             numberElements.applyStyles({ "text-align": "right" });
 
+            var PLEDGE_COLL_RELEASED_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "PLEDGE_COLL_RELEASED_CheckBox");
             var Pledge_to_All_Facilities_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Pledge_to_All_Facilities_CheckBox");
             var Facility_Pledged_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Facility_Pledged_TextBox");
             var Prior_Claim_by_Other_Bank_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Prior_Claim_by_Other_Bank_CheckBox");
             var Prior_Claim_Amount_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Prior_Claim_Amount_TextBox");
+
+            var DropDownListCurrency = Ext.DotNetControl.Element.mapElement("select", "domId", "DropDownListCurrency");
+            var Valuation_Date_D_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Valuation_Date_D_TextBox");
+            var Valuation_Amount_D_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Valuation_Amount_D_TextBox");
+            var Valuation_Amount_D1_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Valuation_Amount_D1_TextBox");
+            var Valuation_Date_D1_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Valuation_Date_D1_TextBox");
+            var Pledge_Amount_D_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Pledge_Amount_D_TextBox");
+            var Limitation_Amount_D_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Limitation_Amount_D_TextBox");
+            var Pledge_Amount_D1_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Pledge_Amount_D1_TextBox");
+            var Limitation_Amount_D1_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Limitation_Amount_D1_TextBox");
+
+            //Start PLEDGE_COLL_RELEASED_CheckBox
+            PLEDGE_COLL_RELEASED_CheckBox.element.on({
+                "click": function (e, t, o) {
+                    if (t.checked) {
+                        o.targetElement.Pledge_to_All_Facilities_CheckBox.disabled(true);
+                        o.targetElement.Facility_Pledged_TextBox.disabled(true);
+                        o.targetElement.Prior_Claim_by_Other_Bank_CheckBox.disabled(true);
+                        o.targetElement.Prior_Claim_Amount_TextBox.disabled(true);
+                        o.targetElement.DropDownListCurrency.disabled(true); 
+                        o.targetElement.Valuation_Date_D_TextBox.disabled(true);
+                        o.targetElement.Valuation_Amount_D_TextBox.disabled(true);
+                        o.targetElement.Valuation_Amount_D1_TextBox.disabled(true);
+                        o.targetElement.Valuation_Date_D1_TextBox.disabled(true);
+                        o.targetElement.Pledge_Amount_D_TextBox.disabled(true);
+                        o.targetElement.Limitation_Amount_D_TextBox.disabled(true);
+                        o.targetElement.Pledge_Amount_D1_TextBox.disabled(true);
+                        o.targetElement.Limitation_Amount_D1_TextBox.disabled(true);
+                    } else {
+                        o.targetElement.Pledge_to_All_Facilities_CheckBox.disabled(false);
+                        o.targetElement.Facility_Pledged_TextBox.disabled(false);
+                        o.targetElement.Prior_Claim_by_Other_Bank_CheckBox.disabled(false);
+                        o.targetElement.Prior_Claim_Amount_TextBox.disabled(false);
+                        o.targetElement.DropDownListCurrency.disabled(false); 
+                        o.targetElement.Valuation_Date_D_TextBox.disabled(false);
+                        o.targetElement.Valuation_Amount_D_TextBox.disabled(false);
+                        o.targetElement.Valuation_Amount_D1_TextBox.disabled(false);
+                        o.targetElement.Valuation_Date_D1_TextBox.disabled(false);
+                        o.targetElement.Pledge_Amount_D_TextBox.disabled(false);
+                        o.targetElement.Limitation_Amount_D_TextBox.disabled(false);
+                        o.targetElement.Pledge_Amount_D1_TextBox.disabled(false);
+                        o.targetElement.Limitation_Amount_D1_TextBox.disabled(false); 
+                    }
+                },
+                scope: this,
+                targetElement: { "Pledge_to_All_Facilities_CheckBox": Pledge_to_All_Facilities_CheckBox
+                    , "Facility_Pledged_TextBox": Facility_Pledged_TextBox
+                    , "Prior_Claim_by_Other_Bank_CheckBox": Prior_Claim_by_Other_Bank_CheckBox
+                    , "Prior_Claim_Amount_TextBox": Prior_Claim_Amount_TextBox
+                    , "DropDownListCurrency": DropDownListCurrency
+                    , "Valuation_Date_D_TextBox": Valuation_Date_D_TextBox
+                    , "Valuation_Amount_D_TextBox": Valuation_Amount_D_TextBox
+                    , "Valuation_Amount_D1_TextBox": Valuation_Amount_D1_TextBox
+                    , "Valuation_Date_D1_TextBox": Valuation_Date_D1_TextBox
+                    , "Pledge_Amount_D_TextBox": Pledge_Amount_D_TextBox
+                    , "Limitation_Amount_D_TextBox": Limitation_Amount_D_TextBox
+                    , "Pledge_Amount_D1_TextBox": Pledge_Amount_D1_TextBox
+                    , "Limitation_Amount_D1_TextBox": Limitation_Amount_D1_TextBox
+                }
+            });
+
+            //init PLEDGE_COLL_RELEASED_CheckBox
+            if (PLEDGE_COLL_RELEASED_CheckBox.element.dom.checked) {
+                Pledge_to_All_Facilities_CheckBox.disabled(true);
+                Facility_Pledged_TextBox.disabled(true);
+                Prior_Claim_by_Other_Bank_CheckBox.disabled(true);
+                Prior_Claim_Amount_TextBox.disabled(true);
+                DropDownListCurrency.disabled(true);
+                Valuation_Date_D_TextBox.disabled(true);
+                Valuation_Amount_D_TextBox.disabled(true);
+                Valuation_Amount_D1_TextBox.disabled(true);
+                Valuation_Date_D1_TextBox.disabled(true);
+                Pledge_Amount_D_TextBox.disabled(true);
+                Limitation_Amount_D_TextBox.disabled(true);
+                Pledge_Amount_D1_TextBox.disabled(true);
+                Limitation_Amount_D1_TextBox.disabled(true);
+            } else {
+                Pledge_to_All_Facilities_CheckBox.disabled(false);
+                Facility_Pledged_TextBox.disabled(false);
+                Prior_Claim_by_Other_Bank_CheckBox.disabled(false);
+                Prior_Claim_Amount_TextBox.disabled(false);
+                DropDownListCurrency.disabled(false);
+                Valuation_Date_D_TextBox.disabled(false);
+                Valuation_Amount_D_TextBox.disabled(false);
+                Valuation_Amount_D1_TextBox.disabled(false);
+                Valuation_Date_D1_TextBox.disabled(false);
+                Pledge_Amount_D_TextBox.disabled(false);
+                Limitation_Amount_D_TextBox.disabled(false);
+                Pledge_Amount_D1_TextBox.disabled(false);
+                Limitation_Amount_D1_TextBox.disabled(false);
+            }
+            //end init PLEDGE_COLL_RELEASED_CheckBox
+
 
             Pledge_to_All_Facilities_CheckBox.element.on({
                 "click": function (e, t, o) {
@@ -183,6 +277,9 @@
             }
             //end init Prior_Claim_by_Other_Bank_CheckBox
 
+
+
+
             var textBoxCOLL_ID = Ext.DotNetControl.Element.mapElement("input", "domId", "TextBoxCOLL_ID");
             var dropDownListCollateral_Type = Ext.DotNetControl.Element.mapElement("select", "domId", "DropDownListCollateral_Type");
             var dropDownListProperty_Type = Ext.DotNetControl.Element.mapElement("select", "domId", "DropDownListProperty_Type");
@@ -193,7 +290,8 @@
             var checkBoxProperty_Under_Construction = Ext.DotNetControl.CheckBox.mapElement("domId", "CheckBoxProperty_Under_Construction");
             var textBoxLeasehold_Period = Ext.DotNetControl.Element.mapElement("input", "domId", "TextBoxLeasehold_Period");
             var textBoxLeasehold_Start_Date = Ext.DotNetControl.Element.mapElement("input", "domId", "TextBoxLeasehold_Start_Date");
-
+            
+            //Start Collateral Type
             textBoxCOLL_ID.element.on({
                 "blur": function (e, t, o) {
                     var collType = ("000000000" + t.value).substr(("000000000" + t.value).length - 9).substring(0, 2);
@@ -291,7 +389,8 @@
         DataKeyNames="CIF,Default_Date,APPS_ID,PLED_ID,PLED_SEQ" DataSourceID="SqlDataSourcePLEDGE_INFO"
         EnableModelValidation="True" OnDataBound="DetailsView_Databound"
         OnPageIndexChanged="DetailsView_PageIndexChanged" OnPreRender="DetailsView_Prerender"
-        DefaultMode="Edit" CellPadding="4" ForeColor="#333333" GridLines="Both" Width="550px" PagerSettings-Mode="NumericFirstLast">
+        DefaultMode="Edit" CellPadding="4" ForeColor="#333333" 
+        Width="737px" PagerSettings-Mode="NumericFirstLast">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%" />
@@ -359,6 +458,18 @@
                     <asp:Label ID="Label18" runat="server" Text='<%# Bind("PLED_SEQ") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Pledge/Collateral Released" SortExpression="PLEDGE_COLL_RELEASED">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="PLEDGE_COLL_RELEASED_CheckBox" runat="server" Checked='<%# Bind("PLEDGE_COLL_RELEASED") %>' domId="PLEDGE_COLL_RELEASED_CheckBox" />
+                    <span style="color: Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="PLEDGE_COLL_RELEASED_CheckBox" runat="server" Checked='<%# Bind("PLEDGE_COLL_RELEASED") %>' domId="PLEDGE_COLL_RELEASED_CheckBox"/>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="PLEDGE_COLL_RELEASED_CheckBox" runat="server" Checked='<%# Bind("PLEDGE_COLL_RELEASED") %>' Enabled="false" domId="PLEDGE_COLL_RELEASED_CheckBox"/>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Pledge to All Facilities" SortExpression="Pledge_to_All_Facilities">
                 <EditItemTemplate>
                     <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" Checked='<%# Bind("Pledge_to_All_Facilities") %>' domId="Pledge_to_All_Facilities_CheckBox" />
@@ -387,13 +498,13 @@
             <asp:TemplateField HeaderText="Collateral Currency Code" SortExpression="Collateral_Currency_Code">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListCurrency" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                        DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Collateral_Currency_Code")%>'>
+                        DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Collateral_Currency_Code")%>' domId="DropDownListCurrency">
                     </asp:DropDownList>
                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:DropDownList ID="DropDownListCurrency" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                        DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Collateral_Currency_Code")%>'>
+                        DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Collateral_Currency_Code")%>' domId="DropDownListCurrency">
                     </asp:DropDownList>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
@@ -406,10 +517,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valuation Amount @ D" SortExpression="Valuation_Amount_D">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -418,14 +529,14 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valuation Date @ D" SortExpression="Valuation_Date_D">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Valuation_Date_D_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Date_D_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D","{0:d MMMM yyyy}") %>' domId="Valuation_Date_D_TextBox"></asp:TextBox>
                     <asp:CalendarExtender ID="Valuation_Date_D_CalendarExtender" runat="server" TargetControlID="Valuation_Date_D_TextBox"
                         Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
                     <asp:CustomValidator ID="Valuation_Date_D_Validator" runat="server" ErrorMessage="Must earlier than default date." ControlToValidate="Valuation_Date_D_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Valuation_Date_D_ServerValidate"></asp:CustomValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Valuation_Date_D_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Date_D_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D","{0:d MMMM yyyy}") %>' domId="Valuation_Date_D_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                     <asp:CalendarExtender ID="Valuation_Date_D_CalendarExtender" runat="server" TargetControlID="Valuation_Date_D_TextBox"
                         Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
@@ -438,10 +549,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valuation Amount @ D-1" SortExpression="Valuation_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D1_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D1_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -450,14 +561,14 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valuation Date @ D-1" SortExpression="Valuation_Date_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Valuation_Date_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Date_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>' domId="Valuation_Date_D1_TextBox"></asp:TextBox>
                     <asp:CalendarExtender ID="Valuation_Date_D1_TextBox_CalendarExtender" runat="server" TargetControlID="Valuation_Date_D1_TextBox"
                         Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
                     <asp:CustomValidator ID="Valuation_Date_D1_TextBox_Validator" runat="server" ErrorMessage="Must earlier than Valuation Date @ D." ControlToValidate="Valuation_Date_D1_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Valuation_Date_D1_TextBox_ServerValidate"></asp:CustomValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                        <asp:TextBox ID="Valuation_Date_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                        <asp:TextBox ID="Valuation_Date_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Date_D1","{0:d MMMM yyyy}") %>' domId="Valuation_Date_D1_TextBox"></asp:TextBox>
                         <span style="color: Red">*</span>
                     <asp:CalendarExtender ID="Valuation_Date_D1_TextBox_CalendarExtender" runat="server" TargetControlID="Valuation_Date_D1_TextBox"
                         Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
@@ -497,10 +608,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Pledge Amount @ D" SortExpression="Pledge_Amount_D">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -509,10 +620,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Limitation Amount @ D" SortExpression="Limitation_Amount_D">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -521,10 +632,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Pledge Amount @ D-1" SortExpression="Pledge_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D1_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D1_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -533,10 +644,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Limitation Amount @ D-1" SortExpression="Limitation_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D1_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right"></asp:TextBox>
+                    <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D1_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
@@ -1044,6 +1155,7 @@
             <asp:Parameter Name="APPS_ID" Type="String" />
             <asp:Parameter Name="PLED_ID" Type="String" />
             <asp:Parameter Name="PLED_SEQ" Type="Int16" />
+            <asp:Parameter Name="PLEDGE_COLL_RELEASED" Type="Boolean" />
             <asp:Parameter Name="Pledge_to_All_Facilities" Type="Boolean" />
             <asp:Parameter Name="Facility_Pledged" Type="String" />
             <asp:Parameter Name="Collateral_Currency_Code" Type="String" />
@@ -1069,6 +1181,7 @@
             <asp:Parameter Name="APPS_ID" Type="String" />
             <asp:Parameter Name="PLED_ID" Type="String" />
             <asp:Parameter Name="PLED_SEQ" Type="Int16" />
+            <asp:Parameter Name="PLEDGE_COLL_RELEASED" Type="Boolean" />
             <asp:Parameter Name="Pledge_to_All_Facilities" Type="Boolean" />
             <asp:Parameter Name="Facility_Pledged" Type="String" />
             <asp:Parameter Name="Collateral_Currency_Code" Type="String" />
