@@ -389,7 +389,6 @@
         DataKeyNames="CIF,Default_Date,APPS_ID,PLED_ID,PLED_SEQ" 
         DataSourceID="SqlDataSourcePLEDGE_INFO"
         EnableModelValidation="True" 
-        OnDataBound="DetailsView_Databound"
         OnPageIndexChanging="DetailsView_PageIndexChanged"
         OnPageIndexChanged="DetailsView_PageIndexChanged" 
         OnPreRender="DetailsView_Prerender"
@@ -521,14 +520,14 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valuation Amount @ D" SortExpression="Valuation_Amount_D">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Amount_D_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Valuation_Amount_D_Label" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="Valuation_Amount_D_Label" runat="server" Text='<%# Bind("Valuation_Amount_D","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valuation Date @ D" SortExpression="Valuation_Date_D">
@@ -553,14 +552,14 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valuation Amount @ D-1" SortExpression="Valuation_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D1_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D1_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D1_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Valuation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Valuation_Amount_D1_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Valuation_Amount_D1_Label" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="Valuation_Amount_D1_Label" runat="server" Text='<%# Bind("Valuation_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Valuation Date @ D-1" SortExpression="Valuation_Date_D1">
@@ -599,64 +598,64 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Prior Claim Amount" SortExpression="Prior_Claim_Amount">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Prior_Claim_Amount_TextBox" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Prior_Claim_Amount_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Prior_Claim_Amount_TextBox" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Prior_Claim_Amount_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Prior_Claim_Amount_TextBox" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Prior_Claim_Amount_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Prior_Claim_Amount_TextBox" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Prior_Claim_Amount_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Prior_Claim_Amount_Label" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="Prior_Claim_Amount_Label" runat="server" Text='<%# Bind("Prior_Claim_Amount","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Pledge Amount @ D" SortExpression="Pledge_Amount_D">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Pledge_Amount_D_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Pledge_Amount_D_Label" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="Pledge_Amount_D_Label" runat="server" Text='<%# Bind("Pledge_Amount_D","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Limitation Amount @ D" SortExpression="Limitation_Amount_D">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Limitation_Amount_D_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Limitation_Amount_D_Label" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="Limitation_Amount_D_Label" runat="server" Text='<%# Bind("Limitation_Amount_D","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Pledge Amount @ D-1" SortExpression="Pledge_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D1_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D1_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D1_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Pledge_Amount_D1_TextBox" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Pledge_Amount_D1_TextBox"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Pledge_Amount_D1_Label" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="Pledge_Amount_D1_Label" runat="server" Text='<%# Bind("Pledge_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Limitation Amount @ D-1" SortExpression="Limitation_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D1_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D1_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D1_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="Limitation_Amount_D1_TextBox" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Width="150px" Style="text-align: right" domId="Limitation_Amount_D1_TextBox"></asp:TextBox>
                 </EditItemTemplate>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Limitation_Amount_D1_Label" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
+                    <asp:Label ID="Limitation_Amount_D1_Label" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">

@@ -239,7 +239,7 @@ namespace LGDCollectionData.Aspx
                         msg = ((SqlException)ex.InnerException).Message.Replace("\'", "&quot;").Replace("\r", "").Replace("\n", "<br/>");
                     }
                 }
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "error", "top.$get(\"" + uploadResult.ClientID + "\").innerHTML = '<span style=\"color:red;\">Error: " + msg + "</span>';", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "error", "top.$get(\"" + uploadResult.ClientID + "\").innerHTML = top.$get(\"" + uploadResult.ClientID + "\").innerHTML + '<br/><span style=\"color:red;\">Error: " + msg + "</span>';", true);
                 log.Error(ex.Message,ex);
             }
             finally

@@ -94,7 +94,7 @@
                 },
                 "blur": {
                     fn: function (e, t, o) {
-                        t.value = (new MyNumber(t.value)).toCurrency(2);
+                        //t.value = (new MyNumber(t.value)).toCurrency(2);
                     }
                 }
             });
@@ -121,9 +121,8 @@
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,DefaultDate,LIMITNO" DataSourceID="SqlDataSourceFacility" PagerSettings-Mode="Numeric"
         RowStyle-Wrap="true" EnableModelValidation="True" 
-        OnDataBound="DetailsView_Databound"
         OnPageIndexChanging="DetailsView_PageIndexChanging"
-         OnItemUpdating="DetailsView_ItemUpdating"
+        OnItemUpdating="DetailsView_ItemUpdating"
         OnPreRender="DetailsView_OnPreRender" CellPadding="4" ForeColor="#333333">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -202,24 +201,24 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Limit @ D" SortExpression="LimitAtD">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.##}") %>'
+                    <asp:TextBox ID="TextBoxLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.00}") %>'
                         IsNumeric="Yes">
                     </asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxInsertLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.##}") %>'
+                    <asp:TextBox ID="TextBoxInsertLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.00}") %>'
                         IsNumeric="Yes">
                     </asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Limit @ D-1" SortExpression="LimitAtD1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.##}") %>'
+                    <asp:TextBox ID="TextBoxLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.00}") %>'
                         IsNumeric="Yes">
                     </asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.##}") %>'
+                    <asp:TextBox ID="TextBoxLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.00}") %>'
                         IsNumeric="Yes">
                     </asp:TextBox>
                 </InsertItemTemplate>
@@ -322,30 +321,52 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Principal Repayment Amount" SortExpression="PrincipalRepaymentAmount">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.##}") %>'
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                     <asp:Label ID="LabelStarRepayment" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxPrincipalRepaymentAmount" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.##}") %>'
+                    <asp:TextBox ID="TextBoxPrincipalRepaymentAmount" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Principal Repayment Cycle" SortExpression="PrincipalRepaymentCycle">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownListPrincipalRepaymentCycle" runat="server" DataSourceID="SqlDataSourceCycle"
-                        DataTextField="CYCLE" DataValueField="CYCLE" SelectedValue='<%# Bind("PrincipalRepaymentCycle") %>'
+                    <asp:ComboBox ID="DropDownListPrincipalRepaymentCycle" runat="server"
+                        DataSourceID="SqlDataSourceCycle" DataTextField="CYCLE" DataValueField="CYCLE" SelectedValue='<%# Bind("PrincipalRepaymentCycle") %>'
                         AppendDataBoundItems="True">
-                        <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:DropDownList>
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
+                        <asp:ListItem>0</asp:ListItem>
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                        <asp:ListItem>30</asp:ListItem>
+                        <asp:ListItem>180</asp:ListItem>
+                        <asp:ListItem>187</asp:ListItem>
+                        <asp:ListItem>188</asp:ListItem>
+                        <asp:ListItem>360</asp:ListItem>
+                        <asp:ListItem>1000</asp:ListItem>
+                        <asp:ListItem>99999</asp:ListItem>
+                    </asp:ComboBox>
                     <asp:Label ID="LabelStarCyc" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:DropDownList ID="DropDownListPrincipalRepaymentCycle" runat="server" DataSourceID="SqlDataSourceCycle"
-                        DataTextField="CYCLE" DataValueField="CYCLE" SelectedValue='<%# Bind("PrincipalRepaymentCycle") %>'
+                    <asp:ComboBox ID="DropDownListPrincipalRepaymentCycle" runat="server"
+                        DataSourceID="SqlDataSourceCycle" DataTextField="CYCLE" DataValueField="CYCLE" SelectedValue='<%# Bind("PrincipalRepaymentCycle") %>'
                         AppendDataBoundItems="True">
-                        <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:DropDownList>
+                        <asp:ListItem Value="">Please Select</asp:ListItem>
+                        <asp:ListItem>0</asp:ListItem>
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                        <asp:ListItem>30</asp:ListItem>
+                        <asp:ListItem>180</asp:ListItem>
+                        <asp:ListItem>187</asp:ListItem>
+                        <asp:ListItem>188</asp:ListItem>
+                        <asp:ListItem>360</asp:ListItem>
+                        <asp:ListItem>1000</asp:ListItem>
+                        <asp:ListItem>99999</asp:ListItem>
+                    </asp:ComboBox>
                     <asp:Label ID="LabelStarCyc" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </InsertItemTemplate>
             </asp:TemplateField>
@@ -662,25 +683,22 @@
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Limit @ D"
                     SortExpression="LimitAtD">
                     <ItemTemplate>
-                        <asp:Label ID="LabelLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.00}") %>'
-                            CssClass="NumTextBox"></asp:Label>
+                        <asp:Label ID="LabelLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.00}") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBoxLimitAtD" runat="server" Text='<%# Bind("LimitAtD","{0:#,##0.00}") %>'
-                            onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"
-                            CssClass="NumTextBox">
+                            IsNumeric="Yes" CssClass="NumTextBox">
                         </asp:TextBox>
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Limit @ D-1"
                     SortExpression="LimitAtD1">
                     <ItemTemplate>
-                        <asp:Label ID="LabelLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.00}") %>'
-                            CssClass="NumTextBox"></asp:Label>
+                        <asp:Label ID="LabelLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.00}") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBoxLimitAtD1" runat="server" Text='<%# Bind("LimitAtD1","{0:#,##0.00}") %>'
-                            onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"
+                            IsNumeric="Yes"
                             CssClass="NumTextBox">
                         </asp:TextBox>
                     </EditItemTemplate>
@@ -781,13 +799,10 @@
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Principal Repayment Amount"
                     SortExpression="PrincipalRepaymentAmount">
                     <ItemTemplate>
-                        <asp:Label ID="LabelPrincipalRepaymentAmount" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.00}") %>'
-                            CssClass="NumTextBox"></asp:Label>
+                        <asp:Label ID="LabelPrincipalRepaymentAmount" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.00}") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.00}") %>'
-                            onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"
-                            CssClass="NumTextBox"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PrincipalRepaymentAmount","{0:#,##0.00}") %>' IsNumeric="Yes" CssClass="NumTextBox"></asp:TextBox>
                         <asp:Label ID="LabelStarRepayment" runat="server" Text=" " ForeColor="Red"></asp:Label>
                     </EditItemTemplate>
                 </asp:TemplateField>
@@ -797,11 +812,22 @@
                         <asp:Label ID="LabelPrincipalRepaymentCycle" runat="server" Text='<%# Bind("PrincipalRepaymentCycle") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListPrincipalRepaymentCycle" runat="server" DataSourceID="SqlDataSourceCycle"
-                            DataTextField="CYCLE" DataValueField="CYCLE" SelectedValue='<%# Bind("PrincipalRepaymentCycle") %>'
+                        <asp:ComboBox ID="DropDownListPrincipalRepaymentCycle" runat="server"
+                            DataSourceID="SqlDataSourceCycle" DataTextField="CYCLE" DataValueField="CYCLE" SelectedValue='<%# Bind("PrincipalRepaymentCycle") %>'
                             AppendDataBoundItems="True">
-                            <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                        </asp:DropDownList>
+                            <asp:ListItem Value="">Please Select</asp:ListItem>
+                            <asp:ListItem>0</asp:ListItem>
+                            <asp:ListItem>1</asp:ListItem>
+                            <asp:ListItem>2</asp:ListItem>
+                            <asp:ListItem>6</asp:ListItem>
+                            <asp:ListItem>30</asp:ListItem>
+                            <asp:ListItem>180</asp:ListItem>
+                            <asp:ListItem>187</asp:ListItem>
+                            <asp:ListItem>188</asp:ListItem>
+                            <asp:ListItem>360</asp:ListItem>
+                            <asp:ListItem>1000</asp:ListItem>
+                            <asp:ListItem>99999</asp:ListItem>
+                        </asp:ComboBox>
                         <asp:Label ID="LabelStarCyc" runat="server" Text=" " ForeColor="Red"></asp:Label>
                     </EditItemTemplate>
                 </asp:TemplateField>
