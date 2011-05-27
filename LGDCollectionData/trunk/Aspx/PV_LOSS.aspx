@@ -105,7 +105,11 @@
             </td>
             <td>
                 <h2>
-                    UPLOAD RESTRUCTURE INFORMATION</h2>
+                    UPLOAD RESTRUCTURE INFORMATION
+                    <asp:HyperLink ID="Download_HyperLink" runat="server" 
+                        ImageUrl="~/Images/downloadExcel32.png" Width="32px" 
+                        Text="Download Excel Template" Height="32px" NavigateUrl="~/Excel/RestructureTemplate.xls"></asp:HyperLink>
+                </h2>
             </td>
         </tr>
         <tr>
@@ -271,9 +275,13 @@
     </h2>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <asp:Button ID="Refresh_Button" runat="server" Text="Refresh Data" />
-            <asp:Button ID="Delete_All_Button" runat="server" 
-                onclick="Delete_All_Button_Click" Text="Delete All"
+            <asp:ImageButton ID="Refresh_Button" runat="server" 
+                ImageUrl="~/Images/refresh2.png" Width="32px"
+                AlternateText="Refresh Data" />&nbsp;
+            <asp:ImageButton ID="Delete_All_Button" runat="server" 
+                ImageUrl="~/Images/delete.png" Width="32px"
+                onclick="Delete_All_Button_Click" AlternateText="Delete All"
+                
                 OnClientClick="return confirm('คุณต้องการลบข้อมูลที่แสดงด้านล่างนี้ทั้งหมด?');" />
             <asp:GridView ID="RESTRUCTURE_INFORMATION_GridView" runat="server" AllowPaging="True"
                 AutoGenerateColumns="False" CellPadding="4" DataKeyNames="CIF,Default_Date,Date_of_Restructure,Date_of_Repayment"

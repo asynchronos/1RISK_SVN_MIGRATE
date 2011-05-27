@@ -40,6 +40,15 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Label FormName_Label;
         
         /// <summary>
+        /// Download_HyperLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink Download_HyperLink;
+        
+        /// <summary>
         /// PV_LOSS_DetailsView control.
         /// </summary>
         /// <remarks>
@@ -127,7 +136,7 @@ namespace LGDCollectionData.Aspx {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Refresh_Button;
+        protected global::System.Web.UI.WebControls.ImageButton Refresh_Button;
         
         /// <summary>
         /// Delete_All_Button control.
@@ -136,7 +145,7 @@ namespace LGDCollectionData.Aspx {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Delete_All_Button;
+        protected global::System.Web.UI.WebControls.ImageButton Delete_All_Button;
         
         /// <summary>
         /// RESTRUCTURE_INFORMATION_GridView control.

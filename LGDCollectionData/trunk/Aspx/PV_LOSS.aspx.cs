@@ -168,8 +168,30 @@ namespace LGDCollectionData.Aspx
 
                                             ri.UPDATE_USER = User.Identity.Name;
                                             ri.UPDATE_DATE = DateTime.Now;
-                                            en.AddToRESTRUCTURE_INFORMATION(ri);
 
+                                            //check if there is an existing record for user and id
+                                            var record = en.RESTRUCTURE_INFORMATION.FirstOrDefault(
+                                                restructure => restructure.CIF == ri.CIF 
+                                                    && restructure.Default_Date == ri.Default_Date 
+                                                    && restructure.Date_of_Restructure == ri.Date_of_Restructure 
+                                                    && restructure.Date_of_Repayment == ri.Date_of_Repayment);
+
+                                            //if record exists, update with new rating
+                                            if (record != null)
+                                            {
+                                                en.AttachTo("RESTRUCTURE_INFORMATION", record);
+                                                record.Discount_Rate = ri.Discount_Rate;
+                                                record.TDR_Cash_Flow = ri.TDR_Cash_Flow;
+                                                record.Present_Value_of_Repayment = ri.Present_Value_of_Repayment;
+                                                record.Cash_Flow_Currency = ri.Cash_Flow_Currency;
+                                                record.UPDATE_USER = ri.UPDATE_USER;
+                                                record.UPDATE_DATE = ri.UPDATE_DATE;
+                                            }
+                                            else //if it does not exist, add record
+                                            {
+                                                en.AddToRESTRUCTURE_INFORMATION(ri);
+                                            }
+                                            
                                             rowIndex = rowIndex + 1;
                                         }
                                     }
@@ -392,7 +414,7 @@ namespace LGDCollectionData.Aspx
             e.NewValues["UpdateDate"] = DateTime.Now;
         }
 
-        protected void Delete_All_Button_Click(object sender, EventArgs e)
+        protected void Delete_All_Button_Click(object sender, ImageClickEventArgs e)
         {
             string cif = "", defaultDateText = "", restructureDateText = "";
             if (PV_LOSS_DetailsView.FindControl("CIF_Label") != null)
@@ -427,5 +449,6 @@ namespace LGDCollectionData.Aspx
                 en.SaveChanges();
             }
         }
+
     }
 }
