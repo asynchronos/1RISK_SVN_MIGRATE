@@ -234,6 +234,18 @@
                     <asp:Label ID="Label9" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Two Level Up Limit ID @ D-1" SortExpression="Two_Level_Up_Limit_ID_D1">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Input One_Level_Up_Limit_ID_D1" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="LabelTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Two Level Up Limit Currency @ D-1" SortExpression="Two_Level_Up_Limit_Currency_D1">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListCurrency2" runat="server" DataSourceID="SqlDataSourceCurrentcy"
@@ -636,6 +648,20 @@
                         <asp:Label ID="Label9" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
+
+              <asp:TemplateField  ItemStyle-Wrap="false"   HeaderStyle-Wrap="false" HeaderText="Two Level Up Limit ID @ D-1" SortExpression="Two_Level_Up_Limit_ID_D1">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Input One_Level_Up_Limit_ID_D1" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="LabelTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Two Level Up Limit Currency @ D-1" SortExpression="Two_Level_Up_Limit_Currency_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownListCurrency2" runat="server" DataSourceID="SqlDataSourceCurrentcy"
