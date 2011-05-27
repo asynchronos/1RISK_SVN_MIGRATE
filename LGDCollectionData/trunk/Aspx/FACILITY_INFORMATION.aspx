@@ -120,7 +120,10 @@
     </h2>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,DefaultDate,LIMITNO" DataSourceID="SqlDataSourceFacility" PagerSettings-Mode="Numeric"
-        RowStyle-Wrap="true" EnableModelValidation="True" OnDataBound="DetailsView_Databound"
+        RowStyle-Wrap="true" EnableModelValidation="True" 
+        OnDataBound="DetailsView_Databound"
+        OnPageIndexChanging="DetailsView_PageIndexChanging"
+         OnItemUpdating="DetailsView_ItemUpdating"
         OnPreRender="DetailsView_OnPreRender" CellPadding="4" ForeColor="#333333">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -436,20 +439,20 @@
                     <asp:Label ID="LabelStarCIF6" runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">
+            <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Update Date" SortExpression="UPDATE_DATE">
+            <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
@@ -514,8 +517,8 @@
             <asp:Parameter Name="SharingLimitwithCIF4" Type="String" />
             <asp:Parameter Name="SharingLimitwithCIF5" Type="String" />
             <asp:Parameter Name="SharingLimitwithCIF6" Type="String" />
-            <asp:Parameter Name="UPDATE_USER" Type="String" />
-            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="CIF" Type="String" />
@@ -540,8 +543,8 @@
             <asp:Parameter Name="SharingLimitwithCIF4" Type="String" />
             <asp:Parameter Name="SharingLimitwithCIF5" Type="String" />
             <asp:Parameter Name="SharingLimitwithCIF6" Type="String" />
-            <asp:Parameter Name="UPDATE_USER" Type="String" />
-            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceAppID" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
@@ -887,21 +890,21 @@
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Update User"
-                    SortExpression="UPDATE_USER">
+                    SortExpression="UpdateUser">
                     <ItemTemplate>
-                        <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                        <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                        <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Update Date"
-                    SortExpression="UPDATE_DATE">
+                    SortExpression="UpdateDate">
                     <ItemTemplate>
-                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
                     </EditItemTemplate>
                 </asp:TemplateField>
             </Columns>

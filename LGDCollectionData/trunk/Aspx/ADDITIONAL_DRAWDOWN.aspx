@@ -172,8 +172,8 @@
             <asp:Parameter Name="Is_This_an_Additional_Drawdown" Type="Boolean" />
             <asp:Parameter Name="Type_of_Additional_Drawdown" Type="String" />
             <asp:Parameter Name="Other_Reason_of_Principal_Increase" Type="String" />
-            <asp:Parameter Name="UPDATE_USER" Type="String" />
-            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceAppID" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
@@ -201,6 +201,7 @@
         DataSourceID="SqlDataSource1" EnableModelValidation="True" Width="800px"
         DefaultMode="Edit" CellPadding="4" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
+        OnItemUpdating="DetailsView_ItemUpdating"
         OnDataBound="DetailsView_Databound" ForeColor="#333333" GridLines="Both" 
       PagerSettings-Mode="NumericFirstLast">
         <AlternatingRowStyle BackColor="White" />
@@ -336,14 +337,14 @@
                 </EditItemTemplate>
           
             </asp:TemplateField>
-          <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">
+          <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Update Date" SortExpression="UPDATE_DATE">
+            <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" ShowInsertButton="True" />
