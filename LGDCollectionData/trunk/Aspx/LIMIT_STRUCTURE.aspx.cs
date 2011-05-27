@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using log4net;
+using AjaxControlToolkit;
 
 namespace LGDCollectionData.Aspx
 {
@@ -45,24 +47,24 @@ namespace LGDCollectionData.Aspx
         protected void DetailsView_Databound(Object sender, EventArgs e)
         {
 
-            if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
-            {
-                System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
-                System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
-                if (userId != null)
-                    userId.Text = User.Identity.Name.ToString();
-                if (dateLabel != null)
-                    dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
-            } 
-            if (DetailsView1.CurrentMode == DetailsViewMode.Insert )
-            {
-                System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
-                System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
-                if (userId != null)
-                    userId.Text = User.Identity.Name.ToString();
-                if (dateLabel != null)
-                    dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
-            }
+            //if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
+            //{
+            //    System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
+            //    System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
+            //    if (userId != null)
+            //        userId.Text = User.Identity.Name.ToString();
+            //    if (dateLabel != null)
+            //        dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+            //} 
+            //if (DetailsView1.CurrentMode == DetailsViewMode.Insert )
+            //{
+            //    System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
+            //    System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
+            //    if (userId != null)
+            //        userId.Text = User.Identity.Name.ToString();
+            //    if (dateLabel != null)
+            //        dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+            //}
         }
 
         protected void BtnLinktoFacility_Click(object sender, EventArgs e)
@@ -129,6 +131,11 @@ namespace LGDCollectionData.Aspx
             //      e.Row.Cells[2].Style["position"] = "relative"; // cif
             //}
    
+        }
+
+        protected void DetailsView_PageIndexChanged(Object sender, EventArgs e)
+        {
+            ((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
         }
 
 

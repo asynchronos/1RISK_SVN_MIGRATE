@@ -97,8 +97,12 @@
         <asp:Label ID="FormName_Label" runat="server" Text="LIMIT STRUCTURE"></asp:Label>
     </h2>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
-        DataKeyNames="CIF,Default_Date,LIMITNO" DataSourceID="SqlDataSourceLIMIT_STRUCTURE"
-        OnDataBound="DetailsView_Databound" ForeColor="#333333" OnPreRender="DetailsView_OnPreRender"
+        DataKeyNames="CIF,Default_Date,LIMITNO" 
+        DataSourceID="SqlDataSourceLIMIT_STRUCTURE"
+        OnDataBound="DetailsView_Databound"
+        ForeColor="#333333" 
+        OnPreRender="DetailsView_OnPreRender"
+        OnPageIndexChanging="DetailsView_PageIndexChanged"
         Width="800px" CellPadding="4" GridLines="Both">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -358,26 +362,26 @@
                     <asp:Label ID="Label15" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">
+            <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxUpdateUser" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBoxUpdateUser" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="LabelUpdateUser" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="LabelUpdateUser" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Update Date" SortExpression="UPDATE_DATE">
+            <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxUPDATE_DATE" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBoxUPDATE_DATE" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="LabelUPDATE_DATE" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="LabelUPDATE_DATE" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
@@ -433,8 +437,8 @@
             <asp:Parameter Name="Four_Level_Up_Limit_ID_D1" Type="String" />
             <asp:Parameter Name="Four_Level_Up_Limit_Currency_D1" Type="String" />
             <asp:Parameter Name="Four_Level_Up_Limit_Amount_D1" Type="Double" />
-            <asp:Parameter Name="UPDATE_USER" Type="String" />
-            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </InsertParameters>
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
@@ -459,8 +463,8 @@
             <asp:Parameter Name="Four_Level_Up_Limit_ID_D1" Type="String" />
             <asp:Parameter Name="Four_Level_Up_Limit_Currency_D1" Type="String" />
             <asp:Parameter Name="Four_Level_Up_Limit_Amount_D1" Type="Double" />
-            <asp:Parameter Name="UPDATE_USER" Type="String" />
-            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
         <DeleteParameters>
             <asp:Parameter Name="CIF" Type="String" />
@@ -786,26 +790,26 @@
                         <asp:Label ID="Label15" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.##}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update User" SortExpression="UPDATE_USER" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update User" SortExpression="UpdateUser" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                        <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBoxUpdateUser" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBoxUpdateUser" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="LabelUpdateUser" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                        <asp:Label ID="LabelUpdateUser" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update Date" SortExpression="UPDATE_DATE" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update Date" SortExpression="UpdateDate" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBoxUPDATE_DATE" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBoxUPDATE_DATE" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="LabelUPDATE_DATE" runat="server" Text='<%# Bind("UPDATE_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="LabelUPDATE_DATE" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
