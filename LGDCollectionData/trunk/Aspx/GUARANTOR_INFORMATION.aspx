@@ -126,7 +126,8 @@
                 DefaultMode="Edit"
                 OnDataBound="DetailsView_Databound" CellPadding="4" ForeColor="#333333" 
                 GridLines="Both"
-                OnPreRender="DetailsView2_OnPreRender">
+                OnPreRender="DetailsView2_OnPreRender"
+                OnPageIndexChanging="DetailsView_PageIndexChanged">
                 <AlternatingRowStyle BackColor="White" />
                 <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
                 <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
@@ -328,24 +329,24 @@
                     </asp:TemplateField>
             <asp:TemplateField HeaderText="UPDATE USER" SortExpression="UPDATE_USER">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelUserId_Insert" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="LabelUserId_Insert" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="UPDATE DATE" SortExpression="UPDATE_DATE">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">
@@ -399,8 +400,8 @@
                     <asp:Parameter Name="Guarantee_Amount_Currency_Code" Type="String" />
                     <asp:Parameter Name="Guarantee_Indemnity_Source_ID" Type="String" />
                     <asp:Parameter Name="Internal_Rating_D" Type="String" />
-                    <asp:Parameter Name="UPDATE_USER" Type="String" />
-                    <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+                    <asp:Parameter Name="UpdateUser" Type="String" />
+                    <asp:Parameter Name="UpdateDate" Type="DateTime" />
                 </InsertParameters>
                 <SelectParameters>
                     <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
@@ -417,8 +418,8 @@
                     <asp:Parameter Name="Guarantee_Amount_Currency_Code" Type="String" />
                     <asp:Parameter Name="Guarantee_Indemnity_Source_ID" Type="String" />
                     <asp:Parameter Name="Internal_Rating_D" Type="String" />
-                    <asp:Parameter Name="UPDATE_USER" Type="String" />
-                    <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+                    <asp:Parameter Name="UpdateUser" Type="String" />
+                    <asp:Parameter Name="UpdateDate" Type="DateTime" />
                 </UpdateParameters>
             </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceGar_Ind" runat="server" 
