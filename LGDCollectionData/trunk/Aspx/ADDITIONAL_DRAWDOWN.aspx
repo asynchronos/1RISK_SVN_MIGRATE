@@ -244,7 +244,7 @@
                     <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
                </asp:TemplateField>
-            <asp:TemplateField HeaderText="PRINCIPAL AT Last Month" 
+            <asp:TemplateField HeaderText="PRINCIPAL @ Last Month" 
                 SortExpression="PRINCIPAL_AT_Last_Month">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" 
@@ -253,7 +253,7 @@
                
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ACCRU AT Last Month" 
+            <asp:TemplateField HeaderText="ACCRU @ Last Month" 
                 SortExpression="ACCRU_AT_Last_Month">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" 
@@ -261,7 +261,7 @@
                         <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="SUSP AT Last Month" 
+            <asp:TemplateField HeaderText="SUSP @ Last Month" 
                 SortExpression="SUSP_AT_Last_Month">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox6" runat="server" 
