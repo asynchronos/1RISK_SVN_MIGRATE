@@ -40,15 +40,6 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.Label FormName_Label;
         
         /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
         /// OBLIGOR_INFORMATION_DetailsView control.
         /// </summary>
         /// <remarks>
@@ -56,15 +47,6 @@ namespace LGDCollectionData.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DetailsView OBLIGOR_INFORMATION_DetailsView;
-        
-        /// <summary>
-        /// UpdatePanel1_UpdatePanelAnimationExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.UpdatePanelAnimationExtender UpdatePanel1_UpdatePanelAnimationExtender;
         
         /// <summary>
         /// OBLIGOR_INFORMATION_SqlDataSource control.
