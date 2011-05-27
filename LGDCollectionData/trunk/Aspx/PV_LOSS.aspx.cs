@@ -82,7 +82,7 @@ namespace LGDCollectionData.Aspx
                                         }
                                         else
                                         {
-                                            throw new Exception("C3 is not numeric.");
+                                            throw new Exception(wb.GetSheetName(i) + " C3 is not numeric.");
                                         }
 
                                         c = (r = sh.GetRow(4 - 1)).GetCell(cellMap.IndexOf('C'));
@@ -92,7 +92,7 @@ namespace LGDCollectionData.Aspx
                                         }
                                         else
                                         {
-                                            throw new Exception("C4 is not numeric.");
+                                            throw new Exception(wb.GetSheetName(i) + " C4 is not numeric.");
                                         }
 
                                         int rowIndex = 7;
@@ -123,7 +123,7 @@ namespace LGDCollectionData.Aspx
                                             }
                                             else
                                             {
-                                                throw new Exception("B" + rowIndex + " is not numeric.");
+                                                throw new Exception(wb.GetSheetName(i) + " B" + rowIndex + " is not numeric.");
                                             }
 
                                             c = r.GetCell(cellMap.IndexOf('C'));
@@ -133,7 +133,7 @@ namespace LGDCollectionData.Aspx
                                             }
                                             else
                                             {
-                                                throw new Exception("C" + rowIndex + " is not numeric.");
+                                                throw new Exception(wb.GetSheetName(i) + " C" + rowIndex + " is not numeric.");
                                             }
 
                                             c = r.GetCell(cellMap.IndexOf('D'));
@@ -143,7 +143,7 @@ namespace LGDCollectionData.Aspx
                                             }
                                             else
                                             {
-                                                throw new Exception("D" + rowIndex + " is not numeric.");
+                                                throw new Exception(wb.GetSheetName(i) + " D" + rowIndex + " is not numeric.");
                                             }
 
                                             c = r.GetCell(cellMap.IndexOf('E'));
@@ -153,7 +153,7 @@ namespace LGDCollectionData.Aspx
                                             }
                                             else
                                             {
-                                                throw new Exception("E" + rowIndex + " is not numeric.");
+                                                throw new Exception(wb.GetSheetName(i) + " E" + rowIndex + " is not numeric.");
                                             }
 
                                             c = r.GetCell(cellMap.IndexOf('F'));
@@ -163,7 +163,7 @@ namespace LGDCollectionData.Aspx
                                             }
                                             else
                                             {
-                                                throw new Exception("F" + rowIndex + " is not string.");
+                                                throw new Exception(wb.GetSheetName(i) + " F" + rowIndex + " is not string.");
                                             }
 
                                             ri.UPDATE_USER = User.Identity.Name;
@@ -197,17 +197,17 @@ namespace LGDCollectionData.Aspx
                                     }
                                     else
                                     {
-                                        throw new Exception("C2 is not numeric.");
+                                        throw new Exception(wb.GetSheetName(i) + " C2 is not numeric.");
                                     }
                                 }
                                 else
                                 {
-                                    throw new Exception("Value in cell B2 is not CIF.");
+                                    throw new Exception("Value in "+wb.GetSheetName(i)+" cell B2 is not CIF.");
                                 }
                             }
                             else
                             {
-                                throw new Exception("First Cell in excel is not B2.");
+                                throw new Exception("First Cell in excel "+wb.GetSheetName(i)+" is not B2.");
                             }
                         }
                         else
