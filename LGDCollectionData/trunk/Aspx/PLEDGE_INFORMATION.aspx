@@ -386,9 +386,13 @@
         <asp:Label ID="FormName_Label" runat="server" Text="PLEDGE INFORMATION"></asp:Label>
     </h2>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
-        DataKeyNames="CIF,Default_Date,APPS_ID,PLED_ID,PLED_SEQ" DataSourceID="SqlDataSourcePLEDGE_INFO"
-        EnableModelValidation="True" OnDataBound="DetailsView_Databound"
-        OnPageIndexChanged="DetailsView_PageIndexChanged" OnPreRender="DetailsView_Prerender"
+        DataKeyNames="CIF,Default_Date,APPS_ID,PLED_ID,PLED_SEQ" 
+        DataSourceID="SqlDataSourcePLEDGE_INFO"
+        EnableModelValidation="True" 
+        OnDataBound="DetailsView_Databound"
+        OnPageIndexChanging="DetailsView_PageIndexChanged"
+        OnPageIndexChanged="DetailsView_PageIndexChanged" 
+        OnPreRender="DetailsView_Prerender"
         DefaultMode="Edit" CellPadding="4" ForeColor="#333333" 
         Width="737px" PagerSettings-Mode="NumericFirstLast">
         <AlternatingRowStyle BackColor="White" />
