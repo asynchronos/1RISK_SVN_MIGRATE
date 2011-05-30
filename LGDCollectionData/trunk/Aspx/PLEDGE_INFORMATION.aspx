@@ -136,7 +136,7 @@
             //end format IsNumber Element onblur event
             numberElements.applyStyles({ "text-align": "right" });
 
-            var PLEDGE_COLL_RELEASED_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "PLEDGE_COLL_RELEASED_CheckBox");
+            //var PLEDGE_COLL_RELEASED_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "PLEDGE_COLL_RELEASED_CheckBox");
             var Pledge_to_All_Facilities_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Pledge_to_All_Facilities_CheckBox");
             var Facility_Pledged_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Facility_Pledged_TextBox");
             var Prior_Claim_by_Other_Bank_CheckBox = Ext.DotNetControl.CheckBox.mapElement("domId", "Prior_Claim_by_Other_Bank_CheckBox");
@@ -153,85 +153,85 @@
             var Limitation_Amount_D1_TextBox = Ext.DotNetControl.Element.mapElement("input", "domId", "Limitation_Amount_D1_TextBox");
 
             //Start PLEDGE_COLL_RELEASED_CheckBox
-            PLEDGE_COLL_RELEASED_CheckBox.element.on({
-                "click": function (e, t, o) {
-                    if (t.checked) {
-                        o.targetElement.Pledge_to_All_Facilities_CheckBox.disabled(true);
-                        o.targetElement.Facility_Pledged_TextBox.disabled(true);
-                        o.targetElement.Prior_Claim_by_Other_Bank_CheckBox.disabled(true);
-                        o.targetElement.Prior_Claim_Amount_TextBox.disabled(true);
-                        o.targetElement.DropDownListCurrency.disabled(true); 
-                        o.targetElement.Valuation_Date_D_TextBox.disabled(true);
-                        o.targetElement.Valuation_Amount_D_TextBox.disabled(true);
-                        o.targetElement.Valuation_Amount_D1_TextBox.disabled(true);
-                        o.targetElement.Valuation_Date_D1_TextBox.disabled(true);
-                        o.targetElement.Pledge_Amount_D_TextBox.disabled(true);
-                        o.targetElement.Limitation_Amount_D_TextBox.disabled(true);
-                        o.targetElement.Pledge_Amount_D1_TextBox.disabled(true);
-                        o.targetElement.Limitation_Amount_D1_TextBox.disabled(true);
-                    } else {
-                        o.targetElement.Pledge_to_All_Facilities_CheckBox.disabled(false);
-                        o.targetElement.Facility_Pledged_TextBox.disabled(false);
-                        o.targetElement.Prior_Claim_by_Other_Bank_CheckBox.disabled(false);
-                        o.targetElement.Prior_Claim_Amount_TextBox.disabled(false);
-                        o.targetElement.DropDownListCurrency.disabled(false); 
-                        o.targetElement.Valuation_Date_D_TextBox.disabled(false);
-                        o.targetElement.Valuation_Amount_D_TextBox.disabled(false);
-                        o.targetElement.Valuation_Amount_D1_TextBox.disabled(false);
-                        o.targetElement.Valuation_Date_D1_TextBox.disabled(false);
-                        o.targetElement.Pledge_Amount_D_TextBox.disabled(false);
-                        o.targetElement.Limitation_Amount_D_TextBox.disabled(false);
-                        o.targetElement.Pledge_Amount_D1_TextBox.disabled(false);
-                        o.targetElement.Limitation_Amount_D1_TextBox.disabled(false); 
-                    }
-                },
-                scope: this,
-                targetElement: { "Pledge_to_All_Facilities_CheckBox": Pledge_to_All_Facilities_CheckBox
-                    , "Facility_Pledged_TextBox": Facility_Pledged_TextBox
-                    , "Prior_Claim_by_Other_Bank_CheckBox": Prior_Claim_by_Other_Bank_CheckBox
-                    , "Prior_Claim_Amount_TextBox": Prior_Claim_Amount_TextBox
-                    , "DropDownListCurrency": DropDownListCurrency
-                    , "Valuation_Date_D_TextBox": Valuation_Date_D_TextBox
-                    , "Valuation_Amount_D_TextBox": Valuation_Amount_D_TextBox
-                    , "Valuation_Amount_D1_TextBox": Valuation_Amount_D1_TextBox
-                    , "Valuation_Date_D1_TextBox": Valuation_Date_D1_TextBox
-                    , "Pledge_Amount_D_TextBox": Pledge_Amount_D_TextBox
-                    , "Limitation_Amount_D_TextBox": Limitation_Amount_D_TextBox
-                    , "Pledge_Amount_D1_TextBox": Pledge_Amount_D1_TextBox
-                    , "Limitation_Amount_D1_TextBox": Limitation_Amount_D1_TextBox
-                }
-            });
+//            PLEDGE_COLL_RELEASED_CheckBox.element.on({
+//                "click": function (e, t, o) {
+//                    if (t.checked) {
+//                        o.targetElement.Pledge_to_All_Facilities_CheckBox.disabled(true);
+//                        o.targetElement.Facility_Pledged_TextBox.disabled(true);
+//                        o.targetElement.Prior_Claim_by_Other_Bank_CheckBox.disabled(true);
+//                        o.targetElement.Prior_Claim_Amount_TextBox.disabled(true);
+//                        o.targetElement.DropDownListCurrency.disabled(true); 
+//                        o.targetElement.Valuation_Date_D_TextBox.disabled(true);
+//                        o.targetElement.Valuation_Amount_D_TextBox.disabled(true);
+//                        o.targetElement.Valuation_Amount_D1_TextBox.disabled(true);
+//                        o.targetElement.Valuation_Date_D1_TextBox.disabled(true);
+//                        o.targetElement.Pledge_Amount_D_TextBox.disabled(true);
+//                        o.targetElement.Limitation_Amount_D_TextBox.disabled(true);
+//                        o.targetElement.Pledge_Amount_D1_TextBox.disabled(true);
+//                        o.targetElement.Limitation_Amount_D1_TextBox.disabled(true);
+//                    } else {
+//                        o.targetElement.Pledge_to_All_Facilities_CheckBox.disabled(false);
+//                        o.targetElement.Facility_Pledged_TextBox.disabled(false);
+//                        o.targetElement.Prior_Claim_by_Other_Bank_CheckBox.disabled(false);
+//                        o.targetElement.Prior_Claim_Amount_TextBox.disabled(false);
+//                        o.targetElement.DropDownListCurrency.disabled(false); 
+//                        o.targetElement.Valuation_Date_D_TextBox.disabled(false);
+//                        o.targetElement.Valuation_Amount_D_TextBox.disabled(false);
+//                        o.targetElement.Valuation_Amount_D1_TextBox.disabled(false);
+//                        o.targetElement.Valuation_Date_D1_TextBox.disabled(false);
+//                        o.targetElement.Pledge_Amount_D_TextBox.disabled(false);
+//                        o.targetElement.Limitation_Amount_D_TextBox.disabled(false);
+//                        o.targetElement.Pledge_Amount_D1_TextBox.disabled(false);
+//                        o.targetElement.Limitation_Amount_D1_TextBox.disabled(false); 
+//                    }
+//                },
+//                scope: this,
+//                targetElement: { "Pledge_to_All_Facilities_CheckBox": Pledge_to_All_Facilities_CheckBox
+//                    , "Facility_Pledged_TextBox": Facility_Pledged_TextBox
+//                    , "Prior_Claim_by_Other_Bank_CheckBox": Prior_Claim_by_Other_Bank_CheckBox
+//                    , "Prior_Claim_Amount_TextBox": Prior_Claim_Amount_TextBox
+//                    , "DropDownListCurrency": DropDownListCurrency
+//                    , "Valuation_Date_D_TextBox": Valuation_Date_D_TextBox
+//                    , "Valuation_Amount_D_TextBox": Valuation_Amount_D_TextBox
+//                    , "Valuation_Amount_D1_TextBox": Valuation_Amount_D1_TextBox
+//                    , "Valuation_Date_D1_TextBox": Valuation_Date_D1_TextBox
+//                    , "Pledge_Amount_D_TextBox": Pledge_Amount_D_TextBox
+//                    , "Limitation_Amount_D_TextBox": Limitation_Amount_D_TextBox
+//                    , "Pledge_Amount_D1_TextBox": Pledge_Amount_D1_TextBox
+//                    , "Limitation_Amount_D1_TextBox": Limitation_Amount_D1_TextBox
+//                }
+//            });
 
-            //init PLEDGE_COLL_RELEASED_CheckBox
-            if (PLEDGE_COLL_RELEASED_CheckBox.element.dom.checked) {
-                Pledge_to_All_Facilities_CheckBox.disabled(true);
-                Facility_Pledged_TextBox.disabled(true);
-                Prior_Claim_by_Other_Bank_CheckBox.disabled(true);
-                Prior_Claim_Amount_TextBox.disabled(true);
-                DropDownListCurrency.disabled(true);
-                Valuation_Date_D_TextBox.disabled(true);
-                Valuation_Amount_D_TextBox.disabled(true);
-                Valuation_Amount_D1_TextBox.disabled(true);
-                Valuation_Date_D1_TextBox.disabled(true);
-                Pledge_Amount_D_TextBox.disabled(true);
-                Limitation_Amount_D_TextBox.disabled(true);
-                Pledge_Amount_D1_TextBox.disabled(true);
-                Limitation_Amount_D1_TextBox.disabled(true);
-            } else {
-                Pledge_to_All_Facilities_CheckBox.disabled(false);
-                Facility_Pledged_TextBox.disabled(false);
-                Prior_Claim_by_Other_Bank_CheckBox.disabled(false);
-                Prior_Claim_Amount_TextBox.disabled(false);
-                DropDownListCurrency.disabled(false);
-                Valuation_Date_D_TextBox.disabled(false);
-                Valuation_Amount_D_TextBox.disabled(false);
-                Valuation_Amount_D1_TextBox.disabled(false);
-                Valuation_Date_D1_TextBox.disabled(false);
-                Pledge_Amount_D_TextBox.disabled(false);
-                Limitation_Amount_D_TextBox.disabled(false);
-                Pledge_Amount_D1_TextBox.disabled(false);
-                Limitation_Amount_D1_TextBox.disabled(false);
-            }
+//            //init PLEDGE_COLL_RELEASED_CheckBox
+//            if (PLEDGE_COLL_RELEASED_CheckBox.element.dom.checked) {
+//                Pledge_to_All_Facilities_CheckBox.disabled(true);
+//                Facility_Pledged_TextBox.disabled(true);
+//                Prior_Claim_by_Other_Bank_CheckBox.disabled(true);
+//                Prior_Claim_Amount_TextBox.disabled(true);
+//                DropDownListCurrency.disabled(true);
+//                Valuation_Date_D_TextBox.disabled(true);
+//                Valuation_Amount_D_TextBox.disabled(true);
+//                Valuation_Amount_D1_TextBox.disabled(true);
+//                Valuation_Date_D1_TextBox.disabled(true);
+//                Pledge_Amount_D_TextBox.disabled(true);
+//                Limitation_Amount_D_TextBox.disabled(true);
+//                Pledge_Amount_D1_TextBox.disabled(true);
+//                Limitation_Amount_D1_TextBox.disabled(true);
+//            } else {
+//                Pledge_to_All_Facilities_CheckBox.disabled(false);
+//                Facility_Pledged_TextBox.disabled(false);
+//                Prior_Claim_by_Other_Bank_CheckBox.disabled(false);
+//                Prior_Claim_Amount_TextBox.disabled(false);
+//                DropDownListCurrency.disabled(false);
+//                Valuation_Date_D_TextBox.disabled(false);
+//                Valuation_Amount_D_TextBox.disabled(false);
+//                Valuation_Amount_D1_TextBox.disabled(false);
+//                Valuation_Date_D1_TextBox.disabled(false);
+//                Pledge_Amount_D_TextBox.disabled(false);
+//                Limitation_Amount_D_TextBox.disabled(false);
+//                Pledge_Amount_D1_TextBox.disabled(false);
+//                Limitation_Amount_D1_TextBox.disabled(false);
+//            }
             //end init PLEDGE_COLL_RELEASED_CheckBox
 
 
@@ -460,10 +460,10 @@
                     <asp:Label ID="Label18" runat="server" Text='<%# Bind("PLED_SEQ") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Pledge/Collateral Released" SortExpression="PLEDGE_COLL_RELEASED">
+            <asp:TemplateField HeaderText="Pledge/Collateral Released" SortExpression="PLEDGE_COLL_RELEASED" Visible="false">
                 <EditItemTemplate>
                     <asp:CheckBox ID="PLEDGE_COLL_RELEASED_CheckBox" runat="server" Checked='<%# Bind("PLEDGE_COLL_RELEASED") %>' domId="PLEDGE_COLL_RELEASED_CheckBox" />
-                    <span style="color: Red">*</span>
+                    <span style="color: Red;display:none;" >*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:CheckBox ID="PLEDGE_COLL_RELEASED_CheckBox" runat="server" Checked='<%# Bind("PLEDGE_COLL_RELEASED") %>' domId="PLEDGE_COLL_RELEASED_CheckBox"/>
@@ -655,6 +655,19 @@
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Limitation_Amount_D1_Label" runat="server" Text='<%# Bind("Limitation_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Remark" SortExpression="REMARK">
+                <EditItemTemplate>
+                    <asp:TextBox ID="REMARK_TextBox" runat="server" Text='<%# Bind("REMARK") %>' Width="500px" domId="REMARK_TextBox"></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="REMARK_TextBox" runat="server" Text='<%# Bind("REMARK") %>' Width="500px" domId="REMARK_TextBox"></asp:TextBox>
+                </EditItemTemplate>
+                    <span style="color: Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="REMARK_Label" runat="server" Text='<%# Bind("REMARK") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">
@@ -1172,6 +1185,7 @@
             <asp:Parameter Name="Limitation_Amount_D" Type="Double" />
             <asp:Parameter Name="Pledge_Amount_D1" Type="Double" />
             <asp:Parameter Name="Limitation_Amount_D1" Type="Double" />
+            <asp:Parameter Name="REMARK" Type="String" />
             <asp:Parameter Name="UPDATE_USER" Type="String" />
             <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </InsertParameters>
@@ -1198,6 +1212,7 @@
             <asp:Parameter Name="Limitation_Amount_D" Type="Double" />
             <asp:Parameter Name="Pledge_Amount_D1" Type="Double" />
             <asp:Parameter Name="Limitation_Amount_D1" Type="Double" />
+            <asp:Parameter Name="REMARK" Type="String" />
             <asp:Parameter Name="UPDATE_USER" Type="String" />
             <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
         </UpdateParameters>
