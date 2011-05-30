@@ -99,6 +99,7 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void DetailsView_PageIndexChanging(Object sender, EventArgs e)
         {
             ((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
+            //ไปเรียกใช้ Function DetailsView_ItemUpdating
         }
 
         protected virtual void DetailsView_ItemUpdating(object sender, System.Web.UI.WebControls.DetailsViewUpdateEventArgs e)

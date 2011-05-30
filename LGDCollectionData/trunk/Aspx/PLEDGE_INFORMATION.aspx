@@ -389,8 +389,7 @@
         DataKeyNames="CIF,Default_Date,APPS_ID,PLED_ID,PLED_SEQ" 
         DataSourceID="SqlDataSourcePLEDGE_INFO"
         EnableModelValidation="True" 
-        OnPageIndexChanging="DetailsView_PageIndexChanged"
-        OnPageIndexChanged="DetailsView_PageIndexChanged" 
+        OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnPreRender="DetailsView_Prerender"
         DefaultMode="Edit" CellPadding="4" ForeColor="#333333" 
         Width="737px" PagerSettings-Mode="NumericFirstLast">
@@ -766,6 +765,7 @@
                 <ItemStyle Wrap="False" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="PLED SEQ" SortExpression="PLED_SEQ" HeaderStyle-Wrap="false" ItemStyle-Wrap="false">
+                        <ItemStyle HorizontalAlign="Center" />
                 <EditItemTemplate>
                     <asp:Label ID="LabelPLED_SEQ" runat="server" Text='<%# Bind("PLED_SEQ") %>'></asp:Label>
                 </EditItemTemplate>
@@ -1074,7 +1074,7 @@
                     <td style="white-space:nowrap;">
                         <asp:Label ID="LabelPLED_ID" runat="server" OnPreRender="LabelPLED_ID_PreRender"></asp:Label>
                     </td>
-                    <td style="white-space:nowrap;">
+                    <td style="white-space:nowrap;" align="center">
                         <asp:Label ID="LabelPLED_SEQ" runat="server" OnPreRender="LabelPLED_SEQ_PreRender"></asp:Label>
                     </td>
                     <td style="white-space:nowrap;">
