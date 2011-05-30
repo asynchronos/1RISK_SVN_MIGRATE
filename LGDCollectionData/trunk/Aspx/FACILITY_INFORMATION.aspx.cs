@@ -122,8 +122,20 @@ namespace LGDCollectionData.Aspx
                 Response.Redirect("FACILITY_INFORMATION.aspx?CIF=" + Request.QueryString["CIF"]);
 
             }
-           
+            GridView1.DataBind();
+            DetailsView1.DataBind();
         }
 
+        protected void SqlDataSourceFacility_Updated(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            GridView1.DataBind();
+            DetailsView1.DataBind();
+        }
+
+        protected void SqlDataSourceFacility_Deleted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            GridView1.DataBind();
+            DetailsView1.DataBind();
+        }
     }
 }
