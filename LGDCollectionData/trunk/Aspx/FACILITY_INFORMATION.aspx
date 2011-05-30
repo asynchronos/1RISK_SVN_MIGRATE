@@ -511,7 +511,8 @@
         SelectCommand="FACILITY_INFORMATION_SELECT" SelectCommandType="StoredProcedure"
         UpdateCommand="FACILITY_INFORMATION_UPDATE" UpdateCommandType="StoredProcedure"
         DeleteCommand="FACILITY_INFORMATION_DELETE" DeleteCommandType="StoredProcedure"
-        OnInserted="SqlDataSourceFacility_Inserted">
+        OnInserted="SqlDataSourceFacility_Inserted" OnUpdated="SqlDataSourceFacility_Updated"
+        OnDeleted="SqlDataSourceFacility_Deleted">
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
         </SelectParameters>
