@@ -96,7 +96,7 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             args.IsValid = (inputDate.CompareTo(compareDate) == 1) ? true : false;
         }
 
-        protected void DetailsView_PageIndexChanged(Object sender, EventArgs e)
+        protected void DetailsView_PageIndexChanging(Object sender, EventArgs e)
         {
             ((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
         }
