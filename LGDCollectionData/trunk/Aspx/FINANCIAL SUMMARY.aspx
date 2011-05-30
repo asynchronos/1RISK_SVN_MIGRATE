@@ -173,10 +173,15 @@
                 ReadOnly="True" SortExpression="Default_Date" />
             <asp:TemplateField HeaderText="Financial Data Date" SortExpression="Financial_Data_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Financial_Data_Date_Label" runat="server" Text='<%# Bind("Financial_Data_Date","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:TextBox ID="Financial_Data_Date_TextBox" runat="server" Text='<%# Bind("Financial_Data_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:CalendarExtender ID="Financial_Data_Date_TextBox_CalendarExtender" runat="server"
+                        TargetControlID="TextBoxFinancial_Data_Date" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy"
+                        TodaysDateFormat="d MMMM yyyy">
+                    </asp:CalendarExtender>
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Financial_Data_Date_TextBox" runat="server" Text='<%# Bind("Financial_Data_Date") %>'></asp:TextBox>
+                    <asp:TextBox ID="Financial_Data_Date_TextBox" runat="server" Text='<%# Bind("Financial_Data_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
                     <asp:CalendarExtender ID="Financial_Data_Date_TextBox_CalendarExtender" runat="server"
                         TargetControlID="TextBoxFinancial_Data_Date" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy"
                         TodaysDateFormat="d MMMM yyyy">
