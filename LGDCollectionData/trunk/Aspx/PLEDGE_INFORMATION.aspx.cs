@@ -64,36 +64,19 @@ namespace LGDCollectionData.Aspx
                 //((TextBox)myDetailsView.FindControl("TextBox2")).Text = DateTime.Now.ToString("g");
                 if (dv.Rows.Count > 0)
                 {
-                    if (HiddenFieldPLED_ID.Value == "" || HiddenFieldPLED_SEQ.Value == "" || HiddenFieldAPPS_ID.Value == "")
-                    {
+                    //if (HiddenFieldPLED_ID.Value == "" || HiddenFieldPLED_SEQ.Value == "" || HiddenFieldAPPS_ID.Value == "")
+                    //{
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
                         //set parameter to grid and bind
                         SqlDataSourceCOLL_INFO.SelectParameters["PLED_ID"].DefaultValue = ((Label)DetailsView1.FindControl("LabelPLED_ID")).Text;
                         SqlDataSourceCOLL_INFO.SelectParameters["PLED_SEQ"].DefaultValue = ((Label)DetailsView1.FindControl("LabelPLED_SEQ")).Text;
                         SqlDataSourceCOLL_INFO.SelectParameters["APPS_ID"].DefaultValue = ((Label)DetailsView1.FindControl("LabelAPPS_ID")).Text;
 
                         GridView_COLL_INFO.DataBind();
-                        //DataSet DS_COLL = GET_COLLATERAL_INFORMATION(HiddenFieldPLED_ID.Value.ToString(), Convert.ToInt32(HiddenFieldPLED_SEQ.Value), HiddenFieldAPPS_ID.Value.ToString());
-                        //if (DS_COLL.Tables[0].Rows.Count > 0)
-                        //{
-                        //GridView1.DataSource = DS_COLL.Tables[0];
-                        //GridView1.DataBind();
-
-                        //DetailsView2.Visible = true;
-                        //DetailsView2.ChangeMode(DetailsViewMode.Edit);
-                        //}
-                        //else {
-                        //GridView1.DataSource = DS_COLL.Tables[0];
-                        //GridView1.DataBind();
-
-                        //DetailsView2.Visible = true;
-                        //DetailsView2.ChangeMode(DetailsViewMode.Insert);
-                        //}
-
-                    }
+                    //}
                 }
                 else
                 {
@@ -122,7 +105,7 @@ namespace LGDCollectionData.Aspx
             e.NewValues["UPDATE_DATE"] = DateTime.Now;
         }
 
-        protected void DetailsView_PageIndexChanged(Object sender, EventArgs e)
+        protected void DetailsView_PageIndexChanging(Object sender, EventArgs e)
         {
             ((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
         }
