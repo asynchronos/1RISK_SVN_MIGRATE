@@ -50,12 +50,12 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
             if (DetailsView2.CurrentMode == DetailsViewMode.Edit)
             {
-                System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView2.FindControl("LabelUserId");
-                System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView2.FindControl("LabelDate");
-                if (userId != null)
-                    userId.Text = User.Identity.Name.ToString();
-                if (dateLabel != null)
-                    dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+                //System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView2.FindControl("LabelUserId");
+                //System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView2.FindControl("LabelDate");
+                //if (userId != null)
+                //    userId.Text = User.Identity.Name.ToString();
+                //if (dateLabel != null)
+                //    dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
             }
         }
 
