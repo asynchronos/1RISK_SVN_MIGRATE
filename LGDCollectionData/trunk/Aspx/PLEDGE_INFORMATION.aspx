@@ -390,6 +390,7 @@
         DataSourceID="SqlDataSourcePLEDGE_INFO"
         EnableModelValidation="True" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
+        OnItemUpdating="DetailsView_ItemUpdating"
         OnPreRender="DetailsView_Prerender"
         DefaultMode="Edit" CellPadding="4" ForeColor="#333333" 
         Width="737px" PagerSettings-Mode="NumericFirstLast">

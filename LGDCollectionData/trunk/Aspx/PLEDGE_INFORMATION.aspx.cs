@@ -46,12 +46,12 @@ namespace LGDCollectionData.Aspx
                     HiddenFieldPLED_SEQ.Value = ((DataRowView)DetailsView1.DataItem).Row.ItemArray[4].ToString();
                 } //end if
 
-                System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
-                System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
-                if (userId != null)
-                    userId.Text = User.Identity.Name.ToString();
-                if (dateLabel != null)
-                    dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+                //System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
+                //System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
+                //if (userId != null)
+                //    userId.Text = User.Identity.Name.ToString();
+                //if (dateLabel != null)
+                //    dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
             }
         }
 

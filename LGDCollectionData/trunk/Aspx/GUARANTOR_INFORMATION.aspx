@@ -127,7 +127,8 @@
                 CellPadding="4" ForeColor="#333333" 
                 GridLines="Both"
                 OnPreRender="DetailsView2_OnPreRender"
-                OnPageIndexChanging="DetailsView_PageIndexChanged">
+                OnPageIndexChanging="DetailsView_PageIndexChanged"
+                OnItemUpdating="DetailsView_ItemUpdating">
                 <AlternatingRowStyle BackColor="White" />
                 <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
                 <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
@@ -193,12 +194,12 @@
                             <span style="color:Red">*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:CheckBox ID="CheckBox1" runat="server" 
-                                Checked='<%# Bind("Pledge_to_All_Facilities") %>' />
+                            <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" 
+                                Checked='<%# Bind("Pledge_to_All_Facilities") %>' domId="Pledge_to_All_Facilities_CheckBox"/>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:CheckBox ID="CheckBox1" runat="server" 
-                                Checked='<%# Bind("Pledge_to_All_Facilities") %>' Enabled="false" />
+                            <asp:CheckBox ID="Pledge_to_All_Facilities_CheckBox" runat="server" 
+                                Checked='<%# Bind("Pledge_to_All_Facilities") %>' Enabled="false" domId="Pledge_to_All_Facilities_CheckBox"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Facility Pledged" 
@@ -209,12 +210,12 @@
                             <span style="color:Red">*</span>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox10" runat="server" 
-                                Text='<%# Bind("Facility_Pledged") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBoxFacility_Pledged" runat="server" 
+                                Text='<%# Bind("Facility_Pledged") %>' domId="TextBoxFacility_Pledged"></asp:TextBox>
                                 <span style="color:Red">*</span>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label10" runat="server" Text='<%# Bind("Facility_Pledged") %>'></asp:Label>
+                            <asp:Label ID="LabelFacility_Pledged" runat="server" Text='<%# Bind("Facility_Pledged") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Guarantee Amount @ D" 
