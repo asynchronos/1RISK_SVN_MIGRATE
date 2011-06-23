@@ -96,8 +96,8 @@ namespace LGDCollectionData.Aspx
 
                     if (!e.OldValues[i].Equals(e.NewValues[i]))
                     {
-                        log.Debug("   OldValues" + e.OldValues[i].ToString());
-                        log.Debug("   NewValues" + e.NewValues[i].ToString());
+                        log.Debug("   OldValues:" + e.OldValues[i].ToString());
+                        log.Debug("   NewValues:" + e.NewValues[i].ToString());
                         hasChanged = true;
                         break;
                     }

@@ -107,7 +107,7 @@
                             break;
                         }
                     }
-                    
+
                     //disable next dropdown if this dropdown index = 0
                     if (nextIndex < o.srcElement.getCount()) {
                         if (t.selectedIndex == 0) {
@@ -140,7 +140,7 @@
                             }
                         }
                     }
-                    
+
                     if (notIndex0Count > 1)
                         o.targetElement.WrittenoffOrHaircutAmountTextBox.disabled(writeenOffDisable);
                     else

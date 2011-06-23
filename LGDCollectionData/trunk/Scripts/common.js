@@ -640,5 +640,32 @@ MyNumber.prototype = {
         }
 
         return result;
+    },
+    toThaiTextCurrency: function () {
+        var result;
+
+        var NUM_ARRAY = ["ศูนย์", "หนึ่ง", "สอง", "สาม", "สี่", "ห้า", "หก", "เจ็ด", "แปด", "เก้า"];
+        var POWER_ARRAY = ["", "สิบ", "ร้อย", "พัน", "หมื่น", "แสน", "ล้าน"];
+        //ยี่ เอ็ด
+
+        var milionCount = 0;
+
+        var inputStr = this.getValue().toFixed(2);
+        var strArray = inputStr.split(".", 2);
+
+        var leftDot = strArray[0];
+        var rightDot = strArray[1];
+
+        if (leftDot.length < 1) {
+            leftDot = "0";
+        }
+        for (var i = rightDot.length; i < 2; i++) {
+            rightDot = rightDot + "0";
+        }
+
+        var leftDotPowerArray = new Array(leftDot.length);
+        var leftDotNumArray = new Array(leftDot.length);
+
+        return result;
     }
 }
