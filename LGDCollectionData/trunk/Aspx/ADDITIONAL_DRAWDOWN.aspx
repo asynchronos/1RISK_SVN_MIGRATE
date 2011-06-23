@@ -202,7 +202,7 @@
         DefaultMode="Edit" CellPadding="4" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnItemUpdating="DetailsView_ItemUpdating"
-        ForeColor="#333333" GridLines="Both" 
+        ForeColor="#333333" 
       PagerSettings-Mode="NumericFirstLast">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -286,8 +286,17 @@
                     <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
           </asp:TemplateField>
-            <asp:BoundField DataField="LIMITNO" HeaderText="LIMIT NO" 
-                SortExpression="LIMITNO" ReadOnly="true" />
+            <asp:TemplateField HeaderText="LIMIT NO" SortExpression="LIMITNO">
+                <EditItemTemplate>
+                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:TextBox>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMITNO Changed" 
                 SortExpression="LIMITNO_Changed">
                 <EditItemTemplate>
@@ -351,6 +360,9 @@
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White"/>
+
+<PagerSettings Mode="NumericFirstLast"></PagerSettings>
+
         <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
     </asp:DetailsView>
