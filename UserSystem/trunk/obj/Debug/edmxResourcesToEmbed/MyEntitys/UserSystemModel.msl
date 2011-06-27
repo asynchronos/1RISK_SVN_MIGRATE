@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RISKModelStoreContainer" CdmEntityContainer="RISKEntities">
+    <EntitySetMapping Name="CATE_AND_APP">
+      <EntityTypeMapping TypeName="RISKModel.CATE_AND_APP">
+        <MappingFragment StoreEntitySet="CATE_AND_APP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+          <ScalarProperty Name="APP_KEY" ColumnName="APP_KEY" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATE_AND_CUS">
+      <EntityTypeMapping TypeName="RISKModel.CATE_AND_CUS">
+        <MappingFragment StoreEntitySet="CATE_AND_CUS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+          <ScalarProperty Name="CIF" ColumnName="CIF" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATE_AND_EMP">
+      <EntityTypeMapping TypeName="RISKModel.CATE_AND_EMP">
+        <MappingFragment StoreEntitySet="CATE_AND_EMP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="HEAD_PRIORITY" ColumnName="HEAD_PRIORITY" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATE_AND_MENU">
+      <EntityTypeMapping TypeName="RISKModel.CATE_AND_MENU">
+        <MappingFragment StoreEntitySet="CATE_AND_MENU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+          <ScalarProperty Name="MENU_KEY" ColumnName="MENU_KEY" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORY">
+      <EntityTypeMapping TypeName="RISKModel.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+          <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+          <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+          <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+          <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+          <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORY_TYPE">
+      <EntityTypeMapping TypeName="RISKModel.CATEGORY_TYPE">
+        <MappingFragment StoreEntitySet="CATEGORY_TYPE">
+          <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+          <ScalarProperty Name="CATEGORY_TYPE_DESC" ColumnName="CATEGORY_TYPE_DESC" />
+          <ScalarProperty Name="CATEGORY_TYPE_DESC_TH" ColumnName="CATEGORY_TYPE_DESC_TH" />
+          <ScalarProperty Name="CATEGORY_TYPE_VALUE" ColumnName="CATEGORY_TYPE_VALUE" />
+          <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LINKED_CATEGORY">
+      <EntityTypeMapping TypeName="RISKModel.LINKED_CATEGORY">
+        <MappingFragment StoreEntitySet="LINKED_CATEGORY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+          <ScalarProperty Name="LINK_TO_CATEGORY_KEY" ColumnName="LINK_TO_CATEGORY_KEY" />
+          <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LINKED_CATEGORY_TYPE">
+      <EntityTypeMapping TypeName="RISKModel.LINKED_CATEGORY_TYPE">
+        <MappingFragment StoreEntitySet="LINKED_CATEGORY_TYPE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+          <ScalarProperty Name="LINK_TO_CATEGORY_TYPE_KEY" ColumnName="LINK_TO_CATEGORY_TYPE_KEY" />
+          <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LINKED_TYPE">
+      <EntityTypeMapping TypeName="RISKModel.LINKED_TYPE">
+        <MappingFragment StoreEntitySet="LINKED_TYPE">
+          <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MASTER_EMPLOYEE">
+      <EntityTypeMapping TypeName="RISKModel.MASTER_EMPLOYEE">
+        <MappingFragment StoreEntitySet="MASTER_EMPLOYEE">
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="IEMPID" ColumnName="IEMPID" />
+          <ScalarProperty Name="NTTITLE" ColumnName="NTTITLE" />
+          <ScalarProperty Name="NTNAME" ColumnName="NTNAME" />
+          <ScalarProperty Name="NTSURN" ColumnName="NTSURN" />
+          <ScalarProperty Name="EEPOSIT" ColumnName="EEPOSIT" />
+          <ScalarProperty Name="EESECTION" ColumnName="EESECTION" />
+          <ScalarProperty Name="EEDEPT" ColumnName="EEDEPT" />
+          <ScalarProperty Name="NETITLE" ColumnName="NETITLE" />
+          <ScalarProperty Name="NENAME" ColumnName="NENAME" />
+          <ScalarProperty Name="NESURN" ColumnName="NESURN" />
+          <ScalarProperty Name="EEPOSITE" ColumnName="EEPOSITE" />
+          <ScalarProperty Name="EESECTIONE" ColumnName="EESECTIONE" />
+          <ScalarProperty Name="EEDEPE" ColumnName="EEDEPE" />
+          <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+          <ScalarProperty Name="POSITION_CODE" ColumnName="POSITION_CODE" />
+          <ScalarProperty Name="IESECTION" ColumnName="IESECTION" />
+          <ScalarProperty Name="PHONE_OFFICE" ColumnName="PHONE_OFFICE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_DATA">
+      <EntityTypeMapping TypeName="RISKModel.USER_DATA">
+        <MappingFragment StoreEntitySet="USER_DATA">
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="EMP_TITLE" ColumnName="EMP_TITLE" />
+          <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+          <ScalarProperty Name="EMP_SURNAME" ColumnName="EMP_SURNAME" />
+          <ScalarProperty Name="EMP_TITLE_E" ColumnName="EMP_TITLE_E" />
+          <ScalarProperty Name="EMP_NAME_E" ColumnName="EMP_NAME_E" />
+          <ScalarProperty Name="EMP_SURNAME_E" ColumnName="EMP_SURNAME_E" />
+          <ScalarProperty Name="PASSWD" ColumnName="PASSWD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PHONE_OFFICE" ColumnName="PHONE_OFFICE" />
+          <ScalarProperty Name="PHONE_HOME" ColumnName="PHONE_HOME" />
+          <ScalarProperty Name="PHONE_MOBILE" ColumnName="PHONE_MOBILE" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="EXPIRE_DATE" ColumnName="EXPIRE_DATE" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="LAST_SIGN_ON_DATE" ColumnName="LAST_SIGN_ON_DATE" />
+          <ScalarProperty Name="LAST_CHANGE_PASS_DATE" ColumnName="LAST_CHANGE_PASS_DATE" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPLICATION">
+      <EntityTypeMapping TypeName="RISKModel.APPLICATION">
+        <MappingFragment StoreEntitySet="APPLICATION">
+          <ScalarProperty Name="APP_KEY" ColumnName="APP_KEY" />
+          <ScalarProperty Name="APP_DESC" ColumnName="APP_DESC" />
+          <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU_MASTER">
+      <EntityTypeMapping TypeName="RISKModel.MENU_MASTER">
+        <MappingFragment StoreEntitySet="MENU_MASTER">
+          <ScalarProperty Name="MENU_KEY" ColumnName="MENU_KEY" />
+          <ScalarProperty Name="MENU_TITLE" ColumnName="MENU_TITLE" />
+          <ScalarProperty Name="MENU_URL" ColumnName="MENU_URL" />
+          <ScalarProperty Name="MENU_POPUP_OPT" ColumnName="MENU_POPUP_OPT" />
+          <ScalarProperty Name="MENU_REL" ColumnName="MENU_REL" />
+          <ScalarProperty Name="MENU_TOOLTIP" ColumnName="MENU_TOOLTIP" />
+          <ScalarProperty Name="MENU_PRIORITY" ColumnName="MENU_PRIORITY" />
+          <ScalarProperty Name="MENU_DEL_FLAG" ColumnName="MENU_DEL_FLAG" />
+          <ScalarProperty Name="MENU_PARENT_KEY" ColumnName="MENU_PARENT_KEY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_001_EXPANDED_CATEGORY_TYPE_1">
+      <EntityTypeMapping TypeName="RISKModel.V_001_EXPANDED_CATEGORY_TYPE_1">
+        <MappingFragment StoreEntitySet="V_001_EXPANDED_CATEGORY_TYPE_1">
+          <ScalarProperty Name="SEARCH_CATEGORY_KEY" ColumnName="SEARCH_CATEGORY_KEY" />
+          <ScalarProperty Name="EXPANDED_CATEGORY_KEY" ColumnName="EXPANDED_CATEGORY_KEY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_002_CATEGORY_MAP_TYPE">
+      <EntityTypeMapping TypeName="RISKModel.V_002_CATEGORY_MAP_TYPE">
+        <MappingFragment StoreEntitySet="V_002_CATEGORY_MAP_TYPE">
+          <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+          <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+          <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+          <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+          <ScalarProperty Name="CATEGORY_PRIORITY" ColumnName="CATEGORY_PRIORITY" />
+          <ScalarProperty Name="CATEGORY_DEL_FLAG" ColumnName="CATEGORY_DEL_FLAG" />
+          <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+          <ScalarProperty Name="CATEGORY_TYPE_DESC" ColumnName="CATEGORY_TYPE_DESC" />
+          <ScalarProperty Name="CATEGORY_TYPE_DESC_TH" ColumnName="CATEGORY_TYPE_DESC_TH" />
+          <ScalarProperty Name="CATEGORY_TYPE_VALUE" ColumnName="CATEGORY_TYPE_VALUE" />
+          <ScalarProperty Name="CATEGORY_TYPE_PRIORITY" ColumnName="CATEGORY_TYPE_PRIORITY" />
+          <ScalarProperty Name="CATEGORY_TYPE_DEL_FLAG" ColumnName="CATEGORY_TYPE_DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_003_LINKED_CATEGORY_TYPE_1_INFO">
+      <EntityTypeMapping TypeName="RISKModel.V_003_LINKED_CATEGORY_TYPE_1_INFO">
+        <MappingFragment StoreEntitySet="V_003_LINKED_CATEGORY_TYPE_1_INFO">
+          <ScalarProperty Name="LINKED_CATEGORY_ID" ColumnName="LINKED_CATEGORY_ID" />
+          <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+          <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+          <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+          <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+          <ScalarProperty Name="CATEGORY_PRIORITY" ColumnName="CATEGORY_PRIORITY" />
+          <ScalarProperty Name="CATEGORY_DEL_FLAG" ColumnName="CATEGORY_DEL_FLAG" />
+          <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+          <ScalarProperty Name="CATEGORY_TYPE_DESC" ColumnName="CATEGORY_TYPE_DESC" />
+          <ScalarProperty Name="CATEGORY_TYPE_DESC_TH" ColumnName="CATEGORY_TYPE_DESC_TH" />
+          <ScalarProperty Name="CATEGORY_TYPE_VALUE" ColumnName="CATEGORY_TYPE_VALUE" />
+          <ScalarProperty Name="CATEGORY_TYPE_PRIORITY" ColumnName="CATEGORY_TYPE_PRIORITY" />
+          <ScalarProperty Name="CATEGORY_TYPE_DEL_FLAG" ColumnName="CATEGORY_TYPE_DEL_FLAG" />
+          <ScalarProperty Name="PARENT_CATEGORY_KEY" ColumnName="PARENT_CATEGORY_KEY" />
+          <ScalarProperty Name="RECURSIVE_DEL_FLAG" ColumnName="RECURSIVE_DEL_FLAG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_004_LINKED_CATEGORY_TYPE_2_INFO">
+      <EntityTypeMapping TypeName="RISKModel.V_004_LINKED_CATEGORY_TYPE_2_INFO">
+        <MappingFragment StoreEntitySet="V_004_LINKED_CATEGORY_TYPE_2_INFO">
+          <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+          <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+          <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+          <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+          <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+          <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+          <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+          <ScalarProperty Name="CATEGORY_RECURSIVE_DEL_FLAG" ColumnName="CATEGORY_RECURSIVE_DEL_FLAG" />
+          <ScalarProperty Name="CATEGORY_KEY_LINK" ColumnName="CATEGORY_KEY_LINK" />
+          <ScalarProperty Name="CATEGORY_DESC_LINK" ColumnName="CATEGORY_DESC_LINK" />
+          <ScalarProperty Name="CATEGORY_DESC_TH_LINK" ColumnName="CATEGORY_DESC_TH_LINK" />
+          <ScalarProperty Name="CATEGORY_VALUE_LINK" ColumnName="CATEGORY_VALUE_LINK" />
+          <ScalarProperty Name="CATEGORY_TYPE_KEY_LINK" ColumnName="CATEGORY_TYPE_KEY_LINK" />
+          <ScalarProperty Name="PRIORITY_LINK" ColumnName="PRIORITY_LINK" />
+          <ScalarProperty Name="DEL_FLAG_LINK" ColumnName="DEL_FLAG_LINK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

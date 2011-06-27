@@ -1,0 +1,1404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RISKModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="RISKModelStoreContainer">
+          <EntitySet Name="CATE_AND_APP" EntityType="RISKModel.Store.CATE_AND_APP" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATE_AND_CUS" EntityType="RISKModel.Store.CATE_AND_CUS" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATE_AND_EMP" EntityType="RISKModel.Store.CATE_AND_EMP" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATE_AND_MENU" EntityType="RISKModel.Store.CATE_AND_MENU" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATEGORY" EntityType="RISKModel.Store.CATEGORY" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATEGORY_TYPE" EntityType="RISKModel.Store.CATEGORY_TYPE" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="LINKED_CATEGORY" EntityType="RISKModel.Store.LINKED_CATEGORY" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="LINKED_CATEGORY_TYPE" EntityType="RISKModel.Store.LINKED_CATEGORY_TYPE" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="LINKED_TYPE" EntityType="RISKModel.Store.LINKED_TYPE" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="MASTER_EMPLOYEE" EntityType="RISKModel.Store.MASTER_EMPLOYEE" store:Type="Tables" Schema="EMPLOYEE" />
+          <EntitySet Name="USER_DATA" EntityType="RISKModel.Store.USER_DATA" store:Type="Tables" Schema="EMPLOYEE" />
+          <EntitySet Name="APPLICATION" EntityType="RISKModel.Store.APPLICATION" store:Type="Tables" Schema="PERMISSION" />
+          <EntitySet Name="MENU_MASTER" EntityType="RISKModel.Store.MENU_MASTER" store:Type="Tables" Schema="PERMISSION" />
+          <EntitySet Name="V_001_EXPANDED_CATEGORY_TYPE_1" EntityType="RISKModel.Store.V_001_EXPANDED_CATEGORY_TYPE_1" store:Type="Views" store:Schema="CLASSIFY" store:Name="V_001_EXPANDED_CATEGORY_TYPE_1">
+            <DefiningQuery>SELECT 
+      [V_001_EXPANDED_CATEGORY_TYPE_1].[SEARCH_CATEGORY_KEY] AS [SEARCH_CATEGORY_KEY], 
+      [V_001_EXPANDED_CATEGORY_TYPE_1].[EXPANDED_CATEGORY_KEY] AS [EXPANDED_CATEGORY_KEY]
+      FROM [CLASSIFY].[V_001_EXPANDED_CATEGORY_TYPE_1] AS [V_001_EXPANDED_CATEGORY_TYPE_1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_002_CATEGORY_MAP_TYPE" EntityType="RISKModel.Store.V_002_CATEGORY_MAP_TYPE" store:Type="Views" store:Schema="CLASSIFY" store:Name="V_002_CATEGORY_MAP_TYPE">
+            <DefiningQuery>SELECT 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_KEY] AS [CATEGORY_KEY], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_DESC] AS [CATEGORY_DESC], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_DESC_TH] AS [CATEGORY_DESC_TH], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_VALUE] AS [CATEGORY_VALUE], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_PRIORITY] AS [CATEGORY_PRIORITY], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_DEL_FLAG] AS [CATEGORY_DEL_FLAG], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_TYPE_KEY] AS [CATEGORY_TYPE_KEY], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_TYPE_DESC] AS [CATEGORY_TYPE_DESC], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_TYPE_DESC_TH] AS [CATEGORY_TYPE_DESC_TH], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_TYPE_VALUE] AS [CATEGORY_TYPE_VALUE], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_TYPE_PRIORITY] AS [CATEGORY_TYPE_PRIORITY], 
+      [V_002_CATEGORY_MAP_TYPE].[CATEGORY_TYPE_DEL_FLAG] AS [CATEGORY_TYPE_DEL_FLAG]
+      FROM [CLASSIFY].[V_002_CATEGORY_MAP_TYPE] AS [V_002_CATEGORY_MAP_TYPE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_003_LINKED_CATEGORY_TYPE_1_INFO" EntityType="RISKModel.Store.V_003_LINKED_CATEGORY_TYPE_1_INFO" store:Type="Views" store:Schema="CLASSIFY" store:Name="V_003_LINKED_CATEGORY_TYPE_1_INFO">
+            <DefiningQuery>SELECT 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[LINKED_CATEGORY_ID] AS [LINKED_CATEGORY_ID], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_KEY] AS [CATEGORY_KEY], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_DESC] AS [CATEGORY_DESC], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_DESC_TH] AS [CATEGORY_DESC_TH], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_VALUE] AS [CATEGORY_VALUE], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_PRIORITY] AS [CATEGORY_PRIORITY], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_DEL_FLAG] AS [CATEGORY_DEL_FLAG], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_TYPE_KEY] AS [CATEGORY_TYPE_KEY], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_TYPE_DESC] AS [CATEGORY_TYPE_DESC], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_TYPE_DESC_TH] AS [CATEGORY_TYPE_DESC_TH], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_TYPE_VALUE] AS [CATEGORY_TYPE_VALUE], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_TYPE_PRIORITY] AS [CATEGORY_TYPE_PRIORITY], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[CATEGORY_TYPE_DEL_FLAG] AS [CATEGORY_TYPE_DEL_FLAG], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[PARENT_CATEGORY_KEY] AS [PARENT_CATEGORY_KEY], 
+      [V_003_LINKED_CATEGORY_TYPE_1_INFO].[RECURSIVE_DEL_FLAG] AS [RECURSIVE_DEL_FLAG]
+      FROM [CLASSIFY].[V_003_LINKED_CATEGORY_TYPE_1_INFO] AS [V_003_LINKED_CATEGORY_TYPE_1_INFO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_004_LINKED_CATEGORY_TYPE_2_INFO" EntityType="RISKModel.Store.V_004_LINKED_CATEGORY_TYPE_2_INFO" store:Type="Views" store:Schema="CLASSIFY" store:Name="V_004_LINKED_CATEGORY_TYPE_2_INFO">
+            <DefiningQuery>SELECT 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_KEY] AS [CATEGORY_KEY], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_DESC] AS [CATEGORY_DESC], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_DESC_TH] AS [CATEGORY_DESC_TH], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_VALUE] AS [CATEGORY_VALUE], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_TYPE_KEY] AS [CATEGORY_TYPE_KEY], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[PRIORITY] AS [PRIORITY], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[DEL_FLAG] AS [DEL_FLAG], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[LINKED_TYPE_KEY] AS [LINKED_TYPE_KEY], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_RECURSIVE_DEL_FLAG] AS [CATEGORY_RECURSIVE_DEL_FLAG], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_KEY_LINK] AS [CATEGORY_KEY_LINK], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_DESC_LINK] AS [CATEGORY_DESC_LINK], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_DESC_TH_LINK] AS [CATEGORY_DESC_TH_LINK], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_VALUE_LINK] AS [CATEGORY_VALUE_LINK], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[CATEGORY_TYPE_KEY_LINK] AS [CATEGORY_TYPE_KEY_LINK], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[PRIORITY_LINK] AS [PRIORITY_LINK], 
+      [V_004_LINKED_CATEGORY_TYPE_2_INFO].[DEL_FLAG_LINK] AS [DEL_FLAG_LINK]
+      FROM [CLASSIFY].[V_004_LINKED_CATEGORY_TYPE_2_INFO] AS [V_004_LINKED_CATEGORY_TYPE_2_INFO]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CATE_AND_APP_APPLICATION" Association="RISKModel.Store.FK_CATE_AND_APP_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATION" />
+            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_APP_CATEGORY" Association="RISKModel.Store.FK_CATE_AND_APP_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_CUS_CATEGORY" Association="RISKModel.Store.FK_CATE_AND_CUS_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_CUS" EntitySet="CATE_AND_CUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_EMP_CATEGORY" Association="RISKModel.Store.FK_CATE_AND_EMP_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_EMP_USER_DATA" Association="RISKModel.Store.FK_CATE_AND_EMP_USER_DATA">
+            <End Role="USER_DATA" EntitySet="USER_DATA" />
+            <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_MENU_CATEGORY" Association="RISKModel.Store.FK_CATE_AND_MENU_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_MENU_MENU_MASTER" Association="RISKModel.Store.FK_CATE_AND_MENU_MENU_MASTER">
+            <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+            <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_CATEGORY_TYPE" Association="RISKModel.Store.FK_CATEGORY_CATEGORY_TYPE">
+            <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_RECURSIVE_CATEGORY" Association="RISKModel.Store.FK_CATEGORY_RECURSIVE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="LINKED_CATEGORY" EntitySet="LINKED_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE" Association="RISKModel.Store.FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+            <End Role="LINKED_TYPE" EntitySet="LINKED_TYPE" />
+            <End Role="LINKED_CATEGORY" EntitySet="LINKED_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_RECURSIVE_CATEGORY1" Association="RISKModel.Store.FK_CATEGORY_RECURSIVE_CATEGORY1">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="LINKED_CATEGORY" EntitySet="LINKED_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE" Association="RISKModel.Store.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+            <End Role="LINKED_TYPE" EntitySet="LINKED_TYPE" />
+            <End Role="LINKED_CATEGORY_TYPE" EntitySet="LINKED_CATEGORY_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE" Association="RISKModel.Store.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE">
+            <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+            <End Role="LINKED_CATEGORY_TYPE" EntitySet="LINKED_CATEGORY_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1" Association="RISKModel.Store.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1">
+            <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+            <End Role="LINKED_CATEGORY_TYPE" EntitySet="LINKED_CATEGORY_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENU_MASTER_MENU_MASTER" Association="RISKModel.Store.FK_MENU_MASTER_MENU_MASTER">
+            <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+            <End Role="MENU_MASTER1" EntitySet="MENU_MASTER" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CATE_AND_APP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" />
+          <Property Name="APP_KEY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATE_AND_CUS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="CIF" Type="int" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATE_AND_EMP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="EMP_ID" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="HEAD_PRIORITY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATE_AND_MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" />
+          <Property Name="MENU_KEY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_KEY" />
+          </Key>
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="CATEGORY_DESC_TH" Type="nvarchar" MaxLength="100" />
+          <Property Name="CATEGORY_VALUE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="int" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATEGORY_TYPE">
+          <Key>
+            <PropertyRef Name="CATEGORY_TYPE_KEY" />
+          </Key>
+          <Property Name="CATEGORY_TYPE_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_TYPE_DESC" Type="varchar" MaxLength="50" />
+          <Property Name="CATEGORY_TYPE_DESC_TH" Type="nvarchar" MaxLength="50" />
+          <Property Name="CATEGORY_TYPE_VALUE" Type="nvarchar" MaxLength="20" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="LINKED_CATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="LINK_TO_CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="LINKED_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="LINKED_CATEGORY_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="LINK_TO_CATEGORY_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="LINKED_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="LINKED_TYPE">
+          <Key>
+            <PropertyRef Name="LINKED_TYPE_KEY" />
+          </Key>
+          <Property Name="LINKED_TYPE_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="MASTER_EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="EMP_ID_DISPLAY" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="IEMPID" Type="int" />
+          <Property Name="NTTITLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="NTNAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="NTSURN" Type="nvarchar" MaxLength="255" />
+          <Property Name="EEPOSIT" Type="nvarchar" MaxLength="255" />
+          <Property Name="EESECTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="EEDEPT" Type="nvarchar" MaxLength="255" />
+          <Property Name="NETITLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="NENAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="NESURN" Type="nvarchar" MaxLength="255" />
+          <Property Name="EEPOSITE" Type="nvarchar" MaxLength="255" />
+          <Property Name="EESECTIONE" Type="nvarchar" MaxLength="255" />
+          <Property Name="EEDEPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="POSITION" Type="nvarchar" MaxLength="255" />
+          <Property Name="POSITION_CODE" Type="varchar" MaxLength="10" />
+          <Property Name="IESECTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="PHONE_OFFICE" Type="nvarchar" MaxLength="255" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="USER_DATA">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="EMP_ID_DISPLAY" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="EMP_TITLE" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="EMP_NAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EMP_SURNAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EMP_TITLE_E" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMP_NAME_E" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMP_SURNAME_E" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWD" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="PHONE_OFFICE" Type="nvarchar" MaxLength="50" />
+          <Property Name="PHONE_HOME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PHONE_MOBILE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="EXPIRE_DATE" Type="datetime" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
+          <Property Name="LAST_SIGN_ON_DATE" Type="datetime" />
+          <Property Name="LAST_CHANGE_PASS_DATE" Type="datetime" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="APPLICATION">
+          <Key>
+            <PropertyRef Name="APP_KEY" />
+          </Key>
+          <Property Name="APP_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="APP_DESC" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="MENU_MASTER">
+          <Key>
+            <PropertyRef Name="MENU_KEY" />
+          </Key>
+          <Property Name="MENU_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MENU_TITLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_URL" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_POPUP_OPT" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_REL" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_TOOLTIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_PRIORITY" Type="int" />
+          <Property Name="MENU_DEL_FLAG" Type="bit" />
+          <Property Name="MENU_PARENT_KEY" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'RISK.CLASSIFY.V_001_EXPANDED_CATEGORY_TYPE_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_001_EXPANDED_CATEGORY_TYPE_1">
+          <Key>
+            <PropertyRef Name="SEARCH_CATEGORY_KEY" />
+            <PropertyRef Name="EXPANDED_CATEGORY_KEY" />
+          </Key>
+          <Property Name="SEARCH_CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="EXPANDED_CATEGORY_KEY" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'RISK.CLASSIFY.V_002_CATEGORY_MAP_TYPE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_002_CATEGORY_MAP_TYPE">
+          <Key>
+            <PropertyRef Name="CATEGORY_KEY" />
+            <PropertyRef Name="CATEGORY_TYPE_KEY" />
+          </Key>
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="CATEGORY_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="CATEGORY_DESC_TH" Type="nvarchar" MaxLength="100" />
+          <Property Name="CATEGORY_VALUE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CATEGORY_PRIORITY" Type="int" />
+          <Property Name="CATEGORY_DEL_FLAG" Type="bit" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="CATEGORY_TYPE_DESC" Type="varchar" MaxLength="50" />
+          <Property Name="CATEGORY_TYPE_DESC_TH" Type="nvarchar" MaxLength="50" />
+          <Property Name="CATEGORY_TYPE_VALUE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CATEGORY_TYPE_PRIORITY" Type="int" />
+          <Property Name="CATEGORY_TYPE_DEL_FLAG" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'RISK.CLASSIFY.V_003_LINKED_CATEGORY_TYPE_1_INFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_003_LINKED_CATEGORY_TYPE_1_INFO">
+          <Key>
+            <PropertyRef Name="LINKED_CATEGORY_ID" />
+            <PropertyRef Name="CATEGORY_KEY" />
+            <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            <PropertyRef Name="PARENT_CATEGORY_KEY" />
+          </Key>
+          <Property Name="LINKED_CATEGORY_ID" Type="int" Nullable="false" />
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="CATEGORY_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="CATEGORY_DESC_TH" Type="nvarchar" MaxLength="100" />
+          <Property Name="CATEGORY_VALUE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CATEGORY_PRIORITY" Type="int" />
+          <Property Name="CATEGORY_DEL_FLAG" Type="bit" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="CATEGORY_TYPE_DESC" Type="varchar" MaxLength="50" />
+          <Property Name="CATEGORY_TYPE_DESC_TH" Type="nvarchar" MaxLength="50" />
+          <Property Name="CATEGORY_TYPE_VALUE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CATEGORY_TYPE_PRIORITY" Type="int" />
+          <Property Name="CATEGORY_TYPE_DEL_FLAG" Type="bit" />
+          <Property Name="PARENT_CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="RECURSIVE_DEL_FLAG" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'RISK.CLASSIFY.V_004_LINKED_CATEGORY_TYPE_2_INFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_004_LINKED_CATEGORY_TYPE_2_INFO">
+          <Key>
+            <PropertyRef Name="CATEGORY_KEY" />
+            <PropertyRef Name="LINKED_TYPE_KEY" />
+            <PropertyRef Name="CATEGORY_KEY_LINK" />
+          </Key>
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="CATEGORY_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="CATEGORY_DESC_TH" Type="nvarchar" MaxLength="100" />
+          <Property Name="CATEGORY_VALUE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="int" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+          <Property Name="LINKED_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="CATEGORY_RECURSIVE_DEL_FLAG" Type="bit" />
+          <Property Name="CATEGORY_KEY_LINK" Type="int" Nullable="false" />
+          <Property Name="CATEGORY_DESC_LINK" Type="varchar" MaxLength="100" />
+          <Property Name="CATEGORY_DESC_TH_LINK" Type="nvarchar" MaxLength="100" />
+          <Property Name="CATEGORY_VALUE_LINK" Type="nvarchar" MaxLength="20" />
+          <Property Name="CATEGORY_TYPE_KEY_LINK" Type="int" />
+          <Property Name="PRIORITY_LINK" Type="int" />
+          <Property Name="DEL_FLAG_LINK" Type="bit" />
+        </EntityType>
+        <Association Name="FK_CATE_AND_APP_APPLICATION">
+          <End Role="APPLICATION" Type="RISKModel.Store.APPLICATION" Multiplicity="0..1" />
+          <End Role="CATE_AND_APP" Type="RISKModel.Store.CATE_AND_APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APP_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_APP">
+              <PropertyRef Name="APP_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_APP_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.Store.CATEGORY" Multiplicity="0..1" />
+          <End Role="CATE_AND_APP" Type="RISKModel.Store.CATE_AND_APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_APP">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_CUS_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.Store.CATEGORY" Multiplicity="1" />
+          <End Role="CATE_AND_CUS" Type="RISKModel.Store.CATE_AND_CUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_CUS">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_EMP_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.Store.CATEGORY" Multiplicity="1" />
+          <End Role="CATE_AND_EMP" Type="RISKModel.Store.CATE_AND_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_EMP">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_EMP_USER_DATA">
+          <End Role="USER_DATA" Type="RISKModel.Store.USER_DATA" Multiplicity="1" />
+          <End Role="CATE_AND_EMP" Type="RISKModel.Store.CATE_AND_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_DATA">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="CATE_AND_EMP">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_MENU_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.Store.CATEGORY" Multiplicity="0..1" />
+          <End Role="CATE_AND_MENU" Type="RISKModel.Store.CATE_AND_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_MENU">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_MENU_MENU_MASTER">
+          <End Role="MENU_MASTER" Type="RISKModel.Store.MENU_MASTER" Multiplicity="0..1" />
+          <End Role="CATE_AND_MENU" Type="RISKModel.Store.CATE_AND_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU_MASTER">
+              <PropertyRef Name="MENU_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_MENU">
+              <PropertyRef Name="MENU_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_CATEGORY_TYPE">
+          <End Role="CATEGORY_TYPE" Type="RISKModel.Store.CATEGORY_TYPE" Multiplicity="0..1" />
+          <End Role="CATEGORY" Type="RISKModel.Store.CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_RECURSIVE_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.Store.CATEGORY" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY" Type="RISKModel.Store.LINKED_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+          <End Role="LINKED_TYPE" Type="RISKModel.Store.LINKED_TYPE" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY" Type="RISKModel.Store.LINKED_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINKED_TYPE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_RECURSIVE_CATEGORY1">
+          <End Role="CATEGORY" Type="RISKModel.Store.CATEGORY" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY" Type="RISKModel.Store.LINKED_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY">
+              <PropertyRef Name="LINK_TO_CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+          <End Role="LINKED_TYPE" Type="RISKModel.Store.LINKED_TYPE" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY_TYPE" Type="RISKModel.Store.LINKED_CATEGORY_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINKED_TYPE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY_TYPE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE">
+          <End Role="CATEGORY_TYPE" Type="RISKModel.Store.CATEGORY_TYPE" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY_TYPE" Type="RISKModel.Store.LINKED_CATEGORY_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1">
+          <End Role="CATEGORY_TYPE" Type="RISKModel.Store.CATEGORY_TYPE" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY_TYPE" Type="RISKModel.Store.LINKED_CATEGORY_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY_TYPE">
+              <PropertyRef Name="LINK_TO_CATEGORY_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENU_MASTER_MENU_MASTER">
+          <End Role="MENU_MASTER" Type="RISKModel.Store.MENU_MASTER" Multiplicity="0..1" />
+          <End Role="MENU_MASTER1" Type="RISKModel.Store.MENU_MASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU_MASTER">
+              <PropertyRef Name="MENU_KEY" />
+            </Principal>
+            <Dependent Role="MENU_MASTER1">
+              <PropertyRef Name="MENU_PARENT_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RISKModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="RISKEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATE_AND_APP" EntityType="RISKModel.CATE_AND_APP" />
+          <EntitySet Name="CATE_AND_CUS" EntityType="RISKModel.CATE_AND_CUS" />
+          <EntitySet Name="CATE_AND_EMP" EntityType="RISKModel.CATE_AND_EMP" />
+          <EntitySet Name="CATE_AND_MENU" EntityType="RISKModel.CATE_AND_MENU" />
+          <EntitySet Name="CATEGORY" EntityType="RISKModel.CATEGORY" />
+          <EntitySet Name="CATEGORY_TYPE" EntityType="RISKModel.CATEGORY_TYPE" />
+          <EntitySet Name="LINKED_CATEGORY" EntityType="RISKModel.LINKED_CATEGORY" />
+          <EntitySet Name="LINKED_CATEGORY_TYPE" EntityType="RISKModel.LINKED_CATEGORY_TYPE" />
+          <EntitySet Name="LINKED_TYPE" EntityType="RISKModel.LINKED_TYPE" />
+          <EntitySet Name="APPLICATION" EntityType="RISKModel.APPLICATION" />
+          <EntitySet Name="MENU_MASTER" EntityType="RISKModel.MENU_MASTER" />
+          <EntitySet Name="V_001_EXPANDED_CATEGORY_TYPE_1" EntityType="RISKModel.V_001_EXPANDED_CATEGORY_TYPE_1" />
+          <EntitySet Name="V_002_CATEGORY_MAP_TYPE" EntityType="RISKModel.V_002_CATEGORY_MAP_TYPE" />
+          <EntitySet Name="V_003_LINKED_CATEGORY_TYPE_1_INFO" EntityType="RISKModel.V_003_LINKED_CATEGORY_TYPE_1_INFO" />
+          <EntitySet Name="V_004_LINKED_CATEGORY_TYPE_2_INFO" EntityType="RISKModel.V_004_LINKED_CATEGORY_TYPE_2_INFO" />
+          <AssociationSet Name="FK_CATE_AND_APP_APPLICATION" Association="RISKModel.FK_CATE_AND_APP_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATION" />
+            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_APP_CATEGORY" Association="RISKModel.FK_CATE_AND_APP_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_CUS_CATEGORY" Association="RISKModel.FK_CATE_AND_CUS_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_CUS" EntitySet="CATE_AND_CUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_EMP_CATEGORY" Association="RISKModel.FK_CATE_AND_EMP_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_MENU_CATEGORY" Association="RISKModel.FK_CATE_AND_MENU_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_MENU_MENU_MASTER" Association="RISKModel.FK_CATE_AND_MENU_MENU_MASTER">
+            <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+            <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_CATEGORY_TYPE" Association="RISKModel.FK_CATEGORY_CATEGORY_TYPE">
+            <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_RECURSIVE_CATEGORY" Association="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="LINKED_CATEGORY" EntitySet="LINKED_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_RECURSIVE_CATEGORY1" Association="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY1">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="LINKED_CATEGORY" EntitySet="LINKED_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE" Association="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE">
+            <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+            <End Role="LINKED_CATEGORY_TYPE" EntitySet="LINKED_CATEGORY_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1" Association="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1">
+            <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+            <End Role="LINKED_CATEGORY_TYPE" EntitySet="LINKED_CATEGORY_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE" Association="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+            <End Role="LINKED_TYPE" EntitySet="LINKED_TYPE" />
+            <End Role="LINKED_CATEGORY" EntitySet="LINKED_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE" Association="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+            <End Role="LINKED_TYPE" EntitySet="LINKED_TYPE" />
+            <End Role="LINKED_CATEGORY_TYPE" EntitySet="LINKED_CATEGORY_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENU_MASTER_MENU_MASTER" Association="RISKModel.FK_MENU_MASTER_MENU_MASTER">
+            <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+            <End Role="MENU_MASTER1" EntitySet="MENU_MASTER" />
+          </AssociationSet>
+          <EntitySet Name="MASTER_EMPLOYEE" EntityType="RISKModel.MASTER_EMPLOYEE" />
+          <EntitySet Name="USER_DATA" EntityType="RISKModel.USER_DATA" />
+          <AssociationSet Name="FK_CATE_AND_EMP_USER_DATA" Association="RISKModel.FK_CATE_AND_EMP_USER_DATA">
+            <End Role="USER_DATA" EntitySet="USER_DATA" />
+            <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CATE_AND_APP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" />
+          <Property Name="APP_KEY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="APPLICATION" Relationship="RISKModel.FK_CATE_AND_APP_APPLICATION" FromRole="CATE_AND_APP" ToRole="APPLICATION" />
+          <NavigationProperty Name="CATEGORY" Relationship="RISKModel.FK_CATE_AND_APP_CATEGORY" FromRole="CATE_AND_APP" ToRole="CATEGORY" />
+        </EntityType>
+        <EntityType Name="CATE_AND_CUS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="CIF" Type="Int32" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="RISKModel.FK_CATE_AND_CUS_CATEGORY" FromRole="CATE_AND_CUS" ToRole="CATEGORY" />
+        </EntityType>
+        <EntityType Name="CATE_AND_EMP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="EMP_ID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="HEAD_PRIORITY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="RISKModel.FK_CATE_AND_EMP_CATEGORY" FromRole="CATE_AND_EMP" ToRole="CATEGORY" />
+          <NavigationProperty Name="USER_DATA" Relationship="RISKModel.FK_CATE_AND_EMP_USER_DATA" FromRole="CATE_AND_EMP" ToRole="USER_DATA" />
+        </EntityType>
+        <EntityType Name="CATE_AND_MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" />
+          <Property Name="MENU_KEY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="RISKModel.FK_CATE_AND_MENU_CATEGORY" FromRole="CATE_AND_MENU" ToRole="CATEGORY" />
+          <NavigationProperty Name="MENU_MASTER" Relationship="RISKModel.FK_CATE_AND_MENU_MENU_MASTER" FromRole="CATE_AND_MENU" ToRole="MENU_MASTER" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_KEY" />
+          </Key>
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_DESC_TH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATE_AND_APP" Relationship="RISKModel.FK_CATE_AND_APP_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_APP" />
+          <NavigationProperty Name="CATE_AND_CUS" Relationship="RISKModel.FK_CATE_AND_CUS_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_CUS" />
+          <NavigationProperty Name="CATE_AND_EMP" Relationship="RISKModel.FK_CATE_AND_EMP_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_EMP" />
+          <NavigationProperty Name="CATE_AND_MENU" Relationship="RISKModel.FK_CATE_AND_MENU_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_MENU" />
+          <NavigationProperty Name="CATEGORY_TYPE" Relationship="RISKModel.FK_CATEGORY_CATEGORY_TYPE" FromRole="CATEGORY" ToRole="CATEGORY_TYPE" />
+          <NavigationProperty Name="LINKED_CATEGORY" Relationship="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY" FromRole="CATEGORY" ToRole="LINKED_CATEGORY" />
+          <NavigationProperty Name="LINKED_CATEGORY1" Relationship="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY1" FromRole="CATEGORY" ToRole="LINKED_CATEGORY" />
+        </EntityType>
+        <EntityType Name="CATEGORY_TYPE">
+          <Key>
+            <PropertyRef Name="CATEGORY_TYPE_KEY" />
+          </Key>
+          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_TYPE_DESC" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_DESC_TH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="RISKModel.FK_CATEGORY_CATEGORY_TYPE" FromRole="CATEGORY_TYPE" ToRole="CATEGORY" />
+          <NavigationProperty Name="LINKED_CATEGORY_TYPE" Relationship="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE" FromRole="CATEGORY_TYPE" ToRole="LINKED_CATEGORY_TYPE" />
+          <NavigationProperty Name="LINKED_CATEGORY_TYPE1" Relationship="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1" FromRole="CATEGORY_TYPE" ToRole="LINKED_CATEGORY_TYPE" />
+        </EntityType>
+        <EntityType Name="LINKED_CATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="LINK_TO_CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY" FromRole="LINKED_CATEGORY" ToRole="CATEGORY" />
+          <NavigationProperty Name="CATEGORY1" Relationship="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY1" FromRole="LINKED_CATEGORY" ToRole="CATEGORY" />
+          <NavigationProperty Name="LINKED_TYPE" Relationship="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE" FromRole="LINKED_CATEGORY" ToRole="LINKED_TYPE" />
+        </EntityType>
+        <EntityType Name="LINKED_CATEGORY_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="LINK_TO_CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY_TYPE" Relationship="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE" FromRole="LINKED_CATEGORY_TYPE" ToRole="CATEGORY_TYPE" />
+          <NavigationProperty Name="CATEGORY_TYPE1" Relationship="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1" FromRole="LINKED_CATEGORY_TYPE" ToRole="CATEGORY_TYPE" />
+          <NavigationProperty Name="LINKED_TYPE" Relationship="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE" FromRole="LINKED_CATEGORY_TYPE" ToRole="LINKED_TYPE" />
+        </EntityType>
+        <EntityType Name="LINKED_TYPE">
+          <Key>
+            <PropertyRef Name="LINKED_TYPE_KEY" />
+          </Key>
+          <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="LINKED_CATEGORY" Relationship="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE" FromRole="LINKED_TYPE" ToRole="LINKED_CATEGORY" />
+          <NavigationProperty Name="LINKED_CATEGORY_TYPE" Relationship="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE" FromRole="LINKED_TYPE" ToRole="LINKED_CATEGORY_TYPE" />
+        </EntityType>
+        <EntityType Name="APPLICATION">
+          <Key>
+            <PropertyRef Name="APP_KEY" />
+          </Key>
+          <Property Name="APP_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APP_DESC" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATE_AND_APP" Relationship="RISKModel.FK_CATE_AND_APP_APPLICATION" FromRole="APPLICATION" ToRole="CATE_AND_APP" />
+        </EntityType>
+        <EntityType Name="MENU_MASTER">
+          <Key>
+            <PropertyRef Name="MENU_KEY" />
+          </Key>
+          <Property Name="MENU_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MENU_TITLE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_URL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_POPUP_OPT" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_REL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_TOOLTIP" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_PRIORITY" Type="Int32" />
+          <Property Name="MENU_DEL_FLAG" Type="Boolean" />
+          <Property Name="MENU_PARENT_KEY" Type="Int32" />
+          <NavigationProperty Name="CATE_AND_MENU" Relationship="RISKModel.FK_CATE_AND_MENU_MENU_MASTER" FromRole="MENU_MASTER" ToRole="CATE_AND_MENU" />
+          <NavigationProperty Name="MENU_MASTER1" Relationship="RISKModel.FK_MENU_MASTER_MENU_MASTER" FromRole="MENU_MASTER" ToRole="MENU_MASTER1" />
+          <NavigationProperty Name="MENU_MASTER2" Relationship="RISKModel.FK_MENU_MASTER_MENU_MASTER" FromRole="MENU_MASTER1" ToRole="MENU_MASTER" />
+        </EntityType>
+        <EntityType Name="V_001_EXPANDED_CATEGORY_TYPE_1">
+          <Key>
+            <PropertyRef Name="SEARCH_CATEGORY_KEY" />
+            <PropertyRef Name="EXPANDED_CATEGORY_KEY" />
+          </Key>
+          <Property Name="SEARCH_CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="EXPANDED_CATEGORY_KEY" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="V_002_CATEGORY_MAP_TYPE">
+          <Key>
+            <PropertyRef Name="CATEGORY_KEY" />
+            <PropertyRef Name="CATEGORY_TYPE_KEY" />
+          </Key>
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORY_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_DESC_TH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_PRIORITY" Type="Int32" />
+          <Property Name="CATEGORY_DEL_FLAG" Type="Boolean" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORY_TYPE_DESC" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_DESC_TH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_PRIORITY" Type="Int32" />
+          <Property Name="CATEGORY_TYPE_DEL_FLAG" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="V_003_LINKED_CATEGORY_TYPE_1_INFO">
+          <Key>
+            <PropertyRef Name="LINKED_CATEGORY_ID" />
+            <PropertyRef Name="CATEGORY_KEY" />
+            <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            <PropertyRef Name="PARENT_CATEGORY_KEY" />
+          </Key>
+          <Property Name="LINKED_CATEGORY_ID" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORY_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_DESC_TH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_PRIORITY" Type="Int32" />
+          <Property Name="CATEGORY_DEL_FLAG" Type="Boolean" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORY_TYPE_DESC" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_DESC_TH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_PRIORITY" Type="Int32" />
+          <Property Name="CATEGORY_TYPE_DEL_FLAG" Type="Boolean" />
+          <Property Name="PARENT_CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="RECURSIVE_DEL_FLAG" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="V_004_LINKED_CATEGORY_TYPE_2_INFO">
+          <Key>
+            <PropertyRef Name="CATEGORY_KEY" />
+            <PropertyRef Name="LINKED_TYPE_KEY" />
+            <PropertyRef Name="CATEGORY_KEY_LINK" />
+          </Key>
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORY_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_DESC_TH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORY_RECURSIVE_DEL_FLAG" Type="Boolean" />
+          <Property Name="CATEGORY_KEY_LINK" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORY_DESC_LINK" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_DESC_TH_LINK" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_VALUE_LINK" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_KEY_LINK" Type="Int32" />
+          <Property Name="PRIORITY_LINK" Type="Int32" />
+          <Property Name="DEL_FLAG_LINK" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_CATE_AND_APP_APPLICATION">
+          <End Role="APPLICATION" Type="RISKModel.APPLICATION" Multiplicity="0..1" />
+          <End Role="CATE_AND_APP" Type="RISKModel.CATE_AND_APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APP_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_APP">
+              <PropertyRef Name="APP_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_APP_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.CATEGORY" Multiplicity="0..1" />
+          <End Role="CATE_AND_APP" Type="RISKModel.CATE_AND_APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_APP">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_CUS_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.CATEGORY" Multiplicity="1" />
+          <End Role="CATE_AND_CUS" Type="RISKModel.CATE_AND_CUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_CUS">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_EMP_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.CATEGORY" Multiplicity="1" />
+          <End Role="CATE_AND_EMP" Type="RISKModel.CATE_AND_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_EMP">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_MENU_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.CATEGORY" Multiplicity="0..1" />
+          <End Role="CATE_AND_MENU" Type="RISKModel.CATE_AND_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_MENU">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_MENU_MENU_MASTER">
+          <End Role="MENU_MASTER" Type="RISKModel.MENU_MASTER" Multiplicity="0..1" />
+          <End Role="CATE_AND_MENU" Type="RISKModel.CATE_AND_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU_MASTER">
+              <PropertyRef Name="MENU_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_MENU">
+              <PropertyRef Name="MENU_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_CATEGORY_TYPE">
+          <End Role="CATEGORY_TYPE" Type="RISKModel.CATEGORY_TYPE" Multiplicity="0..1" />
+          <End Role="CATEGORY" Type="RISKModel.CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_RECURSIVE_CATEGORY">
+          <End Role="CATEGORY" Type="RISKModel.CATEGORY" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY" Type="RISKModel.LINKED_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_RECURSIVE_CATEGORY1">
+          <End Role="CATEGORY" Type="RISKModel.CATEGORY" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY" Type="RISKModel.LINKED_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY">
+              <PropertyRef Name="LINK_TO_CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE">
+          <End Role="CATEGORY_TYPE" Type="RISKModel.CATEGORY_TYPE" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY_TYPE" Type="RISKModel.LINKED_CATEGORY_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1">
+          <End Role="CATEGORY_TYPE" Type="RISKModel.CATEGORY_TYPE" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY_TYPE" Type="RISKModel.LINKED_CATEGORY_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY_TYPE">
+              <PropertyRef Name="LINK_TO_CATEGORY_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+          <End Role="LINKED_TYPE" Type="RISKModel.LINKED_TYPE" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY" Type="RISKModel.LINKED_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINKED_TYPE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE">
+          <End Role="LINKED_TYPE" Type="RISKModel.LINKED_TYPE" Multiplicity="1" />
+          <End Role="LINKED_CATEGORY_TYPE" Type="RISKModel.LINKED_CATEGORY_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINKED_TYPE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="LINKED_CATEGORY_TYPE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENU_MASTER_MENU_MASTER">
+          <End Role="MENU_MASTER" Type="RISKModel.MENU_MASTER" Multiplicity="0..1" />
+          <End Role="MENU_MASTER1" Type="RISKModel.MENU_MASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU_MASTER">
+              <PropertyRef Name="MENU_KEY" />
+            </Principal>
+            <Dependent Role="MENU_MASTER1">
+              <PropertyRef Name="MENU_PARENT_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MASTER_EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMP_ID_DISPLAY" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IEMPID" />
+          <Property Type="String" Name="NTTITLE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NTNAME" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NTSURN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EEPOSIT" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EESECTION" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EEDEPT" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NETITLE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NENAME" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NESURN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EEPOSITE" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EESECTIONE" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EEDEPE" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="POSITION" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="POSITION_CODE" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IESECTION" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PHONE_OFFICE" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMAIL" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="USER_DATA">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMP_ID_DISPLAY" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMP_TITLE" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMP_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMP_SURNAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMP_TITLE_E" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMP_NAME_E" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMP_SURNAME_E" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PASSWD" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMAIL" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PHONE_OFFICE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PHONE_HOME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PHONE_MOBILE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CREATE_DATE" />
+          <Property Type="DateTime" Name="EXPIRE_DATE" />
+          <Property Type="DateTime" Name="UPDATE_DATE" />
+          <Property Type="DateTime" Name="LAST_SIGN_ON_DATE" />
+          <Property Type="DateTime" Name="LAST_CHANGE_PASS_DATE" />
+          <Property Type="Boolean" Name="DEL_FLAG" />
+          <NavigationProperty Name="CATE_AND_EMP" Relationship="RISKModel.FK_CATE_AND_EMP_USER_DATA" FromRole="USER_DATA" ToRole="CATE_AND_EMP" />
+        </EntityType>
+        <Association Name="FK_CATE_AND_EMP_USER_DATA">
+          <End Type="RISKModel.USER_DATA" Role="USER_DATA" Multiplicity="1" />
+          <End Type="RISKModel.CATE_AND_EMP" Role="CATE_AND_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_DATA">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="CATE_AND_EMP">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RISKModelStoreContainer" CdmEntityContainer="RISKEntities">
+          <EntitySetMapping Name="CATE_AND_APP"><EntityTypeMapping TypeName="RISKModel.CATE_AND_APP"><MappingFragment StoreEntitySet="CATE_AND_APP">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="APP_KEY" ColumnName="APP_KEY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATE_AND_CUS"><EntityTypeMapping TypeName="RISKModel.CATE_AND_CUS"><MappingFragment StoreEntitySet="CATE_AND_CUS">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATE_AND_EMP"><EntityTypeMapping TypeName="RISKModel.CATE_AND_EMP"><MappingFragment StoreEntitySet="CATE_AND_EMP">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            <ScalarProperty Name="HEAD_PRIORITY" ColumnName="HEAD_PRIORITY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATE_AND_MENU"><EntityTypeMapping TypeName="RISKModel.CATE_AND_MENU"><MappingFragment StoreEntitySet="CATE_AND_MENU">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="MENU_KEY" ColumnName="MENU_KEY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATEGORY"><EntityTypeMapping TypeName="RISKModel.CATEGORY"><MappingFragment StoreEntitySet="CATEGORY">
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+            <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+            <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+            <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATEGORY_TYPE"><EntityTypeMapping TypeName="RISKModel.CATEGORY_TYPE"><MappingFragment StoreEntitySet="CATEGORY_TYPE">
+            <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+            <ScalarProperty Name="CATEGORY_TYPE_DESC" ColumnName="CATEGORY_TYPE_DESC" />
+            <ScalarProperty Name="CATEGORY_TYPE_DESC_TH" ColumnName="CATEGORY_TYPE_DESC_TH" />
+            <ScalarProperty Name="CATEGORY_TYPE_VALUE" ColumnName="CATEGORY_TYPE_VALUE" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LINKED_CATEGORY"><EntityTypeMapping TypeName="RISKModel.LINKED_CATEGORY"><MappingFragment StoreEntitySet="LINKED_CATEGORY">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="LINK_TO_CATEGORY_KEY" ColumnName="LINK_TO_CATEGORY_KEY" />
+            <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LINKED_CATEGORY_TYPE"><EntityTypeMapping TypeName="RISKModel.LINKED_CATEGORY_TYPE"><MappingFragment StoreEntitySet="LINKED_CATEGORY_TYPE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+            <ScalarProperty Name="LINK_TO_CATEGORY_TYPE_KEY" ColumnName="LINK_TO_CATEGORY_TYPE_KEY" />
+            <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LINKED_TYPE"><EntityTypeMapping TypeName="RISKModel.LINKED_TYPE"><MappingFragment StoreEntitySet="LINKED_TYPE">
+            <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+            <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="APPLICATION"><EntityTypeMapping TypeName="RISKModel.APPLICATION"><MappingFragment StoreEntitySet="APPLICATION">
+            <ScalarProperty Name="APP_KEY" ColumnName="APP_KEY" />
+            <ScalarProperty Name="APP_DESC" ColumnName="APP_DESC" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MENU_MASTER"><EntityTypeMapping TypeName="RISKModel.MENU_MASTER"><MappingFragment StoreEntitySet="MENU_MASTER">
+            <ScalarProperty Name="MENU_KEY" ColumnName="MENU_KEY" />
+            <ScalarProperty Name="MENU_TITLE" ColumnName="MENU_TITLE" />
+            <ScalarProperty Name="MENU_URL" ColumnName="MENU_URL" />
+            <ScalarProperty Name="MENU_POPUP_OPT" ColumnName="MENU_POPUP_OPT" />
+            <ScalarProperty Name="MENU_REL" ColumnName="MENU_REL" />
+            <ScalarProperty Name="MENU_TOOLTIP" ColumnName="MENU_TOOLTIP" />
+            <ScalarProperty Name="MENU_PRIORITY" ColumnName="MENU_PRIORITY" />
+            <ScalarProperty Name="MENU_DEL_FLAG" ColumnName="MENU_DEL_FLAG" />
+            <ScalarProperty Name="MENU_PARENT_KEY" ColumnName="MENU_PARENT_KEY" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="V_001_EXPANDED_CATEGORY_TYPE_1"><EntityTypeMapping TypeName="RISKModel.V_001_EXPANDED_CATEGORY_TYPE_1"><MappingFragment StoreEntitySet="V_001_EXPANDED_CATEGORY_TYPE_1">
+            <ScalarProperty Name="SEARCH_CATEGORY_KEY" ColumnName="SEARCH_CATEGORY_KEY" />
+            <ScalarProperty Name="EXPANDED_CATEGORY_KEY" ColumnName="EXPANDED_CATEGORY_KEY" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="V_002_CATEGORY_MAP_TYPE"><EntityTypeMapping TypeName="RISKModel.V_002_CATEGORY_MAP_TYPE"><MappingFragment StoreEntitySet="V_002_CATEGORY_MAP_TYPE">
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+            <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+            <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+            <ScalarProperty Name="CATEGORY_PRIORITY" ColumnName="CATEGORY_PRIORITY" />
+            <ScalarProperty Name="CATEGORY_DEL_FLAG" ColumnName="CATEGORY_DEL_FLAG" />
+            <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+            <ScalarProperty Name="CATEGORY_TYPE_DESC" ColumnName="CATEGORY_TYPE_DESC" />
+            <ScalarProperty Name="CATEGORY_TYPE_DESC_TH" ColumnName="CATEGORY_TYPE_DESC_TH" />
+            <ScalarProperty Name="CATEGORY_TYPE_VALUE" ColumnName="CATEGORY_TYPE_VALUE" />
+            <ScalarProperty Name="CATEGORY_TYPE_PRIORITY" ColumnName="CATEGORY_TYPE_PRIORITY" />
+            <ScalarProperty Name="CATEGORY_TYPE_DEL_FLAG" ColumnName="CATEGORY_TYPE_DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="V_003_LINKED_CATEGORY_TYPE_1_INFO"><EntityTypeMapping TypeName="RISKModel.V_003_LINKED_CATEGORY_TYPE_1_INFO"><MappingFragment StoreEntitySet="V_003_LINKED_CATEGORY_TYPE_1_INFO">
+            <ScalarProperty Name="LINKED_CATEGORY_ID" ColumnName="LINKED_CATEGORY_ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+            <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+            <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+            <ScalarProperty Name="CATEGORY_PRIORITY" ColumnName="CATEGORY_PRIORITY" />
+            <ScalarProperty Name="CATEGORY_DEL_FLAG" ColumnName="CATEGORY_DEL_FLAG" />
+            <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+            <ScalarProperty Name="CATEGORY_TYPE_DESC" ColumnName="CATEGORY_TYPE_DESC" />
+            <ScalarProperty Name="CATEGORY_TYPE_DESC_TH" ColumnName="CATEGORY_TYPE_DESC_TH" />
+            <ScalarProperty Name="CATEGORY_TYPE_VALUE" ColumnName="CATEGORY_TYPE_VALUE" />
+            <ScalarProperty Name="CATEGORY_TYPE_PRIORITY" ColumnName="CATEGORY_TYPE_PRIORITY" />
+            <ScalarProperty Name="CATEGORY_TYPE_DEL_FLAG" ColumnName="CATEGORY_TYPE_DEL_FLAG" />
+            <ScalarProperty Name="PARENT_CATEGORY_KEY" ColumnName="PARENT_CATEGORY_KEY" />
+            <ScalarProperty Name="RECURSIVE_DEL_FLAG" ColumnName="RECURSIVE_DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="V_004_LINKED_CATEGORY_TYPE_2_INFO"><EntityTypeMapping TypeName="RISKModel.V_004_LINKED_CATEGORY_TYPE_2_INFO"><MappingFragment StoreEntitySet="V_004_LINKED_CATEGORY_TYPE_2_INFO">
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+            <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+            <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+            <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+            <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+            <ScalarProperty Name="CATEGORY_RECURSIVE_DEL_FLAG" ColumnName="CATEGORY_RECURSIVE_DEL_FLAG" />
+            <ScalarProperty Name="CATEGORY_KEY_LINK" ColumnName="CATEGORY_KEY_LINK" />
+            <ScalarProperty Name="CATEGORY_DESC_LINK" ColumnName="CATEGORY_DESC_LINK" />
+            <ScalarProperty Name="CATEGORY_DESC_TH_LINK" ColumnName="CATEGORY_DESC_TH_LINK" />
+            <ScalarProperty Name="CATEGORY_VALUE_LINK" ColumnName="CATEGORY_VALUE_LINK" />
+            <ScalarProperty Name="CATEGORY_TYPE_KEY_LINK" ColumnName="CATEGORY_TYPE_KEY_LINK" />
+            <ScalarProperty Name="PRIORITY_LINK" ColumnName="PRIORITY_LINK" />
+            <ScalarProperty Name="DEL_FLAG_LINK" ColumnName="DEL_FLAG_LINK" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MASTER_EMPLOYEE">
+            <EntityTypeMapping TypeName="RISKModel.MASTER_EMPLOYEE">
+              <MappingFragment StoreEntitySet="MASTER_EMPLOYEE">
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE_OFFICE" ColumnName="PHONE_OFFICE" />
+                <ScalarProperty Name="IESECTION" ColumnName="IESECTION" />
+                <ScalarProperty Name="POSITION_CODE" ColumnName="POSITION_CODE" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="EEDEPE" ColumnName="EEDEPE" />
+                <ScalarProperty Name="EESECTIONE" ColumnName="EESECTIONE" />
+                <ScalarProperty Name="EEPOSITE" ColumnName="EEPOSITE" />
+                <ScalarProperty Name="NESURN" ColumnName="NESURN" />
+                <ScalarProperty Name="NENAME" ColumnName="NENAME" />
+                <ScalarProperty Name="NETITLE" ColumnName="NETITLE" />
+                <ScalarProperty Name="EEDEPT" ColumnName="EEDEPT" />
+                <ScalarProperty Name="EESECTION" ColumnName="EESECTION" />
+                <ScalarProperty Name="EEPOSIT" ColumnName="EEPOSIT" />
+                <ScalarProperty Name="NTSURN" ColumnName="NTSURN" />
+                <ScalarProperty Name="NTNAME" ColumnName="NTNAME" />
+                <ScalarProperty Name="NTTITLE" ColumnName="NTTITLE" />
+                <ScalarProperty Name="IEMPID" ColumnName="IEMPID" />
+                <ScalarProperty Name="EMP_ID_DISPLAY" ColumnName="EMP_ID_DISPLAY" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_DATA">
+            <EntityTypeMapping TypeName="RISKModel.USER_DATA">
+              <MappingFragment StoreEntitySet="USER_DATA">
+                <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+                <ScalarProperty Name="LAST_CHANGE_PASS_DATE" ColumnName="LAST_CHANGE_PASS_DATE" />
+                <ScalarProperty Name="LAST_SIGN_ON_DATE" ColumnName="LAST_SIGN_ON_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="EXPIRE_DATE" ColumnName="EXPIRE_DATE" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="PHONE_MOBILE" ColumnName="PHONE_MOBILE" />
+                <ScalarProperty Name="PHONE_HOME" ColumnName="PHONE_HOME" />
+                <ScalarProperty Name="PHONE_OFFICE" ColumnName="PHONE_OFFICE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWD" ColumnName="PASSWD" />
+                <ScalarProperty Name="EMP_SURNAME_E" ColumnName="EMP_SURNAME_E" />
+                <ScalarProperty Name="EMP_NAME_E" ColumnName="EMP_NAME_E" />
+                <ScalarProperty Name="EMP_TITLE_E" ColumnName="EMP_TITLE_E" />
+                <ScalarProperty Name="EMP_SURNAME" ColumnName="EMP_SURNAME" />
+                <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+                <ScalarProperty Name="EMP_TITLE" ColumnName="EMP_TITLE" />
+                <ScalarProperty Name="EMP_ID_DISPLAY" ColumnName="EMP_ID_DISPLAY" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="DefaultDatabaseSchema" Value="CLASSIFY" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="UserSystemModel" ZoomLevel="88">
+        <EntityTypeShape EntityType="RISKModel.CATE_AND_APP" Width="1.5" PointX="5.25" PointY="14.75" Height="1.9436327856779112" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.CATE_AND_CUS" Width="1.5" PointX="5.25" PointY="23.125" Height="1.7767708094914809" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.CATE_AND_EMP" Width="1.5" PointX="5.25" PointY="8.625" Height="2.110494761864345" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.CATE_AND_MENU" Width="1.5" PointX="8.25" PointY="11.75" Height="1.9436327856779094" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.CATEGORY" Width="1.5" PointX="3" PointY="11" Height="3.2785285951693837" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.CATEGORY_TYPE" Width="1.5" PointX="0.75" PointY="8.5" Height="2.4442187142372127" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.LINKED_CATEGORY" Width="1.5" PointX="5.25" PointY="11.5" Height="2.2773567380507771" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.LINKED_CATEGORY_TYPE" Width="1.5" PointX="3" PointY="7.5" Height="2.2773567380507771" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.LINKED_TYPE" Width="1.5" PointX="0.75" PointY="5.75" Height="1.7767708094914738" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.APPLICATION" Width="1.5" PointX="3" PointY="15.75" Height="1.7767708094914738" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.MENU_MASTER" Width="1.5" PointX="6" PointY="4.25" Height="2.9448046427965195" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.V_001_EXPANDED_CATEGORY_TYPE_1" Width="1.5" PointX="5.75" PointY="0.75" Height="1.2761848809321776" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.V_002_CATEGORY_MAP_TYPE" Width="1.5" PointX="8.75" PointY="0.75" Height="2.9448046427965195" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.V_003_LINKED_CATEGORY_TYPE_1_INFO" Width="1.5" PointX="8.75" PointY="4.75" Height="3.4453905713558228" IsExpanded="true" />
+        <EntityTypeShape EntityType="RISKModel.V_004_LINKED_CATEGORY_TYPE_2_INFO" Width="1.5" PointX="10.75" PointY="0.75" Height="3.6122525475422549" IsExpanded="true" />
+        <AssociationConnector Association="RISKModel.FK_CATE_AND_APP_APPLICATION" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="16.221816392838956" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="16.221816392838956" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="16.221816392838956" />
+          <ConnectorPoint PointX="5.25" PointY="16.221816392838956" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATE_AND_APP_CATEGORY" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="14.221989133630922" />
+          <ConnectorPoint PointX="5.03125" PointY="14.753239133630922" />
+          <ConnectorPoint PointX="5.03125" PointY="14.530097153846153" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="14.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATE_AND_CUS_CATEGORY" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.47576923076923" PointY="14.278528595169384" />
+          <ConnectorPoint PointX="4.875" PointY="14.677759364400153" />
+          <ConnectorPoint PointX="4.875" PointY="24.01338540474574" />
+          <ConnectorPoint PointX="5.25" PointY="24.01338540474574" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATE_AND_EMP_CATEGORY" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="11.001152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="10.626152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="11.111647608018192" />
+          <ConnectorPoint PointX="4.9410744349011209" PointY="11.045573173117068" />
+          <ConnectorPoint PointX="5.0589255650988791" PointY="10.927722042919312" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="10.735494761864345" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATE_AND_MENU_CATEGORY" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="13.999670435840848" />
+          <ConnectorPoint PointX="9" PointY="13.999670435840848" />
+          <ConnectorPoint PointX="9" PointY="13.693632785677909" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATE_AND_MENU_MENU_MASTER" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="4.46875" />
+          <ConnectorPoint PointX="8.46875" PointY="4.46875" />
+          <ConnectorPoint PointX="8.46875" PointY="11.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATEGORY_CATEGORY_TYPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="10.944218714237213" />
+          <ConnectorPoint PointX="1.5" PointY="12.639264297584692" />
+          <ConnectorPoint PointX="3" PointY="12.639264297584692" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.638678369025389" />
+          <ConnectorPoint PointX="5.25" PointY="12.638678369025389" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.006839184512694" />
+          <ConnectorPoint PointX="5.25" PointY="12.006839184512694" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.1386783690253885" />
+          <ConnectorPoint PointX="3" PointY="9.1386783690253885" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.7568391845126943" />
+          <ConnectorPoint PointX="3" PointY="8.7568391845126943" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.6398502261439987" />
+          <ConnectorPoint PointX="5" PointY="6.6398502261439987" />
+          <ConnectorPoint PointX="5" PointY="11.125" />
+          <ConnectorPoint PointX="6" PointY="11.125" />
+          <ConnectorPoint PointX="6" PointY="11.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.5267708094914738" />
+          <ConnectorPoint PointX="2.625" PointY="7.9017708094914738" />
+          <ConnectorPoint PointX="2.625" PointY="7.125" />
+          <ConnectorPoint PointX="3" PointY="7.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="RISKModel.FK_MENU_MASTER_MENU_MASTER" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.5319230769230767" PointY="7.1948046427965195" />
+          <ConnectorPoint PointX="6.5319230769230767" PointY="7.4448046427965195" />
+          <ConnectorPoint PointX="6.9784615384615378" PointY="7.4448046427965195" />
+          <ConnectorPoint PointX="6.9784615384615378" PointY="7.1948046427965195" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="RISKModel.MASTER_EMPLOYEE" Width="1.5" PointX="10.75" PointY="5.75" Height="4.2797004522879973" />
+        <EntityTypeShape EntityType="RISKModel.USER_DATA" Width="1.5" PointX="3" PointY="1.5" Height="4.2797004522879973" />
+        <AssociationConnector Association="RISKModel.FK_CATE_AND_EMP_USER_DATA" >
+          <ConnectorPoint PointX="4.5" PointY="3.1380924404660888" />
+          <ConnectorPoint PointX="5.46875" PointY="3.1380924404660888" />
+          <ConnectorPoint PointX="5.46875" PointY="8.625" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
