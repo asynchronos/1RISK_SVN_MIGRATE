@@ -80,6 +80,18 @@
     <Compile Include="Forms\Customer\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MergeCOS\MergeCOSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MergeCOS\MergeCOSForm.Designer.cs">
+      <DependentUpon>MergeCOSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RepCust\RepCustForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RepCust\RepCustForm.Designer.cs">
+      <DependentUpon>RepCustForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,9 @@
     <Compile Include="Util\Util.cs" />
     <EmbeddedResource Include="Forms\Customer\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RepCust\RepCustForm.resx">
+      <DependentUpon>RepCustForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
