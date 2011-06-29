@@ -355,6 +355,7 @@
                         <asp:ListItem>Adjusting entry</asp:ListItem>
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
+                        <asp:ListItem>selling out the collateral / assets of borrower or guarantor by publish auction with Third party or Debtor</asp:ListItem>
                     </asp:DropDownList>
                     <span style="color:Red">*</span>
                 </EditItemTemplate>
@@ -380,6 +381,7 @@
                         <asp:ListItem>Adjusting entry</asp:ListItem>
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
+                        <asp:ListItem>selling out the collateral / assets of borrower or guarantor by publish auction with Third party or Debtor</asp:ListItem>
                     </asp:DropDownList>
                     <span style="color:Red">*</span>
                 </EditItemTemplate>
@@ -405,6 +407,7 @@
                         <asp:ListItem>Adjusting entry</asp:ListItem>
                         <asp:ListItem>Written-off</asp:ListItem>
                         <asp:ListItem>Haircut</asp:ListItem>
+                        <asp:ListItem>selling out the collateral / assets of borrower or guarantor by publish auction with Third party or Debtor</asp:ListItem>
                     </asp:DropDownList>
                     <span style="color:Red">*</span>
                 </EditItemTemplate>
