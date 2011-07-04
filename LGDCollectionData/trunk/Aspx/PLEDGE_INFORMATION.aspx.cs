@@ -15,7 +15,7 @@ using System.Globalization;
 namespace LGDCollectionData.Aspx
 {
 
-    public partial class PLEDGE_INFORMATION : System.Web.UI.Page
+    public partial class PLEDGE_INFORMATION : MyAspxPage
     {
         private static readonly ILog log = LogManager.GetLogger(
     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -82,7 +82,7 @@ namespace LGDCollectionData.Aspx
                 {
                     dv.ChangeMode(DetailsViewMode.Insert);
                     ((System.Web.UI.WebControls.Label)dv.FindControl("LabelCif_Insert")).Text = Request.QueryString.Get("CIF");
-                    ((System.Web.UI.WebControls.Label)dv.FindControl("LabelUserId_Insert")).Text = User.Identity.Name.ToString();
+                    ((System.Web.UI.WebControls.Label)dv.FindControl("LabelUserId_Insert")).Text = User.Identity.Name;
                     ((System.Web.UI.WebControls.Label)dv.FindControl("LabelDate_Insert")).Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
 
                 }
@@ -101,71 +101,9 @@ namespace LGDCollectionData.Aspx
 
         protected void GridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            e.NewValues["UPDATE_USER"] = User.Identity.Name;
-            e.NewValues["UPDATE_DATE"] = DateTime.Now;
+            e.NewValues["UpdateUser"] = User.Identity.Name;
+            e.NewValues["UpdateDate"] = DateTime.Now;
         }
-
-        protected void DetailsView_PageIndexChanging(Object sender, EventArgs e)
-        {
-            ((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
-        }
-
-        protected virtual void DetailsView_ItemUpdating(object sender, System.Web.UI.WebControls.DetailsViewUpdateEventArgs e)
-        {
-            bool hasChanged = false;
-            for (int i = 0; i < e.OldValues.Count; i++)
-            {
-                if (e.OldValues[i] == null && e.NewValues[i] == null)
-                {
-                    if (isDebugEnabled)
-                    {
-                        log.Debug("Parameter[" + i + "]:both null");
-                    }
-                    //do nothing
-                }
-                else if (e.OldValues[i] != null && e.NewValues[i] != null)
-                {
-                    if (isDebugEnabled)
-                    {
-                        log.Debug("Parameter[" + i + "]:both not null");
-                    }
-
-                    if (!e.OldValues[i].Equals(e.NewValues[i]))
-                    {
-                        log.Debug("   OldValues" + e.OldValues[i].ToString());
-                        log.Debug("   NewValues" + e.NewValues[i].ToString());
-                        hasChanged = true;
-                        break;
-                    }
-                }
-                else //null one value
-                {
-                    if (isDebugEnabled)
-                    {
-                        log.Debug("Parameter[" + i + "]:null one");
-                    }
-
-                    hasChanged = true;
-                    break;
-                }
-            }
-
-            if (isDebugEnabled)
-            {
-                log.Debug("hasChanged:" + hasChanged.ToString());
-            }
-
-            if (!hasChanged)
-            {
-                e.Cancel = true;
-            }
-            else
-            {
-                e.NewValues["UPDATE_USER"] = User.Identity.Name;
-                e.NewValues["UPDATE_DATE"] = DateTime.Now;
-            }
-        }
-
 
         protected void SqlDataSourceCOLLATERAL_INFO_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
         {
@@ -422,8 +360,8 @@ namespace LGDCollectionData.Aspx
                 ds.InsertParameters["Property_Under_Construction"].DefaultValue = Property_Under_Construction_CheckBox.Checked == true ? "true" : "false";
                 ds.InsertParameters["Leasehold_Period"].DefaultValue = TextBoxLeasehold_Period.Text;
                 ds.InsertParameters["Leasehold_Start_Date"].DefaultValue = TextBoxLeasehold_Start_Date.Text;
-                ds.InsertParameters["UPDATE_USER"].DefaultValue = User.Identity.Name;
-                ds.InsertParameters["UPDATE_DATE"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
+                ds.InsertParameters["UpdateUser"].DefaultValue = User.Identity.Name;
+                ds.InsertParameters["UpdateDate"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
 
                 // Perform insert
 
@@ -487,8 +425,8 @@ namespace LGDCollectionData.Aspx
                 ds.InsertParameters["Property_Under_Construction"].DefaultValue = Property_Under_Construction_CheckBox_Footer.Checked == true ? "true" : "false";
                 ds.InsertParameters["Leasehold_Period"].DefaultValue = TextBoxLeasehold_Period_Footer.Text;
                 ds.InsertParameters["Leasehold_Start_Date"].DefaultValue = TextBoxLeasehold_Start_Date_Footer.Text;
-                ds.InsertParameters["UPDATE_USER"].DefaultValue = User.Identity.Name;
-                ds.InsertParameters["UPDATE_DATE"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
+                ds.InsertParameters["UpdateUser"].DefaultValue = User.Identity.Name;
+                ds.InsertParameters["UpdateDate"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
 
                 // Perform insert
                 ds.Insert();

@@ -106,22 +106,22 @@ namespace LGDCollectionData.Aspx
         {
              
             //MessageBox.Show(e.AffectedRows.ToString());
-            if (e.AffectedRows.ToString() == "-1")
-            {
-                //MessageBox.Show("aaa1");
-                // Perform any additional processing, such as sending an e-mail notification.
-                //Label1.Text = Request.LogonUserIdentity.Name + " changed user information sucessfully!";
+            //if (e.AffectedRows.ToString() == "-1")
+            //{
+            //    //MessageBox.Show("aaa1");
+            //    // Perform any additional processing, such as sending an e-mail notification.
+            //    //Label1.Text = Request.LogonUserIdentity.Name + " changed user information sucessfully!";
 
-                string Message = "Insert Successed";
-                string sb = "<script language='javascript'>" +
-                                     "popupAlert('" + Message + "');" +
-                                     "</script>";
+            //    string Message = "Insert Successed";
+            //    string sb = "<script language='javascript'>" +
+            //                         "popupAlert('" + Message + "');" +
+            //                         "</script>";
 
-                //MessageBox.Show(sb.ToString());
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
-                Response.Redirect("FACILITY_INFORMATION.aspx?CIF=" + Request.QueryString["CIF"]);
+            //    //MessageBox.Show(sb.ToString());
+            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
+            //    Response.Redirect("FACILITY_INFORMATION.aspx?CIF=" + Request.QueryString["CIF"]);
 
-            }
+            //}
             GridView1.DataBind();
             DetailsView1.DataBind();
         }

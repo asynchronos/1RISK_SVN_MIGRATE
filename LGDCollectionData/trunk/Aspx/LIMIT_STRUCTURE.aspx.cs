@@ -18,30 +18,30 @@ namespace LGDCollectionData.Aspx
         protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e)
         {
             //MessageBox.Show(e.AffectedRows.ToString());
-            if (e.AffectedRows.ToString() == "-1")
-            {
-                //MessageBox.Show("aaa1");
-                // Perform any additional processing, such as sending an e-mail notification.
-                //Label1.Text = Request.LogonUserIdentity.Name + " changed user information sucessfully!";
+            //if (e.AffectedRows.ToString() == "-1")
+            //{
+            //    //MessageBox.Show("aaa1");
+            //    // Perform any additional processing, such as sending an e-mail notification.
+            //    //Label1.Text = Request.LogonUserIdentity.Name + " changed user information sucessfully!";
 
-                string Message = "Update Successed";
-                string sb = "<script language='javascript'>" +
-                                     "popupAlert('" + Message + "');" +
-                                     "</script>";
+            //    string Message = "Update Successed";
+            //    string sb = "<script language='javascript'>" +
+            //                         "popupAlert('" + Message + "');" +
+            //                         "</script>";
 
-                //MessageBox.Show(sb.ToString());
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
+            //    //MessageBox.Show(sb.ToString());
+            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
 
-            }
-            else
-            {
-                //Label1.Text = "No data updated!";
-                string Message = "Update Failed";
-                string sb = "<script language='javascript'>" +
-                                     "popupAlert('" + Message + "');" +
-                                     "</script>";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
-            }
+            //}
+            //else
+            //{
+            //    //Label1.Text = "No data updated!";
+            //    string Message = "Update Failed";
+            //    string sb = "<script language='javascript'>" +
+            //                         "popupAlert('" + Message + "');" +
+            //                         "</script>";
+            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
+            //}
         }
 
         protected void DetailsView_Databound(Object sender, EventArgs e)
@@ -132,13 +132,5 @@ namespace LGDCollectionData.Aspx
             //}
    
         }
-
-        protected void DetailsView_PageIndexChanged(Object sender, EventArgs e)
-        {
-            ((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
-        }
-
-
-
     }
 }

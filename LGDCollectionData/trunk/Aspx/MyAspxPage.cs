@@ -71,63 +71,63 @@ namespace LGDCollectionData.Aspx
 
         protected virtual void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
         {
-            ((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
+            //((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
         }
 
         protected virtual void DetailsView_ItemUpdating(object sender, System.Web.UI.WebControls.DetailsViewUpdateEventArgs e)
         {
-            bool hasChanged = false;
-            for (int i = 0; i < e.OldValues.Count; i++)
-            {
-                if (e.OldValues[i] == null && e.NewValues[i] == null)
-                {
-                    if (isDebugEnabled)
-                    {
-                        log.Debug("Parameter[" + i + "]:both null");
-                    }
-                    //do nothing
-                }
-                else if (e.OldValues[i] != null && e.NewValues[i] != null)
-                {
-                    if (isDebugEnabled)
-                    {
-                        log.Debug("Parameter[" + i + "]:both not null");
-                    }
+            //bool hasChanged = false;
+            //for (int i = 0; i < e.OldValues.Count; i++)
+            //{
+            //    if (e.OldValues[i] == null && e.NewValues[i] == null)
+            //    {
+            //        if (isDebugEnabled)
+            //        {
+            //            log.Debug("Parameter[" + i + "]:both null");
+            //        }
+            //        //do nothing
+            //    }
+            //    else if (e.OldValues[i] != null && e.NewValues[i] != null)
+            //    {
+            //        if (isDebugEnabled)
+            //        {
+            //            log.Debug("Parameter[" + i + "]:both not null");
+            //        }
 
-                    if (!e.OldValues[i].Equals(e.NewValues[i]))
-                    {
-                        log.Debug("   OldValues:" + e.OldValues[i].ToString());
-                        log.Debug("   NewValues:" + e.NewValues[i].ToString());
-                        hasChanged = true;
-                        break;
-                    }
-                }
-                else //null one value
-                {
-                    if (isDebugEnabled)
-                    {
-                        log.Debug("Parameter[" + i + "]:null one");
-                    }
+            //        if (!e.OldValues[i].Equals(e.NewValues[i]))
+            //        {
+            //            log.Debug("   OldValues:" + e.OldValues[i].ToString());
+            //            log.Debug("   NewValues:" + e.NewValues[i].ToString());
+            //            hasChanged = true;
+            //            break;
+            //        }
+            //    }
+            //    else //null one value
+            //    {
+            //        if (isDebugEnabled)
+            //        {
+            //            log.Debug("Parameter[" + i + "]:null one");
+            //        }
 
-                    hasChanged = true;
-                    break;
-                }
-            }
+            //        hasChanged = true;
+            //        break;
+            //    }
+            //}
 
-            if (isDebugEnabled)
-            {
-                log.Debug("hasChanged:" + hasChanged.ToString());
-            }
+            //if (isDebugEnabled)
+            //{
+            //    log.Debug("hasChanged:" + hasChanged.ToString());
+            //}
 
-            if (!hasChanged)
-            {
-                e.Cancel = true;
-            }
-            else
-            {
+            //if (!hasChanged)
+            //{
+            //    e.Cancel = true;
+            //}
+            //else
+            //{
                 e.NewValues["UpdateUser"] = User.Identity.Name;
                 e.NewValues["UpdateDate"] = DateTime.Now;
-            }
+            //}
         }
     }
 }
