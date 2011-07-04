@@ -126,9 +126,10 @@
                 DefaultMode="Edit"
                 CellPadding="4" ForeColor="#333333" 
                 GridLines="Both"
+                OnPageIndexChanging="DetailsView_PageIndexChanging"
+                OnItemUpdating="DetailsView_ItemUpdating"
                 OnPreRender="DetailsView2_OnPreRender"
-                OnPageIndexChanging="DetailsView_PageIndexChanged"
-                OnItemUpdating="DetailsView_ItemUpdating">
+                DataKeyNames="CIF,Default_Date,PLED_ID">
                 <AlternatingRowStyle BackColor="White" />
                 <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
                 <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
@@ -387,7 +388,6 @@
                 SelectCommandType="StoredProcedure" 
                 UpdateCommand="GUARANTOR_INFORMATION_UPDATE" 
                 UpdateCommandType="StoredProcedure"
-                OnUpdated="SqlDataSource1_Updated"
                 OnSelected="SqlDataSourceGur_Info_Selected" >
                 <InsertParameters>
                     <asp:Parameter Name="CIF" Type="String" />

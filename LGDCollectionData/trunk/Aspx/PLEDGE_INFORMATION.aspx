@@ -671,27 +671,27 @@
                     <asp:Label ID="REMARK_Label" runat="server" Text='<%# Bind("REMARK") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Update User" SortExpression="UPDATE_USER">
+            <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
                 <EditItemTemplate>
-                    <%--<asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:TextBox>--%>
-                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <%--<asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:TextBox>--%>
+                    <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelUserId_Insert" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="LabelUserId_Insert" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("UPDATE_USER") %>'></asp:Label>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Update Date" SortExpression="UPDATE_DATE">
+            <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UPDATE_DATE") %>'></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
@@ -1164,8 +1164,7 @@
     <asp:SqlDataSource ID="SqlDataSourcePLEDGE_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         InsertCommand="PLEDGE_INFORMATION_INSERT" InsertCommandType="StoredProcedure"
         SelectCommand="PLEDGE_INFORMATION_SELECT" SelectCommandType="StoredProcedure"
-        UpdateCommand="PLEDGE_INFORMATION_UPDATE" UpdateCommandType="StoredProcedure"
-        OnUpdated="SqlDataSource1_Updated">
+        UpdateCommand="PLEDGE_INFORMATION_UPDATE" UpdateCommandType="StoredProcedure">
         <InsertParameters>
             <asp:Parameter Name="CIF" Type="String" />
             <asp:Parameter Name="Default_Date" Type="DateTime" />
@@ -1187,8 +1186,8 @@
             <asp:Parameter Name="Pledge_Amount_D1" Type="Double" />
             <asp:Parameter Name="Limitation_Amount_D1" Type="Double" />
             <asp:Parameter Name="REMARK" Type="String" />
-            <asp:Parameter Name="UPDATE_USER" Type="String" />
-            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </InsertParameters>
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
@@ -1214,8 +1213,8 @@
             <asp:Parameter Name="Pledge_Amount_D1" Type="Double" />
             <asp:Parameter Name="Limitation_Amount_D1" Type="Double" />
             <asp:Parameter Name="REMARK" Type="String" />
-            <asp:Parameter Name="UPDATE_USER" Type="String" />
-            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceCurrentcy" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
@@ -1249,8 +1248,8 @@
             <asp:Parameter Name="Property_Under_Construction" Type="Boolean" />
             <asp:Parameter Name="Leasehold_Period" Type="Int16" />
             <asp:Parameter Name="Leasehold_Start_Date" Type="DateTime" />
-            <asp:Parameter Name="UPDATE_USER" Type="String" />
-            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </InsertParameters>
         <SelectParameters>
             <asp:Parameter Name="PLED_ID" Type="String" />
@@ -1274,8 +1273,8 @@
             <asp:Parameter Name="Property_Under_Construction" Type="Boolean" />
             <asp:Parameter Name="Leasehold_Period" Type="Int16" />
             <asp:Parameter Name="Leasehold_Start_Date" Type="DateTime" />
-            <asp:Parameter Name="UPDATE_USER" Type="String" />
-            <asp:Parameter Name="UPDATE_DATE" Type="DateTime" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
         <DeleteParameters>
             <asp:Parameter Name="COLL_ID" Type="String" />
