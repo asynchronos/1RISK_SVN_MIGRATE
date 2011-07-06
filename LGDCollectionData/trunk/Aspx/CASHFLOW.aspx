@@ -527,6 +527,8 @@
             <asp:Parameter Name="CollateralID" Type="String" />
             <asp:Parameter Name="LIMITNOChanged" Type="Boolean" />
             <asp:Parameter Name="PreviousLIMITNO" Type="String" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="APP_ID_DataSource" runat="server" EnableCaching="True" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"

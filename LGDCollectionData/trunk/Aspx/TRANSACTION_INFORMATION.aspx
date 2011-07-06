@@ -465,6 +465,8 @@
             <asp:Parameter Name="OS_AT_D_MINUS_1_Principal" Type="Double" />
             <asp:Parameter Name="OS_AT_D_MINUS_1_Accrued" Type="Double" />
             <asp:Parameter Name="OS_AT_D_MINUS_1_Suspense" Type="Double" />
+            <asp:Parameter Name="UpdateUser" Type="String" />
+            <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="Currency_DataSource" runat="server" EnableCaching="True" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"

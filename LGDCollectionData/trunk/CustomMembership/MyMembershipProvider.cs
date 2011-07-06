@@ -165,11 +165,14 @@ namespace LGDCollectionData.CustomMembership
                                  && user.DEL_FLAG == false
                                  select user);
 
-                if (!(queryUser.FirstOrDefault() == null))
+                if (queryUser.FirstOrDefault() != null)
                 {
                     if (queryUser.FirstOrDefault().PASSWD.Equals(password))
                     {
                         result = true;
+                        queryUser.FirstOrDefault().LAST_SIGN_ON_DATE = DateTime.Now;
+                        en.SaveChanges();
+                        en.Dispose();
                     }
                 }
             }
