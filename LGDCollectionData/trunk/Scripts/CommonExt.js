@@ -18,7 +18,8 @@ Ext.DotNetControl.Element.mapElement = function (tagName, myAttributeName, myAtt
     if (dotNetElement) {
         //find element success
     } else {
-        alert("Can not find element has " + tagName + ":" + myAttributeName + "=" + myAttributeValue);
+        //alert("Can not find element has " + tagName + ":" + myAttributeName + "=" + myAttributeValue);
+        return null;
     }
 
     return new Ext.DotNetControl.Element(dotNetElement);
@@ -33,7 +34,7 @@ Ext.DotNetControl.CheckBox.mapElement = function (myAttributeName, myAttributeVa
     if (dotNetCheckBox) {
         //find element success
     } else {
-        alert("Can not find element has " + myAttributeName + "=" + myAttributeValue)
+        //alert("Can not find element has " + myAttributeName + "=" + myAttributeValue)
         return null;
     }
 
@@ -55,7 +56,7 @@ Ext.DotNetControl.ComboBox.mapElement = function (myAttributeName, myAttributeVa
     if (tableOfComboBox) {
         //find element success
     } else {
-        alert("Can not find element has " + myAttributeName + "=" + myAttributeValue);
+        //alert("Can not find element has " + myAttributeName + "=" + myAttributeValue);
         return null;
     }
 
@@ -63,12 +64,12 @@ Ext.DotNetControl.ComboBox.mapElement = function (myAttributeName, myAttributeVa
     var dropListOfComboBox = tableOfComboBox.select("button[type=button]").first();
 
     if (!textBoxOfComboBox) {
-        alert("Can not find textbox in combobox " + myAttributeName + "=" + myAttributeValue);
+        //alert("Can not find textbox in combobox " + myAttributeName + "=" + myAttributeValue);
         return null;
     }
 
     if (!dropListOfComboBox) {
-        alert("Can not find droplist in combobox " + myAttributeName + "=" + myAttributeValue);
+        //alert("Can not find droplist in combobox " + myAttributeName + "=" + myAttributeValue);
         return null;
     }
 

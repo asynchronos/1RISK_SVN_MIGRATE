@@ -304,7 +304,7 @@
                     }
 
                     o.targetElement.DropDownListCollateral_Type.element.dom.selectedIndex = ind;
-                    alert(o.targetElement.DropDownListProperty_Type.element.dom.disabled);
+                    //alert(o.targetElement.DropDownListProperty_Type.element.dom.disabled);
                     switch (collType) {
                         case '05':
                             o.targetElement.DropDownListProperty_Type.disabled(false);
@@ -356,7 +356,7 @@
                             o.targetElement.TextBoxLeasehold_Period.disabled(true);
                             o.targetElement.TextBoxLeasehold_Start_Date.disabled(true);
                     }
-                    alert(o.targetElement.DropDownListProperty_Type.element.dom.disabled);
+                    //alert(o.targetElement.DropDownListProperty_Type.element.dom.disabled);
                 },
                 scope: this,
                 targetElement: { "DropDownListCollateral_Type": dropDownListCollateral_Type
