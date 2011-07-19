@@ -103,6 +103,7 @@
         OnPreRender="DetailsView_OnPreRender"
         OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnItemUpdating="DetailsView_ItemUpdating"
+        OnItemUpdated="DetailsView_ItemUpdated"
         Width="800px" CellPadding="4" GridLines="Both">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -375,13 +376,13 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxUpdateDate" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBoxUpdateDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="LabelUpdateDate" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
+                    <asp:Label ID="LabelUpdateDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
@@ -417,7 +418,10 @@
     <asp:SqlDataSource ID="SqlDataSourceLIMIT_STRUCTURE" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         InsertCommand="LIMIT_STRUCTURE_INSERT" InsertCommandType="StoredProcedure" SelectCommand="LIMIT_STRUCTURE_SELECT"
         SelectCommandType="StoredProcedure" UpdateCommand="LIMIT_STRUCTURE_UPDATE" UpdateCommandType="StoredProcedure"
-        DeleteCommand="LIMIT_STRUCTURE_DELETE" DeleteCommandType="StoredProcedure" OnUpdated="SqlDataSource1_Updated">
+        DeleteCommand="LIMIT_STRUCTURE_DELETE" DeleteCommandType="StoredProcedure"
+        OnUpdated="SqlDataSourceLIMIT_STRUCTURE_Updated"
+        OnInserted="SqlDataSourceLIMIT_STRUCTURE_Inserted"
+        OnDeleted="SqlDataSourceLIMIT_STRUCTURE_Deleted">
         <InsertParameters>
             <asp:Parameter Name="CIF" Type="String" />
             <asp:Parameter Name="Default_Date" Type="DateTime" />
@@ -803,13 +807,13 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update Date" SortExpression="UpdateDate" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBoxUpdateDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBoxUpdateDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="LabelUpdateDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="LabelUpdateDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

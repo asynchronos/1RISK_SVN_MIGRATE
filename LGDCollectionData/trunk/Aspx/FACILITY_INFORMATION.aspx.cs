@@ -137,5 +137,11 @@ namespace LGDCollectionData.Aspx
             GridView1.DataBind();
             DetailsView1.DataBind();
         }
+
+        protected void GridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            e.NewValues["UpdateUser"] = User.Identity.Name;
+            e.NewValues["UpdateDate"] = DateTime.Now;
+        }
     }
 }

@@ -128,6 +128,7 @@
                 GridLines="Both"
                 OnPageIndexChanging="DetailsView_PageIndexChanging"
                 OnItemUpdating="DetailsView_ItemUpdating"
+                OnItemUpdated="DetailsView_ItemUpdated"
                 OnPreRender="DetailsView2_OnPreRender"
                 DataKeyNames="CIF,Default_Date,PLED_ID">
                 <AlternatingRowStyle BackColor="White" />
@@ -342,13 +343,13 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="UPDATE DATE" SortExpression="UPDATE_DATE">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
+                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">

@@ -219,27 +219,6 @@ namespace LGDCollectionData.Aspx
 
         }
 
-        protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e)
-        {
-            //MessageBox.Show(e.AffectedRows.ToString());
-            if (e.AffectedRows.ToString() == "-1")
-            {
-                string Message = "Update Successed";
-                string sb = "<script language='javascript'>" +
-                                     "popupAlert('" + Message + "');" +
-                                     "</script>";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
-            }
-            else
-            {
-                string Message = "Update Failed";
-                string sb = "<script language='javascript'>" +
-                                     "popupAlert('" + Message + "');" +
-                                     "</script>";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ajax", sb.ToString(), false);
-            }
-        }
-
         //protected void DetailsView_OnPreRender(object sender, EventArgs e)
         //{
         //    DetailsView dv = (DetailsView)sender;
@@ -435,28 +414,47 @@ namespace LGDCollectionData.Aspx
 
         protected void Valuation_Date_D_ServerValidate(object source, ServerValidateEventArgs args)
         {
+            //args.IsValid = true;
             ITextControl t = (((CustomValidator)source).Parent.FindControl("Default_Date_Label") != null) ? (ITextControl)((CustomValidator)source).Parent.FindControl("Default_Date_Label") : (ITextControl)((CustomValidator)source).Parent.FindControl("TextBoxDefault_Date_Insert");
 
             CalendarExtender cal = ((CalendarExtender)((CustomValidator)source).Parent.FindControl("Valuation_Date_D_CalendarExtender"));
 
             CultureInfo cul = new CultureInfo("en-US");
-            DateTime inputDate = DateTime.ParseExact(args.Value, cal.Format, cul);
-            DateTime compareDate = DateTime.ParseExact(t.Text, cal.Format, cul);
+            DateTime inputDate;// = DateTime.ParseExact(args.Value, cal.Format, cul);
+            DateTime compareDate;// = DateTime.ParseExact(t.Text, cal.Format, cul);
 
-            args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
+            if (DateTime.TryParseExact(args.Value, cal.Format, cul, DateTimeStyles.None, out inputDate)
+                && DateTime.TryParseExact(t.Text, cal.Format, cul, DateTimeStyles.None, out compareDate))
+            {
+                args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
+            }
+            else
+            {
+                args.IsValid = true;
+            }
         }
 
         protected void Valuation_Date_D1_TextBox_ServerValidate(object source, ServerValidateEventArgs args)
         {
+            args.IsValid = true;
+
             ITextControl t = (((CustomValidator)source).Parent.FindControl("Valuation_Date_D_Label") != null) ? (ITextControl)((CustomValidator)source).Parent.FindControl("Valuation_Date_D_Label") : (ITextControl)((CustomValidator)source).Parent.FindControl("Valuation_Date_D_TextBox");
 
             CalendarExtender cal = ((CalendarExtender)((CustomValidator)source).Parent.FindControl("Valuation_Date_D1_TextBox_CalendarExtender"));
 
             CultureInfo cul = new CultureInfo("en-US");
-            DateTime inputDate = DateTime.ParseExact(args.Value, cal.Format, cul);
-            DateTime compareDate = DateTime.ParseExact(t.Text, cal.Format, cul);
+            DateTime inputDate;// = DateTime.ParseExact(args.Value, cal.Format, cul);
+            DateTime compareDate;// = DateTime.ParseExact(t.Text, cal.Format, cul);
 
-            args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
+            if(DateTime.TryParseExact(args.Value, cal.Format, cul, DateTimeStyles.None, out inputDate)
+                && DateTime.TryParseExact(t.Text, cal.Format, cul, DateTimeStyles.None, out compareDate))
+            {
+                args.IsValid = (inputDate.CompareTo(compareDate) <= 0) ? true : false;
+            }
+            else
+            {
+                args.IsValid = true;
+            }
         }
     }
 }
