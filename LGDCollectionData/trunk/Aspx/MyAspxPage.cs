@@ -79,6 +79,11 @@ namespace LGDCollectionData.Aspx
             //bool hasChanged = false;
             //for (int i = 0; i < e.OldValues.Count; i++)
             //{
+            //    if (isDebugEnabled)
+            //    {
+            //        log.Debug(e.OldValues[i] + ":" + e.NewValues[i]);
+            //    }
+
             //    if (e.OldValues[i] == null && e.NewValues[i] == null)
             //    {
             //        if (isDebugEnabled)
@@ -128,6 +133,44 @@ namespace LGDCollectionData.Aspx
                 e.NewValues["UpdateUser"] = User.Identity.Name;
                 e.NewValues["UpdateDate"] = DateTime.Now;
             //}
+        }
+
+        protected virtual void DetailsView_ItemUpdated(object sender, System.Web.UI.WebControls.DetailsViewUpdatedEventArgs e)
+        {
+            string msg = string.Empty;
+            // Use the Exception property to determine whether
+            // an exception occurred during the update operation.
+            if (e.Exception == null)
+            {
+                msg = "Record updated successfully.";
+                // Use the AffectedRows property to determine whether the record was updated.
+                // Sometimes an error might occur but does not raise an exception,
+                // yet prevents the update operation from completing.
+                if (e.AffectedRows == 1)
+                {
+                    //msg = "Record updated successfully.";
+                }
+                else
+                {
+                    //msg = "An error occurred during the update operation.";
+                    // Use the KeepInEditMode property to remain in edit mode
+                    // when an error occurs during the update operation.
+                    //e.KeepInEditMode = true;
+                }
+            }
+            else
+            {
+                // Update the code to handle the exception.
+                msg = e.Exception.Message;
+
+                // Use the ExceptionHandled property to indicate
+                // that the exception has already been handled.
+                e.ExceptionHandled = true;
+            }
+
+            ClientScript.RegisterStartupScript(this.GetType(), "updatedInformation",    "<script language='javascript'>" +
+                                                                                            "alert('" + msg + "');" +
+                                                                                        "</script>", false);
         }
     }
 }

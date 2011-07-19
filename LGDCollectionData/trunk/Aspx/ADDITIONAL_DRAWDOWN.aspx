@@ -202,6 +202,7 @@
         DefaultMode="Edit" CellPadding="4" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnItemUpdating="DetailsView_ItemUpdating"
+        OnItemUpdated="DetailsView_ItemUpdated"
         ForeColor="#333333" 
       PagerSettings-Mode="NumericFirstLast">
         <AlternatingRowStyle BackColor="White" />
@@ -353,7 +354,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" ShowInsertButton="True" />

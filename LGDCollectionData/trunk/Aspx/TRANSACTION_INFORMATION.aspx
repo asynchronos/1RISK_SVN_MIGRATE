@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="TRANSACTION_INFORMATION.aspx.cs" Inherits="LGDCollectionData.Aspx.TRANSACTION_INFORMATION" %>
 
-<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
-
+<%@ Register Src="../UserControls/SelectFormWebUserControl.ascx" TagName="SelectFormWebUserControl"
+    TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <!-- Ext includes -->
     <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
@@ -10,7 +10,6 @@
     <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
     <script type="text/javascript" src="../Scripts/common.js"></script>
-
     <script type="text/javascript">
         Ext.onReady(function () {
             Ext.select("input[type=text]").setWidth("200px");
@@ -96,7 +95,8 @@
         CellPadding="4" DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO"
         DataSourceID="TRANSACTION_INFORMATION_SqlDataSource" EnableModelValidation="True"
         ForeColor="#333333" AllowPaging="True" DefaultMode="Edit" OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnItemUpdating="DetailsView_ItemUpdating" Width="800px">
+        OnItemUpdating="DetailsView_ItemUpdating" OnItemUpdated="DetailsView_ItemUpdated"
+        Width="800px">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
@@ -114,16 +114,13 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" 
-                        Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Default_Date_TextBox" runat="server" 
-                        Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="Default_Date_TextBox" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" 
-                        Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="BRAN" SortExpression="BRAN">
@@ -192,8 +189,7 @@
                     <asp:Label ID="LIMITNO_Label" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="FCY_TYPE: Original Currency Code" 
-                SortExpression="FCY_TYPE_Original_Currency_Code">
+            <asp:TemplateField HeaderText="FCY_TYPE: Original Currency Code" SortExpression="FCY_TYPE_Original_Currency_Code">
                 <EditItemTemplate>
                     <asp:DropDownList ID="FCY_TYPE_Original_Currency_Code_DropDownList" runat="server"
                         DataSourceID="Currency_DataSource" DataTextField="Description" DataValueField="Code"
@@ -238,27 +234,20 @@
                     <asp:Label ID="LNSTYPE_Label" runat="server" Text='<%# Bind("LNSTYPE") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Total Interest Rate Prior to Default(%)" 
-                SortExpression="Total_Interest_Rate_Prior_to_Default">
+            <asp:TemplateField HeaderText="Total Interest Rate Prior to Default(%)" SortExpression="Total_Interest_Rate_Prior_to_Default">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Total_Interest_Rate_Prior_to_Default_TextBox" runat="server" 
-                        Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.00}") %>'
-                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
-                    <span style="color: Red">*</span>
+                    <asp:TextBox ID="Total_Interest_Rate_Prior_to_Default_TextBox" runat="server" Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.00}") %>'
+                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>% <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Total_Interest_Rate_Prior_to_Default_TextBox" runat="server" 
-                        Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.00}") %>'
-                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
-                    <span style="color: Red">*</span>
+                    <asp:TextBox ID="Total_Interest_Rate_Prior_to_Default_TextBox" runat="server" Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.00}") %>'
+                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>% <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Total_Interest_Rate_Prior_to_Default_Label" runat="server" 
-                        Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.00}") %>'></asp:Label>%
+                    <asp:Label ID="Total_Interest_Rate_Prior_to_Default_Label" runat="server" Text='<%# Bind("Total_Interest_Rate_Prior_to_Default", "{0:#,##0.00}") %>'></asp:Label>%
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Interest Rate Index Prior to Default" 
-                SortExpression="Interest_Rate_Index_Prior_to_Default">
+            <asp:TemplateField HeaderText="Interest Rate Index Prior to Default" SortExpression="Interest_Rate_Index_Prior_to_Default">
                 <EditItemTemplate>
                     <asp:DropDownList ID="Interest_Rate_Index_Prior_to_Default_DropDownList" runat="server"
                         DataSourceID="Rate_Type_SqlDataSource" DataTextField="DESCRIPTION" DataValueField="CODE"
@@ -273,22 +262,19 @@
                     <asp:Label ID="Interest_Rate_Index_Prior_to_Default_Label" runat="server" Text='<%# Bind("Interest_Rate_Index_Prior_to_Default") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Interest Rate Spread Prior to Default(%)" 
-                SortExpression="Interest_Rate_Spread_Prior_to_Default_Percentage">
+            <asp:TemplateField HeaderText="Interest Rate Spread Prior to Default(%)" SortExpression="Interest_Rate_Spread_Prior_to_Default_Percentage">
                 <EditItemTemplate>
-                    <asp:TextBox ID="Interest_Rate_Spread_Prior_to_Default_Percentage_TextBox" runat="server" 
+                    <asp:TextBox ID="Interest_Rate_Spread_Prior_to_Default_Percentage_TextBox" runat="server"
                         Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:#,##0.00}") %>'
-                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
-                    <span style="color: Red">*</span>
+                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>% <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="Interest_Rate_Spread_Prior_to_Default_Percentage_TextBox" runat="server" 
+                    <asp:TextBox ID="Interest_Rate_Spread_Prior_to_Default_Percentage_TextBox" runat="server"
                         Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:#,##0.00}") %>'
-                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>%
-                    <span style="color: Red">*</span>
+                        IsPercentage="Yes" IsNumeric="Yes"></asp:TextBox>% <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Interest_Rate_Spread_Prior_to_Default_Percentage_Label" runat="server" 
+                    <asp:Label ID="Interest_Rate_Spread_Prior_to_Default_Percentage_Label" runat="server"
                         Text='<%# Bind("Interest_Rate_Spread_Prior_to_Default_Percentage","{0:#,##0.00}") %>'></asp:Label>%
                 </ItemTemplate>
             </asp:TemplateField>
@@ -306,129 +292,106 @@
                     <asp:Label ID="Rate_Sign_Label" runat="server" Text='<%# Bind("Rate_Sign") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="OS @ D: Principal" 
-                SortExpression="OS_AT_D_Principal">
+            <asp:TemplateField HeaderText="OS @ D: Principal" SortExpression="OS_AT_D_Principal">
                 <EditItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_Principal_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_Principal_TextBox" runat="server" Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_Principal_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_Principal_TextBox" runat="server" Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="OS_AT_D_Principal_Label" runat="server"
-                        Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.00}") %>'></asp:Label>
+                    <asp:Label ID="OS_AT_D_Principal_Label" runat="server" Text='<%# Bind("OS_AT_D_Principal","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="OS @ D: Accrued" 
-                SortExpression="OS_AT_D_Accrued">
+            <asp:TemplateField HeaderText="OS @ D: Accrued" SortExpression="OS_AT_D_Accrued">
                 <EditItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_Accrued_TextBox" runat="server"
-                        Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_Accrued_TextBox" runat="server" Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_Accrued_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_Accrued_TextBox" runat="server" Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="OS_AT_D_Accrued_Label" runat="server"
-                        Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.00}") %>'></asp:Label>
+                    <asp:Label ID="OS_AT_D_Accrued_Label" runat="server" Text='<%# Bind("OS_AT_D_Accrued","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="OS @ D: Suspense" 
-                SortExpression="OS_AT_D_Suspense">
+            <asp:TemplateField HeaderText="OS @ D: Suspense" SortExpression="OS_AT_D_Suspense">
                 <EditItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_Suspense_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_Suspense_TextBox" runat="server" Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_Suspense_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_Suspense_TextBox" runat="server" Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="OS_AT_D_Suspense_Label" runat="server" Text='<%# Bind("OS_AT_D_Suspense","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="OS @ D-1: Principal" 
-                SortExpression="OS_AT_D_MINUS_1_Principal">
+            <asp:TemplateField HeaderText="OS @ D-1: Principal" SortExpression="OS_AT_D_MINUS_1_Principal">
                 <EditItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_MINUS_1_Principal_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_MINUS_1_Principal_TextBox" runat="server" Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_MINUS_1_Principal_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_MINUS_1_Principal_TextBox" runat="server" Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="OS_AT_D_MINUS_1_Principal_Label" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.00}") %>'></asp:Label>
+                    <asp:Label ID="OS_AT_D_MINUS_1_Principal_Label" runat="server" Text='<%# Bind("OS_AT_D_MINUS_1_Principal","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="OS @ D-1: Accrued" 
-                SortExpression="OS_AT_D_MINUS_1_Accrued">
+            <asp:TemplateField HeaderText="OS @ D-1: Accrued" SortExpression="OS_AT_D_MINUS_1_Accrued">
                 <EditItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_MINUS_1_Accrued_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_MINUS_1_Accrued_TextBox" runat="server" Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_MINUS_1_Accrued_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_MINUS_1_Accrued_TextBox" runat="server" Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="OS_AT_D_MINUS_1_Accrued_Label" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.00}") %>'></asp:Label>
+                    <asp:Label ID="OS_AT_D_MINUS_1_Accrued_Label" runat="server" Text='<%# Bind("OS_AT_D_MINUS_1_Accrued","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="OS @ D-1: Suspense" 
-                SortExpression="OS_AT_D_MINUS_1_Suspense">
+            <asp:TemplateField HeaderText="OS @ D-1: Suspense" SortExpression="OS_AT_D_MINUS_1_Suspense">
                 <EditItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_MINUS_1_Suspense_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_MINUS_1_Suspense_TextBox" runat="server" Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="OS_AT_D_MINUS_1_Suspense_TextBox" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.00}") %>'
+                    <asp:TextBox ID="OS_AT_D_MINUS_1_Suspense_TextBox" runat="server" Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="OS_AT_D_MINUS_1_Suspense_Label" runat="server" 
-                        Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.00}") %>'></asp:Label>
+                    <asp:Label ID="OS_AT_D_MINUS_1_Suspense_Label" runat="server" Text='<%# Bind("OS_AT_D_MINUS_1_Suspense","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
-                        <EditItemTemplate>
-                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <InsertItemTemplate>
-                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
-                        </InsertItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
-                        <EditItemTemplate>
-                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <InsertItemTemplate>
-                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
-                        </InsertItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                <EditItemTemplate>
+                    <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
+                <EditItemTemplate>
+                    <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

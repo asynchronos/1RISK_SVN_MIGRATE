@@ -65,15 +65,15 @@
                             var isMinus = (Number(intValueStr) < 0) ? true : false;
                             var absoluteValue = intValueStr.replace("-", "");
 
-                            for (var i = (absoluteValue.length - 1); i >= 0; i--) {
+                            for (var j = (absoluteValue.length - 1); j >= 0; j--) {
                                 if (splitCount == 3) {
                                     result = "," + result
                                     splitCount = 0;
-                                    i++;
+                                    j++;
                                     continue;
                                 }
 
-                                result = absoluteValue.charAt(i) + result;
+                                result = absoluteValue.charAt(j) + result;
                                 splitCount++;
                             }
 
@@ -122,7 +122,7 @@
         DataKeyNames="CIF,DefaultDate,LIMITNO" DataSourceID="SqlDataSourceFacility" PagerSettings-Mode="Numeric"
         RowStyle-Wrap="true" EnableModelValidation="True" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnItemUpdating="DetailsView_ItemUpdating"
+        OnItemUpdating="DetailsView_ItemUpdating" OnItemUpdated="DetailsView_ItemUpdated"
         OnPreRender="DetailsView_OnPreRender" CellPadding="4" ForeColor="#333333">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -470,10 +470,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
@@ -602,7 +602,7 @@
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
             AutoGenerateColumns="False" DataKeyNames="CIF,DefaultDate,LIMITNO" DataSourceID="SqlDataSourceFacility"
             EnableModelValidation="True" ForeColor="Black" BackColor="White" CellPadding="4"
-            BorderColor="#DEDFDE">
+            BorderColor="#DEDFDE" OnRowUpdating="GridView_RowUpdating">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:TemplateField ItemStyle-Wrap="false" ShowHeader="False">
@@ -928,10 +928,10 @@
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Update Date"
                     SortExpression="UpdateDate">
                     <ItemTemplate>
-                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                     </EditItemTemplate>
                 </asp:TemplateField>
             </Columns>

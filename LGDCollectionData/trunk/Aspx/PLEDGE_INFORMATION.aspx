@@ -391,6 +391,7 @@
         EnableModelValidation="True" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnItemUpdating="DetailsView_ItemUpdating"
+        OnItemUpdated="DetailsView_ItemUpdated"
         OnPreRender="DetailsView_Prerender"
         DefaultMode="Edit" CellPadding="4" ForeColor="#333333" 
         Width="737px" PagerSettings-Mode="NumericFirstLast">
@@ -685,13 +686,13 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
+                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UpdateDate") %>'></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">

@@ -145,7 +145,8 @@
         EnableModelValidation="True" DefaultMode="Edit"
         CellPadding="4" ForeColor="#333333" GridLines="Both" OnPreRender="DetailsView_OnPreRender"
         OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnItemUpdating="DetailsView_ItemUpdating" Width="600px">
+        OnItemUpdating="DetailsView_ItemUpdating"
+        OnItemUpdated="DetailsView_ItemUpdated" Width="600px">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%" />
@@ -301,7 +302,7 @@
             <asp:TemplateField HeaderText="Amphur of Property" SortExpression="Amphur_of_Property">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Amphur_of_Property") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input District of Property"
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please input Amphur of Property"
                         Text="*" ValidationGroup="detailviewValidation" ControlToValidate="TextBox3"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
@@ -353,13 +354,13 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UpdateDate", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UpdateDate", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
