@@ -100,8 +100,7 @@
     </h2>
     <asp:SqlDataSource ID="SqlDataSourceNPA_RECORD" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         InsertCommand="NPA_RECORD_INSERT" InsertCommandType="StoredProcedure" SelectCommand="NPA_RECORD_SELECT"
-        SelectCommandType="StoredProcedure" UpdateCommand="NPA_RECORD_UPDATE" UpdateCommandType="StoredProcedure"
-        OnUpdated="SqlDataSource1_Updated">
+        SelectCommandType="StoredProcedure" UpdateCommand="NPA_RECORD_UPDATE" UpdateCommandType="StoredProcedure">
         <InsertParameters>
             <asp:Parameter Name="CIF" Type="String" />
             <asp:Parameter Name="Default_Date" Type="DateTime" />
