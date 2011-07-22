@@ -4,7 +4,7 @@ using log4net;
 
 namespace UserSystem.WebServices
 {
-    public class UserDataServices : DataService<MyEntities.RISKEntities>
+    public class UserDataServices : DataService<Core.Entities.UserSystemEntities>
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
