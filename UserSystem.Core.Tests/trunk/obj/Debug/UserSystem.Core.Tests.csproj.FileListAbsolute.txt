@@ -1,0 +1,9 @@
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\UserSystem.Core.Tests\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\UserSystem.Core.Tests\bin\Debug\UserSystem.Core.Tests.dll.config
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\UserSystem.Core.Tests\bin\Debug\UserSystem.Core.Tests.dll
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\UserSystem.Core.Tests\bin\Debug\UserSystem.Core.Tests.pdb
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\UserSystem.Core.Tests\bin\Debug\nunit.framework.dll
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\UserSystem.Core.Tests\bin\Debug\UserSystem.Core.dll
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\UserSystem.Core.Tests\bin\Debug\UserSystem.Core.pdb
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\UserSystem.Core.Tests\obj\Debug\UserSystem.Core.Tests.dll
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\UserSystem.Core.Tests\obj\Debug\UserSystem.Core.Tests.pdb
