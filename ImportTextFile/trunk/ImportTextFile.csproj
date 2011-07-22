@@ -131,8 +131,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="MyLibrary\nunit.framework.dll.tdnet" />
-    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,23 +140,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="test data\101118_I142927_CIMD110.17" />
-    <None Include="test data\101118_I142927_CIMD110_smalldata.dat" />
     <EntityDeploy Include="DataModel\EntityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EntityModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\ImportTextFile.vshost.exe" />
     <Content Include="MyLibrary\log4net.dll" />
     <Content Include="MyLibrary\log4net.xml" />
     <Content Include="MyLibrary\nunit.framework.dll" />
     <Content Include="MyLibrary\nunit.framework.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Release\" />
-    <Folder Include="obj\x86\Debug\TempPE\" />
+    <Folder Include="test data\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
