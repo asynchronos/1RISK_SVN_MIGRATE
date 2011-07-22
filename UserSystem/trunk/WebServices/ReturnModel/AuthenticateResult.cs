@@ -4,7 +4,7 @@ namespace UserSystem.WebServices.ReturnModel
 {
     //[System.Runtime.Serialization.DataContractAttribute(IsReference = false)]
     [System.Serializable]
-    public class AuthenticateResult : MyEntities.USER_DATA
+    public class AuthenticateResult : Core.Entities.USER_DATA
     {
         public const string DELIMITER = "|";
 
@@ -12,7 +12,7 @@ namespace UserSystem.WebServices.ReturnModel
         {
         }
 
-        public AuthenticateResult(MyEntities.USER_DATA user)
+        public AuthenticateResult(Core.Entities.USER_DATA user)
         {
             this.CATE_AND_EMP = user.CATE_AND_EMP;
             this.CREATE_DATE = user.CREATE_DATE;
@@ -55,18 +55,34 @@ namespace UserSystem.WebServices.ReturnModel
             }
         }
 
-        private List<MyEntities.CATEGORY> _categoriesList;
+        private IList<Core.Entities.CATEGORY> _categoriesList = new List<Core.Entities.CATEGORY>();
 
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public List<MyEntities.CATEGORY> CategoriesList
+        public IList<Core.Entities.CATEGORY> CategoriesList
         {
             get
             {
-                return this._categoriesList;
+                return new List<Core.Entities.CATEGORY>(_categoriesList).AsReadOnly();
             }
-            set
+            protected set
             {
                 this._categoriesList = value;
+            }
+        }
+
+        public void AddCategory(Core.Entities.CATEGORY category)
+        {
+            if (category != null && !_categoriesList.Contains(category))
+            {
+                _categoriesList.Add(category);
+            }
+        }
+
+        public void RemoveCategory(Core.Entities.CATEGORY category)
+        {
+            if (category != null && _categoriesList.Contains(category))
+            {
+                _categoriesList.Remove(category);
             }
         }
 
@@ -77,7 +93,7 @@ namespace UserSystem.WebServices.ReturnModel
             {
                 string result = string.Empty;
 
-                foreach (MyEntities.CATEGORY category in this.CategoriesList)
+                foreach (Core.Entities.CATEGORY category in this.CategoriesList)
                 {
                     result = result + DELIMITER + category.CATEGORY_KEY;
                 }
@@ -86,9 +102,29 @@ namespace UserSystem.WebServices.ReturnModel
             }
         }
 
-        public bool IsNullCategoryList()
+        /// <summary>
+        /// Hash code should ONLY contain the "business value signature" of the object and not the ID
+        /// </summary>
+        public override int GetHashCode()
         {
-            return (null != this.CategoriesList) ? false : true;
+            int hash = 7;
+            //hash = 31 * hash + num;//case data is int
+            hash = 31 * hash + (null == EMAIL ? 0 : EMAIL.GetHashCode());
+            hash = 31 * hash + (null == EMP_NAME ? 0 : EMP_NAME.GetHashCode());
+            hash = 31 * hash + (null == EMP_SURNAME ? 0 : EMP_SURNAME.GetHashCode());
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (this == obj) return true;
+            if ((obj == null) || (obj.GetType() != this.GetType())) return false;
+            //object must be test at this point
+            AuthenticateResult test = (AuthenticateResult)obj;
+            return (EMAIL == test.EMAIL || (EMAIL != null && EMAIL.Equals(test.EMAIL))) &&
+                (EMP_NAME == test.EMP_NAME || (EMP_NAME != null && EMP_NAME.Equals(test.EMP_NAME))) &&
+                (EMP_SURNAME == test.EMP_SURNAME || (EMP_SURNAME != null && EMP_SURNAME.Equals(test.EMP_SURNAME)));
         }
     }
 }

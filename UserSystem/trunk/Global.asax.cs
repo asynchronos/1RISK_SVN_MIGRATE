@@ -26,7 +26,7 @@ namespace UserSystem
             // [ScaffoldTable(true)] attribute to the partial class.
             // Note: Make sure that you change "YourDataContextType" to the name of the data context
             // class in your application.
-            DefaultModel.RegisterContext(typeof(MyEntities.RISKEntities), new ContextConfiguration() { ScaffoldAllTables = true });
+            DefaultModel.RegisterContext(typeof(Core.Entities.UserSystemEntities), new ContextConfiguration() { ScaffoldAllTables = true });
 
             // The following statement supports separate-page mode, where the List, Detail, Insert, and
             // Update tasks are performed by using separate pages. To enable this mode, uncomment the following
