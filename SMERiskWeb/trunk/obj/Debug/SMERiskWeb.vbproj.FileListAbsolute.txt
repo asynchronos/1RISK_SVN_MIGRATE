@@ -1,0 +1,11 @@
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\obj\Debug\SMERiskWeb.Resources.resources
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\obj\Debug\GenerateResource.read.1.tlog
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\obj\Debug\GenerateResource.write.1.tlog
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\bin\SMERiskWeb.dll
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\bin\SMERiskWeb.pdb
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\bin\SMERiskWeb.xml
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\bin\log4net.dll
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\obj\Debug\SMERiskWeb.dll
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\obj\Debug\SMERiskWeb.xml
+D:\Documents and Settings\249888\My Documents\Visual Studio 2010\Projects\RiskProject\SMERiskWeb\obj\Debug\SMERiskWeb.pdb
