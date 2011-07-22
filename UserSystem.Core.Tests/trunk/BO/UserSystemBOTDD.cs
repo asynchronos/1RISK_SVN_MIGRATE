@@ -46,10 +46,12 @@ namespace UserSystem.Core.Tests.BO
                             && u.DEL_FLAG == false
                             && ce.DEL_FLAG == false
                             && cate.DEL_FLAG == false
-                            select new CATE_AND_EMP{
-                                USER_DATA = ce.USER_DATA,
-                                CATEGORY = ce.CATEGORY
-                            };
+                            select u; 
+                            //new CATE_AND_EMP
+                            //{
+                            //    USER_DATA = ce.USER_DATA,
+                            //    CATEGORY = ce.CATEGORY
+                            //};
 
                 if ((userData = query.FirstOrDefault<USER_DATA>()) != null)
                 {
