@@ -370,6 +370,16 @@
                     <asp:Label ID="LabelStarCyc" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </InsertItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Undrawn Amount in Next 12 months(starting from D-1)" SortExpression="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS">
+                <EditItemTemplate>
+                    <asp:TextBox ID="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHSTextBox" runat="server" Text='<%# Bind("UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:TextBox ID="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHSTextBox" runat="server" Text='<%# Bind("UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
+                </InsertItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Compounding Frequency of Interest" SortExpression="CompoundingFrequencyofInterest">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownListFREQUENCY_CODE" runat="server" DataSourceID="SqlDataSourceFrequency"
@@ -386,6 +396,14 @@
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
                     <asp:Label ID="LabelStarQue" runat="server" Text=" " ForeColor="Red"></asp:Label>
+                </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="This Limit is Mixed Line" SortExpression="THIS_LIMIT_IS_MIXED_LINE">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="THIS_LIMIT_IS_MIXED_LINECheckBox" runat="server" Checked='<%# Bind("THIS_LIMIT_IS_MIXED_LINE") %>' />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="THIS_LIMIT_IS_MIXED_LINECheckBox" runat="server" Checked='<%# Bind("THIS_LIMIT_IS_MIXED_LINE") %>' />
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Sharing Limit with CIF 1" SortExpression="SharingLimitwithCIF1">
@@ -541,6 +559,8 @@
             <asp:Parameter Name="SharingLimitwithCIF6" Type="String" />
             <asp:Parameter Name="UpdateUser" Type="String" />
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
+            <asp:Parameter Name="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS" Type="Double" />
+            <asp:Parameter Name="THIS_LIMIT_IS_MIXED_LINE" Type="Boolean" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="CIF" Type="String" />
@@ -567,6 +587,8 @@
             <asp:Parameter Name="SharingLimitwithCIF6" Type="String" />
             <asp:Parameter Name="UpdateUser" Type="String" />
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
+            <asp:Parameter Name="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS" Type="Double" />
+            <asp:Parameter Name="THIS_LIMIT_IS_MIXED_LINE" Type="Boolean" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceAppID" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
@@ -832,6 +854,15 @@
                         <asp:Label ID="LabelStarCyc" runat="server" Text=" " ForeColor="Red"></asp:Label>
                     </EditItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Undrawn Amount in Next 12 months"
+                    SortExpression="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS">
+                    <ItemTemplate>
+                        <asp:Label ID="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHSLabel" runat="server" Text='<%# Bind("UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS","{0:#,##0.00}") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHSTextBox" runat="server" Text='<%# Bind("UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS","{0:#,##0.00}") %>' IsNumeric="Yes" CssClass="NumTextBox"></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Compounding Frequency of Interest"
                     SortExpression="CompoundingFrequencyofInterest">
                     <ItemTemplate>
@@ -849,6 +880,16 @@
                         </asp:DropDownList>
                         <asp:Label ID="LabelStarQue" runat="server" Text=" " ForeColor="Red"></asp:Label>
                     </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="This Limit is Mixed Line"
+                    SortExpression="THIS_LIMIT_IS_MIXED_LINE">
+                    <EditItemTemplate>
+                        <asp:CheckBox ID="THIS_LIMIT_IS_MIXED_LINECheckBox" runat="server" Checked='<%# Bind("THIS_LIMIT_IS_MIXED_LINE") %>' />
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="THIS_LIMIT_IS_MIXED_LINECheckBox" runat="server" Checked='<%# Bind("THIS_LIMIT_IS_MIXED_LINE") %>'
+                            Enabled="false" />
+                    </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Sharing Limit with CIF 1"
                     SortExpression="SharingLimitwithCIF1">
