@@ -135,7 +135,8 @@
 
                             if (o.srcElement.item(i).dom.selectedIndex == 2
                             || o.srcElement.item(i).dom.selectedIndex == 3
-                            || o.srcElement.item(i).dom.selectedIndex == 4) {
+                            || o.srcElement.item(i).dom.selectedIndex == 4
+                            || o.srcElement.item(i).dom.selectedIndex == 12) {
                                 collateralDisable = false;
                             }
                         }
@@ -190,7 +191,8 @@
 
                         if (cashFlowSourceDDLList.item(i).dom.selectedIndex == 2
                             || cashFlowSourceDDLList.item(i).dom.selectedIndex == 3
-                            || cashFlowSourceDDLList.item(i).dom.selectedIndex == 4) {
+                            || cashFlowSourceDDLList.item(i).dom.selectedIndex == 4
+                            || cashFlowSourceDDLList.item(i).dom.selectedIndex == 12) {
                             collateralDisable = false;
                         }
                     }
