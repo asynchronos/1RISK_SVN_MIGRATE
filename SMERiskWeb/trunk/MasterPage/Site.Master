@@ -1,0 +1,32 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.master.vb" Inherits="SMERiskWeb.Site" %>
+
+<%--<%@ Register Src="../WebUserControl/WebMenu/WebMenuControl.ascx" TagName="WebMenuControl"
+    TagPrefix="uc1" %>--%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>User System Data Site</title>
+    <link href="~/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <%--<uc1:WebMenuControl ID="WebMenuControl1" runat="server" />--%>
+    <h1 class="DDMainHeader">
+        SME Risk Web Site
+    </h1>
+    <div class="DDNavigation">
+        &nbsp;
+    </div>
+    <form id="form1" runat="server">
+    <div>
+        <%-- TODO: Enable partial rendering by setting the EnablePartialRendering attribute to "true" to provide a smoother browsing experience.
+             Leaving partial rendering disabled will provide a better debugging experience while the application is in development. --%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="false"
+            EnableScriptGlobalization="True" />
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
