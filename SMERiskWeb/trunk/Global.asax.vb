@@ -56,11 +56,11 @@ Public Class Global_asax
 
         'redirect to error page
         If err.[GetType]().Equals(GetType(System.Security.SecurityException)) Then
-            Response.Redirect("~/Aspx/Error/UnAuthorized.aspx")
+            Response.Redirect("~/Pages/Error/UnAuthorized.aspx")
         ElseIf err.[GetType]().Equals(GetType(NotImplementedException)) Then
-            Response.Redirect("~/Aspx/Error/NotImplemented.aspx")
+            Response.Redirect("~/Pages/Error/NotImplemented.aspx")
         Else
-            Response.Redirect("~/Aspx/Error/DefaultError.aspx")
+            Response.Redirect("~/Pages/Error/DefaultError.aspx")
         End If
     End Sub
 
