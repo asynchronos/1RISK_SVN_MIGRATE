@@ -90,6 +90,11 @@ namespace LGDCollectionData.Aspx
             ((TextBox)sender).Text = getQueryString("Default_Date");
         }
 
+        protected virtual void Default_Date_Label_PreRender(object sender, EventArgs e)
+        {
+            ((Label)sender).Text = getQueryString("Default_Date");
+        }
+
         protected void GridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             e.NewValues["UpdateUser"] = User.Identity.Name;
@@ -121,6 +126,122 @@ namespace LGDCollectionData.Aspx
         {
             GridView1.DataBind();
             DetailsView1.DataBind();
+        }
+
+        protected void LIMIT_STRUCTURE_GridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridView gv = (GridView)sender;
+            SqlDataSource ds = SqlDataSourceLIMIT_STRUCTURE;
+
+            if (e.CommandName.Equals("EmptyDataTemplateInsert"))
+            {
+                // Retrieve row
+                GridViewRow gvr = gv.Controls[0].Controls[0] as GridViewRow;
+
+                //if (gvr == null) { return; }
+
+                // Retrieve data from controls
+                TextBox cifTextbox = (TextBox)gvr.FindControl("CIF_TextBox");
+                Label defaultDateLabel = (Label)gvr.FindControl("Default_Date_Label");
+                DropDownList appIdDropDownList = (DropDownList)gvr.FindControl("APP_ID_DropDownList");
+                DropDownList limitTypADropDownList = (DropDownList)gvr.FindControl("LIMITTYP_A_DropDownList");
+                TextBox limitNoTextBox = (TextBox)gvr.FindControl("LIMITNO_TextBox");
+                TextBox limitD1TextBox = (TextBox)gvr.FindControl("Limit_D1_TextBox");
+                TextBox oneLvUpLimitIDAtD1TextBox = (TextBox)gvr.FindControl("One_Level_Up_Limit_ID_D1_TextBox");
+                DropDownList oneLvUpLimitCurrencyAtD1DropDownList = (DropDownList)gvr.FindControl("One_Level_Up_Limit_Currency_D1_DropDownList");
+                TextBox oneLvUpLimitAmountAtD1TextBox = (TextBox)gvr.FindControl("One_Level_Up_Limit_Amount_D1_TextBox");
+                TextBox twoLvUpLimitIDAtD1TextBox = (TextBox)gvr.FindControl("Two_Level_Up_Limit_ID_D1_TextBox");
+                DropDownList twoLvUpLimitCurrencyAtD1DropDownList = (DropDownList)gvr.FindControl("Two_Level_Up_Limit_Currency_D1_DropDownList");
+                TextBox twoLvUpLimitAmountAtD1TextBox = (TextBox)gvr.FindControl("Two_Level_Up_Limit_Amount_D1_TextBox");
+                TextBox threeLvUpLimitIDAtD1TextBox = (TextBox)gvr.FindControl("Three_Level_Up_Limit_ID_D1_TextBox");
+                DropDownList threeLvUpLimitCurrencyAtD1DropDownList = (DropDownList)gvr.FindControl("Three_Level_Up_Limit_Currency_D1_DropDownList");
+                TextBox threeLvUpLimitAmountAtD1TextBox = (TextBox)gvr.FindControl("Three_Level_Up_Limit_Amount_D1_TextBox");
+                TextBox fourLvUpLimitIDAtD1TextBox = (TextBox)gvr.FindControl("Four_Level_Up_Limit_ID_D1_TextBox");
+                DropDownList fourLvUpLimitCurrencyAtD1DropDownList = (DropDownList)gvr.FindControl("Four_Level_Up_Limit_Currency_D1_DropDownList");
+                TextBox fourLvUpLimitAmountAtD1TextBox = (TextBox)gvr.FindControl("Four_Level_Up_Limit_Amount_D1_TextBox");
+
+                // Set parameters
+                ds.InsertParameters["CIF"].DefaultValue = cifTextbox.Text;
+                ds.InsertParameters["Default_Date"].DefaultValue = defaultDateLabel.Text;
+                ds.InsertParameters["APP_ID"].DefaultValue = appIdDropDownList.SelectedValue;
+                ds.InsertParameters["LIMITTYP_A"].DefaultValue = limitTypADropDownList.SelectedValue;
+                ds.InsertParameters["LIMITNO"].DefaultValue = limitNoTextBox.Text;
+                ds.InsertParameters["Limit_D1"].DefaultValue = limitD1TextBox.Text;
+
+                ds.InsertParameters["One_Level_Up_Limit_ID_D1"].DefaultValue = oneLvUpLimitIDAtD1TextBox.Text;
+                ds.InsertParameters["One_Level_Up_Limit_Currency_D1"].DefaultValue = oneLvUpLimitCurrencyAtD1DropDownList.SelectedValue;
+                ds.InsertParameters["One_Level_Up_Limit_Amount_D1"].DefaultValue = oneLvUpLimitAmountAtD1TextBox.Text;
+
+                ds.InsertParameters["Two_Level_Up_Limit_ID_D1"].DefaultValue = twoLvUpLimitIDAtD1TextBox.Text;
+                ds.InsertParameters["Two_Level_Up_Limit_Currency_D1"].DefaultValue = twoLvUpLimitCurrencyAtD1DropDownList.SelectedValue;
+                ds.InsertParameters["Two_Level_Up_Limit_Amount_D1"].DefaultValue = twoLvUpLimitAmountAtD1TextBox.Text;
+
+                ds.InsertParameters["Three_Level_Up_Limit_ID_D1"].DefaultValue = threeLvUpLimitIDAtD1TextBox.Text;
+                ds.InsertParameters["Three_Level_Up_Limit_Currency_D1"].DefaultValue = threeLvUpLimitCurrencyAtD1DropDownList.SelectedValue;
+                ds.InsertParameters["Three_Level_Up_Limit_Amount_D1"].DefaultValue = threeLvUpLimitAmountAtD1TextBox.Text;
+
+                ds.InsertParameters["Four_Level_Up_Limit_ID_D1"].DefaultValue = fourLvUpLimitIDAtD1TextBox.Text;
+                ds.InsertParameters["Four_Level_Up_Limit_Currency_D1"].DefaultValue = fourLvUpLimitCurrencyAtD1DropDownList.SelectedValue;
+                ds.InsertParameters["Four_Level_Up_Limit_Amount_D1"].DefaultValue = fourLvUpLimitAmountAtD1TextBox.Text;
+
+                ds.InsertParameters["UpdateUser"].DefaultValue = User.Identity.Name;
+                ds.InsertParameters["UpdateDate"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
+
+                // Perform insert
+                ds.Insert();
+            }
+            else if (e.CommandName.Equals("FooterInsert"))
+            {
+                // Retrieve data from controls
+                TextBox cifTextbox = (TextBox)gv.FooterRow.FindControl("CIF_TextBox");
+                Label defaultDateLabel = (Label)gv.FooterRow.FindControl("Default_Date_Label");
+                DropDownList appIdDropDownList = (DropDownList)gv.FooterRow.FindControl("APP_ID_DropDownList");
+                DropDownList limitTypADropDownList = (DropDownList)gv.FooterRow.FindControl("LIMITTYP_A_DropDownList");
+                TextBox limitNoTextBox = (TextBox)gv.FooterRow.FindControl("LIMITNO_TextBox");
+                TextBox limitD1TextBox = (TextBox)gv.FooterRow.FindControl("Limit_D1_TextBox");
+                TextBox oneLvUpLimitIDAtD1TextBox = (TextBox)gv.FooterRow.FindControl("One_Level_Up_Limit_ID_D1_TextBox");
+                DropDownList oneLvUpLimitCurrencyAtD1DropDownList = (DropDownList)gv.FooterRow.FindControl("One_Level_Up_Limit_Currency_D1_DropDownList");
+                TextBox oneLvUpLimitAmountAtD1TextBox = (TextBox)gv.FooterRow.FindControl("One_Level_Up_Limit_Amount_D1_TextBox");
+                TextBox twoLvUpLimitIDAtD1TextBox = (TextBox)gv.FooterRow.FindControl("Two_Level_Up_Limit_ID_D1_TextBox");
+                DropDownList twoLvUpLimitCurrencyAtD1DropDownList = (DropDownList)gv.FooterRow.FindControl("Two_Level_Up_Limit_Currency_D1_DropDownList");
+                TextBox twoLvUpLimitAmountAtD1TextBox = (TextBox)gv.FooterRow.FindControl("Two_Level_Up_Limit_Amount_D1_TextBox");
+                TextBox threeLvUpLimitIDAtD1TextBox = (TextBox)gv.FooterRow.FindControl("Three_Level_Up_Limit_ID_D1_TextBox");
+                DropDownList threeLvUpLimitCurrencyAtD1DropDownList = (DropDownList)gv.FooterRow.FindControl("Three_Level_Up_Limit_Currency_D1_DropDownList");
+                TextBox threeLvUpLimitAmountAtD1TextBox = (TextBox)gv.FooterRow.FindControl("Three_Level_Up_Limit_Amount_D1_TextBox");
+                TextBox fourLvUpLimitIDAtD1TextBox = (TextBox)gv.FooterRow.FindControl("Four_Level_Up_Limit_ID_D1_TextBox");
+                DropDownList fourLvUpLimitCurrencyAtD1DropDownList = (DropDownList)gv.FooterRow.FindControl("Four_Level_Up_Limit_Currency_D1_DropDownList");
+                TextBox fourLvUpLimitAmountAtD1TextBox = (TextBox)gv.FooterRow.FindControl("Four_Level_Up_Limit_Amount_D1_TextBox");
+
+                // Set parameters
+                ds.InsertParameters["CIF"].DefaultValue = cifTextbox.Text;
+                ds.InsertParameters["Default_Date"].DefaultValue = defaultDateLabel.Text;
+                ds.InsertParameters["APP_ID"].DefaultValue = appIdDropDownList.SelectedValue;
+                ds.InsertParameters["LIMITTYP_A"].DefaultValue = limitTypADropDownList.SelectedValue;
+                ds.InsertParameters["LIMITNO"].DefaultValue = limitNoTextBox.Text;
+                ds.InsertParameters["Limit_D1"].DefaultValue = limitD1TextBox.Text;
+
+                ds.InsertParameters["One_Level_Up_Limit_ID_D1"].DefaultValue = oneLvUpLimitIDAtD1TextBox.Text;
+                ds.InsertParameters["One_Level_Up_Limit_Currency_D1"].DefaultValue = oneLvUpLimitCurrencyAtD1DropDownList.SelectedValue;
+                ds.InsertParameters["One_Level_Up_Limit_Amount_D1"].DefaultValue = oneLvUpLimitAmountAtD1TextBox.Text;
+
+                ds.InsertParameters["Two_Level_Up_Limit_ID_D1"].DefaultValue = twoLvUpLimitIDAtD1TextBox.Text;
+                ds.InsertParameters["Two_Level_Up_Limit_Currency_D1"].DefaultValue = twoLvUpLimitCurrencyAtD1DropDownList.SelectedValue;
+                ds.InsertParameters["Two_Level_Up_Limit_Amount_D1"].DefaultValue = twoLvUpLimitAmountAtD1TextBox.Text;
+
+                ds.InsertParameters["Three_Level_Up_Limit_ID_D1"].DefaultValue = threeLvUpLimitIDAtD1TextBox.Text;
+                ds.InsertParameters["Three_Level_Up_Limit_Currency_D1"].DefaultValue = threeLvUpLimitCurrencyAtD1DropDownList.SelectedValue;
+                ds.InsertParameters["Three_Level_Up_Limit_Amount_D1"].DefaultValue = threeLvUpLimitAmountAtD1TextBox.Text;
+
+                ds.InsertParameters["Four_Level_Up_Limit_ID_D1"].DefaultValue = fourLvUpLimitIDAtD1TextBox.Text;
+                ds.InsertParameters["Four_Level_Up_Limit_Currency_D1"].DefaultValue = fourLvUpLimitCurrencyAtD1DropDownList.SelectedValue;
+                ds.InsertParameters["Four_Level_Up_Limit_Amount_D1"].DefaultValue = fourLvUpLimitAmountAtD1TextBox.Text;
+
+                ds.InsertParameters["UpdateUser"].DefaultValue = User.Identity.Name;
+                ds.InsertParameters["UpdateDate"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
+
+                // Perform insert
+                ds.Insert();
+            }
         }
     }
 }

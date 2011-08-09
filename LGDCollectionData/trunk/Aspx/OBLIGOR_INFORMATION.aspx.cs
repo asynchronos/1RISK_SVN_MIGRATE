@@ -45,7 +45,15 @@ namespace LGDCollectionData.Aspx
             DateTime inputDate = DateTime.ParseExact(args.Value, cal.Format, cul);
             DateTime compareDate = DateTime.ParseExact(t.Text, cal.Format, cul);
 
-            args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
+            DateTime notAvailableDate = DateTime.ParseExact("1 January 9999", cal.Format, cul);
+            if (inputDate.Equals(notAvailableDate) || compareDate.Equals(notAvailableDate))
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
+            }
         }
 
         protected void Rating_Date_TextBox_ServerValidate(object source, ServerValidateEventArgs args)
@@ -58,7 +66,15 @@ namespace LGDCollectionData.Aspx
             DateTime inputDate = DateTime.ParseExact(args.Value, cal.Format, cul);
             DateTime compareDate = DateTime.ParseExact(t.Text, cal.Format, cul);
 
-            args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
+            DateTime notAvailableDate = DateTime.ParseExact("1 January 9999", cal.Format, cul);
+            if (inputDate.Equals(notAvailableDate) || compareDate.Equals(notAvailableDate))
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = (inputDate.CompareTo(compareDate) == -1) ? true : false;
+            }
         }
 
     }

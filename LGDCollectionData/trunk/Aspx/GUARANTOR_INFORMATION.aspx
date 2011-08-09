@@ -330,6 +330,22 @@
                             <asp:Label ID="Label6" runat="server" Text='<%# Bind("Internal_Rating_D") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+            <asp:TemplateField HeaderText="Do you want to delete this page?" SortExpression="DEL_FLAG">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                        Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
+                    <span style="color: Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                        Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
+                    <span style="color: Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                                Checked='<%# Bind("DEL_FLAG") %>' Enabled="false" domId="DEL_FLAG_CheckBox"/>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="UPDATE USER" SortExpression="UPDATE_USER">
                 <EditItemTemplate>
                     <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
@@ -404,6 +420,7 @@
                     <asp:Parameter Name="Internal_Rating_D" Type="String" />
                     <asp:Parameter Name="UpdateUser" Type="String" />
                     <asp:Parameter Name="UpdateDate" Type="DateTime" />
+                    <asp:Parameter Name="DEL_FLAG" Type="Boolean" />
                 </InsertParameters>
                 <SelectParameters>
                     <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
@@ -422,6 +439,7 @@
                     <asp:Parameter Name="Internal_Rating_D" Type="String" />
                     <asp:Parameter Name="UpdateUser" Type="String" />
                     <asp:Parameter Name="UpdateDate" Type="DateTime" />
+                    <asp:Parameter Name="DEL_FLAG" Type="Boolean" />
                 </UpdateParameters>
             </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceGar_Ind" runat="server" 
