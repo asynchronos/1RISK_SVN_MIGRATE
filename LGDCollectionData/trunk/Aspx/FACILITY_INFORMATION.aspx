@@ -370,14 +370,16 @@
                     <asp:Label ID="LabelStarCyc" runat="server" Text=" " ForeColor="Red"></asp:Label>
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Undrawn Amount in Next 12 months(starting from D-1)" SortExpression="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS">
+            <asp:TemplateField HeaderText="Undrawn Amount in Next 12 months for TERM LOAN <br/>(starting from D-1)" SortExpression="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS">
                 <EditItemTemplate>
                     <asp:TextBox ID="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHSTextBox" runat="server" Text='<%# Bind("UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
+                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="UNDRAWN_AMOUNT_IN_NEXT_12_MONTHSTextBox" runat="server" Text='<%# Bind("UNDRAWN_AMOUNT_IN_NEXT_12_MONTHS","{0:#,##0.00}") %>'
                         IsNumeric="Yes"></asp:TextBox>
+                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Compounding Frequency of Interest" SortExpression="CompoundingFrequencyofInterest">
@@ -401,9 +403,11 @@
             <asp:TemplateField HeaderText="This Limit is Mixed Line" SortExpression="THIS_LIMIT_IS_MIXED_LINE">
                 <EditItemTemplate>
                     <asp:CheckBox ID="THIS_LIMIT_IS_MIXED_LINECheckBox" runat="server" Checked='<%# Bind("THIS_LIMIT_IS_MIXED_LINE") %>' />
+                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:CheckBox ID="THIS_LIMIT_IS_MIXED_LINECheckBox" runat="server" Checked='<%# Bind("THIS_LIMIT_IS_MIXED_LINE") %>' />
+                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Sharing Limit with CIF 1" SortExpression="SharingLimitwithCIF1">
@@ -477,6 +481,22 @@
                         Style="text-align: right"></asp:TextBox>
                     <asp:Label ID="LabelStarCIF6" runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </InsertItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Do you want to delete this page?" SortExpression="DEL_FLAG">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                        Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
+                    <span style="color: Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                        Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
+                    <span style="color: Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                                Checked='<%# Bind("DEL_FLAG") %>' Enabled="false" domId="DEL_FLAG_CheckBox"/>
+                </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
                 <EditItemTemplate>
@@ -957,6 +977,20 @@
                         <asp:Label ID="LabelStarCIF6" runat="server" Text=" " ForeColor="Red"></asp:Label>
                     </EditItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="Do you want to delete this page?" SortExpression="DEL_FLAG">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                        Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                        Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                                Checked='<%# Bind("DEL_FLAG") %>' Enabled="false" domId="DEL_FLAG_CheckBox"/>
+                </ItemTemplate>
+            </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Update User"
                     SortExpression="UpdateUser">
                     <ItemTemplate>

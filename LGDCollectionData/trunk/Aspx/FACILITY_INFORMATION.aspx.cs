@@ -12,7 +12,7 @@ namespace LGDCollectionData.Aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected virtual void CIF_TextBox_PreRender(object sender, EventArgs e)
