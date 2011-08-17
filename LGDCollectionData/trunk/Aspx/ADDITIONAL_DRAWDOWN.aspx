@@ -227,6 +227,23 @@
                     </asp:DropDownList><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Additional Drawdown Date" 
+                SortExpression="Additional_Drawdown_Date">
+                <EditItemTemplate>
+                    <asp:Label ID="Label1" runat="server" 
+                        Text='<%# Eval("Additional_Drawdown_Date","{0:d MMMM yyyy}") %>'></asp:Label>
+                </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Additional Drawdown Currency" SortExpression="Additional_Drawdown_Currency">
+                <EditItemTemplate>
+                    <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSourceAddCurrency"
+                        DataTextField="Description" DataValueField="Code" AppendDataBoundItems="true"
+                        SelectedValue='<%# Bind("Additional_Drawdown_Currency","{0:N}") %>'>
+                        <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:Label ID="Label5"  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                </EditItemTemplate>
+          </asp:TemplateField>
             <asp:TemplateField HeaderText="PRINCIPAL" SortExpression="PRINCIPAL">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PRINCIPAL","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
@@ -270,23 +287,7 @@
                         <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Additional Drawdown Date" 
-                SortExpression="Additional_Drawdown_Date">
-                <EditItemTemplate>
-                    <asp:Label ID="Label1" runat="server" 
-                        Text='<%# Eval("Additional_Drawdown_Date","{0:d MMMM yyyy}") %>'></asp:Label>
-                </EditItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Additional Drawdown Currency" SortExpression="Additional_Drawdown_Currency">
-                <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSourceAddCurrency"
-                        DataTextField="Description" DataValueField="Code" AppendDataBoundItems="true"
-                        SelectedValue='<%# Bind("Additional_Drawdown_Currency","{0:N}") %>'>
-                        <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
-                </EditItemTemplate>
-          </asp:TemplateField>
+            
             <asp:TemplateField HeaderText="LIMIT NO" SortExpression="LIMITNO">
                 <EditItemTemplate>
                     <asp:Label ID="Label4" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>

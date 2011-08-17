@@ -355,7 +355,7 @@
                                 ValidationGroup="BeforeInsert"></asp:RequiredFieldValidator>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Discount_Rate" SortExpression="Discount_Rate">
+                    <asp:TemplateField HeaderText="Discount_Rate(%)" SortExpression="Discount_Rate">
                         <EditItemTemplate>
                             <asp:TextBox ID="Discount_Rate_TextBox" runat="server" Text='<%# Bind("Discount_Rate","{0:#,##0.00}") %>'
                                 onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this)" CssClass="NumTextBox"></asp:TextBox>

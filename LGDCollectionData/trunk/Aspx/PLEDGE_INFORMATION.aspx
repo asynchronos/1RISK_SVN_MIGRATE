@@ -107,8 +107,8 @@
                             var isMinus = (Number(intValueStr) < 0) ? true : false;
                             var absoluteValue = intValueStr.replace("-", "");
 
-                            for (var i = (absoluteValue.length - 1); i >= 0; i--) {
-                                result = absoluteValue.charAt(i) + result;
+                            for (var j = (absoluteValue.length - 1); j >= 0; j--) {
+                                result = absoluteValue.charAt(j) + result;
                                 splitCount++;
                             }
 
@@ -672,6 +672,22 @@
                     <asp:Label ID="REMARK_Label" runat="server" Text='<%# Bind("REMARK") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Do you want to delete this page?" SortExpression="DEL_FLAG">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                        Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
+                    <span style="color: Red">*</span>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                        Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
+                    <span style="color: Red">*</span>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                                Checked='<%# Bind("DEL_FLAG") %>' Enabled="false" domId="DEL_FLAG_CheckBox"/>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
                 <EditItemTemplate>
                     <%--<asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:TextBox>--%>
@@ -1189,6 +1205,7 @@
             <asp:Parameter Name="REMARK" Type="String" />
             <asp:Parameter Name="UpdateUser" Type="String" />
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
+            <asp:Parameter Name="DEL_FLAG" Type="Boolean" />
         </InsertParameters>
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
@@ -1216,6 +1233,7 @@
             <asp:Parameter Name="REMARK" Type="String" />
             <asp:Parameter Name="UpdateUser" Type="String" />
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
+            <asp:Parameter Name="DEL_FLAG" Type="Boolean" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceCurrentcy" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
