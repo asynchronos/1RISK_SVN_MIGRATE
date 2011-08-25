@@ -86,6 +86,13 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
                     ((Label)dv.FindControl("LabelDate_Insert")).Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
                 }
             }
+            else if (dv.CurrentMode == DetailsViewMode.Insert)
+            {
+                dv.ChangeMode(DetailsViewMode.Insert);
+                ((Label)dv.FindControl("LabelCif_Insert")).Text = Request.QueryString.Get("CIF");
+                ((Label)dv.FindControl("LabelUserId_Insert")).Text = User.Identity.Name.ToString();
+                ((Label)dv.FindControl("LabelDate_Insert")).Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
+            }
         }
 
     }
