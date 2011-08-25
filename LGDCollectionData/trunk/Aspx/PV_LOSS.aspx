@@ -182,7 +182,9 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Pv Gain(Loss)" SortExpression="Pv_Loss">
                             <EditItemTemplate>
-                                <asp:Label ID="Pv_Loss_Label" runat="server" Text='<%# Bind("Pv_Loss","{0:#,##0.00}") %>'></asp:Label>
+                                <asp:TextBox ID="Pv_Loss_TextBox" runat="server" Text='<%# Bind("Pv_Loss","{0:#,##0.00}") %>'
+                                    onkeyup="formatCurrencyOnkeyup(this,event);" onblur="returnNum(event,this);"
+                                    CssClass="NumTextBox"></asp:TextBox>
                             </EditItemTemplate>
                             <InsertItemTemplate>
                                 <asp:TextBox ID="Pv_Loss_TextBox" runat="server" Text='<%# Bind("Pv_Loss","{0:#,##0.00}") %>'
@@ -197,7 +199,10 @@
                             <EditItemTemplate>
                                 <%--<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" CommandName="New"
                                     Text="New"></asp:LinkButton>
-                                &nbsp;--%>&nbsp;
+                                &nbsp;--%><asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True"
+                                    CommandName="Update" Text="Update"></asp:LinkButton>
+                                &nbsp;<asp:LinkButton ID="Cancel_LinkButton" runat="server" CausesValidation="False"
+                                    CommandName="Cancel" Text="Cancel"></asp:LinkButton>
                             </EditItemTemplate>
                             <InsertItemTemplate>
                                 <asp:LinkButton ID="Insert_LinkButton" runat="server" CausesValidation="True" CommandName="Insert"
@@ -208,8 +213,8 @@
                             <ItemTemplate>
                                 <asp:LinkButton ID="Edit_LinkButton" runat="server" CausesValidation="False" CommandName="Edit"
                                     Text="Edit"></asp:LinkButton>
-                                <%--&nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False"
-                                    CommandName="New" Text="New"></asp:LinkButton>--%>
+                                &nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False"
+                                    CommandName="New" Text="New"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Fields>
