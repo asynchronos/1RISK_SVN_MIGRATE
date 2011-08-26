@@ -290,7 +290,7 @@
             var checkBoxProperty_Under_Construction = Ext.DotNetControl.CheckBox.mapElement("domId", "CheckBoxProperty_Under_Construction");
             var textBoxLeasehold_Period = Ext.DotNetControl.Element.mapElement("input", "domId", "TextBoxLeasehold_Period");
             var textBoxLeasehold_Start_Date = Ext.DotNetControl.Element.mapElement("input", "domId", "TextBoxLeasehold_Start_Date");
-            
+
             //Start Collateral Type
             textBoxCOLL_ID.element.on({
                 "blur": function (e, t, o) {
@@ -412,7 +412,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBoxDefault_Date_Insert" runat="server" Text='<%# Bind("Default_Date") %>'></asp:TextBox>
@@ -423,7 +423,7 @@
                     </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="APPS ID" SortExpression="APPS_ID">
@@ -739,7 +739,7 @@
     <asp:Panel ID="Wrapper_Panel" runat="server" Width="800px" ScrollBars="Horizontal">
     <asp:GridView ID="GridView_COLL_INFO" runat="server" AutoGenerateColumns="False"
         DataSourceID="SqlDataSourceCOLL_INFO" EnableModelValidation="True" CellPadding="4"
-        DataKeyNames="COLL_ID,PLED_ID,PLED_SEQ,APPS_ID" ForeColor="#333333" OnRowUpdating="GridView_RowUpdating"
+        DataKeyNames="COLL_ID,Default_Date,PLED_ID,PLED_SEQ,APPS_ID" ForeColor="#333333" OnRowUpdating="GridView_RowUpdating"
         ShowFooter="True" OnRowCommand="GridView_COLL_INFO_RowCommand" AllowPaging="True" PagerSettings-Mode="NumericFirstLast">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
@@ -777,7 +777,21 @@
                     <asp:Label ID="LabelCOLL_ID" runat="server" Text='<%# Bind("COLL_ID") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="LabelCOLL_ID_Footer" runat="server" Width="10ex" MaxLength="9" domId="TextBoxCOLL_ID"></asp:TextBox>
+                    <asp:TextBox ID="LabelCOLL_ID" runat="server" Width="10ex" MaxLength="9" domId="TextBoxCOLL_ID"></asp:TextBox>
+                </FooterTemplate>
+                <HeaderStyle Wrap="False" />
+                <ItemStyle Wrap="False" />
+            </asp:TemplateField>
+
+            <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date" HeaderStyle-Wrap="false" ItemStyle-Wrap="false">
+                <EditItemTemplate>
+                    <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Bind("Default_Date","{0:d MMMM yyyy}") %>'></asp:Label>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Bind("Default_Date","{0:d MMMM yyyy}") %>'></asp:Label>
+                </ItemTemplate>
+                <FooterTemplate>
+                    <asp:Label ID="LabelDefault_Date" runat="server" OnPreRender="LabelDefault_Date_PreRender"></asp:Label>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -790,12 +804,12 @@
                     <asp:Label ID="LabelPLED_ID" runat="server" Text='<%# Bind("PLED_ID") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:Label ID="LabelPLED_ID_Footer" runat="server" OnPreRender="LabelPLED_ID_PreRender"></asp:Label>
+                    <asp:Label ID="LabelPLED_ID" runat="server" OnPreRender="LabelPLED_ID_PreRender"></asp:Label>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="PLED SEQ" SortExpression="PLED_SEQ" HeaderStyle-Wrap="false" ItemStyle-Wrap="false">
+            <asp:TemplateField HeaderText="PLED SEQ" SortExpression="PLED_SEQ" HeaderStyle-Wrap="false" ItemStyle-Wrap="false" FooterStyle-HorizontalAlign="Center">
                         <ItemStyle HorizontalAlign="Center" />
                 <EditItemTemplate>
                     <asp:Label ID="LabelPLED_SEQ" runat="server" Text='<%# Bind("PLED_SEQ") %>'></asp:Label>
@@ -804,8 +818,7 @@
                     <asp:Label ID="LabelPLED_SEQ" runat="server" Text='<%# Bind("PLED_SEQ") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:Label ID="LabelPLED_SEQ_Footer" runat="server" OnPreRender="LabelPLED_SEQ_PreRender"
-                        Style="text-align: center"></asp:Label>
+                    <asp:Label ID="LabelPLED_SEQ" runat="server" OnPreRender="LabelPLED_SEQ_PreRender"></asp:Label>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -818,7 +831,7 @@
                     <asp:Label ID="LabelAPPS_ID" runat="server" Text='<%# Bind("APPS_ID") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:Label ID="LabelAPPS_ID_Footer" runat="server" OnPreRender="LabelAPPS_ID_PreRender"></asp:Label>
+                    <asp:Label ID="LabelAPPS_ID" runat="server" OnPreRender="LabelAPPS_ID_PreRender"></asp:Label>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -835,9 +848,9 @@
                     <asp:Label ID="LabelAPPS_DATE" runat="server" Text='<%# Bind("APPS_DATE","{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="TextBoxAPPS_DATE_Footer" runat="server" Text='<%# Bind("APPS_DATE","{0:d MMMM yyyy}") %>' Width="17ex"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxAPPS_DATE" runat="server" Text='<%# Bind("APPS_DATE","{0:d MMMM yyyy}") %>' Width="17ex"></asp:TextBox>
                     <asp:CalendarExtender ID="TextBoxAPPS_DATE_CalendarExtender" runat="server" Enabled="True"
-                        TargetControlID="TextBoxAPPS_DATE_Footer" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy"
+                        TargetControlID="TextBoxAPPS_DATE" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy"
                         TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </FooterTemplate>
@@ -866,7 +879,7 @@
                         AppendDataBoundItems="True" DataSourceID="SqlDataSourceCollType" 
                         DataTextField="Thai Description" DataValueField="Code" 
                         SelectedValue='<%# Bind("Collateral_Type") %>'
-                        domId="DropDownListCollateral_Type" Enabled="false">
+                        domId="DropDownListCollateral_Type">
                         <asp:ListItem Value="">N/A</asp:ListItem>
                     </asp:DropDownList>
                 </FooterTemplate>
@@ -910,7 +923,7 @@
                     <asp:Label ID="LabelCollateral_Description" runat="server" Text='<%# Bind("Collateral_Description") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="TextBoxCollateral_Description_Footer" runat="server" Text='<%# Bind("Collateral_Description") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBoxCollateral_Description" runat="server" Text='<%# Bind("Collateral_Description") %>'></asp:TextBox>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -923,7 +936,7 @@
                     <asp:Label ID="LabelDistrict_of_Property" runat="server" Text='<%# Bind("District_of_Property") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="TextBoxDistrict_of_Property_Footer" runat="server" Text='<%# Bind("District_of_Property") %>' domId="TextBoxDistrict_of_Property"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxDistrict_of_Property" runat="server" Text='<%# Bind("District_of_Property") %>' domId="TextBoxDistrict_of_Property"></asp:TextBox>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -936,7 +949,7 @@
                     <asp:Label ID="LabelAmphur_of_Property" runat="server" Text='<%# Bind("Amphur_of_Property") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="TextBoxAmphur_of_Property_Footer" runat="server" Text='<%# Bind("Amphur_of_Property") %>' domId="TextBoxAmphur_of_Property"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxAmphur_of_Property" runat="server" Text='<%# Bind("Amphur_of_Property") %>' domId="TextBoxAmphur_of_Property"></asp:TextBox>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -955,7 +968,7 @@
                     </asp:DropDownList>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:DropDownList ID="DropDownListProvince_Footer" runat="server" DataSourceID="SqlDataSourcePROVINCE"
+                    <asp:DropDownList ID="DropDownListProvince" runat="server" DataSourceID="SqlDataSourcePROVINCE"
                         DataTextField="Prov_Thai" DataValueField="Code" SelectedValue='<%# Bind("Province_of_Property") %>' domId="DropDownListProvince">
                     </asp:DropDownList>
                 </FooterTemplate>
@@ -970,7 +983,7 @@
                     <asp:Label ID="LabelLocated_Country_of_Property" runat="server" Text='<%# Bind("Located_Country_of_Property") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="TextBoxLocated_Country_of_Property_Footer" runat="server" Text='<%# Bind("Located_Country_of_Property") %>' domId="TextBoxLocated_Country_of_Property"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxLocated_Country_of_Property" runat="server" Text='<%# Bind("Located_Country_of_Property") %>' domId="TextBoxLocated_Country_of_Property"></asp:TextBox>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -983,7 +996,7 @@
                     <asp:Label ID="LabelCollateral_Provider" runat="server" Text='<%# Bind("Collateral_Provider") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="TextBoxCollateral_Provider_Footer" runat="server" Text='<%# Bind("Collateral_Provider") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBoxCollateral_Provider" runat="server" Text='<%# Bind("Collateral_Provider") %>'></asp:TextBox>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -997,7 +1010,7 @@
                         Enabled="false" />
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:CheckBox ID="CheckBoxProperty_Under_Construction_Footer" runat="server" Checked='<%# Bind("Property_Under_Construction") %>' domId="CheckBoxProperty_Under_Construction"/>
+                    <asp:CheckBox ID="CheckBoxProperty_Under_Construction" runat="server" Checked='<%# Bind("Property_Under_Construction") %>' domId="CheckBoxProperty_Under_Construction"/>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -1010,7 +1023,7 @@
                     <asp:Label ID="LabelLeasehold_Period" runat="server" Text='<%# Bind("Leasehold_Period") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="TextBoxLeasehold_Period_Footer" runat="server" Text='<%# Bind("Leasehold_Period") %>' IsNumber="Yes" domId="TextBoxLeasehold_Period"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxLeasehold_Period" runat="server" Text='<%# Bind("Leasehold_Period") %>' IsNumber="Yes" domId="TextBoxLeasehold_Period"></asp:TextBox>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
@@ -1027,15 +1040,61 @@
                     <asp:Label ID="LabelLeasehold_Start_Date" runat="server" Text='<%# Bind("Leasehold_Start_Date","{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="TextBoxLeasehold_Start_Date_Footer" runat="server" Text='<%# Bind("Leasehold_Start_Date","{0:d MMMM yyyy}") %>' Width="17ex" domId="TextBoxLeasehold_Start_Date"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxLeasehold_Start_Date" runat="server" Text='<%# Bind("Leasehold_Start_Date","{0:d MMMM yyyy}") %>' Width="17ex" domId="TextBoxLeasehold_Start_Date"></asp:TextBox>
                     <asp:CalendarExtender ID="TextBoxLeasehold_Start_Date_CalendarExtender" runat="server"
-                        Enabled="True" TargetControlID="TextBoxLeasehold_Start_Date_Footer" Format="d MMMM yyyy"
+                        Enabled="True" TargetControlID="TextBoxLeasehold_Start_Date" Format="d MMMM yyyy"
                         DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </FooterTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="@D" SortExpression="At_D" HeaderStyle-Wrap="false" ItemStyle-Wrap="false">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="CheckBoxAt_D" runat="server" Checked='<%# Bind("At_D") %>' domId="CheckBoxAt_D"/>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckBoxAt_D" runat="server" Checked='<%# Bind("At_D") %>'
+                        Enabled="false" />
+                </ItemTemplate>
+                <FooterTemplate>
+                    <asp:CheckBox ID="CheckBoxAt_D" runat="server" Checked='<%# Bind("At_D") %>' domId="CheckBoxAt_D"/>
+                </FooterTemplate>
+                <HeaderStyle Wrap="False" />
+                <ItemStyle Wrap="False" />
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="@D-1" SortExpression="At_D_MINUS_1" HeaderStyle-Wrap="false" ItemStyle-Wrap="false">
+                <EditItemTemplate>
+                    <asp:CheckBox ID="CheckBoxAt_D_MINUS_1" runat="server" Checked='<%# Bind("At_D_MINUS_1") %>' domId="CheckBoxAt_D_MINUS_1"/>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckBoxAt_D_MINUS_1" runat="server" Checked='<%# Bind("At_D_MINUS_1") %>'
+                        Enabled="false" />
+                </ItemTemplate>
+                <FooterTemplate>
+                    <asp:CheckBox ID="CheckBoxAt_D_MINUS_1" runat="server" Checked='<%# Bind("At_D_MINUS_1") %>' domId="CheckBoxAt_D_MINUS_1"/>
+                </FooterTemplate>
+                <HeaderStyle Wrap="False" />
+                <ItemStyle Wrap="False" />
+            </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Update User"
+                    SortExpression="UpdateUser">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Update Date"
+                    SortExpression="UpdateDate">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                    </EditItemTemplate>
+                </asp:TemplateField>
         </Columns>
         <EmptyDataTemplate>
             <table>
@@ -1045,52 +1104,67 @@
                             &nbsp;
                         </td>
                         <td style="white-space:nowrap;">
-                            COLL_ID
+                            COLL ID
                         </td>
                         <td style="white-space:nowrap;">
-                            PLED_ID
+                            DEFAULT DATE
                         </td>
                         <td style="white-space:nowrap;">
-                            PLED_SEQ
+                            PLED ID
                         </td>
                         <td style="white-space:nowrap;">
-                            APPS_ID
+                            PLED SEQ
                         </td>
                         <td style="white-space:nowrap;">
-                            APPS_DATE
+                            APPS ID
                         </td>
                         <td style="white-space:nowrap;">
-                            Collateral_Type
+                            APPS DATE
                         </td>
                         <td style="white-space:nowrap;">
-                            Property_Type
+                            Collateral Type
                         </td>
                         <td style="white-space:nowrap;">
-                            Collateral_Description
+                            Property Type
                         </td>
                         <td style="white-space:nowrap;">
-                            District_of_Property
+                            Collateral Description
                         </td>
                         <td style="white-space:nowrap;">
-                            Amphur_of_Property
+                            District of Property
                         </td>
                         <td style="white-space:nowrap;">
-                            Province_of_Property
+                            Amphur of Property
                         </td>
                         <td style="white-space:nowrap;">
-                            Located_Country_of_Property
+                            Province of Property
                         </td>
                         <td style="white-space:nowrap;">
-                            Collateral_Provider
+                            Located Country of Property
                         </td>
                         <td style="white-space:nowrap;">
-                            Property_Under_Construction
+                            Collateral Provider
                         </td>
                         <td style="white-space:nowrap;">
-                            Leasehold_Period
+                            Property Under Construction
                         </td>
                         <td style="white-space:nowrap;">
-                            Leasehold_Start_Date
+                            Leasehold Period
+                        </td>
+                        <td style="white-space:nowrap;">
+                            Leasehold Start Date
+                        </td>
+                        <td style="white-space:nowrap;">
+                            @D
+                        </td>
+                        <td style="white-space:nowrap;">
+                            @D-1
+                        </td>
+                        <td style="white-space:nowrap;">
+                            Update User
+                        </td>
+                        <td style="white-space:nowrap;">
+                            Update Date
                         </td>
                     </tr>
                 </thead>
@@ -1101,6 +1175,9 @@
                     </td>
                     <td style="white-space:nowrap;">
                         <asp:TextBox ID="TextBoxCOLL_ID" runat="server" Width="10ex" MaxLength="9" domId="TextBoxCOLL_ID"></asp:TextBox>
+                    </td>
+                    <td style="white-space:nowrap;">
+                        <asp:Label ID="LabelDefault_Date" runat="server" Format="d MMMM yyyy" Width="17ex" OnPreRender="LabelPLED_ID_PreRender"></asp:Label>
                     </td>
                     <td style="white-space:nowrap;">
                         <asp:Label ID="LabelPLED_ID" runat="server" OnPreRender="LabelPLED_ID_PreRender"></asp:Label>
@@ -1166,6 +1243,18 @@
                             Enabled="True" TargetControlID="TextBoxLeasehold_Start_Date" Format="d MMMM yyyy"
                             DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                         </asp:CalendarExtender>
+                    </td>
+                    <td style="white-space:nowrap;">
+                        <asp:CheckBox ID="CheckBoxAt_D" runat="server" Checked="false" domId="CheckBoxAt_D"/>
+                    </td>
+                    <td style="white-space:nowrap;">
+                        <asp:CheckBox ID="CheckBoxAt_D_MINUS_1" runat="server" Checked="false" domId="CheckBoxAt_D_MINUS_1"/>
+                    </td>
+                    <td style="white-space:nowrap;">
+                        &nbsp;
+                    </td>
+                    <td style="white-space:nowrap;">
+                        &nbsp;
                     </td>
                 </tr>
             </table>
@@ -1239,6 +1328,7 @@
     <asp:SqlDataSource ID="SqlDataSourceCurrentcy" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="L_CURRENCY_CODE_SELECT" EnableCaching="True" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
+    <asp:HiddenField ID="HiddenFieldDefault_Date" runat="server" />
     <asp:HiddenField ID="HiddenFieldAPPS_ID" runat="server" />
     <asp:HiddenField ID="HiddenFieldPLED_ID" runat="server" />
     <asp:HiddenField ID="HiddenFieldPLED_SEQ" runat="server" />
@@ -1252,6 +1342,7 @@
         DeleteCommand="COLLATERAL_INFORMATION_DELETE" DeleteCommandType="StoredProcedure">
         <InsertParameters>
             <asp:Parameter Name="COLL_ID" Type="String" />
+            <asp:Parameter Name="Default_Date" Type="DateTime" />
             <asp:Parameter Name="PLED_ID" Type="String" />
             <asp:Parameter Name="PLED_SEQ" Type="Int16" />
             <asp:Parameter Name="APPS_ID" Type="String" />
@@ -1269,14 +1360,18 @@
             <asp:Parameter Name="Leasehold_Start_Date" Type="DateTime" />
             <asp:Parameter Name="UpdateUser" Type="String" />
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
+            <asp:Parameter Name="At_D" Type="Boolean" />
+            <asp:Parameter Name="At_D_MINUS_1" Type="Boolean" />
         </InsertParameters>
         <SelectParameters>
+            <asp:Parameter Name="Default_Date" Type="DateTime" />
             <asp:Parameter Name="PLED_ID" Type="String" />
             <asp:Parameter Name="PLED_SEQ" Type="Int16" />
             <asp:Parameter Name="APPS_ID" Type="String" />
         </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="COLL_ID" Type="String" />
+            <asp:Parameter Name="Default_Date" Type="DateTime" />
             <asp:Parameter Name="PLED_ID" Type="String" />
             <asp:Parameter Name="PLED_SEQ" Type="Int16" />
             <asp:Parameter Name="APPS_ID" Type="String" />
@@ -1294,9 +1389,12 @@
             <asp:Parameter Name="Leasehold_Start_Date" Type="DateTime" />
             <asp:Parameter Name="UpdateUser" Type="String" />
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
+            <asp:Parameter Name="At_D" Type="Boolean" />
+            <asp:Parameter Name="At_D_MINUS_1" Type="Boolean" />
         </UpdateParameters>
         <DeleteParameters>
             <asp:Parameter Name="COLL_ID" Type="String" />
+            <asp:Parameter Name="Default_Date" Type="DateTime" />
             <asp:Parameter Name="PLED_ID" Type="String" />
             <asp:Parameter Name="PLED_SEQ" Type="Int16" />
             <asp:Parameter Name="APPS_ID" Type="String" />
