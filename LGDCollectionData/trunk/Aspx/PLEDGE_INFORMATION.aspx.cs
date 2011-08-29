@@ -11,7 +11,6 @@ using System.Configuration;
 using log4net;
 using AjaxControlToolkit;
 using System.Globalization;
-
 namespace LGDCollectionData.Aspx
 {
 
@@ -355,7 +354,7 @@ namespace LGDCollectionData.Aspx
                 ds.InsertParameters["Leasehold_Period"].DefaultValue = TextBoxLeasehold_Period.Text;
                 ds.InsertParameters["Leasehold_Start_Date"].DefaultValue = TextBoxLeasehold_Start_Date.Text;
                 ds.InsertParameters["UpdateUser"].DefaultValue = User.Identity.Name;
-                ds.InsertParameters["UpdateDate"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff");
+                ds.InsertParameters["UpdateDate"].DefaultValue = DateTime.Now.ToString("d MMMM yyyy HH:mm:ss.fff"); // DateTime.Now.ToString();
                 ds.InsertParameters["At_D"].DefaultValue = CheckBoxAt_D.Checked == true ? "true" : "false";
                 ds.InsertParameters["At_D_MINUS_1"].DefaultValue = CheckBoxAt_D_MINUS_1.Checked == true ? "true" : "false";
 

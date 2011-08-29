@@ -1177,7 +1177,7 @@
                         <asp:TextBox ID="TextBoxCOLL_ID" runat="server" Width="10ex" MaxLength="9" domId="TextBoxCOLL_ID"></asp:TextBox>
                     </td>
                     <td style="white-space:nowrap;">
-                        <asp:Label ID="LabelDefault_Date" runat="server" Format="d MMMM yyyy" Width="17ex" OnPreRender="LabelPLED_ID_PreRender"></asp:Label>
+                        <asp:Label ID="LabelDefault_Date" runat="server" Format="d MMMM yyyy" Width="17ex" OnPreRender="LabelDefault_Date_PreRender"></asp:Label>
                     </td>
                     <td style="white-space:nowrap;">
                         <asp:Label ID="LabelPLED_ID" runat="server" OnPreRender="LabelPLED_ID_PreRender"></asp:Label>
