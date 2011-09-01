@@ -764,7 +764,7 @@
             <asp:TemplateField ShowHeader="False" HeaderStyle-Wrap="false" ItemStyle-Wrap="false">
                 <ItemTemplate>
                     <asp:LinkButton ID="LinkButtonDelete" runat="server" CausesValidation="False" 
-                        CommandName="Delete" Text="Delete"></asp:LinkButton>
+                        CommandName="Delete" Text="Delete" OnClientClick="return confirm('คุณต้องการลบข้อมูล Record นี้?');"></asp:LinkButton>
                 </ItemTemplate>
                 <HeaderStyle Wrap="False" />
                 <ItemStyle Wrap="False" />
