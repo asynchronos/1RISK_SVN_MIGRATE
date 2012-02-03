@@ -119,7 +119,7 @@
         <asp:Label ID="Label1" runat="server" Text="FACILITY INFORMATION"></asp:Label>
     </h2>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
-        DataKeyNames="CIF,DefaultDate,LIMITNO" DataSourceID="SqlDataSourceFacility" PagerSettings-Mode="Numeric"
+        DataKeyNames="CIF,DefaultDate,APP_ID,LIMITNO" DataSourceID="SqlDataSourceFacility" PagerSettings-Mode="Numeric"
         RowStyle-Wrap="true" EnableModelValidation="True" 
         OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnItemUpdating="DetailsView_ItemUpdating" OnItemUpdated="DetailsView_ItemUpdated"
@@ -157,11 +157,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownListAPP_ID" runat="server" DataSourceID="SqlDataSourceAppID"
+		<asp:Label ID="LabelAPP_ID" runat="server" Text='<%# Eval("APP_ID") %>'></asp:Label>
+                    <!--<asp:DropDownList ID="DropDownListAPP_ID" runat="server" DataSourceID="SqlDataSourceAppID"
                         DataTextField="APP_ID" DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'
                         AppendDataBoundItems="true">
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                    </asp:DropDownList>
+                    </asp:DropDownList>-->
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:DropDownList ID="DropDownListAPP_ID" runat="server" DataSourceID="SqlDataSourceAppID"
