@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using log4net;
-using AjaxControlToolkit;
-using System.Globalization;
 
 namespace LGDCollectionData.Aspx
 {
@@ -15,6 +9,7 @@ namespace LGDCollectionData.Aspx
         private static readonly ILog log = LogManager.GetLogger(
 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
+
         protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e)
         {
             //MessageBox.Show(e.AffectedRows.ToString());
@@ -44,10 +39,8 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             //}
         }
 
-
         protected void DetailsView_Databound(Object sender, EventArgs e)
         {
-
             if (DetailsView2.CurrentMode == DetailsViewMode.Edit)
             {
                 //System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView2.FindControl("LabelUserId");
@@ -95,5 +88,18 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             }
         }
 
+        protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                SqlDataSourceGur_Info.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                SqlDataSourceGur_Info.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
+            }
+        }
     }
 }

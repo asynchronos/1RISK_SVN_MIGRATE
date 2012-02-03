@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="NPA_RECORD.aspx.cs" Inherits="LGDCollectionData.Aspx.NPA_RECORD_NEW" Culture="en-US" UICulture="en-US" %>
+    CodeBehind="NPA_RECORD.aspx.cs" Inherits="LGDCollectionData.Aspx.NPA_RECORD_NEW"
+    Culture="en-US" UICulture="en-US" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="../UserControls/SelectFormWebUserControl.ascx" TagName="SelectFormWebUserControl"
@@ -139,13 +140,16 @@
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <asp:DropDownList ID="DDLValidate" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate_SelectedIndexChanged">
+        <asp:ListItem Value="-1">All</asp:ListItem>
+        <asp:ListItem Value="1">Validate</asp:ListItem>
+    </asp:DropDownList>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,Default_Date,NPA_Collateral_ID" DataSourceID="SqlDataSourceNPA_RECORD"
-        EnableModelValidation="True" DefaultMode="Edit"
-        CellPadding="4" ForeColor="#333333" GridLines="Both" OnPreRender="DetailsView_OnPreRender"
-        OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnItemUpdating="DetailsView_ItemUpdating"
-        OnItemUpdated="DetailsView_ItemUpdated" Width="600px">
+        EnableModelValidation="True" DefaultMode="Edit" CellPadding="4" ForeColor="#333333"
+        GridLines="Both" OnPreRender="DetailsView_OnPreRender" OnPageIndexChanging="DetailsView_PageIndexChanging"
+        OnItemUpdating="DetailsView_ItemUpdating" OnItemUpdated="DetailsView_ItemUpdated"
+        Width="600px">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%" />
@@ -166,10 +170,11 @@
                     <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-<asp:TextBox ID="TextBoxDefault_Date_Insert" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
-                           <span style="color: Red">*</span>
-                    <asp:CalendarExtender ID="TextBoxDefault_Date_Insert_CalendarExtender" 
-                        runat="server" TargetControlID="TextBoxDefault_Date_Insert" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
+                    <asp:TextBox ID="TextBoxDefault_Date_Insert" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <span style="color: Red">*</span>
+                    <asp:CalendarExtender ID="TextBoxDefault_Date_Insert_CalendarExtender" runat="server"
+                        TargetControlID="TextBoxDefault_Date_Insert" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy"
+                        TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -232,8 +237,7 @@
             <asp:TemplateField HeaderText="Collateral Sale Price" SortExpression="Collateral_Sale_Price">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Collateral_Sale_Price","{0:#,##0.00}") %>'
-                        IsNumeric="Yes"
-                        Style="text-align: right;"></asp:TextBox>
+                        IsNumeric="Yes" Style="text-align: right;"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Collateral Sale Price"
                         Text="*" ValidationGroup="detailviewValidation" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>--%>
                 </EditItemTemplate>
@@ -249,39 +253,39 @@
             <asp:TemplateField HeaderText="Collateral Sale Date" SortExpression="Collateral_Sale_Date">
                 <EditItemTemplate>
                     <asp:TextBox ID="Collateral_Sale_Date_TextBox" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
-                    <asp:CalendarExtender ID="Collateral_Sale_Date_TextBox_CalendarExtender" runat="server" Enabled="True"
-                        TargetControlID="Collateral_Sale_Date_TextBox" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy"
-                                TodaysDateFormat="d MMMM yyyy">
+                    <asp:CalendarExtender ID="Collateral_Sale_Date_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Collateral_Sale_Date_TextBox" Format="d MMMM yyyy"
+                        DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
-                    <asp:CustomValidator ID="Collateral_Sale_Date_TextBox_Validator" runat="server" ErrorMessage="Must later than default date." ControlToValidate="Collateral_Sale_Date_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Collateral_Sale_Date_TextBox_ServerValidate"></asp:CustomValidator>
+                    <asp:CustomValidator ID="Collateral_Sale_Date_TextBox_Validator" runat="server" ErrorMessage="Must later than default date."
+                        ControlToValidate="Collateral_Sale_Date_TextBox" ValidationGroup="detailviewValidation"
+                        SetFocusOnError="true" OnServerValidate="Collateral_Sale_Date_TextBox_ServerValidate"></asp:CustomValidator>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Collateral_Sale_Date_TextBox" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:TextBox>
-                    <asp:CalendarExtender ID="Collateral_Sale_Date_TextBox_CalendarExtender" runat="server" Enabled="True"
-                        TargetControlID="Collateral_Sale_Date_TextBox" Format="d MMMM yyyy" DaysModeTitleFormat="MMMM yyyy"
-                                TodaysDateFormat="d MMMM yyyy">
+                    <asp:CalendarExtender ID="Collateral_Sale_Date_TextBox_CalendarExtender" runat="server"
+                        Enabled="True" TargetControlID="Collateral_Sale_Date_TextBox" Format="d MMMM yyyy"
+                        DaysModeTitleFormat="MMMM yyyy" TodaysDateFormat="d MMMM yyyy">
                     </asp:CalendarExtender>
-                    <asp:CustomValidator ID="Collateral_Sale_Date_TextBox_Validator" runat="server" ErrorMessage="Must later than default date." ControlToValidate="Collateral_Sale_Date_TextBox" ValidationGroup="detailviewValidation" SetFocusOnError="true" OnServerValidate="Collateral_Sale_Date_TextBox_ServerValidate"></asp:CustomValidator>
+                    <asp:CustomValidator ID="Collateral_Sale_Date_TextBox_Validator" runat="server" ErrorMessage="Must later than default date."
+                        ControlToValidate="Collateral_Sale_Date_TextBox" ValidationGroup="detailviewValidation"
+                        SetFocusOnError="true" OnServerValidate="Collateral_Sale_Date_TextBox_ServerValidate"></asp:CustomValidator>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label6" runat="server" Text='<%# Bind("Collateral_Sale_Date","{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Collateral Description" 
-                SortExpression="Collateral_Description">
+            <asp:TemplateField HeaderText="Collateral Description" SortExpression="Collateral_Description">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox8" runat="server" 
-                        Text='<%# Bind("Collateral_Description") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Collateral_Description") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox7" runat="server" 
-                        Text='<%# Bind("Collateral_Description") %>'></asp:TextBox>
-                        <span style="color: Red">*</span>
+                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Collateral_Description") %>'></asp:TextBox>
+                    <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label15" runat="server" 
-                        Text='<%# Bind("Collateral_Description") %>'></asp:Label>
+                    <asp:Label ID="Label15" runat="server" Text='<%# Bind("Collateral_Description") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="District of Property" SortExpression="District_of_Property">
@@ -330,10 +334,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Title Deed Number" SortExpression="Title_Deed_Number">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Title_Deed_Number") %>' Width="300px" MaxLength="255"></asp:TextBox>
+                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Title_Deed_Number") %>'
+                        Width="300px" MaxLength="255"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox14" runat="server" Text='<%# Bind("Title_Deed_Number") %>' Width="300px" MaxLength="255"></asp:TextBox>
+                    <asp:TextBox ID="TextBox14" runat="server" Text='<%# Bind("Title_Deed_Number") %>'
+                        Width="300px" MaxLength="255"></asp:TextBox>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>

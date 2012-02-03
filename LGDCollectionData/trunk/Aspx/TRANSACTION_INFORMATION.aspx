@@ -20,7 +20,6 @@
             //percentageElements.set({ maxLength: 3 });
             //end check percentage digit
 
-
             //format IsNumeric Element onblur event
             var numericElements = Ext.select("input[type=text][IsNumeric=Yes]");
             numericElements.on({
@@ -91,6 +90,10 @@
     <h2>
         <asp:Label ID="FormName_Label" runat="server" Text="TRANSACTION INFORMATION"></asp:Label>
     </h2>
+    <asp:DropDownList ID="DDLValidate" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate_SelectedIndexChanged">
+        <asp:ListItem Value="-1">All</asp:ListItem>
+        <asp:ListItem Value="1">Validate</asp:ListItem>
+    </asp:DropDownList>
     <asp:DetailsView ID="TRANSACTION_INFORMATION_DetailsView" runat="server" AutoGenerateRows="False"
         CellPadding="4" DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO"
         DataSourceID="TRANSACTION_INFORMATION_SqlDataSource" EnableModelValidation="True"

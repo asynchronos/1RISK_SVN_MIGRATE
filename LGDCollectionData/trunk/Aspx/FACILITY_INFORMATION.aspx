@@ -118,9 +118,13 @@
     <h2>
         <asp:Label ID="Label1" runat="server" Text="FACILITY INFORMATION"></asp:Label>
     </h2>
+    <asp:DropDownList ID="DDLValidate" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate_SelectedIndexChanged">
+        <asp:ListItem Value="-1">All</asp:ListItem>
+        <asp:ListItem Value="1">Validate</asp:ListItem>
+    </asp:DropDownList>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,DefaultDate,APP_ID,LIMITNO" DataSourceID="SqlDataSourceFacility" PagerSettings-Mode="Numeric"
-        RowStyle-Wrap="true" EnableModelValidation="True" 
+        RowStyle-Wrap="true" EnableModelValidation="True"
         OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnItemUpdating="DetailsView_ItemUpdating" OnItemUpdated="DetailsView_ItemUpdated"
         OnPreRender="DetailsView_OnPreRender" CellPadding="4" ForeColor="#333333">
@@ -485,17 +489,17 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Do you want to delete this page?" SortExpression="DEL_FLAG">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server"
                         Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server"
                         Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server"
                                 Checked='<%# Bind("DEL_FLAG") %>' Enabled="false" domId="DEL_FLAG_CheckBox"/>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -980,15 +984,15 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Do you want to delete this page?" SortExpression="DEL_FLAG">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server"
                         Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server"
                         Checked='<%# Bind("DEL_FLAG") %>' domId="DEL_FLAG_CheckBox"/>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server" 
+                    <asp:CheckBox ID="DEL_FLAG_CheckBox" runat="server"
                                 Checked='<%# Bind("DEL_FLAG") %>' Enabled="false" domId="DEL_FLAG_CheckBox"/>
                 </ItemTemplate>
             </asp:TemplateField>

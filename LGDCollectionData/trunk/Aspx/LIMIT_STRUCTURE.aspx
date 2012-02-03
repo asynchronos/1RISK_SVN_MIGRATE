@@ -13,7 +13,7 @@
     <style type="text/css">
         .gvFixedHeader
         {
-            white-space:nowrap;
+            white-space: nowrap;
         }
     </style>
     <!-- Ext includes -->
@@ -96,14 +96,14 @@
     <h2>
         <asp:Label ID="FormName_Label" runat="server" Text="LIMIT STRUCTURE"></asp:Label>
     </h2>
+    <asp:DropDownList ID="DDLValidate" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate_SelectedIndexChanged">
+        <asp:ListItem Value="-1">All</asp:ListItem>
+        <asp:ListItem Value="1">Validate</asp:ListItem>
+    </asp:DropDownList>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
-        DataKeyNames="CIF,Default_Date,LIMITNO" 
-        DataSourceID="SqlDataSourceLIMIT_STRUCTURE"
-        ForeColor="#333333" 
-        OnPreRender="DetailsView_OnPreRender"
-        OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnItemUpdating="DetailsView_ItemUpdating"
-        OnItemUpdated="DetailsView_ItemUpdated"
+        DataKeyNames="CIF,Default_Date,LIMITNO" DataSourceID="SqlDataSourceLIMIT_STRUCTURE"
+        ForeColor="#333333" OnPreRender="DetailsView_OnPreRender" OnPageIndexChanging="DetailsView_PageIndexChanging"
+        OnItemUpdating="DetailsView_ItemUpdating" OnItemUpdated="DetailsView_ItemUpdated"
         Width="800px" CellPadding="4" GridLines="Both">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
@@ -185,12 +185,13 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Limit @ D-1" SortExpression="Limit_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.00}") %>' IsNumeric="Yes"
-                        Style="text-align: right;"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes" Style="text-align: right;"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Input Limit_D1" ControlToValidate="TextBox1" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.00}") %>'></asp:Label>
@@ -229,11 +230,13 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="One Level Up Limit Amount @ D-1" SortExpression="One_Level_Up_Limit_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes">
+                    <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes">
                     </asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label9" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
@@ -272,10 +275,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Two Level Up Limit Amount @ D-1" SortExpression="Two_Level_Up_Limit_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label11" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
@@ -313,10 +318,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Three Level Up Limit Amount @ D-1" SortExpression="Three_Level_Up_Limit_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label13" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
@@ -354,10 +361,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Four Level Up Limit Amount @ D-1" SortExpression="Four_Level_Up_Limit_Amount_D1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label15" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
@@ -387,8 +396,8 @@
             </asp:TemplateField>
             <asp:TemplateField ShowHeader="False">
                 <EditItemTemplate>
-                    <asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" visible="false" CommandName="New"
-                        Text="New"></asp:LinkButton>
+                    <asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" Visible="false"
+                        CommandName="New" Text="New"></asp:LinkButton>
                     &nbsp;<asp:LinkButton ID="Update_LinkButton" runat="server" CausesValidation="True"
                         CommandName="Update" Text="Update"></asp:LinkButton>
                     &nbsp;<asp:LinkButton ID="Cancel_LinkButton" runat="server" CausesValidation="False"
@@ -403,8 +412,8 @@
                 <ItemTemplate>
                     <asp:LinkButton ID="Edit_LinkButton" runat="server" CausesValidation="False" CommandName="Edit"
                         Text="Edit"></asp:LinkButton>
-                    &nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False" Visible="false"
-                        CommandName="New" Text="New"></asp:LinkButton>
+                    &nbsp;<asp:LinkButton ID="New_LinkButton" runat="server" CausesValidation="False"
+                        Visible="false" CommandName="New" Text="New"></asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
         </Fields>
@@ -418,10 +427,8 @@
     <asp:SqlDataSource ID="SqlDataSourceLIMIT_STRUCTURE" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         InsertCommand="LIMIT_STRUCTURE_INSERT" InsertCommandType="StoredProcedure" SelectCommand="LIMIT_STRUCTURE_SELECT"
         SelectCommandType="StoredProcedure" UpdateCommand="LIMIT_STRUCTURE_UPDATE" UpdateCommandType="StoredProcedure"
-        DeleteCommand="LIMIT_STRUCTURE_DELETE" DeleteCommandType="StoredProcedure"
-        OnUpdated="SqlDataSourceLIMIT_STRUCTURE_Updated"
-        OnInserted="SqlDataSourceLIMIT_STRUCTURE_Inserted"
-        OnDeleted="SqlDataSourceLIMIT_STRUCTURE_Deleted">
+        DeleteCommand="LIMIT_STRUCTURE_DELETE" DeleteCommandType="StoredProcedure" OnUpdated="SqlDataSourceLIMIT_STRUCTURE_Updated"
+        OnInserted="SqlDataSourceLIMIT_STRUCTURE_Inserted" OnDeleted="SqlDataSourceLIMIT_STRUCTURE_Deleted">
         <InsertParameters>
             <asp:Parameter Name="CIF" Type="String" />
             <asp:Parameter Name="Default_Date" Type="DateTime" />
@@ -487,12 +494,9 @@
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
             DataSourceID="SqlDataSourceLIMIT_STRUCTURE" EnableModelValidation="True" BackColor="White"
             BorderColor="#DEDFDE" ForeColor="Black" GridLines="Both" AutoGenerateColumns="false"
-            DataKeyNames="CIF,Default_Date,LIMITNO" 
-            OnRowUpdating="GridView_RowUpdating" CellPadding="4"
-            OnRowDataBound="GridView_RowDataBound"
-            OnRowCommand="LIMIT_STRUCTURE_GridView_RowCommand"
-            HeaderStyle-Wrap="false" PagerSettings-Mode="NumericFirstLast" 
-            ShowFooter="True">
+            DataKeyNames="CIF,Default_Date,LIMITNO" OnRowUpdating="GridView_RowUpdating"
+            CellPadding="4" OnRowDataBound="GridView_RowDataBound" OnRowCommand="LIMIT_STRUCTURE_GridView_RowCommand"
+            HeaderStyle-Wrap="false" PagerSettings-Mode="NumericFirstLast" ShowFooter="True">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:TemplateField ItemStyle-Wrap="false" ShowHeader="False">
@@ -528,7 +532,8 @@
                         <asp:Label ID="LabelCIF" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Default Date" SortExpression="Default_Date" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Default Date" SortExpression="Default_Date"
+                    HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                     </EditItemTemplate>
@@ -539,19 +544,18 @@
                         <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="APP ID" SortExpression="APP_ID" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="APP ID" SortExpression="APP_ID"
+                    HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                       <asp:DropDownList ID="DropDownListAPP" runat="server" DataSourceID="SqlDataSourceAPP" 
+                        <asp:DropDownList ID="DropDownListAPP" runat="server" DataSourceID="SqlDataSourceAPP"
                             DataTextField="APP_ID" DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID")%>'
                             AppendDataBoundItems="true">
                             <asp:ListItem Value="">...Please Select...</asp:ListItem>
                         </asp:DropDownList>
-              
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="APP_ID_DropDownList" runat="server" DataSourceID="SqlDataSourceAPP"
-                            DataTextField="APP_ID" DataValueField="APP_ID" 
-                            AppendDataBoundItems="true">
+                            DataTextField="APP_ID" DataValueField="APP_ID" AppendDataBoundItems="true">
                             <asp:ListItem Value="">...Please Select...</asp:ListItem>
                         </asp:DropDownList>
                     </FooterTemplate>
@@ -563,7 +567,8 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="LIMITTYPE A" SortExpression="LIMITTYP_A" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="LIMITTYPE A" SortExpression="LIMITTYP_A"
+                    HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownListLIMITTYPE" runat="server" DataSourceID="SqlDataSourceLIMIT_TYPE"
                             DataTextField="LIMITTYP_A" DataValueField="LIMITTYP_A" AppendDataBoundItems="true"
@@ -585,7 +590,8 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="LIMIT NO" SortExpression="LIMITNO" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="LIMIT NO" SortExpression="LIMITNO"
+                    HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
                     </EditItemTemplate>
@@ -596,9 +602,11 @@
                         <asp:Label ID="Label2" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Limit @ D-1" SortExpression="Limit_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Limit @ D-1" SortExpression="Limit_D1"
+                    HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.00}") %>' IsNumeric="Yes" Style="text-align: right;"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.00}") %>'
+                            IsNumeric="Yes" Style="text-align: right;"></asp:TextBox>
                         <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Input Limit_D1" ControlToValidate="TextBox1" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
                     </EditItemTemplate>
                     <FooterTemplate>
@@ -608,7 +616,8 @@
                         <asp:Label ID="Label7" runat="server" Text='<%# Bind("Limit_D1","{0:#,##0.00}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="One Level Up Limit ID @ D-1" SortExpression="One_Level_Up_Limit_ID_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="One Level Up Limit ID @ D-1"
+                    SortExpression="One_Level_Up_Limit_ID_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBoxOne_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
                         <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Input One_Level_Up_Limit_ID_D1" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
@@ -620,7 +629,8 @@
                         <asp:Label ID="LabelOne_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_ID_D1") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="One Level Up Limit Currency @ D-1" SortExpression="One_Level_Up_Limit_Currency_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="One Level Up Limit Currency @ D-1"
+                    SortExpression="One_Level_Up_Limit_Currency_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownListCurrency1" runat="server" DataSourceID="SqlDataSourceCurrentcy"
                             DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("One_Level_Up_Limit_Currency_D1")%>'
@@ -629,8 +639,8 @@
                         </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:DropDownList ID="One_Level_Up_Limit_Currency_D1_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                            DataTextField="Description" DataValueField="Code" 
+                        <asp:DropDownList ID="One_Level_Up_Limit_Currency_D1_DropDownList" runat="server"
+                            DataSourceID="SqlDataSourceCurrentcy" DataTextField="Description" DataValueField="Code"
                             AppendDataBoundItems="true">
                             <asp:ListItem Value="">...Please Select...</asp:ListItem>
                         </asp:DropDownList>
@@ -643,33 +653,35 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="One Level Up Limit Amount @ D-1" SortExpression="One_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="One Level Up Limit Amount @ D-1"
+                    SortExpression="One_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes">
+                        <asp:TextBox ID="TextBoxOne_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                            IsNumeric="Yes">
                         </asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:TextBox ID="One_Level_Up_Limit_Amount_D1_TextBox" runat="server"  IsNumeric="Yes"></asp:TextBox>
+                        <asp:TextBox ID="One_Level_Up_Limit_Amount_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
                     </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label9" runat="server" Text='<%# Bind("One_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-
-              <asp:TemplateField  ItemStyle-Wrap="false"   HeaderStyle-Wrap="false" HeaderText="Two Level Up Limit ID @ D-1" SortExpression="Two_Level_Up_Limit_ID_D1">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
-                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Input One_Level_Up_Limit_ID_D1" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
-                </EditItemTemplate>
-                <FooterTemplate>
-                    <asp:TextBox ID="Two_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
-                </FooterTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="LabelTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Two Level Up Limit Currency @ D-1" SortExpression="Two_Level_Up_Limit_Currency_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderStyle-Wrap="false" HeaderText="Two Level Up Limit ID @ D-1"
+                    SortExpression="Two_Level_Up_Limit_ID_D1">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
+                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Input One_Level_Up_Limit_ID_D1" ControlToValidate="TextBox2" ValidationGroup="UpdateValidation" Text="*" ></asp:RequiredFieldValidator>--%>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="Two_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
+                    </FooterTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="LabelTwo_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_ID_D1") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Two Level Up Limit Currency @ D-1"
+                    SortExpression="Two_Level_Up_Limit_Currency_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownListCurrency2" runat="server" DataSourceID="SqlDataSourceCurrentcy"
                             DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Two_Level_Up_Limit_Currency_D1")%>'
@@ -678,8 +690,8 @@
                         </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:DropDownList ID="Two_Level_Up_Limit_Currency_D1_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                            DataTextField="Description" DataValueField="Code" 
+                        <asp:DropDownList ID="Two_Level_Up_Limit_Currency_D1_DropDownList" runat="server"
+                            DataSourceID="SqlDataSourceCurrentcy" DataTextField="Description" DataValueField="Code"
                             AppendDataBoundItems="true">
                             <asp:ListItem Value="">...Please Select...</asp:ListItem>
                         </asp:DropDownList>
@@ -692,18 +704,21 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Two Level Up Limit Amount @ D-1" SortExpression="Two_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Two Level Up Limit Amount @ D-1"
+                    SortExpression="Two_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxTwo_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                            IsNumeric="Yes"></asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:TextBox ID="Two_Level_Up_Limit_Amount_D1_TextBox" runat="server"  IsNumeric="Yes"></asp:TextBox>
+                        <asp:TextBox ID="Two_Level_Up_Limit_Amount_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
                     </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label11" runat="server" Text='<%# Bind("Two_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Three Level Up Limit ID @ D-1" SortExpression="Three_Level_Up_Limit_ID_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Three Level Up Limit ID @ D-1"
+                    SortExpression="Three_Level_Up_Limit_ID_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBoxThree_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -714,7 +729,8 @@
                         <asp:Label ID="Label12" runat="server" Text='<%# Bind("Three_Level_Up_Limit_ID_D1") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Three Level Up Limit Currency @ D-1" SortExpression="Three_Level_Up_Limit_Currency_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Three Level Up Limit Currency @ D-1"
+                    SortExpression="Three_Level_Up_Limit_Currency_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownListCurrency3" runat="server" DataSourceID="SqlDataSourceCurrentcy"
                             DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Three_Level_Up_Limit_Currency_D1")%>'
@@ -723,8 +739,8 @@
                         </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:DropDownList ID="Three_Level_Up_Limit_Currency_D1_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                            DataTextField="Description" DataValueField="Code" 
+                        <asp:DropDownList ID="Three_Level_Up_Limit_Currency_D1_DropDownList" runat="server"
+                            DataSourceID="SqlDataSourceCurrentcy" DataTextField="Description" DataValueField="Code"
                             AppendDataBoundItems="true">
                             <asp:ListItem Value="">...Please Select...</asp:ListItem>
                         </asp:DropDownList>
@@ -737,9 +753,11 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Three Level Up Limit Amount @ D-1" SortExpression="Three_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Three Level Up Limit Amount @ D-1"
+                    SortExpression="Three_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxThree_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                            IsNumeric="Yes"></asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="Three_Level_Up_Limit_Amount_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
@@ -748,7 +766,8 @@
                         <asp:Label ID="Label13" runat="server" Text='<%# Bind("Three_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Four Level Up Limit ID @ D-1" SortExpression="Four_Level_Up_Limit_ID_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Four Level Up Limit ID @ D-1"
+                    SortExpression="Four_Level_Up_Limit_ID_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBoxFour_Level_Up_Limit_ID_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_ID_D1") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -759,7 +778,8 @@
                         <asp:Label ID="Label14" runat="server" Text='<%# Bind("Four_Level_Up_Limit_ID_D1") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Four Level Up Limit Currency @ D-1" SortExpression="Four_Level_Up_Limit_Currency_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Four Level Up Limit Currency @ D-1"
+                    SortExpression="Four_Level_Up_Limit_Currency_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownListCurrency4" runat="server" DataSourceID="SqlDataSourceCurrentcy"
                             DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Four_Level_Up_Limit_Currency_D1")%>'
@@ -768,8 +788,8 @@
                         </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:DropDownList ID="Four_Level_Up_Limit_Currency_D1_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                            DataTextField="Description" DataValueField="Code"
+                        <asp:DropDownList ID="Four_Level_Up_Limit_Currency_D1_DropDownList" runat="server"
+                            DataSourceID="SqlDataSourceCurrentcy" DataTextField="Description" DataValueField="Code"
                             AppendDataBoundItems="true">
                             <asp:ListItem Value="">...Please Select...</asp:ListItem>
                         </asp:DropDownList>
@@ -782,18 +802,21 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Four Level Up Limit Amount @ D-1" SortExpression="Four_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Four Level Up Limit Amount @ D-1"
+                    SortExpression="Four_Level_Up_Limit_Amount_D1" HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxFour_Level_Up_Limit_Amount_D1" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'
+                            IsNumeric="Yes"></asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:TextBox ID="Four_Level_Up_Limit_Amount_D1_TextBox" runat="server"  IsNumeric="Yes"></asp:TextBox>
+                        <asp:TextBox ID="Four_Level_Up_Limit_Amount_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
                     </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label15" runat="server" Text='<%# Bind("Four_Level_Up_Limit_Amount_D1","{0:#,##0.00}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update User" SortExpression="UpdateUser" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update User" SortExpression="UpdateUser"
+                    HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                     </EditItemTemplate>
@@ -804,7 +827,8 @@
                         <asp:Label ID="LabelUpdateUser" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update Date" SortExpression="UpdateDate" HeaderStyle-Wrap="false">
+                <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Update Date" SortExpression="UpdateDate"
+                    HeaderStyle-Wrap="false">
                     <EditItemTemplate>
                         <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                     </EditItemTemplate>
@@ -817,170 +841,172 @@
                 </asp:TemplateField>
             </Columns>
             <EmptyDataTemplate>
-                    <table border="0">
-                        <thead style="background-color: #990000; font-weight: bold; color: White;">
-                            <tr>
-                                <td>
-                                    &nbsp;
-                                </td>
-                                <td>
-                                    &nbsp;
-                                </td>
-                                <td>
-                                    CIF
-                                </td>
-                                <td>
-                                    Default_Date
-                                </td>
-                                <td>
-                                    APP_ID
-                                </td>
-                                <td>
-                                    LIMITTYPE A
-                                </td>
-                                <td>
-                                    LIMIT NO
-                                </td>
-                                <td>
-                                    Limit @ D-1
-                                </td>
-                                <td>
-                                    One Level Up Limit ID @ D-1
-                                </td>
-                                <td>
-                                    One Level Up Limit Currency @ D-1
-                                </td>
-                                <td>
-                                    One Level Up Limit Amount @ D-1
-                                </td>
-                                <td>
-                                    Two Level Up Limit ID @ D-1
-                                </td>
-                                <td>
-                                    Two Level Up Limit Currency @ D-1
-                                </td>
-                                <td>
-                                    Two Level Up Limit Amount @ D-1
-                                </td>
-                                <td>
-                                    Three Level Up Limit ID @ D-1
-                                </td>
-                                <td>
-                                    Three Level Up Limit Currency @ D-1
-                                </td>
-                                <td>
-                                    Three Level Up Limit Amount @ D-1
-                                </td>
-                                <td>
-                                    Four Level Up Limit ID @ D-1
-                                </td>
-                                <td>
-                                    Four Level Up Limit Currency @ D-1
-                                </td>
-                                <td>
-                                    Four Level Up Limit Amount @ D-1
-                                </td>
-                                <td>
-                                    Update User
-                                </td>
-                                <td>
-                                    Update Date
-                                </td>
-                            </tr>
-                        </thead>
-                        <tr style="background-color: #FFFBD6; color: #333333;">
+                <table border="0">
+                    <thead style="background-color: #990000; font-weight: bold; color: White;">
+                        <tr>
                             <td>
-                                <asp:LinkButton ID="Insert_LinkButton" runat="server" CausesValidation="True" CommandName="EmptyDataTemplateInsert"
-                                    Text="Insert"></asp:LinkButton>
+                                &nbsp;
                             </td>
                             <td>
                                 &nbsp;
                             </td>
                             <td>
-                                <asp:TextBox ID="CIF_TextBox" runat="server"></asp:TextBox>
+                                CIF
                             </td>
                             <td>
-                                <asp:Label ID="Default_Date_Label" runat="server" OnPreRender="Default_Date_Label_PreRender"></asp:Label>
+                                Default_Date
                             </td>
                             <td>
-                                <asp:DropDownList ID="APP_ID_DropDownList" runat="server" DataSourceID="SqlDataSourceAPP" DataTextField="APP_ID" DataValueField="APP_ID" AppendDataBoundItems="true">
-                                <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                            </asp:DropDownList>
+                                APP_ID
                             </td>
                             <td>
-                                <asp:DropDownList ID="LIMITTYP_A_DropDownList" runat="server" DataSourceID="SqlDataSourceLIMIT_TYPE" DataTextField="LIMITTYP_A" DataValueField="LIMITTYP_A" AppendDataBoundItems="true">
-                                    <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                                </asp:DropDownList>
+                                LIMITTYPE A
                             </td>
                             <td>
-                                <asp:TextBox ID="LIMITNO_TextBox" runat="server"></asp:TextBox>
+                                LIMIT NO
                             </td>
                             <td>
-                                <asp:TextBox ID="Limit_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
+                                Limit @ D-1
                             </td>
                             <td>
-                                <asp:TextBox ID="One_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
+                                One Level Up Limit ID @ D-1
                             </td>
                             <td>
-                                <asp:DropDownList ID="One_Level_Up_Limit_Currency_D1_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                            DataTextField="Description" DataValueField="Code" 
-                            AppendDataBoundItems="true">
-                                <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                                </asp:DropDownList>
+                                One Level Up Limit Currency @ D-1
                             </td>
                             <td>
-                                <asp:TextBox ID="One_Level_Up_Limit_Amount_D1_TextBox" runat="server"  IsNumeric="Yes"></asp:TextBox>
+                                One Level Up Limit Amount @ D-1
                             </td>
                             <td>
-                                <asp:TextBox ID="Two_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
+                                Two Level Up Limit ID @ D-1
                             </td>
                             <td>
-                                <asp:DropDownList ID="Two_Level_Up_Limit_Currency_D1_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                            DataTextField="Description" DataValueField="Code" 
-                            AppendDataBoundItems="true">
-                            <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                                </asp:DropDownList>
+                                Two Level Up Limit Currency @ D-1
                             </td>
                             <td>
-                                <asp:TextBox ID="Two_Level_Up_Limit_Amount_D1_TextBox" runat="server"  IsNumeric="Yes"></asp:TextBox>
+                                Two Level Up Limit Amount @ D-1
                             </td>
                             <td>
-                                <asp:TextBox ID="Three_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
+                                Three Level Up Limit ID @ D-1
                             </td>
                             <td>
-                                <asp:DropDownList ID="Three_Level_Up_Limit_Currency_D1_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                            DataTextField="Description" DataValueField="Code" 
-                            AppendDataBoundItems="true">
-                            <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                                </asp:DropDownList>
+                                Three Level Up Limit Currency @ D-1
                             </td>
                             <td>
-                                <asp:TextBox ID="Three_Level_Up_Limit_Amount_D1_TextBox" runat="server"  IsNumeric="Yes"></asp:TextBox>
+                                Three Level Up Limit Amount @ D-1
                             </td>
                             <td>
-                                <asp:TextBox ID="Four_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
+                                Four Level Up Limit ID @ D-1
                             </td>
                             <td>
-                                <asp:DropDownList ID="Four_Level_Up_Limit_Currency_D1_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                            DataTextField="Description" DataValueField="Code" 
-                            AppendDataBoundItems="true">
-                            <asp:ListItem Value="">...Please Select...</asp:ListItem>
-                                </asp:DropDownList>
+                                Four Level Up Limit Currency @ D-1
                             </td>
                             <td>
-                                <asp:TextBox ID="Four_Level_Up_Limit_Amount_D1_TextBox" runat="server"  IsNumeric="Yes"></asp:TextBox>
+                                Four Level Up Limit Amount @ D-1
                             </td>
                             <td>
-                                <asp:Label ID="UpdateUser_Label" runat="server"></asp:Label>
+                                Update User
                             </td>
                             <td>
-                                <asp:Label ID="UpdateDate_Label" runat="server"></asp:Label>
+                                Update Date
                             </td>
                         </tr>
-                    </table>
-                </EmptyDataTemplate>
+                    </thead>
+                    <tr style="background-color: #FFFBD6; color: #333333;">
+                        <td>
+                            <asp:LinkButton ID="Insert_LinkButton" runat="server" CausesValidation="True" CommandName="EmptyDataTemplateInsert"
+                                Text="Insert"></asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            <asp:TextBox ID="CIF_TextBox" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:Label ID="Default_Date_Label" runat="server" OnPreRender="Default_Date_Label_PreRender"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="APP_ID_DropDownList" runat="server" DataSourceID="SqlDataSourceAPP"
+                                DataTextField="APP_ID" DataValueField="APP_ID" AppendDataBoundItems="true">
+                                <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="LIMITTYP_A_DropDownList" runat="server" DataSourceID="SqlDataSourceLIMIT_TYPE"
+                                DataTextField="LIMITTYP_A" DataValueField="LIMITTYP_A" AppendDataBoundItems="true">
+                                <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="LIMITNO_TextBox" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Limit_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="One_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="One_Level_Up_Limit_Currency_D1_DropDownList" runat="server"
+                                DataSourceID="SqlDataSourceCurrentcy" DataTextField="Description" DataValueField="Code"
+                                AppendDataBoundItems="true">
+                                <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="One_Level_Up_Limit_Amount_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Two_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="Two_Level_Up_Limit_Currency_D1_DropDownList" runat="server"
+                                DataSourceID="SqlDataSourceCurrentcy" DataTextField="Description" DataValueField="Code"
+                                AppendDataBoundItems="true">
+                                <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Two_Level_Up_Limit_Amount_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Three_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="Three_Level_Up_Limit_Currency_D1_DropDownList" runat="server"
+                                DataSourceID="SqlDataSourceCurrentcy" DataTextField="Description" DataValueField="Code"
+                                AppendDataBoundItems="true">
+                                <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Three_Level_Up_Limit_Amount_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Four_Level_Up_Limit_ID_D1_TextBox" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="Four_Level_Up_Limit_Currency_D1_DropDownList" runat="server"
+                                DataSourceID="SqlDataSourceCurrentcy" DataTextField="Description" DataValueField="Code"
+                                AppendDataBoundItems="true">
+                                <asp:ListItem Value="">...Please Select...</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Four_Level_Up_Limit_Amount_D1_TextBox" runat="server" IsNumeric="Yes"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:Label ID="UpdateUser_Label" runat="server"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="UpdateDate_Label" runat="server"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
             <FooterStyle BackColor="#CCCC99" />
-            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White"/>
+            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Left" />
             <RowStyle BackColor="#F7F7DE" />
             <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />

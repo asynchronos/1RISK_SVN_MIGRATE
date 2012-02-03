@@ -17,7 +17,6 @@
     <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
     <script type="text/javascript" src="../Scripts/common.js"></script>
-
     <script type="text/javascript">
         Ext.onReady(function () {
             //Ext.select("input[type=text]").setWidth("200px");
@@ -111,7 +110,8 @@
                 targetElement: { "FinancialCurrencyCodeDDL": financialCurrencyCodeDDL,
                     "TotalAssetsTextBox": totalAssetsTextBox,
                     "TotalLiabilitiesTextBox": totalLiabilitiesTextBox,
-                    "TotalRevenueTextBox": totalRevenueTextBox }
+                    "TotalRevenueTextBox": totalRevenueTextBox
+                }
             });
 
             //init section
@@ -139,13 +139,11 @@
         <asp:Label ID="FormName_Label" runat="server" Text="FINANCIAL SUMMARY"></asp:Label>
     </h2>
     <asp:SqlDataSource ID="Financial_Summary_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        SelectCommand="FINANCIAL_SUMMARY_SELECT" 
-        SelectCommandType="StoredProcedure" UpdateCommand="FINANCIAL_SUMMARY_UPDATE" 
-        UpdateCommandType="StoredProcedure">
+        SelectCommand="FINANCIAL_SUMMARY_SELECT" SelectCommandType="StoredProcedure"
+        UpdateCommand="FINANCIAL_SUMMARY_UPDATE" UpdateCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="CIF" Type="String" />
         </SelectParameters>
-        
         <UpdateParameters>
             <asp:Parameter Name="CIF" Type="String" />
             <asp:Parameter Name="Default_Date" Type="DateTime" />
@@ -158,11 +156,14 @@
             <asp:Parameter Name="UpdateUser" Type="String" />
             <asp:Parameter Name="updateDate" Type="DateTime" />
         </UpdateParameters>
-        
     </asp:SqlDataSource>
+    <asp:DropDownList ID="DDLValidate" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate_SelectedIndexChanged">
+        <asp:ListItem Value="-1">All</asp:ListItem>
+        <asp:ListItem Value="1">Validate</asp:ListItem>
+    </asp:DropDownList>
     <asp:DetailsView ID="Financial_Summary_DetailsView" runat="server" AllowPaging="True"
         AutoGenerateRows="False" DataKeyNames="CIF,Default_Date" DataSourceID="Financial_Summary_SqlDataSource"
-        EnableModelValidation="True" DefaultMode="Edit" CellPadding="4" ForeColor="#333333"    
+        EnableModelValidation="True" DefaultMode="Edit" CellPadding="4" ForeColor="#333333"
         OnPageIndexChanging="DetailsView_PageIndexChanging" OnItemUpdating="DetailsView_ItemUpdating"
         OnItemUpdated="DetailsView_ItemUpdated">
         <AlternatingRowStyle BackColor="White" />
@@ -194,32 +195,38 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Data Not Available" SortExpression="DATA_NOT_AVAILABLE">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="DATA_NOT_AVAILABLE_CheckBox" runat="server" Checked='<%# Bind("DATA_NOT_AVAILABLE") %>' domId="DATA_NOT_AVAILABLE_CheckBox"/>
+                    <asp:CheckBox ID="DATA_NOT_AVAILABLE_CheckBox" runat="server" Checked='<%# Bind("DATA_NOT_AVAILABLE") %>'
+                        domId="DATA_NOT_AVAILABLE_CheckBox" />
                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:CheckBox ID="DATA_NOT_AVAILABLE_CheckBox" runat="server" Checked='<%# Bind("DATA_NOT_AVAILABLE") %>' domId="DATA_NOT_AVAILABLE_CheckBox"/>
+                    <asp:CheckBox ID="DATA_NOT_AVAILABLE_CheckBox" runat="server" Checked='<%# Bind("DATA_NOT_AVAILABLE") %>'
+                        domId="DATA_NOT_AVAILABLE_CheckBox" />
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:CheckBox ID="DATA_NOT_AVAILABLE_CheckBox" runat="server" Checked='<%# Bind("DATA_NOT_AVAILABLE") %>' Enabled="false" domId="DATA_NOT_AVAILABLE_CheckBox"/>
+                    <asp:CheckBox ID="DATA_NOT_AVAILABLE_CheckBox" runat="server" Checked='<%# Bind("DATA_NOT_AVAILABLE") %>'
+                        Enabled="false" domId="DATA_NOT_AVAILABLE_CheckBox" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Financial Currency Code" SortExpression="Financial_Currency_Code">
                 <EditItemTemplate>
                     <asp:DropDownList ID="Financial_Currency_Code_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                        DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Financial_Currency_Code")%>' domId="Financial_Currency_Code_DropDownList">
+                        DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Financial_Currency_Code")%>'
+                        domId="Financial_Currency_Code_DropDownList">
                     </asp:DropDownList>
                     <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:DropDownList ID="Financial_Currency_Code_DropDownList" runat="server" DataSourceID="SqlDataSourceCurrentcy"
-                        DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Financial_Currency_Code")%>' domId="Financial_Currency_Code_DropDownList">
+                        DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("Financial_Currency_Code")%>'
+                        domId="Financial_Currency_Code_DropDownList">
                     </asp:DropDownList>
                     <span style="color: Red">*</span>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Financial_Currency_Code_Label" runat="server" Text='<%# Bind("Financial_Currency_Code") %>' domId="Financial_Currency_Code_Label"></asp:Label>
+                    <asp:Label ID="Financial_Currency_Code_Label" runat="server" Text='<%# Bind("Financial_Currency_Code") %>'
+                        domId="Financial_Currency_Code_Label"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total Assets(in thousand)" SortExpression="Total_Assets">
