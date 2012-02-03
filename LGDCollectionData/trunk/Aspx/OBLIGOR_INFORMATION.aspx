@@ -61,11 +61,13 @@
     <h2>
         <asp:Label ID="FormName_Label" runat="server" Text="OBLIGOR INFORMATION"></asp:Label>
     </h2>
+    <asp:DropDownList ID="DDLValidate" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate_SelectedIndexChanged">
+        <asp:ListItem Value="-1">All</asp:ListItem>
+        <asp:ListItem Value="1">Validate</asp:ListItem>
+    </asp:DropDownList>
     <asp:DetailsView ID="OBLIGOR_INFORMATION_DetailsView" runat="server" AllowPaging="True"
-        AutoGenerateRows="False" CellPadding="4" DataKeyNames="CIF,Default_Date"
-        DataSourceID="OBLIGOR_INFORMATION_SqlDataSource"
-        DefaultMode="Edit" EnableModelValidation="True" ForeColor="#333333"
-        OnPageIndexChanging="DetailsView_PageIndexChanging"
+        AutoGenerateRows="False" CellPadding="4" DataKeyNames="CIF,Default_Date" DataSourceID="OBLIGOR_INFORMATION_SqlDataSource"
+        DefaultMode="Edit" EnableModelValidation="True" ForeColor="#333333" OnPageIndexChanging="DetailsView_PageIndexChanging"
         OnItemUpdating="DetailsView_ItemUpdating" OnItemUpdated="DetailsView_ItemUpdated"
         Width="800px">
         <AlternatingRowStyle BackColor="White" />

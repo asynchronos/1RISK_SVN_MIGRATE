@@ -10,6 +10,23 @@ namespace LGDCollectionData.Aspx
 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Page.IsPostBack)
+            {
+                if (DDLValidate.SelectedValue == "-1")
+                {
+                    SqlDataSourceGur_Info.FilterExpression = null;
+                    DetailsView2.DataBind();
+                }
+                else
+                {
+                    SqlDataSourceGur_Info.FilterExpression = "HILIGHT_FLAG = 1";
+                    DetailsView2.DataBind();
+                }
+            }
+        }
+
         protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e)
         {
             //MessageBox.Show(e.AffectedRows.ToString());

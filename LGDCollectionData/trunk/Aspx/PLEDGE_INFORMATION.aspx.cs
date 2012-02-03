@@ -20,6 +20,30 @@ namespace LGDCollectionData.Aspx
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.IsPostBack)
+            {
+                if (DDLValidate.SelectedValue == "-1")
+                {
+                    SqlDataSourcePLEDGE_INFO.FilterExpression = null;
+                    DetailsView1.DataBind();
+                }
+                else
+                {
+                    SqlDataSourcePLEDGE_INFO.FilterExpression = "HILIGHT_FLAG = 1";
+                    DetailsView1.DataBind();
+                }
+
+                if (DDLValidate2.SelectedValue == "-1")
+                {
+                    SqlDataSourceCOLL_INFO.FilterExpression = null;
+                    GridView_COLL_INFO.DataBind();
+                }
+                else
+                {
+                    SqlDataSourceCOLL_INFO.FilterExpression = "HILIGHT_FLAG = 1";
+                    GridView_COLL_INFO.DataBind();
+                }
+            }
         }
 
         protected void DetailsView_Databound(Object sender, EventArgs e)

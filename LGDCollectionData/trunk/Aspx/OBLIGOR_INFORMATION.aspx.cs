@@ -1,9 +1,9 @@
 ﻿using System;
-using log4net;
-using AjaxControlToolkit;
-using System.Web.UI.WebControls;
-using System.Web.UI;
 using System.Globalization;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using AjaxControlToolkit;
+using log4net;
 
 namespace LGDCollectionData.Aspx
 {
@@ -15,12 +15,24 @@ namespace LGDCollectionData.Aspx
         protected void Page_Load(object sender, EventArgs e)
         {
             //ComboBox cb = (ComboBox)OBLIGOR_INFORMATION_DetailsView.FindControl("Nature_of_Emergence_ComboBox");
-            
+
             //if (cb != null)
             //{
             //    cb.SelectedIndexChanged += new EventHandler(Nature_of_Emergence_ComboBox_SelectedIndexChanged);
             //}
-            
+            if (Page.IsPostBack)
+            {
+                if (DDLValidate.SelectedValue == "-1")
+                {
+                    OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = null;
+                    OBLIGOR_INFORMATION_DetailsView.DataBind();
+                }
+                else
+                {
+                    OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                    OBLIGOR_INFORMATION_DetailsView.DataBind();
+                }
+            }
         }
 
         protected void Nature_of_Emergence_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,5 +89,18 @@ namespace LGDCollectionData.Aspx
             }
         }
 
+        protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
+            }
+        }
     }
 }
