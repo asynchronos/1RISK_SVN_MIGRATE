@@ -224,7 +224,7 @@
         <asp:Label ID="FormName_Label" runat="server" Text="CASHFLOW"></asp:Label>
     </h2>
     <asp:DetailsView ID="CASHFLOW_DetailsView" runat="server" AllowPaging="True" AutoGenerateRows="False"
-        CellPadding="4" DataKeyNames="CIF,DefaultDate,LIMITNO,DateofCashflow" DataSourceID="CASHFLOW_DATASOURCE"
+        CellPadding="4" DataKeyNames="CIF,DefaultDate,APP_ID,LIMITNO,DateofCashflow" DataSourceID="CASHFLOW_DATASOURCE"
         DefaultMode="Edit" EnableModelValidation="True" ForeColor="#333333"
         OnPageIndexChanging="DetailsView_PageIndexChanging" OnItemUpdated="DetailsView_ItemUpdated"
         OnItemUpdating="DetailsView_ItemUpdating">
@@ -270,9 +270,10 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="APP_ID_DropDownList" runat="server" DataSourceID="APP_ID_DataSource"
+		<asp:Label ID="APP_ID_Label" runat="server" Text='<%# Eval("APP_ID") %>'></asp:Label>
+                    <!--<asp:DropDownList ID="APP_ID_DropDownList" runat="server" DataSourceID="APP_ID_DataSource"
                         DataTextField="APP_ID" DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'>
-                    </asp:DropDownList>
+                    </asp:DropDownList>-->
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="APP_ID_TextBox" runat="server" Text='<%# Bind("APP_ID") %>'></asp:TextBox>
@@ -436,15 +437,15 @@
             <asp:TemplateField HeaderText="Collateral ID/Pledge ID" 
                 SortExpression="CollateralID">
                 <EditItemTemplate>
-                    <asp:TextBox ID="CollateralID_TextBox" runat="server" Text='<%# Bind("CollateralID","{0:#,##0.00}") %>' domId="CollateralID_TextBox"></asp:TextBox>
+                    <asp:TextBox ID="CollateralID_TextBox" runat="server" Text='<%# Bind("CollateralID") %>' domId="CollateralID_TextBox"></asp:TextBox>
                     <span style="color:Red">*</span>
                     (*Please enter &quot;N/A&quot; if not applicable)
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="CollateralID_TextBox" runat="server" Text='<%# Bind("CollateralID","{0:#,##0.00}") %>'></asp:TextBox>
+                    <asp:TextBox ID="CollateralID_TextBox" runat="server" Text='<%# Bind("CollateralID") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="CollateralID_Label" runat="server" Text='<%# Bind("CollateralID","{0:#,##0.00}") %>'></asp:Label>
+                    <asp:Label ID="CollateralID_Label" runat="server" Text='<%# Bind("CollateralID") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMITNO Changed" SortExpression="LIMITNOChanged">
