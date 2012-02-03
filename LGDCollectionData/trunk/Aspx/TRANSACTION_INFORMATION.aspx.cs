@@ -10,6 +10,19 @@ namespace LGDCollectionData.Aspx
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.IsPostBack)
+            {
+                if (DDLValidate.SelectedValue == "-1")
+                {
+                    TRANSACTION_INFORMATION_SqlDataSource.FilterExpression = null;
+                    TRANSACTION_INFORMATION_DetailsView.DataBind();
+                }
+                else
+                {
+                    TRANSACTION_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                    TRANSACTION_INFORMATION_DetailsView.DataBind();
+                }
+            }
         }
 
         protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)

@@ -7,6 +7,21 @@ namespace LGDCollectionData.Aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.IsPostBack)
+            {
+                if (DDLValidate.SelectedValue == "-1")
+                {
+                    SqlDataSourceFacility.FilterExpression = null;
+                    DetailsView1.DataBind();
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    SqlDataSourceFacility.FilterExpression = "HILIGHT_FLAG = 1";
+                    DetailsView1.DataBind();
+                    GridView1.DataBind();
+                }
+            }
         }
 
         protected virtual void CIF_TextBox_PreRender(object sender, EventArgs e)
@@ -137,12 +152,12 @@ namespace LGDCollectionData.Aspx
             if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
             {
                 SqlDataSourceFacility.FilterExpression = null;
-                //CASHFLOW_DetailsView.DataBind();
+                //DetailsView1.DataBind();
             }
             else
             {
                 SqlDataSourceFacility.FilterExpression = "HILIGHT_FLAG = 1";
-                //CASHFLOW_DetailsView.DataBind();
+                //DetailsView1.DataBind();
             }
         }
     }

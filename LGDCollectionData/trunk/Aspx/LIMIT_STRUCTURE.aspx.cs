@@ -7,6 +7,21 @@ namespace LGDCollectionData.Aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.IsPostBack)
+            {
+                if (DDLValidate.SelectedValue == "-1")
+                {
+                    SqlDataSourceLIMIT_STRUCTURE.FilterExpression = null;
+                    DetailsView1.DataBind();
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    SqlDataSourceLIMIT_STRUCTURE.FilterExpression = "HILIGHT_FLAG = 1";
+                    DetailsView1.DataBind();
+                    GridView1.DataBind();
+                }
+            }
         }
 
         protected void DetailsView_Databound(Object sender, EventArgs e)
