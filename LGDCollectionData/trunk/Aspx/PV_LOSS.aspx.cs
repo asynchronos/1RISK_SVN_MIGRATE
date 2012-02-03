@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Data.SqlClient;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using AjaxControlToolkit;
-using System.IO;
-using System.Web.UI;
 using log4net;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
-using System.Linq;
-using System.Globalization;
-using System.Data.SqlClient;
 
 namespace LGDCollectionData.Aspx
 {
@@ -159,7 +159,7 @@ namespace LGDCollectionData.Aspx
                                             c = r.GetCell(cellMap.IndexOf('F'));
                                             if (c.CellType == CellType.STRING)
                                             {
-                                                ri.Cash_Flow_Currency = c.StringCellValue.Substring(c.StringCellValue.IndexOf(':')+1, 3);
+                                                ri.Cash_Flow_Currency = c.StringCellValue.Substring(c.StringCellValue.IndexOf(':') + 1, 3);
                                             }
                                             else
                                             {
@@ -171,9 +171,9 @@ namespace LGDCollectionData.Aspx
 
                                             //check if there is an existing record for user and id
                                             var record = en.RESTRUCTURE_INFORMATION.FirstOrDefault(
-                                                restructure => restructure.CIF == ri.CIF 
-                                                    && restructure.Default_Date == ri.Default_Date 
-                                                    && restructure.Date_of_Restructure == ri.Date_of_Restructure 
+                                                restructure => restructure.CIF == ri.CIF
+                                                    && restructure.Default_Date == ri.Default_Date
+                                                    && restructure.Date_of_Restructure == ri.Date_of_Restructure
                                                     && restructure.Date_of_Repayment == ri.Date_of_Repayment);
 
                                             //if record exists, update with new rating
@@ -191,7 +191,7 @@ namespace LGDCollectionData.Aspx
                                             {
                                                 en.AddToRESTRUCTURE_INFORMATION(ri);
                                             }
-                                            
+
                                             rowIndex = rowIndex + 1;
                                         }
                                     }
@@ -202,12 +202,12 @@ namespace LGDCollectionData.Aspx
                                 }
                                 else
                                 {
-                                    throw new Exception("Value in "+wb.GetSheetName(i)+" cell B2 is not CIF.");
+                                    throw new Exception("Value in " + wb.GetSheetName(i) + " cell B2 is not CIF.");
                                 }
                             }
                             else
                             {
-                                throw new Exception("First Cell in excel "+wb.GetSheetName(i)+" is not B2.");
+                                throw new Exception("First Cell in excel " + wb.GetSheetName(i) + " is not B2.");
                             }
                         }
                         else
@@ -240,7 +240,7 @@ namespace LGDCollectionData.Aspx
                     }
                 }
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "error", "top.$get(\"" + uploadResult.ClientID + "\").innerHTML = top.$get(\"" + uploadResult.ClientID + "\").innerHTML + '<br/><span style=\"color:red;\">Error: " + msg + "</span>';", true);
-                log.Error(ex.Message,ex);
+                log.Error(ex.Message, ex);
             }
             finally
             {
@@ -433,10 +433,11 @@ namespace LGDCollectionData.Aspx
             DateTime? defaultDate = DateTime.ParseExact(defaultDateText, "d MMMM yyyy", new CultureInfo("en-US"));
             DateTime? restructureDate = DateTime.ParseExact(restructureDateText, "d MMMM yyyy", new CultureInfo("en-US"));
 
-            using(Entities.LGDEntities en = new Entities.LGDEntities()){
+            using (Entities.LGDEntities en = new Entities.LGDEntities())
+            {
                 System.Data.Objects.ObjectQuery<Entities.RESTRUCTURE_INFORMATION> ri = en.RESTRUCTURE_INFORMATION;
 
-                var queryRecord = from r in ri 
+                var queryRecord = from r in ri
                                   where r.CIF == cif
                                   && r.Default_Date == defaultDate.Value
                                   && r.Date_of_Restructure == restructureDate.Value
@@ -450,5 +451,32 @@ namespace LGDCollectionData.Aspx
             }
         }
 
+        protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                PV_LOSS_SqlDataSource.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                PV_LOSS_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
+            }
+        }
+
+        protected void DDLValidate2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                RESTRUCTURE_INFORMATION_SqlDataSource.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                RESTRUCTURE_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
+            }
+        }
     }
 }

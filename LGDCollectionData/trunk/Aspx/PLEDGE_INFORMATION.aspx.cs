@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Configuration;
+
 //using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using log4net;
-using AjaxControlToolkit;
 using System.Globalization;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using AjaxControlToolkit;
+using log4net;
+
 namespace LGDCollectionData.Aspx
 {
-
     public partial class PLEDGE_INFORMATION : MyAspxPage
     {
         private static readonly ILog log = LogManager.GetLogger(
@@ -22,17 +20,14 @@ namespace LGDCollectionData.Aspx
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void DetailsView_Databound(Object sender, EventArgs e)
         {
-
             //TextBox Name = (TextBox)sender.FindControl("nameBox");
             //MessageBox.Show(DetailsView1.Rows.Count.ToString());
             //MessageBox.Show(DetailsView1.Rows.Count.ToString());
             String text = string.Empty;
-
 
             //MessageBox.Show(text);
 
@@ -66,17 +61,16 @@ namespace LGDCollectionData.Aspx
                 {
                     //if (HiddenFieldPLED_ID.Value == "" || HiddenFieldPLED_SEQ.Value == "" || HiddenFieldAPPS_ID.Value == "")
                     //{
-
                     //}
                     //else
                     //{
-                        //set parameter to grid and bind
-                        SqlDataSourceCOLL_INFO.SelectParameters["PLED_ID"].DefaultValue = ((Label)DetailsView1.FindControl("LabelPLED_ID")).Text;
-                        SqlDataSourceCOLL_INFO.SelectParameters["PLED_SEQ"].DefaultValue = ((Label)DetailsView1.FindControl("LabelPLED_SEQ")).Text;
-                        SqlDataSourceCOLL_INFO.SelectParameters["APPS_ID"].DefaultValue = ((Label)DetailsView1.FindControl("LabelAPPS_ID")).Text;
-                        SqlDataSourceCOLL_INFO.SelectParameters["Default_Date"].DefaultValue = ((Label)DetailsView1.FindControl("LabelDefault_Date")).Text;
+                    //set parameter to grid and bind
+                    SqlDataSourceCOLL_INFO.SelectParameters["PLED_ID"].DefaultValue = ((Label)DetailsView1.FindControl("LabelPLED_ID")).Text;
+                    SqlDataSourceCOLL_INFO.SelectParameters["PLED_SEQ"].DefaultValue = ((Label)DetailsView1.FindControl("LabelPLED_SEQ")).Text;
+                    SqlDataSourceCOLL_INFO.SelectParameters["APPS_ID"].DefaultValue = ((Label)DetailsView1.FindControl("LabelAPPS_ID")).Text;
+                    SqlDataSourceCOLL_INFO.SelectParameters["Default_Date"].DefaultValue = ((Label)DetailsView1.FindControl("LabelDefault_Date")).Text;
 
-                        GridView_COLL_INFO.DataBind();
+                    GridView_COLL_INFO.DataBind();
                     //}
                 }
                 else
@@ -85,13 +79,11 @@ namespace LGDCollectionData.Aspx
                     ((System.Web.UI.WebControls.Label)dv.FindControl("LabelCif_Insert")).Text = Request.QueryString.Get("CIF");
                     ((System.Web.UI.WebControls.Label)dv.FindControl("LabelUserId_Insert")).Text = User.Identity.Name;
                     ((System.Web.UI.WebControls.Label)dv.FindControl("LabelDate_Insert")).Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
-
                 }
             }
 
             //if (HiddenFieldPLED_ID.Value=="" || HiddenFieldPLED_SEQ.Value=="" ||HiddenFieldAPPS_ID.Value == "")
-            //{ 
-
+            //{
             //}else {
             //DataSet DS_COLL = GET_COLLATERAL_INFORMATION(HiddenFieldPLED_ID.Value.ToString(),Convert.ToInt32(HiddenFieldPLED_SEQ.Value) , HiddenFieldAPPS_ID.Value.ToString());
             ////Cache("COLLATERAL") = DS_COLL.Tables[0].DefaultView;
@@ -126,7 +118,7 @@ namespace LGDCollectionData.Aspx
                     command.Parameters.Add(new SqlParameter("@PLED_ID", PLED_ID));
                     command.Parameters.Add(new SqlParameter("@PLED_SEQ", PLED_SEQ));
                     command.Parameters.Add(new SqlParameter("@APPS_ID", APPS_ID));
-                    
+
                     connection.Open();
                     SqlDataAdapter list = new SqlDataAdapter(command);
                     DataSet ds = new DataSet();
@@ -135,12 +127,10 @@ namespace LGDCollectionData.Aspx
                     return ds;
                 }
             }
-
         }
 
         //protected void GridView1_OnRowDataBound(object sender, GridViewRowEventArgs e)
         //{
-
         //    if (e.Row.RowType == DataControlRowType.Header || e.Row.RowType == DataControlRowType.DataRow)
         //    {
         //        // กำหนดให้ fix column
@@ -154,7 +144,6 @@ namespace LGDCollectionData.Aspx
 
         //protected void ButtonEdit_Click(object sender, EventArgs e)
         //{
-
         //    System.Web.UI.WebControls.Button btn = (System.Web.UI.WebControls.Button)sender;
         //    string[] CommandArgument = btn.CommandArgument.Split(',');
         //    string CommandArgument1 = CommandArgument[0];
@@ -165,7 +154,6 @@ namespace LGDCollectionData.Aspx
         //    DataSet DS_COLL2 = GET_COLLATERAL_INFORMATION_EDIT(CommandArgument1, CommandArgument2, Convert.ToInt32(CommandArgument3), CommandArgument4);
         //    if (DS_COLL2.Tables[0].Rows.Count > 0)
         //    {
-
         //        //DetailsView2.DataSource = DS_COLL2;
         //        //DetailsView2.DataBind();
 
@@ -174,7 +162,6 @@ namespace LGDCollectionData.Aspx
         //    else {
         //        //DetailsView2.ChangeMode(DetailsViewMode.Insert );
         //    }
-
 
         //    //MessageBox.Show(CommandArgument1);
         //    //MessageBox.Show(CommandArgument2);
@@ -218,7 +205,6 @@ namespace LGDCollectionData.Aspx
                     return ds;
                 }
             }
-
         }
 
         //protected void DetailsView_OnPreRender(object sender, EventArgs e)
@@ -240,7 +226,6 @@ namespace LGDCollectionData.Aspx
         //        }
         //    }
         //}
-
 
         protected void LabelCOLL_ID_PreRender(object sender, EventArgs e)
         {
@@ -281,7 +266,6 @@ namespace LGDCollectionData.Aspx
                 ((Label)sender).Text = ((Label)DetailsView1.FindControl("LabelDefault_Date")).Text;
             }
         }
-
 
         protected void GridView_COLL_INFO_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -445,7 +429,6 @@ namespace LGDCollectionData.Aspx
             CultureInfo cul = new CultureInfo("en-US");
             DateTime inputDate;// = DateTime.ParseExact(args.Value, cal.Format, cul);
             DateTime compareDate;// = DateTime.ParseExact(t.Text, cal.Format, cul);
-            
 
             if (DateTime.TryParseExact(args.Value, cal.Format, cul, DateTimeStyles.None, out inputDate)
                 && DateTime.TryParseExact(t.Text, cal.Format, cul, DateTimeStyles.None, out compareDate))
@@ -478,7 +461,7 @@ namespace LGDCollectionData.Aspx
             DateTime inputDate;// = DateTime.ParseExact(args.Value, cal.Format, cul);
             DateTime compareDate;// = DateTime.ParseExact(t.Text, cal.Format, cul);
 
-            if(DateTime.TryParseExact(args.Value, cal.Format, cul, DateTimeStyles.None, out inputDate)
+            if (DateTime.TryParseExact(args.Value, cal.Format, cul, DateTimeStyles.None, out inputDate)
                 && DateTime.TryParseExact(t.Text, cal.Format, cul, DateTimeStyles.None, out compareDate))
             {
                 DateTime notAvailableDate = DateTime.ParseExact("1 January 9999", cal.Format, cul);
@@ -494,6 +477,34 @@ namespace LGDCollectionData.Aspx
             else
             {
                 args.IsValid = true;
+            }
+        }
+
+        protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                SqlDataSourcePLEDGE_INFO.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                SqlDataSourcePLEDGE_INFO.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
+            }
+        }
+
+        protected void DDLValidate2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                SqlDataSourceCOLL_INFO.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                SqlDataSourceCOLL_INFO.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
             }
         }
     }

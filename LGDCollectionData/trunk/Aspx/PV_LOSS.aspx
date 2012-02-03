@@ -48,7 +48,7 @@
             // make it visible
             updateProgressDiv.style.display = '';
 
-            //  get the gridview element        
+            //  get the gridview element
             var gridView = $get('<%= this.RESTRUCTURE_INFORMATION_GridView.ClientID %>');
 
             // get the bounds of both the gridview and the progress div
@@ -111,6 +111,10 @@
         </tr>
         <tr>
             <td>
+                <asp:DropDownList ID="DDLValidate" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate_SelectedIndexChanged">
+                    <asp:ListItem Value="-1">All</asp:ListItem>
+                    <asp:ListItem Value="1">Validate</asp:ListItem>
+                </asp:DropDownList>
                 <asp:DetailsView ID="PV_LOSS_DetailsView" runat="server" AllowPaging="True" AutoGenerateRows="False"
                     CellPadding="4" DataKeyNames="CIF,Default_Date,Date_of_Restructure" DataSourceID="PV_LOSS_SqlDataSource"
                     EnableModelValidation="True" ForeColor="#333333" OnPageIndexChanging="DetailsView_PageIndexChanging"
@@ -275,6 +279,10 @@
     <h2>
         <asp:Label ID="FromName_Label2" runat="server" Text="RESTRUCTURE INFORMATION"></asp:Label>
     </h2>
+    <asp:DropDownList ID="DDLValidate2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate2_SelectedIndexChanged">
+        <asp:ListItem Value="-1">All</asp:ListItem>
+        <asp:ListItem Value="1">Validate</asp:ListItem>
+    </asp:DropDownList>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:ImageButton ID="Refresh_Button" runat="server" ImageUrl="~/Images/refresh2.png"
@@ -576,8 +584,8 @@
         <OnUpdating>
             <Parallel duration="0">
                 <%-- place the update progress div over the gridview control --%>
-                <ScriptAction Script="onUpdating();" />  
-                <%-- disable the search button --%>                       
+                <ScriptAction Script="onUpdating();" />
+                <%-- disable the search button --%>
                 <EnableAction AnimationTarget="RESTRUCTURE_INFORMATION_FileUpload" Enabled="false" />
                 <EnableAction AnimationTarget="Update_LinkButton" Enabled="false" />
                 <%-- fade-out the GridView --%>
@@ -588,12 +596,12 @@
             <Parallel duration="0">
                 <%-- fade back in the GridView --%>
                 <FadeIn minimumOpacity=".5" />
-                <%-- re-enable the search button --%> 
+                <%-- re-enable the search button --%>
                 <EnableAction AnimationTarget="RESTRUCTURE_INFORMATION_FileUpload" Enabled="true" />
                 <EnableAction AnimationTarget="Update_LinkButton" Enabled="true" />
                 <%--find the update progress div and place it over the gridview control--%>
-                <ScriptAction Script="onUpdated();" /> 
-            </Parallel> 
+                <ScriptAction Script="onUpdated();" />
+            </Parallel>
         </OnUpdated>
         </Animations>
     </asp:UpdatePanelAnimationExtender>

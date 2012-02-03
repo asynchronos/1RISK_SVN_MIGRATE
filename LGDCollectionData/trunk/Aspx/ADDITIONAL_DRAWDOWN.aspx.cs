@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace LGDCollectionData.Aspx
 {
@@ -13,8 +6,8 @@ namespace LGDCollectionData.Aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
         //protected void updateRecord(object sender, SqlDataSourceCommandEventArgs e)
         //{
         //    MessageBox.Show(e.Command.Parameters.Count.ToString());
@@ -33,13 +26,26 @@ namespace LGDCollectionData.Aspx
             //    {
             //        System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
             //        System.Web.UI.WebControls.Label dateLabel = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelDate");
-            //        if (userId != null) { 
+            //        if (userId != null) {
             //             userId.Text = User.Identity.Name.ToString();
             //             dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
             //        }
             //    }
             //}
+        }
 
+        protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                SqlDataSource1.FilterExpression = null;
+                //DetailsView1.DataBind();
+            }
+            else
+            {
+                SqlDataSource1.FilterExpression = "HILIGHT_FLAG = 1";
+                //DetailsView1.DataBind();
+            }
         }
     }
 }

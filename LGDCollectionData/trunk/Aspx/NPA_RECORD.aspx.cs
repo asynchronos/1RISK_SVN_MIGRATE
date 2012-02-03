@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AjaxControlToolkit;
-using System.Globalization;
 using log4net;
 
 namespace LGDCollectionData.Aspx
@@ -15,9 +12,9 @@ namespace LGDCollectionData.Aspx
         private static readonly ILog log = LogManager.GetLogger(
 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void DetailsView_OnPreRender(object sender, EventArgs e)
@@ -61,5 +58,18 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             }
         }
 
+        protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                SqlDataSourceNPA_RECORD.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                SqlDataSourceNPA_RECORD.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
+            }
+        }
     }
 }

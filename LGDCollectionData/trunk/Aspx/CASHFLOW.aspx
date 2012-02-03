@@ -3,7 +3,8 @@
     Culture="Auto" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
+<%@ Register Src="../UserControls/SelectFormWebUserControl.ascx" TagName="SelectFormWebUserControl"
+    TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <!-- Ext includes -->
     <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
@@ -11,7 +12,6 @@
     <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
     <script type="text/javascript" src="../Scripts/common.js"></script>
-
     <script type="text/javascript">
         Ext.onReady(function () {
             Ext.select("input[type=text]").setWidth("200px");
@@ -217,17 +217,21 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
-    </asp:ToolkitScriptManager>
+    <asp:toolkitscriptmanager id="ToolkitScriptManager1" runat="server" enablescriptglobalization="true">
+    </asp:toolkitscriptmanager>
     <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
     <h2>
-        <asp:Label ID="FormName_Label" runat="server" Text="CASHFLOW"></asp:Label>
+        <asp:label id="FormName_Label" runat="server" text="CASHFLOW"></asp:label>
     </h2>
-    <asp:DetailsView ID="CASHFLOW_DetailsView" runat="server" AllowPaging="True" AutoGenerateRows="False"
-        CellPadding="4" DataKeyNames="CIF,DefaultDate,APP_ID,LIMITNO,DateofCashflow" DataSourceID="CASHFLOW_DATASOURCE"
-        DefaultMode="Edit" EnableModelValidation="True" ForeColor="#333333"
-        OnPageIndexChanging="DetailsView_PageIndexChanging" OnItemUpdated="DetailsView_ItemUpdated"
-        OnItemUpdating="DetailsView_ItemUpdating">
+    <asp:dropdownlist id="DDLValidate" runat="server" autopostback="True" onselectedindexchanged="DDLValidate_SelectedIndexChanged">
+        <asp:ListItem Value="-1">All</asp:ListItem>
+        <asp:ListItem Value="1">Validate</asp:ListItem>
+    </asp:dropdownlist>
+    <asp:detailsview id="CASHFLOW_DetailsView" runat="server" allowpaging="True" autogeneraterows="False"
+        cellpadding="4" datakeynames="CIF,DefaultDate,APP_ID,LIMITNO,DateofCashflow"
+        datasourceid="CASHFLOW_DATASOURCE" defaultmode="Edit" enablemodelvalidation="True"
+        forecolor="#333333" onpageindexchanging="DetailsView_PageIndexChanging" onitemupdated="DetailsView_ItemUpdated"
+        onitemupdating="DetailsView_ItemUpdating">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
@@ -245,16 +249,13 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="DefaultDate">
                 <EditItemTemplate>
-                    <asp:Label ID="DefaultDate_Label" runat="server" 
-                        Text='<%# Eval("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="DefaultDate_Label" runat="server" Text='<%# Eval("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="DefaultDate_TextBox" runat="server" 
-                        Text='<%# Bind("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="DefaultDate_TextBox" runat="server" Text='<%# Bind("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="DefaultDate_Label" runat="server" 
-                        Text='<%# Bind("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="DefaultDate_Label" runat="server" Text='<%# Bind("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMITNO" SortExpression="LIMITNO">
@@ -270,7 +271,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
                 <EditItemTemplate>
-		<asp:Label ID="APP_ID_Label" runat="server" Text='<%# Eval("APP_ID") %>'></asp:Label>
+                    <asp:Label ID="APP_ID_Label" runat="server" Text='<%# Eval("APP_ID") %>'></asp:Label>
                     <!--<asp:DropDownList ID="APP_ID_DropDownList" runat="server" DataSourceID="APP_ID_DataSource"
                         DataTextField="APP_ID" DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'>
                     </asp:DropDownList>-->
@@ -287,7 +288,7 @@
                     <asp:DropDownList ID="Currency_DropDownList" runat="server" DataSourceID="Currency_DataSource"
                         DataTextField="Description" DataValueField="Code" SelectedValue='<%# Bind("CashflowCurrencyCode") %>'>
                     </asp:DropDownList>
-                    <span style="color:Red">*</span>
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashflowCurrencyCode_TextBox" runat="server" Text='<%# Bind("CashflowCurrencyCode") %>'></asp:TextBox>
@@ -296,27 +297,25 @@
                     <asp:Label ID="CashflowCurrencyCode_Label" runat="server" Text='<%# Bind("CashflowCurrencyCode") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Date of Cashflow" 
-                SortExpression="DateofCashflow">
+            <asp:TemplateField HeaderText="Date of Cashflow" SortExpression="DateofCashflow">
                 <EditItemTemplate>
-                    <asp:Label ID="DateofCashflow_Label" runat="server" 
-                        Text='<%# Eval("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="DateofCashflow_Label" runat="server" Text='<%# Eval("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" 
-                        Text='<%# Bind("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:TextBox>
+                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="DateofCashflow_Label" runat="server" 
-                        Text='<%# Bind("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="DateofCashflow_Label" runat="server" Text='<%# Bind("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cashflow Amount: PAY_PRIN" SortExpression="CashflowAmountPAY_PRIN">
                 <EditItemTemplate>
-                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="DateofCashflow_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_PRIN","{0:#,##0.00}") %>'></asp:Label>
@@ -324,10 +323,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cashflow Amount: PAY_INT" SortExpression="CashflowAmountPAY_INT">
                 <EditItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_INT_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="CashflowAmountPAY_INT_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_INT","{0:#,##0.00}") %>'></asp:Label>
@@ -335,10 +336,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cashflow Amount: PAY_SUSP" SortExpression="CashflowAmountPAY_SUSP">
                 <EditItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="CashflowAmountPAY_SUSP_TextBox" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="CashflowAmountPAY_SUSP_Label" runat="server" Text='<%# Bind("CashflowAmountPAY_SUSP","{0:#,##0.00}") %>'></asp:Label>
@@ -346,7 +349,8 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cash Flow Source Description 1" SortExpression="CashFlowSourceDescription1">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="CashFlowSourceDescription1_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription1") %>' domId="CashFlowSourceDescription1_DropDownList">
+                    <asp:DropDownList ID="CashFlowSourceDescription1_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription1") %>'
+                        domId="CashFlowSourceDescription1_DropDownList">
                         <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem>Repayment from borrower</asp:ListItem>
                         <asp:ListItem>Repayment from guarantor</asp:ListItem>
@@ -361,7 +365,7 @@
                         <asp:ListItem>Haircut</asp:ListItem>
                         <asp:ListItem>selling out the collateral / assets of borrower or guarantor by publish auction with Third party or Debtor</asp:ListItem>
                     </asp:DropDownList>
-                    <span style="color:Red">*</span>
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription1_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription1") %>'></asp:TextBox>
@@ -372,7 +376,8 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cash Flow Source Description 2" SortExpression="CashFlowSourceDescription2">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="CashFlowSourceDescription2_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription2") %>' domId="CashFlowSourceDescription2_DropDownList">
+                    <asp:DropDownList ID="CashFlowSourceDescription2_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription2") %>'
+                        domId="CashFlowSourceDescription2_DropDownList">
                         <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem>Repayment from borrower</asp:ListItem>
                         <asp:ListItem>Repayment from guarantor</asp:ListItem>
@@ -387,7 +392,7 @@
                         <asp:ListItem>Haircut</asp:ListItem>
                         <asp:ListItem>selling out the collateral / assets of borrower or guarantor by publish auction with Third party or Debtor</asp:ListItem>
                     </asp:DropDownList>
-                    <span style="color:Red">*</span>
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription2_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription2") %>'></asp:TextBox>
@@ -398,7 +403,8 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cash Flow Source Description 3" SortExpression="CashFlowSourceDescription3">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="CashFlowSourceDescription3_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription3") %>' domId="CashFlowSourceDescription3_DropDownList">
+                    <asp:DropDownList ID="CashFlowSourceDescription3_DropDownList" runat="server" SelectedValue='<%# Bind("CashFlowSourceDescription3") %>'
+                        domId="CashFlowSourceDescription3_DropDownList">
                         <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem>Repayment from borrower</asp:ListItem>
                         <asp:ListItem>Repayment from guarantor</asp:ListItem>
@@ -413,7 +419,7 @@
                         <asp:ListItem>Haircut</asp:ListItem>
                         <asp:ListItem>selling out the collateral / assets of borrower or guarantor by publish auction with Third party or Debtor</asp:ListItem>
                     </asp:DropDownList>
-                    <span style="color:Red">*</span>
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CashFlowSourceDescription3_TextBox" runat="server" Text='<%# Bind("CashFlowSourceDescription3") %>'></asp:TextBox>
@@ -424,22 +430,23 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Written-off / Haircut Amount" SortExpression="WrittenoffOrHaircutAmount">
                 <EditItemTemplate>
-                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount","{0:#,##0.00}") %>' domId="WrittenoffOrHaircutAmount_TextBox" IsNumeric="Yes"></asp:TextBox>
-                    <span style="color:Red">*</span>
+                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount","{0:#,##0.00}") %>'
+                        domId="WrittenoffOrHaircutAmount_TextBox" IsNumeric="Yes"></asp:TextBox>
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
+                    <asp:TextBox ID="WrittenoffOrHaircutAmount_TextBox" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="WrittenoffOrHaircutAmount_Label" runat="server" Text='<%# Bind("WrittenoffOrHaircutAmount","{0:#,##0.00}") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Collateral ID/Pledge ID" 
-                SortExpression="CollateralID">
+            <asp:TemplateField HeaderText="Collateral ID/Pledge ID" SortExpression="CollateralID">
                 <EditItemTemplate>
-                    <asp:TextBox ID="CollateralID_TextBox" runat="server" Text='<%# Bind("CollateralID") %>' domId="CollateralID_TextBox"></asp:TextBox>
-                    <span style="color:Red">*</span>
-                    (*Please enter &quot;N/A&quot; if not applicable)
+                    <asp:TextBox ID="CollateralID_TextBox" runat="server" Text='<%# Bind("CollateralID") %>'
+                        domId="CollateralID_TextBox"></asp:TextBox>
+                    <span style="color: Red">*</span> (*Please enter &quot;N/A&quot; if not applicable)
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CollateralID_TextBox" runat="server" Text='<%# Bind("CollateralID") %>'></asp:TextBox>
@@ -450,7 +457,8 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMITNO Changed" SortExpression="LIMITNOChanged">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>' domId="LIMITNOChanged_CheckBox" Enabled="false"/>
+                    <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>'
+                        domId="LIMITNOChanged_CheckBox" Enabled="false" />
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:CheckBox ID="LIMITNOChanged_CheckBox" runat="server" Checked='<%# Bind("LIMITNOChanged") %>' />
@@ -469,7 +477,7 @@
                         <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem Value="N/A">N/A</asp:ListItem>
                     </asp:ComboBox>
-                    <span style="color:Red">*</span>
+                    <span style="color: Red">*</span>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="PreviousLIMITNO_TextBox" runat="server" Text='<%# Bind("PreviousLIMITNO") %>'></asp:TextBox>
@@ -478,28 +486,28 @@
                     <asp:Label ID="PreviousLIMITNO_Label" runat="server" Text='<%# Bind("PreviousLIMITNO") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
-                        <EditItemTemplate>
-                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <InsertItemTemplate>
-                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
-                        </InsertItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
-                        <EditItemTemplate>
-                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <InsertItemTemplate>
-                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
-                        </InsertItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+            <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
+                <EditItemTemplate>
+                    <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="UpdateUser_Label" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Update Date" SortExpression="UpdateDate">
+                <EditItemTemplate>
+                    <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="UpdateDate_Label" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -507,10 +515,10 @@
         <PagerSettings Mode="NumericFirstLast" />
         <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-    </asp:DetailsView>
-    <asp:SqlDataSource ID="CASHFLOW_DataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        SelectCommand="P_CASHFLOW_SELECT" SelectCommandType="StoredProcedure" UpdateCommand="P_CASHFLOW_UPDATE"
-        UpdateCommandType="StoredProcedure">
+    </asp:detailsview>
+    <asp:sqldatasource id="CASHFLOW_DataSource" runat="server" connectionstring="<%$ ConnectionStrings:LGDConnectionString1 %>"
+        selectcommand="P_CASHFLOW_SELECT" selectcommandtype="StoredProcedure" updatecommand="P_CASHFLOW_UPDATE"
+        updatecommandtype="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="cif" Type="String" />
         </SelectParameters>
@@ -534,16 +542,16 @@
             <asp:Parameter Name="UpdateUser" Type="String" />
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
-    </asp:SqlDataSource>
-    <asp:SqlDataSource ID="APP_ID_DataSource" runat="server" EnableCaching="True" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        SelectCommand="L_APP_ID_SELECT" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="Currency_DataSource" runat="server" EnableCaching="True" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        SelectCommand="L_CURRENCY_CODE_SELECT" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="PreviousLimitNo_DataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        SelectCommand="P_LIMITNO_IN_FACILITY_INFORMATION_BY_CIF" SelectCommandType="StoredProcedure"
-        EnableCaching="false">
+    </asp:sqldatasource>
+    <asp:sqldatasource id="APP_ID_DataSource" runat="server" enablecaching="True" connectionstring="<%$ ConnectionStrings:LGDConnectionString1 %>"
+        selectcommand="L_APP_ID_SELECT" selectcommandtype="StoredProcedure"></asp:sqldatasource>
+    <asp:sqldatasource id="Currency_DataSource" runat="server" enablecaching="True" connectionstring="<%$ ConnectionStrings:LGDConnectionString1 %>"
+        selectcommand="L_CURRENCY_CODE_SELECT" selectcommandtype="StoredProcedure"></asp:sqldatasource>
+    <asp:sqldatasource id="PreviousLimitNo_DataSource" runat="server" connectionstring="<%$ ConnectionStrings:LGDConnectionString1 %>"
+        selectcommand="P_LIMITNO_IN_FACILITY_INFORMATION_BY_CIF" selectcommandtype="StoredProcedure"
+        enablecaching="false">
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="cif" Type="String" />
         </SelectParameters>
-    </asp:SqlDataSource>
+    </asp:sqldatasource>
 </asp:Content>

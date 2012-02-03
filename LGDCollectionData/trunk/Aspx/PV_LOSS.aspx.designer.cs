@@ -49,6 +49,15 @@ namespace LGDCollectionData.Aspx {
         protected global::System.Web.UI.WebControls.HyperLink Download_HyperLink;
         
         /// <summary>
+        /// DDLValidate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLValidate;
+        
+        /// <summary>
         /// PV_LOSS_DetailsView control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,15 @@ namespace LGDCollectionData.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label FromName_Label2;
+        
+        /// <summary>
+        /// DDLValidate2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLValidate2;
         
         /// <summary>
         /// UpdatePanel1 control.

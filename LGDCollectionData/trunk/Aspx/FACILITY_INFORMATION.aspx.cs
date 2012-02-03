@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using AjaxControlToolkit;
 
 namespace LGDCollectionData.Aspx
 {
@@ -12,7 +7,6 @@ namespace LGDCollectionData.Aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
         }
 
         protected virtual void CIF_TextBox_PreRender(object sender, EventArgs e)
@@ -22,7 +16,6 @@ namespace LGDCollectionData.Aspx
 
         protected void DetailsView_Databound(Object sender, EventArgs e)
         {
-
             //if (getQueryString("CIF") != null)
             //{
             //    if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
@@ -44,21 +37,20 @@ namespace LGDCollectionData.Aspx
             //            dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
             //    }
             //}
-
         }
 
         protected void BtnLinkToLimitStructure_Click(object sender, EventArgs e)
         {
             Response.Redirect("LIMIT_STRUCTURE.aspx?" + BtnLinkToLimitStructure.ToolTip);
         }
-         
+
         protected void DetailsView_OnPreRender(object sender, EventArgs e)
         {
             if (((DetailsView)sender).FindControl("Empty_TextBox") != null)
             {
                 GridView1.Visible = false;
                 BtnLinkToLimitStructure.Visible = false;
-               // ((DetailsView)sender).ChangeMode(DetailsViewMode.Insert);
+                // ((DetailsView)sender).ChangeMode(DetailsViewMode.Insert);
             }
             else
             {
@@ -75,13 +67,12 @@ namespace LGDCollectionData.Aspx
                 }
 
                 if (((DetailsView)sender).CurrentMode != DetailsViewMode.Insert)
-                     
                 {
                     //set parameter to grid and bind
 
                     //SqlDataSourceFacility.SelectParameters["CIF"].DefaultValue = ((Label)DetailsView1.FindControl("CIF_Label")).Text;
-                   // SqlDataSourceFacility.SelectParameters["Default_Date"].DefaultValue = ((Label)DetailsView1.FindControl("Default_Date_Label")).Text;
-                 //   GridView1.DataBind();
+                    // SqlDataSourceFacility.SelectParameters["Default_Date"].DefaultValue = ((Label)DetailsView1.FindControl("Default_Date_Label")).Text;
+                    //   GridView1.DataBind();
                 }
                 else
                 {
@@ -89,22 +80,19 @@ namespace LGDCollectionData.Aspx
                 }
             }
 
-                DetailsView dv = (DetailsView)sender;
-                if (dv.CurrentMode == DetailsViewMode.Edit)
+            DetailsView dv = (DetailsView)sender;
+            if (dv.CurrentMode == DetailsViewMode.Edit)
+            {
+                //((TextBox)myDetailsView.FindControl("TextBox2")).Text = DateTime.Now.ToString("g");
+                if (dv.Rows.Count > 0)
                 {
-                    //((TextBox)myDetailsView.FindControl("TextBox2")).Text = DateTime.Now.ToString("g");
-                    if (dv.Rows.Count > 0)
-                    {
-                        BtnLinkToLimitStructure.ToolTip = "CIF=" + Request.QueryString["CIF"] + "&Default_Date=" + ((Label)dv.FindControl("LabelDefaultDate")).Text;
-                    }
+                    BtnLinkToLimitStructure.ToolTip = "CIF=" + Request.QueryString["CIF"] + "&Default_Date=" + ((Label)dv.FindControl("LabelDefaultDate")).Text;
                 }
-
+            }
         }
-
 
         protected void SqlDataSourceFacility_Inserted(object sender, SqlDataSourceStatusEventArgs e)
         {
-             
             //MessageBox.Show(e.AffectedRows.ToString());
             //if (e.AffectedRows.ToString() == "-1")
             //{
@@ -142,6 +130,20 @@ namespace LGDCollectionData.Aspx
         {
             e.NewValues["UpdateUser"] = User.Identity.Name;
             e.NewValues["UpdateDate"] = DateTime.Now;
+        }
+
+        protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                SqlDataSourceFacility.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                SqlDataSourceFacility.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
+            }
         }
     }
 }

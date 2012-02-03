@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace LGDCollectionData.Aspx
 {
-
     public partial class FINANCIAL_SUMMARY : MyAspxPage
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -32,7 +27,6 @@ namespace LGDCollectionData.Aspx
                 text = text + p.ParameterName + "\n";
             }
             MessageBox.Show(text);
-
         }
 
         protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
@@ -73,7 +67,6 @@ namespace LGDCollectionData.Aspx
 
         protected void DetailsView_Databound(Object sender, EventArgs e)
         {
-
             //if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
             //{
             //    System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
@@ -87,6 +80,18 @@ namespace LGDCollectionData.Aspx
             //}
         }
 
-
+        protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                Financial_Summary_SqlDataSource.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                Financial_Summary_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
+            }
+        }
     }
 }

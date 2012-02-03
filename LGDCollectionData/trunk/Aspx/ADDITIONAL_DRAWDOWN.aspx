@@ -1,16 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.master" CodeBehind="ADDITIONAL_DRAWDOWN.aspx.cs"
     Inherits="LGDCollectionData.Aspx.ADDITIONAL_DRAWDOWN" %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<%@ Register src="../UserControls/SelectFormWebUserControl.ascx" tagname="SelectFormWebUserControl" tagprefix="uc1" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Src="../UserControls/SelectFormWebUserControl.ascx" TagName="SelectFormWebUserControl"
+    TagPrefix="uc1" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-<!-- Ext includes -->
+    <!-- Ext includes -->
     <link rel="stylesheet" type="text/css" href="../ExtJS/resources/css/ext-all.css" />
     <script type="text/javascript" src="../ExtJS/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="../ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="../Scripts/CommonExt.js"></script>
     <script type="text/javascript" src="../Scripts/common.js"></script>
-
     <script type="text/javascript">
         Ext.onReady(function () {
             Ext.select("input[type=text]").setWidth("200px");
@@ -22,7 +22,6 @@
             var CheckBoxIs_This_an_Additional_Drawdown = Ext.DotNetControl.CheckBox.mapElement("domId", "CheckBoxIs_This_an_Additional_Drawdown");
             var ComboBoxAdditional = Ext.DotNetControl.ComboBox.mapElement("domId", "ComboBoxAdditional");
             var ComboBoxOtherReason = Ext.DotNetControl.ComboBox.mapElement("domId", "ComboBoxOtherReason");
-
 
             CheckBoxLIMITNO_Changed.element.on({
                 "click": function (e, t, o) {
@@ -43,7 +42,6 @@
                 DropDownListPrevious_LIMITNO.disabled(true);
             }
             //end init CheckBoxLIMITNO_Changed
-
 
             CheckBoxIs_This_an_Additional_Drawdown.element.on({
                 "click": function (e, t, o) {
@@ -135,11 +133,9 @@
     </script>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-<asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
-</asp:ToolkitScriptManager>
-  
-<uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
-
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
+    </asp:ToolkitScriptManager>
+    <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
     <h2>
         <asp:Label ID="Label1" runat="server" Text="ADDITIONAL DRAWDOWN"></asp:Label>
     </h2>
@@ -188,26 +184,25 @@
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="cif" Type="String" />
         </SelectParameters>
-        </asp:SqlDataSource>
+    </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceDrawDownType" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="ADDITIONAL_DRAWDOWN_TYPE_SELECT" SelectCommandType="StoredProcedure"
         EnableCaching="False"></asp:SqlDataSource>
-    
     <asp:SqlDataSource ID="SqlDataSourceReason" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
         SelectCommand="ADDITIONAL_DRAWDOWN_REASON_SELECT" SelectCommandType="StoredProcedure"
         EnableCaching="False"></asp:SqlDataSource>
+    <asp:DropDownList ID="DDLValidate" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate_SelectedIndexChanged">
+        <asp:ListItem Value="-1">All</asp:ListItem>
+        <asp:ListItem Value="1">Validate</asp:ListItem>
+    </asp:DropDownList>
     <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False"
         DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO,Additional_Drawdown_Date"
-        DataSourceID="SqlDataSource1" EnableModelValidation="True" Width="800px"
-        DefaultMode="Edit" CellPadding="4" 
-        OnPageIndexChanging="DetailsView_PageIndexChanging"
-        OnItemUpdating="DetailsView_ItemUpdating"
-        OnItemUpdated="DetailsView_ItemUpdated"
-        ForeColor="#333333" 
-      PagerSettings-Mode="NumericFirstLast">
+        DataSourceID="SqlDataSource1" EnableModelValidation="True" Width="800px" DefaultMode="Edit"
+        CellPadding="4" OnItemUpdating="DetailsView_ItemUpdating" OnItemUpdated="DetailsView_ItemUpdated"
+        ForeColor="#333333" PagerSettings-Mode="NumericFirstLast">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
-        <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%"/>
+        <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%" />
         <Fields>
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
             <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
@@ -224,14 +219,13 @@
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSourceAppID"
                         DataTextField="APP_ID" DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'>
-                    </asp:DropDownList><asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
+                    </asp:DropDownList>
+                    <asp:Label runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Additional Drawdown Date" 
-                SortExpression="Additional_Drawdown_Date">
+            <asp:TemplateField HeaderText="Additional Drawdown Date" SortExpression="Additional_Drawdown_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Label1" runat="server" 
-                        Text='<%# Eval("Additional_Drawdown_Date","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Additional_Drawdown_Date","{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Additional Drawdown Currency" SortExpression="Additional_Drawdown_Currency">
@@ -241,53 +235,51 @@
                         SelectedValue='<%# Bind("Additional_Drawdown_Currency","{0:N}") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:Label ID="Label5"  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
-          </asp:TemplateField>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="PRINCIPAL" SortExpression="PRINCIPAL">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PRINCIPAL","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
-                    <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PRINCIPAL","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
+                    <asp:Label runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ACCRU" SortExpression="ACCRU">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("ACCRU","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
-                    <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("ACCRU","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
+                    <asp:Label runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="SUSP" SortExpression="SUSP">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("SUSP","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
-                    <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
-                </EditItemTemplate>
-               </asp:TemplateField>
-            <asp:TemplateField HeaderText="PRINCIPAL @ Last Month" 
-                SortExpression="PRINCIPAL_AT_Last_Month">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" 
-                        Text='<%# Bind("PRINCIPAL_AT_Last_Month","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
-                        <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
-               
+                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("SUSP","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
+                    <asp:Label runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ACCRU @ Last Month" 
-                SortExpression="ACCRU_AT_Last_Month">
+            <asp:TemplateField HeaderText="PRINCIPAL @ Last Month" SortExpression="PRINCIPAL_AT_Last_Month">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox5" runat="server" 
-                        Text='<%# Bind("ACCRU_AT_Last_Month","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
-                        <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
+                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("PRINCIPAL_AT_Last_Month","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
+                    <asp:Label runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="SUSP @ Last Month" 
-                SortExpression="SUSP_AT_Last_Month">
+            <asp:TemplateField HeaderText="ACCRU @ Last Month" SortExpression="ACCRU_AT_Last_Month">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox6" runat="server" 
-                        Text='<%# Bind("SUSP_AT_Last_Month","{0:#,##0.00}") %>' IsNumeric="Yes"></asp:TextBox>
-                        <asp:Label  runat="server" Text="" ForeColor="Red"></asp:Label>
+                    <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("ACCRU_AT_Last_Month","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
+                    <asp:Label runat="server" Text="" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
-            
+            <asp:TemplateField HeaderText="SUSP @ Last Month" SortExpression="SUSP_AT_Last_Month">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("SUSP_AT_Last_Month","{0:#,##0.00}") %>'
+                        IsNumeric="Yes"></asp:TextBox>
+                    <asp:Label runat="server" Text="" ForeColor="Red"></asp:Label>
+                </EditItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMIT NO" SortExpression="LIMITNO">
                 <EditItemTemplate>
                     <asp:Label ID="Label4" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
@@ -299,11 +291,10 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="LIMITNO Changed" 
-                SortExpression="LIMITNO_Changed">
+            <asp:TemplateField HeaderText="LIMITNO Changed" SortExpression="LIMITNO_Changed">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="CheckBoxLIMITNO_Changed" runat="server" 
-                        Checked='<%# Bind("LIMITNO_Changed") %>'  domId = "CheckBoxLIMITNO_Changed" Enabled="false"/>
+                    <asp:CheckBox ID="CheckBoxLIMITNO_Changed" runat="server" Checked='<%# Bind("LIMITNO_Changed") %>'
+                        domId="CheckBoxLIMITNO_Changed" Enabled="false" />
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Previous LIMITNO" SortExpression="Previous_LIMITNO">
@@ -315,40 +306,37 @@
                         <asp:ListItem Value="">Please Select</asp:ListItem>
                         <asp:ListItem Value="N/A">N/A</asp:ListItem>
                     </asp:ComboBox>
-                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:Label runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
-              </asp:TemplateField>
-            <asp:TemplateField HeaderText="Is This an Additional Drawdown" 
-                SortExpression="Is_This_an_Additional_Drawdown">
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Is This an Additional Drawdown" SortExpression="Is_This_an_Additional_Drawdown">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="CheckBoxIs_This_an_Additional_Drawdown" runat="server"  domId="CheckBoxIs_This_an_Additional_Drawdown"
+                    <asp:CheckBox ID="CheckBoxIs_This_an_Additional_Drawdown" runat="server" domId="CheckBoxIs_This_an_Additional_Drawdown"
                         Checked='<%# Bind("Is_This_an_Additional_Drawdown") %>' />
-                        <asp:Label ID="Label3"  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Type of Additional Drawdown" SortExpression="Type_of_Additional_Drawdown">
                 <EditItemTemplate>
-                  
-                    <asp:ComboBox ID="ComboBoxAdditional" domId="ComboBoxAdditional" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSourceDrawDownType"
-                        DataTextField="ADDITIONAL_DRAWDOWN_TYPE" DataValueField="ADDITIONAL_DRAWDOWN_TYPE"
-                        SelectedValue='<%# Bind("Type_of_Additional_Drawdown") %>'>
+                    <asp:ComboBox ID="ComboBoxAdditional" domId="ComboBoxAdditional" runat="server" AppendDataBoundItems="true"
+                        DataSourceID="SqlDataSourceDrawDownType" DataTextField="ADDITIONAL_DRAWDOWN_TYPE"
+                        DataValueField="ADDITIONAL_DRAWDOWN_TYPE" SelectedValue='<%# Bind("Type_of_Additional_Drawdown") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:ComboBox>
-                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:Label runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
-             </asp:TemplateField>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Other Reason of Principal Increase " SortExpression="Other_Reason_of_Principal_Increase">
                 <EditItemTemplate>
-                    <asp:ComboBox ID="ComboBoxOtherReason" domId="ComboBoxOtherReason" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSourceReason"
-                        DataTextField="ADDITIONAL_DRAWDOWN_REASON" DataValueField="ADDITIONAL_DRAWDOWN_REASON"
-                        SelectedValue='<%# Bind("Other_Reason_of_Principal_Increase") %>'>
+                    <asp:ComboBox ID="ComboBoxOtherReason" domId="ComboBoxOtherReason" runat="server"
+                        AppendDataBoundItems="true" DataSourceID="SqlDataSourceReason" DataTextField="ADDITIONAL_DRAWDOWN_REASON"
+                        DataValueField="ADDITIONAL_DRAWDOWN_REASON" SelectedValue='<%# Bind("Other_Reason_of_Principal_Increase") %>'>
                         <asp:ListItem Value="">...Please Select...</asp:ListItem>
                     </asp:ComboBox>
-                    <asp:Label  runat="server" Text="*" ForeColor="Red"></asp:Label>
+                    <asp:Label runat="server" Text="*" ForeColor="Red"></asp:Label>
                 </EditItemTemplate>
-          
             </asp:TemplateField>
-          <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
+            <asp:TemplateField HeaderText="Update User" SortExpression="UpdateUser">
                 <EditItemTemplate>
                     <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                 </EditItemTemplate>
@@ -361,10 +349,8 @@
             <asp:CommandField ShowEditButton="True" ShowInsertButton="True" />
         </Fields>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White"/>
-
-<PagerSettings Mode="NumericFirstLast"></PagerSettings>
-
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <PagerSettings Mode="NumericFirstLast"></PagerSettings>
         <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
     </asp:DetailsView>

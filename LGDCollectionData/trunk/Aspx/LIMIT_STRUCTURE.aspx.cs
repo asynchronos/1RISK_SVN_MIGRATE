@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using log4net;
-using AjaxControlToolkit;
 
 namespace LGDCollectionData.Aspx
 {
@@ -13,12 +7,10 @@ namespace LGDCollectionData.Aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void DetailsView_Databound(Object sender, EventArgs e)
         {
-
             //if (DetailsView1.CurrentMode == DetailsViewMode.Edit)
             //{
             //    System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
@@ -27,7 +19,7 @@ namespace LGDCollectionData.Aspx
             //        userId.Text = User.Identity.Name.ToString();
             //    if (dateLabel != null)
             //        dateLabel.Text = string.Format("{0:d MMMM yyyy}", DateTime.Now);
-            //} 
+            //}
             //if (DetailsView1.CurrentMode == DetailsViewMode.Insert )
             //{
             //    System.Web.UI.WebControls.Label userId = (System.Web.UI.WebControls.Label)DetailsView1.FindControl("LabelUserId");
@@ -49,7 +41,7 @@ namespace LGDCollectionData.Aspx
             if (((DetailsView)sender).FindControl("Empty_TextBox") != null)
             {
                 //GridView1.Visible = false;
-              //  ((DetailsView)sender).ChangeMode(DetailsViewMode.Insert);
+                //  ((DetailsView)sender).ChangeMode(DetailsViewMode.Insert);
             }
             else
             {
@@ -77,7 +69,6 @@ namespace LGDCollectionData.Aspx
                     // GridView1.Visible = false;
                 }
             }
-
         }
 
         protected virtual void CIF_TextBox_PreRender(object sender, EventArgs e)
@@ -100,14 +91,13 @@ namespace LGDCollectionData.Aspx
             e.NewValues["UpdateUser"] = User.Identity.Name;
             e.NewValues["UpdateDate"] = DateTime.Now;
         }
-       
-        protected void GridView_RowDataBound(object sender, GridViewRowEventArgs  e )
+
+        protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             //if ( e.Row.RowType == DataControlRowType.Header ||  e.Row.RowType == DataControlRowType.DataRow) {
             //      e.Row.Cells[0].Style["position"] = "relative";  // edit
             //      e.Row.Cells[2].Style["position"] = "relative"; // cif
             //}
-   
         }
 
         protected void SqlDataSourceLIMIT_STRUCTURE_Inserted(object sender, SqlDataSourceStatusEventArgs e)
@@ -241,6 +231,20 @@ namespace LGDCollectionData.Aspx
 
                 // Perform insert
                 ds.Insert();
+            }
+        }
+
+        protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
+            {
+                SqlDataSourceLIMIT_STRUCTURE.FilterExpression = null;
+                //CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                SqlDataSourceLIMIT_STRUCTURE.FilterExpression = "HILIGHT_FLAG = 1";
+                //CASHFLOW_DetailsView.DataBind();
             }
         }
     }
