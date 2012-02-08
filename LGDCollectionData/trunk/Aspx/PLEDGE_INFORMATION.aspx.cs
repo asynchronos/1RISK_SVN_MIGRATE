@@ -20,30 +20,6 @@ namespace LGDCollectionData.Aspx
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                if (DDLValidate.SelectedValue == "-1")
-                {
-                    SqlDataSourcePLEDGE_INFO.FilterExpression = null;
-                    DetailsView1.DataBind();
-                }
-                else
-                {
-                    SqlDataSourcePLEDGE_INFO.FilterExpression = "HILIGHT_FLAG = 1";
-                    DetailsView1.DataBind();
-                }
-
-                if (DDLValidate2.SelectedValue == "-1")
-                {
-                    SqlDataSourceCOLL_INFO.FilterExpression = null;
-                    GridView_COLL_INFO.DataBind();
-                }
-                else
-                {
-                    SqlDataSourceCOLL_INFO.FilterExpression = "HILIGHT_FLAG = 1";
-                    GridView_COLL_INFO.DataBind();
-                }
-            }
         }
 
         protected void DetailsView_Databound(Object sender, EventArgs e)
@@ -509,12 +485,14 @@ namespace LGDCollectionData.Aspx
             if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
             {
                 SqlDataSourcePLEDGE_INFO.FilterExpression = null;
-                //CASHFLOW_DetailsView.DataBind();
+                DetailsView1.DataBind();
+                GridView_COLL_INFO.DataBind();
             }
             else
             {
                 SqlDataSourcePLEDGE_INFO.FilterExpression = "HILIGHT_FLAG = 1";
-                //CASHFLOW_DetailsView.DataBind();
+                DetailsView1.DataBind();
+                GridView_COLL_INFO.DataBind();
             }
         }
 
@@ -523,12 +501,39 @@ namespace LGDCollectionData.Aspx
             if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
             {
                 SqlDataSourceCOLL_INFO.FilterExpression = null;
-                //CASHFLOW_DetailsView.DataBind();
+                GridView_COLL_INFO.DataBind();
             }
             else
             {
                 SqlDataSourceCOLL_INFO.FilterExpression = "HILIGHT_FLAG = 1";
-                //CASHFLOW_DetailsView.DataBind();
+                GridView_COLL_INFO.DataBind();
+            }
+        }
+
+        protected override void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
+        {
+            if (DDLValidate.SelectedValue == "-1")
+            {
+                SqlDataSourcePLEDGE_INFO.FilterExpression = null;
+                DetailsView1.DataBind();
+                GridView_COLL_INFO.DataBind();
+            }
+            else
+            {
+                SqlDataSourcePLEDGE_INFO.FilterExpression = "HILIGHT_FLAG = 1";
+                DetailsView1.DataBind();
+                GridView_COLL_INFO.DataBind();
+            }
+
+            if (DDLValidate2.SelectedValue == "-1")
+            {
+                SqlDataSourceCOLL_INFO.FilterExpression = null;
+                GridView_COLL_INFO.DataBind();
+            }
+            else
+            {
+                SqlDataSourceCOLL_INFO.FilterExpression = "HILIGHT_FLAG = 1";
+                GridView_COLL_INFO.DataBind();
             }
         }
     }

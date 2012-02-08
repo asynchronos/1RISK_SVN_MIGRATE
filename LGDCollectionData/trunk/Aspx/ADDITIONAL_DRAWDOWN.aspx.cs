@@ -6,19 +6,6 @@ namespace LGDCollectionData.Aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                if (DDLValidate.SelectedValue == "-1")
-                {
-                    SqlDataSource1.FilterExpression = null;
-                    DetailsView1.DataBind();
-                }
-                else
-                {
-                    SqlDataSource1.FilterExpression = "HILIGHT_FLAG = 1";
-                    DetailsView1.DataBind();
-                }
-            }
         }
 
         //protected void updateRecord(object sender, SqlDataSourceCommandEventArgs e)
@@ -58,6 +45,20 @@ namespace LGDCollectionData.Aspx
             {
                 SqlDataSource1.FilterExpression = "HILIGHT_FLAG = 1";
                 //DetailsView1.DataBind();
+            }
+        }
+
+        protected override void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
+        {
+            if (DDLValidate.SelectedValue == "-1")
+            {
+                SqlDataSource1.FilterExpression = null;
+                DetailsView1.DataBind();
+            }
+            else
+            {
+                SqlDataSource1.FilterExpression = "HILIGHT_FLAG = 1";
+                DetailsView1.DataBind();
             }
         }
     }

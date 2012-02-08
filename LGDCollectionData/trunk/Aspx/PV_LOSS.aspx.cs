@@ -25,30 +25,6 @@ namespace LGDCollectionData.Aspx
             //RESTRUCTURE_INFORMATION_FileUpload.UploaderStyle = AjaxControlToolkit.AsyncFileUpload.UploaderStyleEnum.Modern;
             //RESTRUCTURE_INFORMATION_FileUpload.UploadedComplete += new EventHandler<AsyncFileUploadEventArgs>(RESTRUCTURE_INFORMATION_FileUpload_UploadedComplete);
             //RESTRUCTURE_INFORMATION_FileUpload.UploadedFileError += new EventHandler<AsyncFileUploadEventArgs>(RESTRUCTURE_INFORMATION_FileUpload_UploadedFileError);
-            if (Page.IsPostBack)
-            {
-                if (DDLValidate.SelectedValue == "-1")
-                {
-                    PV_LOSS_SqlDataSource.FilterExpression = null;
-                    PV_LOSS_DetailsView.DataBind();
-                }
-                else
-                {
-                    PV_LOSS_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
-                    PV_LOSS_DetailsView.DataBind();
-                }
-
-                if (DDLValidate2.SelectedValue == "-1")
-                {
-                    RESTRUCTURE_INFORMATION_SqlDataSource.FilterExpression = null;
-                    RESTRUCTURE_INFORMATION_GridView.DataBind();
-                }
-                else
-                {
-                    RESTRUCTURE_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
-                    RESTRUCTURE_INFORMATION_GridView.DataBind();
-                }
-            }
         }
 
         protected object GetCellValue()
@@ -500,6 +476,31 @@ namespace LGDCollectionData.Aspx
             {
                 RESTRUCTURE_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
                 //CASHFLOW_DetailsView.DataBind();
+            }
+        }
+
+        protected override void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
+        {
+            if (DDLValidate.SelectedValue == "-1")
+            {
+                PV_LOSS_SqlDataSource.FilterExpression = null;
+                PV_LOSS_DetailsView.DataBind();
+            }
+            else
+            {
+                PV_LOSS_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                PV_LOSS_DetailsView.DataBind();
+            }
+
+            if (DDLValidate2.SelectedValue == "-1")
+            {
+                RESTRUCTURE_INFORMATION_SqlDataSource.FilterExpression = null;
+                RESTRUCTURE_INFORMATION_GridView.DataBind();
+            }
+            else
+            {
+                RESTRUCTURE_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                RESTRUCTURE_INFORMATION_GridView.DataBind();
             }
         }
     }

@@ -20,19 +20,6 @@ namespace LGDCollectionData.Aspx
             //{
             //    cb.SelectedIndexChanged += new EventHandler(Nature_of_Emergence_ComboBox_SelectedIndexChanged);
             //}
-            if (Page.IsPostBack)
-            {
-                if (DDLValidate.SelectedValue == "-1")
-                {
-                    OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = null;
-                    OBLIGOR_INFORMATION_DetailsView.DataBind();
-                }
-                else
-                {
-                    OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
-                    OBLIGOR_INFORMATION_DetailsView.DataBind();
-                }
-            }
         }
 
         protected void Nature_of_Emergence_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -100,6 +87,21 @@ namespace LGDCollectionData.Aspx
             {
                 OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
                 //CASHFLOW_DetailsView.DataBind();
+            }
+        }
+
+        protected override void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
+        {
+            //((System.Web.UI.WebControls.DetailsView)sender).UpdateItem(false);
+            if (DDLValidate.SelectedValue == "-1")
+            {
+                OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = null;
+                OBLIGOR_INFORMATION_DetailsView.DataBind();
+            }
+            else
+            {
+                OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                OBLIGOR_INFORMATION_DetailsView.DataBind();
             }
         }
     }
