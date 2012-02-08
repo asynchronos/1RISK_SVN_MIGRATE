@@ -10,19 +10,6 @@ namespace LGDCollectionData.Aspx
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                if (DDLValidate.SelectedValue == "-1")
-                {
-                    CASHFLOW_DataSource.FilterExpression = null;
-                    CASHFLOW_DetailsView.DataBind();
-                }
-                else
-                {
-                    CASHFLOW_DataSource.FilterExpression = "HILIGHT_FLAG = 1";
-                    CASHFLOW_DetailsView.DataBind();
-                }
-            }
         }
 
         protected void DDLValidate_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,6 +23,20 @@ namespace LGDCollectionData.Aspx
             {
                 CASHFLOW_DataSource.FilterExpression = "HILIGHT_FLAG = 1";
                 //CASHFLOW_DetailsView.DataBind();
+            }
+        }
+
+        protected override void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
+        {
+            if (DDLValidate.SelectedValue == "-1")
+            {
+                CASHFLOW_DataSource.FilterExpression = null;
+                CASHFLOW_DetailsView.DataBind();
+            }
+            else
+            {
+                CASHFLOW_DataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                CASHFLOW_DetailsView.DataBind();
             }
         }
     }

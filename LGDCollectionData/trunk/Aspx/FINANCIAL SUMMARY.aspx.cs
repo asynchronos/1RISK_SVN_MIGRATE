@@ -16,19 +16,6 @@ namespace LGDCollectionData.Aspx
             //{
             //    FormView1.DefaultMode = FormViewMode.Edit;
             //}
-            if (Page.IsPostBack)
-            {
-                if (DDLValidate.SelectedValue == "-1")
-                {
-                    Financial_Summary_SqlDataSource.FilterExpression = null;
-                    Financial_Summary_DetailsView.DataBind();
-                }
-                else
-                {
-                    Financial_Summary_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
-                    Financial_Summary_DetailsView.DataBind();
-                }
-            }
         }
 
         protected void InsertRecord(object sender, SqlDataSourceCommandEventArgs e)
@@ -104,6 +91,20 @@ namespace LGDCollectionData.Aspx
             {
                 Financial_Summary_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
                 //CASHFLOW_DetailsView.DataBind();
+            }
+        }
+
+        protected override void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
+        {
+            if (DDLValidate.SelectedValue == "-1")
+            {
+                Financial_Summary_SqlDataSource.FilterExpression = null;
+                Financial_Summary_DetailsView.DataBind();
+            }
+            else
+            {
+                Financial_Summary_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
+                Financial_Summary_DetailsView.DataBind();
             }
         }
     }

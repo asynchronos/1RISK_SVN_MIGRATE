@@ -15,19 +15,6 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                if (DDLValidate.SelectedValue == "-1")
-                {
-                    SqlDataSourceNPA_RECORD.FilterExpression = null;
-                    DetailsView1.DataBind();
-                }
-                else
-                {
-                    SqlDataSourceNPA_RECORD.FilterExpression = "HILIGHT_FLAG = 1";
-                    DetailsView1.DataBind();
-                }
-            }
         }
 
         protected void DetailsView_OnPreRender(object sender, EventArgs e)
@@ -82,6 +69,20 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             {
                 SqlDataSourceNPA_RECORD.FilterExpression = "HILIGHT_FLAG = 1";
                 //CASHFLOW_DetailsView.DataBind();
+            }
+        }
+
+        protected override void DetailsView_PageIndexChanging(object sender, System.Web.UI.WebControls.DetailsViewPageEventArgs e)
+        {
+            if (DDLValidate.SelectedValue == "-1")
+            {
+                SqlDataSourceNPA_RECORD.FilterExpression = null;
+                DetailsView1.DataBind();
+            }
+            else
+            {
+                SqlDataSourceNPA_RECORD.FilterExpression = "HILIGHT_FLAG = 1";
+                DetailsView1.DataBind();
             }
         }
     }
