@@ -62,8 +62,7 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         {
             if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
             {
-                SqlDataSourceNPA_RECORD.FilterExpression = null;
-                //CASHFLOW_DetailsView.DataBind();
+                Response.Redirect(Request.RawUrl);
             }
             else
             {

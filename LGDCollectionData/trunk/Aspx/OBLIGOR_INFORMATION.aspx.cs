@@ -80,8 +80,7 @@ namespace LGDCollectionData.Aspx
         {
             if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
             {
-                OBLIGOR_INFORMATION_SqlDataSource.FilterExpression = null;
-                //CASHFLOW_DetailsView.DataBind();
+                Response.Redirect(Request.RawUrl);
             }
             else
             {

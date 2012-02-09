@@ -96,8 +96,7 @@ System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         {
             if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
             {
-                SqlDataSourceGur_Info.FilterExpression = null;
-                //CASHFLOW_DetailsView.DataBind();
+                Response.Redirect(Request.RawUrl);
             }
             else
             {
