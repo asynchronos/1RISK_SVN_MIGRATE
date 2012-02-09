@@ -455,13 +455,19 @@ namespace LGDCollectionData.Aspx
         {
             if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
             {
-                PV_LOSS_SqlDataSource.FilterExpression = null;
-                //CASHFLOW_DetailsView.DataBind();
+                Response.Redirect(Request.RawUrl);
             }
             else
             {
                 PV_LOSS_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
-                //CASHFLOW_DetailsView.DataBind();
+                try
+                {
+                    PV_LOSS_DetailsView.DataBind();
+                }
+                catch (ArgumentOutOfRangeException argEx)
+                {
+                    //PV_LOSS_SqlDataSource.FilterExpression = null;
+                }
             }
         }
 
@@ -470,12 +476,12 @@ namespace LGDCollectionData.Aspx
             if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
             {
                 RESTRUCTURE_INFORMATION_SqlDataSource.FilterExpression = null;
-                //CASHFLOW_DetailsView.DataBind();
+                RESTRUCTURE_INFORMATION_GridView.DataBind();
             }
             else
             {
                 RESTRUCTURE_INFORMATION_SqlDataSource.FilterExpression = "HILIGHT_FLAG = 1";
-                //CASHFLOW_DetailsView.DataBind();
+                RESTRUCTURE_INFORMATION_GridView.DataBind();
             }
         }
 

@@ -484,15 +484,28 @@ namespace LGDCollectionData.Aspx
         {
             if (((System.Web.UI.WebControls.DropDownList)sender).SelectedValue == "-1")
             {
-                SqlDataSourcePLEDGE_INFO.FilterExpression = null;
-                DetailsView1.DataBind();
-                GridView_COLL_INFO.DataBind();
+                Response.Redirect(Request.RawUrl);
             }
             else
             {
                 SqlDataSourcePLEDGE_INFO.FilterExpression = "HILIGHT_FLAG = 1";
-                DetailsView1.DataBind();
-                GridView_COLL_INFO.DataBind();
+                try
+                {
+                    DetailsView1.DataBind();
+                }
+                catch (ArgumentOutOfRangeException argEx)
+                {
+                    //PV_LOSS_SqlDataSource.FilterExpression = null;
+                }
+
+                try
+                {
+                    GridView_COLL_INFO.DataBind();
+                }
+                catch (ArgumentOutOfRangeException argEx)
+                {
+                    //PV_LOSS_SqlDataSource.FilterExpression = null;
+                }
             }
         }
 
