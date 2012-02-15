@@ -1,0 +1,6 @@
+D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\SSProjectApp.Form1.resources
+D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\SSProjectApp.ProcessForm.resources
+D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\SSProjectApp.Properties.Resources.resources
+D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\GenerateResource.write.1.tlog
