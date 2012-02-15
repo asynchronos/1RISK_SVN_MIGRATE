@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SSProjectModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SSProjectModelStoreContainer" />
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'Bay01_test.dbo.TEMP_SS_DATA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="TEMP_SS_DATA">
+        <Property Name="RM_DefaultMargin" Type="float" />
+        <Property Name="RM_OperatingProfit" Type="float" />
+        <Property Name="RM_CurrentLiabilitiesWithBay" Type="money" />
+        <Property Name="RM_LongTermDebtWithBay" Type="money" />
+        <Property Name="RM_WorkingCapitalNeed" Type="money" />
+        <Property Name="RM_LoanNeed" Type="money" />
+        <Property Name="RM_WorkingCapitalCal" Type="money" />
+        <Property Name="RM_LoanCal" Type="money" />
+        <Property Name="RM_WorkingCapitalRequire" Type="money" />
+        <Property Name="RM_LoanRequire" Type="money" />
+        <Property Name="RM_LimitOfLGAndAvalNonCash" Type="money" />
+        <Property Name="RM_DSCRInThisTime" Type="float" />
+        <Property Name="RM_DEInThisTime" Type="float" />
+        <Property Name="RM_LTV" Type="float" />
+        <Property Name="RM_WorkingCapitalNeedBay" Type="money" />
+        <Property Name="RM_LoanNeedBay" Type="money" />
+        <Property Name="RM_WorkingCapitalApprove" Type="money" />
+        <Property Name="RM_LoanApprove" Type="money" />
+        <Property Name="DEFAULT_DefaultMargin" Type="float" />
+        <Property Name="DEFAULT_OperatingProfit" Type="float" />
+        <Property Name="DEFAULT_CurrentLiabilitiesWithBay" Type="money" />
+        <Property Name="DEFAULT_LongTermDebtWithBay" Type="money" />
+        <Property Name="DEFAULT_WorkingCapitalNeed" Type="money" />
+        <Property Name="DEFAULT_LoanNeed" Type="money" />
+        <Property Name="DEFAULT_WorkingCapitalCal" Type="money" />
+        <Property Name="DEFAULT_LoanCal" Type="money" />
+        <Property Name="DEFAULT_WorkingCapitalRequire" Type="money" />
+        <Property Name="DEFAULT_LoanRequire" Type="money" />
+        <Property Name="DEFAULT_LimitOfLGAndAvalNonCash" Type="money" />
+        <Property Name="DEFAULT_DSCRInThisTime" Type="float" />
+        <Property Name="DEFAULT_DEInThisTime" Type="float" />
+        <Property Name="DEFAULT_LTV" Type="float" />
+        <Property Name="DEFAULT_WorkingCapitalNeedBay" Type="money" />
+        <Property Name="DEFAULT_LoanNeedBay" Type="money" />
+        <Property Name="DEFAULT_WorkingCapitalApprove" Type="money" />
+        <Property Name="DEFAULT_LoanApprove" Type="money" />
+        <Property Name="CM_DefaultMargin" Type="float" />
+        <Property Name="CM_OperatingProfit" Type="float" />
+        <Property Name="CM_CurrentLiabilitiesWithBay" Type="money" />
+        <Property Name="CM_LongTermDebtWithBay" Type="money" />
+        <Property Name="CM_WorkingCapitalNeed" Type="money" />
+        <Property Name="CM_LoanNeed" Type="money" />
+        <Property Name="CM_WorkingCapitalCal" Type="money" />
+        <Property Name="CM_LoanCal" Type="money" />
+        <Property Name="CM_WorkingCapitalRequire" Type="money" />
+        <Property Name="CM_LoanRequire" Type="money" />
+        <Property Name="CM_LimitOfLGAndAvalNonCash" Type="money" />
+        <Property Name="CM_DSCRInThisTime" Type="float" />
+        <Property Name="CM_DEInThisTime" Type="float" />
+        <Property Name="CM_LTV" Type="float" />
+        <Property Name="CM_WorkingCapitalNeedBay" Type="money" />
+        <Property Name="CM_LoanNeedBay" Type="money" />
+        <Property Name="CM_WorkingCapitalApprove" Type="money" />
+        <Property Name="CM_LoanApprove" Type="money" />
+        <Property Name="CMDEFAULT_DefaultMargin" Type="float" />
+        <Property Name="CMDEFAULT_OperatingProfit" Type="float" />
+        <Property Name="CMDEFAULT_CurrentLiabilitiesWithBay" Type="money" />
+        <Property Name="CMDEFAULT_LongTermDebtWithBay" Type="money" />
+        <Property Name="CMDEFAULT_WorkingCapitalNeed" Type="money" />
+        <Property Name="CMDEFAULT_LoanNeed" Type="money" />
+        <Property Name="CMDEFAULT_WorkingCapitalCal" Type="money" />
+        <Property Name="CMDEFAULT_LoanCal" Type="money" />
+        <Property Name="CMDEFAULT_WorkingCapitalRequire" Type="money" />
+        <Property Name="CMDEFAULT_LoanRequire" Type="money" />
+        <Property Name="CMDEFAULT_LimitOfLGAndAvalNonCash" Type="money" />
+        <Property Name="CMDEFAULT_DSCRInThisTime" Type="float" />
+        <Property Name="CMDEFAULT_DEInThisTime" Type="float" />
+        <Property Name="CMDEFAULT_LTV" Type="float" />
+        <Property Name="CMDEFAULT_WorkingCapitalNeedBay" Type="money" />
+        <Property Name="CMDEFAULT_LoanNeedBay" Type="money" />
+        <Property Name="CMDEFAULT_WorkingCapitalApprove" Type="money" />
+        <Property Name="CMDEFAULT_LoanApprove" Type="money" />
+      </EntityType>-->
+</Schema>

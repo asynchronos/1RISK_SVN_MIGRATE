@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SSProjectModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SSProjectModelStoreContainer">
+          <EntitySet Name="TEMP_SS_DATA" EntityType="SSProjectModel.Store.TEMP_SS_DATA" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="TEMP_SS_DATA">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="FILENAME" />
+          </Key>
+          <Property Name="CIF" Type="int" Nullable="false" />
+          <Property Name="FILENAME" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="RM_DefaultMargin" Type="float" />
+          <Property Name="RM_OperatingProfit" Type="float" />
+          <Property Name="RM_CurrentLiabilitiesWithBay" Type="money" />
+          <Property Name="RM_LongTermDebtWithBay" Type="money" />
+          <Property Name="RM_WorkingCapitalNeed" Type="money" />
+          <Property Name="RM_LoanNeed" Type="money" />
+          <Property Name="RM_WorkingCapitalCal" Type="money" />
+          <Property Name="RM_LoanCal" Type="money" />
+          <Property Name="RM_WorkingCapitalRequire" Type="money" />
+          <Property Name="RM_LoanRequire" Type="money" />
+          <Property Name="RM_LimitOfLGAndAvalNonCash" Type="money" />
+          <Property Name="RM_DSCRInThisTime" Type="float" />
+          <Property Name="RM_DEInThisTime" Type="float" />
+          <Property Name="RM_LTV" Type="float" />
+          <Property Name="RM_WorkingCapitalNeedBay" Type="money" />
+          <Property Name="RM_LoanNeedBay" Type="money" />
+          <Property Name="RM_WorkingCapitalApprove" Type="money" />
+          <Property Name="RM_LoanApprove" Type="money" />
+          <Property Name="DEFAULT_DefaultMargin" Type="float" />
+          <Property Name="DEFAULT_OperatingProfit" Type="float" />
+          <Property Name="DEFAULT_CurrentLiabilitiesWithBay" Type="money" />
+          <Property Name="DEFAULT_LongTermDebtWithBay" Type="money" />
+          <Property Name="DEFAULT_WorkingCapitalNeed" Type="money" />
+          <Property Name="DEFAULT_LoanNeed" Type="money" />
+          <Property Name="DEFAULT_WorkingCapitalCal" Type="money" />
+          <Property Name="DEFAULT_LoanCal" Type="money" />
+          <Property Name="DEFAULT_WorkingCapitalRequire" Type="money" />
+          <Property Name="DEFAULT_LoanRequire" Type="money" />
+          <Property Name="DEFAULT_LimitOfLGAndAvalNonCash" Type="money" />
+          <Property Name="DEFAULT_DSCRInThisTime" Type="float" />
+          <Property Name="DEFAULT_DEInThisTime" Type="float" />
+          <Property Name="DEFAULT_LTV" Type="float" />
+          <Property Name="DEFAULT_WorkingCapitalNeedBay" Type="money" />
+          <Property Name="DEFAULT_LoanNeedBay" Type="money" />
+          <Property Name="DEFAULT_WorkingCapitalApprove" Type="money" />
+          <Property Name="DEFAULT_LoanApprove" Type="money" />
+          <Property Name="CM_DefaultMargin" Type="float" />
+          <Property Name="CM_OperatingProfit" Type="float" />
+          <Property Name="CM_CurrentLiabilitiesWithBay" Type="money" />
+          <Property Name="CM_LongTermDebtWithBay" Type="money" />
+          <Property Name="CM_WorkingCapitalNeed" Type="money" />
+          <Property Name="CM_LoanNeed" Type="money" />
+          <Property Name="CM_WorkingCapitalCal" Type="money" />
+          <Property Name="CM_LoanCal" Type="money" />
+          <Property Name="CM_WorkingCapitalRequire" Type="money" />
+          <Property Name="CM_LoanRequire" Type="money" />
+          <Property Name="CM_LimitOfLGAndAvalNonCash" Type="money" />
+          <Property Name="CM_DSCRInThisTime" Type="float" />
+          <Property Name="CM_DEInThisTime" Type="float" />
+          <Property Name="CM_LTV" Type="float" />
+          <Property Name="CM_WorkingCapitalNeedBay" Type="money" />
+          <Property Name="CM_LoanNeedBay" Type="money" />
+          <Property Name="CM_WorkingCapitalApprove" Type="money" />
+          <Property Name="CM_LoanApprove" Type="money" />
+          <Property Name="CMDEFAULT_DefaultMargin" Type="float" />
+          <Property Name="CMDEFAULT_OperatingProfit" Type="float" />
+          <Property Name="CMDEFAULT_CurrentLiabilitiesWithBay" Type="money" />
+          <Property Name="CMDEFAULT_LongTermDebtWithBay" Type="money" />
+          <Property Name="CMDEFAULT_WorkingCapitalNeed" Type="money" />
+          <Property Name="CMDEFAULT_LoanNeed" Type="money" />
+          <Property Name="CMDEFAULT_WorkingCapitalCal" Type="money" />
+          <Property Name="CMDEFAULT_LoanCal" Type="money" />
+          <Property Name="CMDEFAULT_WorkingCapitalRequire" Type="money" />
+          <Property Name="CMDEFAULT_LoanRequire" Type="money" />
+          <Property Name="CMDEFAULT_LimitOfLGAndAvalNonCash" Type="money" />
+          <Property Name="CMDEFAULT_DSCRInThisTime" Type="float" />
+          <Property Name="CMDEFAULT_DEInThisTime" Type="float" />
+          <Property Name="CMDEFAULT_LTV" Type="float" />
+          <Property Name="CMDEFAULT_WorkingCapitalNeedBay" Type="money" />
+          <Property Name="CMDEFAULT_LoanNeedBay" Type="money" />
+          <Property Name="CMDEFAULT_WorkingCapitalApprove" Type="money" />
+          <Property Name="CMDEFAULT_LoanApprove" Type="money" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SSProjectModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SS_Entities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="TEMP_SS_DATA" EntityType="SSProjectModel.TEMP_SS_DATA" />
+        </EntityContainer>
+        <EntityType Name="TEMP_SS_DATA">
+          <Key>
+            <PropertyRef Name="CIF" />
+            <PropertyRef Name="FILENAME" />
+          </Key>
+          <Property Type="Int32" Name="CIF" Nullable="false" />
+          <Property Type="String" Name="FILENAME" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="RM_DefaultMargin" />
+          <Property Type="Double" Name="RM_OperatingProfit" />
+          <Property Type="Decimal" Name="RM_CurrentLiabilitiesWithBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_LongTermDebtWithBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_WorkingCapitalNeed" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_LoanNeed" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_WorkingCapitalCal" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_LoanCal" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_WorkingCapitalRequire" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_LoanRequire" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_LimitOfLGAndAvalNonCash" Precision="19" Scale="4" />
+          <Property Type="Double" Name="RM_DSCRInThisTime" />
+          <Property Type="Double" Name="RM_DEInThisTime" />
+          <Property Type="Double" Name="RM_LTV" />
+          <Property Type="Decimal" Name="RM_WorkingCapitalNeedBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_LoanNeedBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_WorkingCapitalApprove" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="RM_LoanApprove" Precision="19" Scale="4" />
+          <Property Type="Double" Name="DEFAULT_DefaultMargin" />
+          <Property Type="Double" Name="DEFAULT_OperatingProfit" />
+          <Property Type="Decimal" Name="DEFAULT_CurrentLiabilitiesWithBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_LongTermDebtWithBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_WorkingCapitalNeed" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_LoanNeed" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_WorkingCapitalCal" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_LoanCal" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_WorkingCapitalRequire" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_LoanRequire" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_LimitOfLGAndAvalNonCash" Precision="19" Scale="4" />
+          <Property Type="Double" Name="DEFAULT_DSCRInThisTime" />
+          <Property Type="Double" Name="DEFAULT_DEInThisTime" />
+          <Property Type="Double" Name="DEFAULT_LTV" />
+          <Property Type="Decimal" Name="DEFAULT_WorkingCapitalNeedBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_LoanNeedBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_WorkingCapitalApprove" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DEFAULT_LoanApprove" Precision="19" Scale="4" />
+          <Property Type="Double" Name="CM_DefaultMargin" />
+          <Property Type="Double" Name="CM_OperatingProfit" />
+          <Property Type="Decimal" Name="CM_CurrentLiabilitiesWithBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_LongTermDebtWithBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_WorkingCapitalNeed" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_LoanNeed" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_WorkingCapitalCal" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_LoanCal" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_WorkingCapitalRequire" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_LoanRequire" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_LimitOfLGAndAvalNonCash" Precision="19" Scale="4" />
+          <Property Type="Double" Name="CM_DSCRInThisTime" />
+          <Property Type="Double" Name="CM_DEInThisTime" />
+          <Property Type="Double" Name="CM_LTV" />
+          <Property Type="Decimal" Name="CM_WorkingCapitalNeedBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_LoanNeedBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_WorkingCapitalApprove" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CM_LoanApprove" Precision="19" Scale="4" />
+          <Property Type="Double" Name="CMDEFAULT_DefaultMargin" />
+          <Property Type="Double" Name="CMDEFAULT_OperatingProfit" />
+          <Property Type="Decimal" Name="CMDEFAULT_CurrentLiabilitiesWithBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_LongTermDebtWithBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_WorkingCapitalNeed" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_LoanNeed" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_WorkingCapitalCal" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_LoanCal" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_WorkingCapitalRequire" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_LoanRequire" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_LimitOfLGAndAvalNonCash" Precision="19" Scale="4" />
+          <Property Type="Double" Name="CMDEFAULT_DSCRInThisTime" />
+          <Property Type="Double" Name="CMDEFAULT_DEInThisTime" />
+          <Property Type="Double" Name="CMDEFAULT_LTV" />
+          <Property Type="Decimal" Name="CMDEFAULT_WorkingCapitalNeedBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_LoanNeedBay" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_WorkingCapitalApprove" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CMDEFAULT_LoanApprove" Precision="19" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SSProjectModelStoreContainer" CdmEntityContainer="SS_Entities" >
+          <EntitySetMapping Name="TEMP_SS_DATA">
+            <EntityTypeMapping TypeName="SSProjectModel.TEMP_SS_DATA">
+              <MappingFragment StoreEntitySet="TEMP_SS_DATA">
+                <ScalarProperty Name="CMDEFAULT_LoanApprove" ColumnName="CMDEFAULT_LoanApprove" />
+                <ScalarProperty Name="CMDEFAULT_WorkingCapitalApprove" ColumnName="CMDEFAULT_WorkingCapitalApprove" />
+                <ScalarProperty Name="CMDEFAULT_LoanNeedBay" ColumnName="CMDEFAULT_LoanNeedBay" />
+                <ScalarProperty Name="CMDEFAULT_WorkingCapitalNeedBay" ColumnName="CMDEFAULT_WorkingCapitalNeedBay" />
+                <ScalarProperty Name="CMDEFAULT_LTV" ColumnName="CMDEFAULT_LTV" />
+                <ScalarProperty Name="CMDEFAULT_DEInThisTime" ColumnName="CMDEFAULT_DEInThisTime" />
+                <ScalarProperty Name="CMDEFAULT_DSCRInThisTime" ColumnName="CMDEFAULT_DSCRInThisTime" />
+                <ScalarProperty Name="CMDEFAULT_LimitOfLGAndAvalNonCash" ColumnName="CMDEFAULT_LimitOfLGAndAvalNonCash" />
+                <ScalarProperty Name="CMDEFAULT_LoanRequire" ColumnName="CMDEFAULT_LoanRequire" />
+                <ScalarProperty Name="CMDEFAULT_WorkingCapitalRequire" ColumnName="CMDEFAULT_WorkingCapitalRequire" />
+                <ScalarProperty Name="CMDEFAULT_LoanCal" ColumnName="CMDEFAULT_LoanCal" />
+                <ScalarProperty Name="CMDEFAULT_WorkingCapitalCal" ColumnName="CMDEFAULT_WorkingCapitalCal" />
+                <ScalarProperty Name="CMDEFAULT_LoanNeed" ColumnName="CMDEFAULT_LoanNeed" />
+                <ScalarProperty Name="CMDEFAULT_WorkingCapitalNeed" ColumnName="CMDEFAULT_WorkingCapitalNeed" />
+                <ScalarProperty Name="CMDEFAULT_LongTermDebtWithBay" ColumnName="CMDEFAULT_LongTermDebtWithBay" />
+                <ScalarProperty Name="CMDEFAULT_CurrentLiabilitiesWithBay" ColumnName="CMDEFAULT_CurrentLiabilitiesWithBay" />
+                <ScalarProperty Name="CMDEFAULT_OperatingProfit" ColumnName="CMDEFAULT_OperatingProfit" />
+                <ScalarProperty Name="CMDEFAULT_DefaultMargin" ColumnName="CMDEFAULT_DefaultMargin" />
+                <ScalarProperty Name="CM_LoanApprove" ColumnName="CM_LoanApprove" />
+                <ScalarProperty Name="CM_WorkingCapitalApprove" ColumnName="CM_WorkingCapitalApprove" />
+                <ScalarProperty Name="CM_LoanNeedBay" ColumnName="CM_LoanNeedBay" />
+                <ScalarProperty Name="CM_WorkingCapitalNeedBay" ColumnName="CM_WorkingCapitalNeedBay" />
+                <ScalarProperty Name="CM_LTV" ColumnName="CM_LTV" />
+                <ScalarProperty Name="CM_DEInThisTime" ColumnName="CM_DEInThisTime" />
+                <ScalarProperty Name="CM_DSCRInThisTime" ColumnName="CM_DSCRInThisTime" />
+                <ScalarProperty Name="CM_LimitOfLGAndAvalNonCash" ColumnName="CM_LimitOfLGAndAvalNonCash" />
+                <ScalarProperty Name="CM_LoanRequire" ColumnName="CM_LoanRequire" />
+                <ScalarProperty Name="CM_WorkingCapitalRequire" ColumnName="CM_WorkingCapitalRequire" />
+                <ScalarProperty Name="CM_LoanCal" ColumnName="CM_LoanCal" />
+                <ScalarProperty Name="CM_WorkingCapitalCal" ColumnName="CM_WorkingCapitalCal" />
+                <ScalarProperty Name="CM_LoanNeed" ColumnName="CM_LoanNeed" />
+                <ScalarProperty Name="CM_WorkingCapitalNeed" ColumnName="CM_WorkingCapitalNeed" />
+                <ScalarProperty Name="CM_LongTermDebtWithBay" ColumnName="CM_LongTermDebtWithBay" />
+                <ScalarProperty Name="CM_CurrentLiabilitiesWithBay" ColumnName="CM_CurrentLiabilitiesWithBay" />
+                <ScalarProperty Name="CM_OperatingProfit" ColumnName="CM_OperatingProfit" />
+                <ScalarProperty Name="CM_DefaultMargin" ColumnName="CM_DefaultMargin" />
+                <ScalarProperty Name="DEFAULT_LoanApprove" ColumnName="DEFAULT_LoanApprove" />
+                <ScalarProperty Name="DEFAULT_WorkingCapitalApprove" ColumnName="DEFAULT_WorkingCapitalApprove" />
+                <ScalarProperty Name="DEFAULT_LoanNeedBay" ColumnName="DEFAULT_LoanNeedBay" />
+                <ScalarProperty Name="DEFAULT_WorkingCapitalNeedBay" ColumnName="DEFAULT_WorkingCapitalNeedBay" />
+                <ScalarProperty Name="DEFAULT_LTV" ColumnName="DEFAULT_LTV" />
+                <ScalarProperty Name="DEFAULT_DEInThisTime" ColumnName="DEFAULT_DEInThisTime" />
+                <ScalarProperty Name="DEFAULT_DSCRInThisTime" ColumnName="DEFAULT_DSCRInThisTime" />
+                <ScalarProperty Name="DEFAULT_LimitOfLGAndAvalNonCash" ColumnName="DEFAULT_LimitOfLGAndAvalNonCash" />
+                <ScalarProperty Name="DEFAULT_LoanRequire" ColumnName="DEFAULT_LoanRequire" />
+                <ScalarProperty Name="DEFAULT_WorkingCapitalRequire" ColumnName="DEFAULT_WorkingCapitalRequire" />
+                <ScalarProperty Name="DEFAULT_LoanCal" ColumnName="DEFAULT_LoanCal" />
+                <ScalarProperty Name="DEFAULT_WorkingCapitalCal" ColumnName="DEFAULT_WorkingCapitalCal" />
+                <ScalarProperty Name="DEFAULT_LoanNeed" ColumnName="DEFAULT_LoanNeed" />
+                <ScalarProperty Name="DEFAULT_WorkingCapitalNeed" ColumnName="DEFAULT_WorkingCapitalNeed" />
+                <ScalarProperty Name="DEFAULT_LongTermDebtWithBay" ColumnName="DEFAULT_LongTermDebtWithBay" />
+                <ScalarProperty Name="DEFAULT_CurrentLiabilitiesWithBay" ColumnName="DEFAULT_CurrentLiabilitiesWithBay" />
+                <ScalarProperty Name="DEFAULT_OperatingProfit" ColumnName="DEFAULT_OperatingProfit" />
+                <ScalarProperty Name="DEFAULT_DefaultMargin" ColumnName="DEFAULT_DefaultMargin" />
+                <ScalarProperty Name="RM_LoanApprove" ColumnName="RM_LoanApprove" />
+                <ScalarProperty Name="RM_WorkingCapitalApprove" ColumnName="RM_WorkingCapitalApprove" />
+                <ScalarProperty Name="RM_LoanNeedBay" ColumnName="RM_LoanNeedBay" />
+                <ScalarProperty Name="RM_WorkingCapitalNeedBay" ColumnName="RM_WorkingCapitalNeedBay" />
+                <ScalarProperty Name="RM_LTV" ColumnName="RM_LTV" />
+                <ScalarProperty Name="RM_DEInThisTime" ColumnName="RM_DEInThisTime" />
+                <ScalarProperty Name="RM_DSCRInThisTime" ColumnName="RM_DSCRInThisTime" />
+                <ScalarProperty Name="RM_LimitOfLGAndAvalNonCash" ColumnName="RM_LimitOfLGAndAvalNonCash" />
+                <ScalarProperty Name="RM_LoanRequire" ColumnName="RM_LoanRequire" />
+                <ScalarProperty Name="RM_WorkingCapitalRequire" ColumnName="RM_WorkingCapitalRequire" />
+                <ScalarProperty Name="RM_LoanCal" ColumnName="RM_LoanCal" />
+                <ScalarProperty Name="RM_WorkingCapitalCal" ColumnName="RM_WorkingCapitalCal" />
+                <ScalarProperty Name="RM_LoanNeed" ColumnName="RM_LoanNeed" />
+                <ScalarProperty Name="RM_WorkingCapitalNeed" ColumnName="RM_WorkingCapitalNeed" />
+                <ScalarProperty Name="RM_LongTermDebtWithBay" ColumnName="RM_LongTermDebtWithBay" />
+                <ScalarProperty Name="RM_CurrentLiabilitiesWithBay" ColumnName="RM_CurrentLiabilitiesWithBay" />
+                <ScalarProperty Name="RM_OperatingProfit" ColumnName="RM_OperatingProfit" />
+                <ScalarProperty Name="RM_DefaultMargin" ColumnName="RM_DefaultMargin" />
+                <ScalarProperty Name="FILENAME" ColumnName="FILENAME" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="SSEntityModel" >
+        <EntityTypeShape EntityType="SSProjectModel.TEMP_SS_DATA" Width="1.5" PointX="0.75" PointY="0.75" Height="13.096619466145832" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
