@@ -6,6 +6,13 @@ namespace LGDCollectionData.Aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (Page.IsPostBack)
+            //{
+            //    if (ViewState["filter"] != null)
+            //    {
+            //        SqlDataSource1.FilterExpression = ViewState["filter"].ToString();
+            //    }
+            //}
         }
 
         //protected void updateRecord(object sender, SqlDataSourceCommandEventArgs e)
@@ -43,6 +50,7 @@ namespace LGDCollectionData.Aspx
             else
             {
                 SqlDataSource1.FilterExpression = "HILIGHT_FLAG = 1";
+                ViewState.Add("filter", SqlDataSource1.FilterExpression);
                 //DetailsView1.DataBind();
             }
         }

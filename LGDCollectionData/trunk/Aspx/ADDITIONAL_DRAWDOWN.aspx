@@ -199,7 +199,7 @@
         DataKeyNames="CIF,Default_Date,BRAN,ACCGL,ACCNO,CONTNO,SEQNO,Additional_Drawdown_Date"
         DataSourceID="SqlDataSource1" EnableModelValidation="True" Width="800px" DefaultMode="Edit"
         CellPadding="4" OnItemUpdating="DetailsView_ItemUpdating" OnItemUpdated="DetailsView_ItemUpdated"
-        ForeColor="#333333" PagerSettings-Mode="NumericFirstLast">
+        ForeColor="#333333" PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="DetailsView_PageIndexChanging">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" Width="35%" />
