@@ -207,7 +207,7 @@
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="True" SortExpression="CIF" />
             <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Default_Date","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("Default_Date","{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="BRAN" HeaderText="BRAN" ReadOnly="True" SortExpression="BRAN" />
@@ -225,7 +225,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Additional Drawdown Date" SortExpression="Additional_Drawdown_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Additional_Drawdown_Date","{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("Additional_Drawdown_Date","{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Additional Drawdown Currency" SortExpression="Additional_Drawdown_Currency">
@@ -282,7 +282,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMIT NO" SortExpression="LIMITNO">
                 <EditItemTemplate>
-                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:TextBox>

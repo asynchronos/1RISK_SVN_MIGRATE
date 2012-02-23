@@ -114,7 +114,7 @@
         <Fields>
             <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelCIF" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                    <asp:Label ID="LabelCIF" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBoxCIF" runat="server" OnPreRender="CIF_TextBox_PreRender" Text='<%# Bind("CIF") %>'
@@ -123,7 +123,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox17" runat="server" OnPreRender="DEFAULT_DATE_TextBox_PreRender"
@@ -173,7 +173,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMIT NO" SortExpression="LIMITNO">
                 <EditItemTemplate>
-                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBoxLimitNo" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:TextBox>
@@ -535,7 +535,7 @@
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Default Date" SortExpression="Default_Date"
                     HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:Label ID="Default_Date_Label" runat="server" OnPreRender="Default_Date_Label_PreRender"></asp:Label>
@@ -593,13 +593,13 @@
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="LIMIT NO" SortExpression="LIMITNO"
                     HeaderStyle-Wrap="false">
                     <EditItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="LIMITNO_TextBox" runat="server"></asp:TextBox>
                     </FooterTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Wrap="false" HeaderText="Limit @ D-1" SortExpression="Limit_D1"

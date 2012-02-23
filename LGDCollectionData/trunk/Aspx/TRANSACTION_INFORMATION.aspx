@@ -106,7 +106,7 @@
         <Fields>
             <asp:TemplateField HeaderText="CIF" SortExpression="CIF" HeaderStyle-Width="35%">
                 <EditItemTemplate>
-                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CIF_TextBox" runat="server" Text='<%# Bind("CIF") %>'></asp:TextBox>
@@ -117,7 +117,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="Default_Date_TextBox" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
@@ -128,7 +128,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="BRAN" SortExpression="BRAN">
                 <EditItemTemplate>
-                    <asp:Label ID="BRAN_Label" runat="server" Text='<%# Eval("BRAN") %>'></asp:Label>
+                    <asp:Label ID="BRAN_Label" runat="server" Text='<%# Bind("BRAN") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="BRAN_TextBox" runat="server" Text='<%# Bind("BRAN") %>'></asp:TextBox>
@@ -139,7 +139,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ACCGL" SortExpression="ACCGL">
                 <EditItemTemplate>
-                    <asp:Label ID="ACCGL_Label" runat="server" Text='<%# Eval("ACCGL") %>'></asp:Label>
+                    <asp:Label ID="ACCGL_Label" runat="server" Text='<%# Bind("ACCGL") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="ACCGL_TextBox" runat="server" Text='<%# Bind("ACCGL") %>'></asp:TextBox>
@@ -150,7 +150,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ACCNO" SortExpression="ACCNO">
                 <EditItemTemplate>
-                    <asp:Label ID="ACCNO_Label" runat="server" Text='<%# Eval("ACCNO") %>'></asp:Label>
+                    <asp:Label ID="ACCNO_Label" runat="server" Text='<%# Bind("ACCNO") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="ACCNO_TextBox" runat="server" Text='<%# Bind("ACCNO") %>'></asp:TextBox>
@@ -161,7 +161,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="CONTNO" SortExpression="CONTNO">
                 <EditItemTemplate>
-                    <asp:Label ID="CONTNO_Label" runat="server" Text='<%# Eval("CONTNO") %>'></asp:Label>
+                    <asp:Label ID="CONTNO_Label" runat="server" Text='<%# Bind("CONTNO") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CONTNO_TextBox" runat="server" Text='<%# Bind("CONTNO") %>'></asp:TextBox>
@@ -172,7 +172,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="SEQNO" SortExpression="SEQNO">
                 <EditItemTemplate>
-                    <asp:Label ID="SEQNO_Label" runat="server" Text='<%# Eval("SEQNO") %>'></asp:Label>
+                    <asp:Label ID="SEQNO_Label" runat="server" Text='<%# Bind("SEQNO") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="SEQNO_TextBox" runat="server" Text='<%# Bind("SEQNO") %>'></asp:TextBox>

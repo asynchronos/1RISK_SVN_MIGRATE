@@ -130,8 +130,8 @@ namespace LGDCollectionData.Aspx
             //}
             //else
             //{
-                e.NewValues["UpdateUser"] = User.Identity.Name;
-                e.NewValues["UpdateDate"] = DateTime.Now;
+            e.NewValues["UpdateUser"] = User.Identity.Name;
+            e.NewValues["UpdateDate"] = DateTime.Now;
             //}
         }
 
@@ -168,7 +168,7 @@ namespace LGDCollectionData.Aspx
                 e.ExceptionHandled = true;
             }
 
-            ClientScript.RegisterStartupScript(this.GetType(), "updatedInformation",    "<script language='javascript'>" +
+            ClientScript.RegisterStartupScript(this.GetType(), "updatedInformation", "<script language='javascript'>" +
                                                                                             "alert('" + msg + "');" +
                                                                                         "</script>", false);
         }

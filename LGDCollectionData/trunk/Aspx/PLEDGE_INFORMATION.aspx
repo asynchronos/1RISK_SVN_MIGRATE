@@ -396,7 +396,7 @@
         <Fields>
             <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
                 <EditItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:Label ID="LabelCif_Insert" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
@@ -407,7 +407,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="LabelDefault_Date" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBoxDefault_Date_Insert" runat="server" Text='<%# Bind("Default_Date") %>'></asp:TextBox>
@@ -423,7 +423,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="APPS ID" SortExpression="APPS_ID">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelAPPS_ID" runat="server" Text='<%# Eval("APPS_ID") %>'></asp:Label>
+                    <asp:Label ID="LabelAPPS_ID" runat="server" Text='<%# Bind("APPS_ID") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox16" runat="server" Text='<%# Bind("APPS_ID") %>'></asp:TextBox>
@@ -435,7 +435,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="PLED ID" SortExpression="PLED_ID">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelPLED_ID" runat="server" Text='<%# Eval("PLED_ID") %>'></asp:Label>
+                    <asp:Label ID="LabelPLED_ID" runat="server" Text='<%# Bind("PLED_ID") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox17" runat="server" Text='<%# Bind("PLED_ID") %>'></asp:TextBox>
@@ -447,7 +447,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="PLED SEQ" SortExpression="PLED_SEQ">
                 <EditItemTemplate>
-                    <asp:Label ID="LabelPLED_SEQ" runat="server" Text='<%# Eval("PLED_SEQ") %>'></asp:Label>
+                    <asp:Label ID="LabelPLED_SEQ" runat="server" Text='<%# Bind("PLED_SEQ") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox18" runat="server" Text='<%# Bind("PLED_SEQ") %>'></asp:TextBox>
@@ -1156,10 +1156,10 @@
                 <asp:TemplateField HeaderStyle-Wrap="false" ItemStyle-Wrap="false" HeaderText="Update Date"
                     SortExpression="UpdateDate">
                     <ItemTemplate>
-                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                        <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                     </EditItemTemplate>
                 </asp:TemplateField>
             </Columns>
