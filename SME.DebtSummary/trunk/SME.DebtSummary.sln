@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SME.DebtSummary", "SME.DebtSummary\SME.DebtSummary.csproj", "{7E328C4A-4E21-4AEC-8FB0-C1999C54916B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E328C4A-4E21-4AEC-8FB0-C1999C54916B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E328C4A-4E21-4AEC-8FB0-C1999C54916B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E328C4A-4E21-4AEC-8FB0-C1999C54916B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E328C4A-4E21-4AEC-8FB0-C1999C54916B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
