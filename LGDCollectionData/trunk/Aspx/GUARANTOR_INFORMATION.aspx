@@ -338,7 +338,7 @@
                                 <asp:Label ID="LabelUserId" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:Label ID="LabelUserId_Insert" runat="server" Text='<%# Eval("UpdateUser") %>'></asp:Label>
+                                <asp:Label ID="LabelUserId_Insert" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
                             </InsertItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label8" runat="server" Text='<%# Bind("UpdateUser") %>'></asp:Label>
@@ -349,7 +349,7 @@
                                 <asp:Label ID="LabelDate" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                             </EditItemTemplate>
                             <InsertItemTemplate>
-                                <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Eval("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
+                                <asp:Label ID="LabelDate_Insert" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>
                             </InsertItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label9" runat="server" Text='<%# Bind("UpdateDate","{0:d MMMM yyyy HH:mm:ss}") %>'></asp:Label>

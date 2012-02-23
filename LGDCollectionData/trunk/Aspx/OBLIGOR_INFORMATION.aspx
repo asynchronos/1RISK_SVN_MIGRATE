@@ -76,7 +76,7 @@
         <Fields>
             <asp:TemplateField HeaderText="CIF" SortExpression="CIF" HeaderStyle-Width="30%">
                 <EditItemTemplate>
-                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox Width="200px" MaxLength="255" ID="CIF_TextBox" runat="server" Text='<%# Bind("CIF") %>'></asp:TextBox>
@@ -179,9 +179,9 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                     <%--<asp:TextBox Width="200px" MaxLength="255" ID="Default_Date_TextBox" runat="server"
-                                Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>' Enabled="false"></asp:TextBox>--%>
+                                Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>' Enabled="false"></asp:TextBox>--%>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox Width="200px" MaxLength="255" ID="Default_Date_TextBox" runat="server"
@@ -646,7 +646,7 @@
                         <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
                         <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
                             <EditItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
@@ -694,7 +694,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Default_Date" SortExpression="Default_Date">
                             <EditItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label7" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>

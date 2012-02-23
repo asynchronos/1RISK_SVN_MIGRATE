@@ -156,7 +156,7 @@
         <Fields>
             <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
                 <EditItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:Label ID="LabelCif_Insert" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
@@ -167,7 +167,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                 <EditItemTemplate>
-                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBoxDefault_Date_Insert" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
@@ -183,7 +183,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="NPA Collateral ID" SortExpression="NPA_Collateral_ID">
                 <EditItemTemplate>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("NPA_Collateral_ID") %>'></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("NPA_Collateral_ID") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("NPA_Collateral_ID") %>'></asp:TextBox>

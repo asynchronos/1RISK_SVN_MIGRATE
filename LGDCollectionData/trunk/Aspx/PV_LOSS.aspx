@@ -136,12 +136,12 @@
                                     BackColor="#C0C0C0" onfocus="this.blur();"></asp:TextBox>
                             </InsertItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="CIF_Label" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                                <asp:Label ID="CIF_Label" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                             <EditItemTemplate>
-                                <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                                <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                             </EditItemTemplate>
                             <InsertItemTemplate>
                                 <asp:TextBox ID="Default_Date_TextBox" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:TextBox>
@@ -156,7 +156,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Date of Restructure" SortExpression="Date_of_Restructure">
                             <EditItemTemplate>
-                                <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Eval("Date_of_Restructure", "{0:d MMMM yyyy}") %>'></asp:Label>
+                                <asp:Label ID="Date_of_Restructure_Label" runat="server" Text='<%# Bind("Date_of_Restructure", "{0:d MMMM yyyy}") %>'></asp:Label>
                             </EditItemTemplate>
                             <InsertItemTemplate>
                                 <asp:TextBox ID="Date_of_Restructure_TextBox" runat="server" Text='<%# Bind("Date_of_Restructure", "{0:d MMMM yyyy}") %>'></asp:TextBox>
@@ -320,7 +320,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="CIF" SortExpression="CIF">
                         <EditItemTemplate>
-                            <asp:Label ID="CIF_Label" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                            <asp:Label ID="CIF_Label" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="CIF_Label" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
@@ -331,7 +331,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Default Date" SortExpression="Default_Date">
                         <EditItemTemplate>
-                            <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Eval("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
+                            <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Default_Date_Label" runat="server" Text='<%# Bind("Default_Date", "{0:d MMMM yyyy}") %>'></asp:Label>
@@ -353,7 +353,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Date of Repayment" SortExpression="Date_of_Repayment">
                         <EditItemTemplate>
-                            <asp:Label ID="Date_of_Repayment_Label" runat="server" Text='<%# Eval("Date_of_Repayment", "{0:d MMMM yyyy}") %>'></asp:Label>
+                            <asp:Label ID="Date_of_Repayment_Label" runat="server" Text='<%# Bind("Date_of_Repayment", "{0:d MMMM yyyy}") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Date_of_Repayment_Label" runat="server" Text='<%# Bind("Date_of_Repayment", "{0:d MMMM yyyy}") %>'></asp:Label>

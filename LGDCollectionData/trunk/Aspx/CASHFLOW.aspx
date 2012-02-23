@@ -217,28 +217,28 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:toolkitscriptmanager id="ToolkitScriptManager1" runat="server" enablescriptglobalization="true">
-    </asp:toolkitscriptmanager>
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true">
+    </asp:ToolkitScriptManager>
     <uc1:SelectFormWebUserControl ID="SelectFormWebUserControl1" runat="server" />
     <h2>
-        <asp:label id="FormName_Label" runat="server" text="CASHFLOW"></asp:label>
+        <asp:Label ID="FormName_Label" runat="server" Text="CASHFLOW"></asp:Label>
     </h2>
-    <asp:dropdownlist id="DDLValidate" runat="server" autopostback="True" onselectedindexchanged="DDLValidate_SelectedIndexChanged">
+    <asp:DropDownList ID="DDLValidate" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLValidate_SelectedIndexChanged">
         <asp:ListItem Value="-1">All</asp:ListItem>
         <asp:ListItem Value="1">Validate</asp:ListItem>
-    </asp:dropdownlist>
-    <asp:detailsview id="CASHFLOW_DetailsView" runat="server" allowpaging="True" autogeneraterows="False"
-        cellpadding="4" datakeynames="CIF,DefaultDate,APP_ID,LIMITNO,DateofCashflow"
-        datasourceid="CASHFLOW_DATASOURCE" defaultmode="Edit" enablemodelvalidation="True"
-        forecolor="#333333" onpageindexchanging="DetailsView_PageIndexChanging" onitemupdated="DetailsView_ItemUpdated"
-        onitemupdating="DetailsView_ItemUpdating">
+    </asp:DropDownList>
+    <asp:DetailsView ID="CASHFLOW_DetailsView" runat="server" AllowPaging="True" AutoGenerateRows="False"
+        CellPadding="4" DataKeyNames="CIF,DefaultDate,APP_ID,LIMITNO,DateofCashflow"
+        DataSourceID="CASHFLOW_DATASOURCE" DefaultMode="Edit" EnableModelValidation="True"
+        ForeColor="#333333" OnPageIndexChanging="DetailsView_PageIndexChanging" OnItemUpdated="DetailsView_ItemUpdated"
+        OnItemUpdating="DetailsView_ItemUpdating">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
         <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
         <Fields>
             <asp:TemplateField HeaderText="CIF" SortExpression="CIF" HeaderStyle-Width="35%">
                 <EditItemTemplate>
-                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Eval("CIF") %>'></asp:Label>
+                    <asp:Label ID="CIF_Label" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="CIF_TextBox" runat="server" Text='<%# Bind("CIF") %>'></asp:TextBox>
@@ -249,7 +249,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Default Date" SortExpression="DefaultDate">
                 <EditItemTemplate>
-                    <asp:Label ID="DefaultDate_Label" runat="server" Text='<%# Eval("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="DefaultDate_Label" runat="server" Text='<%# Bind("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="DefaultDate_TextBox" runat="server" Text='<%# Bind("DefaultDate", "{0:d MMMM yyyy}") %>'></asp:TextBox>
@@ -260,7 +260,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="LIMITNO" SortExpression="LIMITNO">
                 <EditItemTemplate>
-                    <asp:Label ID="LIMITNO_Label" runat="server" Text='<%# Eval("LIMITNO") %>'></asp:Label>
+                    <asp:Label ID="LIMITNO_Label" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="LIMITNO_TextBox" runat="server" Text='<%# Bind("LIMITNO") %>'></asp:TextBox>
@@ -271,7 +271,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="APP_ID" SortExpression="APP_ID">
                 <EditItemTemplate>
-                    <asp:Label ID="APP_ID_Label" runat="server" Text='<%# Eval("APP_ID") %>'></asp:Label>
+                    <asp:Label ID="APP_ID_Label" runat="server" Text='<%# Bind("APP_ID") %>'></asp:Label>
                     <!--<asp:DropDownList ID="APP_ID_DropDownList" runat="server" DataSourceID="APP_ID_DataSource"
                         DataTextField="APP_ID" DataValueField="APP_ID" SelectedValue='<%# Bind("APP_ID") %>'>
                     </asp:DropDownList>-->
@@ -299,7 +299,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Date of Cashflow" SortExpression="DateofCashflow">
                 <EditItemTemplate>
-                    <asp:Label ID="DateofCashflow_Label" runat="server" Text='<%# Eval("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:Label>
+                    <asp:Label ID="DateofCashflow_Label" runat="server" Text='<%# Bind("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:Label>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="DateofCashflow_TextBox" runat="server" Text='<%# Bind("DateofCashflow", "{0:d MMMM yyyy}") %>'></asp:TextBox>
@@ -515,10 +515,10 @@
         <PagerSettings Mode="NumericFirstLast" />
         <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-    </asp:detailsview>
-    <asp:sqldatasource id="CASHFLOW_DataSource" runat="server" connectionstring="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        selectcommand="P_CASHFLOW_SELECT" selectcommandtype="StoredProcedure" updatecommand="P_CASHFLOW_UPDATE"
-        updatecommandtype="StoredProcedure">
+    </asp:DetailsView>
+    <asp:SqlDataSource ID="CASHFLOW_DataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
+        SelectCommand="P_CASHFLOW_SELECT" SelectCommandType="StoredProcedure" UpdateCommand="P_CASHFLOW_UPDATE"
+        UpdateCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="cif" Type="String" />
         </SelectParameters>
@@ -542,16 +542,16 @@
             <asp:Parameter Name="UpdateUser" Type="String" />
             <asp:Parameter Name="UpdateDate" Type="DateTime" />
         </UpdateParameters>
-    </asp:sqldatasource>
-    <asp:sqldatasource id="APP_ID_DataSource" runat="server" enablecaching="True" connectionstring="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        selectcommand="L_APP_ID_SELECT" selectcommandtype="StoredProcedure"></asp:sqldatasource>
-    <asp:sqldatasource id="Currency_DataSource" runat="server" enablecaching="True" connectionstring="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        selectcommand="L_CURRENCY_CODE_SELECT" selectcommandtype="StoredProcedure"></asp:sqldatasource>
-    <asp:sqldatasource id="PreviousLimitNo_DataSource" runat="server" connectionstring="<%$ ConnectionStrings:LGDConnectionString1 %>"
-        selectcommand="P_LIMITNO_IN_FACILITY_INFORMATION_BY_CIF" selectcommandtype="StoredProcedure"
-        enablecaching="false">
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="APP_ID_DataSource" runat="server" EnableCaching="True" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
+        SelectCommand="L_APP_ID_SELECT" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="Currency_DataSource" runat="server" EnableCaching="True" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
+        SelectCommand="L_CURRENCY_CODE_SELECT" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="PreviousLimitNo_DataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LGDConnectionString1 %>"
+        SelectCommand="P_LIMITNO_IN_FACILITY_INFORMATION_BY_CIF" SelectCommandType="StoredProcedure"
+        EnableCaching="false">
         <SelectParameters>
             <asp:QueryStringParameter Name="CIF" QueryStringField="cif" Type="String" />
         </SelectParameters>
-    </asp:sqldatasource>
+    </asp:SqlDataSource>
 </asp:Content>
