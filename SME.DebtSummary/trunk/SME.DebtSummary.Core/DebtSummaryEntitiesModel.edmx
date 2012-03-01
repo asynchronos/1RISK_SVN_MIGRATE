@@ -1,0 +1,944 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Bay01_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Bay01_ModelStoreContainer">
+          <EntitySet Name="ByCus_CIF" EntityType="Bay01_Model.Store.ByCus_CIF" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CUSTOMER" EntityType="Bay01_Model.Store.CUSTOMER" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CUSTOMER_SME" EntityType="Bay01_Model.Store.CUSTOMER_SME" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CUSTOMER_SME_GROUP" EntityType="Bay01_Model.Store.CUSTOMER_SME_GROUP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CUSTOMER_SME_RATING" EntityType="Bay01_Model.Store.CUSTOMER_SME_RATING" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CUSTOMER_SME_RATING_TYPE" EntityType="Bay01_Model.Store.CUSTOMER_SME_RATING_TYPE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CUSTOMER_SME_SIZE" EntityType="Bay01_Model.Store.CUSTOMER_SME_SIZE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CUSTOMER_STATUS" EntityType="Bay01_Model.Store.CUSTOMER_STATUS" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CUSTOMER_SME_CUSTOMER_SME_SIZE" Association="Bay01_Model.Store.FK_CUSTOMER_SME_CUSTOMER_SME_SIZE">
+            <End Role="CUSTOMER_SME_SIZE" EntitySet="CUSTOMER_SME_SIZE" />
+            <End Role="CUSTOMER_SME" EntitySet="CUSTOMER_SME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_SME_CUSTOMER_STATUS" Association="Bay01_Model.Store.FK_CUSTOMER_SME_CUSTOMER_STATUS">
+            <End Role="CUSTOMER_STATUS" EntitySet="CUSTOMER_STATUS" />
+            <End Role="CUSTOMER_SME" EntitySet="CUSTOMER_SME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE" Association="Bay01_Model.Store.FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE">
+            <End Role="CUSTOMER_SME_RATING_TYPE" EntitySet="CUSTOMER_SME_RATING_TYPE" />
+            <End Role="CUSTOMER_SME_RATING" EntitySet="CUSTOMER_SME_RATING" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ByCus_CIF">
+          <Key>
+            <PropertyRef Name="Cif" />
+          </Key>
+          <Property Name="Cif" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" />
+          <Property Name="BOTID" Type="int" />
+          <Property Name="BaySize" Type="nvarchar" MaxLength="16" />
+          <Property Name="BaySizeNo" Type="tinyint" />
+          <Property Name="Rating" Type="nvarchar" MaxLength="3" />
+          <Property Name="BizTypeE" Type="nvarchar" MaxLength="30" />
+          <Property Name="Busi_Type" Type="int" />
+          <Property Name="BranchMaxPrin" Type="smallint" />
+          <Property Name="AgingOK" Type="money" />
+          <Property Name="AgingMax" Type="money" />
+          <Property Name="Class" Type="nvarchar" MaxLength="1" />
+          <Property Name="ClassE" Type="nvarchar" MaxLength="4" />
+          <Property Name="PrincipalFull" Type="money" />
+          <Property Name="Principal" Type="money" />
+          <Property Name="PrinCom" Type="money" />
+          <Property Name="PrinRetail" Type="money" />
+          <Property Name="Cont" Type="money" />
+          <Property Name="ContIAS" Type="money" />
+          <Property Name="Contingent" Type="money" />
+          <Property Name="Contingent_EFW" Type="money" />
+          <Property Name="AccruFull" Type="money" />
+          <Property Name="Accru" Type="money" />
+          <Property Name="SuspOri" Type="money" />
+          <Property Name="Susp" Type="money" />
+          <Property Name="UNEARNPRIN" Type="money" />
+          <Property Name="UNEARNINT" Type="money" />
+          <Property Name="UNCLEAPRIN" Type="money" />
+          <Property Name="UNCLEAINT" Type="money" />
+          <Property Name="DEFER" Type="money" />
+          <Property Name="UseValue" Type="money" />
+          <Property Name="BAfterC" Type="money" />
+          <Property Name="TdrLoss" Type="money" />
+          <Property Name="Reserve" Type="money" />
+          <Property Name="PVLOSS" Type="money" />
+          <Property Name="AddResv" Type="money" />
+          <Property Name="Totresv" Type="money" />
+          <Property Name="Full_IAS39" Type="money" />
+          <Property Name="AddResv_IAS39" Type="money" />
+          <Property Name="ResvFull" Type="money" />
+          <Property Name="CusDeptFlag" Type="tinyint" />
+          <Property Name="CusDeptTran" Type="int" />
+          <Property Name="Office_Id_CIM" Type="float" />
+          <Property Name="AO_SME" Type="float" />
+          <Property Name="Office_Id" Type="float" />
+          <Property Name="Affiliate" Type="bit" Nullable="false" />
+          <Property Name="NplFlag" Type="nvarchar" MaxLength="3" />
+          <Property Name="FirstSMHistory" Type="datetime" />
+          <Property Name="FirstSMDate" Type="datetime" />
+          <Property Name="FirstSMYear" Type="int" />
+          <Property Name="FirstSMYear1" Type="int" />
+          <Property Name="LastSMCount" Type="int" />
+          <Property Name="LastSMDate" Type="datetime" />
+          <Property Name="LastSMYear" Type="int" />
+          <Property Name="LastSMYear1" Type="int" />
+          <Property Name="SMMonthFirst" Type="int" />
+          <Property Name="SMMonthLast" Type="int" />
+          <Property Name="FirstNplHistory" Type="datetime" />
+          <Property Name="FirstNplDate" Type="datetime" />
+          <Property Name="FirstNplYear" Type="int" />
+          <Property Name="FirstNplYear1" Type="int" />
+          <Property Name="LastNplCount" Type="int" />
+          <Property Name="LastNplDate" Type="datetime" />
+          <Property Name="LastNplYear" Type="int" />
+          <Property Name="LastNplYear1" Type="int" />
+          <Property Name="NplMonthFirst" Type="int" />
+          <Property Name="NplMonthLast" Type="int" />
+          <Property Name="TdrFlag" Type="nvarchar" MaxLength="6" />
+          <Property Name="GDR" Type="nvarchar" MaxLength="1" />
+          <Property Name="TdrFirst" Type="int" />
+          <Property Name="Count" Type="tinyint" />
+          <Property Name="Date_Report" Type="int" />
+          <Property Name="DateReport" Type="nvarchar" MaxLength="7" />
+          <Property Name="DateRegister" Type="nvarchar" MaxLength="7" />
+          <Property Name="BOT" Type="nvarchar" MaxLength="10" />
+          <Property Name="BOTYear" Type="nvarchar" MaxLength="15" />
+          <Property Name="BOTClassAfter" Type="nvarchar" MaxLength="1" />
+          <Property Name="BOT1" Type="nvarchar" MaxLength="3" />
+          <Property Name="BOTYear1" Type="nvarchar" MaxLength="10" />
+          <Property Name="BOTClass1" Type="nvarchar" MaxLength="1" />
+          <Property Name="CDR" Type="nvarchar" MaxLength="3" />
+          <Property Name="CDRYear" Type="nvarchar" MaxLength="10" />
+          <Property Name="CDRClass" Type="nvarchar" MaxLength="1" />
+          <Property Name="CM_Dep" Type="nvarchar" MaxLength="10" />
+          <Property Name="CM_Flag" Type="nvarchar" MaxLength="15" />
+          <Property Name="CM_Group" Type="nvarchar" MaxLength="15" />
+          <Property Name="CM_Temp" Type="nvarchar" MaxLength="15" />
+          <Property Name="CM_Id_Ao" Type="float" />
+          <Property Name="CM_Ao" Type="nvarchar" MaxLength="15" />
+          <Property Name="CM_AoTel" Type="nvarchar" MaxLength="15" />
+          <Property Name="RM_Dep" Type="nvarchar" MaxLength="10" />
+          <Property Name="RM_Group" Type="nvarchar" MaxLength="15" />
+          <Property Name="RM_Temp" Type="nvarchar" MaxLength="15" />
+          <Property Name="RM_Id_Ao" Type="float" />
+          <Property Name="RM_Ao" Type="nvarchar" MaxLength="15" />
+          <Property Name="RM_AoTel" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Name="CIF" Type="int" Nullable="false" />
+          <Property Name="CUS_TITLE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUS_FIRST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CUS_LAST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CUS1_TITLE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUS1_FIRST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CUS1_LAST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CUS2_TITLE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUS2_FIRST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CUS2_LAST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CUS3_TITLE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUS3_FIRST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CUS3_LAST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CTITLE_E" Type="nvarchar" MaxLength="15" />
+          <Property Name="CFIRST_E" Type="nvarchar" MaxLength="40" />
+          <Property Name="CLAST_E" Type="nvarchar" MaxLength="40" />
+          <Property Name="CifType" Type="nvarchar" MaxLength="1" />
+          <Property Name="BOTID" Type="int" />
+          <Property Name="MAIN_CUST" Type="int" />
+          <Property Name="GROUP_CUST" Type="nvarchar" MaxLength="1" />
+          <Property Name="GROUPCIF" Type="int" />
+          <Property Name="BAYRATING" Type="nvarchar" MaxLength="2" />
+          <Property Name="RATING" Type="nvarchar" MaxLength="5" />
+          <Property Name="ADDR1" Type="nvarchar" MaxLength="110" />
+          <Property Name="ADDR2" Type="nvarchar" MaxLength="70" />
+          <Property Name="PROV" Type="nvarchar" MaxLength="2" />
+          <Property Name="ZIPCODE" Type="int" />
+          <Property Name="TEL_HOME" Type="nvarchar" MaxLength="20" />
+          <Property Name="TEL_OFF" Type="nvarchar" MaxLength="20" />
+          <Property Name="TAX_NO" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUS_TYPE" Type="nvarchar" MaxLength="4" />
+          <Property Name="BUSI_TYPE" Type="nvarchar" MaxLength="6" />
+          <Property Name="CLASS" Type="nvarchar" MaxLength="1" />
+          <Property Name="IDCARD" Type="nvarchar" MaxLength="13" />
+          <Property Name="OFFICR_ID" Type="bigint" />
+          <Property Name="DATEFAS" Type="datetime" />
+          <Property Name="BEINGCUST" Type="datetime" />
+          <Property Name="BTHDATE" Type="datetime" />
+          <Property Name="DEPTFLAG" Type="tinyint" />
+          <Property Name="DEPTTRAN" Type="int" />
+          <Property Name="CIF0" Type="int" />
+          <Property Name="CIF1" Type="int" />
+          <Property Name="CIF2" Type="int" />
+          <Property Name="PROVSHOP" Type="nvarchar" MaxLength="2" />
+          <Property Name="SEX" Type="char" MaxLength="1" />
+          <Property Name="ADDRWORK1" Type="nvarchar" MaxLength="110" />
+          <Property Name="ADDRWORK2" Type="nvarchar" MaxLength="70" />
+          <Property Name="ZIPSHOP" Type="int" />
+          <Property Name="CARDTYPE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CARDNO" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME">
+          <Key>
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Name="CIF" Type="int" Nullable="false" />
+          <Property Name="GROUP_ID" Type="int" />
+          <Property Name="CM_CODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="OLD_CM_CODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="BRANCH_ID" Type="smallint" />
+          <Property Name="JUDGEMENT_ID" Type="nvarchar" MaxLength="5" />
+          <Property Name="BUSI_RISK1_ID" Type="varchar" MaxLength="8" />
+          <Property Name="BUSI_RISK2_ID" Type="varchar" MaxLength="8" />
+          <Property Name="BUSI_RISK3_ID" Type="varchar" MaxLength="8" />
+          <Property Name="BUSINESS_DESTINATION_ID" Type="numeric" Precision="3" />
+          <Property Name="EXPORT_WEIGHT" Type="numeric" Precision="3" />
+          <Property Name="LOCAL_WEIGHT" Type="numeric" Precision="3" />
+          <Property Name="STATUS_ID" Type="int" />
+          <Property Name="SIZE_ID" Type="int" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDATE_BY" Type="nvarchar" MaxLength="10" />
+          <Property Name="RATING_TYPE_KEY" Type="int" />
+          <Property Name="RATING_KEY" Type="int" />
+          <Property Name="RATING_UPDATE_DATE" Type="datetime" />
+          <Property Name="EXTERNAL_SOURCE_MEMO" Type="ntext" />
+          <Property Name="NEXT_REVIEW_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME_GROUP">
+          <Key>
+            <PropertyRef Name="GROUP_ID" />
+          </Key>
+          <Property Name="GROUP_ID" Type="int" Nullable="false" />
+          <Property Name="GROUP_SIZE_ID" Type="smallint" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
+          <Property Name="UPDATE_BY" Type="nvarchar" MaxLength="10" />
+          <Property Name="GROUP_EXPOSURE" Type="money" />
+          <Property Name="NEXT_REVIEW_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME_RATING">
+          <Key>
+            <PropertyRef Name="RATING_KEY" />
+          </Key>
+          <Property Name="RATING_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RATING_CODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="RATING_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="RATING_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRIORITY" Type="int" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME_RATING_TYPE">
+          <Key>
+            <PropertyRef Name="RATING_TYPE_KEY" />
+          </Key>
+          <Property Name="RATING_TYPE_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RATING_TYPE_CODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="RATING_TYPE_DESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRIORITY" Type="int" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME_SIZE">
+          <Key>
+            <PropertyRef Name="SIZE_ID" />
+          </Key>
+          <Property Name="SIZE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SIZE_DETAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRIORITY" Type="int" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_STATUS">
+          <Key>
+            <PropertyRef Name="STATUS_ID" />
+          </Key>
+          <Property Name="STATUS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="STATUS_DETAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRIORITY" Type="int" />
+        </EntityType>
+        <Association Name="FK_CUSTOMER_SME_CUSTOMER_SME_SIZE">
+          <End Role="CUSTOMER_SME_SIZE" Type="Bay01_Model.Store.CUSTOMER_SME_SIZE" Multiplicity="0..1" />
+          <End Role="CUSTOMER_SME" Type="Bay01_Model.Store.CUSTOMER_SME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_SME_SIZE">
+              <PropertyRef Name="SIZE_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_SME">
+              <PropertyRef Name="SIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_SME_CUSTOMER_STATUS">
+          <End Role="CUSTOMER_STATUS" Type="Bay01_Model.Store.CUSTOMER_STATUS" Multiplicity="0..1" />
+          <End Role="CUSTOMER_SME" Type="Bay01_Model.Store.CUSTOMER_SME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_SME">
+              <PropertyRef Name="STATUS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE">
+          <End Role="CUSTOMER_SME_RATING_TYPE" Type="Bay01_Model.Store.CUSTOMER_SME_RATING_TYPE" Multiplicity="1" />
+          <End Role="CUSTOMER_SME_RATING" Type="Bay01_Model.Store.CUSTOMER_SME_RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_SME_RATING_TYPE">
+              <PropertyRef Name="RATING_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="CUSTOMER_SME_RATING">
+              <PropertyRef Name="RATING_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Bay01_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Bay01_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ByCus_CIF" EntityType="Bay01_Model.ByCus_CIF" />
+          <EntitySet Name="CUSTOMER" EntityType="Bay01_Model.CUSTOMER" />
+          <EntitySet Name="CUSTOMER_SME" EntityType="Bay01_Model.CUSTOMER_SME" />
+          <EntitySet Name="CUSTOMER_SME_GROUP" EntityType="Bay01_Model.CUSTOMER_SME_GROUP" />
+          <EntitySet Name="CUSTOMER_SME_RATING" EntityType="Bay01_Model.CUSTOMER_SME_RATING" />
+          <EntitySet Name="CUSTOMER_SME_RATING_TYPE" EntityType="Bay01_Model.CUSTOMER_SME_RATING_TYPE" />
+          <EntitySet Name="CUSTOMER_SME_SIZE" EntityType="Bay01_Model.CUSTOMER_SME_SIZE" />
+          <EntitySet Name="CUSTOMER_STATUS" EntityType="Bay01_Model.CUSTOMER_STATUS" />
+          <AssociationSet Name="FK_CUSTOMER_SME_CUSTOMER_SME_SIZE" Association="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_SME_SIZE">
+            <End Role="CUSTOMER_SME_SIZE" EntitySet="CUSTOMER_SME_SIZE" />
+            <End Role="CUSTOMER_SME" EntitySet="CUSTOMER_SME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_SME_CUSTOMER_STATUS" Association="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_STATUS">
+            <End Role="CUSTOMER_STATUS" EntitySet="CUSTOMER_STATUS" />
+            <End Role="CUSTOMER_SME" EntitySet="CUSTOMER_SME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE" Association="Bay01_Model.FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE">
+            <End Role="CUSTOMER_SME_RATING_TYPE" EntitySet="CUSTOMER_SME_RATING_TYPE" />
+            <End Role="CUSTOMER_SME_RATING" EntitySet="CUSTOMER_SME_RATING" />
+          </AssociationSet>
+          <AssociationSet Name="CUSTOMER_SMECUSTOMER_SME_RATING" Association="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_RATING">
+            <End Role="CUSTOMER_SME" EntitySet="CUSTOMER_SME" />
+            <End Role="CUSTOMER_SME_RATING" EntitySet="CUSTOMER_SME_RATING" />
+          </AssociationSet>
+          <AssociationSet Name="CUSTOMER_SMECUSTOMER_SME_GROUP" Association="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_GROUP">
+            <End Role="CUSTOMER_SME" EntitySet="CUSTOMER_SME" />
+            <End Role="CUSTOMER_SME_GROUP" EntitySet="CUSTOMER_SME_GROUP" />
+          </AssociationSet>
+          <AssociationSet Name="CUSTOMERCUSTOMER_SME" Association="Bay01_Model.CUSTOMERCUSTOMER_SME">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="CUSTOMER_SME" EntitySet="CUSTOMER_SME" />
+          </AssociationSet>
+          <AssociationSet Name="CUSTOMERByCus_CIF" Association="Bay01_Model.CUSTOMERByCus_CIF">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="ByCus_CIF" EntitySet="ByCus_CIF" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ByCus_CIF">
+          <Key>
+            <PropertyRef Name="Cif" />
+          </Key>
+          <Property Name="Cif" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="80" Unicode="true" FixedLength="false" />
+          <Property Name="BOTID" Type="Int32" />
+          <Property Name="BaySize" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="BaySizeNo" Type="Byte" />
+          <Property Name="Rating" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="BizTypeE" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Busi_Type" Type="Int32" />
+          <Property Name="BranchMaxPrin" Type="Int16" />
+          <Property Name="AgingOK" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AgingMax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Class" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="ClassE" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="PrincipalFull" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Principal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PrinCom" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PrinRetail" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Cont" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ContIAS" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Contingent" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Contingent_EFW" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AccruFull" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Accru" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SuspOri" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Susp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UNEARNPRIN" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UNEARNINT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UNCLEAPRIN" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UNCLEAINT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DEFER" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UseValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BAfterC" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TdrLoss" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Reserve" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PVLOSS" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AddResv" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Totresv" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Full_IAS39" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AddResv_IAS39" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ResvFull" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CusDeptFlag" Type="Byte" />
+          <Property Name="CusDeptTran" Type="Int32" />
+          <Property Name="Office_Id_CIM" Type="Double" />
+          <Property Name="AO_SME" Type="Double" />
+          <Property Name="Office_Id" Type="Double" />
+          <Property Name="Affiliate" Type="Boolean" Nullable="false" />
+          <Property Name="NplFlag" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="FirstSMHistory" Type="DateTime" />
+          <Property Name="FirstSMDate" Type="DateTime" />
+          <Property Name="FirstSMYear" Type="Int32" />
+          <Property Name="FirstSMYear1" Type="Int32" />
+          <Property Name="LastSMCount" Type="Int32" />
+          <Property Name="LastSMDate" Type="DateTime" />
+          <Property Name="LastSMYear" Type="Int32" />
+          <Property Name="LastSMYear1" Type="Int32" />
+          <Property Name="SMMonthFirst" Type="Int32" />
+          <Property Name="SMMonthLast" Type="Int32" />
+          <Property Name="FirstNplHistory" Type="DateTime" />
+          <Property Name="FirstNplDate" Type="DateTime" />
+          <Property Name="FirstNplYear" Type="Int32" />
+          <Property Name="FirstNplYear1" Type="Int32" />
+          <Property Name="LastNplCount" Type="Int32" />
+          <Property Name="LastNplDate" Type="DateTime" />
+          <Property Name="LastNplYear" Type="Int32" />
+          <Property Name="LastNplYear1" Type="Int32" />
+          <Property Name="NplMonthFirst" Type="Int32" />
+          <Property Name="NplMonthLast" Type="Int32" />
+          <Property Name="TdrFlag" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="GDR" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="TdrFirst" Type="Int32" />
+          <Property Name="Count" Type="Byte" />
+          <Property Name="Date_Report" Type="Int32" />
+          <Property Name="DateReport" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
+          <Property Name="DateRegister" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
+          <Property Name="BOT" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="BOTYear" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="BOTClassAfter" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="BOT1" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="BOTYear1" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="BOTClass1" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CDR" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="CDRYear" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CDRClass" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CM_Dep" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CM_Flag" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="CM_Group" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="CM_Temp" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="CM_Id_Ao" Type="Double" />
+          <Property Name="CM_Ao" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="CM_AoTel" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="RM_Dep" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="RM_Group" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="RM_Temp" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="RM_Id_Ao" Type="Double" />
+          <Property Name="RM_Ao" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="RM_AoTel" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Bay01_Model.CUSTOMERByCus_CIF" FromRole="ByCus_CIF" ToRole="CUSTOMER" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Name="CIF" Type="Int32" Nullable="false" />
+          <Property Name="CUS_TITLE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CUS_FIRST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CUS_LAST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CUS1_TITLE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CUS1_FIRST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CUS1_LAST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CUS2_TITLE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CUS2_FIRST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CUS2_LAST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CUS3_TITLE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CUS3_FIRST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CUS3_LAST" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CTITLE_E" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="CFIRST_E" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="CLAST_E" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="CifType" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="BOTID" Type="Int32" />
+          <Property Name="MAIN_CUST" Type="Int32" />
+          <Property Name="GROUP_CUST" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="GROUPCIF" Type="Int32" />
+          <Property Name="BAYRATING" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="RATING" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="ADDR1" Type="String" MaxLength="110" Unicode="true" FixedLength="false" />
+          <Property Name="ADDR2" Type="String" MaxLength="70" Unicode="true" FixedLength="false" />
+          <Property Name="PROV" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="ZIPCODE" Type="Int32" />
+          <Property Name="TEL_HOME" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TEL_OFF" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TAX_NO" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CUS_TYPE" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="BUSI_TYPE" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="CLASS" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="IDCARD" Type="String" MaxLength="13" Unicode="true" FixedLength="false" />
+          <Property Name="OFFICR_ID" Type="Int64" />
+          <Property Name="DATEFAS" Type="DateTime" />
+          <Property Name="BEINGCUST" Type="DateTime" />
+          <Property Name="BTHDATE" Type="DateTime" />
+          <Property Name="DEPTFLAG" Type="Byte" />
+          <Property Name="DEPTTRAN" Type="Int32" />
+          <Property Name="CIF0" Type="Int32" />
+          <Property Name="CIF1" Type="Int32" />
+          <Property Name="CIF2" Type="Int32" />
+          <Property Name="PROVSHOP" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="SEX" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="ADDRWORK1" Type="String" MaxLength="110" Unicode="true" FixedLength="false" />
+          <Property Name="ADDRWORK2" Type="String" MaxLength="70" Unicode="true" FixedLength="false" />
+          <Property Name="ZIPSHOP" Type="Int32" />
+          <Property Name="CARDTYPE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CARDNO" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CUSTOMER_SME" Relationship="Bay01_Model.CUSTOMERCUSTOMER_SME" FromRole="CUSTOMER" ToRole="CUSTOMER_SME" />
+          <NavigationProperty Name="ByCus_CIF" Relationship="Bay01_Model.CUSTOMERByCus_CIF" FromRole="CUSTOMER" ToRole="ByCus_CIF" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME">
+          <Key>
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Name="CIF" Type="Int32" Nullable="false" />
+          <Property Name="GROUP_ID" Type="Int32" />
+          <Property Name="CM_CODE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="OLD_CM_CODE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="BRANCH_ID" Type="Int16" />
+          <Property Name="JUDGEMENT_ID" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="BUSI_RISK1_ID" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="BUSI_RISK2_ID" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="BUSI_RISK3_ID" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="BUSINESS_DESTINATION_ID" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="EXPORT_WEIGHT" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="LOCAL_WEIGHT" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="STATUS_ID" Type="Int32" />
+          <Property Name="SIZE_ID" Type="Int32" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="UPDATE_BY" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="RATING_TYPE_KEY" Type="Int32" />
+          <Property Name="RATING_KEY" Type="Int32" />
+          <Property Name="RATING_UPDATE_DATE" Type="DateTime" />
+          <Property Name="EXTERNAL_SOURCE_MEMO" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="NEXT_REVIEW_DATE" Type="DateTime" />
+          <NavigationProperty Name="CUSTOMER_SME_SIZE" Relationship="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_SME_SIZE" FromRole="CUSTOMER_SME" ToRole="CUSTOMER_SME_SIZE" />
+          <NavigationProperty Name="CUSTOMER_STATUS" Relationship="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_STATUS" FromRole="CUSTOMER_SME" ToRole="CUSTOMER_STATUS" />
+          <NavigationProperty Name="CUSTOMER_SME_RATING" Relationship="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_RATING" FromRole="CUSTOMER_SME" ToRole="CUSTOMER_SME_RATING" />
+          <NavigationProperty Name="CUSTOMER_SME_GROUP" Relationship="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_GROUP" FromRole="CUSTOMER_SME" ToRole="CUSTOMER_SME_GROUP" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Bay01_Model.CUSTOMERCUSTOMER_SME" FromRole="CUSTOMER_SME" ToRole="CUSTOMER" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME_GROUP">
+          <Key>
+            <PropertyRef Name="GROUP_ID" />
+          </Key>
+          <Property Name="GROUP_ID" Type="Int32" Nullable="false" />
+          <Property Name="GROUP_SIZE_ID" Type="Int16" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="DateTime" />
+          <Property Name="UPDATE_BY" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="GROUP_EXPOSURE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NEXT_REVIEW_DATE" Type="DateTime" />
+          <NavigationProperty Name="CUSTOMER_SME" Relationship="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_GROUP" FromRole="CUSTOMER_SME_GROUP" ToRole="CUSTOMER_SME" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME_RATING">
+          <Key>
+            <PropertyRef Name="RATING_KEY" />
+          </Key>
+          <Property Name="RATING_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RATING_CODE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="RATING_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="RATING_DESC" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <NavigationProperty Name="CUSTOMER_SME_RATING_TYPE" Relationship="Bay01_Model.FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE" FromRole="CUSTOMER_SME_RATING" ToRole="CUSTOMER_SME_RATING_TYPE" />
+          <NavigationProperty Name="CUSTOMER_SME" Relationship="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_RATING" FromRole="CUSTOMER_SME_RATING" ToRole="CUSTOMER_SME" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME_RATING_TYPE">
+          <Key>
+            <PropertyRef Name="RATING_TYPE_KEY" />
+          </Key>
+          <Property Name="RATING_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RATING_TYPE_CODE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="RATING_TYPE_DESC" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <NavigationProperty Name="CUSTOMER_SME_RATING" Relationship="Bay01_Model.FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE" FromRole="CUSTOMER_SME_RATING_TYPE" ToRole="CUSTOMER_SME_RATING" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_SME_SIZE">
+          <Key>
+            <PropertyRef Name="SIZE_ID" />
+          </Key>
+          <Property Name="SIZE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIZE_DETAIL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <NavigationProperty Name="CUSTOMER_SME" Relationship="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_SME_SIZE" FromRole="CUSTOMER_SME_SIZE" ToRole="CUSTOMER_SME" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_STATUS">
+          <Key>
+            <PropertyRef Name="STATUS_ID" />
+          </Key>
+          <Property Name="STATUS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATUS_DETAIL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <NavigationProperty Name="CUSTOMER_SME" Relationship="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_STATUS" FromRole="CUSTOMER_STATUS" ToRole="CUSTOMER_SME" />
+        </EntityType>
+        <Association Name="FK_CUSTOMER_SME_CUSTOMER_SME_SIZE">
+          <End Role="CUSTOMER_SME_SIZE" Type="Bay01_Model.CUSTOMER_SME_SIZE" Multiplicity="0..1" />
+          <End Role="CUSTOMER_SME" Type="Bay01_Model.CUSTOMER_SME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_SME_SIZE">
+              <PropertyRef Name="SIZE_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_SME">
+              <PropertyRef Name="SIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_SME_CUSTOMER_STATUS">
+          <End Role="CUSTOMER_STATUS" Type="Bay01_Model.CUSTOMER_STATUS" Multiplicity="0..1" />
+          <End Role="CUSTOMER_SME" Type="Bay01_Model.CUSTOMER_SME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_SME">
+              <PropertyRef Name="STATUS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE">
+          <End Role="CUSTOMER_SME_RATING_TYPE" Type="Bay01_Model.CUSTOMER_SME_RATING_TYPE" Multiplicity="1" />
+          <End Role="CUSTOMER_SME_RATING" Type="Bay01_Model.CUSTOMER_SME_RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_SME_RATING_TYPE">
+              <PropertyRef Name="RATING_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="CUSTOMER_SME_RATING">
+              <PropertyRef Name="RATING_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUSTOMER_SMECUSTOMER_SME_RATING">
+          <End Type="Bay01_Model.CUSTOMER_SME" Role="CUSTOMER_SME" Multiplicity="*" />
+          <End Type="Bay01_Model.CUSTOMER_SME_RATING" Role="CUSTOMER_SME_RATING" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_SME_RATING">
+              <PropertyRef Name="RATING_KEY" />
+            </Principal>
+            <Dependent Role="CUSTOMER_SME">
+              <PropertyRef Name="RATING_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUSTOMER_SMECUSTOMER_SME_GROUP">
+          <End Type="Bay01_Model.CUSTOMER_SME" Role="CUSTOMER_SME" Multiplicity="*" />
+          <End Type="Bay01_Model.CUSTOMER_SME_GROUP" Role="CUSTOMER_SME_GROUP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_SME_GROUP">
+              <PropertyRef Name="GROUP_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_SME">
+              <PropertyRef Name="GROUP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUSTOMERCUSTOMER_SME">
+          <End Type="Bay01_Model.CUSTOMER" Role="CUSTOMER" Multiplicity="1" />
+          <End Type="Bay01_Model.CUSTOMER_SME" Role="CUSTOMER_SME" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CIF" />
+            </Principal>
+            <Dependent Role="CUSTOMER_SME">
+              <PropertyRef Name="CIF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUSTOMERByCus_CIF">
+          <End Type="Bay01_Model.CUSTOMER" Role="CUSTOMER" Multiplicity="1" />
+          <End Type="Bay01_Model.ByCus_CIF" Role="ByCus_CIF" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CIF" />
+            </Principal>
+            <Dependent Role="ByCus_CIF">
+              <PropertyRef Name="Cif" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Bay01_ModelStoreContainer" CdmEntityContainer="Bay01_Entities">
+          <EntitySetMapping Name="ByCus_CIF"><EntityTypeMapping TypeName="Bay01_Model.ByCus_CIF"><MappingFragment StoreEntitySet="ByCus_CIF">
+            <ScalarProperty Name="Cif" ColumnName="Cif" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="BOTID" ColumnName="BOTID" />
+            <ScalarProperty Name="BaySize" ColumnName="BaySize" />
+            <ScalarProperty Name="BaySizeNo" ColumnName="BaySizeNo" />
+            <ScalarProperty Name="Rating" ColumnName="Rating" />
+            <ScalarProperty Name="BizTypeE" ColumnName="BizTypeE" />
+            <ScalarProperty Name="Busi_Type" ColumnName="Busi_Type" />
+            <ScalarProperty Name="BranchMaxPrin" ColumnName="BranchMaxPrin" />
+            <ScalarProperty Name="AgingOK" ColumnName="AgingOK" />
+            <ScalarProperty Name="AgingMax" ColumnName="AgingMax" />
+            <ScalarProperty Name="Class" ColumnName="Class" />
+            <ScalarProperty Name="ClassE" ColumnName="ClassE" />
+            <ScalarProperty Name="PrincipalFull" ColumnName="PrincipalFull" />
+            <ScalarProperty Name="Principal" ColumnName="Principal" />
+            <ScalarProperty Name="PrinCom" ColumnName="PrinCom" />
+            <ScalarProperty Name="PrinRetail" ColumnName="PrinRetail" />
+            <ScalarProperty Name="Cont" ColumnName="Cont" />
+            <ScalarProperty Name="ContIAS" ColumnName="ContIAS" />
+            <ScalarProperty Name="Contingent" ColumnName="Contingent" />
+            <ScalarProperty Name="Contingent_EFW" ColumnName="Contingent_EFW" />
+            <ScalarProperty Name="AccruFull" ColumnName="AccruFull" />
+            <ScalarProperty Name="Accru" ColumnName="Accru" />
+            <ScalarProperty Name="SuspOri" ColumnName="SuspOri" />
+            <ScalarProperty Name="Susp" ColumnName="Susp" />
+            <ScalarProperty Name="UNEARNPRIN" ColumnName="UNEARNPRIN" />
+            <ScalarProperty Name="UNEARNINT" ColumnName="UNEARNINT" />
+            <ScalarProperty Name="UNCLEAPRIN" ColumnName="UNCLEAPRIN" />
+            <ScalarProperty Name="UNCLEAINT" ColumnName="UNCLEAINT" />
+            <ScalarProperty Name="DEFER" ColumnName="DEFER" />
+            <ScalarProperty Name="UseValue" ColumnName="UseValue" />
+            <ScalarProperty Name="BAfterC" ColumnName="BAfterC" />
+            <ScalarProperty Name="TdrLoss" ColumnName="TdrLoss" />
+            <ScalarProperty Name="Reserve" ColumnName="Reserve" />
+            <ScalarProperty Name="PVLOSS" ColumnName="PVLOSS" />
+            <ScalarProperty Name="AddResv" ColumnName="AddResv" />
+            <ScalarProperty Name="Totresv" ColumnName="Totresv" />
+            <ScalarProperty Name="Full_IAS39" ColumnName="Full_IAS39" />
+            <ScalarProperty Name="AddResv_IAS39" ColumnName="AddResv_IAS39" />
+            <ScalarProperty Name="ResvFull" ColumnName="ResvFull" />
+            <ScalarProperty Name="CusDeptFlag" ColumnName="CusDeptFlag" />
+            <ScalarProperty Name="CusDeptTran" ColumnName="CusDeptTran" />
+            <ScalarProperty Name="Office_Id_CIM" ColumnName="Office_Id_CIM" />
+            <ScalarProperty Name="AO_SME" ColumnName="AO_SME" />
+            <ScalarProperty Name="Office_Id" ColumnName="Office_Id" />
+            <ScalarProperty Name="Affiliate" ColumnName="Affiliate" />
+            <ScalarProperty Name="NplFlag" ColumnName="NplFlag" />
+            <ScalarProperty Name="FirstSMHistory" ColumnName="FirstSMHistory" />
+            <ScalarProperty Name="FirstSMDate" ColumnName="FirstSMDate" />
+            <ScalarProperty Name="FirstSMYear" ColumnName="FirstSMYear" />
+            <ScalarProperty Name="FirstSMYear1" ColumnName="FirstSMYear1" />
+            <ScalarProperty Name="LastSMCount" ColumnName="LastSMCount" />
+            <ScalarProperty Name="LastSMDate" ColumnName="LastSMDate" />
+            <ScalarProperty Name="LastSMYear" ColumnName="LastSMYear" />
+            <ScalarProperty Name="LastSMYear1" ColumnName="LastSMYear1" />
+            <ScalarProperty Name="SMMonthFirst" ColumnName="SMMonthFirst" />
+            <ScalarProperty Name="SMMonthLast" ColumnName="SMMonthLast" />
+            <ScalarProperty Name="FirstNplHistory" ColumnName="FirstNplHistory" />
+            <ScalarProperty Name="FirstNplDate" ColumnName="FirstNplDate" />
+            <ScalarProperty Name="FirstNplYear" ColumnName="FirstNplYear" />
+            <ScalarProperty Name="FirstNplYear1" ColumnName="FirstNplYear1" />
+            <ScalarProperty Name="LastNplCount" ColumnName="LastNplCount" />
+            <ScalarProperty Name="LastNplDate" ColumnName="LastNplDate" />
+            <ScalarProperty Name="LastNplYear" ColumnName="LastNplYear" />
+            <ScalarProperty Name="LastNplYear1" ColumnName="LastNplYear1" />
+            <ScalarProperty Name="NplMonthFirst" ColumnName="NplMonthFirst" />
+            <ScalarProperty Name="NplMonthLast" ColumnName="NplMonthLast" />
+            <ScalarProperty Name="TdrFlag" ColumnName="TdrFlag" />
+            <ScalarProperty Name="GDR" ColumnName="GDR" />
+            <ScalarProperty Name="TdrFirst" ColumnName="TdrFirst" />
+            <ScalarProperty Name="Count" ColumnName="Count" />
+            <ScalarProperty Name="Date_Report" ColumnName="Date_Report" />
+            <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+            <ScalarProperty Name="DateRegister" ColumnName="DateRegister" />
+            <ScalarProperty Name="BOT" ColumnName="BOT" />
+            <ScalarProperty Name="BOTYear" ColumnName="BOTYear" />
+            <ScalarProperty Name="BOTClassAfter" ColumnName="BOTClassAfter" />
+            <ScalarProperty Name="BOT1" ColumnName="BOT1" />
+            <ScalarProperty Name="BOTYear1" ColumnName="BOTYear1" />
+            <ScalarProperty Name="BOTClass1" ColumnName="BOTClass1" />
+            <ScalarProperty Name="CDR" ColumnName="CDR" />
+            <ScalarProperty Name="CDRYear" ColumnName="CDRYear" />
+            <ScalarProperty Name="CDRClass" ColumnName="CDRClass" />
+            <ScalarProperty Name="CM_Dep" ColumnName="CM_Dep" />
+            <ScalarProperty Name="CM_Flag" ColumnName="CM_Flag" />
+            <ScalarProperty Name="CM_Group" ColumnName="CM_Group" />
+            <ScalarProperty Name="CM_Temp" ColumnName="CM_Temp" />
+            <ScalarProperty Name="CM_Id_Ao" ColumnName="CM_Id_Ao" />
+            <ScalarProperty Name="CM_Ao" ColumnName="CM_Ao" />
+            <ScalarProperty Name="CM_AoTel" ColumnName="CM_AoTel" />
+            <ScalarProperty Name="RM_Dep" ColumnName="RM_Dep" />
+            <ScalarProperty Name="RM_Group" ColumnName="RM_Group" />
+            <ScalarProperty Name="RM_Temp" ColumnName="RM_Temp" />
+            <ScalarProperty Name="RM_Id_Ao" ColumnName="RM_Id_Ao" />
+            <ScalarProperty Name="RM_Ao" ColumnName="RM_Ao" />
+            <ScalarProperty Name="RM_AoTel" ColumnName="RM_AoTel" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER"><EntityTypeMapping TypeName="Bay01_Model.CUSTOMER"><MappingFragment StoreEntitySet="CUSTOMER">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="CUS_TITLE" ColumnName="CUS_TITLE" />
+            <ScalarProperty Name="CUS_FIRST" ColumnName="CUS_FIRST" />
+            <ScalarProperty Name="CUS_LAST" ColumnName="CUS_LAST" />
+            <ScalarProperty Name="CUS1_TITLE" ColumnName="CUS1_TITLE" />
+            <ScalarProperty Name="CUS1_FIRST" ColumnName="CUS1_FIRST" />
+            <ScalarProperty Name="CUS1_LAST" ColumnName="CUS1_LAST" />
+            <ScalarProperty Name="CUS2_TITLE" ColumnName="CUS2_TITLE" />
+            <ScalarProperty Name="CUS2_FIRST" ColumnName="CUS2_FIRST" />
+            <ScalarProperty Name="CUS2_LAST" ColumnName="CUS2_LAST" />
+            <ScalarProperty Name="CUS3_TITLE" ColumnName="CUS3_TITLE" />
+            <ScalarProperty Name="CUS3_FIRST" ColumnName="CUS3_FIRST" />
+            <ScalarProperty Name="CUS3_LAST" ColumnName="CUS3_LAST" />
+            <ScalarProperty Name="CTITLE_E" ColumnName="CTITLE_E" />
+            <ScalarProperty Name="CFIRST_E" ColumnName="CFIRST_E" />
+            <ScalarProperty Name="CLAST_E" ColumnName="CLAST_E" />
+            <ScalarProperty Name="CifType" ColumnName="CifType" />
+            <ScalarProperty Name="BOTID" ColumnName="BOTID" />
+            <ScalarProperty Name="MAIN_CUST" ColumnName="MAIN_CUST" />
+            <ScalarProperty Name="GROUP_CUST" ColumnName="GROUP_CUST" />
+            <ScalarProperty Name="GROUPCIF" ColumnName="GROUPCIF" />
+            <ScalarProperty Name="BAYRATING" ColumnName="BAYRATING" />
+            <ScalarProperty Name="RATING" ColumnName="RATING" />
+            <ScalarProperty Name="ADDR1" ColumnName="ADDR1" />
+            <ScalarProperty Name="ADDR2" ColumnName="ADDR2" />
+            <ScalarProperty Name="PROV" ColumnName="PROV" />
+            <ScalarProperty Name="ZIPCODE" ColumnName="ZIPCODE" />
+            <ScalarProperty Name="TEL_HOME" ColumnName="TEL_HOME" />
+            <ScalarProperty Name="TEL_OFF" ColumnName="TEL_OFF" />
+            <ScalarProperty Name="TAX_NO" ColumnName="TAX_NO" />
+            <ScalarProperty Name="CUS_TYPE" ColumnName="CUS_TYPE" />
+            <ScalarProperty Name="BUSI_TYPE" ColumnName="BUSI_TYPE" />
+            <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+            <ScalarProperty Name="IDCARD" ColumnName="IDCARD" />
+            <ScalarProperty Name="OFFICR_ID" ColumnName="OFFICR_ID" />
+            <ScalarProperty Name="DATEFAS" ColumnName="DATEFAS" />
+            <ScalarProperty Name="BEINGCUST" ColumnName="BEINGCUST" />
+            <ScalarProperty Name="BTHDATE" ColumnName="BTHDATE" />
+            <ScalarProperty Name="DEPTFLAG" ColumnName="DEPTFLAG" />
+            <ScalarProperty Name="DEPTTRAN" ColumnName="DEPTTRAN" />
+            <ScalarProperty Name="CIF0" ColumnName="CIF0" />
+            <ScalarProperty Name="CIF1" ColumnName="CIF1" />
+            <ScalarProperty Name="CIF2" ColumnName="CIF2" />
+            <ScalarProperty Name="PROVSHOP" ColumnName="PROVSHOP" />
+            <ScalarProperty Name="SEX" ColumnName="SEX" />
+            <ScalarProperty Name="ADDRWORK1" ColumnName="ADDRWORK1" />
+            <ScalarProperty Name="ADDRWORK2" ColumnName="ADDRWORK2" />
+            <ScalarProperty Name="ZIPSHOP" ColumnName="ZIPSHOP" />
+            <ScalarProperty Name="CARDTYPE" ColumnName="CARDTYPE" />
+            <ScalarProperty Name="CARDNO" ColumnName="CARDNO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_SME"><EntityTypeMapping TypeName="Bay01_Model.CUSTOMER_SME"><MappingFragment StoreEntitySet="CUSTOMER_SME">
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+            <ScalarProperty Name="CM_CODE" ColumnName="CM_CODE" />
+            <ScalarProperty Name="OLD_CM_CODE" ColumnName="OLD_CM_CODE" />
+            <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+            <ScalarProperty Name="JUDGEMENT_ID" ColumnName="JUDGEMENT_ID" />
+            <ScalarProperty Name="BUSI_RISK1_ID" ColumnName="BUSI_RISK1_ID" />
+            <ScalarProperty Name="BUSI_RISK2_ID" ColumnName="BUSI_RISK2_ID" />
+            <ScalarProperty Name="BUSI_RISK3_ID" ColumnName="BUSI_RISK3_ID" />
+            <ScalarProperty Name="BUSINESS_DESTINATION_ID" ColumnName="BUSINESS_DESTINATION_ID" />
+            <ScalarProperty Name="EXPORT_WEIGHT" ColumnName="EXPORT_WEIGHT" />
+            <ScalarProperty Name="LOCAL_WEIGHT" ColumnName="LOCAL_WEIGHT" />
+            <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
+            <ScalarProperty Name="SIZE_ID" ColumnName="SIZE_ID" />
+            <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+            <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+            <ScalarProperty Name="RATING_TYPE_KEY" ColumnName="RATING_TYPE_KEY" />
+            <ScalarProperty Name="RATING_KEY" ColumnName="RATING_KEY" />
+            <ScalarProperty Name="RATING_UPDATE_DATE" ColumnName="RATING_UPDATE_DATE" />
+            <ScalarProperty Name="EXTERNAL_SOURCE_MEMO" ColumnName="EXTERNAL_SOURCE_MEMO" />
+            <ScalarProperty Name="NEXT_REVIEW_DATE" ColumnName="NEXT_REVIEW_DATE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_SME_GROUP"><EntityTypeMapping TypeName="Bay01_Model.CUSTOMER_SME_GROUP"><MappingFragment StoreEntitySet="CUSTOMER_SME_GROUP">
+            <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+            <ScalarProperty Name="GROUP_SIZE_ID" ColumnName="GROUP_SIZE_ID" />
+            <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+            <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+            <ScalarProperty Name="GROUP_EXPOSURE" ColumnName="GROUP_EXPOSURE" />
+            <ScalarProperty Name="NEXT_REVIEW_DATE" ColumnName="NEXT_REVIEW_DATE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_SME_RATING"><EntityTypeMapping TypeName="Bay01_Model.CUSTOMER_SME_RATING"><MappingFragment StoreEntitySet="CUSTOMER_SME_RATING">
+            <ScalarProperty Name="RATING_KEY" ColumnName="RATING_KEY" />
+            <ScalarProperty Name="RATING_CODE" ColumnName="RATING_CODE" />
+            <ScalarProperty Name="RATING_TYPE_KEY" ColumnName="RATING_TYPE_KEY" />
+            <ScalarProperty Name="RATING_DESC" ColumnName="RATING_DESC" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_SME_RATING_TYPE"><EntityTypeMapping TypeName="Bay01_Model.CUSTOMER_SME_RATING_TYPE"><MappingFragment StoreEntitySet="CUSTOMER_SME_RATING_TYPE">
+            <ScalarProperty Name="RATING_TYPE_KEY" ColumnName="RATING_TYPE_KEY" />
+            <ScalarProperty Name="RATING_TYPE_CODE" ColumnName="RATING_TYPE_CODE" />
+            <ScalarProperty Name="RATING_TYPE_DESC" ColumnName="RATING_TYPE_DESC" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_SME_SIZE"><EntityTypeMapping TypeName="Bay01_Model.CUSTOMER_SME_SIZE"><MappingFragment StoreEntitySet="CUSTOMER_SME_SIZE">
+            <ScalarProperty Name="SIZE_ID" ColumnName="SIZE_ID" />
+            <ScalarProperty Name="SIZE_DETAIL" ColumnName="SIZE_DETAIL" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_STATUS"><EntityTypeMapping TypeName="Bay01_Model.CUSTOMER_STATUS"><MappingFragment StoreEntitySet="CUSTOMER_STATUS">
+            <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
+            <ScalarProperty Name="STATUS_DETAIL" ColumnName="STATUS_DETAIL" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DebtSummaryEntitiesModel">
+        <EntityTypeShape EntityType="Bay01_Model.ByCus_CIF" Width="1.5" PointX="3" PointY="10.875" Height="16.876608072916675" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER" Width="1.5" PointX="0.75" PointY="8.625" Height="9.4809781901041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME" Width="1.5" PointX="6" PointY="10.75" Height="5.2079475911458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_GROUP" Width="1.5" PointX="8.25" PointY="15.125" Height="2.0853483072916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_RATING" Width="1.5" PointX="8.25" PointY="12.375" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_RATING_TYPE" Width="1.5" PointX="6" PointY="7.5" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_SIZE" Width="1.5" PointX="3.75" PointY="5.75" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_STATUS" Width="1.5" PointX="3.75" PointY="8.375" Height="1.5923063151041674" IsExpanded="true" />
+        <AssociationConnector Association="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_SME_SIZE" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="7.3423063151041674" />
+          <ConnectorPoint PointX="5.625" PointY="7.7173063151041674" />
+          <ConnectorPoint PointX="5.625" PointY="13.353973795572916" />
+          <ConnectorPoint PointX="6" PointY="13.353973795572916" />
+        </AssociationConnector>
+        <AssociationConnector Association="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_STATUS" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.90625" PointY="9.9673063151041674" />
+          <ConnectorPoint PointX="4.90625" PointY="10.78125" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="10.78125" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="10.78125" />
+          <ConnectorPoint PointX="6" PointY="10.78125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Bay01_Model.FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="8.3783268229166659" />
+          <ConnectorPoint PointX="9" PointY="8.3783268229166659" />
+          <ConnectorPoint PointX="9" PointY="12.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_RATING">
+          <ConnectorPoint PointX="7.5" PointY="13.417674153645834" />
+          <ConnectorPoint PointX="8.25" PointY="13.417674153645834" />
+        </AssociationConnector>
+        <AssociationConnector Association="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_GROUP">
+          <ConnectorPoint PointX="7.5" PointY="15.541473795572916" />
+          <ConnectorPoint PointX="8.25" PointY="15.541473795572916" />
+        </AssociationConnector>
+        <AssociationConnector Association="Bay01_Model.CUSTOMERCUSTOMER_SME">
+          <ConnectorPoint PointX="2.25" PointY="8.6261528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="8.2511528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="10.375" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="10.375" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="10.375" />
+          <ConnectorPoint PointX="5.6261528461538459" PointY="10.375" />
+          <ConnectorPoint PointX="6.0011528461538459" PointY="10.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="Bay01_Model.CUSTOMERByCus_CIF">
+          <ConnectorPoint PointX="2.25" PointY="14.490489095052084" />
+          <ConnectorPoint PointX="3" PointY="14.490489095052084" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
