@@ -3,15 +3,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{02D3124B-509B-4DB4-A90A-67CC50DC3E0A}</ProjectGuid>
+    <ProjectGuid>{E2CE2636-3FF9-4A3C-9CEC-BB1882B9E165}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SME.DebtSummary.Core</RootNamespace>
-    <AssemblyName>SME.DebtSummary.Core</AssemblyName>
+    <RootNamespace>SME.DebtSummary.Core.UnitTests</RootNamespace>
+    <AssemblyName>SME.DebtSummary.Core.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,54 +33,45 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cache\DefaultCacheProvider.cs" />
-    <Compile Include="Cache\ICacheProvider.cs" />
-    <Compile Include="DAL\ByCusCIFRespository.cs" />
-    <Compile Include="DAL\EmployeeTreeRepository.cs" />
-    <Compile Include="DAL\IByCusCIFRespository.cs" />
-    <Compile Include="Cache\ICacheRepository.cs" />
-    <Compile Include="DAL\IEmployeeTreeRepository.cs" />
-    <Compile Include="DebtSummaryEntitiesModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DebtSummaryEntitiesModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CustomerDebtViewModel.cs" />
-    <Compile Include="Model\IByCusCIFViewModel.cs" />
-    <Compile Include="Model\ICustomerSMEViewModel.cs" />
-    <Compile Include="Model\ICustomerViewModel.cs" />
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ByCusCIFRespositoryTest.cs" />
+    <Compile Include="EmployeeTreeRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="DebtSummaryEntitiesModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DebtSummaryEntitiesModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\SME.DebtSummary.Core\SME.DebtSummary.Core.csproj">
+      <Project>{02D3124B-509B-4DB4-A90A-67CC50DC3E0A}</Project>
+      <Name>SME.DebtSummary.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Util\Util.csproj">
       <Project>{E71736AA-5A05-4EF7-9EBC-127C2E5A141B}</Project>
       <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
