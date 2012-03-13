@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Bay01_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Bay01_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="Bay01_ModelStoreContainer">
           <EntitySet Name="ByCus_CIF" EntityType="Bay01_Model.Store.ByCus_CIF" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CUSTOMER" EntityType="Bay01_Model.Store.CUSTOMER" store:Type="Tables" Schema="dbo" />
@@ -14,6 +14,7 @@
           <EntitySet Name="CUSTOMER_SME_RATING_TYPE" EntityType="Bay01_Model.Store.CUSTOMER_SME_RATING_TYPE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CUSTOMER_SME_SIZE" EntityType="Bay01_Model.Store.CUSTOMER_SME_SIZE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CUSTOMER_STATUS" EntityType="Bay01_Model.Store.CUSTOMER_STATUS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_EMPLOYEE" EntityType="Bay01_Model.Store.TB_EMPLOYEE" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_CUSTOMER_SME_CUSTOMER_SME_SIZE" Association="Bay01_Model.Store.FK_CUSTOMER_SME_CUSTOMER_SME_SIZE">
             <End Role="CUSTOMER_SME_SIZE" EntitySet="CUSTOMER_SME_SIZE" />
             <End Role="CUSTOMER_SME" EntitySet="CUSTOMER_SME" />
@@ -255,6 +256,50 @@
           <Property Name="STATUS_DETAIL" Type="nvarchar" MaxLength="50" />
           <Property Name="PRIORITY" Type="int" />
         </EntityType>
+        <EntityType Name="TB_EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="TITLE_CODE" Type="tinyint" />
+          <Property Name="EMPNAME" Type="varchar" MaxLength="50" />
+          <Property Name="EMPSURNAME" Type="varchar" MaxLength="50" />
+          <Property Name="EMPNAME_E" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMPSURNAME_E" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="char" MaxLength="30" />
+          <Property Name="IDCARD" Type="varchar" MaxLength="50" />
+          <Property Name="TAX_NO" Type="varchar" MaxLength="50" />
+          <Property Name="ACCNO" Type="char" MaxLength="16" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="30" />
+          <Property Name="SOI" Type="varchar" MaxLength="20" />
+          <Property Name="ROAD" Type="varchar" MaxLength="30" />
+          <Property Name="LOCALITY" Type="varchar" MaxLength="30" />
+          <Property Name="DISTRINCT" Type="varchar" MaxLength="30" />
+          <Property Name="PROV_CODE" Type="char" MaxLength="2" />
+          <Property Name="ZIPCODE" Type="char" MaxLength="5" />
+          <Property Name="TEL_HOME" Type="varchar" MaxLength="30" />
+          <Property Name="TEL_MOBILE" Type="varchar" MaxLength="20" />
+          <Property Name="TEL_INDOOR" Type="varchar" MaxLength="30" />
+          <Property Name="DATEOFBIRTH" Type="datetime" />
+          <Property Name="IMAGENAME" Type="varchar" MaxLength="20" />
+          <Property Name="DATEOFSTART" Type="datetime" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="TEAM_ID" Type="nvarchar" MaxLength="10" />
+          <Property Name="GROUP_HEAD" Type="char" MaxLength="1" />
+          <Property Name="ROLE" Type="tinyint" />
+          <Property Name="PERMIT" Type="char" MaxLength="1" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="10" />
+          <Property Name="PASSWD" Type="nvarchar" MaxLength="20" />
+          <Property Name="UP_DT" Type="datetime" />
+          <Property Name="Dept" Type="smallint" />
+          <Property Name="Id_Region" Type="smallint" />
+          <Property Name="Id_Branch" Type="smallint" />
+          <Property Name="POSITION_CODE" Type="char" MaxLength="5" />
+          <Property Name="Id_Region_Group" Type="nvarchar" MaxLength="255" />
+          <Property Name="Id_Branch_Group" Type="nvarchar" MaxLength="255" />
+          <Property Name="Id_Group_Group" Type="ntext" />
+          <Property Name="level_id" Type="nchar" MaxLength="1" />
+        </EntityType>
         <Association Name="FK_CUSTOMER_SME_CUSTOMER_SME_SIZE">
           <End Role="CUSTOMER_SME_SIZE" Type="Bay01_Model.Store.CUSTOMER_SME_SIZE" Multiplicity="0..1" />
           <End Role="CUSTOMER_SME" Type="Bay01_Model.Store.CUSTOMER_SME" Multiplicity="*" />
@@ -291,8 +336,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+        <Function Name="RECURSIVE_CATEGORY_TYPE_6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CLASSIFY" />
+        <Function Name="GetName" ReturnType="nvarchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetNameEng" ReturnType="nvarchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Bay01_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -333,6 +388,8 @@
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
             <End Role="ByCus_CIF" EntitySet="ByCus_CIF" />
           </AssociationSet>
+          <EntitySet Name="TB_EMPLOYEE" EntityType="Bay01_Model.TB_EMPLOYEE" />
+          <FunctionImport Name="GetEmployeeTree" ReturnType="Collection(Bay01_Model.GetEmployeeTree_Result)" />
         </EntityContainer>
         <EntityType Name="ByCus_CIF">
           <Key>
@@ -660,6 +717,73 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TB_EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="TITLE_CODE" />
+          <Property Type="String" Name="EMPNAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMPSURNAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMPNAME_E" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMPSURNAME_E" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMAIL" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IDCARD" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TAX_NO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACCNO" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ADDRESS" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SOI" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ROAD" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LOCALITY" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DISTRINCT" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROV_CODE" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ZIPCODE" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TEL_HOME" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TEL_MOBILE" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TEL_INDOOR" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DATEOFBIRTH" />
+          <Property Type="String" Name="IMAGENAME" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DATEOFSTART" />
+          <Property Type="String" Name="STATUS" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TEAM_ID" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GROUP_HEAD" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Byte" Name="ROLE" />
+          <Property Type="String" Name="PERMIT" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="USERNAME" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PASSWD" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UP_DT" />
+          <Property Type="Int16" Name="Dept" />
+          <Property Type="Int16" Name="Id_Region" />
+          <Property Type="Int16" Name="Id_Branch" />
+          <Property Type="String" Name="POSITION_CODE" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Id_Region_Group" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Id_Branch_Group" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Id_Group_Group" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="level_id" MaxLength="1" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="GetEmployeeTree_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="Int32" Name="CATEGORY_KEY" Nullable="true" />
+          <Property Type="String" Name="CATEGORY_DESC" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CATEGORY_DESC_TH" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CATEGORY_VALUE" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="CATEGORY_PRIORITY" Nullable="true" />
+          <Property Type="Boolean" Name="CATEGORY_DEL_FLAG" Nullable="true" />
+          <Property Type="Int32" Name="CATEGORY_TYPE_KEY" Nullable="true" />
+          <Property Type="String" Name="CATEGORY_TYPE_DESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CATEGORY_TYPE_DESC_TH" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CATEGORY_TYPE_VALUE" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="CATEGORY_TYPE_PRIORITY" Nullable="true" />
+          <Property Type="Boolean" Name="CATEGORY_TYPE_DEL_FLAG" Nullable="true" />
+          <Property Type="Int32" Name="PARENT_CATEGORY_KEY" Nullable="true" />
+          <Property Type="Boolean" Name="RECURSIVE_DEL_FLAG" Nullable="true" />
+          <Property Type="Int32" Name="TREE_LEVEL" Nullable="true" />
+          <Property Type="String" Name="TREE_LEVEL_CATE_KEY" Nullable="true" />
+          <Property Type="String" Name="TREE_LEVEL_EMP_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetEmpTreeByEmpId_Result">
+          <Property Type="String" Name="EMP_LIST" Nullable="true" MaxLength="20" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -870,6 +994,75 @@
             <ScalarProperty Name="STATUS_DETAIL" ColumnName="STATUS_DETAIL" />
             <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB_EMPLOYEE">
+            <EntityTypeMapping TypeName="Bay01_Model.TB_EMPLOYEE">
+              <MappingFragment StoreEntitySet="TB_EMPLOYEE">
+                <ScalarProperty Name="level_id" ColumnName="level_id" />
+                <ScalarProperty Name="Id_Group_Group" ColumnName="Id_Group_Group" />
+                <ScalarProperty Name="Id_Branch_Group" ColumnName="Id_Branch_Group" />
+                <ScalarProperty Name="Id_Region_Group" ColumnName="Id_Region_Group" />
+                <ScalarProperty Name="POSITION_CODE" ColumnName="POSITION_CODE" />
+                <ScalarProperty Name="Id_Branch" ColumnName="Id_Branch" />
+                <ScalarProperty Name="Id_Region" ColumnName="Id_Region" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="UP_DT" ColumnName="UP_DT" />
+                <ScalarProperty Name="PASSWD" ColumnName="PASSWD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PERMIT" ColumnName="PERMIT" />
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+                <ScalarProperty Name="GROUP_HEAD" ColumnName="GROUP_HEAD" />
+                <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="DATEOFSTART" ColumnName="DATEOFSTART" />
+                <ScalarProperty Name="IMAGENAME" ColumnName="IMAGENAME" />
+                <ScalarProperty Name="DATEOFBIRTH" ColumnName="DATEOFBIRTH" />
+                <ScalarProperty Name="TEL_INDOOR" ColumnName="TEL_INDOOR" />
+                <ScalarProperty Name="TEL_MOBILE" ColumnName="TEL_MOBILE" />
+                <ScalarProperty Name="TEL_HOME" ColumnName="TEL_HOME" />
+                <ScalarProperty Name="ZIPCODE" ColumnName="ZIPCODE" />
+                <ScalarProperty Name="PROV_CODE" ColumnName="PROV_CODE" />
+                <ScalarProperty Name="DISTRINCT" ColumnName="DISTRINCT" />
+                <ScalarProperty Name="LOCALITY" ColumnName="LOCALITY" />
+                <ScalarProperty Name="ROAD" ColumnName="ROAD" />
+                <ScalarProperty Name="SOI" ColumnName="SOI" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="ACCNO" ColumnName="ACCNO" />
+                <ScalarProperty Name="TAX_NO" ColumnName="TAX_NO" />
+                <ScalarProperty Name="IDCARD" ColumnName="IDCARD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="EMPSURNAME_E" ColumnName="EMPSURNAME_E" />
+                <ScalarProperty Name="EMPNAME_E" ColumnName="EMPNAME_E" />
+                <ScalarProperty Name="EMPSURNAME" ColumnName="EMPSURNAME" />
+                <ScalarProperty Name="EMPNAME" ColumnName="EMPNAME" />
+                <ScalarProperty Name="TITLE_CODE" ColumnName="TITLE_CODE" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetEmployeeTree" FunctionName="Bay01_Model.Store.RECURSIVE_CATEGORY_TYPE_6">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Bay01_Model.GetEmployeeTree_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+                <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+                <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+                <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+                <ScalarProperty Name="CATEGORY_PRIORITY" ColumnName="CATEGORY_PRIORITY" />
+                <ScalarProperty Name="CATEGORY_DEL_FLAG" ColumnName="CATEGORY_DEL_FLAG" />
+                <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+                <ScalarProperty Name="CATEGORY_TYPE_DESC" ColumnName="CATEGORY_TYPE_DESC" />
+                <ScalarProperty Name="CATEGORY_TYPE_DESC_TH" ColumnName="CATEGORY_TYPE_DESC_TH" />
+                <ScalarProperty Name="CATEGORY_TYPE_VALUE" ColumnName="CATEGORY_TYPE_VALUE" />
+                <ScalarProperty Name="CATEGORY_TYPE_PRIORITY" ColumnName="CATEGORY_TYPE_PRIORITY" />
+                <ScalarProperty Name="CATEGORY_TYPE_DEL_FLAG" ColumnName="CATEGORY_TYPE_DEL_FLAG" />
+                <ScalarProperty Name="PARENT_CATEGORY_KEY" ColumnName="PARENT_CATEGORY_KEY" />
+                <ScalarProperty Name="RECURSIVE_DEL_FLAG" ColumnName="RECURSIVE_DEL_FLAG" />
+                <ScalarProperty Name="TREE_LEVEL" ColumnName="TREE_LEVEL" />
+                <ScalarProperty Name="TREE_LEVEL_CATE_KEY" ColumnName="TREE_LEVEL_CATE_KEY" />
+                <ScalarProperty Name="TREE_LEVEL_EMP_ID" ColumnName="TREE_LEVEL_EMP_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -890,13 +1083,13 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="DebtSummaryEntitiesModel">
-        <EntityTypeShape EntityType="Bay01_Model.ByCus_CIF" Width="1.5" PointX="3" PointY="10.875" Height="16.876608072916675" IsExpanded="true" />
-        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER" Width="1.5" PointX="0.75" PointY="8.625" Height="9.4809781901041674" IsExpanded="true" />
+      <Diagram Name="DebtSummaryEntitiesModel" ZoomLevel="94">
+        <EntityTypeShape EntityType="Bay01_Model.ByCus_CIF" Width="1.5" PointX="3" PointY="10.875" Height="16.876608073711395" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER" Width="1.5" PointX="0.75" PointY="8.625" Height="9.4809781908988953" IsExpanded="true" />
         <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME" Width="1.5" PointX="6" PointY="10.75" Height="5.2079475911458317" IsExpanded="true" />
-        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_GROUP" Width="1.5" PointX="8.25" PointY="15.125" Height="2.0853483072916656" IsExpanded="true" />
-        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_RATING" Width="1.5" PointX="8.25" PointY="12.375" Height="2.0853483072916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_RATING_TYPE" Width="1.5" PointX="6" PointY="7.5" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_GROUP" Width="1.5" PointX="8.25" PointY="15.125" Height="2.0853483080863953" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_RATING" Width="1.5" PointX="8.25" PointY="12.375" Height="2.0853483080863953" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_RATING_TYPE" Width="1.5" PointX="6" PointY="7.5" Height="1.7566536460071802" IsExpanded="true" />
         <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_SME_SIZE" Width="1.5" PointX="3.75" PointY="5.75" Height="1.5923063151041674" IsExpanded="true" />
         <EntityTypeShape EntityType="Bay01_Model.CUSTOMER_STATUS" Width="1.5" PointX="3.75" PointY="8.375" Height="1.5923063151041674" IsExpanded="true" />
         <AssociationConnector Association="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_SME_SIZE" ManuallyRouted="false">
@@ -907,37 +1100,38 @@
         </AssociationConnector>
         <AssociationConnector Association="Bay01_Model.FK_CUSTOMER_SME_CUSTOMER_STATUS" ManuallyRouted="false">
           <ConnectorPoint PointX="4.90625" PointY="9.9673063151041674" />
-          <ConnectorPoint PointX="4.90625" PointY="10.78125" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="10.78125" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="10.78125" />
-          <ConnectorPoint PointX="6" PointY="10.78125" />
+          <ConnectorPoint PointX="4.90625" PointY="10.781249999956538" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="10.781249999956538" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="10.781249999956538" />
+          <ConnectorPoint PointX="6" PointY="10.781249999956538" />
         </AssociationConnector>
         <AssociationConnector Association="Bay01_Model.FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="8.3783268229166659" />
-          <ConnectorPoint PointX="9" PointY="8.3783268229166659" />
-          <ConnectorPoint PointX="9" PointY="12.375" />
+          <ConnectorPoint PointX="7.5" PointY="8.7068082683160917" />
+          <ConnectorPoint PointX="8.46875" PointY="8.7068082683160917" />
+          <ConnectorPoint PointX="8.46875" PointY="12.375" />
         </AssociationConnector>
         <AssociationConnector Association="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_RATING">
-          <ConnectorPoint PointX="7.5" PointY="13.417674153645834" />
-          <ConnectorPoint PointX="8.25" PointY="13.417674153645834" />
+          <ConnectorPoint PointX="7.5" PointY="13.417674154043198" />
+          <ConnectorPoint PointX="8.25" PointY="13.417674154043198" />
         </AssociationConnector>
         <AssociationConnector Association="Bay01_Model.CUSTOMER_SMECUSTOMER_SME_GROUP">
-          <ConnectorPoint PointX="7.5" PointY="15.541473795572916" />
-          <ConnectorPoint PointX="8.25" PointY="15.541473795572916" />
+          <ConnectorPoint PointX="7.5" PointY="15.541473795616378" />
+          <ConnectorPoint PointX="8.25" PointY="15.541473795616378" />
         </AssociationConnector>
         <AssociationConnector Association="Bay01_Model.CUSTOMERCUSTOMER_SME">
           <ConnectorPoint PointX="2.25" PointY="8.6261528461538468" />
           <ConnectorPoint PointX="2.625" PointY="8.2511528461538468" />
-          <ConnectorPoint PointX="2.625" PointY="10.375" />
-          <ConnectorPoint PointX="4.822916666666667" PointY="10.375" />
-          <ConnectorPoint PointX="4.989583333333333" PointY="10.375" />
-          <ConnectorPoint PointX="5.6261528461538459" PointY="10.375" />
-          <ConnectorPoint PointX="6.0011528461538459" PointY="10.75" />
+          <ConnectorPoint PointX="2.625" PointY="10.374999999913076" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="10.374999999913076" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="10.374999999913076" />
+          <ConnectorPoint PointX="5.6261528461538459" PointY="10.374999999913076" />
+          <ConnectorPoint PointX="6.00115284624077" PointY="10.75" />
         </AssociationConnector>
         <AssociationConnector Association="Bay01_Model.CUSTOMERByCus_CIF">
-          <ConnectorPoint PointX="2.25" PointY="14.490489095052084" />
-          <ConnectorPoint PointX="3" PointY="14.490489095052084" />
+          <ConnectorPoint PointX="2.25" PointY="14.490489095449448" />
+          <ConnectorPoint PointX="3" PointY="14.490489095449448" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Bay01_Model.TB_EMPLOYEE" Width="1.5" PointX="8.75" PointY="0.75" Height="7.3444628906250031" />
       </Diagram>
     </Diagrams>
   </Designer>

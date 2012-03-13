@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace SME.DebtSummary
 {
@@ -11,7 +6,11 @@ namespace SME.DebtSummary
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+        }
 
+        protected void DDL_EmpFilterList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ReportViewer1.LocalReport.Refresh();
         }
     }
 }

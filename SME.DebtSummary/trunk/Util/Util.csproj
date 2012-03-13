@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{02D3124B-509B-4DB4-A90A-67CC50DC3E0A}</ProjectGuid>
+    <ProjectGuid>{E71736AA-5A05-4EF7-9EBC-127C2E5A141B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SME.DebtSummary.Core</RootNamespace>
-    <AssemblyName>SME.DebtSummary.Core</AssemblyName>
+    <RootNamespace>Util</RootNamespace>
+    <AssemblyName>Util</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,12 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\SharedLib\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,39 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cache\DefaultCacheProvider.cs" />
-    <Compile Include="Cache\ICacheProvider.cs" />
-    <Compile Include="DAL\ByCusCIFRespository.cs" />
-    <Compile Include="DAL\EmployeeTreeRepository.cs" />
-    <Compile Include="DAL\IByCusCIFRespository.cs" />
-    <Compile Include="Cache\ICacheRepository.cs" />
-    <Compile Include="DAL\IEmployeeTreeRepository.cs" />
-    <Compile Include="DebtSummaryEntitiesModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DebtSummaryEntitiesModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CustomerDebtViewModel.cs" />
-    <Compile Include="Model\IByCusCIFViewModel.cs" />
-    <Compile Include="Model\ICustomerSMEViewModel.cs" />
-    <Compile Include="Model\ICustomerViewModel.cs" />
+    <Compile Include="CommonUtil.cs" />
+    <Compile Include="EqualsUtil.cs" />
+    <Compile Include="HashCodeUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="DebtSummaryEntitiesModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DebtSummaryEntitiesModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Util\Util.csproj">
-      <Project>{E71736AA-5A05-4EF7-9EBC-127C2E5A141B}</Project>
-      <Name>Util</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
