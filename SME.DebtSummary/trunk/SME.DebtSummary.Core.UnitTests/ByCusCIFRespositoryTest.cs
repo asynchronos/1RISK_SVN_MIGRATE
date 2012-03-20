@@ -71,10 +71,11 @@ namespace SME.DebtSummary.Core.UnitTests
         {
             ByCusCIFRespository target = new ByCusCIFRespository(); // TODO: Initialize to an appropriate value
             string rootEmpId = "119016"; // TODO: Initialize to an appropriate value
-            string empIdFilter = "119016"; // TODO: Initialize to an appropriate value
-            IQueryable<CustomerDebtViewModel> expected = null; // TODO: Initialize to an appropriate value
+            string misCustSizeId = null;
+            string customerClass = null;
+            //IQueryable<CustomerDebtViewModel> expected = null; // TODO: Initialize to an appropriate value
             IQueryable<CustomerDebtViewModel> actual;
-            actual = target.GetByCusCIFSMEsProjected(rootEmpId, empIdFilter);
+            actual = target.GetByCusCIFSMEsProjected(rootEmpId, misCustSizeId, customerClass);
 
             Assert.IsNotNull(actual);
             Assert.AreEqual(typeof(CustomerDebtViewModel), actual.ElementType);
@@ -94,38 +95,52 @@ namespace SME.DebtSummary.Core.UnitTests
             Assert.AreEqual(2530, count);
             Assert.AreEqual((decimal)22587600.11, cif18.Principal);
 
-            empIdFilter = "204263";
-            actual = target.GetByCusCIFSMEsProjected(rootEmpId, empIdFilter);
+            rootEmpId = "204263";
+            actual = target.GetByCusCIFSMEsProjected(rootEmpId, misCustSizeId, customerClass);
             Assert.AreEqual(543, actual.ToList().Count);
+
+            rootEmpId = "All";
+            misCustSizeId = "All";
+            actual = target.GetByCusCIFSMEsProjected(rootEmpId, misCustSizeId, customerClass);
+            Assert.AreEqual(32227, actual.ToList().Count);
+
+            //rootEmpId = "119016";
+            misCustSizeId = "1";
+            actual = target.GetByCusCIFSMEsProjected(rootEmpId, misCustSizeId, customerClass);
+            Assert.AreEqual(673, actual.ToList().Count);
+
+            misCustSizeId = "4";
+            actual = target.GetByCusCIFSMEsProjected(rootEmpId, misCustSizeId, customerClass);
+            Assert.AreEqual(470, actual.ToList().Count);
         }
 
-        /// <summary>
-        ///A test for GetByCusCIFSMEs
-        ///</summary>
-        [TestMethod()]
-        public void GetByCusCIFSMEsTest()
-        {
-            ByCusCIFRespository target = new ByCusCIFRespository(); // TODO: Initialize to an appropriate value
-            IQueryable<ByCus_CIF> expected = null; // TODO: Initialize to an appropriate value
-            IQueryable<ByCus_CIF> actual;
-            actual = target.GetByCusCIFSMEs();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
+        ///// <summary>
+        /////A test for GetByCusCIFSMEs
+        /////</summary>
+        //[TestMethod()]
+        //public void GetByCusCIFSMEsTest()
+        //{
+        //    ByCusCIFRespository target = new ByCusCIFRespository(); // TODO: Initialize to an appropriate value
+        //    IQueryable<ByCus_CIF> expected = null; // TODO: Initialize to an appropriate value
+        //    IQueryable<ByCus_CIF> actual;
+        //    actual = target.GetByCusCIFSMEs();
+        //    Assert.AreEqual(expected, actual);
+        //    Assert.Inconclusive("Verify the correctness of this test method.");
+        //}
 
-        /// <summary>
-        ///A test for GetByCusCIFs
-        ///</summary>
-        [TestMethod()]
-        public void GetByCusCIFsTest()
-        {
-            ByCusCIFRespository target = new ByCusCIFRespository(); // TODO: Initialize to an appropriate value
-            IQueryable<ByCus_CIF> expected = null; // TODO: Initialize to an appropriate value
-            IQueryable<ByCus_CIF> actual;
-            actual = target.GetByCusCIFs();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
+        ///// <summary>
+        /////A test for GetByCusCIFs
+        /////</summary>
+        //[TestMethod()]
+        //public void GetByCusCIFsTest()
+        //{
+        //    ByCusCIFRespository target = new ByCusCIFRespository(); // TODO: Initialize to an appropriate value
+        //    IQueryable<ByCus_CIF> expected = null; // TODO: Initialize to an appropriate value
+        //    IQueryable<ByCus_CIF> actual;
+        //    actual = target.GetByCusCIFs();
+        //    Assert.AreEqual(expected, actual);
+        //    Assert.Inconclusive("Verify the correctness of this test method.");
+        //}
 
         /// <summary>
         ///A test for GetCustomerSMEs
@@ -134,11 +149,10 @@ namespace SME.DebtSummary.Core.UnitTests
         public void GetCustomerSMEsTest()
         {
             ByCusCIFRespository target = new ByCusCIFRespository(); // TODO: Initialize to an appropriate value
-            IQueryable<CUSTOMER_SME> expected = null; // TODO: Initialize to an appropriate value
+            //IQueryable<CUSTOMER_SME> expected = null; // TODO: Initialize to an appropriate value
             IQueryable<CUSTOMER_SME> actual;
             actual = target.GetCustomerSMEs();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Assert.AreEqual(32227, actual.ToList().Count);
         }
 
         /// <summary>
@@ -149,7 +163,7 @@ namespace SME.DebtSummary.Core.UnitTests
         {
             ByCusCIFRespository target = new ByCusCIFRespository(); // TODO: Initialize to an appropriate value
             string empId = "119016"; // TODO: Initialize to an appropriate value
-            IQueryable<CUSTOMER_SME> expected = null; // TODO: Initialize to an appropriate value
+            //IQueryable<CUSTOMER_SME> expected = null; // TODO: Initialize to an appropriate value
             IQueryable<CUSTOMER_SME> actual;
             actual = target.GetCustomerSMEs(empId);
 

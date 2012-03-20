@@ -20,13 +20,15 @@
     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt"
         InteractiveDeviceInfos="(Collection)" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"
         Width="100%">
-        <LocalReport ReportPath="RDLC\CustomerDebtViewReport.rdlc">
+        <LocalReport ReportPath="RDLC\CustomerDebtViewSummaryReport.rdlc"
+            EnableHyperlinks="True">
             <DataSources>
-                <rsweb:ReportDataSource DataSourceId="ODS_CustomerDebtView" Name="DataSetCustomerDebtView" />
+                <rsweb:ReportDataSource DataSourceId="ODS_CustomerDebtView"
+                    Name="DataSetCustomerDebtViewSummary" />
             </DataSources>
         </LocalReport>
     </rsweb:ReportViewer>
-    <asp:ObjectDataSource ID="ODS_CustomerDebtView" runat="server" SelectMethod="GetByCusCIFSMEsProjected"
+    <asp:ObjectDataSource ID="ODS_CustomerDebtView" runat="server" SelectMethod="GetByCusCIFSMEsSummaryProjected"
         TypeName="SME.DebtSummary.Core.DAL.ByCusCIFRespository">
         <SelectParameters>
             <asp:QueryStringParameter Name="rootEmpId" QueryStringField="rootempid" Type="String" />

@@ -12,6 +12,8 @@ namespace SME.DebtSummary.Core.DAL
 
         IQueryable<CUSTOMER_SME> GetCustomerSMEs(string rootEmpId);
 
-        IQueryable<Model.CustomerDebtViewModel> GetByCusCIFSMEsProjected(string rootEmpId, string empIdFilter);
+        IQueryable<Model.CustomerDebtViewModel> GetByCusCIFSMEsProjected(string rootEmpId, string misCustSizeId, string customerClass);
+
+        IQueryable<Model.MISCustSieViewModel> GetMISCustSizeListFromData(string rootEmpId);
     }
 }

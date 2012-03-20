@@ -69,7 +69,7 @@ namespace SME.DebtSummary.Core.UnitTests
         public void GetEmployeeTreeTest()
         {
             EmployeeTreeRepository target = new EmployeeTreeRepository(); // TODO: Initialize to an appropriate value
-            List<GetEmployeeTree_Result> expected = null; // TODO: Initialize to an appropriate value
+            //List<GetEmployeeTree_Result> expected = null; // TODO: Initialize to an appropriate value
             List<GetEmployeeTree_Result> actual;
             actual = target.GetEmployeeTree();
             Assert.IsNotNull(actual);
@@ -97,7 +97,7 @@ namespace SME.DebtSummary.Core.UnitTests
         {
             EmployeeTreeRepository target = new EmployeeTreeRepository(); // TODO: Initialize to an appropriate value
             string rootEmpId = "119016"; // TODO: Initialize to an appropriate value
-            List<GetEmployeeTree_Result> expected = null; // TODO: Initialize to an appropriate value
+            //List<GetEmployeeTree_Result> expected = null; // TODO: Initialize to an appropriate value
             List<GetEmployeeTree_Result> actual;
             actual = target.GetEmployeeTree(rootEmpId);
             Assert.IsNotNull(actual);
