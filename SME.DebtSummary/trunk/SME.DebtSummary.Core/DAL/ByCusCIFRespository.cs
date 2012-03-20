@@ -5,6 +5,8 @@ namespace SME.DebtSummary.Core.DAL
 {
     public class ByCusCIFRespository : IByCusCIFRespository
     {
+        public readonly static string ALL_CONSTANT_STR = "All";
+
         public IQueryable<ByCus_CIF> GetByCusCIFs()
         {
             Bay01_Entities dataContext = new Bay01_Entities();
@@ -45,24 +47,19 @@ namespace SME.DebtSummary.Core.DAL
             return cusSme;
         }
 
-        public IQueryable<Model.CustomerDebtViewModel> GetByCusCIFSMEsProjected(string rootEmpId, string empIdFilter)
+        public IQueryable<Model.CustomerDebtViewModel> GetByCusCIFSMEsProjected(string rootEmpId, string misCustSizeId, string customerClass)
         {
-            IQueryable<CUSTOMER_SME> customerSmes;
+            Bay01_Entities bayDataContext = new Bay01_Entities();
+            EmployeeTreeRepository dataContext = null;
 
-            if (string.IsNullOrEmpty(rootEmpId))
-            {
-                customerSmes = GetCustomerSMEs();
-            }
-            else
-            {
-                customerSmes = GetCustomerSMEs(rootEmpId);
-            }
-
-            IQueryable<Model.CustomerDebtViewModel> customerDebtView = from s in customerSmes
+            IQueryable<Model.CustomerDebtViewModel> customerDebtView = from s in bayDataContext.CUSTOMER_SME
+                                                                       from emp in bayDataContext.TB_EMPLOYEE.Where(e => e.EMP_ID == s.CM_CODE).DefaultIfEmpty()
                                                                        select new Model.CustomerDebtViewModel
                                                                        {
                                                                            CIF = s.CIF,
                                                                            CM_EMP_ID = s.CM_CODE,
+                                                                           CM_FIRSTNAME = emp.EMPNAME,
+                                                                           CM_LASTNAME = emp.EMPSURNAME,
                                                                            CusTitle = s.CUSTOMER.CUS_TITLE,
                                                                            CusFirstName = s.CUSTOMER.CUS_FIRST,
                                                                            CusLastName = s.CUSTOMER.CUS_LAST,
@@ -78,6 +75,9 @@ namespace SME.DebtSummary.Core.DAL
                                                                            Rating = s.CUSTOMER.RATING,
                                                                            Class = s.CUSTOMER.CLASS,
                                                                            ClassE = s.CUSTOMER.ByCus_CIF.ClassE,
+                                                                           MISCustSizeID = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_SME_SIZE.SIZE_ID,
+                                                                           MISCustSize = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_SME_SIZE.SIZE_DETAIL,
+                                                                           MISCustSizeOrdersPriority = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_SME_SIZE.PRIORITY,
                                                                            BaySize = s.CUSTOMER.ByCus_CIF.BaySize,
                                                                            BranchMaxPrin = s.CUSTOMER.ByCus_CIF.BranchMaxPrin,
                                                                            TdrFlag = s.CUSTOMER.ByCus_CIF.TdrFlag,
@@ -86,13 +86,20 @@ namespace SME.DebtSummary.Core.DAL
                                                                            Susp = s.CUSTOMER.ByCus_CIF.Susp,
                                                                            UseValue = s.CUSTOMER.ByCus_CIF.UseValue,
                                                                            TotResv = s.CUSTOMER.ByCus_CIF.Totresv,
-                                                                           CM_Dep = s.CUSTOMER.ByCus_CIF.CM_Dep
+                                                                           CM_Dep = s.CUSTOMER.ByCus_CIF.CM_Dep,
+                                                                           MISStatusID = s.CUSTOMER.CUSTOMER_SME.STATUS_ID,
+                                                                           MISStatus = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_STATUS.STATUS_DETAIL,
+                                                                           MISStatusPriority = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_STATUS.PRIORITY
                                                                        };
 
-            if (!string.IsNullOrEmpty(empIdFilter))
+            if (!string.IsNullOrEmpty(rootEmpId) && !rootEmpId.Equals(ALL_CONSTANT_STR))
             {
-                EmployeeTreeRepository dataContext = new EmployeeTreeRepository();
-                List<GetEmployeeTree_Result> empTree = dataContext.GetEmployeeTree(empIdFilter);
+                if (null == dataContext)
+                {
+                    dataContext = new EmployeeTreeRepository();
+                }
+
+                List<GetEmployeeTree_Result> empTree = dataContext.GetEmployeeTree(rootEmpId);
                 string[] empList = new string[empTree.Count];
                 int count = 0;
                 foreach (GetEmployeeTree_Result r in empTree)
@@ -104,7 +111,39 @@ namespace SME.DebtSummary.Core.DAL
                 customerDebtView = customerDebtView.Where(c => empList.Contains(c.CM_EMP_ID));
             }
 
+            if (!string.IsNullOrEmpty(misCustSizeId) && !misCustSizeId.Equals(ALL_CONSTANT_STR))
+            {
+                if (misCustSizeId.Equals(Model.MISCustSieViewModel.UNKNOWN_ID.ToString()))
+                {
+                    customerDebtView = customerDebtView.Where(c => c.MISCustSizeID.Value.Equals(null));
+                }
+                else
+                {
+                    System.Int32 sizeId = 0;
+                    if (System.Int32.TryParse(misCustSizeId, out sizeId))
+                    {
+                        customerDebtView = customerDebtView.Where(c => c.MISCustSizeID.Value.Equals(sizeId));
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(customerClass) && !customerClass.Equals(ALL_CONSTANT_STR))
+            {
+                customerDebtView = customerDebtView.Where(c => c.Class.Equals(customerClass));
+            }
+
             return customerDebtView;
+        }
+
+        public IQueryable<Model.MISCustSieViewModel> GetMISCustSizeListFromData(string rootEmpId)
+        {
+            return (from z in GetByCusCIFSMEsProjected(rootEmpId, null, null)
+                    select new Model.MISCustSieViewModel
+                    {
+                        MISCustSizeID = z.MISCustSizeID,
+                        MISCustSize = z.MISCustSize,
+                        MISCustSizeOrdersPriority = z.MISCustSizeOrdersPriority
+                    }).Distinct().OrderBy(r => r.MISCustSizeOrdersPriority);
         }
     }
 }

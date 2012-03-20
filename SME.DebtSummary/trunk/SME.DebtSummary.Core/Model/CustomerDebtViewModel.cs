@@ -21,6 +21,45 @@ namespace SME.DebtSummary.Core.Model
             set { _CM_EMP_ID = value; }
         }
 
+        private String _CM_TITLE;
+
+        public String CM_TITLE
+        {
+            get { return _CM_TITLE; }
+            set { _CM_TITLE = value; }
+        }
+
+        private String _CM_FIRSTNAME;
+
+        public String CM_FIRSTNAME
+        {
+            get { return _CM_FIRSTNAME; }
+            set { _CM_FIRSTNAME = value; }
+        }
+
+        private String _CM_LASTNAME;
+
+        public String CM_LASTNAME
+        {
+            get { return _CM_LASTNAME; }
+            set { _CM_LASTNAME = value; }
+        }
+
+        private String _CM_NAME;
+
+        public String CM_NAME
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(_CM_NAME))
+                {
+                    _CM_NAME = CommonUtil.ConcatName(CM_TITLE, CM_FIRSTNAME, CM_LASTNAME);
+                }
+                return _CM_NAME;
+            }
+            set { _CM_NAME = value; }
+        }
+
         private String _CusTitle;
 
         public String CusTitle
@@ -175,6 +214,56 @@ namespace SME.DebtSummary.Core.Model
                 return _Name4;
             }
             set { _Name4 = value; }
+        }
+
+        private Int32? _MISCustSizeID;
+
+        public Int32? MISCustSizeID
+        {
+            get
+            {
+                return _MISCustSizeID;
+            }
+            set
+            {
+                _MISCustSizeID = value;
+            }
+        }
+
+        private String _MISCustSize;
+
+        public String MISCustSize
+        {
+            get
+            {
+                return _MISCustSize;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    _MISCustSize = MISCustSieViewModel.UNKNOWN_STR;
+                    MISCustSizeID = MISCustSieViewModel.UNKNOWN_ID;
+                }
+                else
+                {
+                    _MISCustSize = value;
+                }
+            }
+        }
+
+        private Int32? _MISCustSizeOrdersPriority;
+
+        public Int32? MISCustSizeOrdersPriority
+        {
+            get
+            {
+                return _MISCustSizeOrdersPriority;
+            }
+            set
+            {
+                _MISCustSizeOrdersPriority = value;
+            }
         }
 
         private String _BaySize;
@@ -342,6 +431,48 @@ namespace SME.DebtSummary.Core.Model
             set
             {
                 _CM_Dep = value;
+            }
+        }
+
+        private Int32? _MISStatusID;
+
+        public Int32? MISStatusID
+        {
+            get
+            {
+                return _MISStatusID;
+            }
+            set
+            {
+                _MISStatusID = value;
+            }
+        }
+
+        private String _MISStatus;
+
+        public String MISStatus
+        {
+            get
+            {
+                return _MISStatus;
+            }
+            set
+            {
+                _MISStatus = value;
+            }
+        }
+
+        private Int32? _MISStatusPriority;
+
+        public Int32? MISStatusPriority
+        {
+            get
+            {
+                return _MISStatusPriority;
+            }
+            set
+            {
+                _MISStatusPriority = value;
             }
         }
     }

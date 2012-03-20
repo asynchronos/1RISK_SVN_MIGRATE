@@ -7,7 +7,7 @@ namespace SME.DebtSummary.Core.DAL
     public class EmployeeTreeRepository : IEmployeeTreeRepository, ICacheRepository
     {
         //protected Bay01_Entities DataContext { get; private set; }
-        public readonly static string CACHE_NAME = "empTree";
+        public readonly static string CACHE_NAME = "EMP_TREE";
         public readonly static string SPACE_CHAR = "---";
 
         private List<string> cacheList = new List<string>();
@@ -73,7 +73,7 @@ namespace SME.DebtSummary.Core.DAL
             // First, check the cache
             List<GetEmployeeTree_Result> subEmpTreesData = null;
 
-            if (string.IsNullOrEmpty(rootEmpId))
+            if (string.IsNullOrEmpty(rootEmpId) || rootEmpId.Equals("All"))
             {
                 subEmpTreesData = GetEmployeeTree();
             }

@@ -47,19 +47,23 @@
     <Compile Include="Cache\DefaultCacheProvider.cs" />
     <Compile Include="Cache\ICacheProvider.cs" />
     <Compile Include="DAL\ByCusCIFRespository.cs" />
+    <Compile Include="DAL\CustomerSmeRepository.cs" />
     <Compile Include="DAL\EmployeeTreeRepository.cs" />
     <Compile Include="DAL\IByCusCIFRespository.cs" />
     <Compile Include="Cache\ICacheRepository.cs" />
+    <Compile Include="DAL\ICustomerSmeRepository.cs" />
     <Compile Include="DAL\IEmployeeTreeRepository.cs" />
     <Compile Include="DebtSummaryEntitiesModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DebtSummaryEntitiesModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\MISStatusViewModel.cs" />
     <Compile Include="Model\CustomerDebtViewModel.cs" />
     <Compile Include="Model\IByCusCIFViewModel.cs" />
     <Compile Include="Model\ICustomerSMEViewModel.cs" />
     <Compile Include="Model\ICustomerViewModel.cs" />
+    <Compile Include="Model\MISCustSieViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
