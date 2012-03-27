@@ -10,16 +10,16 @@
 namespace SME.DebtSummary.Report {
     
     
-    public partial class SMEDebtSummary {
+    public partial class SMEDebtSizeView {
         
         /// <summary>
-        /// SM control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager SM;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
         /// IB_Back control.
@@ -49,57 +49,48 @@ namespace SME.DebtSummary.Report {
         protected global::System.Web.UI.WebControls.ObjectDataSource ODS_EmpList;
         
         /// <summary>
-        /// DDL_MisCustSize control.
+        /// LabelMISCustSize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDL_MisCustSize;
+        protected global::System.Web.UI.WebControls.Label LabelMISCustSize;
         
         /// <summary>
-        /// ODS_MisCustSize control.
+        /// LabelMISStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ODS_MisCustSize;
+        protected global::System.Web.UI.WebControls.Label LabelMISStatus;
         
         /// <summary>
-        /// DDL_MisStatus control.
+        /// LabelCustomerClass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDL_MisStatus;
+        protected global::System.Web.UI.WebControls.Label LabelCustomerClass;
         
         /// <summary>
-        /// ODS_MisStatus control.
+        /// RV_SMEDebtViewBySize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ODS_MisStatus;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer RV_SMEDebtViewBySize;
         
         /// <summary>
-        /// RV_SMEDebtSummary control.
+        /// ODS_SMEDebtViewBySize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer RV_SMEDebtSummary;
-        
-        /// <summary>
-        /// ODS_SMEDebtSummary control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ODS_SMEDebtSummary;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ODS_SMEDebtViewBySize;
     }
 }

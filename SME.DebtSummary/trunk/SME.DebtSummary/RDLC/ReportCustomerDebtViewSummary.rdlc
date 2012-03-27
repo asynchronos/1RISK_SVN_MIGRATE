@@ -108,6 +108,10 @@
           <DataField>MISCustSize</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="MISCustSizeOrdersPriority">
+          <DataField>MISCustSizeOrdersPriority</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
         <Field Name="BaySize">
           <DataField>BaySize</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -156,6 +160,18 @@
           <DataField>CM_Dep</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="MISStatusID">
+          <DataField>MISStatusID</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="MISStatus">
+          <DataField>MISStatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MISStatusPriority">
+          <DataField>MISStatusPriority</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>SMEDebtSummaryCoreDAL</DataSourceName>
@@ -165,7 +181,7 @@
         <rd:DataSetName>SME.DebtSummary.Core.DAL</rd:DataSetName>
         <rd:TableName>ByCusCIFRespository</rd:TableName>
         <rd:ObjectDataSourceSelectMethod>GetByCusCIFSMEsProjected</rd:ObjectDataSourceSelectMethod>
-        <rd:ObjectDataSourceSelectMethodSignature>System.Linq.IQueryable`1[SME.DebtSummary.Core.Model.CustomerDebtViewModel] GetByCusCIFSMEsProjected(System.String, System.String)</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Linq.IQueryable`1[SME.DebtSummary.Core.Model.CustomerDebtViewModel] GetByCusCIFSMEsProjected(System.String, System.String, System.String, System.String)</rd:ObjectDataSourceSelectMethodSignature>
         <rd:ObjectDataSourceType>SME.DebtSummary.Core.DAL.ByCusCIFRespository, SME.DebtSummary.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
@@ -495,7 +511,7 @@
                       <ActionInfo>
                         <Actions>
                           <Action>
-                            <Hyperlink>= Parameters!RP_DomainPath.Value+"Report\SMEDebtDetail.aspx"+ Code.ConcatQueryString(Parameters!RP_RootEmpId.Value,Parameters!RP_MisCustSizeId.Value,Fields!Class.Value)</Hyperlink>
+                            <Hyperlink>= Parameters!RP_DomainPath.Value+"Report\SMEDebtDetail.aspx"+ Code.ConcatQueryString(Parameters!RP_RootEmpId.Value,Parameters!RP_MisCustSizeId.Value,Fields!MISStatusID.Value,Fields!Class.Value)</Hyperlink>
                           </Action>
                         </Actions>
                       </ActionInfo>
@@ -751,7 +767,7 @@
                       <ActionInfo>
                         <Actions>
                           <Action>
-                            <Hyperlink>= Parameters!RP_DomainPath.Value+"Report\SMEDebtDetail.aspx"+ Code.ConcatQueryString(Parameters!RP_RootEmpId.Value,Parameters!RP_MisCustSizeId.Value,"")</Hyperlink>
+                            <Hyperlink>= Parameters!RP_DomainPath.Value+"Report\SMEDebtDetail.aspx"+ Code.ConcatQueryString(Parameters!RP_RootEmpId.Value,Parameters!RP_MisCustSizeId.Value,Parameters!RP_MisStatusId.Value,"All")</Hyperlink>
                           </Action>
                         </Actions>
                       </ActionInfo>
@@ -803,7 +819,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -829,6 +844,13 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <ActionInfo>
+                        <Actions>
+                          <Action>
+                            <Hyperlink>= Parameters!RP_DomainPath.Value &amp; "Report\SMEDebtSizeView.aspx" &amp; Code.ConcatQueryString(Parameters!RP_RootEmpId.Value,Parameters!RP_MisCustSizeId.Value,Parameters!RP_MisStatusId.Value,"All")</Hyperlink>
+                          </Action>
+                        </Actions>
+                      </ActionInfo>
                       <Style>
                         <Border>
                           <Color>#66a068</Color>
@@ -1003,7 +1025,11 @@
         <TablixColumnHierarchy>
           <TablixMembers>
             <TablixMember />
-            <TablixMember />
+            <TablixMember>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+            </TablixMember>
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -1157,7 +1183,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSetCustomerDebtView</DataSetName>
         <Height>1.8cm</Height>
-        <Width>28.99995cm</Width>
+        <Width>28.99994cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1187,8 +1213,14 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="RP_MisStatusId">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
-  <Code>Public Function ConcatQueryString(ByVal rootEmpId As String,ByVal misCustSizeId As String,ByVal customerClass As String) As String
+  <Code>Public Function ConcatQueryString(ByVal rootEmpId As String,ByVal misCustSizeId As String,ByVal misStatusId As String,ByVal customerClass As String) As String
 	Dim result As String = String.Empty
 
             	If Not String.IsNullOrEmpty(rootEmpId) Then
@@ -1197,6 +1229,10 @@
 
 	If Not String.IsNullOrEmpty(misCustSizeId) Then
                 	result =result+"&amp;miscustsizeid=" + misCustSizeId 
+            	End If
+
+	If Not String.IsNullOrEmpty(misStatusId) Then
+                	result =result+"&amp;misstatusid=" + misStatusId 
             	End If
 
 	If Not String.IsNullOrEmpty(customerClass) Then

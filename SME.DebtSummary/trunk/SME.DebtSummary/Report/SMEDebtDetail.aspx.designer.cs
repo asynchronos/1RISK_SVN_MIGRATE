@@ -22,6 +22,15 @@ namespace SME.DebtSummary.Report {
         protected global::System.Web.UI.ScriptManager SM;
         
         /// <summary>
+        /// IB_Back control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton IB_Back;
+        
+        /// <summary>
         /// DDL_EmpList control.
         /// </summary>
         /// <remarks>
@@ -56,14 +65,5 @@ namespace SME.DebtSummary.Report {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ODS_CustomerDebtView;
-        
-        /// <summary>
-        /// DetailPriorityByCM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer DetailPriorityByCM;
     }
 }

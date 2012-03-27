@@ -11,6 +11,11 @@ namespace SME.DebtSummary
                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
 
+        protected readonly static string QS_KEY_ROOT_EMP_ID = "rootempid";
+        protected readonly static string QS_KEY_MIS_CUSTSIZE_ID = "miscustsizeid";
+        protected readonly static string QS_KEY_MIS_STATUS_ID = "misstatusid";
+        protected readonly static string QS_KEY_CUSTOMER_CLASS = "customerclass";
+
         protected bool hasQueryString(String name)
         {
             bool result = false;

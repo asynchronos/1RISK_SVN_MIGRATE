@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SME.DebtSummary
+namespace SME.DebtSummary.Error
 {
-    public partial class DebtDetailByEMPID : System.Web.UI.Page
+    public partial class NotImplemented : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using SME.DebtSummary.Core.Cache;
 using SME.DebtSummary.Core.Model;
 
@@ -21,10 +22,10 @@ namespace SME.DebtSummary.Core.DAL
             this.Cache = cacheProvider;
         }
 
-        public IQueryable<Model.MISStatusViewModel> GetStatuses()
+        public List<Model.MISStatusViewModel> GetStatuses()
         {
             // First, check the cache
-            IQueryable<MISStatusViewModel> statusList = Cache.Get(CACHE_NAME) as IQueryable<MISStatusViewModel>;
+            List<MISStatusViewModel> statusList = Cache.Get(CACHE_NAME) as List<MISStatusViewModel>;
 
             // If it's not in the cache, we need to read it from the repository
             if (statusList == null)
@@ -38,12 +39,12 @@ namespace SME.DebtSummary.Core.DAL
                                       MISStatusID = s.STATUS_ID,
                                       MISStatus = s.STATUS_DETAIL,
                                       MISStatusOrdersPriority = s.PRIORITY
-                                  }).OrderBy(s => s.MISStatusOrdersPriority);
+                                  }).OrderBy(s => s.MISStatusOrdersPriority).ToList();
 
                     if (statusList != null)
                     {
-                        // Put this data into the cache for 120 minutes
-                        Cache.Set(CACHE_NAME, statusList, 120);
+                        // Put this data into the cache for 480 minutes
+                        Cache.Set(CACHE_NAME, statusList, 480);
                     }
                 }
             }
