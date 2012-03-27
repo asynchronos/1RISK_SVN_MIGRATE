@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace SME.DebtSummary.Core.DAL
 {
     public interface ICustomerSmeRepository
     {
-        IQueryable<Model.MISStatusViewModel> GetStatuses();
+        List<Model.MISStatusViewModel> GetStatuses();
     }
 }

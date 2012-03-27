@@ -458,7 +458,15 @@ namespace SME.DebtSummary.Core.Model
             }
             set
             {
-                _MISStatus = value;
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    _MISStatus = MISStatusViewModel.UNKNOWN_STR;
+                    MISStatusID = MISStatusViewModel.UNKNOWN_ID;
+                }
+                else
+                {
+                    _MISStatus = value;
+                }
             }
         }
 

@@ -1,0 +1,6 @@
+﻿System.Web.HttpException (0x80004005): Could not load type 'System.ServiceModel.Activation.HttpModule'
+
+Should re-register .NET Framework 4 with IIS.
+Open command prompt as an administrator then navigate to your .NET folder 
+(%windir%\Microsoft.NET\Framework\v4.0.30319). Then, issue the following command
+aspnet_regiis -iru
