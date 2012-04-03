@@ -216,5 +216,8 @@
     <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\CUSTOMER.ByCus_CIF.table.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Database Level Objects\Security\Schemas\COMMON.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
