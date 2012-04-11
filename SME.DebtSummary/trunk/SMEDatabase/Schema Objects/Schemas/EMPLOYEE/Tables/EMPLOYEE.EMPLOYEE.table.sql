@@ -37,9 +37,5 @@
 	[Id_Region_Group] [nvarchar](255) NULL,
 	[Id_Branch_Group] [nvarchar](255) NULL,
 	[Id_Group_Group] [ntext] NULL,
-	[level_id] [nchar](1) NULL,
- CONSTRAINT [PK_TB_EMPLOYEE_1] PRIMARY KEY CLUSTERED 
-(
-	[EMP_ID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+	[level_id] [nchar](1) NULL
+)

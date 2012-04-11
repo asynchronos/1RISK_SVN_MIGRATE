@@ -95,9 +95,5 @@
 	[RM_Temp] [nvarchar](15) NULL,
 	[RM_Id_Ao] [float] NULL,
 	[RM_Ao] [nvarchar](15) NULL,
-	[RM_AoTel] [nvarchar](15) NULL,
- CONSTRAINT [PK_ByCus_CIF] PRIMARY KEY CLUSTERED 
-(
-	[Cif] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
+	[RM_AoTel] [nvarchar](15) NULL
+)
