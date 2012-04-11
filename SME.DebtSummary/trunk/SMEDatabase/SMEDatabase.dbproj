@@ -45,8 +45,7 @@
     <TargetConnectionString>Data Source=172.19.14.244;User ID=sa;Pooling=False</TargetConnectionString>
     <TargetDatabase>SME</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-    <SuppressWarnings>
-    </SuppressWarnings>
+    <SuppressWarnings>03159;</SuppressWarnings>
     <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
     <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
     <DeployToDatabase>False</DeployToDatabase>
@@ -161,6 +160,28 @@
     <Folder Include="Schema Objects\Schemas\EMPLOYEE\Views\Indexes\" />
     <Folder Include="Schema Objects\Schemas\EMPLOYEE\Views\Triggers\" />
     <Folder Include="Schema Objects\Schemas\EMPLOYEE\Views\Statistics\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\Defaults\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\Functions\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\Rules\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\Stored Procedures\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\Types\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\Types\User Defined Data Types\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\Types\User Defined Types CLR\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\Types\User Defined Table Types\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Programmability\Types\XML Schema Collections\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Synonyms\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Tables\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Tables\Indexes\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Tables\Triggers\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Tables\Statistics\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Views\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Views\Indexes\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Views\Triggers\" />
+    <Folder Include="Schema Objects\Schemas\CLASSIFY\Views\Statistics\" />
   </ItemGroup>
   <ItemGroup>
     <PropertiesFile Include="Properties\Database.sqlsettings">
@@ -217,6 +238,234 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Database Level Objects\Security\Schemas\COMMON.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Database Level Objects\Security\Schemas\CLASSIFY.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATE_AND_APP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATE_AND_CUS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATE_AND_EMP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATE_AND_MENU.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_MENU.PK_CATE_AND_MENU_AND_APP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_MENU.FK_CATE_AND_MENU_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_MENU.FK_CATE_AND_MENU_MENU_MASTER.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_APP.PK_CATE_AND_APP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_APP.FK_CATE_AND_APP_APPLICATION.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_APP.FK_CATE_AND_APP_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_CUS.PK_CATE_AND_CUS.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_CUS.FK_CATE_AND_CUS_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_EMP.PK_CATE_AND_EMP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_EMP.FK_CATE_AND_EMP_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_EMP.FK_CATE_AND_EMP_USER_DATA.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_AND_EMP.DF_CATE_AND_EMP_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_AND_APP.DF_CATE_AND_APP_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_AND_CUS.DF_CATE_AND_CUS_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_AND_MENU.DF_CATE_AND_MENU_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.ByCus_CIF.PK_ByCus_CIF.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER.PK_CUSTOMER.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME.PK_CUSTOMER_SME.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME_GROUP.PK_CUSTOMER_SME_GROUP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Constraints\CUSTOMER.CUSTOMER_SME_GROUP.DF_CUSTOMER_SME_GROUP_GROUP_SIZE_ID.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Constraints\CUSTOMER.CUSTOMER_SME_GROUP.DF_CUSTOMER_SME_GROUP_UPDATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Constraints\CUSTOMER.CUSTOMER_SME.CK_EXPORT_WEIGHT.chkconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Constraints\CUSTOMER.CUSTOMER_SME.DF_CUSTOMER_SME_BUSINESS_DESTINATION_ID.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Constraints\CUSTOMER.CUSTOMER_SME.DF_CUSTOMER_SME_STATUS_ID.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Constraints\CUSTOMER.CUSTOMER_SME.DF_CUSTOMER_SME_SIZE_ID.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Constraints\CUSTOMER.CUSTOMER_SME.DF_CUSTOMER_SME_RATING_TYPE_KEY.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Constraints\CUSTOMER.CUSTOMER_SME.DF_CUSTOMER_SME_RATING_KEY.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME.FK_CUSTOMER_SME_BUSINESS_DESTINATION.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\CUSTOMER.BUSINESS_DESTINATION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.BUSINESS_DESTINATION.PK_BUSINESS_DESTINATION.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME.FK_CUSTOMER_SME_CUSTOMER_SME_SIZE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME.FK_CUSTOMER_SME_CUSTOMER_STATUS.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME_RATING.PK_CUSTOMER_SME_RATING.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME_RATING.FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME_RATING_TYPE.PK_CUSTOMER_SME_RATING_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME_SIZE.PK_CUSTOMER_SME_SIZE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_STATUS.PK_CUSTOMER_STATUS.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\Keys\EMPLOYEE.TB_EMPLOYEE.PK_TB_EMPLOYEE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATEGORY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATEGORY.PK_CLASSIFY_CATEGORY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATEGORY.FK_CATEGORY_CATEGORY_TYPE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATEGORY.DF_CLASSIFY_CATEGORY_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATEGORY_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATEGORY_TYPE.PK_CATEGORY_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATEGORY_TYPE.DF_CATEGORY_TYPE_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATE_LINK_CATE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_LINK_CATE.PK_CATE_LINK_CATE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_LINK_CATE.FK_CATE_LINK_CATE_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_LINK_CATE.FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_LINK_CATE.FK_CATE_LINKED_CATE_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_LINK_CATE.DF_CATE_LINK_CATE_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Indexes\CLASSIFY.CATE_LINK_CATE.IX_CATE_LINK_CATE.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATE_LINK_CATE_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_LINK_CATE_TYPE.PK_CATE_LINK_CATE_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_LINK_CATE_TYPE.DF_CATE_LINK_CATE_TYPE_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Indexes\CLASSIFY.CATE_AND_APP.IX_CATE_AND_APP.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Indexes\CLASSIFY.CATE_AND_CUS.IX_CATE_AND_CUS.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Indexes\CLASSIFY.CATE_AND_EMP.IX_CATE_AND_EMP.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Indexes\CLASSIFY.CATE_AND_MENU.IX_CATE_AND_MENU.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.APPLICATION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.APPLICATION.PK_APPLICATION.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.APPLICATION.DF_APPLICATION_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.MENU_MASTER.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.MENU_MASTER.PK_MENU_MASTER.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.MENU_MASTER.FK_MENU_MASTER_MENU_MASTER.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.MENU_MASTER.DF_MENU_MASTER_MENU_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\EMPLOYEE.USER_DATA.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\Keys\EMPLOYEE.USER_DATA.PK_USER_DATA.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\Constraints\EMPLOYEE.USER_DATA.DF_USER_DATA_CREATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\Constraints\EMPLOYEE.USER_DATA.DF_USER_DATA_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\Constraints\EMPLOYEE.USER_DATA.DF_USER_DATA_UPDATE_DATE.defconst.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>

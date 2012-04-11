@@ -1,0 +1,7 @@
+﻿CREATE TABLE [CLASSIFY].[APPLICATION]
+(
+	[APP_KEY] [int] IDENTITY(1,1) NOT NULL,
+	[APP_DESC] [nvarchar](50) NOT NULL,
+	[PRIORITY] [int] NULL,
+	[DEL_FLAG] [bit] NULL
+)
