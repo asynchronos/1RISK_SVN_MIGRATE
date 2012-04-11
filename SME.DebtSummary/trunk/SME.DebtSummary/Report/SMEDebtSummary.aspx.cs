@@ -16,10 +16,10 @@ namespace SME.DebtSummary.Report
             RV_SMEDebtSummary.LocalReport.EnableHyperlinks = true;
             if (!IsPostBack)
             {
-                //SavePreviousUrl(this.Request.UrlReferrer.PathAndQuery);
+                //SavePreviousUrl(this.Request.UrlReferrer.OriginalString);
                 ShowAllUrlList();
 
-                RV_SMEDebtSummary.LocalReport.SetParameters(new ReportParameter(RP_KEY_DOMAIN_PATH, "http://" + Request.Url.Authority + "/"));
+                RV_SMEDebtSummary.LocalReport.SetParameters(new ReportParameter(RP_KEY_DOMAIN_PATH, Request.Url.OriginalString.Replace(Request.AppRelativeCurrentExecutionFilePath.Substring(1) + Request.Url.Query, "/")));
                 if (hasQueryString(QS_KEY_ROOT_EMP_ID) && !string.IsNullOrWhiteSpace(getQueryString(QS_KEY_ROOT_EMP_ID)))
                 {
                     RV_SMEDebtSummary.LocalReport.SetParameters(new ReportParameter(RP_KEY_ROOT_EMP_ID, getQueryString(QS_KEY_ROOT_EMP_ID)));

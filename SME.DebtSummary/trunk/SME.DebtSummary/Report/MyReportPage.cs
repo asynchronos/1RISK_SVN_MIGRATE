@@ -71,7 +71,7 @@ namespace SME.DebtSummary.Report
                 }
 
                 log.Debug("redirecting to " + url2go);
-                Response.Redirect(Page.ResolveUrl("~" + url2go));
+                Response.Redirect(url2go);
             }
         }
 

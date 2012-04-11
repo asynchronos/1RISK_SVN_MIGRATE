@@ -14,12 +14,15 @@ namespace SME.DebtSummary.Report
         {
             if (!IsPostBack)
             {
-                SavePreviousUrl(this.Request.UrlReferrer.PathAndQuery);
-                ShowAllUrlList();
+                if (null != Request.UrlReferrer && null != Request.UrlReferrer.OriginalString)
+                {
+                    SavePreviousUrl(this.Request.UrlReferrer.OriginalString);
+                    ShowAllUrlList();
+                }
 
                 RV_Detail.LocalReport.EnableHyperlinks = true;
 
-                RV_Detail.LocalReport.SetParameters(new ReportParameter(RP_KEY_DOMAIN_PATH, "http://" + Request.Url.Authority + "/"));
+                RV_Detail.LocalReport.SetParameters(new ReportParameter(RP_KEY_DOMAIN_PATH, Request.Url.OriginalString.Replace(Request.AppRelativeCurrentExecutionFilePath.Substring(1) + Request.Url.Query, "/")));
                 if (hasQueryString(QS_KEY_ROOT_EMP_ID) && !string.IsNullOrWhiteSpace(getQueryString(QS_KEY_ROOT_EMP_ID)) && !getQueryString(QS_KEY_ROOT_EMP_ID).Equals("All"))
                 {
                     RV_Detail.LocalReport.SetParameters(new ReportParameter(RP_KEY_ROOT_EMP_ID, getQueryString(QS_KEY_ROOT_EMP_ID)));

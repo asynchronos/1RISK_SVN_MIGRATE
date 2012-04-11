@@ -30,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabases>false</PublishDatabases>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, processorArchitecture=MSIL">
@@ -80,12 +81,16 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -217,13 +222,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="RDLC\CustomerDebtViewDetailReport.rdlc" />
-    <EmbeddedResource Include="RDLC\CustomerDebtViewReport.rdlc" />
-    <EmbeddedResource Include="RDLC\ReportSmeSummary.rdlc" />
-    <EmbeddedResource Include="RDLC\ReportSMEViewByEmp.rdlc" />
-    <EmbeddedResource Include="RDLC\ReportCustomerDebtViewDetailSumAbove.rdlc" />
-    <EmbeddedResource Include="RDLC\ReportCustomerDebtViewSummary.rdlc" />
-    <EmbeddedResource Include="RDLC\ReportSMEViewBySize.rdlc" />
+    <EmbeddedResource Include="RDLC\ReportSmeSummary.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RDLC\ReportSMEViewByEmp.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RDLC\ReportCustomerDebtViewDetailSumAbove.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RDLC\ReportCustomerDebtViewSummary.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RDLC\ReportSMEViewBySize.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="SMEDebtSummarylog4net.config" />
@@ -236,6 +249,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Error\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
