@@ -21,11 +21,6 @@ namespace SME.DebtSummary.Account
                 Session.Clear();
                 Session.Abandon();
                 Context.Request.Cookies.Clear();
-
-                if (isDebugEnabled)
-                {
-                    log.Debug(username + " logout.");
-                }
             }
 
             Response.Redirect(FormsAuthentication.LoginUrl);
