@@ -468,5 +468,8 @@
     <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\Constraints\EMPLOYEE.USER_DATA.DF_USER_DATA_UPDATE_DATE.defconst.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME.FK_CUSTOMER_SME_CUSTOMER_SME_GROUP.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
