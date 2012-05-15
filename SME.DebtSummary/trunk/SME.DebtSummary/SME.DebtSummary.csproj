@@ -65,6 +65,7 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\LoginSucceeded.aspx" />
     <Content Include="Account\Logout.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Images\BackButton.gif" />
@@ -122,6 +123,13 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\LoginSucceeded.aspx.cs">
+      <DependentUpon>LoginSucceeded.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\LoginSucceeded.aspx.designer.cs">
+      <DependentUpon>LoginSucceeded.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,7 +137,6 @@
     <Compile Include="Account\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\MyMembershipProvider.cs" />
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,7 +246,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SMEDebtSummarylog4net.config" />
+    <Content Include="Log4net.SMEDebtSummaryWeb.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\Web.config" />
@@ -254,6 +261,9 @@
     <Content Include="log\Web.config">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Log4net.SMEDebtSummaryCore.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
