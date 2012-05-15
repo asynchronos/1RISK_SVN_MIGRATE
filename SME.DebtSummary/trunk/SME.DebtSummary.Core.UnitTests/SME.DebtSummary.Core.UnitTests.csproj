@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -42,6 +43,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -70,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Log4net.SMEDebtSummaryCore.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
