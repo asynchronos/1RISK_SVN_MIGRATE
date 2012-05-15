@@ -1,0 +1,1015 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UserSystemEntitiesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="UserSystemEntitiesModelStoreContainer">
+          <EntitySet Name="APPLICATION" EntityType="UserSystemEntitiesModel.Store.APPLICATION" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATE_AND_APP" EntityType="UserSystemEntitiesModel.Store.CATE_AND_APP" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATE_AND_CUS" EntityType="UserSystemEntitiesModel.Store.CATE_AND_CUS" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATE_AND_EMP" EntityType="UserSystemEntitiesModel.Store.CATE_AND_EMP" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATE_AND_MENU" EntityType="UserSystemEntitiesModel.Store.CATE_AND_MENU" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATE_LINK_CATE" EntityType="UserSystemEntitiesModel.Store.CATE_LINK_CATE" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATE_LINK_CATE_TYPE" EntityType="UserSystemEntitiesModel.Store.CATE_LINK_CATE_TYPE" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATEGORY" EntityType="UserSystemEntitiesModel.Store.CATEGORY" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="CATEGORY_TYPE" EntityType="UserSystemEntitiesModel.Store.CATEGORY_TYPE" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="MENU_MASTER" EntityType="UserSystemEntitiesModel.Store.MENU_MASTER" store:Type="Tables" Schema="CLASSIFY" />
+          <EntitySet Name="TB_EMPLOYEE" EntityType="UserSystemEntitiesModel.Store.TB_EMPLOYEE" store:Type="Tables" Schema="EMPLOYEE" />
+          <EntitySet Name="USER_DATA" EntityType="UserSystemEntitiesModel.Store.USER_DATA" store:Type="Tables" Schema="EMPLOYEE" />
+          <AssociationSet Name="FK_CATE_AND_APP_APPLICATION" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_APP_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATION" />
+            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_APP_CATEGORY" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_APP_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_CUS_CATEGORY" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_CUS_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_CUS" EntitySet="CATE_AND_CUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_EMP_CATEGORY" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_EMP_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_EMP_USER_DATA" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_EMP_USER_DATA">
+            <End Role="USER_DATA" EntitySet="USER_DATA" />
+            <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_MENU_CATEGORY" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_MENU_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_MENU_MENU_MASTER" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_MENU_MENU_MASTER">
+            <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+            <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE" Association="UserSystemEntitiesModel.Store.FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE">
+            <End Role="CATE_LINK_CATE_TYPE" EntitySet="CATE_LINK_CATE_TYPE" />
+            <End Role="CATE_LINK_CATE" EntitySet="CATE_LINK_CATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_LINK_CATE_CATEGORY" Association="UserSystemEntitiesModel.Store.FK_CATE_LINK_CATE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_LINK_CATE" EntitySet="CATE_LINK_CATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_LINKED_CATE_CATEGORY" Association="UserSystemEntitiesModel.Store.FK_CATE_LINKED_CATE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_LINK_CATE" EntitySet="CATE_LINK_CATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_CATEGORY_TYPE" Association="UserSystemEntitiesModel.Store.FK_CATEGORY_CATEGORY_TYPE">
+            <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENU_MASTER_MENU_MASTER" Association="UserSystemEntitiesModel.Store.FK_MENU_MASTER_MENU_MASTER">
+            <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+            <End Role="MENU_MASTER1" EntitySet="MENU_MASTER" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="APPLICATION">
+          <Key>
+            <PropertyRef Name="APP_KEY" />
+          </Key>
+          <Property Name="APP_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="APP_DESC" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATE_AND_APP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" />
+          <Property Name="APP_KEY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATE_AND_CUS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="CIF" Type="int" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATE_AND_EMP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="EMP_ID" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="HEAD_PRIORITY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATE_AND_MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" />
+          <Property Name="MENU_KEY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATE_LINK_CATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="LINK_TO_CATEGORY_KEY" Type="int" Nullable="false" />
+          <Property Name="LINKED_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATE_LINK_CATE_TYPE">
+          <Key>
+            <PropertyRef Name="LINKED_TYPE_KEY" />
+          </Key>
+          <Property Name="LINKED_TYPE_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_KEY" />
+          </Key>
+          <Property Name="CATEGORY_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="CATEGORY_DESC_TH" Type="nvarchar" MaxLength="100" />
+          <Property Name="CATEGORY_VALUE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="int" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="CATEGORY_TYPE">
+          <Key>
+            <PropertyRef Name="CATEGORY_TYPE_KEY" />
+          </Key>
+          <Property Name="CATEGORY_TYPE_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_TYPE_DESC" Type="varchar" MaxLength="50" />
+          <Property Name="CATEGORY_TYPE_DESC_TH" Type="nvarchar" MaxLength="50" />
+          <Property Name="CATEGORY_TYPE_VALUE" Type="nvarchar" MaxLength="20" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <EntityType Name="MENU_MASTER">
+          <Key>
+            <PropertyRef Name="MENU_KEY" />
+          </Key>
+          <Property Name="MENU_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MENU_TITLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_URL" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_POPUP_OPT" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_REL" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_TOOLTIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="MENU_PRIORITY" Type="int" />
+          <Property Name="MENU_DEL_FLAG" Type="bit" />
+          <Property Name="MENU_PARENT_KEY" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="TITLE_CODE" Type="tinyint" />
+          <Property Name="EMPNAME" Type="varchar" MaxLength="50" />
+          <Property Name="EMPSURNAME" Type="varchar" MaxLength="50" />
+          <Property Name="EMPNAME_E" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMPSURNAME_E" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="IDCARD" Type="varchar" MaxLength="50" />
+          <Property Name="TAX_NO" Type="varchar" MaxLength="50" />
+          <Property Name="ACCNO" Type="varchar" MaxLength="16" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="30" />
+          <Property Name="SOI" Type="varchar" MaxLength="20" />
+          <Property Name="ROAD" Type="varchar" MaxLength="30" />
+          <Property Name="LOCALITY" Type="varchar" MaxLength="30" />
+          <Property Name="DISTRINCT" Type="varchar" MaxLength="30" />
+          <Property Name="PROV_CODE" Type="varchar" MaxLength="2" />
+          <Property Name="ZIPCODE" Type="varchar" MaxLength="50" />
+          <Property Name="TEL_HOME" Type="varchar" MaxLength="30" />
+          <Property Name="TEL_MOBILE" Type="varchar" MaxLength="20" />
+          <Property Name="TEL_INDOOR" Type="varchar" MaxLength="30" />
+          <Property Name="DATEOFBIRTH" Type="datetime" />
+          <Property Name="IMAGENAME" Type="varchar" MaxLength="20" />
+          <Property Name="DATEOFSTART" Type="datetime" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="TEAM_ID" Type="nvarchar" MaxLength="10" />
+          <Property Name="GROUP_HEAD" Type="char" MaxLength="1" />
+          <Property Name="ROLE" Type="tinyint" />
+          <Property Name="PERMIT" Type="char" MaxLength="1" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="10" />
+          <Property Name="PASSWD" Type="nvarchar" MaxLength="20" />
+          <Property Name="UP_DT" Type="datetime" />
+          <Property Name="Dept" Type="smallint" />
+          <Property Name="Id_Region" Type="smallint" />
+          <Property Name="Id_Branch" Type="smallint" />
+          <Property Name="POSITION_CODE" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Region_Group" Type="nvarchar" MaxLength="255" />
+          <Property Name="Id_Branch_Group" Type="nvarchar" MaxLength="255" />
+          <Property Name="Id_Group_Group" Type="ntext" />
+          <Property Name="level_id" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="USER_DATA">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="EMP_TITLE" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="EMP_NAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EMP_SURNAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EMP_TITLE_E" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMP_NAME_E" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMP_SURNAME_E" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWD" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="EXPIRE_DATE" Type="datetime" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
+          <Property Name="LAST_SIGN_ON_DATE" Type="datetime" />
+          <Property Name="LAST_CHANGE_PASS_DATE" Type="datetime" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
+        <Association Name="FK_CATE_AND_APP_APPLICATION">
+          <End Role="APPLICATION" Type="UserSystemEntitiesModel.Store.APPLICATION" Multiplicity="0..1" />
+          <End Role="CATE_AND_APP" Type="UserSystemEntitiesModel.Store.CATE_AND_APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APP_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_APP">
+              <PropertyRef Name="APP_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_APP_CATEGORY">
+          <End Role="CATEGORY" Type="UserSystemEntitiesModel.Store.CATEGORY" Multiplicity="0..1" />
+          <End Role="CATE_AND_APP" Type="UserSystemEntitiesModel.Store.CATE_AND_APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_APP">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_CUS_CATEGORY">
+          <End Role="CATEGORY" Type="UserSystemEntitiesModel.Store.CATEGORY" Multiplicity="1" />
+          <End Role="CATE_AND_CUS" Type="UserSystemEntitiesModel.Store.CATE_AND_CUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_CUS">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_EMP_CATEGORY">
+          <End Role="CATEGORY" Type="UserSystemEntitiesModel.Store.CATEGORY" Multiplicity="1" />
+          <End Role="CATE_AND_EMP" Type="UserSystemEntitiesModel.Store.CATE_AND_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_EMP">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_EMP_USER_DATA">
+          <End Role="USER_DATA" Type="UserSystemEntitiesModel.Store.USER_DATA" Multiplicity="1" />
+          <End Role="CATE_AND_EMP" Type="UserSystemEntitiesModel.Store.CATE_AND_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_DATA">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="CATE_AND_EMP">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_MENU_CATEGORY">
+          <End Role="CATEGORY" Type="UserSystemEntitiesModel.Store.CATEGORY" Multiplicity="0..1" />
+          <End Role="CATE_AND_MENU" Type="UserSystemEntitiesModel.Store.CATE_AND_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_MENU">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_MENU_MENU_MASTER">
+          <End Role="MENU_MASTER" Type="UserSystemEntitiesModel.Store.MENU_MASTER" Multiplicity="0..1" />
+          <End Role="CATE_AND_MENU" Type="UserSystemEntitiesModel.Store.CATE_AND_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU_MASTER">
+              <PropertyRef Name="MENU_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_MENU">
+              <PropertyRef Name="MENU_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE">
+          <End Role="CATE_LINK_CATE_TYPE" Type="UserSystemEntitiesModel.Store.CATE_LINK_CATE_TYPE" Multiplicity="1" />
+          <End Role="CATE_LINK_CATE" Type="UserSystemEntitiesModel.Store.CATE_LINK_CATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATE_LINK_CATE_TYPE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="CATE_LINK_CATE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_LINK_CATE_CATEGORY">
+          <End Role="CATEGORY" Type="UserSystemEntitiesModel.Store.CATEGORY" Multiplicity="1" />
+          <End Role="CATE_LINK_CATE" Type="UserSystemEntitiesModel.Store.CATE_LINK_CATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_LINK_CATE">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_LINKED_CATE_CATEGORY">
+          <End Role="CATEGORY" Type="UserSystemEntitiesModel.Store.CATEGORY" Multiplicity="1" />
+          <End Role="CATE_LINK_CATE" Type="UserSystemEntitiesModel.Store.CATE_LINK_CATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_LINK_CATE">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_CATEGORY_TYPE">
+          <End Role="CATEGORY_TYPE" Type="UserSystemEntitiesModel.Store.CATEGORY_TYPE" Multiplicity="0..1" />
+          <End Role="CATEGORY" Type="UserSystemEntitiesModel.Store.CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENU_MASTER_MENU_MASTER">
+          <End Role="MENU_MASTER" Type="UserSystemEntitiesModel.Store.MENU_MASTER" Multiplicity="0..1" />
+          <End Role="MENU_MASTER1" Type="UserSystemEntitiesModel.Store.MENU_MASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU_MASTER">
+              <PropertyRef Name="MENU_KEY" />
+            </Principal>
+            <Dependent Role="MENU_MASTER1">
+              <PropertyRef Name="MENU_PARENT_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UserSystemEntitiesModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="UserSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="APPLICATION" EntityType="UserSystemEntitiesModel.APPLICATION" />
+          <EntitySet Name="CATE_AND_APP" EntityType="UserSystemEntitiesModel.CATE_AND_APP" />
+          <EntitySet Name="CATE_AND_CUS" EntityType="UserSystemEntitiesModel.CATE_AND_CUS" />
+          <EntitySet Name="CATE_AND_EMP" EntityType="UserSystemEntitiesModel.CATE_AND_EMP" />
+          <EntitySet Name="CATE_AND_MENU" EntityType="UserSystemEntitiesModel.CATE_AND_MENU" />
+          <EntitySet Name="CATE_LINK_CATE" EntityType="UserSystemEntitiesModel.CATE_LINK_CATE" />
+          <EntitySet Name="CATE_LINK_CATE_TYPE" EntityType="UserSystemEntitiesModel.CATE_LINK_CATE_TYPE" />
+          <EntitySet Name="CATEGORY" EntityType="UserSystemEntitiesModel.CATEGORY" />
+          <EntitySet Name="CATEGORY_TYPE" EntityType="UserSystemEntitiesModel.CATEGORY_TYPE" />
+          <EntitySet Name="MENU_MASTER" EntityType="UserSystemEntitiesModel.MENU_MASTER" />
+          <EntitySet Name="TB_EMPLOYEE" EntityType="UserSystemEntitiesModel.TB_EMPLOYEE" />
+          <EntitySet Name="USER_DATA" EntityType="UserSystemEntitiesModel.USER_DATA" />
+          <AssociationSet Name="FK_CATE_AND_APP_APPLICATION" Association="UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATION" />
+            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_APP_CATEGORY" Association="UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_CUS_CATEGORY" Association="UserSystemEntitiesModel.FK_CATE_AND_CUS_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_CUS" EntitySet="CATE_AND_CUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_EMP_CATEGORY" Association="UserSystemEntitiesModel.FK_CATE_AND_EMP_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_EMP_USER_DATA" Association="UserSystemEntitiesModel.FK_CATE_AND_EMP_USER_DATA">
+            <End Role="USER_DATA" EntitySet="USER_DATA" />
+            <End Role="CATE_AND_EMP" EntitySet="CATE_AND_EMP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_MENU_CATEGORY" Association="UserSystemEntitiesModel.FK_CATE_AND_MENU_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_AND_MENU_MENU_MASTER" Association="UserSystemEntitiesModel.FK_CATE_AND_MENU_MENU_MASTER">
+            <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+            <End Role="CATE_AND_MENU" EntitySet="CATE_AND_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE" Association="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE">
+            <End Role="CATE_LINK_CATE_TYPE" EntitySet="CATE_LINK_CATE_TYPE" />
+            <End Role="CATE_LINK_CATE" EntitySet="CATE_LINK_CATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_LINK_CATE_CATEGORY" Association="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_LINK_CATE" EntitySet="CATE_LINK_CATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATE_LINKED_CATE_CATEGORY" Association="UserSystemEntitiesModel.FK_CATE_LINKED_CATE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CATE_LINK_CATE" EntitySet="CATE_LINK_CATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORY_CATEGORY_TYPE" Association="UserSystemEntitiesModel.FK_CATEGORY_CATEGORY_TYPE">
+            <End Role="CATEGORY_TYPE" EntitySet="CATEGORY_TYPE" />
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENU_MASTER_MENU_MASTER" Association="UserSystemEntitiesModel.FK_MENU_MASTER_MENU_MASTER">
+            <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
+            <End Role="MENU_MASTER1" EntitySet="MENU_MASTER" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="APPLICATION">
+          <Key>
+            <PropertyRef Name="APP_KEY" />
+          </Key>
+          <Property Name="APP_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APP_DESC" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATE_AND_APP" Relationship="UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION" FromRole="APPLICATION" ToRole="CATE_AND_APP" />
+        </EntityType>
+        <EntityType Name="CATE_AND_APP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" />
+          <Property Name="APP_KEY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="APPLICATION" Relationship="UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION" FromRole="CATE_AND_APP" ToRole="APPLICATION" />
+          <NavigationProperty Name="CATEGORY" Relationship="UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY" FromRole="CATE_AND_APP" ToRole="CATEGORY" />
+        </EntityType>
+        <EntityType Name="CATE_AND_CUS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="CIF" Type="Int32" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="UserSystemEntitiesModel.FK_CATE_AND_CUS_CATEGORY" FromRole="CATE_AND_CUS" ToRole="CATEGORY" />
+        </EntityType>
+        <EntityType Name="CATE_AND_EMP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="EMP_ID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="HEAD_PRIORITY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="UserSystemEntitiesModel.FK_CATE_AND_EMP_CATEGORY" FromRole="CATE_AND_EMP" ToRole="CATEGORY" />
+          <NavigationProperty Name="USER_DATA" Relationship="UserSystemEntitiesModel.FK_CATE_AND_EMP_USER_DATA" FromRole="CATE_AND_EMP" ToRole="USER_DATA" />
+        </EntityType>
+        <EntityType Name="CATE_AND_MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" />
+          <Property Name="MENU_KEY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="UserSystemEntitiesModel.FK_CATE_AND_MENU_CATEGORY" FromRole="CATE_AND_MENU" ToRole="CATEGORY" />
+          <NavigationProperty Name="MENU_MASTER" Relationship="UserSystemEntitiesModel.FK_CATE_AND_MENU_MENU_MASTER" FromRole="CATE_AND_MENU" ToRole="MENU_MASTER" />
+        </EntityType>
+        <EntityType Name="CATE_LINK_CATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="LINK_TO_CATEGORY_KEY" Type="Int32" Nullable="false" />
+          <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATE_LINK_CATE_TYPE" Relationship="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE" FromRole="CATE_LINK_CATE" ToRole="CATE_LINK_CATE_TYPE" />
+          <NavigationProperty Name="CATEGORY" Relationship="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATEGORY" FromRole="CATE_LINK_CATE" ToRole="CATEGORY" />
+          <NavigationProperty Name="CATEGORY1" Relationship="UserSystemEntitiesModel.FK_CATE_LINKED_CATE_CATEGORY" FromRole="CATE_LINK_CATE" ToRole="CATEGORY" />
+        </EntityType>
+        <EntityType Name="CATE_LINK_CATE_TYPE">
+          <Key>
+            <PropertyRef Name="LINKED_TYPE_KEY" />
+          </Key>
+          <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATE_LINK_CATE" Relationship="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE" FromRole="CATE_LINK_CATE_TYPE" ToRole="CATE_LINK_CATE" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_KEY" />
+          </Key>
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_DESC_TH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATE_AND_APP" Relationship="UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_APP" />
+          <NavigationProperty Name="CATE_AND_CUS" Relationship="UserSystemEntitiesModel.FK_CATE_AND_CUS_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_CUS" />
+          <NavigationProperty Name="CATE_AND_EMP" Relationship="UserSystemEntitiesModel.FK_CATE_AND_EMP_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_EMP" />
+          <NavigationProperty Name="CATE_AND_MENU" Relationship="UserSystemEntitiesModel.FK_CATE_AND_MENU_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_MENU" />
+          <NavigationProperty Name="CATE_LINK_CATE" Relationship="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATEGORY" FromRole="CATEGORY" ToRole="CATE_LINK_CATE" />
+          <NavigationProperty Name="CATE_LINK_CATE1" Relationship="UserSystemEntitiesModel.FK_CATE_LINKED_CATE_CATEGORY" FromRole="CATEGORY" ToRole="CATE_LINK_CATE" />
+          <NavigationProperty Name="CATEGORY_TYPE" Relationship="UserSystemEntitiesModel.FK_CATEGORY_CATEGORY_TYPE" FromRole="CATEGORY" ToRole="CATEGORY_TYPE" />
+        </EntityType>
+        <EntityType Name="CATEGORY_TYPE">
+          <Key>
+            <PropertyRef Name="CATEGORY_TYPE_KEY" />
+          </Key>
+          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_TYPE_DESC" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_DESC_TH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CATEGORY_TYPE_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="UserSystemEntitiesModel.FK_CATEGORY_CATEGORY_TYPE" FromRole="CATEGORY_TYPE" ToRole="CATEGORY" />
+        </EntityType>
+        <EntityType Name="MENU_MASTER">
+          <Key>
+            <PropertyRef Name="MENU_KEY" />
+          </Key>
+          <Property Name="MENU_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MENU_TITLE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_URL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_POPUP_OPT" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_REL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_TOOLTIP" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MENU_PRIORITY" Type="Int32" />
+          <Property Name="MENU_DEL_FLAG" Type="Boolean" />
+          <Property Name="MENU_PARENT_KEY" Type="Int32" />
+          <NavigationProperty Name="CATE_AND_MENU" Relationship="UserSystemEntitiesModel.FK_CATE_AND_MENU_MENU_MASTER" FromRole="MENU_MASTER" ToRole="CATE_AND_MENU" />
+          <NavigationProperty Name="MENU_MASTER1" Relationship="UserSystemEntitiesModel.FK_MENU_MASTER_MENU_MASTER" FromRole="MENU_MASTER" ToRole="MENU_MASTER1" />
+          <NavigationProperty Name="MENU_MASTER2" Relationship="UserSystemEntitiesModel.FK_MENU_MASTER_MENU_MASTER" FromRole="MENU_MASTER1" ToRole="MENU_MASTER" />
+        </EntityType>
+        <EntityType Name="TB_EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="TITLE_CODE" Type="Byte" />
+          <Property Name="EMPNAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EMPSURNAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EMPNAME_E" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EMPSURNAME_E" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IDCARD" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TAX_NO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ACCNO" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="SOI" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ROAD" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="LOCALITY" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="DISTRINCT" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="PROV_CODE" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="ZIPCODE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TEL_HOME" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="TEL_MOBILE" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="TEL_INDOOR" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="DATEOFBIRTH" Type="DateTime" />
+          <Property Name="IMAGENAME" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DATEOFSTART" Type="DateTime" />
+          <Property Name="STATUS" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="TEAM_ID" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="GROUP_HEAD" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="ROLE" Type="Byte" />
+          <Property Name="PERMIT" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PASSWD" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="UP_DT" Type="DateTime" />
+          <Property Name="Dept" Type="Int16" />
+          <Property Name="Id_Region" Type="Int16" />
+          <Property Name="Id_Branch" Type="Int16" />
+          <Property Name="POSITION_CODE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Region_Group" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Id_Branch_Group" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Id_Group_Group" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="level_id" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="USER_DATA">
+          <Key>
+            <PropertyRef Name="EMP_ID" />
+          </Key>
+          <Property Name="EMP_ID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="EMP_TITLE" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="EMP_NAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EMP_SURNAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EMP_TITLE_E" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="EMP_NAME_E" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EMP_SURNAME_E" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PASSWD" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" />
+          <Property Name="EXPIRE_DATE" Type="DateTime" />
+          <Property Name="UPDATE_DATE" Type="DateTime" />
+          <Property Name="LAST_SIGN_ON_DATE" Type="DateTime" />
+          <Property Name="LAST_CHANGE_PASS_DATE" Type="DateTime" />
+          <Property Name="DEL_FLAG" Type="Boolean" />
+          <NavigationProperty Name="CATE_AND_EMP" Relationship="UserSystemEntitiesModel.FK_CATE_AND_EMP_USER_DATA" FromRole="USER_DATA" ToRole="CATE_AND_EMP" />
+        </EntityType>
+        <Association Name="FK_CATE_AND_APP_APPLICATION">
+          <End Type="UserSystemEntitiesModel.APPLICATION" Role="APPLICATION" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.CATE_AND_APP" Role="CATE_AND_APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APP_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_APP">
+              <PropertyRef Name="APP_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_APP_CATEGORY">
+          <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.CATE_AND_APP" Role="CATE_AND_APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_APP">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_CUS_CATEGORY">
+          <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="1" />
+          <End Type="UserSystemEntitiesModel.CATE_AND_CUS" Role="CATE_AND_CUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_CUS">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_EMP_CATEGORY">
+          <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="1" />
+          <End Type="UserSystemEntitiesModel.CATE_AND_EMP" Role="CATE_AND_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_EMP">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_EMP_USER_DATA">
+          <End Type="UserSystemEntitiesModel.USER_DATA" Role="USER_DATA" Multiplicity="1" />
+          <End Type="UserSystemEntitiesModel.CATE_AND_EMP" Role="CATE_AND_EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_DATA">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="CATE_AND_EMP">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_MENU_CATEGORY">
+          <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.CATE_AND_MENU" Role="CATE_AND_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_MENU">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_AND_MENU_MENU_MASTER">
+          <End Type="UserSystemEntitiesModel.MENU_MASTER" Role="MENU_MASTER" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.CATE_AND_MENU" Role="CATE_AND_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU_MASTER">
+              <PropertyRef Name="MENU_KEY" />
+            </Principal>
+            <Dependent Role="CATE_AND_MENU">
+              <PropertyRef Name="MENU_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE">
+          <End Type="UserSystemEntitiesModel.CATE_LINK_CATE_TYPE" Role="CATE_LINK_CATE_TYPE" Multiplicity="1" />
+          <End Type="UserSystemEntitiesModel.CATE_LINK_CATE" Role="CATE_LINK_CATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATE_LINK_CATE_TYPE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="CATE_LINK_CATE">
+              <PropertyRef Name="LINKED_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_LINK_CATE_CATEGORY">
+          <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="1" />
+          <End Type="UserSystemEntitiesModel.CATE_LINK_CATE" Role="CATE_LINK_CATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_LINK_CATE">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATE_LINKED_CATE_CATEGORY">
+          <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="1" />
+          <End Type="UserSystemEntitiesModel.CATE_LINK_CATE" Role="CATE_LINK_CATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Principal>
+            <Dependent Role="CATE_LINK_CATE">
+              <PropertyRef Name="CATEGORY_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORY_CATEGORY_TYPE">
+          <End Type="UserSystemEntitiesModel.CATEGORY_TYPE" Role="CATEGORY_TYPE" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_TYPE">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Principal>
+            <Dependent Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_TYPE_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENU_MASTER_MENU_MASTER">
+          <End Type="UserSystemEntitiesModel.MENU_MASTER" Role="MENU_MASTER" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.MENU_MASTER" Role="MENU_MASTER1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU_MASTER">
+              <PropertyRef Name="MENU_KEY" />
+            </Principal>
+            <Dependent Role="MENU_MASTER1">
+              <PropertyRef Name="MENU_PARENT_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UserSystemEntitiesModelStoreContainer" CdmEntityContainer="UserSystemEntities">
+          <EntitySetMapping Name="APPLICATION"><EntityTypeMapping TypeName="UserSystemEntitiesModel.APPLICATION"><MappingFragment StoreEntitySet="APPLICATION">
+            <ScalarProperty Name="APP_KEY" ColumnName="APP_KEY" />
+            <ScalarProperty Name="APP_DESC" ColumnName="APP_DESC" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATE_AND_APP"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATE_AND_APP"><MappingFragment StoreEntitySet="CATE_AND_APP">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="APP_KEY" ColumnName="APP_KEY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATE_AND_CUS"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATE_AND_CUS"><MappingFragment StoreEntitySet="CATE_AND_CUS">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATE_AND_EMP"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATE_AND_EMP"><MappingFragment StoreEntitySet="CATE_AND_EMP">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            <ScalarProperty Name="HEAD_PRIORITY" ColumnName="HEAD_PRIORITY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATE_AND_MENU"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATE_AND_MENU"><MappingFragment StoreEntitySet="CATE_AND_MENU">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="MENU_KEY" ColumnName="MENU_KEY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATE_LINK_CATE"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATE_LINK_CATE"><MappingFragment StoreEntitySet="CATE_LINK_CATE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="LINK_TO_CATEGORY_KEY" ColumnName="LINK_TO_CATEGORY_KEY" />
+            <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATE_LINK_CATE_TYPE"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATE_LINK_CATE_TYPE"><MappingFragment StoreEntitySet="CATE_LINK_CATE_TYPE">
+            <ScalarProperty Name="LINKED_TYPE_KEY" ColumnName="LINKED_TYPE_KEY" />
+            <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATEGORY"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATEGORY"><MappingFragment StoreEntitySet="CATEGORY">
+            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
+            <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+            <ScalarProperty Name="CATEGORY_DESC_TH" ColumnName="CATEGORY_DESC_TH" />
+            <ScalarProperty Name="CATEGORY_VALUE" ColumnName="CATEGORY_VALUE" />
+            <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CATEGORY_TYPE"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATEGORY_TYPE"><MappingFragment StoreEntitySet="CATEGORY_TYPE">
+            <ScalarProperty Name="CATEGORY_TYPE_KEY" ColumnName="CATEGORY_TYPE_KEY" />
+            <ScalarProperty Name="CATEGORY_TYPE_DESC" ColumnName="CATEGORY_TYPE_DESC" />
+            <ScalarProperty Name="CATEGORY_TYPE_DESC_TH" ColumnName="CATEGORY_TYPE_DESC_TH" />
+            <ScalarProperty Name="CATEGORY_TYPE_VALUE" ColumnName="CATEGORY_TYPE_VALUE" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MENU_MASTER"><EntityTypeMapping TypeName="UserSystemEntitiesModel.MENU_MASTER"><MappingFragment StoreEntitySet="MENU_MASTER">
+            <ScalarProperty Name="MENU_KEY" ColumnName="MENU_KEY" />
+            <ScalarProperty Name="MENU_TITLE" ColumnName="MENU_TITLE" />
+            <ScalarProperty Name="MENU_URL" ColumnName="MENU_URL" />
+            <ScalarProperty Name="MENU_POPUP_OPT" ColumnName="MENU_POPUP_OPT" />
+            <ScalarProperty Name="MENU_REL" ColumnName="MENU_REL" />
+            <ScalarProperty Name="MENU_TOOLTIP" ColumnName="MENU_TOOLTIP" />
+            <ScalarProperty Name="MENU_PRIORITY" ColumnName="MENU_PRIORITY" />
+            <ScalarProperty Name="MENU_DEL_FLAG" ColumnName="MENU_DEL_FLAG" />
+            <ScalarProperty Name="MENU_PARENT_KEY" ColumnName="MENU_PARENT_KEY" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TB_EMPLOYEE"><EntityTypeMapping TypeName="UserSystemEntitiesModel.TB_EMPLOYEE"><MappingFragment StoreEntitySet="TB_EMPLOYEE">
+            <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            <ScalarProperty Name="TITLE_CODE" ColumnName="TITLE_CODE" />
+            <ScalarProperty Name="EMPNAME" ColumnName="EMPNAME" />
+            <ScalarProperty Name="EMPSURNAME" ColumnName="EMPSURNAME" />
+            <ScalarProperty Name="EMPNAME_E" ColumnName="EMPNAME_E" />
+            <ScalarProperty Name="EMPSURNAME_E" ColumnName="EMPSURNAME_E" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+            <ScalarProperty Name="IDCARD" ColumnName="IDCARD" />
+            <ScalarProperty Name="TAX_NO" ColumnName="TAX_NO" />
+            <ScalarProperty Name="ACCNO" ColumnName="ACCNO" />
+            <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+            <ScalarProperty Name="SOI" ColumnName="SOI" />
+            <ScalarProperty Name="ROAD" ColumnName="ROAD" />
+            <ScalarProperty Name="LOCALITY" ColumnName="LOCALITY" />
+            <ScalarProperty Name="DISTRINCT" ColumnName="DISTRINCT" />
+            <ScalarProperty Name="PROV_CODE" ColumnName="PROV_CODE" />
+            <ScalarProperty Name="ZIPCODE" ColumnName="ZIPCODE" />
+            <ScalarProperty Name="TEL_HOME" ColumnName="TEL_HOME" />
+            <ScalarProperty Name="TEL_MOBILE" ColumnName="TEL_MOBILE" />
+            <ScalarProperty Name="TEL_INDOOR" ColumnName="TEL_INDOOR" />
+            <ScalarProperty Name="DATEOFBIRTH" ColumnName="DATEOFBIRTH" />
+            <ScalarProperty Name="IMAGENAME" ColumnName="IMAGENAME" />
+            <ScalarProperty Name="DATEOFSTART" ColumnName="DATEOFSTART" />
+            <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+            <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
+            <ScalarProperty Name="GROUP_HEAD" ColumnName="GROUP_HEAD" />
+            <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+            <ScalarProperty Name="PERMIT" ColumnName="PERMIT" />
+            <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+            <ScalarProperty Name="PASSWD" ColumnName="PASSWD" />
+            <ScalarProperty Name="UP_DT" ColumnName="UP_DT" />
+            <ScalarProperty Name="Dept" ColumnName="Dept" />
+            <ScalarProperty Name="Id_Region" ColumnName="Id_Region" />
+            <ScalarProperty Name="Id_Branch" ColumnName="Id_Branch" />
+            <ScalarProperty Name="POSITION_CODE" ColumnName="POSITION_CODE" />
+            <ScalarProperty Name="Id_Region_Group" ColumnName="Id_Region_Group" />
+            <ScalarProperty Name="Id_Branch_Group" ColumnName="Id_Branch_Group" />
+            <ScalarProperty Name="Id_Group_Group" ColumnName="Id_Group_Group" />
+            <ScalarProperty Name="level_id" ColumnName="level_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="USER_DATA"><EntityTypeMapping TypeName="UserSystemEntitiesModel.USER_DATA"><MappingFragment StoreEntitySet="USER_DATA">
+            <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+            <ScalarProperty Name="EMP_TITLE" ColumnName="EMP_TITLE" />
+            <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+            <ScalarProperty Name="EMP_SURNAME" ColumnName="EMP_SURNAME" />
+            <ScalarProperty Name="EMP_TITLE_E" ColumnName="EMP_TITLE_E" />
+            <ScalarProperty Name="EMP_NAME_E" ColumnName="EMP_NAME_E" />
+            <ScalarProperty Name="EMP_SURNAME_E" ColumnName="EMP_SURNAME_E" />
+            <ScalarProperty Name="PASSWD" ColumnName="PASSWD" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+            <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+            <ScalarProperty Name="EXPIRE_DATE" ColumnName="EXPIRE_DATE" />
+            <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+            <ScalarProperty Name="LAST_SIGN_ON_DATE" ColumnName="LAST_SIGN_ON_DATE" />
+            <ScalarProperty Name="LAST_CHANGE_PASS_DATE" ColumnName="LAST_CHANGE_PASS_DATE" />
+            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="UserSystemEntitiesModel">
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.APPLICATION" Width="1.5" PointX="3" PointY="11" Height="1.7566536458333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_APP" Width="1.5" PointX="5.25" PointY="7" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_CUS" Width="1.5" PointX="5.25" PointY="12.375" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_EMP" Width="1.5" PointX="8.25" PointY="6.875" Height="2.0853483072916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_MENU" Width="1.5" PointX="5.25" PointY="4" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_LINK_CATE" Width="1.5" PointX="8.25" PointY="3.875" Height="2.2496956380208317" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_LINK_CATE_TYPE" Width="1.5" PointX="6" PointY="1.125" Height="1.5923063151041672" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATEGORY" Width="1.5" PointX="3" PointY="6.375" Height="3.2357796223958317" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATEGORY_TYPE" Width="1.5" PointX="0.75" PointY="6.875" Height="2.0853483072916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.MENU_MASTER" Width="1.5" PointX="3" PointY="2.5" Height="2.9070849609374996" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.TB_EMPLOYEE" Width="1.5" PointX="8.75" PointY="9.75" Height="7.3444628906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.USER_DATA" Width="1.5" PointX="6" PointY="15.125" Height="3.5644742838541674" IsExpanded="true" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION" >
+          <ConnectorPoint PointX="4.5" PointY="11.001152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="10.626152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="7.96050048828125" />
+          <ConnectorPoint PointX="5.25" PointY="7.96050048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY" >
+          <ConnectorPoint PointX="4.5" PointY="7.4177502441406249" />
+          <ConnectorPoint PointX="5.25" PointY="7.4177502441406249" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_CUS_CATEGORY" >
+          <ConnectorPoint PointX="4.5" PointY="9.54847093008814" />
+          <ConnectorPoint PointX="4.8160744349011217" PointY="9.86454536498926" />
+          <ConnectorPoint PointX="4.9339255650988791" PointY="9.9823964951870181" />
+          <ConnectorPoint PointX="5.0625" PointY="10.11097093008814" />
+          <ConnectorPoint PointX="5.0625" PointY="13.253326822916666" />
+          <ConnectorPoint PointX="5.25" PointY="13.253326822916666" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_EMP_CATEGORY" >
+          <ConnectorPoint PointX="4.5" PointY="6.90625" />
+          <ConnectorPoint PointX="8.25" PointY="6.90625" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_EMP_USER_DATA" >
+          <ConnectorPoint PointX="7.15625" PointY="15.125" />
+          <ConnectorPoint PointX="7.15625" PointY="6.921875" />
+          <ConnectorPoint PointX="8.25" PointY="6.921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_MENU_CATEGORY" >
+          <ConnectorPoint PointX="4.4630769230769234" PointY="6.375" />
+          <ConnectorPoint PointX="4.90625" PointY="5.9318269230769225" />
+          <ConnectorPoint PointX="4.90625" PointY="6.2647509765625" />
+          <ConnectorPoint PointX="5.25" PointY="5.9210009765625" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_MENU_MENU_MASTER" >
+          <ConnectorPoint PointX="4.5" PointY="4.70354248046875" />
+          <ConnectorPoint PointX="5.25" PointY="4.70354248046875" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE" >
+          <ConnectorPoint PointX="7.15625" PointY="2.7173063151041674" />
+          <ConnectorPoint PointX="7.15625" PointY="6.0540983072916656" />
+          <ConnectorPoint PointX="8.25" PointY="6.0540983072916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATEGORY" >
+          <ConnectorPoint PointX="4.5" PointY="6.4119220769230765" />
+          <ConnectorPoint PointX="4.625" PointY="6.2869220769230765" />
+          <ConnectorPoint PointX="4.625" PointY="6.4996956380208317" />
+          <ConnectorPoint PointX="7.9003836153846159" PointY="6.4996956380208317" />
+          <ConnectorPoint PointX="8.2753836153846159" PointY="6.1246956380208317" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_LINKED_CATE_CATEGORY" >
+          <ConnectorPoint PointX="4.5" PointY="6.375" />
+          <ConnectorPoint PointX="4.75" PointY="6.125" />
+          <ConnectorPoint PointX="4.75" PointY="6.4996956380208317" />
+          <ConnectorPoint PointX="7.8507692307692309" PointY="6.4996956380208317" />
+          <ConnectorPoint PointX="8.25" PointY="6.1004648687900618" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATEGORY_CATEGORY_TYPE" >
+          <ConnectorPoint PointX="2.25" PointY="7.9176741536458337" />
+          <ConnectorPoint PointX="3" PointY="7.9176741536458337" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_MENU_MASTER_MENU_MASTER" >
+          <ConnectorPoint PointX="3.5319230769230767" PointY="5.4070849609375" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="5.6570849609375" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="5.6570849609375" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="5.4070849609375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
