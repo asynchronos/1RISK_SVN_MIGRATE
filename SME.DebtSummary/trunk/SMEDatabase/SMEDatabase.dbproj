@@ -42,7 +42,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>.\sql\debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
-    <TargetConnectionString>Data Source=172.19.14.244;User ID=sa;Pooling=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=172.19.14.244;Persist Security Info=True;User ID=sa;Pooling=False</TargetConnectionString>
     <TargetDatabase>SME</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>03159;</SuppressWarnings>
@@ -243,9 +243,6 @@
     <Build Include="Schema Objects\Database Level Objects\Security\Schemas\CLASSIFY.schema.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATE_AND_APP.table.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.CATE_AND_CUS.table.sql">
       <SubType>Code</SubType>
     </Build>
@@ -264,15 +261,6 @@
     <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_MENU.FK_CATE_AND_MENU_MENU_MASTER.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_APP.PK_CATE_AND_APP.pkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_APP.FK_CATE_AND_APP_APPLICATION.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_APP.FK_CATE_AND_APP_CATEGORY.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.CATE_AND_CUS.PK_CATE_AND_CUS.pkey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -289,9 +277,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_AND_EMP.DF_CATE_AND_EMP_DEL_FLAG.defconst.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_AND_APP.DF_CATE_AND_APP_DEL_FLAG.defconst.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_AND_CUS.DF_CATE_AND_CUS_DEL_FLAG.defconst.sql">
@@ -420,9 +405,6 @@
     <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.CATE_LINK_CATE_TYPE.DF_CATE_LINK_CATE_TYPE_DEL_FLAG.defconst.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Indexes\CLASSIFY.CATE_AND_APP.IX_CATE_AND_APP.index.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Indexes\CLASSIFY.CATE_AND_CUS.IX_CATE_AND_CUS.index.sql">
       <SubType>Code</SubType>
     </Build>
@@ -469,6 +451,21 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\CUSTOMER\Tables\Keys\CUSTOMER.CUSTOMER_SME.FK_CUSTOMER_SME_CUSTOMER_SME_GROUP.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\CLASSIFY.APP_PROFILE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.APP_PROFILE.PK_APP_PROFILE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Indexes\CLASSIFY.APP_PROFILE.IX_APP_PROFILE.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.APP_PROFILE.FK_APP_PROFILE_USER_DATA.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.APP_PROFILE.FK_APP_PROFILE_APPLICATION.fkey.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>
