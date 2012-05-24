@@ -468,5 +468,14 @@
     <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Keys\CLASSIFY.APP_PROFILE.FK_APP_PROFILE_APPLICATION.fkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\CLASSIFY\Tables\Constraints\CLASSIFY.APP_PROFILE.DF_APP_PROFILE_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\EMPLOYEE.TB_TITLE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\Keys\EMPLOYEE.TB_TITLE.PK_TB_TITLE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>
