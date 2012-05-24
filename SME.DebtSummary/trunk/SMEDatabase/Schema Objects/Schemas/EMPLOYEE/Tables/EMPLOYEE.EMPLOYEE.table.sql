@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [EMPLOYEE].[TB_EMPLOYEE](
-	[EMP_ID] [nvarchar](10) NOT NULL,
+	[EMP_ID] [varchar](10) NOT NULL,
 	[TITLE_CODE] [tinyint] NULL,
 	[EMPNAME] [varchar](50) NULL,
 	[EMPSURNAME] [varchar](50) NULL,

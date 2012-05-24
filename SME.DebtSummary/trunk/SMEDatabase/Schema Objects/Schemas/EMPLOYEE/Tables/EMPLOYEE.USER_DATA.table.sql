@@ -10,7 +10,6 @@
 	[PASSWD] [nvarchar](20) NULL,
 	[EMAIL] [nvarchar](50) NULL,
 	[CREATE_DATE] [datetime] NULL,
-	[EXPIRE_DATE] [datetime] NULL,
 	[UPDATE_DATE] [datetime] NULL,
 	[LAST_SIGN_ON_DATE] [datetime] NULL,
 	[LAST_CHANGE_PASS_DATE] [datetime] NULL,
