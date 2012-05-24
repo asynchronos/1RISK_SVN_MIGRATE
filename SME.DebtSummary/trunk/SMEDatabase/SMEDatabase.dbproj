@@ -182,6 +182,28 @@
     <Folder Include="Schema Objects\Schemas\CLASSIFY\Views\Indexes\" />
     <Folder Include="Schema Objects\Schemas\CLASSIFY\Views\Triggers\" />
     <Folder Include="Schema Objects\Schemas\CLASSIFY\Views\Statistics\" />
+    <Folder Include="Schema Objects\Schemas\SS\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\Defaults\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\Functions\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\Rules\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\Stored Procedures\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\Types\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\Types\User Defined Data Types\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\Types\User Defined Types CLR\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\Types\User Defined Table Types\" />
+    <Folder Include="Schema Objects\Schemas\SS\Programmability\Types\XML Schema Collections\" />
+    <Folder Include="Schema Objects\Schemas\SS\Synonyms\" />
+    <Folder Include="Schema Objects\Schemas\SS\Tables\" />
+    <Folder Include="Schema Objects\Schemas\SS\Tables\Constraints\" />
+    <Folder Include="Schema Objects\Schemas\SS\Tables\Indexes\" />
+    <Folder Include="Schema Objects\Schemas\SS\Tables\Keys\" />
+    <Folder Include="Schema Objects\Schemas\SS\Tables\Triggers\" />
+    <Folder Include="Schema Objects\Schemas\SS\Tables\Statistics\" />
+    <Folder Include="Schema Objects\Schemas\SS\Views\" />
+    <Folder Include="Schema Objects\Schemas\SS\Views\Indexes\" />
+    <Folder Include="Schema Objects\Schemas\SS\Views\Triggers\" />
+    <Folder Include="Schema Objects\Schemas\SS\Views\Statistics\" />
   </ItemGroup>
   <ItemGroup>
     <PropertiesFile Include="Properties\Database.sqlsettings">
@@ -475,6 +497,84 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\EMPLOYEE\Tables\Keys\EMPLOYEE.TB_TITLE.PK_TB_TITLE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Database Level Objects\Security\Schemas\SS.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.BUSINESS_GROUP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.BUSINESS_GROUP.PK_BUSINESS_GROUP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.BUSINESS_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.BUSINESS_TYPE.PK_BUSINESS_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.BUSINESS_TYPE_SS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.BUSINESS_TYPE_SS.PK_BUSINESS_TYPE_SS.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.COLLATERAL_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.COLLATERAL_TYPE.PK_COLLATERAL_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.FINANCIAL_CIF.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.FINANCIAL_CIF.PK_FINANCIAL_CIF.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.FINANCIAL_CUSTOMER.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.FINANCIAL_CUSTOMER.PK_FINANCIAL_CUSTOMER.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.FINANCIAL_DATA.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.FINANCIAL_DATA.PK_FINANCIAL_DATA.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.FINANCIAL_DATA_EXCELL.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.FINANCIAL_DATA_EXCELL.PK_FINANCIAL_DATA_EXCELL.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.FINANCIAL_LIST.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.FINANCIAL_LIST.PK_FINANCIAL_LIST.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.FINANCIAL_MAIN.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.FINANCIAL_MAIN.PK_FINANCIAL_MAIN.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Database Level Objects\sp_addextendedproperty.extendedproperty.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.FINANCIAL_ROLE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.FINANCIAL_ROLE.PK_ROLE_ID.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\SS.FINANCIAL_STATUS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\SS\Tables\Keys\SS.FINANCIAL_STATUS.PK_FINANCIAL_STATUS.pkey.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>
