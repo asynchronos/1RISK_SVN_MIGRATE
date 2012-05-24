@@ -1,0 +1,7 @@
+﻿CREATE TABLE [SS].[COLLATERAL_TYPE]
+(
+	[COL_TYPE_ID] [int] NOT NULL,
+	[COL_TYPE_NAME] [nvarchar](50) NULL,
+	[USE_VALUE] [int] NULL,
+	[TOTAL_AMOUNT] [int] NULL
+)
