@@ -4,3 +4,5 @@ D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\SSProjectApp.ProcessForm.r
 D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\SSProjectApp.Properties.Resources.resources
 D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\workspaces\SSProjectApp\SSProjectApp\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\workspaces\SSProjectApp\SSProjectApp\bin\Debug\SSProjectApp.exe.config
+D:\workspaces\2012\SSProjectApp\SSProjectApp\bin\Debug\SSProjectApp.exe.config
