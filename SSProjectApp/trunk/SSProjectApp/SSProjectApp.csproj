@@ -49,6 +49,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExcelPackage">
+      <HintPath>..\..\SharedLib\ExcelPackageBinary\ExcelPackage.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\SharedLib\NPOI 1.2.4 assembly\.net 4.0\Ionic.Zip.dll</HintPath>
     </Reference>

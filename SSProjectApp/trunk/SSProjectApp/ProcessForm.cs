@@ -12,10 +12,13 @@ namespace SSProjectApp
 
         private static readonly string cellMap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        private int CharacterCellMap(string str)
+        private int CharacterCellMap(string str, int startIndex)
         {
             int len = str.Length;
-            return (cellMap.Length * (len - 1)) + cellMap.IndexOf(str.Substring(len - 1, 1));
+            //index start at 0
+            //return (cellMap.Length * (len - 1)) + cellMap.IndexOf(str.Substring(len - 1, 1));
+            //index start at 1
+            return (cellMap.Length * (len - 1)) + cellMap.IndexOf(str.Substring(len - 1, 1)) + startIndex;
         }
 
         public ProcessForm()
