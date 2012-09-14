@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e60e0dcf-7f3c-4c4d-9ebe-d28bae05853b" name="249888@D790N0242 2012-09-13 16:12:58" runUser="BAYAD\249888" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="8d012ad7-c033-4564-89fa-393be2493f34">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="249888_D790N0242 2012-09-13 16_12_58">
+      <DeploymentItem filename="D:\workspaces\SharedLib\log4net.dll" />
+      <DeploymentItem filename="D:\workspaces\SharedLib\itextsharp.dll" />
+      <DeploymentItem filename="D:\workspaces\2012\PDFUtility\PDFUtility\bin\Debug\PDFUtility.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-09-13T16:12:58.9484112+07:00" queuing="2012-09-13T16:12:59.0265142+07:00" start="2012-09-13T16:12:59.0265142+07:00" finish="2012-09-13T16:13:00.7916420+07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Convert2PDFTest" storage="d:\workspaces\2012\pdfutility\pdfutilityunittest\bin\debug\pdfutilityunittest.dll" id="db3d1d1b-2596-b240-2d89-f52f34a4ebae">
+      <Execution id="a883f692-30bf-415d-904e-b50326be02ec" />
+      <TestMethod codeBase="D:/workspaces/2012/PDFUtility/PDFUtilityUnitTest/bin/Debug/PDFUtilityUnitTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PDFUtilityUnitTest.HTML2PDFTest, PDFUtilityUnitTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Convert2PDFTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="db3d1d1b-2596-b240-2d89-f52f34a4ebae" executionId="a883f692-30bf-415d-904e-b50326be02ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="a883f692-30bf-415d-904e-b50326be02ec" testId="db3d1d1b-2596-b240-2d89-f52f34a4ebae" testName="Convert2PDFTest" computerName="D790N0242" duration="00:00:01.2590535" startTime="2012-09-13T16:12:59.0265142+07:00" endTime="2012-09-13T16:13:00.4636094+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a883f692-30bf-415d-904e-b50326be02ec">
+      <Output>
+        <DebugTrace>PDFUtility.HTML2PDF: 2012-09-13 16:13:00,307 [Agent: adapter run thread for test 'Convert2PDFTest' with id 'a883f692-30bf-415d-904e-b50326be02ec'] DEBUG PDFUtility.HTML2PDF (null) (null) - &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html;charset=utf-8" /&gt;
+    &lt;title&gt;กรุณาเลือกระบบที่ต้องการใช้งาน&lt;/title&gt;
+    &lt;link type="text/css" href="../SMEWeb/js/ext3.0/resources/css/ext-all.css" rel="Stylesheet" /&gt;
+    &lt;script type="text/javascript" src="../SMEWeb/js/ext3.0/adapter/ext/ext-base.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="../SMEWeb/js/ext3.0/ext-all.js"&gt;&lt;/script&gt;
+    &lt;!-- DESKTOP --&gt;
+    &lt;link rel="stylesheet" type="text/css" href="css/desktop.css" /&gt;
+    &lt;script type="text/javascript" src="js/StartMenu.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="js/TaskBar.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="js/Desktop.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="js/App.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="js/Module.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="startupScript.js"&gt;&lt;/script&gt;
+    &lt;!-- MY IFRAME --&gt;
+    &lt;script type="text/javascript" src="../SMEWeb/js/ext3.0/iframeComponent.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        Ext.onReady(function () {
+            //right click
+            Ext.select("dt &gt; a[href=#]").on({
+                "contextmenu": function (e, t, o) {
+                    //alert("123");
+                    Ext.Msg.alert("RightClick", "Active");
+                },
+                scope: this,
+                preventDefault: true
+            });
+        });
+    &lt;/script&gt;
+	&lt;style&gt;
+		img {
+			border:none;
+		}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body style="margin: 0px; cursor: default;"&gt;
+    &lt;!--&lt;img class="source-image" src="wallpapers/BGInfo.bmp" alt="" /&gt;--&gt;
+    &lt;div id="x-desktop"&gt;
+        &lt;!--&lt;a href="http://extjs.com" target="_blank" style="margin: 5px; float: right;"&gt;
+            &lt;img alt="poweredBy" src="desktop/images/powered.gif" /&gt;
+        &lt;/a&gt;--&gt;
+        &lt;div id="x-shortcuts" style="width: 100%"&gt;
+            &lt;div style="float: left;"&gt;
+                &lt;dl id="Dl1" class="x-shortcuts"&gt;
+                    &lt;dt title="Sme" id="sme-win-shortcut"&gt;&lt;a href="http://leader1/smeweb/login.aspx"&gt;
+                        &lt;img alt="ca" src="images/s.gif" /&gt;
+                        &lt;span&gt;Sme &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+                    &lt;!--dt title="Appraisal" id="appraisal-win-shortcut"&gt;&lt;a href="http://leader1/appraisal/"&gt;
+                        &lt;img alt="appraisal" src="images/s.gif" /&gt;
+                        &lt;span&gt;Appraisal &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt; --&gt;
+                    &lt;dt title="Special Mention" id="sm-win-shortcut"&gt;&lt;a href="http://172.19.54.2/Special_Mention"&gt;
+                        &lt;img alt="sm" src="images/s.gif" /&gt;
+                        &lt;span&gt;Special Mention &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+                    &lt;!--&lt;dt title="Questionnaire" id="questionnaire-win-shortcut"&gt;&lt;a href="http://leader1/questionnairev2"&gt;
+                        &lt;img alt="questionnaire" src="images/s.gif" /&gt;
+                        &lt;span&gt;Questionnaire &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+                    &lt;dt title="KFS Search List" id="kfsSearchList-win-shortcut" style="float: left;"&gt;&lt;a
+                        href="http://leader1/kfs_searchlist"&gt;
+                        &lt;img alt="kfsSearchList" src="images/s.gif" /&gt;
+                        &lt;span&gt;KFS Search List &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+                    &lt;dt title="LGD" id="lgdWeb-win-shortcut" style="float: left;"&gt;&lt;a href="http://leader1/lgdWeb"&gt;
+                        &lt;img alt="lgdWeb" src="images/s.gif" /&gt;
+                        &lt;span&gt;LGD &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;--&gt;
+					&lt;dt title="Check NCB" id="checkNCB-win-shortcut" style="float: left;"&gt;&lt;a href="http://leader1/Check_NCB"&gt;
+                        &lt;img alt="checkNCB" src="images/s.gif" /&gt;
+                        &lt;span&gt;Check NCB &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+                    &lt;dt title="Branch Planning" id="branchPlanning-win-shortcut" style="float: left;"&gt;&lt;a
+                        href="http://172.19.17.84/dasd/menu.asp"&gt;
+                        &lt;img alt="branchPlanning" src="images/s.gif" /&gt;
+                        &lt;span&gt;Branch Planning&lt;br /&gt;
+                            &amp;Analysis &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+		          &lt;/dl&gt;
+            &lt;/div&gt;
+            &lt;div style="float: left;"&gt;
+                &lt;dl id="Dl2" class="x-shortcuts"&gt;
+                    
+                    &lt;dt title="LGD Collection Data" id="LGDCollectionData-win-shortcut" style="float: left;"&gt;
+                        &lt;a href="http://leader1/LGDCollectionData/Account/Login.aspx"&gt;
+                            &lt;img alt="LGDCollectionData" src="images/s.gif" /&gt;
+                            &lt;span&gt;LGD Collection Data &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+                    &lt;dt title="Search KFS" id="SearchKFS-win-shortcut" style="float: left;"&gt;&lt;a href="http://leader1/Search_KFS_DATA/Default.aspx"&gt;
+                        &lt;img alt="SearchKFS" src="images/s.gif"   style="width:50px;height:45px;border:none;" /&gt;
+                        &lt;span&gt;Search KFS&lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+					&lt;dt title="Location" id="location-win-shortcut" style="float: left;"&gt;&lt;a href="http://leader1/Web_Sme_Location/Login.aspx"&gt;
+                        &lt;img alt="location" src="images/map_icon.png" style="width:50px;height:60px;border:none;" /&gt;
+                        &lt;span&gt;Location&lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+      				&lt;dt title="smes" id="location-win-shortcut" style="float: left;"&gt;&lt;a href="http://leader1/ssweb"&gt;
+                        &lt;img alt="small sme project" src="images/smes_logo.png" style="width:50px;height:60px;border:none;" /&gt;
+                        &lt;span&gt;SMEs&lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+      				&lt;dt title="smes" id="location-win-shortcut" style="float: left;"&gt;&lt;a href="http://leader1/pdsmes"&gt;
+                        &lt;img alt="PD SMEs" src="images/pdsmes_logo.png" style="width:50px;height:45px;border:none;" /&gt;
+                        &lt;span&gt;PD SMEs&lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+      
+                &lt;/dl&gt;
+            &lt;/div&gt;
+            &lt;div style="float: right;"&gt;
+                &lt;div style="width: 15px; float: right;"&gt;
+                    &amp;nbsp;&lt;/div&gt;
+                &lt;dl id="x-Dl3" class="x-shortcuts"&gt;
+                    &lt;dt id="tabContact-win-shortcut" style="float: right;"&gt;&lt;a href="#"&gt;
+                        &lt;img alt="tabContact" src="images/s.gif" /&gt;
+                        &lt;span&gt;Contact &lt;/span&gt;&lt;/a&gt;&lt;/dt&gt;
+                &lt;/dl&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="ux-taskbar"&gt;
+        &lt;div id="ux-taskbar-start"&gt;
+        &lt;/div&gt;
+        &lt;div id="ux-taskbuttons-panel"&gt;
+        &lt;/div&gt;
+        &lt;div class="x-clear"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+PDFUtility.HTML2PDF: 2012-09-13 16:13:00,323 [Agent: adapter run thread for test 'Convert2PDFTest' with id 'a883f692-30bf-415d-904e-b50326be02ec'] DEBUG PDFUtility.HTML2PDF (null) (null) - 
+</DebugTrace>
+        <ErrorInfo>
+          <Message>Test method PDFUtilityUnitTest.HTML2PDFTest.Convert2PDFTest threw exception: 
+System.IO.IOException: The document has no pages.</Message>
+          <StackTrace>    at iTextSharp.text.pdf.PdfPages.WritePageTree()
+   at iTextSharp.text.pdf.PdfWriter.Close()
+   at iTextSharp.text.pdf.PdfDocument.Close()
+   at iTextSharp.text.Document.Close()
+   at iTextSharp.text.Document.Dispose()
+   at PDFUtility.HTML2PDF.Convert2PDF(String htmlText, String destination) in D:\workspaces\2012\PDFUtility\PDFUtility\HTML2PDF.cs:line 37
+   at PDFUtilityUnitTest.HTML2PDFTest.Convert2PDFTest() in D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\HTML2PDFTest.cs:line 80
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -1,0 +1,7 @@
+D:\workspaces\2012\PDFUtility\PDFUtility\bin\Debug\PDFUtility.dll
+D:\workspaces\2012\PDFUtility\PDFUtility\bin\Debug\PDFUtility.pdb
+D:\workspaces\2012\PDFUtility\PDFUtility\bin\Debug\itextsharp.dll
+D:\workspaces\2012\PDFUtility\PDFUtility\bin\Debug\log4net.dll
+D:\workspaces\2012\PDFUtility\PDFUtility\obj\Debug\ResolveAssemblyReference.cache
+D:\workspaces\2012\PDFUtility\PDFUtility\obj\Debug\PDFUtility.dll
+D:\workspaces\2012\PDFUtility\PDFUtility\obj\Debug\PDFUtility.pdb

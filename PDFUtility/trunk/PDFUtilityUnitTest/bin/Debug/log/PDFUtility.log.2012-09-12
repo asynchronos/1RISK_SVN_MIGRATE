@@ -1,0 +1,9 @@
+2012-09-12 17:03:58,870 [Agent: adapter run thread for test 'ApplySecurityTest' with id '574be23d-f4c0-4686-b91e-8a9f39d92e83'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-12 17:03:58,885 [Agent: adapter run thread for test 'ApplySecurityTest' with id '574be23d-f4c0-4686-b91e-8a9f39d92e83'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-12 17:03:58,885 [Agent: adapter run thread for test 'ApplySecurityTest' with id '574be23d-f4c0-4686-b91e-8a9f39d92e83'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 595
+2012-09-12 17:03:58,885 [Agent: adapter run thread for test 'ApplySecurityTest' with id '574be23d-f4c0-4686-b91e-8a9f39d92e83'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 842
+2012-09-12 17:03:58,885 [Agent: adapter run thread for test 'ApplySecurityTest' with id '574be23d-f4c0-4686-b91e-8a9f39d92e83'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 54.75303
+2012-09-12 17:03:58,885 [Agent: adapter run thread for test 'ApplySecurityTest' with id '574be23d-f4c0-4686-b91e-8a9f39d92e83'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-12 17:03:58,885 [Agent: adapter run thread for test 'ApplySecurityTest' with id '574be23d-f4c0-4686-b91e-8a9f39d92e83'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-12 18:37:12,189 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'a1aa32a9-e538-4b3a-b24b-3feaf09753e3'] ERROR PDFUtility.SecurityPDF (null) (null) -    at System.Text.Encoding.GetBytes(String s)
+   at PDFUtility.SecurityPDF.ApplySecurity() in D:\workspaces\2012\PDFUtility\PDFUtility\SecurityPDF.cs:line 282

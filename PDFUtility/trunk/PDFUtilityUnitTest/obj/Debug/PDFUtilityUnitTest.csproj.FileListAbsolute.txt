@@ -1,0 +1,10 @@
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\bin\Debug\PDFUtilityUnitTest.dll
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\bin\Debug\PDFUtilityUnitTest.pdb
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\bin\Debug\itextsharp.dll
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\bin\Debug\log4net.dll
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\bin\Debug\PDFUtility.dll
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\bin\Debug\PDFUtility.pdb
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\obj\Debug\ResolveAssemblyReference.cache
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\obj\Debug\PDFUtilityUnitTest.dll
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\obj\Debug\PDFUtilityUnitTest.pdb
+D:\workspaces\2012\PDFUtility\PDFUtilityUnitTest\bin\Debug\Log4net.PDFUtility.config
