@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="BAY01_TEST" Class="BranchLinqDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=leader1;Initial Catalog=BAY01_TEST;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BAY01ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Id_Branch" Member="Id_Branches">
+    <Type Name="Id_Branch">
+      <Column Name="Id_Branch" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Branch_T" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Branch_E" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Id_RegG" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RegG_Name" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="RegG_NameE" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Id_RegSub" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Id_Region" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Region_Name" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Region_NameE" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Id_Province" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Id_ProGDPE" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Id_PartN" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Part_NameN" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Part_NameNE" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Id_RegionOld" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Region_NameOld" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Region_NameEOld" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Id_PartOld" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Part_NameOld" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Part_NameEOld" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Id_Part1" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Part1_Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Id_Part2" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Part2_Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Part2_NameE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Id_Part3" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Part3_Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Id_Part4" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Part4_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Addres" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Post" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateOpen" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Id_BCenter" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Segment" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

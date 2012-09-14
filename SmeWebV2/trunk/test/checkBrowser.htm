@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Chcek Browser</title>
+    <script type="text/javascript" src="../js/browserDetect.js"></script>
+</head>
+<body>
+    
+    * Browser name: BrowserDetect.browser<br />
+    * Browser version: BrowserDetect.version<br />
+    * OS name: BrowserDetect.OS<br />
+
+
+    <script type="text/javascript">
+        <!--
+        document.write('<p class="accent">You\'re using ' + BrowserDetect.browser + ' ' + BrowserDetect.version + ' on ' + BrowserDetect.OS + '!</p>');
+        -->
+    </script>
+
+    <script type="text/javascript">
+        <!--
+
+        for (i in navigator)
+        {
+         document.write('<br />navigator.' + i + ' = ' + navigator[i]);
+        }
+
+        -->
+    </script>
+</body>
+</html>

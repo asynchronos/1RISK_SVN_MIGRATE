@@ -1,0 +1,1583 @@
+﻿<%@ Page Language="VB" AutoEventWireup="false" MaintainScrollPositionOnPostback="true"
+    CodeFile="FINANCIAL_DATA.aspx.vb" Inherits="aspx_smes_FINANCIAL_DATA" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        body
+        {
+            font-size: 10pt;
+            font-family: Tahoma;
+            background-image: url("../../images/gradient2.png");
+            background-repeat: repeat-x;
+        }
+        table 
+        {
+          
+         }
+        h2
+        {
+            color: DarkBlue;
+        }
+        .yellowBG
+        {
+            background: #ffffa0;
+            border: 1px solid gray;
+        }
+        .redBG
+         {
+            background: #ff2020;
+            border: 1px solid gray;
+         }
+    </style>
+</head>
+<script type="text/javascript">
+    if (window.screen) {
+        self.moveTo(0, 0);
+        self.focus();
+        self.resizeTo(screen.availWidth, screen.availHeight);
+    }
+</script>
+<script src="../../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/SSProject.js"></script>
+<script type="text/javascript">
+    function typeOf(o) {
+        var type = typeof o;
+        //If typeof return something different than object then returns it.
+        if (type !== 'object') {
+            return type;
+            //If it is an instance of the Array then return "array"
+        } else if (Object.prototype.toString.call(o) === '[object Array]') {
+            return 'array';
+            //If it is null then return "null"
+        } else if (o === null) {
+            return 'null';
+            //if it gets here then it is an "object"
+        } else {
+            return 'object';
+        }
+    }
+
+    var obj = new SSProject();
+    $(document).ready(function () {
+
+        // กำหนดให้ text box ใน tab ที่เกิดจากการคำนวณ readonly
+        $("#TabContainer1_TabPanel2  input[type='text']").attr("readonly", "true");
+        $('#__tab_TabContainer1_TabPanel2').click(function () {
+        });
+
+        $("#TabContainer1_TabPanel3  input[type='text']").attr("readonly", "true");
+        $("#TabContainer1_TabPanel4  input[type='text']").attr("readonly", "true");
+        $("#TabContainer1_TabPanel5  input[type='text']").attr("readonly", "true");
+
+        // เมื่อมีการ key ที่ tab input ให้ทำ
+        $("#TabContainer1_TabPanel1  input[type='text']").change(function () {
+            showDataALL();
+        });
+
+        // ทำให้ text ที่ focus higlight สีเหลือง
+        $("input[type='text']").focus(function () {
+            $(this).addClass('yellowBG');
+        }).blur(function () {
+            $(this).removeClass('yellowBG');
+        });
+
+    });
+    function showDataALL() {
+        obj.setC5(2);
+        obj.setC6(1);
+        obj.setF10(10000);
+
+        obj.setD8(parseFloat($("[CELL='D8']").val()));
+        obj.setD9(parseFloat($("[CELL='D9']").val()));
+        obj.setD10(parseFloat($("[CELL='D10']").val()));
+        obj.setD13(parseFloat($("[CELL='D13']").val()));
+        obj.setD14(parseFloat($("[CELL='D14']").val()));
+        obj.setD15(parseFloat($("[CELL='D15']").val()));
+        obj.setD16(parseFloat($("[CELL='D16']").val()));
+        obj.setD17(parseFloat($("[CELL='D17']").val()));
+        obj.setD20(parseFloat($("[CELL='D20']").val()));
+        obj.setD21(parseFloat($("[CELL='D21']").val()));
+        obj.setD24(parseFloat($("[CELL='D24']").val()));
+        obj.setD25(parseFloat($("[CELL='D25']").val()));
+        obj.setD26(parseFloat($("[CELL='D26']").val()));
+        obj.setD27(parseFloat($("[CELL='D27']").val()));
+        obj.setD28(parseFloat($("[CELL='D28']").val()));
+        obj.setD29(parseFloat($("[CELL='D29']").val()));
+        obj.setD30(parseFloat($("[CELL='D30']").val()));
+        obj.setD31(parseFloat($("[CELL='D31']").val()));
+        obj.setD32(parseFloat($("[CELL='D32']").val()));
+        obj.setD33(parseFloat($("[CELL='D33']").val()));
+        obj.setD34(parseFloat($("[CELL='D34']").val()));
+        obj.setD35(parseFloat($("[CELL='D35']").val()));
+        obj.setD36(parseFloat($("[CELL='D36']").val()));
+        obj.setD37(parseFloat($("[CELL='D37']").val()));
+        obj.setD38(parseFloat($("[CELL='D38']").val()));
+        obj.setD39(parseFloat($("[CELL='D39']").val()));
+        obj.setD40(parseFloat($("[CELL='D40']").val()));
+        obj.setD41(parseFloat($("[CELL='D41']").val()));
+        obj.setD43(parseFloat($("[CELL='D43']").val()));
+        obj.setD44(parseFloat($("[CELL='D44']").val()));
+        obj.setD45(parseFloat($("[CELL='D45']").val()));
+        obj.setI33(parseFloat($("[CELL='I33']").val()));
+        obj.setI34(parseFloat($("[CELL='I34']").val()));
+        obj.setI35(parseFloat($("[CELL='I35']").val()));
+        obj.setI36(parseFloat($("[CELL='I36']").val()));
+        obj.setI37(parseFloat($("[CELL='I37']").val()));
+        obj.setI39(parseFloat($("[CELL='I39']").val()));
+        obj.setI40(parseFloat($("[CELL='I40']").val()));
+        obj.setI41(parseFloat($("[CELL='I41']").val()));
+        obj.setI42(parseFloat($("[CELL='I42']").val()));
+        obj.setI43(parseFloat($("[CELL='I43']").val()));
+        obj.setI44(parseFloat($("[CELL='I44']").val()));
+
+        if (($("[CELL='D28']").val() != '') && ($("[CELL='I37']").val() != '')) {
+            $("[CELL='I9']").val(obj.I9());
+            $("[CELL='I9']").removeClass('redBG');
+        } else {
+            $("[CELL='I9']").val('');
+            $("[CELL='I9']").addClass('redBG');
+        }
+        alert(obj.I10());
+        if (($("[CELL='D24']").val() != '') && ($("[CELL='F10']").val() != '')) {
+            $("[CELL='I10']").val(obj.I10());
+            $("[CELL='I10']").removeClass('redBG');
+        } else {
+            $("[CELL='I10']").val('');
+            $("[CELL='I10']").addClass('redBG');
+        }
+
+       
+
+
+    }
+
+   
+  
+</script>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptLocalization="true"
+        EnableScriptGlobalization="true" EnablePageMethods="true">
+    </asp:ScriptManager>
+    <h2>
+        โปรแกรมคำนวณความสามารถในการก่อหนี้
+    </h2>
+    <asp:TextBox ID="SMES_IDTextBox" runat="server" MaxLength="10" Visible="false"></asp:TextBox>
+    <strong>กรุณาระบุรายชื่อลูกค้า</strong>
+    <asp:SqlDataSource ID="CustomersSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
+        SelectCommand="SME_S.P_SS_FINANCIAL_DATA_SELECT" SelectCommandType="StoredProcedure"
+        InsertCommand="P_SS_FINANCIAL_DATA_INSERT" InsertCommandType="StoredProcedure">
+    </asp:SqlDataSource>
+    <br />
+    <asp:UpdatePanel ID="UpdatePanelGrid" runat="server">
+        <ContentTemplate>
+            <asp:GridView ID="CustomersGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CIF"
+                ShowFooter="True" OnRowEditing="CustomerGridEditCommand" OnRowDeleting="CustomerGridDeleteCommand"
+                OnRowUpdating="CustomerGridUpdateCommand" OnRowCancelingEdit="CustomerGridCancelCommand"
+                OnRowCommand="CustomerGridRowCommand" BackColor="White" BorderColor="#DEDFDE"
+                BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical"
+                EnableModelValidation="True">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:TemplateField HeaderText="Select">
+                        <ItemTemplate>
+                            <asp:ImageButton ID="BtnEdit" runat="server" CommandName="Edit" ToolTip="Edit item"
+                                ImageUrl="~/images/qmv_bb_preview.gif" />
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:ImageButton ID="ImageButton1" runat="server" CommandName="Update" ImageUrl="~/images/qmv_bb_add.gif"
+                                ToolTip="Save item" />
+                            <asp:ImageButton ID="ImageButton2" runat="server" CommandName="Cancel" ImageUrl="~/images/qmv_r_button_undo_hover.gif"
+                                ToolTip="Cancel item" />
+                            <asp:ImageButton ID="BtnDelete" runat="server" CommandName="Delete" ImageUrl="~/images/qmv_bb_delete.gif"
+                                ToolTip="Delete item" />
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:ImageButton ID="InsertImageButton" runat="server" CommandName="Insert" ImageUrl="~/images/qmv_bb_add.gif"
+                                ToolTip="Save item" />
+                            <asp:ImageButton ID="CancelImageButton" runat="server" CommandName="Cancel" ImageUrl="~/images/qmv_r_button_undo_hover.gif"
+                                ToolTip="Cancel item" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="CIF">
+                        <ItemTemplate>
+                            <%# Eval("CIF")%>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox runat="server" ID="CIFTextBox" Text='<%# Bind("CIF") %>' Width="100px"
+                                ReadOnly="true" />
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox runat="server" ID="CIFTextBox" Text='<%# Bind("CIF") %>' Width="100px" />
+                            <asp:ImageButton ID="CustomerSearchImageButton" runat="server" BorderColor="#CCCCCC"
+                                CommandName="SearchCIFInsert" ImageUrl="~/images/Magnifying Glass.gif" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Customer Name" HeaderStyle-Width="200">
+                        <ItemTemplate>
+                            <%# Eval("Name")%>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:Label runat="server" ID="CIFNameLabel" Text='<%# Bind("Name") %>' />
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:Label runat="server" ID="CIFNameLabel" Text='<%# Bind("Name") %>' />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Business Code">
+                        <ItemTemplate>
+                            <%# Eval("BusinessCode")%>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox runat="server" ID="BusinessCodeTextBox" Text='<%# Bind("BusinessCode") %>'
+                                Width="100px" />
+                            <asp:Image ID="BusinessCodePopup" runat="server" BorderColor="#CCCCCC" BorderStyle="Inset"
+                                ImageUrl="~/images/Update.gif" />
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox runat="server" ID="BusinessCodeTextBox" Text='<%# Bind("BusinessCode") %>'
+                                Width="100px" />
+                            <asp:Image ID="BusinessCodePopup" runat="server" ImageUrl="~/images/Update.gif" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Business Name" HeaderStyle-Width="200">
+                        <ItemTemplate>
+                            <%# Eval("BusinessName")%>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox runat="server" ID="BusinessNameTextBox" Text='<%# Bind("BusinessName") %>' />
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox runat="server" ID="BusinessNameTextBox" Text='<%# Bind("BusinessName") %>' />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <EmptyDataTemplate>
+                    <asp:TextBox runat="server" ID="NoDataFirstName" />
+                    <asp:TextBox runat="server" ID="NoDataLastName" />
+                    <asp:Button runat="server" ID="NoDataInsert" CommandName="NoDataInsert" Text="Insert" />
+                </EmptyDataTemplate>
+                <FooterStyle BackColor="#CCCC99" />
+                <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                <RowStyle BackColor="#F7F7DE" />
+                <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+            </asp:GridView>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <br />
+    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server">
+        <ajaxToolkit:TabPanel ID="TabPanel1" runat="server">
+            <HeaderTemplate>
+                <strong>สมมุติฐานงบการเงิน</strong>
+            </HeaderTemplate>
+            <ContentTemplate>
+                <div id="tab1">
+                    <table>
+                        <tr>
+                            <td class="style35">
+                                <strong>สมมุติฐานงบการเงิน</strong>
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                            <td class="style36">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                <strong>ยอดขายเฉลี่ยต่อเดือน</strong>
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                            <td class="style36">
+                                <strong>ยอดซื้อเฉลี่ยต่อเดือน</strong>
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                ยอดขาย
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="SALESTextBox" ToolTip="ยอดขาย" CELL="D8" runat="server" Text='<%# Bind("SALES") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท/เดือน
+                            </td>
+                            <td class="style36">
+                                ยอดซื้อ
+                            </td>
+                            <td class="style3">
+                                <asp:TextBox ID="PURCHASETextBox" ToolTip="ยอดซื้อ" CELL="D13" runat="server" Text='<%# Bind("PURCHASE") %>' />
+                            </td>
+                            <td class="style3">
+                                บาท/เดือน
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                ขายเชื่อ
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="CREDIT_SALETextBox" TooTip="ขายเชื่อ" CELL="D9" runat="server" Text='<%# Bind("CREDIT_SALE") %>' />
+                            </td>
+                            <td class="style37">
+                                % ของยอดขาย
+                            </td>
+                            <td class="style38">
+                                ซื้อเชื่อ
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="CREDIT_PURCHASETextBox" ToolTip="ซื้อเชื่อ" CELL="D14" runat="server"
+                                    Text='<%# Bind("CREDIT_PURCHASE") %>' />
+                            </td>
+                            <td class="style3">
+                                % ของยอดขาย
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                ระยะเวลาให้เครดิต
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="CREDIT_TERMTextBox" runat="server" ToolTip="ระยะเวลาให้เครดิต" CELL="D10"
+                                    Text='<%# Bind("CREDIT_TERM") %>' />
+                            </td>
+                            <td class="style37">
+                                วัน
+                            </td>
+                            <td class="style38">
+                                ระยะเวลาได้เครดิต
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="TERM_PURCHASETextBox" ToolTip="ระยะเวลาได้เครดิต" CELL="D15" runat="server"
+                                    Text='<%# Bind("TERM_PURCHASE") %>' />
+                            </td>
+                            <td class="style3">
+                                30 วัน
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style7">
+                                Default Margin
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="DEFAULT_MARGINTextBox" ToolTip=" Default Margin" CELL="D16" runat="server"
+                                    Text='<%# Bind("DEFAULT_MARGIN") %>' />
+                            </td>
+                            <td class="style37">
+                                %
+                            </td>
+                            <td class="style39">
+                                &nbsp;
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                <strong>กำไรจากการดำเนินงาน</strong>
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="GROSS_PROFITTextBox" ToolTip="กำไรจากการดำเนินงาน" CELL="D17" runat="server"
+                                    Text='<%# Bind("GROSS_PROFIT") %>' />
+                            </td>
+                            <td class="style37">
+                                % ของยอดขาย
+                            </td>
+                            <td class="style38">
+                                &nbsp;
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                &nbsp;
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                            <td class="style36">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                <strong>สินทรัพย์ ของกิจการ </strong>
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                            <td class="style36">
+                                <strong>หนี้สิน ของกิจการ (คำนวณที่เรท)</strong>
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="CALCULATE_RATETextBox" ToolTip="คำนวณที่เรท" CELL="D29" runat="server"
+                                    Text='<%# Bind("CALCULATE_RATE") %>' />
+                            </td>
+                            <td class="style37">
+                                %
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                สต๊อกสินค้าจาการถามลูกค้า
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="INVENTORY_INTERVIEWTextBox" ToolTip="สต๊อกสินค้าจาการถามลูกค้า"
+                                    CELL="D20" runat="server" Text='<%# Bind("INVENTORY_INTERVIEW") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style38">
+                                เจ้าหนี้การค้า
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="ACCOUNT_PAYABLETextBox" ToolTip="เจ้าหนี้การค้า" CELL="D30" runat="server"
+                                    Text='<%# Bind("ACCOUNT_PAYABLE") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                สต๊อกสินค้าจากการมองเห็น
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="INVENTORY_VISITTextBox" ToolTip="สต๊อกสินค้าจากการมองเห็น" CELL="D21"
+                                    runat="server" Text='<%# Bind("INVENTORY_VISIT") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style38">
+                                หนี้สินหมุนเวียนกับ Bay
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="CURRENT_LIABILITY_BAYTextBox" ToolTip="หนี้สินหมุนเวียนกับ Bay"
+                                    CELL="D31" runat="server" Text='<%# Bind("CURRENT_LIABILITY_BAY") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                ลูกหนี้การค้า
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="ACCOUNT_RECEIVABLETextBox" ToolTip=" ลูกหนี้การค้า" CELL="D24" runat="server"
+                                    Text='<%# Bind("ACCOUNT_RECEIVABLE") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style38">
+                                หนี้สินหมุนเวีัยนกับสถาบันการเงินอื่น
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="CURRENT_LIABILITY_OTHER_BANKTextBox" runat="server" ToolTip="หนี้สินหมุนเวีัยนกับสถาบันการเงินอื่น"
+                                    CELL="D32" Text='<%# Bind("CURRENT_LIABILITY_OTHER_BANK") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                เครื่องจักร / อุปกรณ์สำนักงาน
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="MACHINERY_EQUIPMENTTextBox" ToolTip=" เครื่องจักร / อุปกรณ์สำนักงาน"
+                                    CELL="D25" runat="server" Text='<%# Bind("MACHINERY_EQUIPMENT") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style38">
+                                หนี้สินหมุนเวียนอื่น ๆ
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="OTHER_CURRENT_LIABILITYTextBox" ToolTip="หนี้สินหมุนเวียนอื่น ๆ"
+                                    CELL="D33" runat="server" Text='<%# Bind("OTHER_CURRENT_LIABILITY") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                อาคาร / ที่ดิน ที่ใช้ประกอบการ
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="CORE_ASSETSTextBox" ToolTip=" อาคาร / ที่ดิน ที่ใช้ประกอบการ" CELL="D26"
+                                    runat="server" Text='<%# Bind("CORE_ASSETS") %>' />
+                            </td>
+                            <td class="style37">
+                                บา่ท
+                            </td>
+                            <td class="style38">
+                                หนี้สินระยะยาวกับ Bay&nbsp;(อายุหนี้เกิน 1 ปี)
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="LONG_TERM_LIABILITY_BAYTextBox" ToolTip=" หนี้สินระยะยาวกับ Bay"
+                                    CELL="D34" runat="server" Text='<%# Bind("LONG_TERM_LIABILITY_BAY") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                สินทรัพย์ถาวรอื่น ๆ
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="OTHER_FIXED_ASSETSTextBox" ToolTip="สินทรัพย์ถาวรอื่น ๆ" CELL="D27"
+                                    runat="server" Text='<%# Bind("OTHER_FIXED_ASSETS") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style38">
+                                ภาระผ่อนชำระต่อเดือน
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="LONG_TERM_LIABILITY_BAY_REPAYMENTTextBox" runat="server" ToolTip="ภาระผ่อนชำระต่อเดือน"
+                                    CELL="D35" Text='<%# Bind("LONG_TERM_LIABILITY_BAY_REPAYMENT") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท/เดือน
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                เงินสด / ฝาก / พันธบัตร
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="CASH_BONDTextBox" ToolTip=" เงินสด / ฝาก / พันธบัตร" CELL="D28"
+                                    runat="server" Text='<%# Bind("CASH_BOND") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style38">
+                                หนี้สินระยะยาวกับสถาบันการเงินอื่น (เกิน 1 ปี)
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="LONG_TERM_LIABILITY_OTHER_BANKTextBox" runat="server" ToolTip="หนี้สินระยะยาวกับสถาบันการเงินอื่น (เกิน 1 ปี)"
+                                    CELL="D36" Text='<%# Bind("LONG_TERM_LIABILITY_OTHER_BANK") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                &nbsp;
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                            <td class="style38">
+                                ภาระผ่อนชำระต่อเดือน
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="LONG_TERM_LIABILITY_OTHER_REPAYMENTTextBox" runat="server" ToolTip="ภาระผ่อนชำระต่อเดือน"
+                                    CELL="D37" Text='<%# Bind("LONG_TERM_LIABILITY_OTHER_REPAYMENT") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท/เดือน
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                <strong>หลักประกันรวมทั้งหมด </strong>
+                            </td>
+                            <td class="style9">
+                                &nbsp; <strong>( คำนวณ LTV )</strong>
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                            <td class="style38">
+                                หนี้สินระยะยาวอื่น ๆ (อายุเกิน 1 ปี)
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="LONG_TERM_OTHER_LIABILITYTextBox" runat="server" ToolTip="หนี้สินระยะยาวอื่น ๆ (อายุเกิน 1 ปี)"
+                                    CELL="D38" Text='<%# Bind("LONG_TERM_OTHER_LIABILITY") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                ราคาประเมินหลักทรัพย์ Zone A
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="APPRAISAL_VALUE_ZONE_ATextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone A"
+                                    CELL="I39" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_A") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style38">
+                                ภาระผ่อนชำระต่อเดือน
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="LONG_TERM_OTHER_REPAYMENTTextBox" runat="server" ToolTip="ภาระผ่อนชำระต่อเดือน"
+                                    CELL="D39" Text='<%# Bind("LONG_TERM_OTHER_REPAYMENT") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท/เดือน
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                ราคาประเมินหลักทรัพย์ Zone B
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="APPRAISAL_VALUE_ZONE_BTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone B"
+                                    CELL="I40" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_B") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style38">
+                                เงินกู้ยืมกรรมการ
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="LOANS_REL_CO_DIRECTORSTextBox" ToolTip="เงินกู้ยืมกรรมการ" CELL="D40"
+                                    runat="server" Text='<%# Bind("LOANS_REL_CO_DIRECTORS") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                ราคาประเมินหลักทรัพย์ Zone C
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="APPRAISAL_VALUE_ZONE_CTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone C"
+                                    CELL="I41" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_C") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style38">
+                                วงเงิน L/G &amp; Aval Bay (Non Cash)
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="LG_AVAL_BAYTextBox" ToolTip="วงเงิน L/G" CELL="D41" runat="server"
+                                    Text='<%# Bind("LG_AVAL_BAY") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                ราคาประเมินหลักทรัพย์ Zone D
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="APPRAISAL_VALUE_ZONE_DTextBox" ToolTip=" ราคาประเมินหลักทรัพย์ Zone D"
+                                    CELL="I42" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_D") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style36">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                ราคาประเมินหลักทรัพย์ Zone E
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="APPRAISAL_VALUE_ZONE_ETextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone E"
+                                    CELL="I43" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_E") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style6">
+                                <strong>เฉพาะการขออนุัมัติครั้งนี้มีการ Refinance </strong>
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style35">
+                                จำนำเงินฝาก &amp; พันธบัตร 100%
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="BOND_DEPOSIT_PLEDGETextBox" ToolTip="จำนำเงินฝาก" CELL="I44" runat="server"
+                                    Text='<%# Bind("BOND_DEPOSIT_PLEDGE") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                            <td class="style6">
+                                Refinance Working Capital จากสถาบันอื่น
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_OTHERTextBox" runat="server" ToolTip="Refinance Working Capital จากสถาบันอื่น"
+                                    CELL="D43" Text='<%# Bind("REFINANCE_WORKING_CAPITAL_OTHER") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                &nbsp;
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                            <td class="style6">
+                                Refinance Loan จากสถาบันอื่น
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="REFINANCE_WORKING_LOAN_OTHERTextBox" runat="server" ToolTip="Refinance Loan จากสถาบันอื่น"
+                                    CELL="D44" Text='<%# Bind("REFINANCE_WORKING_LOAN_OTHER") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                &nbsp;
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                            <td class="style6">
+                                ภาระการผ่อนหนี้ Loan ที่ Refinance
+                            </td>
+                            <td class="style9">
+                                <asp:TextBox ID="REFINANCE_REPAYMENTTextBox" ToolTip="ภาระการผ่อนหนี้ Loan ที่ Refinance"
+                                    CELL="D45" runat="server" Text='<%# Bind("REFINANCE_REPAYMENT") %>' />
+                            </td>
+                            <td class="style37">
+                                บาท/เดือน
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style6">
+                                &nbsp;
+                            </td>
+                            <td class="style9">
+                                &nbsp;
+                            </td>
+                            <td class="style37">
+                                &nbsp;
+                            </td>
+                            <td class="style36">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                            <td class="style3">
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="tab4">
+                    <table>
+                        <tr>
+                            <td class="style21">
+                                <strong>วงเงินสินเชื่อที่ลูกค้าต้องการครั้งนี้ RM</strong>
+                            </td>
+                            <td class="style27">
+                                &nbsp;
+                            </td>
+                            <td class="style22">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style21">
+                                WORKING CAPITAL
+                            </td>
+                            <td class="style27">
+                                <asp:TextBox ID="WORKING_CAPITALTextBox" ToolTip="WORKING CAPITAL" CELL="I33" runat="server"
+                                    Text='<%# Bind("WORKING_CAPITAL") %>' />
+                            </td>
+                            <td class="style22">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                อัตราดอกเบี้ย<asp:TextBox ID="INTEREST_RATE_PERCENTTextBox" ToolTip="อัตราดอกเบี้ย"
+                                    CELL="M33" runat="server" Text='<%# Bind("INTEREST_RATE_PERCENT") %>' />
+                            </td>
+                            <td class="style29">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style21">
+                                LOAN
+                            </td>
+                            <td class="style27">
+                                <asp:TextBox ID="LOANTextBox" runat="server" ToolTip="LOAN" CELL="I34" Text='<%# Bind("LOAN") %>' />
+                            </td>
+                            <td class="style22">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                อัตราดอกเบี้ย<asp:TextBox ID="INTEREST_RATE_PERCENT_USEDTextBox" ToolTip="อัตราดอกเบี้ย"
+                                    CELL="M34" runat="server" Text='<%# Bind("INTEREST_RATE_PERCENT_USED") %>' />
+                            </td>
+                            <td class="style29">
+                                อายุสัญญา<asp:TextBox ID="CONTRACT_YEARTextBox" runat="server" ToolTip="อายุสัญญา"
+                                    CELL="O34" Text='<%# Bind("CONTRACT_YEAR") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style21">
+                                วงเงิน L/G &amp; AVAL (Non-cash)
+                            </td>
+                            <td class="style27">
+                                <asp:TextBox ID="LG_AVALTextBox" runat="server" ToolTip="วงเงิน" CELL="I35" Text='<%# Bind("LG_AVAL") %>' />
+                            </td>
+                            <td class="style22">
+                                &nbsp;
+                            </td>
+                            <td class="style32">
+                                DSCR ครั้งนี้
+                            </td>
+                            <td class="style31">
+                                <asp:TextBox ID="DSCR_THIS_TIMETextBox" ToolTip=" DSCR ครั้งนี้" CELL="M35" runat="server"
+                                    Text='<%# Bind("DSCR_THIS_TIME") %>' />
+                                <asp:TextBox ID="DSCR_THIS_TIME_PERCENTTextBox" ToolTip=" DSCR %" CELL="O35" runat="server"
+                                    Text='<%# Bind("DSCR_THIS_TIME_PERCENT") %>' Height="22px" Width="50px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style21">
+                                สินทรัพย์เพิ่มจากการให้สินเชื่อ
+                            </td>
+                            <td class="style27">
+                                <asp:TextBox ID="ASSETS_INCREASE_LOANTextBox" ToolTip="สินทรัพย์เพิ่มจากการให้สินเชื่อ"
+                                    CELL="I36" runat="server" Text='<%# Bind("ASSETS_INCREASE_LOAN") %>' />
+                            </td>
+                            <td class="style22">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                D/E ครั้งนี้
+                            </td>
+                            <td class="style29">
+                                <asp:TextBox ID="DE_THIS_TIMETextBox" ToolTip=" D/E ครั้งนี้" CELL="N36" runat="server"
+                                    Text='<%# Bind("DE_THIS_TIME") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style21">
+                                เงินฝาก / พันธบัตร บุคคลอื่นจำนำ
+                            </td>
+                            <td class="style27">
+                                <asp:TextBox ID="BOND_DEPOSIT_PLEDGE_PERSONTextBox" ToolTip="เงินฝาก / พันธบัตร บุคคลอื่นจำนำ"
+                                    CELL="I37" runat="server" Text='<%# Bind("BOND_DEPOSIT_PLEDGE_PERSON") %>' />
+                            </td>
+                            <td class="style22">
+                                &nbsp;
+                            </td>
+                            <td class="style32">
+                                LTV
+                            </td>
+                            <td class="style31">
+                                <asp:TextBox ID="LTV_THIS_TIMETextBox" runat="server" ToolTip="LTV ครั้งนี้" CELL="M37"
+                                    Text='<%# Bind("LTV_THIS_TIME") %>' />
+                                <asp:TextBox ID="LTV_THIS_TIME_PERCENTTextBox" runat="server" ToolTip="% LTV ครั้งนี้"
+                                    CELL="037" Text='<%# Bind("LTV_THIS_TIME_PERCENT") %>' Height="19px" Width="51px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style21">
+                                &nbsp;
+                            </td>
+                            <td class="style27">
+                                &nbsp;
+                            </td>
+                            <td class="style22">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="tab2">
+                    <table style="bgcolor: #FFFFCC">
+                        <tr>
+                            <td class="style13">
+                                <strong>สมมุติฐานงบการเงิน</strong>
+                            </td>
+                            <td class="style28">
+                                &nbsp;
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style18" colspan="2">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                <strong>สินทรัพย์</strong>
+                            </td>
+                            <td class="style28">
+                                &nbsp;
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style18">
+                                <strong>หนี้สิน</strong>
+                            </td>
+                            <td class="style34">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                <strong>สินทรัุพย์หมุนเวียน</strong>
+                            </td>
+                            <td class="style28">
+                                &nbsp;
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                <strong>หนี้สินหมุนเวียน</strong>
+                            </td>
+                            <td class="style34">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                เงินสด/ฝาก/พันธบัตร
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="CASH_BOND_CALTextBox" ToolTip=" เงินสด/ฝาก/พันธบัตร" CELL="I9" runat="server"
+                                    Text='<%# Bind("CASH_BOND_CAL") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                เจ้าหนี้การค้า
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="ACCOUNT_PAYABLE_CALTextBox" ToolTip="เจ้าหนี้การค้า" CELL="N9" runat="server"
+                                    Text='<%# Bind("ACCOUNT_PAYABLE_CAL") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                ลูกหนี้การค้า
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="ACCOUNT_RECEIVABLE_CALTextBox" ToolTip="ลูกหนี้การค้า" CELL="I10"
+                                    runat="server" Text='<%# Bind("ACCOUNT_RECEIVABLE_CAL") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                หนี้สินหมุนเวียน Bay
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="CURRENT_LIABILITY_BAY_CALTextBox" ToolTip="หนี้สินหมุนเวียน Bay"
+                                    CELL="D31" runat="server" Text='<%# Bind("CURRENT_LIABILITY_BAY_CAL") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                สต๊อกสินค้า&nbsp;&nbsp;
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="INVENTORYTextBox" ToolTip="สต๊อกสินค้า" CELL="I11" runat="server"
+                                    Text='<%# Bind("INVENTORY") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                หนี้สินหมุนเวียนอื่น
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="OTHER_CURRENT_LIABILITY_CALTextBox" ToolTip="หนี้สินหมุนเวียนอื่น"
+                                    CELL="N11" runat="server" Text='<%# Bind("OTHER_CURRENT_LIABILITY_CAL") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                <strong>รวมสินทรัพย์หมุนเวียน</strong>
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="TOTAL_CURRENT_ASSETSTextBox" ToolTip="รวมสินทรัพย์หมุนเวียน" CELL="I13"
+                                    runat="server" Text='<%# Bind("TOTAL_CURRENT_ASSETS") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                <strong>รวมหนี้สินหมุนเวียน</strong>
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="TOTAL_CURRENT_LIABILITYTextBox" ToolTip="รวมหนี้สินหมุนเวียน" CELL="N13"
+                                    runat="server" Text='<%# Bind("TOTAL_CURRENT_LIABILITY") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                <strong>สินทรัพย์ถาวร</strong>
+                            </td>
+                            <td class="style28">
+                                &nbsp;
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                <strong>หนี้สินระยะยาว</strong>
+                            </td>
+                            <td class="style34">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                เครื่องจักร/อุปกรณ์
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="MACHINERY_EQUIPMENT_CALTextBox" runat="server" ToolTip="เครื่องจักร/อุปกรณ์"
+                                    CELL="I15" Text='<%# Bind("MACHINERY_EQUIPMENT_CAL") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                หนี้สินระยะยาว Bay
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="LONG_TERM_LIABILITY_BAY_CALTextBox" runat="server" CELL="N15" ToolTip="หนี้สินระยะยาว Bay"
+                                    Text='<%# Bind("LONG_TERM_LIABILITY_BAY_CAL") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                ที่ดิน/อาคาร
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="PROPERTY_PLANT_BUILDINGTextBox" ToolTip="ที่ดิน/อาคาร" CELL="I16"
+                                    runat="server" Text='<%# Bind("PROPERTY_PLANT_BUILDING") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                หนี้สินระยะยาวอืน ๆ
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="OTHER_LONG_TERM_LIABILITYTextBox" ToolTip=" หนี้สินระยะยาวอืน ๆ"
+                                    CELL="N16" runat="server" Text='<%# Bind("OTHER_LONG_TERM_LIABILITY") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                สินทรัพย์ถาวรอื่น ๆ
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="OTHER_FIXED_ASSETS_CALTextBox" ToolTip="สินทรัพย์ถาวรอื่น ๆ" CELL="I17"
+                                    runat="server" Text='<%# Bind("OTHER_FIXED_ASSETS_CAL") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                &nbsp;
+                            </td>
+                            <td class="style34">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                สินทรัพย์เพิ่มจากสินเชื่อ
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="ASSETS_FROM_CREDITTextBox" ToolTip="สินทรัพย์เพิ่มจากสินเชื่อ" CELL="I18"
+                                    runat="server" Text='<%# Bind("ASSETS_FROM_CREDIT") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                <strong>รวมหนี้สิน</strong>
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="TOTAL_LIABILITYTextBox" runat="server" ToolTip="รวมหนี้สิน" CELL="N18"
+                                    Text='<%# Bind("TOTAL_LIABILITY") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                รวมสินทรัพย์ถาวร
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="TOTAL_FIXED_ASSETSTextBox" runat="server" ToolTip="รวมสินทรัพย์ถาวร"
+                                    CELL="I20" Text='<%# Bind("TOTAL_FIXED_ASSETS") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                <strong>เงินกู้ยืมกรรมการ (ทุน)</strong>
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="LOANS_REL_CO_DIRECTORS_CALTextBox" runat="server" ToolTip="เงินกู้ยืมกรรมการ"
+                                    CELL="N20" Text='<%# Bind("LOANS_REL_CO_DIRECTORS_CAL") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                &nbsp;
+                            </td>
+                            <td class="style28">
+                                &nbsp;
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                <strong>ทุน</strong>
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="EQUITYTextBox" runat="server" ToolTip="ทุน" CELL="N21" Text='<%# Bind("EQUITY") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style30">
+                                <strong>รวมสินทรัพย์</strong>
+                            </td>
+                            <td class="style28">
+                                <asp:TextBox ID="TOTAL_ASSETSTextBox" runat="server" ToolTip="รวมสินทรัพย์" CELL="I22"
+                                    Text='<%# Bind("TOTAL_ASSETS") %>' />
+                            </td>
+                            <td class="style33">
+                                &nbsp;
+                            </td>
+                            <td class="style29">
+                                <strong>รวมหนี้สิน + ทุน</strong>
+                            </td>
+                            <td class="style34">
+                                <asp:TextBox ID="LIABILITY_EQUITYTextBox" runat="server" ToolTip="รวมหนี้สิน + ทุน"
+                                    CELL="N22" Text='<%# Bind("LIABILITY_EQUITY") %>' />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </ContentTemplate>
+        </ajaxToolkit:TabPanel>
+        <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" >
+            <HeaderTemplate>
+                <strong>คำนวณงบการเงิน</strong>
+            </HeaderTemplate>
+            <ContentTemplate>
+                
+            </ContentTemplate>
+        </ajaxToolkit:TabPanel>
+        <ajaxToolkit:TabPanel ID="TabPanel3" runat="server">
+            <HeaderTemplate>
+                <strong>ค่าที่คำนวณโดยระบบ</strong>
+            </HeaderTemplate>
+            <ContentTemplate>
+                <div id="tab3">
+                    <table>
+                        <tr>
+                            <td class="style11">
+                                &nbsp;
+                            </td>
+                            <td class="style23">
+                                &nbsp;
+                            </td>
+                            <td class="style24">
+                                &nbsp;
+                            </td>
+                            <td class="style25">
+                                &nbsp;
+                            </td>
+                            <td class="style26">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style11">
+                                <strong>คำนวณโดยระบบก่อนขอสินเชื่อ</strong>
+                            </td>
+                            <td class="style23">
+                                &nbsp;
+                            </td>
+                            <td class="style24">
+                                &nbsp;
+                            </td>
+                            <td class="style25">
+                                &nbsp;
+                            </td>
+                            <td class="style26">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style11">
+                                Ebitda
+                                <asp:TextBox ID="EBIDA_PERCENTTextBox" runat="server" ToolTip="% Ebitda" CELL="H25"
+                                    Text='<%# Bind("EBIDA_PERCENT") %>' Height="24px" Width="49px" />
+                                %
+                            </td>
+                            <td class="style23">
+                                <asp:TextBox ID="EBIDATextBox" runat="server" ToolTip="Ebitda" CELL="I25" Text='<%# Bind("EBIDA") %>' />
+                            </td>
+                            <td class="style24">
+                                &nbsp;
+                            </td>
+                            <td class="style25">
+                                ส่วนของเจ้าของ
+                                <asp:TextBox ID="OWNERS_EQUITY_PERCENTTextBox" runat="server" ToolTip="% ส่วนของเจ้าของ"
+                                    CELL="M25" Text='<%# Bind("OWNERS_EQUITY_PERCENT") %>' Height="20px" Width="36px" />
+                                &nbsp;%
+                            </td>
+                            <td class="style26">
+                                <asp:TextBox ID="OWNERS_EQUITYTextBox" runat="server" ToolTip="ส่วนของเจ้าของ" CELL="N25"
+                                    Text='<%# Bind("OWNERS_EQUITY") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style11">
+                                D/E ก่อนขอสินเชื่อ
+                            </td>
+                            <td class="style23">
+                                <asp:TextBox ID="DE_BEFORE_LOANTextBox" runat="server" ToolTip="D/E ก่อนขอสินเชื่อ"
+                                    CELL="I26" Text='<%# Bind("DE_BEFORE_LOAN") %>' />
+                            </td>
+                            <td class="style24">
+                                &nbsp;
+                            </td>
+                            <td class="style25">
+                                อัตราดอกเบี้ยที่&nbsp;
+                                <asp:TextBox ID="FIXED_INTEREST_PERCENTTextBox" runat="server" ToolTip="อัตราดอกเบี้ย"
+                                    CELL="M27" Text='<%# Bind("FIXED_INTEREST_PERCENT") %>' Height="21px" Width="38px" />
+                                &nbsp;%
+                            </td>
+                            <td class="style26">
+                                อายุสัญญา
+                                <asp:TextBox ID="PAYMENT_PERIODTextBox" runat="server" ToolTip="อายุสัญญา" CELL="O27"
+                                    Text='<%# Bind("PAYMENT_PERIOD") %>' Height="21px" Width="50px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style11">
+                                DSCR ก่อนขอสินเชื่อ
+                            </td>
+                            <td class="style23">
+                                <asp:TextBox ID="DSCR_BEFORE_LOANTextBox" runat="server" ToolTip="DSCR ก่อนขอสินเชื่อ"
+                                    CELL="I27" Text='<%# Bind("DSCR_BEFORE_LOAN") %>' />
+                            </td>
+                            <td class="style24">
+                                เท่า
+                            </td>
+                            <td class="style25">
+                                ระยะเวลาชำระหนี้เฉลี่ย
+                            </td>
+                            <td class="style26">
+                                <asp:TextBox ID="AVERAGE_PAYMENT_PERIODTextBox" runat="server" ToolTip="ระยะเวลาชำระหนี้เฉลี่ย"
+                                    CELL="O28" Text='<%# Bind("AVERAGE_PAYMENT_PERIOD") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style11">
+                                ระยะเวลาเก็บหนี้เฉลี่ย
+                            </td>
+                            <td class="style23">
+                                <asp:TextBox ID="AR_DAYTextBox" runat="server" ToolTip="ระยะเวลาเก็บหนี้เฉลี่ย" CELL="J28"
+                                    Text='<%# Bind("AR_DAY") %>' />
+                            </td>
+                            <td class="style24">
+                                วัน
+                            </td>
+                            <td class="style25">
+                                &nbsp;
+                            </td>
+                            <td class="style26">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style11">
+                                ระยะเวลาสต๊อกสินค้าเฉลี่ย
+                            </td>
+                            <td class="style23">
+                                <asp:TextBox ID="INVENTORY_DAYTextBox" runat="server" ToolTip="ระยะเวลาสต๊อกสินค้าเฉลี่ย"
+                                    CELL="J29" Text='<%# Bind("INVENTORY_DAY") %>' />
+                            </td>
+                            <td class="style24">
+                                วัน
+                            </td>
+                            <td class="style18" colspan="2">
+                                <strong>คำนวณวงเงินอนุมัติ ALL</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style11">
+                                Working Capital Need
+                            </td>
+                            <td class="style23">
+                                <asp:TextBox ID="WORKING_CAPITAL_NEEDTextBox" runat="server" ToolTip="Working Capital Need"
+                                    CELL="I30" Text='<%# Bind("WORKING_CAPITAL_NEED") %>' />
+                            </td>
+                            <td class="style24">
+                                &nbsp;
+                            </td>
+                            <td class="style25">
+                                Working Capital
+                            </td>
+                            <td class="style26">
+                                <asp:TextBox ID="WORKING_CAPITAL_APPROVETextBox" runat="server" ToolTip="Working Capital"
+                                    CELL="N30" Text='<%# Bind("WORKING_CAPITAL_APPROVE") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style11">
+                                Loan
+                            </td>
+                            <td class="style23">
+                                <asp:TextBox ID="LOAN_NEEDTextBox" runat="server" ToolTip="Loan" CELL="I31" Text='<%# Bind("LOAN_NEED") %>' />
+                            </td>
+                            <td class="style24">
+                                &nbsp;
+                            </td>
+                            <td class="style25">
+                                Loan
+                            </td>
+                            <td class="style26">
+                                <asp:TextBox ID="LOAN_APPROVETextBox" runat="server" ToolTip="Loan" CELL="N31" Text='<%# Bind("LOAN_APPROVE") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style11">
+                                &nbsp;
+                            </td>
+                            <td class="style23">
+                                &nbsp;
+                            </td>
+                            <td class="style24">
+                                &nbsp;
+                            </td>
+                            <td class="style25">
+                                &nbsp;
+                            </td>
+                            <td class="style26">
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </ContentTemplate>
+        </ajaxToolkit:TabPanel>
+        <ajaxToolkit:TabPanel ID="TabPanel5" runat="server">
+            <HeaderTemplate>
+                <strong>วงเงินสินเชื่อที่เห็นควรอนุมัติ</strong>
+            </HeaderTemplate>
+            <ContentTemplate>
+                <div id="tab5">
+                    <table style="height: 168px;">
+                        <tr>
+                            <td class="style17">
+                                <strong>วงเงินสินเชื่อที่ลูกค้าต้องการ</strong>
+                            </td>
+                            <td class="style29">
+                                &nbsp;
+                            </td>
+                            <td class="style15">
+                                &nbsp;
+                            </td>
+                            <td class="style19">
+                                &nbsp;
+                            </td>
+                            <td class="style20">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style17">
+                                <strong>วงงินที่เห็นควรอนุมิต Bay Default</strong>
+                            </td>
+                            <td class="style29">
+                                &nbsp;
+                            </td>
+                            <td class="style15">
+                                &nbsp;
+                            </td>
+                            <td class="style19">
+                                <strong>วงเงินที่สามารถอนุมัติได้</strong>
+                            </td>
+                            <td class="style20">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style17">
+                                Working Capital Default
+                            </td>
+                            <td class="style29">
+                                <asp:TextBox ID="WORKING_CAPITAL_DEFAULTTextBox" runat="server" ToolTip="Working Capital Default"
+                                    CELL="N40" Text='<%# Bind("WORKING_CAPITAL_DEFAULT") %>' />
+                            </td>
+                            <td class="style15">
+                                &nbsp;
+                            </td>
+                            <td class="style19">
+                                Working Capital ที่สามารถอนุมัติได้
+                            </td>
+                            <td class="style20">
+                                <asp:TextBox ID="WORKING_CAPITAL_DEFAULT_APPROVETextBox" runat="server" ToolTip=" Working Capital ที่สามารถอนุมัติได้"
+                                    CELL="N43" Text='<%# Bind("WORKING_CAPITAL_DEFAULT_APPROVE") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style17">
+                                Loan Default
+                            </td>
+                            <td class="style29">
+                                <asp:TextBox ID="LOAN_DEFAULTTextBox" runat="server" ToolTip="Loan Default" CELL="N41"
+                                    Text='<%# Bind("LOAN_DEFAULT") %>' />
+                            </td>
+                            <td class="style15">
+                                &nbsp;
+                            </td>
+                            <td class="style19">
+                                Loan ที่สามารถอนุมัติได้
+                            </td>
+                            <td class="style20">
+                                <asp:TextBox ID="LOAN_DEFAULT_APPROVETextBox" runat="server" ToolTip="Loan ที่สามารถอนุมัติได้"
+                                    CELL="N44" Text='<%# Bind("LOAN_DEFAULT_APPROVE") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style17">
+                                &nbsp;
+                            </td>
+                            <td class="style27">
+                                &nbsp;
+                            </td>
+                            <td class="style15">
+                                &nbsp;
+                            </td>
+                            <td class="style19">
+                                &nbsp;
+                            </td>
+                            <td class="style20">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </ContentTemplate>
+        </ajaxToolkit:TabPanel>
+    </ajaxToolkit:TabContainer>
+    <div id="MainTab">
+    </div>
+    <asp:Button ID="BtnInsert" runat="server" Text="เพิ่มข้อมูล" />&nbsp
+    <asp:Button ID="BtnUpdate" runat="server" Text="บันทึกข้อมูล" />&nbsp
+    <asp:Button ID="BtnBack" runat="server" Text="ย้อนกลับ" />
+    <br />
+    <br />
+    </form>
+</body>
+</html>

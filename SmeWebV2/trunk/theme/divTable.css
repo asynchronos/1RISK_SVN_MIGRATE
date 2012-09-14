@@ -1,0 +1,42 @@
+﻿div.tableLayout
+{
+    text-align: center;
+    vertical-align: middle;
+    border-style: none;
+    border-width: 1px;
+    padding: 0.5ex;
+    margin: 0px;
+    width: auto;
+    display:block;
+}
+
+div.tableRow
+{
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    border-style: none;
+    min-height: 25px;
+}
+
+div.leftTableCell
+{
+    text-align: left;
+    vertical-align: middle;
+    padding: 0px;
+    margin: 0px;
+    float: left;
+    border-style: none;
+}
+
+div.rightTableCell
+{
+    text-align: left;
+    vertical-align: middle;
+    padding: 0px;
+    margin: 0px;
+    float: right;
+    border-style: none;
+}

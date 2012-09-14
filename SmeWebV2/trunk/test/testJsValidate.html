@@ -1,0 +1,49 @@
+<html>
+<head>
+<script type="text/javascript">
+function validate_email(field,alerttxt)
+{
+with (field)
+  {
+  apos=value.indexOf("@");
+  dotpos=value.lastIndexOf(".");
+  if (apos<1||dotpos-apos<2)
+    {alert(alerttxt);return false;}
+  else {return true;}
+  }
+}
+
+function validate_form(thisform)
+{
+with (thisform)
+  {
+  if (validate_email(email,"Not a valid e-mail address!")==false)
+    {email.focus();return false;}
+  }
+}
+function checkNull(sender){
+   if (sender.value.length < 1){
+      sender.className = "redClass";
+   }else{
+      sender.className = "normalClass";
+   }
+}
+</script>
+<style type="text/css">
+   .redClass{
+      background-color: red;
+   }
+   .normalClass{
+      background-color: none;
+   }
+</style>
+</head>
+<body>
+<form action="submit.htm" onsubmit="return validate_form(this);" method="post">
+Name: <input type="text" name="text" size="30" onblur="checkNull(this);">
+Email: <input type="text" name="email" size="30">
+<input type="submit" value="Submit">
+</form>
+</body>
+
+</html>
