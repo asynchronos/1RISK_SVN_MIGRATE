@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Bay01_test" Class="EmployeeLinqDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=172.19.54.2;Initial Catalog=BAY01_TEST;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BAY01ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CONTROLLING_LINE_FULL" Member="CONTROLLING_LINE_FULLs">
+    <Type Name="CONTROLLING_LINE_FULL">
+      <Column Name="LEVEL_ID" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="LEVEL_CODE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="LEVEL_NAME" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LEVEL_ROOT" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="EMP_ID" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="TITLE_NAME" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EMPNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EMPSURNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LEAD_ID" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="LEAD_ID2" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.EMPLOYEE_Get_Employee_By_EmpId" Method="getEmployeeByEmpId">
+    <Parameter Name="EMP_ID" Parameter="eMP_ID" Type="System.String" DbType="NVarChar(10)" />
+    <ElementType Name="EMPLOYEE_Get_Employee_By_EmpIdResult">
+      <Column Name="EMP_ID" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="TITLE_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="EMPNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EMPSURNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TITLE_NAME_E" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EMPNAME_E" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EMPSURNAME_E" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="IDCARD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TAX_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ACCNO" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="SOI" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ROAD" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="LOCALITY" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DISTRINCT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PROV_CODE" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ZIPCODE" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="TEL_HOME" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="TEL_MOBILE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TEL_INDOOR" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DATEOFBIRTH" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IMAGENAME" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DATEOFSTART" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TEAM_ID" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="GROUP_HEAD" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROLE" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="PERMIT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="USERNAME" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="PASSWD" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="UP_DT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Dept" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Id_Region" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Id_Branch" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="POSITION_CODE" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="Id_Region_Group" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Id_Branch_Group" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Id_Group_Group" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+</Database>
