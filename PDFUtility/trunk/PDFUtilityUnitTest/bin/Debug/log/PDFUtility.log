@@ -1,0 +1,121 @@
+2012-09-14 09:12:56,173 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c2ef613a-ea56-4c96-8a9f-47f5355fec5c'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:12:56,189 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c2ef613a-ea56-4c96-8a9f-47f5355fec5c'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:12:56,189 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c2ef613a-ea56-4c96-8a9f-47f5355fec5c'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:12:56,189 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c2ef613a-ea56-4c96-8a9f-47f5355fec5c'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:12:56,189 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c2ef613a-ea56-4c96-8a9f-47f5355fec5c'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:12:56,189 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c2ef613a-ea56-4c96-8a9f-47f5355fec5c'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:12:56,189 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c2ef613a-ea56-4c96-8a9f-47f5355fec5c'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:13:14,104 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'dcba664a-9052-4d5f-9ca2-e6e20e2aa495'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:13:14,120 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'dcba664a-9052-4d5f-9ca2-e6e20e2aa495'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:13:14,120 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'dcba664a-9052-4d5f-9ca2-e6e20e2aa495'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:13:14,120 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'dcba664a-9052-4d5f-9ca2-e6e20e2aa495'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:13:14,120 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'dcba664a-9052-4d5f-9ca2-e6e20e2aa495'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:13:14,120 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'dcba664a-9052-4d5f-9ca2-e6e20e2aa495'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:13:14,120 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'dcba664a-9052-4d5f-9ca2-e6e20e2aa495'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:23:49,218 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bd84b932-e539-45a8-baf4-4cd3763f0d70'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:23:49,234 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bd84b932-e539-45a8-baf4-4cd3763f0d70'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:23:49,234 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bd84b932-e539-45a8-baf4-4cd3763f0d70'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:23:49,234 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bd84b932-e539-45a8-baf4-4cd3763f0d70'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:23:49,234 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bd84b932-e539-45a8-baf4-4cd3763f0d70'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:23:49,234 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bd84b932-e539-45a8-baf4-4cd3763f0d70'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:23:49,234 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bd84b932-e539-45a8-baf4-4cd3763f0d70'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:24:21,103 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'fd15fb40-6c58-43bb-a39c-cdc9bf31a3ed'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:24:21,119 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'fd15fb40-6c58-43bb-a39c-cdc9bf31a3ed'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:24:21,119 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'fd15fb40-6c58-43bb-a39c-cdc9bf31a3ed'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:24:21,119 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'fd15fb40-6c58-43bb-a39c-cdc9bf31a3ed'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:24:21,119 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'fd15fb40-6c58-43bb-a39c-cdc9bf31a3ed'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:24:21,119 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'fd15fb40-6c58-43bb-a39c-cdc9bf31a3ed'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:24:21,119 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'fd15fb40-6c58-43bb-a39c-cdc9bf31a3ed'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:25:06,355 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c213ab9c-914a-4b43-b4c4-f005253b4706'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:25:06,370 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c213ab9c-914a-4b43-b4c4-f005253b4706'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:25:06,370 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c213ab9c-914a-4b43-b4c4-f005253b4706'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:25:06,370 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c213ab9c-914a-4b43-b4c4-f005253b4706'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:25:06,370 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c213ab9c-914a-4b43-b4c4-f005253b4706'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:25:06,370 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c213ab9c-914a-4b43-b4c4-f005253b4706'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:25:06,370 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c213ab9c-914a-4b43-b4c4-f005253b4706'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:25:06,558 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'c213ab9c-914a-4b43-b4c4-f005253b4706'] ERROR PDFUtility.SecurityPDF (null) (null) -    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   at PDFUtility.SecurityPDF.ApplySecurity() in D:\workspaces\2012\PDFUtility\PDFUtility\SecurityPDF.cs:line 389
+2012-09-14 09:25:13,193 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f6a8d1cd-c6e2-451c-adfc-ffb073ab4f12'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:25:13,209 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f6a8d1cd-c6e2-451c-adfc-ffb073ab4f12'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:25:13,209 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f6a8d1cd-c6e2-451c-adfc-ffb073ab4f12'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:25:13,209 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f6a8d1cd-c6e2-451c-adfc-ffb073ab4f12'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:25:13,209 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f6a8d1cd-c6e2-451c-adfc-ffb073ab4f12'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:25:13,209 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f6a8d1cd-c6e2-451c-adfc-ffb073ab4f12'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:25:13,209 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f6a8d1cd-c6e2-451c-adfc-ffb073ab4f12'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:25:50,099 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b730229a-5cb7-48b3-a647-bf254e3a5911'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:25:50,115 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b730229a-5cb7-48b3-a647-bf254e3a5911'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:25:50,115 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b730229a-5cb7-48b3-a647-bf254e3a5911'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:25:50,115 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b730229a-5cb7-48b3-a647-bf254e3a5911'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:25:50,115 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b730229a-5cb7-48b3-a647-bf254e3a5911'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:25:50,115 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b730229a-5cb7-48b3-a647-bf254e3a5911'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:25:50,115 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b730229a-5cb7-48b3-a647-bf254e3a5911'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:27:04,941 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f34e830b-0918-4333-9790-f01b06ff04ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:27:04,957 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f34e830b-0918-4333-9790-f01b06ff04ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:27:04,957 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f34e830b-0918-4333-9790-f01b06ff04ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:27:04,957 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f34e830b-0918-4333-9790-f01b06ff04ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:27:04,957 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f34e830b-0918-4333-9790-f01b06ff04ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:27:04,957 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f34e830b-0918-4333-9790-f01b06ff04ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:27:04,957 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f34e830b-0918-4333-9790-f01b06ff04ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:27:05,051 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'f34e830b-0918-4333-9790-f01b06ff04ce'] ERROR PDFUtility.SecurityPDF (null) (null) -    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   at PDFUtility.SecurityPDF.ApplySecurity() in D:\workspaces\2012\PDFUtility\PDFUtility\SecurityPDF.cs:line 389
+2012-09-14 09:27:10,124 [Agent: adapter run thread for test 'ApplySecurityTest' with id '1716dba0-20d2-4318-a963-be1d987190df'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:27:10,140 [Agent: adapter run thread for test 'ApplySecurityTest' with id '1716dba0-20d2-4318-a963-be1d987190df'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:27:10,140 [Agent: adapter run thread for test 'ApplySecurityTest' with id '1716dba0-20d2-4318-a963-be1d987190df'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:27:10,140 [Agent: adapter run thread for test 'ApplySecurityTest' with id '1716dba0-20d2-4318-a963-be1d987190df'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:27:10,140 [Agent: adapter run thread for test 'ApplySecurityTest' with id '1716dba0-20d2-4318-a963-be1d987190df'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:27:10,140 [Agent: adapter run thread for test 'ApplySecurityTest' with id '1716dba0-20d2-4318-a963-be1d987190df'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:27:10,140 [Agent: adapter run thread for test 'ApplySecurityTest' with id '1716dba0-20d2-4318-a963-be1d987190df'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:28:41,778 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b70525cc-ce07-4a17-b141-64fcf206d565'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:28:41,794 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b70525cc-ce07-4a17-b141-64fcf206d565'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:28:41,794 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b70525cc-ce07-4a17-b141-64fcf206d565'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:28:41,794 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b70525cc-ce07-4a17-b141-64fcf206d565'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:28:41,794 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b70525cc-ce07-4a17-b141-64fcf206d565'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:28:41,794 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b70525cc-ce07-4a17-b141-64fcf206d565'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:28:41,794 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b70525cc-ce07-4a17-b141-64fcf206d565'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:28:41,903 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'b70525cc-ce07-4a17-b141-64fcf206d565'] ERROR PDFUtility.SecurityPDF (null) (null) -    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   at PDFUtility.SecurityPDF.ApplySecurity() in D:\workspaces\2012\PDFUtility\PDFUtility\SecurityPDF.cs:line 389
+2012-09-14 09:28:46,946 [Agent: adapter run thread for test 'ApplySecurityTest' with id '61137fa9-7b82-4bf6-aa53-a6bad89cef3f'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:28:46,961 [Agent: adapter run thread for test 'ApplySecurityTest' with id '61137fa9-7b82-4bf6-aa53-a6bad89cef3f'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:28:46,961 [Agent: adapter run thread for test 'ApplySecurityTest' with id '61137fa9-7b82-4bf6-aa53-a6bad89cef3f'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:28:46,961 [Agent: adapter run thread for test 'ApplySecurityTest' with id '61137fa9-7b82-4bf6-aa53-a6bad89cef3f'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:28:46,961 [Agent: adapter run thread for test 'ApplySecurityTest' with id '61137fa9-7b82-4bf6-aa53-a6bad89cef3f'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:28:46,961 [Agent: adapter run thread for test 'ApplySecurityTest' with id '61137fa9-7b82-4bf6-aa53-a6bad89cef3f'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:28:46,961 [Agent: adapter run thread for test 'ApplySecurityTest' with id '61137fa9-7b82-4bf6-aa53-a6bad89cef3f'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:32:12,452 [Agent: adapter run thread for test 'ApplySecurityTest' with id '99e5861b-d6e8-431f-bdc2-d173700d2e43'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:32:12,468 [Agent: adapter run thread for test 'ApplySecurityTest' with id '99e5861b-d6e8-431f-bdc2-d173700d2e43'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:32:12,468 [Agent: adapter run thread for test 'ApplySecurityTest' with id '99e5861b-d6e8-431f-bdc2-d173700d2e43'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:32:12,468 [Agent: adapter run thread for test 'ApplySecurityTest' with id '99e5861b-d6e8-431f-bdc2-d173700d2e43'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:32:12,468 [Agent: adapter run thread for test 'ApplySecurityTest' with id '99e5861b-d6e8-431f-bdc2-d173700d2e43'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:32:12,468 [Agent: adapter run thread for test 'ApplySecurityTest' with id '99e5861b-d6e8-431f-bdc2-d173700d2e43'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:32:12,468 [Agent: adapter run thread for test 'ApplySecurityTest' with id '99e5861b-d6e8-431f-bdc2-d173700d2e43'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:33:37,810 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'e397ff02-efe1-4db8-913e-cafbc8d78414'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:33:37,810 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'e397ff02-efe1-4db8-913e-cafbc8d78414'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:33:37,810 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'e397ff02-efe1-4db8-913e-cafbc8d78414'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:33:37,810 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'e397ff02-efe1-4db8-913e-cafbc8d78414'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:33:37,810 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'e397ff02-efe1-4db8-913e-cafbc8d78414'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:33:37,810 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'e397ff02-efe1-4db8-913e-cafbc8d78414'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:33:37,810 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'e397ff02-efe1-4db8-913e-cafbc8d78414'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:33:37,920 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'e397ff02-efe1-4db8-913e-cafbc8d78414'] ERROR PDFUtility.SecurityPDF (null) (null) -    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   at PDFUtility.SecurityPDF.ApplySecurity() in D:\workspaces\2012\PDFUtility\PDFUtility\SecurityPDF.cs:line 389
+2012-09-14 09:33:56,824 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bf50a1af-54f5-4128-adae-22abd3111463'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:33:56,839 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bf50a1af-54f5-4128-adae-22abd3111463'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:33:56,839 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bf50a1af-54f5-4128-adae-22abd3111463'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:33:56,839 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bf50a1af-54f5-4128-adae-22abd3111463'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:33:56,839 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bf50a1af-54f5-4128-adae-22abd3111463'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:33:56,839 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bf50a1af-54f5-4128-adae-22abd3111463'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:33:56,839 [Agent: adapter run thread for test 'ApplySecurityTest' with id 'bf50a1af-54f5-4128-adae-22abd3111463'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-14 09:37:33,247 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0ea2c703-ed28-4c47-8a6f-451b1456892f'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:37:33,263 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0ea2c703-ed28-4c47-8a6f-451b1456892f'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-14 09:37:33,263 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0ea2c703-ed28-4c47-8a6f-451b1456892f'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-14 09:37:33,263 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0ea2c703-ed28-4c47-8a6f-451b1456892f'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-14 09:37:33,263 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0ea2c703-ed28-4c47-8a6f-451b1456892f'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-14 09:37:33,263 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0ea2c703-ed28-4c47-8a6f-451b1456892f'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-14 09:37:33,263 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0ea2c703-ed28-4c47-8a6f-451b1456892f'] DEBUG PDFUtility.SecurityPDF (null) (null) - 

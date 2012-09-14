@@ -1,0 +1,147 @@
+2012-09-13 16:13:00,307 [Agent: adapter run thread for test 'Convert2PDFTest' with id 'a883f692-30bf-415d-904e-b50326be02ec'] DEBUG PDFUtility.HTML2PDF (null) (null) - <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>กรุณาเลือกระบบที่ต้องการใช้งาน</title>
+    <link type="text/css" href="../SMEWeb/js/ext3.0/resources/css/ext-all.css" rel="Stylesheet" />
+    <script type="text/javascript" src="../SMEWeb/js/ext3.0/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../SMEWeb/js/ext3.0/ext-all.js"></script>
+    <!-- DESKTOP -->
+    <link rel="stylesheet" type="text/css" href="css/desktop.css" />
+    <script type="text/javascript" src="js/StartMenu.js"></script>
+    <script type="text/javascript" src="js/TaskBar.js"></script>
+    <script type="text/javascript" src="js/Desktop.js"></script>
+    <script type="text/javascript" src="js/App.js"></script>
+    <script type="text/javascript" src="js/Module.js"></script>
+    <script type="text/javascript" src="startupScript.js"></script>
+    <!-- MY IFRAME -->
+    <script type="text/javascript" src="../SMEWeb/js/ext3.0/iframeComponent.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            //right click
+            Ext.select("dt > a[href=#]").on({
+                "contextmenu": function (e, t, o) {
+                    //alert("123");
+                    Ext.Msg.alert("RightClick", "Active");
+                },
+                scope: this,
+                preventDefault: true
+            });
+        });
+    </script>
+	<style>
+		img {
+			border:none;
+		}
+	</style>
+</head>
+<body style="margin: 0px; cursor: default;">
+    <!--<img class="source-image" src="wallpapers/BGInfo.bmp" alt="" />-->
+    <div id="x-desktop">
+        <!--<a href="http://extjs.com" target="_blank" style="margin: 5px; float: right;">
+            <img alt="poweredBy" src="desktop/images/powered.gif" />
+        </a>-->
+        <div id="x-shortcuts" style="width: 100%">
+            <div style="float: left;">
+                <dl id="Dl1" class="x-shortcuts">
+                    <dt title="Sme" id="sme-win-shortcut"><a href="http://leader1/smeweb/login.aspx">
+                        <img alt="ca" src="images/s.gif" />
+                        <span>Sme </span></a></dt>
+                    <!--dt title="Appraisal" id="appraisal-win-shortcut"><a href="http://leader1/appraisal/">
+                        <img alt="appraisal" src="images/s.gif" />
+                        <span>Appraisal </span></a></dt> -->
+                    <dt title="Special Mention" id="sm-win-shortcut"><a href="http://172.19.54.2/Special_Mention">
+                        <img alt="sm" src="images/s.gif" />
+                        <span>Special Mention </span></a></dt>
+                    <!--<dt title="Questionnaire" id="questionnaire-win-shortcut"><a href="http://leader1/questionnairev2">
+                        <img alt="questionnaire" src="images/s.gif" />
+                        <span>Questionnaire </span></a></dt>
+                    <dt title="KFS Search List" id="kfsSearchList-win-shortcut" style="float: left;"><a
+                        href="http://leader1/kfs_searchlist">
+                        <img alt="kfsSearchList" src="images/s.gif" />
+                        <span>KFS Search List </span></a></dt>
+                    <dt title="LGD" id="lgdWeb-win-shortcut" style="float: left;"><a href="http://leader1/lgdWeb">
+                        <img alt="lgdWeb" src="images/s.gif" />
+                        <span>LGD </span></a></dt>-->
+					<dt title="Check NCB" id="checkNCB-win-shortcut" style="float: left;"><a href="http://leader1/Check_NCB">
+                        <img alt="checkNCB" src="images/s.gif" />
+                        <span>Check NCB </span></a></dt>
+                    <dt title="Branch Planning" id="branchPlanning-win-shortcut" style="float: left;"><a
+                        href="http://172.19.17.84/dasd/menu.asp">
+                        <img alt="branchPlanning" src="images/s.gif" />
+                        <span>Branch Planning<br />
+                            &Analysis </span></a></dt>
+		          </dl>
+            </div>
+            <div style="float: left;">
+                <dl id="Dl2" class="x-shortcuts">
+                    
+                    <dt title="LGD Collection Data" id="LGDCollectionData-win-shortcut" style="float: left;">
+                        <a href="http://leader1/LGDCollectionData/Account/Login.aspx">
+                            <img alt="LGDCollectionData" src="images/s.gif" />
+                            <span>LGD Collection Data </span></a></dt>
+                    <dt title="Search KFS" id="SearchKFS-win-shortcut" style="float: left;"><a href="http://leader1/Search_KFS_DATA/Default.aspx">
+                        <img alt="SearchKFS" src="images/s.gif"   style="width:50px;height:45px;border:none;" />
+                        <span>Search KFS</span></a></dt>
+					<dt title="Location" id="location-win-shortcut" style="float: left;"><a href="http://leader1/Web_Sme_Location/Login.aspx">
+                        <img alt="location" src="images/map_icon.png" style="width:50px;height:60px;border:none;" />
+                        <span>Location</span></a></dt>
+      				<dt title="smes" id="location-win-shortcut" style="float: left;"><a href="http://leader1/ssweb">
+                        <img alt="small sme project" src="images/smes_logo.png" style="width:50px;height:60px;border:none;" />
+                        <span>SMEs</span></a></dt>
+      				<dt title="smes" id="location-win-shortcut" style="float: left;"><a href="http://leader1/pdsmes">
+                        <img alt="PD SMEs" src="images/pdsmes_logo.png" style="width:50px;height:45px;border:none;" />
+                        <span>PD SMEs</span></a></dt>
+      
+                </dl>
+            </div>
+            <div style="float: right;">
+                <div style="width: 15px; float: right;">
+                    &nbsp;</div>
+                <dl id="x-Dl3" class="x-shortcuts">
+                    <dt id="tabContact-win-shortcut" style="float: right;"><a href="#">
+                        <img alt="tabContact" src="images/s.gif" />
+                        <span>Contact </span></a></dt>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div id="ux-taskbar">
+        <div id="ux-taskbar-start">
+        </div>
+        <div id="ux-taskbuttons-panel">
+        </div>
+        <div class="x-clear">
+        </div>
+    </div>
+</body>
+</html>
+2012-09-13 16:13:00,323 [Agent: adapter run thread for test 'Convert2PDFTest' with id 'a883f692-30bf-415d-904e-b50326be02ec'] DEBUG PDFUtility.HTML2PDF (null) (null) - 
+2012-09-13 17:17:51,953 [Agent: adapter run thread for test 'ApplySecurityTest' with id '9fa88ba4-5f6b-4356-9a70-aae116ae13ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-13 17:17:51,969 [Agent: adapter run thread for test 'ApplySecurityTest' with id '9fa88ba4-5f6b-4356-9a70-aae116ae13ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-13 17:17:51,969 [Agent: adapter run thread for test 'ApplySecurityTest' with id '9fa88ba4-5f6b-4356-9a70-aae116ae13ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-13 17:17:51,969 [Agent: adapter run thread for test 'ApplySecurityTest' with id '9fa88ba4-5f6b-4356-9a70-aae116ae13ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-13 17:17:51,969 [Agent: adapter run thread for test 'ApplySecurityTest' with id '9fa88ba4-5f6b-4356-9a70-aae116ae13ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-13 17:17:51,969 [Agent: adapter run thread for test 'ApplySecurityTest' with id '9fa88ba4-5f6b-4356-9a70-aae116ae13ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-13 17:17:51,969 [Agent: adapter run thread for test 'ApplySecurityTest' with id '9fa88ba4-5f6b-4356-9a70-aae116ae13ce'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-13 17:38:51,861 [Agent: adapter run thread for test 'ApplySecurityTest' with id '4fe171c2-181a-4343-b1ab-fdac0df1ca8d'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-13 17:38:51,876 [Agent: adapter run thread for test 'ApplySecurityTest' with id '4fe171c2-181a-4343-b1ab-fdac0df1ca8d'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-13 17:38:51,876 [Agent: adapter run thread for test 'ApplySecurityTest' with id '4fe171c2-181a-4343-b1ab-fdac0df1ca8d'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-13 17:38:51,876 [Agent: adapter run thread for test 'ApplySecurityTest' with id '4fe171c2-181a-4343-b1ab-fdac0df1ca8d'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-13 17:38:51,876 [Agent: adapter run thread for test 'ApplySecurityTest' with id '4fe171c2-181a-4343-b1ab-fdac0df1ca8d'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-13 17:38:51,876 [Agent: adapter run thread for test 'ApplySecurityTest' with id '4fe171c2-181a-4343-b1ab-fdac0df1ca8d'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-13 17:38:51,876 [Agent: adapter run thread for test 'ApplySecurityTest' with id '4fe171c2-181a-4343-b1ab-fdac0df1ca8d'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-13 17:42:39,397 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0c22da7a-2338-4a15-a80a-ab5154943710'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-13 17:42:39,397 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0c22da7a-2338-4a15-a80a-ab5154943710'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-13 17:42:39,397 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0c22da7a-2338-4a15-a80a-ab5154943710'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-13 17:42:39,397 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0c22da7a-2338-4a15-a80a-ab5154943710'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-13 17:42:39,397 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0c22da7a-2338-4a15-a80a-ab5154943710'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-13 17:42:39,397 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0c22da7a-2338-4a15-a80a-ab5154943710'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-13 17:42:39,397 [Agent: adapter run thread for test 'ApplySecurityTest' with id '0c22da7a-2338-4a15-a80a-ab5154943710'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
+2012-09-13 17:46:06,484 [Agent: adapter run thread for test 'ApplySecurityTest' with id '6ef172b9-18f6-4c46-8935-72382423c2e4'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-13 17:46:06,484 [Agent: adapter run thread for test 'ApplySecurityTest' with id '6ef172b9-18f6-4c46-8935-72382423c2e4'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageWidth == 0f && pageHiehgt == 0f
+2012-09-13 17:46:06,484 [Agent: adapter run thread for test 'ApplySecurityTest' with id '6ef172b9-18f6-4c46-8935-72382423c2e4'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Width : 841.8
+2012-09-13 17:46:06,484 [Agent: adapter run thread for test 'ApplySecurityTest' with id '6ef172b9-18f6-4c46-8935-72382423c2e4'] DEBUG PDFUtility.SecurityPDF (null) (null) - pageSize.Height : 595.2
+2012-09-13 17:46:06,484 [Agent: adapter run thread for test 'ApplySecurityTest' with id '6ef172b9-18f6-4c46-8935-72382423c2e4'] DEBUG PDFUtility.SecurityPDF (null) (null) - textAngle : 35.26246
+2012-09-13 17:46:06,484 [Agent: adapter run thread for test 'ApplySecurityTest' with id '6ef172b9-18f6-4c46-8935-72382423c2e4'] DEBUG PDFUtility.SecurityPDF (null) (null) - -------------------------------
+2012-09-13 17:46:06,484 [Agent: adapter run thread for test 'ApplySecurityTest' with id '6ef172b9-18f6-4c46-8935-72382423c2e4'] DEBUG PDFUtility.SecurityPDF (null) (null) - 
