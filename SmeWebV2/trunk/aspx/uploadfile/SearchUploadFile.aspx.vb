@@ -1,27 +1,36 @@
-  Partial Class  SearchUploadFile 
-  Inherits System.Web.UI.Page 
-  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-  If Not Page.IsPostBack Then
+Imports System.Data
+Imports System.Data.SqlClient
+Partial Class SearchUploadFile
+
+    Inherits System.Web.UI.Page
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not Page.IsPostBack Then
             BindDropDownSearch()
 
-End if
-End Sub
-Sub BindDropDownSearch()
+        End If
+    End Sub
+    Sub BindDropDownSearch()
         DDLSearch.Items.Add(New ListItem("CIF", "CIF"))
         DDLSearch.Items.Add(New ListItem("เลขที่รับเข้า", "REFERENCE"))
         DDLSearch.Items.Add(New ListItem("เลขที่ CA", "ANNALS_ID"))
 
-End Sub
-Protected Sub BtnSearch_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles BtnSearch.Click
+    End Sub
+    Protected Sub BtnSearch_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles BtnSearch.Click
         ShowData()
- End Sub
-Sub ShowData()
+    End Sub
+    Sub ShowData()
         'Try
+        Dim conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+
         Dim sql As String = Nothing
         Dim SearchValue As String = Nothing
         sql = "Select  distinct  *   from V_UPLOAD_FILE_CIF  "
+        Dim sqlCmd As New SqlCommand(sql, conn)
+
         SearchValue = TBSearch.Text
-        DataSourceForm.SelectParameters.Clear()
+
+
         If DDLSearch.Items(DDLSearch.SelectedIndex).Value <> "" And TBSearch.Text <> "" Then
             If DDLSearch.Items(DDLSearch.SelectedIndex).Value = "ANNALS_ID" Then
                 sql += "WHERE  substring(ANNALS_ID,2,5)  like  @SearchValue"
@@ -36,10 +45,17 @@ Sub ShowData()
             End If
             sql += " order by process_date desc"
             '  MsgBox(sql)
-            DataSourceForm.SelectParameters.Add("SearchValue", SearchValue)
-            DataSourceForm.SelectCommand = sql
-            DataBind()
+
+            sqlCmd.Parameters.AddWithValue("SearchValue", SearchValue)
+
         End If
+
+
+        Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
+        GridViewForm.DataSource = reader
+        GridViewForm.DataBind()
+
+
         If TBSearch.Text = "" Then
             alert("กรุณาระบุข้อมูลที่ต้องการค้นหา")
             Exit Sub

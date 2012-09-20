@@ -1,10 +1,8 @@
 <%@ Page Title="First Page" Language="VB" MasterPageFile="~/MasterPage.master" AutoEventWireup="false"
     CodeFile="mainpage.aspx.vb" Inherits="aspx_mainpage" %>
 
-<%@ Register Src="~/Controls/Contents/Contents.ascx" TagName="Contents" TagPrefix="uc3" %>
 <%@ Register Src="../Controls/Chart/Chart.ascx" TagName="Chart" TagPrefix="uc1" %>
-<%@ Register Src="../Controls/editor/editor_manager.ascx" TagName="editor_manager"
-    TagPrefix="uc4" %>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     
     <style type="text/css">
@@ -193,7 +191,7 @@
                         </tr>
                         <tr>
                             <td align="left">
-                                <table width="80%" cellpadding="0" cellspacing="0" border="0">
+                                <table cellpadding="0" cellspacing="0" border="0" style="width: 101%">
                                     <tr>
                                         <td align="left" style="width:60%">
                                             <img alt="" src="../images/ball_glass_yellowS.gif" style="width: 16px; height: 16px;" />
@@ -234,7 +232,7 @@
                         </tr>
                         <tr>
                             <td align="left">
-                                <table width="60%" cellpadding="0" cellspacing="0" border="0">
+                                <table cellpadding="0" cellspacing="0" border="0" style="width: 101%">
                                     <tr>
                                         <td align="left" style="width:60%">
                                             <img alt="" src="../images/ball_glass_yellowS.gif" style="width: 16px; height: 16px;" />
@@ -275,7 +273,7 @@
                         </tr>
                         <tr>
                             <td align="left">
-                                <table width="80%" cellpadding="0" cellspacing="0" border="0">
+                                <table cellpadding="0" cellspacing="0" border="0" style="width: 101%">
                                     <tr>
                                         <td align="left" style="width:60%">
                                             <img alt="" src="../images/ball_glass_yellowS.gif" style="width: 16px; height: 16px;" />
