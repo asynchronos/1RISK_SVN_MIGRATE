@@ -23,7 +23,7 @@
   <asp:GridView ID="GridViewForm" runat="server"  RowStyle-Font-Size="small"
     AutoGenerateColumns="False"  CellSpacing="0"
                 CellPadding="1" ForeColor="Black" GridLines="Vertical" 
-                DataKeyNames="id" Width="96%" BackColor="White"  DataSourceID="DataSourceForm"
+                DataKeyNames="id" Width="96%" BackColor="White" 
     BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
       <RowStyle BackColor="#F7F7DE" />
    <Columns>      
@@ -60,8 +60,4 @@
       <AlternatingRowStyle BackColor="White" />
 </asp:GridView>
 <br />
-<asp:SqlDataSource ID="DataSourceForm" runat="server"
-    ConnectionString = "Data Source=172.19.54.2;Initial Catalog=BAY01;User ID=smeweb;Password=sa0123" 
-    ProviderName="System.Data.SqlClient"   >
-</asp:SqlDataSource>
 </asp:Content>
