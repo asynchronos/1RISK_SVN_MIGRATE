@@ -201,7 +201,7 @@
 <ItemStyle Wrap="False"></ItemStyle>
                  </asp:BoundField>
         
-            <asp:BoundField DataField="busi_type" HeaderText="busi_type" 
+<%--            <asp:BoundField DataField="busi_type" HeaderText="busi_type" 
                 SortExpression="busi_type" ItemStyle-Wrap="false" >
 <ItemStyle Wrap="False"></ItemStyle>
             </asp:BoundField>
@@ -209,7 +209,7 @@
                 SortExpression="busi_desc"  ItemStyle-Wrap="false">
 <ItemStyle Wrap="False"></ItemStyle>
             </asp:BoundField>
-     
+     --%>
         </Columns>
         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
         <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />

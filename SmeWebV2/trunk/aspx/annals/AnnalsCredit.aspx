@@ -44,16 +44,18 @@
             if (caId.length == 10) {
                 try {
 
-                       // var service = new SmeWeb.CAWCFService();
-                       // service.IsCIFInWatchList(caId, onSuccessCheckWatchList, onFailedCheckWatchList, null);
+                    // var service = new SmeWeb.CAWCFService();
+                    // service.IsCIFInWatchList(caId, onSuccessCheckWatchList, onFailedCheckWatchList, null);
 
-                   // localhost.CAWCFService.IsCIFInWatchList(caId, onSuccessCheckWatchList, onFailedCheckWatchList, null);
+                    // localhost.CAWCFService.IsCIFInWatchList(caId, onSuccessCheckWatchList, onFailedCheckWatchList, null);
 
                 }
                 catch (err) {
+
                     var txt = "There was an error on this page(CAWCFService).\n\n";
                     txt += "Error description : " + err.description + "\n\n";
                     alert(txt);
+
                 }
             }
 
@@ -96,11 +98,11 @@
             });
             // หลังจากโหลดแล้วให้แสดงคำอ่านตัวเลขของ group exposure
             changeGroupExposureDesc($("#tbGroupExposure").val());
-       
-             $('#TextBoxCMControl').blur(function () {
+
+            $('#TextBoxCMControl').blur(function () {
                 try {
                     if ($(this).val() != '') {
-                         findEMPLOYEE($(this).val());
+                        findEMPLOYEE($(this).val());
                     }
                 }  // try
                 catch (err) {
@@ -111,7 +113,7 @@
                     window.close();
                 }
             }); // 
-       
+
         }); // $(document).ready
 
         function changeGroupExposureDesc(txtNum) {
@@ -174,15 +176,15 @@
         }
 
         function onSuccessCheckWatchList(result, userContext, methodName) {
-//            setBtnIDOUTText();
-//            disablebtnIDOUT();
-            
+            //            setBtnIDOUTText();
+            //            disablebtnIDOUT();
+
             var eleTarget = $("#spanCIFWatchList");
             //เช็คว่ามี Element นี้หรือไม่
             if (eleTarget) {//ถ้ามี Element นี้
                 if (methodName == "IsCIFInWatchList") {
                     var r = eval("(" + result.detail + ")");
-                    
+
                     if (r.count > 0) {
                         var showText = "CA ฉบับนี้ต้อง Approve โดย CRO";
                         var cifList = "";
@@ -206,19 +208,19 @@
                                 } else {
                                     d.removeClass("red");
                                     d.addClass("navy");
-                                }                               
+                                }
                             }
                         }
 
-//                        eleTarget.dblclick(function() {
-//                            var pass = prompt("loan review unlock code:", "password");
-//                            if (pass == "@dmin") {
-//                                enablebtnIDOUT();
-//                            }
-//                        });
+                        //                        eleTarget.dblclick(function() {
+                        //                            var pass = prompt("loan review unlock code:", "password");
+                        //                            if (pass == "@dmin") {
+                        //                                enablebtnIDOUT();
+                        //                            }
+                        //                        });
                     } else {
                         //check ว่า ไม่ใช่ CA ที่สร้างใหม่
-                        if (getValueFromQueryString("annals_id") != "No Query String"){
+                        if (getValueFromQueryString("annals_id") != "No Query String") {
                             enablebtnIDOUT();
                         }
                     }
@@ -257,7 +259,7 @@
         function checkRating(e) {
             //ยังไม่ใช้ function checkRating return true ไปก่อน
             return true;
-            
+
             //Cancel the link behavior
             if (window.event) {// IE
                 e.returnValue = false;
@@ -269,10 +271,10 @@
             }
 
             //create box & dialog & background
-//            $("#formAnnalsCredit").append("<div id=&quot;box&quot;></div>");
-//            $("#box").append("<div id=&quot;dialog&quot; class=&quot;window&quot;>Test</div>");
-//            $("#box").append("<div id=&quot;mask&quot;></div>");
-            
+            //            $("#formAnnalsCredit").append("<div id=&quot;box&quot;></div>");
+            //            $("#box").append("<div id=&quot;dialog&quot; class=&quot;window&quot;>Test</div>");
+            //            $("#box").append("<div id=&quot;mask&quot;></div>");
+
             //Get the screen height and width  
             var maskHeight = $(document).height();
             var maskWidth = $(window).width();
@@ -280,26 +282,26 @@
             //declare variable
             var mask = $("#mask");
             var dialog = $("#dialog");
-            
+
             //Set height and width to mask to fill up the whole screen
             mask.css({ 'width': maskWidth, 'height': maskHeight });
-            
+
             //transition effect
             mask.fadeIn(1000);
-            mask.fadeTo("slow", 0.8);    
-            
+            mask.fadeTo("slow", 0.8);
+
             //Get the window height and width  
-            var winH = $(window).height();  
+            var winH = $(window).height();
             var winW = $(window).width();
-                    
+
             //Set the popup window to center
             dialog.css('top', winH / 2 - dialog.height() / 2);
             dialog.css('left', winW / 2 - dialog.width() / 2);
-            
+
             //transition effect
             dialog.fadeIn(2000);
 
-            $("#dialogCloseButt").click(function(e) {
+            $("#dialogCloseButt").click(function (e) {
                 //Cancel the link behavior
                 if (window.event) {// IE
                     e.returnValue = false;
@@ -320,11 +322,11 @@
             var waitImage = $("#waitImage");
             //add waiting bar
             waitImage.appendTo(content);
-            waitImage.css({"display":"block"});
+            waitImage.css({ "display": "block" });
 
             if (caId.length == 10) {
-//                var service = new SmeWeb.CAWCFService();
-//                service.CheckRatingUpdateDateOlder(caId, onSuccessCheckRUD, onFailedCheckRUD, null);
+                //                var service = new SmeWeb.CAWCFService();
+                //                service.CheckRatingUpdateDateOlder(caId, onSuccessCheckRUD, onFailedCheckRUD, null);
 
                 //localhost.CAWCFService.CheckRatingUpdateDateOlder(caId, onSuccessCheckRUD, onFailedCheckRUD, null);
                 leaer1.CAWCFService.CheckRatingUpdateDateOlder(caId, onSuccessCheckRUD, onFailedCheckRUD, null);
@@ -350,10 +352,10 @@
                 //ซ่อน wait bar
                 $("#waitImage").appendTo($("#dialog"));
                 $("#waitImage").css({ "display": "none" });
-                
+
                 if (methodName == "CheckRatingUpdateDateOlder") {
                     var r = eval("(" + result.detail + ")");
-                    
+
                     if (r.count > 0) {
                         var showText = "CA ฉบับนี้มีลูกค้าที่ยังไม่ได้ update rating ภายใน 1 เดือน ดังนี้";
                         //show waring in span
@@ -407,8 +409,8 @@
             smePopup.focus();
         }
 
-     function ThaiBaht(Number) {
-           //alert(Number)
+        function ThaiBaht(Number) {
+            //alert(Number)
             //ตัดสิ่งที่ไม่ต้องการทิ้งลงโถส้วม
             for (var i = 0; i < Number.length; i++) {
                 Number = Number.replace(",", ""); //ไม่ต้องการเครื่องหมายคอมมาร์
@@ -431,7 +433,7 @@
                     return "ข้อมูลนำเข้าเกินขอบเขตที่ตั้งไว้";
                 } else {
                     //พรากทศนิยม กับจำนวนเต็มออกจากกัน (บาปหรือเปล่าหนอเรา พรากคู่เขา)
-                     //alert('split');
+                    //alert('split');
                     Number = Number.split(".");
                     //alert(Number.length);
                     //alert(Number[1]);
@@ -447,15 +449,15 @@
                         var tmp = Number[0].substring(i, i + 1) - 0;
                         if (tmp != 0) {
                             if (i == (NumberLen - 2)) {
-                               // alert('true')
-                                countTen= true;
-                             }
+                                // alert('true')
+                                countTen = true;
+                            }
                             if ((i == (NumberLen - 1)) && (tmp == 1)) {
-                                   if (countTen == true) {
-                                        BahtText += "เอ็ด";
-                                   } else {
-                                         BahtText += "หนึี่ง";
-                                   }
+                                if (countTen == true) {
+                                    BahtText += "เอ็ด";
+                                } else {
+                                    BahtText += "หนึี่ง";
+                                }
                             } else
                                 if ((i == (NumberLen - 2)) && (tmp == 2)) {
                                     BahtText += "ยี่";
@@ -466,23 +468,23 @@
                                         BahtText += TxtNumArr[tmp];
                                     }
                             BahtText += TxtDigitArr[NumberLen - i - 1];
-                         }
+                        }
                     }
-                    if (Number[0] > 0) { 
+                    if (Number[0] > 0) {
                         BahtText += "ล้าน";
                     }
                     if ((Number[1] == "0") || (Number[1] == "00")) {
-                       // BahtText += "ถ้วน";
+                        // BahtText += "ถ้วน";
                     } else {
                         //alert(Number[1]);
                         //var num1 = new Number(Number[1]);
                         num1 = Number[1] * 1000;
                         //alert(num1);
-                        DecimalLen = num1.toString().length-0;
+                        DecimalLen = num1.toString().length - 0;
                         //alert(DecimalLen);
-                        for (var i = 0; i <  DecimalLen; i++) {
+                        for (var i = 0; i < DecimalLen; i++) {
                             var tmp = num1.toString().substring(i, i + 1);
-                           // alert(tmp);
+                            // alert(tmp);
                             if (tmp != 0) {
                                 if ((i == (DecimalLen - 1)) && (tmp == 1)) {
                                     BahtText += "เอ็ด";
@@ -495,10 +497,10 @@
                                         } else {
                                             BahtText += TxtNumArr[tmp];
                                         }
-                                BahtText += TxtDigitArr[DecimalLen - i -1];
+                                BahtText += TxtDigitArr[DecimalLen - i - 1];
                             }
                         }
-                          BahtText += "บาท";
+                        BahtText += "บาท";
                         //BahtText += "สตางค์";
 
                     }
@@ -514,14 +516,14 @@
         }
         function OnSucceededFindEmployee(result) {
             try {
-                    var obj = eval('(' + result + ')');
-                    var msgOK = 'ยืนยัน';
-                    if (obj.empname)  {
-                        $('#LabelCMControlDetail').val(obj.empname);
-                   }
+                var obj = eval('(' + result + ')');
+                var msgOK = 'ยืนยัน';
+                if (obj.empname) {
+                    $('#LabelCMControlDetail').val(obj.empname);
+                }
 
-               } catch (err) {
-                   alert(err.Description);
+            } catch (err) {
+                alert(err.Description);
             }
         }
         function OnFailedFindEmployee(result) {
@@ -584,7 +586,7 @@
                 //service.GetEmpFullNameByEmpId(empId, onSuccess, onFailed, TargetClientSelector);
 
                 //   localhost.EmployeeWCFService.GetEmpFullNameByEmpId(empId, onSuccess, onFailed, TargetClientSelector);
-                  leaer1.EmployeeWCFService.GetEmpFullNameByEmpId(empId, onSuccess, onFailed, TargetClientSelector);
+                leaer1.EmployeeWCFService.GetEmpFullNameByEmpId(empId, onSuccess, onFailed, TargetClientSelector);
             }
         }
 
@@ -796,40 +798,37 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label runat="server" Text="Job Type(ประเภทงาน) * " 
-                        Style="font-weight: 700"></asp:Label>
+                    <asp:Label runat="server" Text="Job Type(ประเภทงาน) * " Style="font-weight: 700"></asp:Label>
                 </td>
                 <td>
                     <asp:DropDownList ID="DDLJobTypeId" runat="server">
                     </asp:DropDownList>
                 </td>
                 <td>
-                    &nbsp;</td>
+                    &nbsp;
+                </td>
                 <td>
-                    &nbsp;</td>
+                    &nbsp;
+                </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label11" runat="server" Font-Bold="true" 
-                        Text="Date  (วันที่ในหนังสือ) *"></asp:Label>
+                    <asp:Label ID="Label11" runat="server" Font-Bold="true" Text="Date  (วันที่ในหนังสือ) *"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="DATE_IN_ANNALS_TextBox" runat="server" MaxLength="20" 
-                        Text='<%# Bind("DATE_IN_ANNALS","{0:d MMMM yyyy}") %>' Width="124px"></asp:TextBox>
-                    <cc2:CalendarExtender ID="cal1" runat="server" PopupPosition="Right" 
-                        TargetControlID="DATE_IN_ANNALS_TextBox">
+                    <asp:TextBox ID="DATE_IN_ANNALS_TextBox" runat="server" MaxLength="20" Text='<%# Bind("DATE_IN_ANNALS","{0:d MMMM yyyy}") %>'
+                        Width="124px"></asp:TextBox>
+                    <cc2:CalendarExtender ID="cal1" runat="server" PopupPosition="Right" TargetControlID="DATE_IN_ANNALS_TextBox">
                     </cc2:CalendarExtender>
                     <img id="imgClearAnnalsDate" runat="server" alt="clear date" onclick="clearAnnalsDate()"
                         src="~/images/close_button.gif" />
                 </td>
                 <td>
-                    <asp:Label ID="lblSME_Referral_No" runat="server" Font-Bold="true" 
-                        Text="Referral no.  "></asp:Label>
+                    <asp:Label ID="lblSME_Referral_No" runat="server" Font-Bold="true" Text="Referral no.  "></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="tbSME_Referral_No" runat="server" MaxLength="6" 
-                        Style="background-color: #FFFFCC" Text='<%# Bind("SME_Referral_No") %>' 
-                        Width="57px"></asp:TextBox>
+                    <asp:TextBox ID="tbSME_Referral_No" runat="server" MaxLength="6" Style="background-color: #FFFFCC"
+                        Text='<%# Bind("SME_Referral_No") %>' Width="57px"></asp:TextBox>
                     /<asp:DropDownList ID="DDLReferalYear" runat="server" BackColor="#FFFFCC">
                     </asp:DropDownList>
                     &nbsp; <b>(xxxxxx/20xx)</b>
@@ -865,43 +864,37 @@
                     </asp:DropDownList>
                 </td>
                 <td>
-                    <asp:Label ID="Label50" runat="server" Style="font-weight: 700" 
-                        Text="Group Exposure"></asp:Label>
+                    <asp:Label ID="Label50" runat="server" Style="font-weight: 700" Text="Group Exposure"></asp:Label>
                     <br />
                 </td>
                 <td>
-                    <asp:TextBox ID="tbGroupExposure" runat="server" CssClass="TextBoxAlignRight" 
-                        Height="21px" MaxLength="20" Width="80px"></asp:TextBox>
-                    &nbsp;ล้านบาท  &nbsp<asp:TextBox ID="tbGroupExposureDesc" runat="server" 
-                        BackColor="#CCCCCC" ReadOnly="True" 
-                        Style="text-align: left; border-style: none;" Width="320px"></asp:TextBox>
+                    <asp:TextBox ID="tbGroupExposure" runat="server" CssClass="TextBoxAlignRight" Height="21px"
+                        MaxLength="20" Width="80px"></asp:TextBox>
+                    &nbsp;ล้านบาท &nbsp<asp:TextBox ID="tbGroupExposureDesc" runat="server" BackColor="#CCCCCC"
+                        ReadOnly="True" Style="text-align: left; border-style: none;" Width="320px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label52" runat="server" Style="font-weight: 700" 
-                        Text="วันที่ Review ลูกค้าครั้งต่อไป"></asp:Label>
+                    <asp:Label ID="Label52" runat="server" Style="font-weight: 700" Text="วันที่ Review ลูกค้าครั้งต่อไป"></asp:Label>
                 </td>
                 <td>
-                      <asp:TextBox ID="ReveiwDateTextBox" runat="server" MaxLength="20" Text='<%# Bind("REVIEW_DATE","{0:d MMMM yyyy}") %>'
+                    <asp:TextBox ID="ReveiwDateTextBox" runat="server" MaxLength="20" Text='<%# Bind("REVIEW_DATE","{0:d MMMM yyyy}") %>'
                         Width="124px"></asp:TextBox>
                     <cc2:CalendarExtender ID="ReveiwDateTextBox_CalendarExtender" runat="server" PopupButtonID="imgCalendarReview"
                         PopupPosition="Right" TargetControlID="ReveiwDateTextBox">
                     </cc2:CalendarExtender>
                     <img id="imgClearReviewDate" runat="server" alt="clear date" src="~/images/close_button.gif"
-                        onclick="clearReviewDate()" /></td>
-                <td>
-                    <asp:Label ID="LabelOutofScope" runat="server" Style="font-weight: 700" 
-                        Text="Out of scope  SME_R"></asp:Label>
+                        onclick="clearReviewDate()" />
                 </td>
                 <td>
-                    
+                    <asp:Label ID="LabelOutofScope" runat="server" Style="font-weight: 700" Text="Out of scope  SME_R"></asp:Label>
+                </td>
+                <td>
                     <asp:DropDownList ID="DDLoutofscope" runat="server">
                     </asp:DropDownList>
-                    
-                    </td>
+                </td>
             </tr>
-          
             <tr>
                 <td colspan="4">
                     <asp:UpdatePanel ID="UpdatePanelBranch" runat="server">
@@ -931,8 +924,9 @@
                                 <asp:Label ID="LabelCMControl" runat="server" Text="รหัส  CM ผู้ดูแล  *" Style="font-weight: 700;"></asp:Label>
                             </td>
                             <td>
-<%--                                <asp:TextBox ID="TextBoxCMControl" runat="server" MaxLength="10" Width="100px" onChange="empIdChange(this,'LabelCMControlDetail');"></asp:TextBox>
- --%>                   <asp:TextBox ID="TextBoxCMControl" runat="server" MaxLength="10" Width="100px" ></asp:TextBox>
+                                <%--                                <asp:TextBox ID="TextBoxCMControl" runat="server" MaxLength="10" Width="100px" onChange="empIdChange(this,'LabelCMControlDetail');"></asp:TextBox>
+                                --%>
+                                <asp:TextBox ID="TextBoxCMControl" runat="server" MaxLength="10" Width="100px"></asp:TextBox>
                                 &nbsp;<asp:Image ID="ImageButtonCMControl" runat="server" BorderColor="transparent"
                                     BorderWidth="0px" ImageUrl="~/images/Magnifying Glass.gif" />
                                 <asp:TextBox ID="LabelCMControlDetail" ClientSelector="LabelCMControlDetail" runat="server"
@@ -1004,7 +998,7 @@
                                                             <asp:Label ID="Label34" runat="server" Font-Bold="true" Text="&lt;&lt; เพิ่มข้อมูล CIF ใหม่ที่นี่ "></asp:Label>
                                                         </td>
                                                     </tr>
-                                                      <tr>
+                                                    <tr>
                                                         <td>
                                                             <asp:Label ID="LabelBusinessType" runat="server" Text="BUSINESS(1st)" ToolTip="ประเภทธุรกิจหลัก"></asp:Label>
                                                         </td>
@@ -1032,7 +1026,7 @@
                                             </ItemTemplate>
                                             <ItemStyle Wrap="False" />
                                         </asp:TemplateField>
-                      <%--                  <asp:TemplateField HeaderText="Rating" ItemStyle-Wrap="false">
+                                        <%--                  <asp:TemplateField HeaderText="Rating" ItemStyle-Wrap="false">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblCifRating" runat="server" Text='<%# Bind("RATING_DESC") %>'></asp:Label>
                                             </ItemTemplate>
@@ -1087,7 +1081,7 @@
                                         </tr>
                                     </table>
                                     <asp:GridView ID="GridAnnalsCreditAccount" runat="server" AutoGenerateColumns="False"
-                                        CellPadding="1" Width="100%" Height="16px" PageSize="5" ForeColor="#333333" GridLines="None"
+                                        CellPadding="1" Width="100%" Height="16px"  ForeColor="#333333" GridLines="None"
                                         CellSpacing="1">
                                         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="true" ForeColor="#333333" />
                                         <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
@@ -1119,7 +1113,7 @@
                                                         </tr>
                                                     </table>
                                                     <table id="tableAccountForm" frame="hsides" style="border-color: Black; padding-left: 100px;
-                                                        background-color: #AABBAA" border="0" cellpadding="2" cellspacing="2">
+                                                        background-color: #AABBAA" border="1" cellpadding="2" cellspacing="2">
                                                         <tr>
                                                             <td colspan="3">
                                                                 <div id="divCheckWatchListByCIF">
@@ -1200,15 +1194,6 @@
                                                                     </asp:DropDownList>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:Label ID="Label18" runat="server" Text="Project Code" Font-Bold="true"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="ddlPROJECT_CODE" runat="server">
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
                                                                     <asp:Label ID="Label41" runat="server" Text="Ref Account" Font-Bold="true"></asp:Label>
                                                                 </td>
                                                                 <td>
@@ -1216,15 +1201,46 @@
                                                                         ID="btnSearchAccount" runat="server" ImageUrl="~/images/Magnifying Glass.gif"
                                                                         Style="cursor: pointer" />
                                                                 </td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label43" runat="server" Font-Bold="true" Text="Product Name"></asp:Label>
+                                                                    <asp:Label ID="LabelProgram" runat="server" Text="Program" Font-Bold="true"></asp:Label>
                                                                 </td>
-                                                                <td colspan="2">
-                                                                    <asp:DropDownList ID="ddlDECB_RD_ID" runat="server">
+                                                                <td>
+                                                                    <asp:DropDownList ID="ddlPROGRAM" runat="server" OnSelectedIndexChanged="ChangeProject"
+                                                                        AutoPostBack="true">
                                                                     </asp:DropDownList>
                                                                 </td>
                                                                 <td>
-                                                                    &nbsp;
+                                                                    <asp:Label ID="Label18" runat="server" Text="Project" Font-Bold="true"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <asp:DropDownList ID="ddlPROJECT" runat="server" OnSelectedIndexChanged="ChangeProduct"
+                                                                            AutoPostBack="true">
+                                                                        </asp:DropDownList>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <asp:Label ID="Label43" runat="server" Font-Bold="true" Text="Product Name"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:DropDownList ID="ddlDECB_RD_ID" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ChangeProduct">
+                                                                    </asp:DropDownList>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Label ID="LabelProduct" runat="server" Text="Product Code" Font-Bold="true"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:DropDownList ID="ddlPRODUCT" runat="server" OnSelectedIndexChanged="ChangeProductIndex"
+                                                                        AutoPostBack="true">
+                                                                    </asp:DropDownList>
+                                                                    <asp:DropDownList ID="ddlPRODUCT_CODE" runat="server" OnSelectedIndexChanged="ChangeProductIndex"
+                                                                        AutoPostBack="true">
+                                                                    </asp:DropDownList>
+
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1287,17 +1303,16 @@
                                                     <asp:Label ID="lblGridCif" runat="server" Text='<%# Bind("CIF") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Ref Acc No.">
+                                            <asp:TemplateField HeaderText="Ref Acc No." Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label17" runat="server" Text='<%# Bind("ACCNO") %>'></asp:Label></ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Product code">
+                                            <asp:TemplateField HeaderText="Program/Project/Product">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="LabelPRODUCT_CODE" runat="server" Text='<%# Bind("PRODUCT_CODE") %>'></asp:Label></ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Project code">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="LabelPROJECT_CODE" runat="server" Text='<%# Bind("PROJECT_NAME") %>'></asp:Label></ItemTemplate>
+                                                    <asp:Label ID="LabelPROGRAM_NAME" runat="server" Text='<%# Bind("PROGRAM_NAME") %>'></asp:Label>/
+                                                    <asp:Label ID="LabelPROJECT_CODE" runat="server" Text='<%# Bind("PROJECT_CODE") %>'></asp:Label>/
+                                                    <asp:Label ID="LabelPRODUCT_CODE" runat="server" Text='<%# Bind("PRODUCT_CODE") %>'></asp:Label>
+                                                </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Proposal">
                                                 <ItemTemplate>
@@ -1502,7 +1517,6 @@
                                     BorderStyle="Inset" ImageUrl="~/images/Add.jpg" />
                                 &nbsp;<asp:Label ID="lblAddCovenant" runat="server" Font-Bold="true" ForeColor="#FF3300"
                                     Text="&lt;&lt; คลิกที่นี่เพื่อ เพิ่ม/ ยกเลิก/ ตรวจสอบ Covenant." Style="font-size: x-small"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;</asp:Panel>
-                            
                             &nbsp;
                             <asp:Panel ID="PanelFlood" runat="server">
                                 <asp:Label ID="Label53" runat="server" Style="font-weight: 700; color: #000066; font-size: x-small;
@@ -1511,12 +1525,12 @@
                                     GroupName="flood" Style="font-weight: 700; font-size: x-small;" Text="ไม่เกี่ยวกับน้ำท่วม" />
                                 <asp:RadioButton ID="RadioFloodBot" runat="server" AutoPostBack="true" Checked="false"
                                     GroupName="flood" Style="font-weight: 700; font-size: x-small;" Text="เกี่ยวกับ Flood BOT/SBCG" />
-                                &nbsp;<asp:Image ID="ImageAddFloodBOT" runat="server" BorderColor="#CCCCCC" 
-                                    BorderStyle="Inset" ImageUrl="~/images/Add.jpg" />
+                                &nbsp;<asp:Image ID="ImageAddFloodBOT" runat="server" BorderColor="#CCCCCC" BorderStyle="Inset"
+                                    ImageUrl="~/images/Add.jpg" />
                                 &nbsp;<asp:Label ID="LabelAddFloodBOT" runat="server" Font-Bold="true" ForeColor="#FF3300"
                                     Style="font-size: x-small" Text="&lt;&lt; คลิกที่นี่เพื่อ เพิ่ม/ยกเลิก/ตรวจสอบข้อมูล Flood BOT"></asp:Label>
                                 &nbsp;</asp:Panel>
-                                <asp:Panel ID="PanelCheckNcb" runat="server">
+                            <asp:Panel ID="PanelCheckNcb" runat="server">
                                 &nbsp;<asp:Label ID="LabelCheckNcb" runat="server" Style="font-weight: 700; color: #000066;
                                     font-size: x-small;" Text="ข้อมูลการตรวจสอบ NCB" Width="335px"></asp:Label><asp:Label
                                         ID="LabelStatusCheckNcb" runat="server" Font-Bold="true" ForeColor="#3333FF"
