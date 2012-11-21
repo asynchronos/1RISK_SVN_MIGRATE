@@ -51,11 +51,15 @@
         </asp:TemplateField>
            <asp:TemplateField HeaderText="File upload">
             <EditItemTemplate>
-            <asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>' NavigateUrl='<%#  ".../../FileUpload/"  & EVAL("FILE_TYPE")  & "/" &  EVAL("PATH") %>'>HyperLink</asp:HyperLink>
+            <%--<asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>' NavigateUrl='<%#  ".../../FileUpload/"  & EVAL("FILE_TYPE")  & "/" &  EVAL("PATH") %>'>HyperLink</asp:HyperLink>
+            --%>
+            <asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>'>HyperLink</asp:HyperLink>
                 <asp:FileUpload ID="upFile1" runat="server"   />
             </EditItemTemplate>
             <ItemTemplate>
-                <asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>' NavigateUrl='<%#  "../../FileUpload/" & EVAL("FILE_TYPE")  & "/" &  EVAL("PATH") %>'>HyperLink</asp:HyperLink>
+           <%--     <asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>' NavigateUrl='<%#  "../../FileUpload/" & EVAL("FILE_TYPE")  & "/" &  EVAL("PATH") %>'>HyperLink</asp:HyperLink>
+           --%>     
+           <asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>'>HyperLink</asp:HyperLink>
             </ItemTemplate>
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Remark/Description">
