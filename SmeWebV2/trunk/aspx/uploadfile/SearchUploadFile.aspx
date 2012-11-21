@@ -30,11 +30,11 @@
    
             <asp:TemplateField HeaderText="ä¿Åìá¹º">
             <EditItemTemplate>
-            <asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>' NavigateUrl='<%#  ".../../FileUpload/" & EVAL("FILE_YEAR")  & "/" & EVAL("FILE_TYPE")  & "/" &  EVAL("PATH") %>'>HyperLink</asp:HyperLink>
+            <asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>' >HyperLink</asp:HyperLink>
                 <asp:FileUpload ID="upFile1" runat="server"   />
             </EditItemTemplate>
             <ItemTemplate>
-                <asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>' NavigateUrl='<%#  "../../FileUpload/" & EVAL("FILE_YEAR") & "/" & EVAL("FILE_TYPE")  & "/" &  EVAL("PATH") %>'>HyperLink</asp:HyperLink>
+                <asp:HyperLink ID="linkPath" runat="server"  target='_blank'  text='<%#EVAL("Path") %>'>HyperLink</asp:HyperLink>
             </ItemTemplate>
         </asp:TemplateField>     <asp:BoundField DataField="REFERENCE" HeaderText="àÅ¢·ÕèÃÑºà¢éÒ" 
            SortExpression="REFERENCE" />

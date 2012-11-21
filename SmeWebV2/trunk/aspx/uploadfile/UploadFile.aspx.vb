@@ -6,6 +6,7 @@ Inherits System.Web.UI.Page
     Public user_id As String
     Public annals_id As String
     Dim sql As String
+    Dim isProduction As String = ConfigurationSettings.AppSettings("IsProduction")
 
 Protected Sub alert(ByVal str As String)
 	 Response.Write("<script language=""javascript"">alert(""" & Str & """)</script>")
@@ -60,6 +61,7 @@ End Sub
             End If
 
         End If
+
     End Sub
     Protected Sub btnAddNew_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnAddNew.Click
         PreAddFileDetail()
@@ -168,7 +170,7 @@ End Sub
             Dim BtnEdit As Image = GridUploadFile.Rows(i).FindControl("BtnEdit")
             Dim lblFileUser_id As Label = GridUploadFile.Rows(i).FindControl("lblFileUser_id")
             Dim linkPath As HyperLink = GridUploadFile.Rows(i).FindControl("linkPath")
-            linkPath.ToolTip = User.Identity.Name
+
             If IsNothing(BtnEdit) = False And IsNothing(lblFileUser_id) = False Then
 
                 If Trim(lblFileUser_id.Text) = Trim(User.Identity.Name) Or HttpCookieUtil.hasRolesId(Context.Request.Cookies(FormsAuthentication.FormsCookieName), RoleIdConst.R_ADMIN) Then
@@ -236,7 +238,20 @@ End Sub
         Dim FileYear As Integer = Date.Now.Year
         If FileYear > 2500 Then FileYear = FileYear - 543 '   triky ทำ year ให้เป็น คศ
 
-        Dim DirInfo As New System.IO.DirectoryInfo(Server.MapPath("../../FileUpload"))
+        Dim DirInfo As System.IO.DirectoryInfo
+        Dim savePath As String
+
+        '     <add key="IsProduction" value="0"/> ต้องการบันทัดนี้ใน web config เพื่อดูว่าเป็น server production หรือไม่ 0 ไม่ใช่ 1 ใช่
+        '  กรณีใช่จะเพิ่มตัวแปรปีเข้าไปด้วย
+
+        If isProduction = "0" Then ' รันบน leader1   ไม่ต้องมีตัวแปร year
+            DirInfo = New System.IO.DirectoryInfo(Server.MapPath("../../FileUpload"))
+            savePath = Server.MapPath("../../FileUpload/" & ddlFileFILE_TYPE.Items(ddlFileFILE_TYPE.SelectedIndex).Value & "/")
+        Else
+            DirInfo = New System.IO.DirectoryInfo(Server.MapPath("../../FileUpload/" & FileYear))
+            savePath = Server.MapPath("../../FileUpload/" & FileYear & "/" & ddlFileFILE_TYPE.Items(ddlFileFILE_TYPE.SelectedIndex).Value & "/")
+        End If
+
         '*** Create Folder ***'
         If Not DirInfo.Exists Then
             If createFolderUpload() = False Then
@@ -246,8 +261,6 @@ End Sub
         End If
 
         ' Try
-        Dim savePath As String = Server.MapPath("../../FileUpload/" & ddlFileFILE_TYPE.Items(ddlFileFILE_TYPE.SelectedIndex).Value & "/")
-        ' Dim savePath As String = Server.MapPath("../../FileUpload/" & FileYear & "/" & ddlFileFILE_TYPE.Items(ddlFileFILE_TYPE.SelectedIndex).Value & "/")
         Dim filename As String = Nothing
         Dim filetype As String = Nothing
         If IsNothing(upFile1.FileName) = False And upFile1.FileName <> "" Then
@@ -365,9 +378,14 @@ End Sub
             arrFILE_TYPE = dalFILE_TYPE.getAllUploadFileType
 
             Dim TypeID As Integer
+            MsgBox(arrFILE_TYPE.Count)
             For i = 0 To arrFILE_TYPE.Count - 1
                 TypeID = arrFILE_TYPE(i).ID
-                System.IO.Directory.CreateDirectory(MapPath("../../FileUpload/" & Fyear & "/" & TypeID))
+                If isProduction = "0" Then
+                    System.IO.Directory.CreateDirectory(MapPath("../../FileUpload/" & TypeID))
+                Else
+                    System.IO.Directory.CreateDirectory(MapPath("../../FileUpload/" & Fyear & "/" & TypeID))
+                End If
             Next
         Catch ex As Exception
             st = False
@@ -375,4 +393,25 @@ End Sub
         Return st
     End Function
 
+    Protected Sub GridUploadFile_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles GridUploadFile.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim FileYear As Integer = Date.Now.Year
+            If FileYear > 2500 Then FileYear = FileYear - 543 '   triky ทำ year ให้เป็น คศ
+
+            Dim linkPath As HyperLink = e.Row.FindControl("linkPath")
+            Dim strPath As String = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "Path"))
+            Dim strFILE_TYPE As String = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "FILE_TYPE"))
+
+            If isProduction = "0" Then
+                linkPath.NavigateUrl = "../../FileUpload/" & strFILE_TYPE & "/" & strPath
+                linkPath.ToolTip = "../../FileUpload/" & strFILE_TYPE & "/" & strPath
+            Else
+                linkPath.NavigateUrl = "../../FileUpload/" & FileYear & "/" & strFILE_TYPE & "/" & strPath
+                linkPath.ToolTip = "../../FileUpload/" & FileYear & "/" & strFILE_TYPE & "/" & strPath
+            End If
+
+        End If
+
+
+    End Sub
 End Class
