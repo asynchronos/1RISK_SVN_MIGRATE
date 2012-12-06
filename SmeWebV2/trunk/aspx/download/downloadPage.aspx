@@ -156,7 +156,7 @@
                 </td>
             </tr>
         </table>
-           <table style="float:left;min-width:300px;">
+        <table style="float:left;min-width:300px;">
             <tr>
                 <td>
                     <fieldset>
@@ -166,6 +166,27 @@
                         </legend>
                         <div>
                             <asp:TreeView ID="TreeView8" runat="server" ExpandDepth="2" NodeIndent="15">
+                                <ParentNodeStyle Font-Bold="False" ImageUrl="~/images/imageIcon/folder.gif" />
+                                <HoverNodeStyle Font-Underline="True" ForeColor="#6666AA" />
+                                <SelectedNodeStyle BackColor="#B5B5B5" Font-Underline="False" HorizontalPadding="0px"
+                                    VerticalPadding="0px" />
+                                <RootNodeStyle ImageUrl="~/images/imageIcon/My Computer.ico" />
+                                <NodeStyle Font-Names="Tahoma" Font-Size="8pt" ForeColor="Black" HorizontalPadding="2px"
+                                    NodeSpacing="0px" VerticalPadding="2px" />
+                                <LeafNodeStyle ImageUrl="~/images/imageIcon/txt.gif" />
+                            </asp:TreeView>
+                        </div>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+        <table style="float:left;min-width:300px;">
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>คู่มือระบบ KEC(Krunsri External Credit)</legend>
+                        <div>
+                            <asp:TreeView ID="TreeView9" runat="server" ExpandDepth="2" NodeIndent="15">
                                 <ParentNodeStyle Font-Bold="False" ImageUrl="~/images/imageIcon/folder.gif" />
                                 <HoverNodeStyle Font-Underline="True" ForeColor="#6666AA" />
                                 <SelectedNodeStyle BackColor="#B5B5B5" Font-Underline="False" HorizontalPadding="0px"

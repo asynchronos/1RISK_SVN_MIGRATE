@@ -138,5 +138,10 @@ Namespace aspx.download
                 DirectCast(sender, TreeView).Nodes.Add(createTree(Page, "~/download/CreditRatingNewModel20110221/"))
             End If
         End Sub
+        Protected Sub TreeView9_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles TreeView9.Load
+            If Not Me.IsPostBack Then
+                DirectCast(sender, TreeView).Nodes.Add(createTree(Page, "~/download/KEC/"))
+            End If
+        End Sub
     End Class
 End Namespace
