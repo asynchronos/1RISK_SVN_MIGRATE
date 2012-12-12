@@ -18,7 +18,6 @@ Namespace SMEWeb
 
             addHeaderScriptAt(6, "~/js/jquery.js")
             addHeaderScriptAt(7, "~/js/common.js")
-            addHeaderScriptAt(8, "~/js/MyNumber.js")
         End Sub
 
         Protected Sub addHeaderLinkAt(ByVal index As Integer, ByVal href As String)
