@@ -66,6 +66,7 @@
         </asp:Login>
         <br />
         <br />
+        <uc3:Contents ID="Contents1" ContentID="3" runat="server" />
         <br />
         <br />
         <br />
