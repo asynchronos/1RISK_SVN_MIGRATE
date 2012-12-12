@@ -366,8 +366,8 @@ Public Class AnnalsCreditDAL
             For i As Integer = 0 To dtable.Rows.Count - 1
                 With dtable.Rows(i)
                     sql = "INSERT INTO ANNALS_CREDIT_ACCOUNT " _
-                  & " (ID, CIF, ACCNO, NBRTHAI, DECB_RD_ID, SUMLIMIT, SUMPRIN, SUMACCRU, SUMSUSP, SUMAGING, SUBJECT_DETAIL_ID, Value_Customer, VALUE_OLD, VALUE, VALUE_APPROVE, Others,PROJECT_CODE,PRODUCT_CODE,PROPOSAL_ID,RM_ID) " _
-                    & " VALUES(@ID, @CIF, @ACCNO, @NBRTHAI, @DECB_RD_ID, @SUMLIMIT, @SUMPRIN, @SUMACCRU, @SUMSUSP, @SUMAGING, @SUBJECT_DETAIL_ID, @Value_Customer, @VALUE_OLD, @VALUE, @VALUE_APPROVE, @Others,@PROJECT_CODE,@PRODUCT_CODE,@PROPOSAL_ID,@RM_ID) "
+                  & " (ID, CIF, ACCNO, NBRTHAI, DECB_RD_ID, SUMLIMIT, SUMPRIN, SUMACCRU, SUMSUSP, SUMAGING, SUBJECT_DETAIL_ID, Value_Customer, VALUE_OLD, VALUE, VALUE_APPROVE, Others,PROJECT_CODE,PRODUCT_CODE,PROPOSAL_ID,RM_ID,PROGRAM_ID,PROJECT_ID,PRODUCT_ID) " _
+                    & " VALUES(@ID, @CIF, @ACCNO, @NBRTHAI, @DECB_RD_ID, @SUMLIMIT, @SUMPRIN, @SUMACCRU, @SUMSUSP, @SUMAGING, @SUBJECT_DETAIL_ID, @Value_Customer, @VALUE_OLD, @VALUE, @VALUE_APPROVE, @Others,@PROJECT_CODE,@PRODUCT_CODE,@PROPOSAL_ID,@RM_ID,@PROGRAM_ID,@PROJECT_ID,@PRODUCT_ID) "
 
                     sqlCmd.CommandText = sql
                     sqlCmd.CommandType = CommandType.Text
@@ -416,6 +416,11 @@ Public Class AnnalsCreditDAL
                     sqlCmd.Parameters.AddWithValue("@PRODUCT_CODE", .Item("PRODUCT_CODE"))
                     sqlCmd.Parameters.AddWithValue("@PROPOSAL_ID", .Item("PROPOSAL_ID"))  ' เพิ่มวันที่ 18 /03/2009
                     sqlCmd.Parameters.AddWithValue("@RM_ID", .Item("RM_ID"))  ' เพิ่มวันที่ 18 /03/2009
+
+                    sqlCmd.Parameters.AddWithValue("@PROGRAM_ID", .Item("PROGRAM_ID"))
+                    sqlCmd.Parameters.AddWithValue("@PROJECT_ID", .Item("PROJECT_ID"))
+                    sqlCmd.Parameters.AddWithValue("@PRODUCT_ID", .Item("PRODUCT_ID"))
+
 
                     sqlCmd.ExecuteNonQuery()
                 End With
@@ -690,8 +695,8 @@ Public Class AnnalsCreditDAL
             For i As Integer = 0 To dtable.Rows.Count - 1
                 With dtable.Rows(i)
                     sql = "INSERT INTO ANNALS_CREDIT_ACCOUNT " _
-                  & " (ID, CIF, ACCNO, NBRTHAI, DECB_RD_ID, SUMLIMIT, SUMPRIN, SUMACCRU, SUMSUSP, SUMAGING, SUBJECT_DETAIL_ID, Value_Customer, VALUE_OLD, VALUE, VALUE_APPROVE, Others ,PROJECT_CODE,PRODUCT_CODE,PROPOSAL_ID,RM_ID) " _
-                    & " VALUES(@ID, @CIF, @ACCNO, @NBRTHAI, @DECB_RD_ID, @SUMLIMIT, @SUMPRIN, @SUMACCRU, @SUMSUSP, @SUMAGING, @SUBJECT_DETAIL_ID, @Value_Customer, @VALUE_OLD, @VALUE, @VALUE_APPROVE, @Others ,@PROJECT_CODE,@PRODUCT_CODE,@PROPOSAL_ID,@RM_ID) "
+                  & " (ID, CIF, ACCNO, NBRTHAI, DECB_RD_ID, SUMLIMIT, SUMPRIN, SUMACCRU, SUMSUSP, SUMAGING, SUBJECT_DETAIL_ID, Value_Customer, VALUE_OLD, VALUE, VALUE_APPROVE, Others ,PROJECT_CODE,PRODUCT_CODE,PROPOSAL_ID,RM_ID,PROGRAM_ID,PROJECT_ID,PRODUCT_ID) " _
+                    & " VALUES(@ID, @CIF, @ACCNO, @NBRTHAI, @DECB_RD_ID, @SUMLIMIT, @SUMPRIN, @SUMACCRU, @SUMSUSP, @SUMAGING, @SUBJECT_DETAIL_ID, @Value_Customer, @VALUE_OLD, @VALUE, @VALUE_APPROVE, @Others ,@PROJECT_CODE,@PRODUCT_CODE,@PROPOSAL_ID,@RM_ID,@PROGRAM_ID,@PROJECT_ID,@PRODUCT_ID) "
 
                     sqlCmd.CommandType = CommandType.Text
                     sqlCmd.CommandText = sql
@@ -739,6 +744,11 @@ Public Class AnnalsCreditDAL
                     sqlCmd.Parameters.AddWithValue("@PRODUCT_CODE", .Item("PRODUCT_CODE"))
                     sqlCmd.Parameters.AddWithValue("@PROPOSAL_ID", .Item("PROPOSAL_ID"))  ' เพิ่มวันที่ 18 /03/2009
                     sqlCmd.Parameters.AddWithValue("@RM_ID", .Item("RM_ID"))  ' เพิ่มวันที่ 10 /01/2011
+
+                    sqlCmd.Parameters.AddWithValue("@PROGRAM_ID", .Item("PROGRAM_ID"))
+                    sqlCmd.Parameters.AddWithValue("@PROJECT_ID", .Item("PROJECT_ID"))
+                    sqlCmd.Parameters.AddWithValue("@PRODUCT_ID", .Item("PRODUCT_ID"))
+
 
                     sqlCmd.ExecuteNonQuery()
                 End With

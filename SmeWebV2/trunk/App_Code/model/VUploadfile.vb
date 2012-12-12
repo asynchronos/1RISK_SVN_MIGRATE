@@ -17,7 +17,7 @@ Public Class VUploadfile
 	Private strPATH As String
 	Private dtCREATE_DATE As Date
     Private intFILE_TYPE As Integer
-    Private intFIlE_YEAR As Integer
+    Private intFILE_YEAR As Integer
 
 
 	Public Property ID As Integer
@@ -92,21 +92,20 @@ Public Class VUploadfile
 	End Set
 	End Property
 
-	Public Property FILE_TYPE As Integer
-	Get
-		Return intFILE_TYPE
-	End Get
-	Set (ByVal Value As Integer)
-		intFILE_TYPE = Value
-	End Set
-    End Property
-
-    Public Property FILE_YEAR As Integer
+    Public Property FILE_TYPE As Integer
         Get
-            Return intFIlE_YEAR
+            Return intFILE_TYPE
         End Get
         Set(ByVal Value As Integer)
-            intFIlE_YEAR = Value
+            intFILE_TYPE = Value
+        End Set
+    End Property
+    Public Property FILE_YEAR As Integer
+        Get
+            Return intFILE_YEAR
+        End Get
+        Set(ByVal Value As Integer)
+            intFILE_YEAR = Value
         End Set
     End Property
 
@@ -120,9 +119,7 @@ Public Class VUploadfile
 		Debug.Print("ANNALS_ID : " & ANNALS_ID)
 		Debug.Print("PATH : " & PATH)
 		Debug.Print("CREATE_DATE : " & CREATE_DATE)
-        Debug.Print("FILE_TYPE : " & FILE_TYPE)
-        Debug.Print("FILE_YEAR : " & FILE_YEAR)
-
+		Debug.Print("FILE_TYPE : " & FILE_TYPE)
 	End Sub
 
 End Class

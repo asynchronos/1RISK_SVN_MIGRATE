@@ -105,7 +105,6 @@ Public Class AnnalsCusNcbTypeDAL
              & "FROM ANNALS_CUS_NCB_TYPE  WHERE DEL_FLAG <> 1" _
              & "ORDER BY CUS_NCB_TYPE_ID"
 
-            '   MsgBox(sql)
 			Dim sqlCmd As New SqlCommand(sql, conn)
 			sqlCmd.Prepare()
 
