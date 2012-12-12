@@ -28,6 +28,10 @@
         eLog.Source = eventLogName
         eLog.WriteEntry(err.ToString(), EventLogEntryType.Error)
 
+        If Not IsNothing(err.InnerException) Then
+            err = err.InnerException
+        End If
+
         'redirect to error page
         If err.GetType().Equals(GetType(System.Runtime.InteropServices.COMException)) Or
             err.GetType().Equals(GetType(System.DirectoryServices.DirectoryServicesCOMException)) Then
@@ -35,8 +39,10 @@
         ElseIf err.GetType().Equals(GetType(System.Security.SecurityException)) Then
             Response.Redirect("~/aspx/error/unauthorized.aspx?page=" & Server.UrlEncode(Request.RawUrl))
         Else
+            'Response.Redirect("~/aspx/error/defaultError.aspx?page=" & Server.UrlEncode(Request.RawUrl) _
+            '    & "&msg=" & err.InnerException.Message & err.InnerException.StackTrace)
             Response.Redirect("~/aspx/error/defaultError.aspx?page=" & Server.UrlEncode(Request.RawUrl) _
-                & "&msg=" & err.InnerException.Message & err.InnerException.StackTrace)
+                & "&msg=" & err.Message & err.StackTrace)
         End If
     End Sub
 
