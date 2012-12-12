@@ -25,6 +25,9 @@ namespace SME.UserSystem.Core.AD
         string domainName = ""; //"LDAP://<IP Address of the Server where AD data is stored>"
         */
 
+        //วิธีนี้ถ้า Fail จะได้ return แค่ว่า unknown user name or bad password. เพียงอย่างเดียว
+        //ถ้าต้องการ message อื่นๆ เช่น User Lock ต้องมี user ที่ Authen ผ่าน เผื่อไป get list user
+        //และ attribute ต่างๆ
         public bool IsAuthenticated(string username, string pwd, string domainName)
         {
             bool authenticated = false;
@@ -49,6 +52,11 @@ namespace SME.UserSystem.Core.AD
                     _filterAttribute = (String)result.Properties["cn"][0];
 
                     authenticated = true;
+
+                    if (isDebugEnabled)
+                    {
+                        log.Debug("authenticated:" + authenticated);
+                    }
                 }
                 catch (DirectoryServicesCOMException cex)
                 {

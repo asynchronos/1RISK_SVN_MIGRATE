@@ -1,9 +1,14 @@
 ﻿using System;
+using log4net;
 
 namespace SME.DebtSummary.Core.Model
 {
     public class MISCustSieViewModel
     {
+        private static readonly ILog log = LogManager.GetLogger(
+    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly bool isDebugEnabled = log.IsDebugEnabled;
+
         public readonly static string UNKNOWN_STR = "Unknown";
         public readonly static int UNKNOWN_ID = -9999;
 

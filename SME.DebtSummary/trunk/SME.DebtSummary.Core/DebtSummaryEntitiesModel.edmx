@@ -183,6 +183,33 @@
           <Property Name="ZIPSHOP" Type="int" />
           <Property Name="CARDTYPE" Type="nvarchar" MaxLength="10" />
           <Property Name="CARDNO" Type="nvarchar" MaxLength="10" />
+          <Property Name="BAYDATE" Type="datetime" />
+          <Property Name="TYP_RATE" Type="nvarchar" MaxLength="1" />
+          <Property Name="PROV_DESC" Type="nvarchar" MaxLength="30" />
+          <Property Name="PROVSHOP_D" Type="nvarchar" MaxLength="30" />
+          <Property Name="NETFAS" Type="numeric" />
+          <Property Name="AUTHOCAP" Type="numeric" />
+          <Property Name="PAIDUP" Type="numeric" />
+          <Property Name="LANDVAL" Type="numeric" />
+          <Property Name="CITIZEN" Type="nvarchar" MaxLength="3" />
+          <Property Name="DEPTFLAGH" Type="smallint" />
+          <Property Name="DEPTHIST" Type="int" />
+          <Property Name="CIF3" Type="int" />
+          <Property Name="CIF4" Type="int" />
+          <Property Name="CIF5" Type="int" />
+          <Property Name="CIF6" Type="int" />
+          <Property Name="CIF7" Type="int" />
+          <Property Name="CIF8" Type="int" />
+          <Property Name="CIF9" Type="int" />
+          <Property Name="TDR_AGING" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="TDR_DATE" Type="int" />
+          <Property Name="AO_SME" Type="int" />
+          <Property Name="CIFSUGAR" Type="int" />
+          <Property Name="REV_CLASS" Type="nvarchar" MaxLength="1" />
+          <Property Name="BOT_CLASS" Type="nvarchar" MaxLength="1" />
+          <Property Name="ACC_CLASS" Type="nvarchar" MaxLength="1" />
+          <Property Name="STOPACCRU" Type="nvarchar" MaxLength="1" />
+          <Property Name="ASOF" Type="datetime" />
         </EntityType>
         <EntityType Name="CUSTOMER_SME">
           <Key>
@@ -549,6 +576,33 @@
           <Property Name="CARDNO" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="CUSTOMER_SME" Relationship="Bay01_Model.CUSTOMERCUSTOMER_SME" FromRole="CUSTOMER" ToRole="CUSTOMER_SME" />
           <NavigationProperty Name="ByCus_CIF" Relationship="Bay01_Model.CUSTOMERByCus_CIF" FromRole="CUSTOMER" ToRole="ByCus_CIF" />
+          <Property Type="DateTime" Name="BAYDATE" />
+          <Property Type="String" Name="TYP_RATE" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PROV_DESC" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PROVSHOP_D" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="NETFAS" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="AUTHOCAP" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="PAIDUP" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="LANDVAL" Precision="18" Scale="0" />
+          <Property Type="String" Name="CITIZEN" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="DEPTFLAGH" />
+          <Property Type="Int32" Name="DEPTHIST" />
+          <Property Type="Int32" Name="CIF3" />
+          <Property Type="Int32" Name="CIF4" />
+          <Property Type="Int32" Name="CIF5" />
+          <Property Type="Int32" Name="CIF6" />
+          <Property Type="Int32" Name="CIF7" />
+          <Property Type="Int32" Name="CIF8" />
+          <Property Type="Int32" Name="CIF9" />
+          <Property Type="Decimal" Name="TDR_AGING" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="TDR_DATE" />
+          <Property Type="Int32" Name="AO_SME" />
+          <Property Type="Int32" Name="CIFSUGAR" />
+          <Property Type="String" Name="REV_CLASS" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BOT_CLASS" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ACC_CLASS" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="STOPACCRU" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ASOF" />
         </EntityType>
         <EntityType Name="CUSTOMER_SME">
           <Key>
@@ -889,7 +943,34 @@
             <ScalarProperty Name="RM_AoTel" ColumnName="RM_AoTel" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="CUSTOMER"><EntityTypeMapping TypeName="Bay01_Model.CUSTOMER"><MappingFragment StoreEntitySet="CUSTOMER">
-            <ScalarProperty Name="CIF" ColumnName="CIF" />
+            <ScalarProperty Name="ASOF" ColumnName="ASOF" />
+                <ScalarProperty Name="STOPACCRU" ColumnName="STOPACCRU" />
+                <ScalarProperty Name="ACC_CLASS" ColumnName="ACC_CLASS" />
+                <ScalarProperty Name="BOT_CLASS" ColumnName="BOT_CLASS" />
+                <ScalarProperty Name="REV_CLASS" ColumnName="REV_CLASS" />
+                <ScalarProperty Name="CIFSUGAR" ColumnName="CIFSUGAR" />
+                <ScalarProperty Name="AO_SME" ColumnName="AO_SME" />
+                <ScalarProperty Name="TDR_DATE" ColumnName="TDR_DATE" />
+                <ScalarProperty Name="TDR_AGING" ColumnName="TDR_AGING" />
+                <ScalarProperty Name="CIF9" ColumnName="CIF9" />
+                <ScalarProperty Name="CIF8" ColumnName="CIF8" />
+                <ScalarProperty Name="CIF7" ColumnName="CIF7" />
+                <ScalarProperty Name="CIF6" ColumnName="CIF6" />
+                <ScalarProperty Name="CIF5" ColumnName="CIF5" />
+                <ScalarProperty Name="CIF4" ColumnName="CIF4" />
+                <ScalarProperty Name="CIF3" ColumnName="CIF3" />
+                <ScalarProperty Name="DEPTHIST" ColumnName="DEPTHIST" />
+                <ScalarProperty Name="DEPTFLAGH" ColumnName="DEPTFLAGH" />
+                <ScalarProperty Name="CITIZEN" ColumnName="CITIZEN" />
+                <ScalarProperty Name="LANDVAL" ColumnName="LANDVAL" />
+                <ScalarProperty Name="PAIDUP" ColumnName="PAIDUP" />
+                <ScalarProperty Name="AUTHOCAP" ColumnName="AUTHOCAP" />
+                <ScalarProperty Name="NETFAS" ColumnName="NETFAS" />
+                <ScalarProperty Name="PROVSHOP_D" ColumnName="PROVSHOP_D" />
+                <ScalarProperty Name="PROV_DESC" ColumnName="PROV_DESC" />
+                <ScalarProperty Name="TYP_RATE" ColumnName="TYP_RATE" />
+                <ScalarProperty Name="BAYDATE" ColumnName="BAYDATE" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
             <ScalarProperty Name="CUS_TITLE" ColumnName="CUS_TITLE" />
             <ScalarProperty Name="CUS_FIRST" ColumnName="CUS_FIRST" />
             <ScalarProperty Name="CUS_LAST" ColumnName="CUS_LAST" />

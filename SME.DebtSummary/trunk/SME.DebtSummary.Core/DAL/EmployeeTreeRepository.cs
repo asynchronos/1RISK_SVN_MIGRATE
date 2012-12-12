@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using log4net;
 using SME.DebtSummary.Core.Cache;
 
 namespace SME.DebtSummary.Core.DAL
 {
     public class EmployeeTreeRepository : IEmployeeTreeRepository, ICacheRepository
     {
+        private static readonly ILog log = LogManager.GetLogger(
+    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly bool isDebugEnabled = log.IsDebugEnabled;
+
         //protected Bay01_Entities DataContext { get; private set; }
         public readonly static string CACHE_NAME = "EMP_TREE";
         public readonly static string SPACE_CHAR = "---";

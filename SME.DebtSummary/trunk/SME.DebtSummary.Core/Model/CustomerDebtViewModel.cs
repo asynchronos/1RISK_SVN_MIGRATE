@@ -1,10 +1,15 @@
 ﻿using System;
+using log4net;
 using Util;
 
 namespace SME.DebtSummary.Core.Model
 {
     public class CustomerDebtViewModel
     {
+        private static readonly ILog log = LogManager.GetLogger(
+    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly bool isDebugEnabled = log.IsDebugEnabled;
+
         private Int32 _CIF;
 
         public Int32 CIF

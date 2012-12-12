@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using log4net;
+using Util.Aspx;
 
 namespace SME.DebtSummary.Report
 {

@@ -4,27 +4,28 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UserSystemEntitiesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="UserSystemEntitiesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="UserSystemEntitiesModelStoreContainer">
-          <EntitySet Name="APPLICATION" EntityType="UserSystemEntitiesModel.Store.APPLICATION" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="CATE_AND_APP" EntityType="UserSystemEntitiesModel.Store.CATE_AND_APP" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="CATE_AND_CUS" EntityType="UserSystemEntitiesModel.Store.CATE_AND_CUS" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="CATE_AND_EMP" EntityType="UserSystemEntitiesModel.Store.CATE_AND_EMP" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="CATE_AND_MENU" EntityType="UserSystemEntitiesModel.Store.CATE_AND_MENU" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="CATE_LINK_CATE" EntityType="UserSystemEntitiesModel.Store.CATE_LINK_CATE" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="CATE_LINK_CATE_TYPE" EntityType="UserSystemEntitiesModel.Store.CATE_LINK_CATE_TYPE" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="CATEGORY" EntityType="UserSystemEntitiesModel.Store.CATEGORY" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="CATEGORY_TYPE" EntityType="UserSystemEntitiesModel.Store.CATEGORY_TYPE" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="MENU_MASTER" EntityType="UserSystemEntitiesModel.Store.MENU_MASTER" store:Type="Tables" Schema="CLASSIFY" />
-          <EntitySet Name="TB_EMPLOYEE" EntityType="UserSystemEntitiesModel.Store.TB_EMPLOYEE" store:Type="Tables" Schema="EMPLOYEE" />
-          <EntitySet Name="USER_DATA" EntityType="UserSystemEntitiesModel.Store.USER_DATA" store:Type="Tables" Schema="EMPLOYEE" />
-          <AssociationSet Name="FK_CATE_AND_APP_APPLICATION" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_APP_APPLICATION">
+          <EntitySet Name="APP_PROFILE" EntityType="UserSystemEntitiesModel.Store.APP_PROFILE" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="APPLICATION" EntityType="UserSystemEntitiesModel.Store.APPLICATION" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CATE_AND_CUS" EntityType="UserSystemEntitiesModel.Store.CATE_AND_CUS" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CATE_AND_EMP" EntityType="UserSystemEntitiesModel.Store.CATE_AND_EMP" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CATE_AND_MENU" EntityType="UserSystemEntitiesModel.Store.CATE_AND_MENU" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CATE_LINK_CATE" EntityType="UserSystemEntitiesModel.Store.CATE_LINK_CATE" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CATE_LINK_CATE_TYPE" EntityType="UserSystemEntitiesModel.Store.CATE_LINK_CATE_TYPE" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CATEGORY" EntityType="UserSystemEntitiesModel.Store.CATEGORY" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CATEGORY_TYPE" EntityType="UserSystemEntitiesModel.Store.CATEGORY_TYPE" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="MENU_MASTER" EntityType="UserSystemEntitiesModel.Store.MENU_MASTER" store:Type="Tables" Schema="CLASSIFY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="TB_EMPLOYEE" EntityType="UserSystemEntitiesModel.Store.TB_EMPLOYEE" store:Type="Tables" Schema="EMPLOYEE" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="TB_TITLE" EntityType="UserSystemEntitiesModel.Store.TB_TITLE" store:Type="Tables" Schema="EMPLOYEE" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="USER_DATA" EntityType="UserSystemEntitiesModel.Store.USER_DATA" store:Type="Tables" Schema="EMPLOYEE" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <AssociationSet Name="FK_APP_PROFILE_APPLICATION" Association="UserSystemEntitiesModel.Store.FK_APP_PROFILE_APPLICATION">
             <End Role="APPLICATION" EntitySet="APPLICATION" />
-            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+            <End Role="APP_PROFILE" EntitySet="APP_PROFILE" />
           </AssociationSet>
-          <AssociationSet Name="FK_CATE_AND_APP_CATEGORY" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_APP_CATEGORY">
-            <End Role="CATEGORY" EntitySet="CATEGORY" />
-            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
+          <AssociationSet Name="FK_APP_PROFILE_USER_DATA" Association="UserSystemEntitiesModel.Store.FK_APP_PROFILE_USER_DATA">
+            <End Role="USER_DATA" EntitySet="USER_DATA" />
+            <End Role="APP_PROFILE" EntitySet="APP_PROFILE" />
           </AssociationSet>
           <AssociationSet Name="FK_CATE_AND_CUS_CATEGORY" Association="UserSystemEntitiesModel.Store.FK_CATE_AND_CUS_CATEGORY">
             <End Role="CATEGORY" EntitySet="CATEGORY" />
@@ -67,6 +68,20 @@
             <End Role="MENU_MASTER1" EntitySet="MENU_MASTER" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="APP_PROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="APP_KEY" Type="int" />
+          <Property Name="EMP_ID" Type="varchar" MaxLength="10" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="EXPIRE_DATE" Type="datetime" />
+          <Property Name="LAST_ACTIVITY" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAST_ACTIVITY_DATE" Type="datetime" />
+          <Property Name="IS_AUTHENTICATED" Type="bit" />
+          <Property Name="DEL_FLAG" Type="bit" />
+        </EntityType>
         <EntityType Name="APPLICATION">
           <Key>
             <PropertyRef Name="APP_KEY" />
@@ -74,15 +89,6 @@
           <Property Name="APP_KEY" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="APP_DESC" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="PRIORITY" Type="int" />
-          <Property Name="DEL_FLAG" Type="bit" />
-        </EntityType>
-        <EntityType Name="CATE_AND_APP">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CATEGORY_KEY" Type="int" />
-          <Property Name="APP_KEY" Type="int" />
           <Property Name="DEL_FLAG" Type="bit" />
         </EntityType>
         <EntityType Name="CATE_AND_CUS">
@@ -172,7 +178,7 @@
           <Key>
             <PropertyRef Name="EMP_ID" />
           </Key>
-          <Property Name="EMP_ID" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="EMP_ID" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="TITLE_CODE" Type="tinyint" />
           <Property Name="EMPNAME" Type="varchar" MaxLength="50" />
           <Property Name="EMPSURNAME" Type="varchar" MaxLength="50" />
@@ -212,6 +218,14 @@
           <Property Name="Id_Group_Group" Type="ntext" />
           <Property Name="level_id" Type="nchar" MaxLength="1" />
         </EntityType>
+        <EntityType Name="TB_TITLE">
+          <Key>
+            <PropertyRef Name="TITLE_CODE" />
+          </Key>
+          <Property Name="TITLE_CODE" Type="tinyint" Nullable="false" />
+          <Property Name="TITLE_NAME" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="TITLE_NAME_E" Type="varchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="USER_DATA">
           <Key>
             <PropertyRef Name="EMP_ID" />
@@ -226,33 +240,32 @@
           <Property Name="PASSWD" Type="nvarchar" MaxLength="20" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
           <Property Name="CREATE_DATE" Type="datetime" />
-          <Property Name="EXPIRE_DATE" Type="datetime" />
           <Property Name="UPDATE_DATE" Type="datetime" />
           <Property Name="LAST_SIGN_ON_DATE" Type="datetime" />
           <Property Name="LAST_CHANGE_PASS_DATE" Type="datetime" />
           <Property Name="DEL_FLAG" Type="bit" />
         </EntityType>
-        <Association Name="FK_CATE_AND_APP_APPLICATION">
+        <Association Name="FK_APP_PROFILE_APPLICATION">
           <End Role="APPLICATION" Type="UserSystemEntitiesModel.Store.APPLICATION" Multiplicity="0..1" />
-          <End Role="CATE_AND_APP" Type="UserSystemEntitiesModel.Store.CATE_AND_APP" Multiplicity="*" />
+          <End Role="APP_PROFILE" Type="UserSystemEntitiesModel.Store.APP_PROFILE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="APPLICATION">
               <PropertyRef Name="APP_KEY" />
             </Principal>
-            <Dependent Role="CATE_AND_APP">
+            <Dependent Role="APP_PROFILE">
               <PropertyRef Name="APP_KEY" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CATE_AND_APP_CATEGORY">
-          <End Role="CATEGORY" Type="UserSystemEntitiesModel.Store.CATEGORY" Multiplicity="0..1" />
-          <End Role="CATE_AND_APP" Type="UserSystemEntitiesModel.Store.CATE_AND_APP" Multiplicity="*" />
+        <Association Name="FK_APP_PROFILE_USER_DATA">
+          <End Role="USER_DATA" Type="UserSystemEntitiesModel.Store.USER_DATA" Multiplicity="0..1" />
+          <End Role="APP_PROFILE" Type="UserSystemEntitiesModel.Store.APP_PROFILE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CATEGORY">
-              <PropertyRef Name="CATEGORY_KEY" />
+            <Principal Role="USER_DATA">
+              <PropertyRef Name="EMP_ID" />
             </Principal>
-            <Dependent Role="CATE_AND_APP">
-              <PropertyRef Name="CATEGORY_KEY" />
+            <Dependent Role="APP_PROFILE">
+              <PropertyRef Name="EMP_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -379,10 +392,9 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="UserSystemEntitiesModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="UserSystemEntities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="UserSystemEntitiesModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="UserSystemEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="APPLICATION" EntityType="UserSystemEntitiesModel.APPLICATION" />
-          <EntitySet Name="CATE_AND_APP" EntityType="UserSystemEntitiesModel.CATE_AND_APP" />
           <EntitySet Name="CATE_AND_CUS" EntityType="UserSystemEntitiesModel.CATE_AND_CUS" />
           <EntitySet Name="CATE_AND_EMP" EntityType="UserSystemEntitiesModel.CATE_AND_EMP" />
           <EntitySet Name="CATE_AND_MENU" EntityType="UserSystemEntitiesModel.CATE_AND_MENU" />
@@ -393,14 +405,6 @@
           <EntitySet Name="MENU_MASTER" EntityType="UserSystemEntitiesModel.MENU_MASTER" />
           <EntitySet Name="TB_EMPLOYEE" EntityType="UserSystemEntitiesModel.TB_EMPLOYEE" />
           <EntitySet Name="USER_DATA" EntityType="UserSystemEntitiesModel.USER_DATA" />
-          <AssociationSet Name="FK_CATE_AND_APP_APPLICATION" Association="UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION">
-            <End Role="APPLICATION" EntitySet="APPLICATION" />
-            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CATE_AND_APP_CATEGORY" Association="UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY">
-            <End Role="CATEGORY" EntitySet="CATEGORY" />
-            <End Role="CATE_AND_APP" EntitySet="CATE_AND_APP" />
-          </AssociationSet>
           <AssociationSet Name="FK_CATE_AND_CUS_CATEGORY" Association="UserSystemEntitiesModel.FK_CATE_AND_CUS_CATEGORY">
             <End Role="CATEGORY" EntitySet="CATEGORY" />
             <End Role="CATE_AND_CUS" EntitySet="CATE_AND_CUS" />
@@ -441,33 +445,40 @@
             <End Role="MENU_MASTER" EntitySet="MENU_MASTER" />
             <End Role="MENU_MASTER1" EntitySet="MENU_MASTER" />
           </AssociationSet>
+          <EntitySet Name="APP_PROFILE" EntityType="UserSystemEntitiesModel.APP_PROFILE" />
+          <AssociationSet Name="FK_APP_PROFILE_APPLICATION" Association="UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATION" />
+            <End Role="APP_PROFILE" EntitySet="APP_PROFILE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APP_PROFILE_USER_DATA" Association="UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA">
+            <End Role="USER_DATA" EntitySet="USER_DATA" />
+            <End Role="APP_PROFILE" EntitySet="APP_PROFILE" />
+          </AssociationSet>
+          <AssociationSet Name="USER_DATATB_EMPLOYEE" Association="UserSystemEntitiesModel.USER_DATATB_EMPLOYEE">
+            <End Role="USER_DATA" EntitySet="USER_DATA" />
+            <End Role="TB_EMPLOYEE" EntitySet="TB_EMPLOYEE" />
+          </AssociationSet>
+          <EntitySet Name="TB_TITLE" EntityType="UserSystemEntitiesModel.TB_TITLE" />
+          <AssociationSet Name="TB_TITLETB_EMPLOYEE" Association="UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE">
+            <End Role="TB_TITLE" EntitySet="TB_TITLE" />
+            <End Role="TB_EMPLOYEE" EntitySet="TB_EMPLOYEE" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="APPLICATION">
           <Key>
             <PropertyRef Name="APP_KEY" />
           </Key>
-          <Property Name="APP_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APP_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="APP_DESC" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="PRIORITY" Type="Int32" />
           <Property Name="DEL_FLAG" Type="Boolean" />
-          <NavigationProperty Name="CATE_AND_APP" Relationship="UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION" FromRole="APPLICATION" ToRole="CATE_AND_APP" />
-        </EntityType>
-        <EntityType Name="CATE_AND_APP">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CATEGORY_KEY" Type="Int32" />
-          <Property Name="APP_KEY" Type="Int32" />
-          <Property Name="DEL_FLAG" Type="Boolean" />
-          <NavigationProperty Name="APPLICATION" Relationship="UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION" FromRole="CATE_AND_APP" ToRole="APPLICATION" />
-          <NavigationProperty Name="CATEGORY" Relationship="UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY" FromRole="CATE_AND_APP" ToRole="CATEGORY" />
+          <NavigationProperty Name="APP_PROFILE" Relationship="UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION" FromRole="APPLICATION" ToRole="APP_PROFILE" />
         </EntityType>
         <EntityType Name="CATE_AND_CUS">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
           <Property Name="CIF" Type="Int32" Nullable="false" />
           <Property Name="DEL_FLAG" Type="Boolean" />
@@ -477,7 +488,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
           <Property Name="EMP_ID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="HEAD_PRIORITY" Type="Int32" />
@@ -489,7 +500,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CATEGORY_KEY" Type="Int32" />
           <Property Name="MENU_KEY" Type="Int32" />
           <Property Name="DEL_FLAG" Type="Boolean" />
@@ -500,7 +511,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" />
           <Property Name="LINK_TO_CATEGORY_KEY" Type="Int32" Nullable="false" />
           <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" />
@@ -513,7 +524,7 @@
           <Key>
             <PropertyRef Name="LINKED_TYPE_KEY" />
           </Key>
-          <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LINKED_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="DEL_FLAG" Type="Boolean" />
           <NavigationProperty Name="CATE_LINK_CATE" Relationship="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE" FromRole="CATE_LINK_CATE_TYPE" ToRole="CATE_LINK_CATE" />
@@ -522,14 +533,13 @@
           <Key>
             <PropertyRef Name="CATEGORY_KEY" />
           </Key>
-          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CATEGORY_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="CATEGORY_DESC_TH" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="CATEGORY_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="CATEGORY_TYPE_KEY" Type="Int32" />
           <Property Name="PRIORITY" Type="Int32" />
           <Property Name="DEL_FLAG" Type="Boolean" />
-          <NavigationProperty Name="CATE_AND_APP" Relationship="UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_APP" />
           <NavigationProperty Name="CATE_AND_CUS" Relationship="UserSystemEntitiesModel.FK_CATE_AND_CUS_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_CUS" />
           <NavigationProperty Name="CATE_AND_EMP" Relationship="UserSystemEntitiesModel.FK_CATE_AND_EMP_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_EMP" />
           <NavigationProperty Name="CATE_AND_MENU" Relationship="UserSystemEntitiesModel.FK_CATE_AND_MENU_CATEGORY" FromRole="CATEGORY" ToRole="CATE_AND_MENU" />
@@ -541,7 +551,7 @@
           <Key>
             <PropertyRef Name="CATEGORY_TYPE_KEY" />
           </Key>
-          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_TYPE_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CATEGORY_TYPE_DESC" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="CATEGORY_TYPE_DESC_TH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CATEGORY_TYPE_VALUE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
@@ -553,7 +563,7 @@
           <Key>
             <PropertyRef Name="MENU_KEY" />
           </Key>
-          <Property Name="MENU_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MENU_KEY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="MENU_TITLE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="MENU_URL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="MENU_POPUP_OPT" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -609,6 +619,8 @@
           <Property Name="Id_Branch_Group" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Id_Group_Group" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="level_id" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="USER_DATA" Relationship="UserSystemEntitiesModel.USER_DATATB_EMPLOYEE" FromRole="TB_EMPLOYEE" ToRole="USER_DATA" />
+          <NavigationProperty Name="TB_TITLE" Relationship="UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE" FromRole="TB_EMPLOYEE" ToRole="TB_TITLE" />
         </EntityType>
         <EntityType Name="USER_DATA">
           <Key>
@@ -624,37 +636,14 @@
           <Property Name="PASSWD" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="EMAIL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CREATE_DATE" Type="DateTime" />
-          <Property Name="EXPIRE_DATE" Type="DateTime" />
           <Property Name="UPDATE_DATE" Type="DateTime" />
           <Property Name="LAST_SIGN_ON_DATE" Type="DateTime" />
           <Property Name="LAST_CHANGE_PASS_DATE" Type="DateTime" />
           <Property Name="DEL_FLAG" Type="Boolean" />
           <NavigationProperty Name="CATE_AND_EMP" Relationship="UserSystemEntitiesModel.FK_CATE_AND_EMP_USER_DATA" FromRole="USER_DATA" ToRole="CATE_AND_EMP" />
+          <NavigationProperty Name="APP_PROFILE" Relationship="UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA" FromRole="USER_DATA" ToRole="APP_PROFILE" />
+          <NavigationProperty Name="TB_EMPLOYEE" Relationship="UserSystemEntitiesModel.USER_DATATB_EMPLOYEE" FromRole="USER_DATA" ToRole="TB_EMPLOYEE" />
         </EntityType>
-        <Association Name="FK_CATE_AND_APP_APPLICATION">
-          <End Type="UserSystemEntitiesModel.APPLICATION" Role="APPLICATION" Multiplicity="0..1" />
-          <End Type="UserSystemEntitiesModel.CATE_AND_APP" Role="CATE_AND_APP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APPLICATION">
-              <PropertyRef Name="APP_KEY" />
-            </Principal>
-            <Dependent Role="CATE_AND_APP">
-              <PropertyRef Name="APP_KEY" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CATE_AND_APP_CATEGORY">
-          <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="0..1" />
-          <End Type="UserSystemEntitiesModel.CATE_AND_APP" Role="CATE_AND_APP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CATEGORY">
-              <PropertyRef Name="CATEGORY_KEY" />
-            </Principal>
-            <Dependent Role="CATE_AND_APP">
-              <PropertyRef Name="CATEGORY_KEY" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CATE_AND_CUS_CATEGORY">
           <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="1" />
           <End Type="UserSystemEntitiesModel.CATE_AND_CUS" Role="CATE_AND_CUS" Multiplicity="*" />
@@ -775,6 +764,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="APP_PROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="APP_KEY" />
+          <Property Type="String" Name="EMP_ID" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LAST_ACTIVITY" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LAST_ACTIVITY_DATE" />
+          <Property Type="Boolean" Name="IS_AUTHENTICATED" />
+          <NavigationProperty Name="APPLICATION" Relationship="UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION" FromRole="APP_PROFILE" ToRole="APPLICATION" />
+          <NavigationProperty Name="USER_DATA" Relationship="UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA" FromRole="APP_PROFILE" ToRole="USER_DATA" />
+          <Property Type="Boolean" Name="DEL_FLAG" />
+          <Property Type="DateTime" Name="CREATE_DATE" />
+          <Property Type="DateTime" Name="EXPIRE_DATE" />
+        </EntityType>
+        <Association Name="FK_APP_PROFILE_APPLICATION">
+          <End Type="UserSystemEntitiesModel.APPLICATION" Role="APPLICATION" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.APP_PROFILE" Role="APP_PROFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APP_KEY" />
+            </Principal>
+            <Dependent Role="APP_PROFILE">
+              <PropertyRef Name="APP_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APP_PROFILE_USER_DATA">
+          <End Type="UserSystemEntitiesModel.USER_DATA" Role="USER_DATA" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.APP_PROFILE" Role="APP_PROFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_DATA">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="APP_PROFILE">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USER_DATATB_EMPLOYEE">
+          <End Type="UserSystemEntitiesModel.USER_DATA" Role="USER_DATA" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.TB_EMPLOYEE" Role="TB_EMPLOYEE" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_EMPLOYEE">
+              <PropertyRef Name="EMP_ID" />
+            </Principal>
+            <Dependent Role="USER_DATA">
+              <PropertyRef Name="EMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB_TITLE">
+          <Key>
+            <PropertyRef Name="TITLE_CODE" />
+          </Key>
+          <Property Type="Byte" Name="TITLE_CODE" Nullable="false" />
+          <Property Type="String" Name="TITLE_NAME" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TITLE_NAME_E" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_EMPLOYEE" Relationship="UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE" FromRole="TB_TITLE" ToRole="TB_EMPLOYEE" />
+        </EntityType>
+        <Association Name="TB_TITLETB_EMPLOYEE">
+          <End Type="UserSystemEntitiesModel.TB_TITLE" Role="TB_TITLE" Multiplicity="0..1" />
+          <End Type="UserSystemEntitiesModel.TB_EMPLOYEE" Role="TB_EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TITLE">
+              <PropertyRef Name="TITLE_CODE" />
+            </Principal>
+            <Dependent Role="TB_EMPLOYEE">
+              <PropertyRef Name="TITLE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -785,12 +847,6 @@
             <ScalarProperty Name="APP_KEY" ColumnName="APP_KEY" />
             <ScalarProperty Name="APP_DESC" ColumnName="APP_DESC" />
             <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
-            <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="CATE_AND_APP"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATE_AND_APP"><MappingFragment StoreEntitySet="CATE_AND_APP">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="CATEGORY_KEY" ColumnName="CATEGORY_KEY" />
-            <ScalarProperty Name="APP_KEY" ColumnName="APP_KEY" />
             <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="CATE_AND_CUS"><EntityTypeMapping TypeName="UserSystemEntitiesModel.CATE_AND_CUS"><MappingFragment StoreEntitySet="CATE_AND_CUS">
@@ -904,12 +960,35 @@
             <ScalarProperty Name="PASSWD" ColumnName="PASSWD" />
             <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
             <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
-            <ScalarProperty Name="EXPIRE_DATE" ColumnName="EXPIRE_DATE" />
             <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
             <ScalarProperty Name="LAST_SIGN_ON_DATE" ColumnName="LAST_SIGN_ON_DATE" />
             <ScalarProperty Name="LAST_CHANGE_PASS_DATE" ColumnName="LAST_CHANGE_PASS_DATE" />
             <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="APP_PROFILE">
+            <EntityTypeMapping TypeName="UserSystemEntitiesModel.APP_PROFILE">
+              <MappingFragment StoreEntitySet="APP_PROFILE">
+                <ScalarProperty Name="EXPIRE_DATE" ColumnName="EXPIRE_DATE" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="DEL_FLAG" ColumnName="DEL_FLAG" />
+                <ScalarProperty Name="IS_AUTHENTICATED" ColumnName="IS_AUTHENTICATED" />
+                <ScalarProperty Name="LAST_ACTIVITY_DATE" ColumnName="LAST_ACTIVITY_DATE" />
+                <ScalarProperty Name="LAST_ACTIVITY" ColumnName="LAST_ACTIVITY" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="APP_KEY" ColumnName="APP_KEY" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_TITLE">
+            <EntityTypeMapping TypeName="UserSystemEntitiesModel.TB_TITLE">
+              <MappingFragment StoreEntitySet="TB_TITLE">
+                <ScalarProperty Name="TITLE_NAME_E" ColumnName="TITLE_NAME_E" />
+                <ScalarProperty Name="TITLE_NAME" ColumnName="TITLE_NAME" />
+                <ScalarProperty Name="TITLE_CODE" ColumnName="TITLE_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -930,84 +1009,94 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="UserSystemEntitiesModel">
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.APPLICATION" Width="1.5" PointX="3" PointY="11" Height="1.7566536458333353" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_APP" Width="1.5" PointX="5.25" PointY="7" Height="1.9210009765624996" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_CUS" Width="1.5" PointX="5.25" PointY="12.375" Height="1.7566536458333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_EMP" Width="1.5" PointX="8.25" PointY="6.875" Height="2.0853483072916665" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_MENU" Width="1.5" PointX="5.25" PointY="4" Height="1.9210009765624996" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_LINK_CATE" Width="1.5" PointX="8.25" PointY="3.875" Height="2.2496956380208317" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_LINK_CATE_TYPE" Width="1.5" PointX="6" PointY="1.125" Height="1.5923063151041672" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATEGORY" Width="1.5" PointX="3" PointY="6.375" Height="3.2357796223958317" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATEGORY_TYPE" Width="1.5" PointX="0.75" PointY="6.875" Height="2.0853483072916665" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.MENU_MASTER" Width="1.5" PointX="3" PointY="2.5" Height="2.9070849609374996" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.TB_EMPLOYEE" Width="1.5" PointX="8.75" PointY="9.75" Height="7.3444628906250031" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.USER_DATA" Width="1.5" PointX="6" PointY="15.125" Height="3.5644742838541674" IsExpanded="true" />
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION" >
-          <ConnectorPoint PointX="4.5" PointY="11.001152846153847" />
-          <ConnectorPoint PointX="4.875" PointY="10.626152846153847" />
-          <ConnectorPoint PointX="4.875" PointY="7.96050048828125" />
-          <ConnectorPoint PointX="5.25" PointY="7.96050048828125" />
+      <Diagram Name="UserSystemEntitiesModel" ZoomLevel="108">
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.APPLICATION" Width="1.5" PointX="6" PointY="25.625" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_CUS" Width="1.5" PointX="5.25" PointY="14.125" Height="1.7566536460071802" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_EMP" Width="1.5" PointX="5.25" PointY="8.375" Height="2.0853483080863953" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_AND_MENU" Width="1.5" PointX="5.25" PointY="5.5" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_LINK_CATE" Width="1.5" PointX="5.25" PointY="2.375" Height="2.2496956380208317" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATE_LINK_CATE_TYPE" Width="1.5" PointX="3" PointY="1.625" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATEGORY" Width="1.5" PointX="3" PointY="4.875" Height="3.0714322924613953" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.CATEGORY_TYPE" Width="1.5" PointX="0.75" PointY="5.375" Height="2.0853483080863953" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.MENU_MASTER" Width="1.5" PointX="3" PointY="9" Height="2.9070849609375031" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.TB_EMPLOYEE" Width="1.5" PointX="5.25" PointY="16.75" Height="7.6731575520833353" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.USER_DATA" Width="1.5" PointX="3" PointY="13.5" Height="3.7288216145833353" IsExpanded="true" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_CUS_CATEGORY">
+          <ConnectorPoint PointX="4.5" PointY="7.9464322924613953" />
+          <ConnectorPoint PointX="4.875" PointY="8.3214322924613953" />
+          <ConnectorPoint PointX="4.875" PointY="15.00332682300359" />
+          <ConnectorPoint PointX="5.25" PointY="15.00332682300359" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY" >
-          <ConnectorPoint PointX="4.5" PointY="7.4177502441406249" />
-          <ConnectorPoint PointX="5.25" PointY="7.4177502441406249" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_EMP_CATEGORY">
+          <ConnectorPoint PointX="4.5" PointY="7.92104667707678" />
+          <ConnectorPoint PointX="5.125" PointY="8.5460466770767809" />
+          <ConnectorPoint PointX="5.125" PointY="8.2488471538461532" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="8.375" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_CUS_CATEGORY" >
-          <ConnectorPoint PointX="4.5" PointY="9.54847093008814" />
-          <ConnectorPoint PointX="4.8160744349011217" PointY="9.86454536498926" />
-          <ConnectorPoint PointX="4.9339255650988791" PointY="9.9823964951870181" />
-          <ConnectorPoint PointX="5.0625" PointY="10.11097093008814" />
-          <ConnectorPoint PointX="5.0625" PointY="13.253326822916666" />
-          <ConnectorPoint PointX="5.25" PointY="13.253326822916666" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_EMP_USER_DATA">
+          <ConnectorPoint PointX="4.5" PointY="13.563460538461539" />
+          <ConnectorPoint PointX="4.8160744349011209" PointY="13.24738610356042" />
+          <ConnectorPoint PointX="4.9339255650988791" PointY="13.129534973362663" />
+          <ConnectorPoint PointX="4.9375" PointY="13.125960538461541" />
+          <ConnectorPoint PointX="4.9375" PointY="9.4176741540431976" />
+          <ConnectorPoint PointX="5.25" PointY="9.4176741540431976" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_EMP_CATEGORY" >
-          <ConnectorPoint PointX="4.5" PointY="6.90625" />
-          <ConnectorPoint PointX="8.25" PointY="6.90625" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_MENU_CATEGORY">
+          <ConnectorPoint PointX="4.5" PointY="6.46050048828125" />
+          <ConnectorPoint PointX="5.25" PointY="6.46050048828125" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_EMP_USER_DATA" >
-          <ConnectorPoint PointX="7.15625" PointY="15.125" />
-          <ConnectorPoint PointX="7.15625" PointY="6.921875" />
-          <ConnectorPoint PointX="8.25" PointY="6.921875" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_MENU_MENU_MASTER">
+          <ConnectorPoint PointX="4.5" PointY="9.0011528461538468" />
+          <ConnectorPoint PointX="4.8160744349011209" PointY="8.6850784112527251" />
+          <ConnectorPoint PointX="4.9339255650988791" PointY="8.5672272810549686" />
+          <ConnectorPoint PointX="5" PointY="8.5011528461538468" />
+          <ConnectorPoint PointX="5" PointY="6.9720027324218758" />
+          <ConnectorPoint PointX="5.25" PointY="6.9720027324218758" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_MENU_CATEGORY" >
-          <ConnectorPoint PointX="4.4630769230769234" PointY="6.375" />
-          <ConnectorPoint PointX="4.90625" PointY="5.9318269230769225" />
-          <ConnectorPoint PointX="4.90625" PointY="6.2647509765625" />
-          <ConnectorPoint PointX="5.25" PointY="5.9210009765625" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE">
+          <ConnectorPoint PointX="4.5" PointY="2.7961531575520837" />
+          <ConnectorPoint PointX="5.25" PointY="2.7961531575520837" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_MENU_MENU_MASTER" >
-          <ConnectorPoint PointX="4.5" PointY="4.70354248046875" />
-          <ConnectorPoint PointX="5.25" PointY="4.70354248046875" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATEGORY">
+          <ConnectorPoint PointX="4.5" PointY="4.900383615384615" />
+          <ConnectorPoint PointX="5" PointY="4.4003836153846159" />
+          <ConnectorPoint PointX="5" PointY="4.9000792534054476" />
+          <ConnectorPoint PointX="5.275383615384615" PointY="4.6246956380208317" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATE_LINK_CATE_TYPE" >
-          <ConnectorPoint PointX="7.15625" PointY="2.7173063151041674" />
-          <ConnectorPoint PointX="7.15625" PointY="6.0540983072916656" />
-          <ConnectorPoint PointX="8.25" PointY="6.0540983072916656" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_LINKED_CATE_CATEGORY">
+          <ConnectorPoint PointX="4.5" PointY="4.8819220769230771" />
+          <ConnectorPoint PointX="4.90625" PointY="4.4756720769230771" />
+          <ConnectorPoint PointX="4.90625" PointY="4.9442148687900627" />
+          <ConnectorPoint PointX="5.25" PointY="4.6004648687900627" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_LINK_CATE_CATEGORY" >
-          <ConnectorPoint PointX="4.5" PointY="6.4119220769230765" />
-          <ConnectorPoint PointX="4.625" PointY="6.2869220769230765" />
-          <ConnectorPoint PointX="4.625" PointY="6.4996956380208317" />
-          <ConnectorPoint PointX="7.9003836153846159" PointY="6.4996956380208317" />
-          <ConnectorPoint PointX="8.2753836153846159" PointY="6.1246956380208317" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATEGORY_CATEGORY_TYPE">
+          <ConnectorPoint PointX="2.25" PointY="6.4176741540431976" />
+          <ConnectorPoint PointX="3" PointY="6.4176741540431976" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_LINKED_CATE_CATEGORY" >
-          <ConnectorPoint PointX="4.5" PointY="6.375" />
-          <ConnectorPoint PointX="4.75" PointY="6.125" />
-          <ConnectorPoint PointX="4.75" PointY="6.4996956380208317" />
-          <ConnectorPoint PointX="7.8507692307692309" PointY="6.4996956380208317" />
-          <ConnectorPoint PointX="8.25" PointY="6.1004648687900618" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_MENU_MASTER_MENU_MASTER">
+          <ConnectorPoint PointX="3.5319230769230767" PointY="11.907084960937503" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="12.157084960937503" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="12.157084960937503" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="11.907084960937503" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_CATEGORY_CATEGORY_TYPE" >
-          <ConnectorPoint PointX="2.25" PointY="7.9176741536458337" />
-          <ConnectorPoint PointX="3" PointY="7.9176741536458337" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.APP_PROFILE" Width="1.5" PointX="8.25" PointY="14.375" Height="2.2496956380208388" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION">
+          <ConnectorPoint PointX="7.15625" PointY="25.625" />
+          <ConnectorPoint PointX="7.15625" PointY="16.31582682300359" />
+          <ConnectorPoint PointX="8.25" PointY="16.31582682300359" />
         </AssociationConnector>
-        <AssociationConnector Association="UserSystemEntitiesModel.FK_MENU_MASTER_MENU_MASTER" >
-          <ConnectorPoint PointX="3.5319230769230767" PointY="5.4070849609375" />
-          <ConnectorPoint PointX="3.5319230769230767" PointY="5.6570849609375" />
-          <ConnectorPoint PointX="3.9784615384615383" PointY="5.6570849609375" />
-          <ConnectorPoint PointX="3.9784615384615383" PointY="5.4070849609375" />
+        <AssociationConnector Association="UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA">
+          <ConnectorPoint PointX="4.5" PointY="16.067490234505385" />
+          <ConnectorPoint PointX="8.25" PointY="16.067490234505385" />
+        </AssociationConnector>
+        <AssociationConnector Association="UserSystemEntitiesModel.USER_DATATB_EMPLOYEE">
+          <ConnectorPoint PointX="4.5" PointY="16.989410807291669" />
+          <ConnectorPoint PointX="5.25" PointY="16.989410807291669" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.TB_TITLE" Width="1.5" PointX="3" PointY="17.875" Height="1.4279589843750031" />
+        <AssociationConnector Association="UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE">
+          <ConnectorPoint PointX="4.5" PointY="18.671153157552084" />
+          <ConnectorPoint PointX="5.25" PointY="18.671153157552084" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

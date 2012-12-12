@@ -18,8 +18,6 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_CATE_AND_APP_APPLICATION", "APPLICATION", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SME.UserSystem.Core.APPLICATION), "CATE_AND_APP", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.CATE_AND_APP), true)]
-[assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_CATE_AND_APP_CATEGORY", "CATEGORY", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SME.UserSystem.Core.CATEGORY), "CATE_AND_APP", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.CATE_AND_APP), true)]
 [assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_CATE_AND_CUS_CATEGORY", "CATEGORY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SME.UserSystem.Core.CATEGORY), "CATE_AND_CUS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.CATE_AND_CUS), true)]
 [assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_CATE_AND_EMP_CATEGORY", "CATEGORY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SME.UserSystem.Core.CATEGORY), "CATE_AND_EMP", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.CATE_AND_EMP), true)]
 [assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_CATE_AND_EMP_USER_DATA", "USER_DATA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SME.UserSystem.Core.USER_DATA), "CATE_AND_EMP", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.CATE_AND_EMP), true)]
@@ -30,6 +28,10 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_CATE_LINKED_CATE_CATEGORY", "CATEGORY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SME.UserSystem.Core.CATEGORY), "CATE_LINK_CATE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.CATE_LINK_CATE), true)]
 [assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_CATEGORY_CATEGORY_TYPE", "CATEGORY_TYPE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SME.UserSystem.Core.CATEGORY_TYPE), "CATEGORY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.CATEGORY), true)]
 [assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_MENU_MASTER_MENU_MASTER", "MENU_MASTER", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SME.UserSystem.Core.MENU_MASTER), "MENU_MASTER1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.MENU_MASTER), true)]
+[assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_APP_PROFILE_APPLICATION", "APPLICATION", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SME.UserSystem.Core.APPLICATION), "APP_PROFILE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.APP_PROFILE), true)]
+[assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "FK_APP_PROFILE_USER_DATA", "USER_DATA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SME.UserSystem.Core.USER_DATA), "APP_PROFILE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.APP_PROFILE), true)]
+[assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "USER_DATATB_EMPLOYEE", "USER_DATA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SME.UserSystem.Core.USER_DATA), "TB_EMPLOYEE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SME.UserSystem.Core.TB_EMPLOYEE), true)]
+[assembly: EdmRelationshipAttribute("UserSystemEntitiesModel", "TB_TITLETB_EMPLOYEE", "TB_TITLE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SME.UserSystem.Core.TB_TITLE), "TB_EMPLOYEE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SME.UserSystem.Core.TB_EMPLOYEE), true)]
 
 #endregion
 
@@ -96,22 +98,6 @@ namespace SME.UserSystem.Core
             }
         }
         private ObjectSet<APPLICATION> _APPLICATION;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<CATE_AND_APP> CATE_AND_APP
-        {
-            get
-            {
-                if ((_CATE_AND_APP == null))
-                {
-                    _CATE_AND_APP = base.CreateObjectSet<CATE_AND_APP>("CATE_AND_APP");
-                }
-                return _CATE_AND_APP;
-            }
-        }
-        private ObjectSet<CATE_AND_APP> _CATE_AND_APP;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -272,6 +258,38 @@ namespace SME.UserSystem.Core
             }
         }
         private ObjectSet<USER_DATA> _USER_DATA;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<APP_PROFILE> APP_PROFILE
+        {
+            get
+            {
+                if ((_APP_PROFILE == null))
+                {
+                    _APP_PROFILE = base.CreateObjectSet<APP_PROFILE>("APP_PROFILE");
+                }
+                return _APP_PROFILE;
+            }
+        }
+        private ObjectSet<APP_PROFILE> _APP_PROFILE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TB_TITLE> TB_TITLE
+        {
+            get
+            {
+                if ((_TB_TITLE == null))
+                {
+                    _TB_TITLE = base.CreateObjectSet<TB_TITLE>("TB_TITLE");
+                }
+                return _TB_TITLE;
+            }
+        }
+        private ObjectSet<TB_TITLE> _TB_TITLE;
 
         #endregion
         #region AddTo Methods
@@ -282,14 +300,6 @@ namespace SME.UserSystem.Core
         public void AddToAPPLICATION(APPLICATION aPPLICATION)
         {
             base.AddObject("APPLICATION", aPPLICATION);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the CATE_AND_APP EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToCATE_AND_APP(CATE_AND_APP cATE_AND_APP)
-        {
-            base.AddObject("CATE_AND_APP", cATE_AND_APP);
         }
     
         /// <summary>
@@ -371,6 +381,22 @@ namespace SME.UserSystem.Core
         {
             base.AddObject("USER_DATA", uSER_DATA);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the APP_PROFILE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAPP_PROFILE(APP_PROFILE aPP_PROFILE)
+        {
+            base.AddObject("APP_PROFILE", aPP_PROFILE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TB_TITLE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTB_TITLE(TB_TITLE tB_TITLE)
+        {
+            base.AddObject("TB_TITLE", tB_TITLE);
+        }
 
         #endregion
     }
@@ -379,6 +405,332 @@ namespace SME.UserSystem.Core
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="UserSystemEntitiesModel", Name="APP_PROFILE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class APP_PROFILE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new APP_PROFILE object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static APP_PROFILE CreateAPP_PROFILE(global::System.Int32 id)
+        {
+            APP_PROFILE aPP_PROFILE = new APP_PROFILE();
+            aPP_PROFILE.ID = id;
+            return aPP_PROFILE;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> APP_KEY
+        {
+            get
+            {
+                return _APP_KEY;
+            }
+            set
+            {
+                OnAPP_KEYChanging(value);
+                ReportPropertyChanging("APP_KEY");
+                _APP_KEY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("APP_KEY");
+                OnAPP_KEYChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _APP_KEY;
+        partial void OnAPP_KEYChanging(Nullable<global::System.Int32> value);
+        partial void OnAPP_KEYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EMP_ID
+        {
+            get
+            {
+                return _EMP_ID;
+            }
+            set
+            {
+                OnEMP_IDChanging(value);
+                ReportPropertyChanging("EMP_ID");
+                _EMP_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EMP_ID");
+                OnEMP_IDChanged();
+            }
+        }
+        private global::System.String _EMP_ID;
+        partial void OnEMP_IDChanging(global::System.String value);
+        partial void OnEMP_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LAST_ACTIVITY
+        {
+            get
+            {
+                return _LAST_ACTIVITY;
+            }
+            set
+            {
+                OnLAST_ACTIVITYChanging(value);
+                ReportPropertyChanging("LAST_ACTIVITY");
+                _LAST_ACTIVITY = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LAST_ACTIVITY");
+                OnLAST_ACTIVITYChanged();
+            }
+        }
+        private global::System.String _LAST_ACTIVITY;
+        partial void OnLAST_ACTIVITYChanging(global::System.String value);
+        partial void OnLAST_ACTIVITYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LAST_ACTIVITY_DATE
+        {
+            get
+            {
+                return _LAST_ACTIVITY_DATE;
+            }
+            set
+            {
+                OnLAST_ACTIVITY_DATEChanging(value);
+                ReportPropertyChanging("LAST_ACTIVITY_DATE");
+                _LAST_ACTIVITY_DATE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LAST_ACTIVITY_DATE");
+                OnLAST_ACTIVITY_DATEChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LAST_ACTIVITY_DATE;
+        partial void OnLAST_ACTIVITY_DATEChanging(Nullable<global::System.DateTime> value);
+        partial void OnLAST_ACTIVITY_DATEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IS_AUTHENTICATED
+        {
+            get
+            {
+                return _IS_AUTHENTICATED;
+            }
+            set
+            {
+                OnIS_AUTHENTICATEDChanging(value);
+                ReportPropertyChanging("IS_AUTHENTICATED");
+                _IS_AUTHENTICATED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IS_AUTHENTICATED");
+                OnIS_AUTHENTICATEDChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IS_AUTHENTICATED;
+        partial void OnIS_AUTHENTICATEDChanging(Nullable<global::System.Boolean> value);
+        partial void OnIS_AUTHENTICATEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> DEL_FLAG
+        {
+            get
+            {
+                return _DEL_FLAG;
+            }
+            set
+            {
+                OnDEL_FLAGChanging(value);
+                ReportPropertyChanging("DEL_FLAG");
+                _DEL_FLAG = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DEL_FLAG");
+                OnDEL_FLAGChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _DEL_FLAG;
+        partial void OnDEL_FLAGChanging(Nullable<global::System.Boolean> value);
+        partial void OnDEL_FLAGChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DATE
+        {
+            get
+            {
+                return _CREATE_DATE;
+            }
+            set
+            {
+                OnCREATE_DATEChanging(value);
+                ReportPropertyChanging("CREATE_DATE");
+                _CREATE_DATE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CREATE_DATE");
+                OnCREATE_DATEChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DATE;
+        partial void OnCREATE_DATEChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DATEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> EXPIRE_DATE
+        {
+            get
+            {
+                return _EXPIRE_DATE;
+            }
+            set
+            {
+                OnEXPIRE_DATEChanging(value);
+                ReportPropertyChanging("EXPIRE_DATE");
+                _EXPIRE_DATE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EXPIRE_DATE");
+                OnEXPIRE_DATEChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _EXPIRE_DATE;
+        partial void OnEXPIRE_DATEChanging(Nullable<global::System.DateTime> value);
+        partial void OnEXPIRE_DATEChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "FK_APP_PROFILE_APPLICATION", "APPLICATION")]
+        public APPLICATION APPLICATION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<APPLICATION>("UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION", "APPLICATION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<APPLICATION>("UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION", "APPLICATION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<APPLICATION> APPLICATIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<APPLICATION>("UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION", "APPLICATION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<APPLICATION>("UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION", "APPLICATION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "FK_APP_PROFILE_USER_DATA", "USER_DATA")]
+        public USER_DATA USER_DATA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<USER_DATA>("UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA", "USER_DATA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<USER_DATA>("UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA", "USER_DATA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<USER_DATA> USER_DATAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<USER_DATA>("UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA", "USER_DATA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<USER_DATA>("UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA", "USER_DATA", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -515,224 +867,18 @@ namespace SME.UserSystem.Core
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "FK_CATE_AND_APP_APPLICATION", "CATE_AND_APP")]
-        public EntityCollection<CATE_AND_APP> CATE_AND_APP
+        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "FK_APP_PROFILE_APPLICATION", "APP_PROFILE")]
+        public EntityCollection<APP_PROFILE> APP_PROFILE
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CATE_AND_APP>("UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION", "CATE_AND_APP");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<APP_PROFILE>("UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION", "APP_PROFILE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CATE_AND_APP>("UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION", "CATE_AND_APP", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="UserSystemEntitiesModel", Name="CATE_AND_APP")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class CATE_AND_APP : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new CATE_AND_APP object.
-        /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
-        public static CATE_AND_APP CreateCATE_AND_APP(global::System.Int32 id)
-        {
-            CATE_AND_APP cATE_AND_APP = new CATE_AND_APP();
-            cATE_AND_APP.ID = id;
-            return cATE_AND_APP;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> CATEGORY_KEY
-        {
-            get
-            {
-                return _CATEGORY_KEY;
-            }
-            set
-            {
-                OnCATEGORY_KEYChanging(value);
-                ReportPropertyChanging("CATEGORY_KEY");
-                _CATEGORY_KEY = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CATEGORY_KEY");
-                OnCATEGORY_KEYChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _CATEGORY_KEY;
-        partial void OnCATEGORY_KEYChanging(Nullable<global::System.Int32> value);
-        partial void OnCATEGORY_KEYChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> APP_KEY
-        {
-            get
-            {
-                return _APP_KEY;
-            }
-            set
-            {
-                OnAPP_KEYChanging(value);
-                ReportPropertyChanging("APP_KEY");
-                _APP_KEY = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("APP_KEY");
-                OnAPP_KEYChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _APP_KEY;
-        partial void OnAPP_KEYChanging(Nullable<global::System.Int32> value);
-        partial void OnAPP_KEYChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> DEL_FLAG
-        {
-            get
-            {
-                return _DEL_FLAG;
-            }
-            set
-            {
-                OnDEL_FLAGChanging(value);
-                ReportPropertyChanging("DEL_FLAG");
-                _DEL_FLAG = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("DEL_FLAG");
-                OnDEL_FLAGChanged();
-            }
-        }
-        private Nullable<global::System.Boolean> _DEL_FLAG;
-        partial void OnDEL_FLAGChanging(Nullable<global::System.Boolean> value);
-        partial void OnDEL_FLAGChanged();
-
-        #endregion
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "FK_CATE_AND_APP_APPLICATION", "APPLICATION")]
-        public APPLICATION APPLICATION
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<APPLICATION>("UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION", "APPLICATION").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<APPLICATION>("UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION", "APPLICATION").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<APPLICATION> APPLICATIONReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<APPLICATION>("UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION", "APPLICATION");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<APPLICATION>("UserSystemEntitiesModel.FK_CATE_AND_APP_APPLICATION", "APPLICATION", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "FK_CATE_AND_APP_CATEGORY", "CATEGORY")]
-        public CATEGORY CATEGORY
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CATEGORY>("UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY", "CATEGORY").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CATEGORY>("UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY", "CATEGORY").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<CATEGORY> CATEGORYReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CATEGORY>("UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY", "CATEGORY");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CATEGORY>("UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY", "CATEGORY", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<APP_PROFILE>("UserSystemEntitiesModel.FK_APP_PROFILE_APPLICATION", "APP_PROFILE", value);
                 }
             }
         }
@@ -1954,28 +2100,6 @@ namespace SME.UserSystem.Core
         #endregion
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "FK_CATE_AND_APP_CATEGORY", "CATE_AND_APP")]
-        public EntityCollection<CATE_AND_APP> CATE_AND_APP
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CATE_AND_APP>("UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY", "CATE_AND_APP");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CATE_AND_APP>("UserSystemEntitiesModel.FK_CATE_AND_APP_CATEGORY", "CATE_AND_APP", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3625,6 +3749,215 @@ namespace SME.UserSystem.Core
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "USER_DATATB_EMPLOYEE", "USER_DATA")]
+        public USER_DATA USER_DATA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<USER_DATA>("UserSystemEntitiesModel.USER_DATATB_EMPLOYEE", "USER_DATA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<USER_DATA>("UserSystemEntitiesModel.USER_DATATB_EMPLOYEE", "USER_DATA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<USER_DATA> USER_DATAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<USER_DATA>("UserSystemEntitiesModel.USER_DATATB_EMPLOYEE", "USER_DATA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<USER_DATA>("UserSystemEntitiesModel.USER_DATATB_EMPLOYEE", "USER_DATA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "TB_TITLETB_EMPLOYEE", "TB_TITLE")]
+        public TB_TITLE TB_TITLE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TITLE>("UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE", "TB_TITLE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TITLE>("UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE", "TB_TITLE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_TITLE> TB_TITLEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TITLE>("UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE", "TB_TITLE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TITLE>("UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE", "TB_TITLE", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="UserSystemEntitiesModel", Name="TB_TITLE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_TITLE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TB_TITLE object.
+        /// </summary>
+        /// <param name="tITLE_CODE">Initial value of the TITLE_CODE property.</param>
+        /// <param name="tITLE_NAME">Initial value of the TITLE_NAME property.</param>
+        public static TB_TITLE CreateTB_TITLE(global::System.Byte tITLE_CODE, global::System.String tITLE_NAME)
+        {
+            TB_TITLE tB_TITLE = new TB_TITLE();
+            tB_TITLE.TITLE_CODE = tITLE_CODE;
+            tB_TITLE.TITLE_NAME = tITLE_NAME;
+            return tB_TITLE;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Byte TITLE_CODE
+        {
+            get
+            {
+                return _TITLE_CODE;
+            }
+            set
+            {
+                if (_TITLE_CODE != value)
+                {
+                    OnTITLE_CODEChanging(value);
+                    ReportPropertyChanging("TITLE_CODE");
+                    _TITLE_CODE = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("TITLE_CODE");
+                    OnTITLE_CODEChanged();
+                }
+            }
+        }
+        private global::System.Byte _TITLE_CODE;
+        partial void OnTITLE_CODEChanging(global::System.Byte value);
+        partial void OnTITLE_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TITLE_NAME
+        {
+            get
+            {
+                return _TITLE_NAME;
+            }
+            set
+            {
+                OnTITLE_NAMEChanging(value);
+                ReportPropertyChanging("TITLE_NAME");
+                _TITLE_NAME = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TITLE_NAME");
+                OnTITLE_NAMEChanged();
+            }
+        }
+        private global::System.String _TITLE_NAME;
+        partial void OnTITLE_NAMEChanging(global::System.String value);
+        partial void OnTITLE_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TITLE_NAME_E
+        {
+            get
+            {
+                return _TITLE_NAME_E;
+            }
+            set
+            {
+                OnTITLE_NAME_EChanging(value);
+                ReportPropertyChanging("TITLE_NAME_E");
+                _TITLE_NAME_E = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TITLE_NAME_E");
+                OnTITLE_NAME_EChanged();
+            }
+        }
+        private global::System.String _TITLE_NAME_E;
+        partial void OnTITLE_NAME_EChanging(global::System.String value);
+        partial void OnTITLE_NAME_EChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "TB_TITLETB_EMPLOYEE", "TB_EMPLOYEE")]
+        public EntityCollection<TB_EMPLOYEE> TB_EMPLOYEE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_EMPLOYEE>("UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE", "TB_EMPLOYEE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_EMPLOYEE>("UserSystemEntitiesModel.TB_TITLETB_EMPLOYEE", "TB_EMPLOYEE", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -3905,30 +4238,6 @@ namespace SME.UserSystem.Core
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> EXPIRE_DATE
-        {
-            get
-            {
-                return _EXPIRE_DATE;
-            }
-            set
-            {
-                OnEXPIRE_DATEChanging(value);
-                ReportPropertyChanging("EXPIRE_DATE");
-                _EXPIRE_DATE = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("EXPIRE_DATE");
-                OnEXPIRE_DATEChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _EXPIRE_DATE;
-        partial void OnEXPIRE_DATEChanging(Nullable<global::System.DateTime> value);
-        partial void OnEXPIRE_DATEChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.DateTime> UPDATE_DATE
         {
             get
@@ -4042,6 +4351,66 @@ namespace SME.UserSystem.Core
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CATE_AND_EMP>("UserSystemEntitiesModel.FK_CATE_AND_EMP_USER_DATA", "CATE_AND_EMP", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "FK_APP_PROFILE_USER_DATA", "APP_PROFILE")]
+        public EntityCollection<APP_PROFILE> APP_PROFILE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<APP_PROFILE>("UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA", "APP_PROFILE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<APP_PROFILE>("UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA", "APP_PROFILE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UserSystemEntitiesModel", "USER_DATATB_EMPLOYEE", "TB_EMPLOYEE")]
+        public TB_EMPLOYEE TB_EMPLOYEE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLOYEE>("UserSystemEntitiesModel.USER_DATATB_EMPLOYEE", "TB_EMPLOYEE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLOYEE>("UserSystemEntitiesModel.USER_DATATB_EMPLOYEE", "TB_EMPLOYEE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_EMPLOYEE> TB_EMPLOYEEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLOYEE>("UserSystemEntitiesModel.USER_DATATB_EMPLOYEE", "TB_EMPLOYEE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_EMPLOYEE>("UserSystemEntitiesModel.USER_DATATB_EMPLOYEE", "TB_EMPLOYEE", value);
                 }
             }
         }
