@@ -59,6 +59,8 @@
         <div id="divRight">
             <asp:SqlDataSource ID="SqlDataSourceTable" runat="server"></asp:SqlDataSource>
             <asp:SqlDataSource ID="SqlDataSourceKey" runat="server"></asp:SqlDataSource>
+             <asp:TextBox ID="TextBoxSQLSelect" runat="server" Width="600"></asp:TextBox>
+              <asp:Button ID="ButtonRunSQLSelect" runat="server" Text="Select" />
             <asp:GridView ID="GridViewTable" runat="server" EnableModelValidation="True" OnRowEditing="EditData"
                 OnPageIndexChanging="ChangeIndex" OnRowCancelingEdit="CancelData" OnRowUpdating="UpdateData"
                 OnRowDeleting="DeleteData" OnRowDataBound="BoundRow" AllowPaging="True" BackColor="White"
@@ -100,6 +102,7 @@
                 <RowStyle BackColor="#F7F7DE" />
                 <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
             </asp:GridView>
+           
             <asp:TextBox ID="TextBoxSQL" runat="server" TextMode="MultiLine" Columns="2" Rows="10"
                 Width="100%" Height="72px"></asp:TextBox>
             <asp:Button ID="BtnRun" runat="server" Text="Run" />

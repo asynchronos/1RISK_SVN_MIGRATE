@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Partial Class aspx_form_FormData
     Inherits System.Web.UI.Page
-    Dim ConnString = ConfigurationManager.ConnectionStrings("MISConnectionString").ToString
+    Dim ConnString = ConfigurationManager.ConnectionStrings("BAY01ConnectionString").ToString
     Dim DataKey As String
     Dim mode As String
 
@@ -25,7 +25,7 @@ Partial Class aspx_form_FormData
 
         If Request("FormID") <> "" Then FormID = Request("FormID")
 
-        Dim stringForm As String = " SELECT  *   FROM  TB_FORM"
+        Dim stringForm As String = " SELECT  *   FROM  FORM.TB_FORM"
         stringForm += " WHERE  FORM_ID= " & FormID
         Dim SqlForm As New SqlDataSource
         SqlForm.ConnectionString = ConnString
@@ -69,77 +69,76 @@ Partial Class aspx_form_FormData
 
 
         End If
-        SqlForm.Dispose()
 
 
+        'Try
+        Dim SqlData As New SqlDataSource
+        SqlData.ConnectionString = ConnString
 
-        Try
-            Dim SqlData As New SqlDataSource
-            SqlData.ConnectionString = ConnString
+        '  กรณีที่เป็น form แบบแก้ไขข้อมูล คือมีข้อมูลตั้งต้นและเลือกข้อมูลที่แก้ไข 
 
-            '  กรณีที่เป็น form แบบแก้ไขข้อมูล คือมีข้อมูลตั้งต้นและเลือกข้อมูลที่แก้ไข 
-
-            If QeueryKey <> "" Then
-                ' กำหนดให้รับ query key มาจาก request หรือ session
-                ' เช่นส่ง ?emp_id=249987  ก็ต้องมีค่า  QeueryKey  ใน form นั้น =  emp_id
-                If Request(QeueryKey) <> "" Then
-                    strForm = strForm & " Where " & QeueryKey & "='" & Request(QeueryKey) & "'"
-                    Response.Write("Filter data: " & Request(QeueryKey))
-                ElseIf Session(QeueryKey) <> "" Then
-                    strForm = strForm & " Where " & QeueryKey & "='" & Session(QeueryKey) & "'"
-                    Response.Write("Filter data: " & Session(QeueryKey))
-                Else
-                    Response.Write("<script type='text/javascript'>alert('Don \'t  have your data or  time out expired. \n please login again.');window.close();</script>")
-                End If
-            End If
-
-            SqlData.SelectCommandType = SqlDataSourceCommandType.StoredProcedure
-            SqlData.SelectParameters.Add("form_id", FormID)
-
-            Dim CommandStore As String = ""
-
-            If mode = "all" Then  ' ถ้าเป็น mode นี้จะแสดงทุกฟิว แต่จะทำให้ grid ยาวมากตามจำนวนฟิว
-                CommandStore = "GetDataByFormIDJoinDataTest"
-            ElseIf mode = "" Then
-                CommandStore = "GetDataByFormIDJoinData"
-            End If
-
-            If FormType = 2 Then  ' ถ้าเป็น type form เพิ่มข้อมูล
-
-                CommandStore = "GetDataByFormIDForFormInsert"   ' store procedure นี้จะไม่ดึงตารางเริ่มต้น จะดึงส่วนที่เป็นข้อมูลที่กรอกเท่านั้น
-                LabelInsert.Attributes.Add("onclick", " creditPopup = window.open('" + Page.ResolveUrl("formCreate.aspx?admin=true&formid=" & FormID) + "','Popup','toolbar=No,width=800,height=550,resizable=yes,scrollbars=yes');" _
-                             + " creditPopup.focus();")
-                LabelInsert.Attributes.CssStyle("cursor") = "hand"
-                LabelInsert.Attributes.CssStyle("text-decoration") = "underline"
+        If QeueryKey <> "" Then
+            ' กำหนดให้รับ query key มาจาก request หรือ session
+            ' เช่นส่ง ?emp_id=249987  ก็ต้องมีค่า  QeueryKey  ใน form นั้น =  emp_id
+            If Request(QeueryKey) <> "" Then
+                strForm = strForm & " Where " & QeueryKey & "='" & Request(QeueryKey) & "'"
+                Response.Write("Filter data: " & Request(QeueryKey))
+            ElseIf Session(QeueryKey) <> "" Then
+                strForm = strForm & " Where " & QeueryKey & "='" & Session(QeueryKey) & "'"
+                Response.Write("Filter data: " & Session(QeueryKey))
             Else
-                LabelInsert.Visible = False
+                Response.Write("<script type='text/javascript'>alert('Don \'t  have your data or  time out expired. \n please login again.');window.close();</script>")
             End If
+        End If
 
-            ' MsgBox(FormType)
+        SqlData.SelectCommandType = SqlDataSourceCommandType.StoredProcedure
+        SqlData.SelectParameters.Add("form_id", FormID)
 
-            SqlData.SelectCommand = CommandStore
+        Dim CommandStore As String = ""
 
-            Response.Write("<div title='" & strForm & "'></div>")
+        If mode = "all" Then  ' ถ้าเป็น mode นี้จะแสดงทุกฟิว แต่จะทำให้ grid ยาวมากตามจำนวนฟิว
+            CommandStore = "FORM.GetDataByFormIDJoinDataAll"
+        ElseIf mode = "" Then
+            CommandStore = "FORM.GetDataByFormIDJoinData"
+        End If
 
-            Dim DvData As New Data.DataView
-            DvData = CType(SqlData.Select(DataSourceSelectArguments.Empty), Data.DataView)
+        If FormType = 2 Then  ' ถ้าเป็น type form เพิ่มข้อมูล
 
-            Dim DtData As System.Data.DataTable = DvData.Table
+            CommandStore = "FORM.GetDataByFormIDForFormInsert"   ' store procedure นี้จะไม่ดึงตารางเริ่มต้น จะดึงส่วนที่เป็นข้อมูลที่กรอกเท่านั้น
+            LabelInsert.Attributes.Add("onclick", " creditPopup = window.open('" + Page.ResolveUrl("formCreate.aspx?admin=true&formid=" & FormID) + "','Popup','toolbar=No,width=800,height=550,resizable=yes,scrollbars=yes');" _
+                         + " creditPopup.focus();")
+            LabelInsert.Attributes.CssStyle("cursor") = "hand"
+            LabelInsert.Attributes.CssStyle("text-decoration") = "underline"
+        Else
+            LabelInsert.Visible = False
+        End If
 
-            'Response.Write("rows=" & DtData.Rows.Count)
-            'Session("DvData") = DvData
+        'MsgBox(FormType)
+        'MsgBox(CommandStore)
+        SqlData.SelectCommand = CommandStore
 
-            GridForm.DataSource = DvData
-            GridForm.DataBind()
+        ' Response.Write("<div title='" & strForm & "'></div>")
 
-            SqlData.Dispose()
-        Catch ex As Exception
-            form1.Controls.Add(New LiteralControl(ex.Message))
-        End Try
+        Dim DvData As New Data.DataView
+        DvData = CType(SqlData.Select(DataSourceSelectArguments.Empty), Data.DataView)
+
+        Dim DtData As System.Data.DataTable = DvData.Table
+        'MsgBox("rows=" & DtData.Rows.Count)
+        'Response.Write("rows=" & DtData.Rows.Count)
+        'Session("DvData") = DvData
+
+        GridForm.DataSource = DvData
+        GridForm.DataBind()
+
+        SqlData.Dispose()
+        'Catch ex As Exception
+        '    form1.Controls.Add(New LiteralControl(ex.Message))
+        'End Try
 
 
-    
         SqlForm.Dispose()
+
+
     End Sub
 
     Protected Sub GridForm_PageIndexChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles GridForm.PageIndexChanging
