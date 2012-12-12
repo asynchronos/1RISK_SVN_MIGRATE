@@ -20,153 +20,281 @@ Public Class VUploadfileDAL
 
 		Try
 			conn = ConnectionUtil.getSqlConnectionFromWebConfig()
-            Dim sql As String = "SELECT " _
-             & "ID, USER_ID, REMARK, TYPE, " _
-             & "COLL_ID, ANNALS_ID, PATH, CREATE_DATE, " _
-             & "FILE_TYPE ,FILE_YEAR " _
+            Dim sql As String = "SELECT * " _
              & "FROM V_UPLOADFILE " _
              & "WHERE ID=@ID " _
              & "ORDER BY ID"
 
-			Dim sqlCmd As New SqlCommand(sql, conn)
-			sqlCmd.Prepare()
+            Dim sqlCmd As New SqlCommand(sql, conn)
+            sqlCmd.Prepare()
 
-			sqlCmd.Parameters.AddWithValue("@ID", objVUploadfile.ID)
+            sqlCmd.Parameters.AddWithValue("@ID", objVUploadfile.ID)
 
-			Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
+            Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
 
-			While reader.Read()
-				result = bindingVUploadfile(reader)
-			End While
+            While reader.Read()
+                result = bindingVUploadfile(reader)
+            End While
 
-			reader.close()
-		Catch ex As Exception
-			Throw New Exception(ex.Message & " : " & ex.StackTrace)
-		Finally
-			If (conn.State = ConnectionState.Open) Then
-				conn.Close()
-			End IF
-			conn = Nothing
-		End Try
+            reader.close()
+        Catch ex As Exception
+            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+            conn = Nothing
+        End Try
 
-		Return result
+        Return result
 
-	End Function
+    End Function
 
-	Public Function getVUploadfileByID(ByVal ID As Integer) As VUploadfile
+    Public Function getVUploadfileByID(ByVal ID As Integer) As VUploadfile
 
-		'declare connection
-		Dim conn As SqlConnection = Nothing
-		'declare result
-		Dim result As New VUploadfile()
+        'declare connection
+        Dim conn As SqlConnection = Nothing
+        'declare result
+        Dim result As New VUploadfile()
 
-		Try
-			conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+        Try
+            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
             Dim sql As String = "SELECT " _
              & "ID, USER_ID, REMARK, TYPE, " _
              & "COLL_ID, ANNALS_ID, PATH, CREATE_DATE, " _
-             & "FILE_TYPE ,FILE_YEAR " _
+             & "FILE_TYPE " _
              & "FROM V_UPLOADFILE " _
              & "WHERE ID=@ID " _
              & "ORDER BY ID"
 
-			Dim sqlCmd As New SqlCommand(sql, conn)
-			sqlCmd.Prepare()
+            Dim sqlCmd As New SqlCommand(sql, conn)
+            sqlCmd.Prepare()
 
-			sqlCmd.Parameters.AddWithValue("@ID", ID)
+            sqlCmd.Parameters.AddWithValue("@ID", ID)
 
-			Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
+            Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
 
-			While reader.Read()
-				result = bindingVUploadfile(reader)
-			End While
+            While reader.Read()
+                result = bindingVUploadfile(reader)
+            End While
 
-			reader.close()
-		Catch ex As Exception
-			Throw New Exception(ex.Message & " : " & ex.StackTrace)
-		Finally
-			If (conn.State = ConnectionState.Open) Then
-				conn.Close()
-			End IF
-			conn = Nothing
-		End Try
+            reader.close()
+        Catch ex As Exception
+            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+            conn = Nothing
+        End Try
 
-		Return result
+        Return result
 
-	End Function
+    End Function
 
-	Public Function getAllVUploadfile() As List (Of VUploadfile)
+    Public Function getAllVUploadfile() As List(Of VUploadfile)
 
-		'declare connection
-		Dim conn As SqlConnection = Nothing
-		'declare result
-		Dim result As New List(Of VUploadfile)
+        'declare connection
+        Dim conn As SqlConnection = Nothing
+        'declare result
+        Dim result As New List(Of VUploadfile)
 
-		Try
-			conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+        Try
+            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
             Dim sql As String = "SELECT " _
              & "ID, USER_ID, REMARK, TYPE, " _
              & "COLL_ID, ANNALS_ID, PATH, CREATE_DATE, " _
-               & "FILE_TYPE ,FILE_YEAR " _
+             & "FILE_TYPE " _
              & "FROM V_UPLOADFILE " _
              & "ORDER BY ID"
 
-			Dim sqlCmd As New SqlCommand(sql, conn)
-			sqlCmd.Prepare()
+            Dim sqlCmd As New SqlCommand(sql, conn)
+            sqlCmd.Prepare()
 
-			Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
+            Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
 
-			While reader.Read()
-				result.Add(bindingVUploadfile(reader))
-			End While
+            While reader.Read()
+                result.Add(bindingVUploadfile(reader))
+            End While
 
-			reader.close()
-			conn.Close()
-		Catch ex As Exception
-			Throw New Exception(ex.Message & " : " & ex.StackTrace)
-		Finally
-			If (conn.State = ConnectionState.Open) Then
-				conn.Close()
-			End IF
-			conn = Nothing
-		End Try
+            reader.close()
+            conn.Close()
+        Catch ex As Exception
+            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+            conn = Nothing
+        End Try
 
-		Return result
+        Return result
 
-	End Function
+    End Function
 
-	Public Function getAllVUploadfileBySQL(ByVal sql AS String) As List (Of VUploadfile)
+    Public Function getAllVUploadfileBySQL(ByVal sql As String) As List(Of VUploadfile)
 
-		'declare connection
-		Dim conn As SqlConnection = Nothing
-		'declare result
-		Dim result As New List(Of VUploadfile)
+        'declare connection
+        Dim conn As SqlConnection = Nothing
+        'declare result
+        Dim result As New List(Of VUploadfile)
 
-		Try
-			conn = ConnectionUtil.getSqlConnectionFromWebConfig()
-			Dim sqlCmd As New SqlCommand(sql, conn)
-			sqlCmd.Prepare()
+        Try
+            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+            Dim sqlCmd As New SqlCommand(sql, conn)
+            sqlCmd.Prepare()
 
-			Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
+            Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
 
-			While reader.Read()
-				result.Add(bindingVUploadfile(reader))
-			End While
+            While reader.Read()
+                result.Add(bindingVUploadfile(reader))
+            End While
 
-			reader.close()
-			conn.Close()
-		Catch ex As Exception
-			Throw New Exception(ex.Message & " : " & ex.StackTrace)
-		Finally
-			If (conn.State = ConnectionState.Open) Then
-				conn.Close()
-			End IF
-			conn = Nothing
-		End Try
+            reader.close()
+            conn.Close()
+        Catch ex As Exception
+            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+            conn = Nothing
+        End Try
 
-		Return result
+        Return result
 
-	End Function
+    End Function
+
+    Public Sub insertVUploadfile(ByVal objVUploadfile As VUploadfile)
+
+        'declare connection
+        Dim conn As SqlConnection = Nothing
+
+        Try
+            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+            Dim sql As String = "INSERT INTO V_UPLOADFILE " _
+                & " (ID, USER_ID, REMARK, TYPE, COLL_ID, ANNALS_ID, PATH, CREATE_DATE, FILE_TYPE) " _
+                & " VALUES(@ID, @USER_ID, @REMARK, @TYPE, @COLL_ID, @ANNALS_ID, @PATH, @CREATE_DATE, @FILE_TYPE) "
+
+            Dim sqlCmd As New SqlCommand(sql, conn)
+            sqlCmd.Prepare()
+
+            sqlCmd.Parameters.AddWithValue("@ID", objVUploadfile.ID)
+            sqlCmd.Parameters.AddWithValue("@USER_ID", objVUploadfile.USER_ID)
+            sqlCmd.Parameters.AddWithValue("@REMARK", objVUploadfile.REMARK)
+            sqlCmd.Parameters.AddWithValue("@TYPE", objVUploadfile.TYPE)
+            sqlCmd.Parameters.AddWithValue("@COLL_ID", objVUploadfile.COLL_ID)
+            sqlCmd.Parameters.AddWithValue("@ANNALS_ID", objVUploadfile.ANNALS_ID)
+            sqlCmd.Parameters.AddWithValue("@PATH", objVUploadfile.PATH)
+            sqlCmd.Parameters.AddWithValue("@CREATE_DATE", objVUploadfile.CREATE_DATE)
+            sqlCmd.Parameters.AddWithValue("@FILE_TYPE", objVUploadfile.FILE_TYPE)
+
+            sqlCmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+            conn = Nothing
+        End Try
+
+    End Sub
+
+    Public Sub updateVUploadfile(ByVal objVUploadfile As VUploadfile)
+
+        'declare connection
+        Dim conn As SqlConnection = Nothing
+
+        Try
+            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+            Dim sql As String = "UPDATE V_UPLOADFILE SET " _
+                & " USER_ID=@USER_ID, " _
+                & " REMARK=@REMARK, " _
+                & " TYPE=@TYPE, " _
+                & " COLL_ID=@COLL_ID, " _
+                & " ANNALS_ID=@ANNALS_ID, " _
+                & " PATH=@PATH, " _
+                & " CREATE_DATE=@CREATE_DATE, " _
+                & " FILE_TYPE=@FILE_TYPE " _
+                & " WHERE ID=@ID "
+
+            Dim sqlCmd As New SqlCommand(sql, conn)
+            sqlCmd.Prepare()
+
+            sqlCmd.Parameters.AddWithValue("@ID", objVUploadfile.ID)
+            sqlCmd.Parameters.AddWithValue("@USER_ID", objVUploadfile.USER_ID)
+            sqlCmd.Parameters.AddWithValue("@REMARK", objVUploadfile.REMARK)
+            sqlCmd.Parameters.AddWithValue("@TYPE", objVUploadfile.TYPE)
+            sqlCmd.Parameters.AddWithValue("@COLL_ID", objVUploadfile.COLL_ID)
+            sqlCmd.Parameters.AddWithValue("@ANNALS_ID", objVUploadfile.ANNALS_ID)
+            sqlCmd.Parameters.AddWithValue("@PATH", objVUploadfile.PATH)
+            sqlCmd.Parameters.AddWithValue("@CREATE_DATE", objVUploadfile.CREATE_DATE)
+            sqlCmd.Parameters.AddWithValue("@FILE_TYPE", objVUploadfile.FILE_TYPE)
+
+            sqlCmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+            conn = Nothing
+        End Try
+
+    End Sub
+
+    Public Sub deleteVUploadfile(ByVal objVUploadfile As VUploadfile)
+
+        'declare connection
+        Dim conn As SqlConnection = Nothing
+
+        Try
+            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+            Dim sql As String = "DELETE FROM V_UPLOADFILE WHERE ID=@ID"
+
+            Dim sqlCmd As New SqlCommand(sql, conn)
+            sqlCmd.Prepare()
+
+            sqlCmd.Parameters.AddWithValue("@ID", objVUploadfile.ID)
+
+            sqlCmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+            conn = Nothing
+        End Try
+
+    End Sub
+
+    Public Sub deleteVUploadfile(ByVal ID As Integer)
+
+        'declare connection
+        Dim conn As SqlConnection = Nothing
+
+        Try
+            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+            Dim sql As String = "DELETE FROM V_UPLOADFILE WHERE ID=@ID"
+
+            Dim sqlCmd As New SqlCommand(sql, conn)
+            sqlCmd.Prepare()
+
+            sqlCmd.Parameters.AddWithValue("@ID", ID)
+
+            sqlCmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+            conn = Nothing
+        End Try
+
+    End Sub
 
     Public Function bindingVUploadfile(ByVal reader As SqlDataReader) As VUploadfile
 
