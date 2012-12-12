@@ -13,7 +13,6 @@ Partial Class Iframe
 
         addHeaderScriptAt(4, "~/js/jquery.js")
         addHeaderScriptAt(5, "~/js/common.js")
-        addHeaderScriptAt(6, "~/js/MyNumber.js")
     End Sub
 
     Protected Sub addHeaderLinkAt(ByVal index As Integer, ByVal href As String)
