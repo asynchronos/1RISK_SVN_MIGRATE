@@ -10,6 +10,6 @@ Partial Class logout
         FormsAuthentication.SignOut()
         Session.Abandon()
         Context.Request.Cookies.Clear()
-        Response.Redirect(Page.ResolveUrl("~/login.aspx"))
+        Response.Redirect(Page.ResolveUrl("~/aspx/account/LoginWithAD.aspx"))
     End Sub
 End Class

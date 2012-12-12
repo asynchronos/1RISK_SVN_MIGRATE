@@ -11,7 +11,7 @@ End sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If User.Identity.Name = "" Then
             alert(" System time out.")
-            Response.Redirect("../../login.aspx")
+            Response.Redirect(Page.ResolveUrl("~/aspx/account/LoginWithAD.aspx"))
         End If
         If Page.IsPostBack = False Then
             ShowGridVcreditprocess()
