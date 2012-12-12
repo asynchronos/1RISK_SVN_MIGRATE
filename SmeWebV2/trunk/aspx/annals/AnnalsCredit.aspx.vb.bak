@@ -3586,7 +3586,7 @@ Partial Class _AnnalsCredit
         If Not IsPostBack Then
             If User.Identity.Name = "" Then  ' ถ้าเข้ามาครั้งแรกแล้วไม่มี user ให้ออกเลย
                 'createAlert(" Don 't have user login or this is timeout.")
-                'Response.Redirect("../../login.aspx")
+                'Response.Redirect(Page.ResolveUrl("~/aspx/account/LoginWithAD.aspx"))
                 Response.Write("<script type='text/javascript'>window.close();</script>")
                 Exit Sub
             Else

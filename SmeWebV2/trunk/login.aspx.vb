@@ -6,6 +6,8 @@ Namespace aspx
         Inherits aspx.MyPageClass
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+            Response.Redirect(Page.ResolveUrl("~/aspx/account/LoginWithAD.aspx"))
+            Throw New Exception("Old Login has expired.")
 
             Dim liter As Literal = DirectCast(Login1.FindControl("FailureText"), Literal)
             liter.Text = String.Empty

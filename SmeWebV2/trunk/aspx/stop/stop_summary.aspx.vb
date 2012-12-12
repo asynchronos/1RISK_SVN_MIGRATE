@@ -58,7 +58,7 @@ Partial Class aspx_stop_stop_summary
     'Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     '    'Dim strEmp_ID As String = Session("EMP_ID")
-    '    'If strEmp_ID = "" Then Response.Redirect("../../login.aspx")
+    '    'If strEmp_ID = "" Then Response.Redirect(Page.ResolveUrl("~/aspx/account/LoginWithAD.aspx"))
     '    ' ''If User.IsInRole("0000000001") Or User.IsInRole("0000000002") Or User.IsInRole("0000000005") Then
     '    ' ''    strEmp_ID = "000001"
     '    ' ''End If

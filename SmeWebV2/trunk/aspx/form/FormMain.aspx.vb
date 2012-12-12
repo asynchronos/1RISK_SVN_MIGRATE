@@ -7,8 +7,8 @@ Partial Class aspx_form_FormMain
     Public id As String
     Protected cul As New CultureInfo("th-TH") ' ปี ไทย  
     Dim sql As String
-    ' Dim ConnString = ConfigurationManager.ConnectionStrings("Bay01ConnectionString").ToString
-    Dim ConnString = ConfigurationManager.ConnectionStrings("MISConnectionString").ToString
+    Dim ConnString = ConfigurationManager.ConnectionStrings("Bay01ConnectionString").ToString
+    'Dim ConnString = ConfigurationManager.ConnectionStrings("MISConnectionString").ToString
 
     Protected Sub alert(ByVal str As String)
         'Response.Clear()
