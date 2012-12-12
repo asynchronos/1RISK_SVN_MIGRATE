@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[EXPORT_LOOKUP_TYPE] (
+    [LOOKUP_TYPE] INT           IDENTITY (1, 1) NOT NULL,
+    [DESCRIPTION] NVARCHAR (50) NULL,
+    [PRIORITY]    INT           NULL,
+    [DEL_FLAG]    BIT           NULL,
+    [UPDATE_BY]   NVARCHAR (10) NULL,
+    [UPDATE_DATE] DATETIME      NULL
+);
+

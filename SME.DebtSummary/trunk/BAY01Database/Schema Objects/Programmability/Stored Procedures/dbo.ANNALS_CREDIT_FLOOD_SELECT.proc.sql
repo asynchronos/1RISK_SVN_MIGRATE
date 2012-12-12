@@ -1,0 +1,12 @@
+﻿
+CREATE  PROCEDURE [dbo].[ANNALS_CREDIT_FLOOD_SELECT]
+		@ID nvarchar(10)
+ AS 
+ BEGIN 
+	SELECT  * FROM [dbo].[ANNALS_CREDIT_FLOOD]
+   	WHERE ID=@ID
+  END 
+
+
+
+

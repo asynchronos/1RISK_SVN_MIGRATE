@@ -1,0 +1,6 @@
+﻿CREATE TABLE [CLASSIFY].[LINKED_TYPE] (
+    [LINKED_TYPE_KEY] INT          IDENTITY (1, 1) NOT NULL,
+    [DESCRIPTION]     VARCHAR (50) NOT NULL,
+    [DEL_FLAG]        BIT          NULL
+);
+

@@ -1,0 +1,7 @@
+﻿CREATE VIEW dbo.View_1
+AS
+SELECT     *
+FROM         (SELECT     ROW_NUMBER() OVER (PARTITION BY ID
+                       ORDER BY PROCESS_DATE DESC) AS 'ROWNUM', *
+FROM         V_CREDIT_REP_PROCESS) AS P
+WHERE     P.ROWNUM = 1

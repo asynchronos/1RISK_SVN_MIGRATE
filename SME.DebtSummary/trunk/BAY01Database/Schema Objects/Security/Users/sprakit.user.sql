@@ -1,0 +1,3 @@
+﻿CREATE USER [sprakit] FOR LOGIN [sprakit]
+    WITH DEFAULT_SCHEMA = [CLASSIFY];
+

@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[EDW_CLS_SNAP_CHECK_20100731] (
+    [SNAP_KEY]                 NUMERIC (10)    NOT NULL,
+    [LEADER1_SUBJECT_IDEN]     NUMERIC (10)    NULL,
+    [LIMIT_PRODUCT_ID_KEY]     NUMERIC (10)    NULL,
+    [LIMIT_PRODUCT_STATUS]     VARCHAR (1)     NULL,
+    [LIMIT_CHANGE_PRODUCT_THB] NUMERIC (20, 2) NULL,
+    [LIMIT_CHANGE_DATE]        DATETIME        NULL,
+    [MAPPING_STATUS]           VARCHAR (1)     NULL,
+    [CREATE_DATE]              DATETIME        NULL,
+    [UPDATE_DATE]              DATETIME        NULL,
+    [PRODUCT_NAME]             VARCHAR (50)    NULL
+);
+

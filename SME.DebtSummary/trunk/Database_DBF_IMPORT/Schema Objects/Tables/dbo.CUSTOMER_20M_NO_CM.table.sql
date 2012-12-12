@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[CUSTOMER_20M_NO_CM] (
+    [ASOF]         DATETIME       NULL,
+    [CU]           FLOAT          NULL,
+    [8up]          NVARCHAR (255) NULL,
+    [SME]          FLOAT          NULL,
+    [REGION]       FLOAT          NULL,
+    [IBRNO]        FLOAT          NULL,
+    [NBRTHAI]      NVARCHAR (255) NULL,
+    [CIF_NO]       FLOAT          NULL,
+    [CIF_NAME]     NVARCHAR (255) NULL,
+    [Loan]         NVARCHAR (255) NULL,
+    [Limit]        FLOAT          NULL,
+    [Prin]         FLOAT          NULL,
+    [ชั้นหนี้]     NVARCHAR (255) NULL,
+    [Cus_Size]     NVARCHAR (255) NULL,
+    [AO_SME]       FLOAT          NULL,
+    [AO_SME_NAME]  NVARCHAR (255) NULL,
+    [CM_ID]        FLOAT          NULL,
+    [CM Name]      NVARCHAR (255) NULL,
+    [Limit_1]      NVARCHAR (255) NULL,
+    [CM Size]      NVARCHAR (255) NULL,
+    [ID_CM]        NVARCHAR (255) NULL,
+    [ชื่อ ผู้ดูแล] NVARCHAR (255) NULL
+);
+

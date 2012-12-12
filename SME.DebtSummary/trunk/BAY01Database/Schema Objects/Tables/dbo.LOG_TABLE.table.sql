@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[LOG_TABLE] (
+    [TIME_STAMP]   TIMESTAMP     NOT NULL,
+    [IP_ADDRESS]   VARCHAR (15)  NOT NULL,
+    [LOG_TYPE_ID]  VARCHAR (5)   NOT NULL,
+    [LOG_LEVEL_ID] VARCHAR (5)   NOT NULL,
+    [EMP_ID]       NVARCHAR (10) NOT NULL,
+    [URL]          NTEXT         NOT NULL,
+    [DETAIL]       NTEXT         NOT NULL,
+    [CREATE_DATE]  DATETIME      NOT NULL
+);
+

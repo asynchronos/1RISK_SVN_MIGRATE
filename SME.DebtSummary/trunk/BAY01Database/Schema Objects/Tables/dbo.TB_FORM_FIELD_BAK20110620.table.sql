@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[TB_FORM_FIELD_BAK20110620] (
+    [FIELD_ID]         INT            IDENTITY (1, 1) NOT NULL,
+    [FORM_ID]          INT            NULL,
+    [FIELD_NAME]       NVARCHAR (100) NULL,
+    [FIELD_TEXT]       NVARCHAR (100) NULL,
+    [FIELD_TYPE]       NVARCHAR (50)  NULL,
+    [FIELD_WIDTH]      INT            NULL,
+    [FIELD_TEXT_FOOT]  NVARCHAR (50)  NULL,
+    [FIELD_GROUP]      INT            NULL,
+    [FIELD_DB_TYPE]    NVARCHAR (50)  NULL,
+    [FIELD_MAX_LENGTH] INT            NULL,
+    [FIELD_MIN_VALUE]  NVARCHAR (50)  NULL,
+    [FIELD_MAX_VALUE]  NVARCHAR (50)  NULL,
+    [FIELD_REQUIRED]   NVARCHAR (50)  NULL,
+    [FIELD_LIST_ID]    INT            NULL,
+    [FIELD_LIST_VALUE] NVARCHAR (255) NULL
+);
+

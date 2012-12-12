@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[CUSTOMER_SME_GROUP] (
+    [GROUP_ID]         INT           NOT NULL,
+    [GROUP_SIZE_ID]    SMALLINT      NOT NULL,
+    [UPDATE_DATE]      DATETIME      NOT NULL,
+    [UPDATE_BY]        NVARCHAR (10) NOT NULL,
+    [GROUP_EXPOSURE]   MONEY         NULL,
+    [NEXT_REVIEW_DATE] DATETIME      NULL
+);
+

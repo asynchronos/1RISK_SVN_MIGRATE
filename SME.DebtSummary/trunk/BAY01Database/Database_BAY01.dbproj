@@ -1,0 +1,3791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>Database_BAY01</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.0</ProjectVersion>
+    <ProjectGuid>{67cbc824-a49e-4e9b-a947-360f3dfe65c3}</ProjectGuid>
+    <DSP>Microsoft.Data.Schema.Sql.Sql90DatabaseSchemaProvider</DSP>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ShowWizard>True</ShowWizard>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
+    <ModelCollation>1054,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaType</DefaultFileStructure>
+    <DeployToDatabaseAddToServerExplorer>True</DeployToDatabaseAddToServerExplorer>
+    <DeployToScript>True</DeployToScript>
+    <CatalogPropertiesFile>Properties\Database.sqlsettings</CatalogPropertiesFile>
+    <ServerPropertiesFile>
+    </ServerPropertiesFile>
+    <RootNamespace>BAY01Database</RootNamespace>
+    <DefaultSchema>dbo</DefaultSchema>
+    <PreviousProjectVersion>4.0</PreviousProjectVersion>
+    <AllowServerObjects>False</AllowServerObjects>
+    <AllowDatabaseObjects>True</AllowDatabaseObjects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>.\sql\release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TargetConnectionString>
+    </TargetConnectionString>
+    <TargetDatabase>Database_BAY01</TargetDatabase>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <SuppressWarnings>
+    </SuppressWarnings>
+    <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
+    <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
+    <DeployToDatabase>False</DeployToDatabase>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>.\sql\debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TargetConnectionString>
+    </TargetConnectionString>
+    <TargetDatabase>Database_BAY01</TargetDatabase>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <SuppressWarnings>
+    </SuppressWarnings>
+    <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
+    <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
+    <DeployToDatabase>False</DeployToDatabase>
+  </PropertyGroup>
+  <!--Import the settings-->
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\TeamData\Microsoft.Data.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Pre-Deployment" />
+    <Folder Include="Scripts\Post-Deployment" />
+    <Folder Include="Data Generation Plans" />
+    <Folder Include="Schema Comparisons" />
+    <Folder Include="Properties\" />
+    <Folder Include="Schema Objects\" />
+    <Folder Include="Schema Objects\Programmability\" />
+    <Folder Include="Schema Objects\Programmability\Database Triggers\" />
+    <Folder Include="Schema Objects\Programmability\Defaults\" />
+    <Folder Include="Schema Objects\Programmability\Functions\" />
+    <Folder Include="Schema Objects\Programmability\Rules\" />
+    <Folder Include="Schema Objects\Programmability\Stored Procedures\" />
+    <Folder Include="Schema Objects\Programmability\Types\" />
+    <Folder Include="Schema Objects\Programmability\Types\User Defined Data Types\" />
+    <Folder Include="Schema Objects\Programmability\Types\User Defined Types CLR\" />
+    <Folder Include="Schema Objects\Programmability\Types\XML Schema Collections\" />
+    <Folder Include="Schema Objects\Assemblies\" />
+    <Folder Include="Schema Objects\Security\" />
+    <Folder Include="Schema Objects\Security\Schemas\" />
+    <Folder Include="Schema Objects\Security\Users\" />
+    <Folder Include="Schema Objects\Security\Certificates\" />
+    <Folder Include="Schema Objects\Security\Asymmetric Keys\" />
+    <Folder Include="Schema Objects\Security\Master Keys\" />
+    <Folder Include="Schema Objects\Security\Signatures\" />
+    <Folder Include="Schema Objects\Security\Symmetric Keys\" />
+    <Folder Include="Schema Objects\Security\Roles\" />
+    <Folder Include="Schema Objects\Security\Roles\Application Roles\" />
+    <Folder Include="Schema Objects\Security\Roles\Database Roles\" />
+    <Folder Include="Schema Objects\Service Broker\" />
+    <Folder Include="Schema Objects\Service Broker\Contracts\" />
+    <Folder Include="Schema Objects\Service Broker\Event Notifications\" />
+    <Folder Include="Schema Objects\Service Broker\Message Types\" />
+    <Folder Include="Schema Objects\Service Broker\Queues\" />
+    <Folder Include="Schema Objects\Service Broker\Remote Service Binding\" />
+    <Folder Include="Schema Objects\Service Broker\Routes\" />
+    <Folder Include="Schema Objects\Service Broker\Services\" />
+    <Folder Include="Schema Objects\Storage\" />
+    <Folder Include="Schema Objects\Storage\Filegroups\" />
+    <Folder Include="Schema Objects\Storage\Files\" />
+    <Folder Include="Schema Objects\Storage\Full Text Catalogs\" />
+    <Folder Include="Schema Objects\Storage\Partition Functions\" />
+    <Folder Include="Schema Objects\Storage\Partition Schemes\" />
+    <Folder Include="Schema Objects\Synonyms\" />
+    <Folder Include="Schema Objects\Tables\" />
+    <Folder Include="Schema Objects\Tables\Constraints\" />
+    <Folder Include="Schema Objects\Tables\Indexes\" />
+    <Folder Include="Schema Objects\Tables\Keys\" />
+    <Folder Include="Schema Objects\Tables\Triggers\" />
+    <Folder Include="Schema Objects\Tables\Statistics\" />
+    <Folder Include="Schema Objects\Views\" />
+    <Folder Include="Schema Objects\Views\Indexes\" />
+    <Folder Include="Schema Objects\Views\Triggers\" />
+    <Folder Include="Schema Objects\Views\Statistics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PropertiesFile Include="Properties\Database.sqlsettings">
+    </PropertiesFile>
+    <PropertiesFile Include="Properties\Database.sqldeployment">
+    </PropertiesFile>
+    <PropertiesFile Include="Properties\Database.sqlcmdvars">
+    </PropertiesFile>
+    <Build Include="Properties\Database.sqlpermissions">
+      <ModelBuilderType>Permissions</ModelBuilderType>
+    </Build>
+    <PreDeploy Include="Scripts\Pre-Deployment\Script.PreDeployment.sql">
+      <SubType>Code</SubType>
+    </PreDeploy>
+    <PostDeploy Include="Scripts\Post-Deployment\Script.PostDeployment.sql">
+      <SubType>Code</SubType>
+    </PostDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <BuildContributorArgument Include="OutDir=$(OutDir)" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.CUSTOMER_SME.CK_EXPORT_WEIGHT.chkconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\EMPLOYEE.USER_DATA.DF_USER_DATA_CREATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\EMPLOYEE.USER_DATA.DF_USER_DATA_UPDATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\EMPLOYEE.USER_DATA.DF_USER_DATA_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\CLASSIFY.CATE_AND_EMP.DF_CATE_AND_EMP_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\CLASSIFY.LINKED_CATEGORY_TYPE.DF_CATEGORY_TYPE_RECURSIVE_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.ANNALS_VIEWER.DF_ANNALS_VIEWER_CREATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.LOG_TABLE.DF_LOG_TABLE_CREATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.ANNALS_VIEWER_DELETED.DF_ANNALS_VIEWER_DELETED_DELETE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\CLASSIFY.CATEGORY_TYPE.DF_CLASSIFY_TYPE.CATEGORY_TYPE_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\PERMISSION.APPLICATION.DF_APPLICATION_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\PERMISSION.MENU_MASTER.DF_MENU_MASTER_MENU_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.CUSTOMER_SME.DF_CUSTOMER_SME_BUSINESS_DESTINATION_ID.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.CUSTOMER_SME.DF_CUSTOMER_SME_STATUS_ID.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.CUSTOMER_SME.DF_CUSTOMER_SME_SIZE_ID.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.CUSTOMER_SME.DF_CUSTOMER_SME_RATING_TYPE_KEY_1.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.CUSTOMER_SME.DF_CUSTOMER_SME_RATING_KEY_1.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.BUSINESS_TYPE_1.DF_TYPE1_UPDATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.BUSINESS_TYPE_2.DF_TYPE2_UPDATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\CLASSIFY.LINKED_TYPE.DF_CATEGORY_RECURSIVE_TYPE_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.BUSINESS_TYPE_3.DF_TYPE3_UPDATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.CUSTOMER_SME_GROUP.DF_CUSTOMER_SME_GROUP_GROUP_SIZE_ID.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.CUSTOMER_SME_GROUP.DF_CUSTOMER_SME_GROUP_UPDATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.BUSINESS_TYPE_4.DF_TYPE4_UPDATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\dbo.GROUP_SIZE.DF_EXPOSURE_UPDATE_DATE.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\CLASSIFY.LINKED_CATEGORY.DF_CATEGORY_RECURSIVE_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Constraints\CLASSIFY.CATEGORY.DF_CLASSIFY.CATEGORY_DEL_FLAG.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Storage\Files\BAY01_log.sqlfile.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Storage\Files\PRIMARY.BAY01.sqlfile.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_IMPORT_WEIGHT.FK_CUS_SME_IMPORT_WEIGHT_CUS_SME_EXPORTER.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_IMPORT_WEIGHT.FK_CUS_SME_IMPORT_WEIGHT_EXPORTER_LOOKUP.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_IMPORT_WEIGHT.FK_CUS_SME_IMPORT_WEIGHT_EXPORTER_LOOKUP1.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORT_WEIGHT.FK_CUS_SME_EXPORT_WEIGHT_CUS_SME_EXPORTER.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORT_WEIGHT.FK_CUS_SME_EXPORT_WEIGHT_EXPORTER_LOOKUP.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORT_WEIGHT.FK_CUS_SME_EXPORT_WEIGHT_EXPORTER_LOOKUP1.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_EMP.FK_CATE_AND_EMP_USER_DATA.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_EMP.FK_CATE_AND_EMP_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.LINKED_CATEGORY_TYPE.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.LINKED_CATEGORY_TYPE.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_TYPE1.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.LINKED_CATEGORY_TYPE.FK_CATEGORY_TYPE_RECURSIVE_CATEGORY_RECURSIVE_TYPE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_CUS.FK_CATE_AND_CUS_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.FK_CUS_SME_EXPORTER_EXPORTER_LOOKUP.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.FK_CUS_SME_EXPORTER_EXPORTER_LOOKUP1.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.FK_CUS_SME_EXPORTER_EXPORTER_LOOKUP2.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.FK_CUS_SME_EXPORTER_EXPORTER_LOOKUP3.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.FK_CUS_SME_EXPORTER_EXPORTER_LOOKUP4.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.FK_CUS_SME_EXPORTER_EXPORTER_LOOKUP5.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.FK_CUS_SME_EXPORTER_EXPORTER_LOOKUP6.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.FK_CUS_SME_EXPORTER_EXPORTER_LOOKUP7.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.FK_CUS_SME_EXPORTER_EXPORTER_LOOKUP8.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUSTOMER_SME_RATING.FK_CUSTOMER_SME_RATING_CUSTOMER_SME_RATING_TYPE1.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_MENU.FK_CATE_AND_MENU_MENU_MASTER.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_MENU.FK_CATE_AND_MENU_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\PERMISSION.MENU_MASTER.FK_MENU_MASTER_MENU_MASTER.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_APP.FK_CATE_AND_APP_APPLICATION.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_APP.FK_CATE_AND_APP_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_Role.FK_RoleGroup_Role_RoleGroup_RoleCategory.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_CifInRole.FK_RoleGroup_CifInRole_RoleGroup_Role.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_EmpInRole.FK_RoleGroup_EmpInRole_RoleGroup_Role.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_PagePermission.FK_RoleGroup_PagePermission_RoleGroup_Aspx.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_PagePermission.FK_RoleGroup_PagePermission_RoleGroup_Permission.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_PagePermission.FK_RoleGroup_PagePermission_RoleGroup_Role.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.SME_GROUP_EXPOSURE.FK_SME_GROUP_EXPOSURE_SME_EXPOSURE_TYPE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.EXPORTER_LOOKUP.FK_EXPORTER_LOOKUP_EXPORT_LOOKUP_TYPE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RELATION_GROUP_EXPOSURE.FK_RELATION_GROUP_EXPOSURE_CUSTOMER_SME_GROUP.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RELATION_GROUP_EXPOSURE.FK_RELATION_GROUP_EXPOSURE_SME_GROUP_EXPOSURE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.LINKED_CATEGORY.FK_CATEGORY_RECURSIVE_CATEGORY_RECURSIVE_TYPE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.LINKED_CATEGORY.FK_CATEGORY_RECURSIVE_CATEGORY.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.LINKED_CATEGORY.FK_CATEGORY_RECURSIVE_CATEGORY1.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RELATION_EXPOSURE_CIF.FK_RELATION_EXPOSURE_CIF_SME_GROUP_EXPOSURE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATEGORY.FK_CATEGORY_CATEGORY_TYPE.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.ANNALS_CREDIT_ACCOUNT._dta_index_ANNALS_CREDIT_ACCOUNT_c_9_1609772792__K3.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.ANNALS_CREDIT_ACCOUNT.IX_ANNALS_CREDIT_ACCOUNT.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.ANNALS_CREDIT_ACCOUNT.IX_ANNALS_CREDIT_ACCOUNT_1.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\CLASSIFY.CATE_AND_EMP.IX_CATE_AND_EMP.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\CLASSIFY.LINKED_CATEGORY_TYPE.IX_CATEGORY_TYPE_RECURSIVE.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\CLASSIFY.CATE_AND_CUS.IX_CATE_AND_CUS.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.CUSTOMER.DEPTTRAN_CIF.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.CUSTOMER.OFFICR_ID_CIF.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.CLS_WHEN_APPROVE.CIF_CLS_WHEN_APPROVE.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.CLS_WHEN_APPROVE.LEADER1_CA_OLD_ID_CLS_WHEN_APPROVE.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.CLS_WHEN_APPROVE.CLS_LIMIT_PRODUCT_ID_KEY_CLS_WHEN_APPROVE.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.CLS_WHEN_APPROVE_LAST_UPDATE.LEADER1_CA_OLD_ID_CLS_WHEN_APPROVE_LAST_UPDATE.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.CLS_WHEN_APPROVE_LAST_UPDATE.CIF_CLS_WHEN_APPROVE_LAST_UPDATE_1.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.CLS_WHEN_APPROVE_LAST_UPDATE.CLS_PRODUCT_ID_KEY_CLS_WHEN_APPROVE_LAST_UPDATE_1.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.ANNALS_CREDIT.IX_ANNALS_CREDIT.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.ANNALS_CREDIT_PROCESS.IX_ANNALS_CREDIT_PROCESS.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\CLASSIFY.LINKED_CATEGORY.IX_CATEGORY_RECURSIVE.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.ByCustomer.IX_ByCustomer.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Indexes\dbo.Id_Branch._dta_index_Id_Branch_12_258099960__K8_K1_2.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.F_EMP_OWNER_REGION_45.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.F_EMP_OWNER_REGION.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.FControllingLineFullDescByLevel_ID.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.F_FindEmpInSameLevelByEmpID.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\CLASSIFY.F_FindEmpInSameLevelByEmpID.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.FControllingLineSeeAllEmpInSameLevelByEMP_ID.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.FControllingLineFullDescByEMP_ID.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.FControllingLineFullDescByEMP_ID_SHOW_REGION.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.F_EMP_OWNER_EMP.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.FControllingLineSeeAllEmpInSameLevelByLevel_ID.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.COALESCE_GL_TYPE.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.SPILT_CHAR_TEXT_TO_TABLE.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.SPILT_CHAR_TEXT_TO_TABLE_WITH_DELIMITER.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TBM_CAT002.PK_TBM_CAT002.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Id_DepBranch.PK_Id_DepBranch.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_AUTHORITY.PK_ANNALS_AUTHORITY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CIMfms.PK_CIMfms.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TEMP_CLASS_HISTORY.PK_TEMP_CLASS_HISTORY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_PROJECT.PK_ANNALS_PROJECT_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TB_CONTACT.PK_TR_.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_OBJECT.PK_ANNALS_OBJECT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TBDASOF.PK_TBDASOF.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_JUDGEMENT.PK_ANNALS_JUDGEMENT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_SUBJECT.PK_ANNALS_SUBJECT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_SUBJECT_DETAIL.PK_ANNALS_SUBJECT_DETAIL.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_IMPORT_WEIGHT.PK_CUS_SME_IMPORT_WEIGHT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\EMPLOYEE.USER_DATA.PK_USER_DATA.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.SME_EXPOSURE_TYPE.PK_SME_EXPOSURE_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORT_WEIGHT.PK_CUS_SME_EXPORT_WEIGHT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_CREDIT_ACCOUNT.PK_ANNALS_CREDIT_ACCOUNT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_EMP.PK_CATE_AND_EMP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TB_KPI_LAST_CREDIT_CA.PK_TB_KPI_LAST_CREDIT_CA.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.LINKED_CATEGORY_TYPE.PK_CATEGORY_TYPE_RECURSIVE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TB_KPI_LAST_CA.PK_TB_KPI_LAST_CA.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ByCus_CIF.PK_ByCus_CIF.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.DEBTDATE.PK_DEBTDATE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Controlling_User_Root_Viewer.PK_Controlling_User_Root_Viewer.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TEMP_EXPORT.PK_TEMP_EXPORT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TBM_CAT902.PK_TBM_CAT902.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TB_EMPLOYEE.PK_TB_EMPLOYEE_1.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_CUS.PK_CATE_AND_CUS.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CustomerTemp.PK_CustomerTemp.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_VIEWER.PK_ANNALS_VIEWER.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.JUDGEMENT_MONTHLY.PK_JUDGEMENT_MONTHLY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.UPLOAD_FILE.PK_UPLOAD_FILE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_CREDIT_FLOOD_TABLE.PK_ANNALS_CREDIT_FLOOD_TABLE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_CUS_NCB_EXCEPT_TYPE.PK_ANNALS_CUS_NCB_EXCEPT_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_CUS_NCB_TYPE.PK_ANNALS_CUS_NCB_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TEMP_KPI_DEBT_20091117.PK_TEMP_KPI_DEBT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.LOG_TYPE.PK_LOG_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUSTOMER.PK_CUSTOMER.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Controlling_Level.PK_CONTROLLING_LEVEL.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TB_TITLE.PK_TB_TITLE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.LOG_TABLE.PK_LOG_TABLE_1.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_CUS_CA.PK_ANNALS_CUS_CA.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_VIEWER_DELETED.PK_ANNALS_VIEWER_DELETED_1.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Controlling_UsersInLevel.PK_Controlling_UsersInLevel.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_PROCESS.PK_ANNALS_PROCESS.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_COVENANT.PK_ANNALS_COVENANT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Controlling_LeadsInLevel.PK_Controlling_LeadsInLevel.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TEMP_NPL.PK_TEMP_NPL.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CLS_WHEN_APPROVE.PK_CLS_WHEN_APPROVE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATEGORY_TYPE.PK_CLASSIFY_TYPE.CATEGORY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_JOB_TYPE.PK_ANNALS_JOB_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CIF_WATCHLIST_CA.PK_CIF_WATCHLIST_CA.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUS_SME_EXPORTER.PK_CUS_SME_EXPORTER.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CA_REPORT.PREVIOUS_1_MONTH_LIMIT_OF_FINISHED_CA.PK_PREVIOUS_1_MONTH_LIMIT_OF_FINISHED_CA.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TEMP_SM.PK_TEMP_SM.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\EMPLOYEE.EMP20110531.PK_EMP20110531.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TEMP_Vintage_200906.PK_TEMP_Vintage_200906.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Authen_UsersInRoles.PK_Authen_UsersInRoles.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\PERMISSION.APPLICATION.PK_APPLICATION.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TEMP_OLD_EMP_LINE.PK_TEMP_OLD_EMP_LINE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS.PK_ANNALS.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CIF_NOT_IN_CUSTOMER_SME.PK_CIF_NOT_IN_CUSTOMER_SME.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUSTOMER_SME_SIZE.PK_CUSTOMER_SME_SIZE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Bus_Group.PK_Bus_Group.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUSTOMER_SME_RATING.PK_CUSTOMER_SME_RATING_1.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_MENU.PK_CATE_AND_MENU_AND_APP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.REGION10_DESC.PK_REGION10_DESC.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\PERMISSION.MENU_MASTER.PK_MENU_MASTER.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_CREDIT.PK_ANNALS_CREDIT.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUSTOMER_SME_RATING_TYPE.PK_CUSTOMER_SME_RATING_TYPE_1.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUSTOMER_SME.PK_CUSTOMER_SME.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATE_AND_APP.PK_CATE_AND_APP_AND_APP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_Aspx.PK_TEST_ASPX.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RatingPivot.PK_RatingPivot.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TEMP_PORT_20111231.PK_TEMP_PORT_20111231.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\SM.SM_HISTORY.PK_SM_HISTORY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_GL_TYPE.PK_ANNALS_GL_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_Permission.PK_TEST_PERMISSION.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.REP_OD13.PK_REP_OD12.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CM_PORT_BY_BRANCH.PK_CM_PORT_BY_BRANCH.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_BOARD.PK_ANNALS_BOARD.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_Role.PK_TEST_ROLE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_CHANGE_TO_COMMON.PK_ANNALS_CHANGE_TO_COMMON.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_CifInRole.PK_TEST_CIF_VIEW.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_TYPE.PK_ANNALS_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_EmpInRole.PK_TEST_EMP_IN_ROLE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Bus_Type.PK_Bus_Type.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TB_LOG.PK_TB_LOG_1.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_PagePermission.PK_TEST_GROUP_PERMISSION.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Controlling_Level_Root_Viewer.PK_Controlling_Level_Root_Viewer.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TEMP_TB_CLS_MAPPING_BY_IDEN.PK_TEMP_TB_CLS_MAPPING_BY_IDEN.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TB_LOG_TYPE.PK_TB_LOG_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.COLLGROUP.PK_COLLGROUP_1.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.UPLOAD_FILE_TYPE.PK_UPLOAD_FILE_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_RoleCategory.PK_TEST_ROLE_CATEGORY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.REP_OD.PK_rep_od.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.COLLVAL.PK_COLLVAL.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.EXPORT_LOOKUP_TYPE.PK_EXPORT_LOOKUP_TYPE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RoleGroup_RoleLink.PK_TEST_ROLE_LINK.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ANNALS_OLD_REGION.PK_ANNALS_OLD_REGION.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUSTOMER_STATUS.PK_CUSTOMER_STATUS.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.busi_map.PK_busi_map.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Id_Fled_Type.PK_Id_Fled_Type.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.BUSINESS_TYPE_1.PK_TYPE1.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Id_Rental_Type.PK_Id_Rental_Type.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Id_Shr_Type.PK_Id_Shr_Type.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.BUSINESS_TYPE_2.PK_TYPE2.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.LINKED_TYPE.PK_CATEGORY_RECURSIVE_TYPE_KEY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Id_TypeCid05.PK_Id_TypeCid05.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.SME_GROUP_EXPOSURE.PK_SME_GROUP_EXPOSURE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.BUSINESS_TYPE_3.PK_TYPE3.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ByCustomer_2549.PK_ByCustomer_2549.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.EXPORTER_LOOKUP.PK_EXPORTER_LOOKUP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.REF_PROVINCE.PK_REF_PROVINCE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUSTOMER_SME_GROUP.PK_CUSTOMER_SME_GROUP.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RELATION_GROUP_EXPOSURE.PK_RELATION_GROUP_EXPOSURE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.BUSINESS_TYPE_4.PK_TYPE4.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Id_Department.PK_Id_Department.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ByCustomer_2550.PK_ByCustomer_2550.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TB_CUSTOMER_RISK.PK_TB_CUSTOMER_RISK.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.TB_Holiday.PK_TB_Holiday.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ByCustomer_2551.PK_ByCustomer_2551.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.GROUP_SIZE.PK_EXPOSURE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.LINKED_CATEGORY.PK_CATEGORY_RECURSIVE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CA_REPORT.CA_NET_APPROVE.PK_CA_NET_APPROVE.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.BUSINESS_DESTINATION.PK_BUSINESS_DESTINATION.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.RELATION_EXPOSURE_CIF.PK_RELATION_EXPOSURE_CIF.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ByCustomer_2545.PK_ByCustomer_2545.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ByCustomer_2546.PK_ByCustomer_2546.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\CLASSIFY.CATEGORY.PK_CLASSIFY.CATEGORY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.CUSTOMER_SME_HISTORY.PK_CUSTOMER_SME_JUDGEMENT_HISTORY.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ByCustomer_2547.PK_ByCustomer_2547.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Controlling_Users_Region.PK_Controlling_Users_Region.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.ByCustomer_2548.PK_ByCustomer_2548.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Authen_Application.PK_Authen_Application.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Authen_Roles.PK_Authen_Roles.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\dbo.Id_Branch.PK_Id_Branch.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Update_Role.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_GROUP_UPDATE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.USP_CustomerContact_Update.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Update_RoleCategory.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_GROUP_INSERT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_GROUP_DELETE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_ANNALS_JUDGEMENT_GetAll.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_JOB_SNAP_PREVIOUS_1_MONTH_LIMIT_OF_FINISHED_CA.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_DELETE_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\CLASSIFY.P_CLASSIFY_TREE_BY_KEY.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_BUSINESS_DESTINATION_GetAll.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_INSERT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_GROUP_GetAll.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspByCustomerSelProc.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_SELECT_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.GetRolesForUser.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\CLASSIFY.P_GET_LIST_EMP_RISK.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_SIZE_GetAll.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspACC_Sel.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_SET_NEW_GROUPID.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\CLASSIFY.P_GET_LIST_AUTH_BY_KEY.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_STATUS_GetAll.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_UPDATE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_GET_CIF_IN_GROUP.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.GetTbEmployeeByUsername.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ReportByCreditApprove.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\CLASSIFY.EMP_IN_CATEGORY_BY_KEY.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_ID_BRANCH_GetAll.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_UPDATE_GROUPID_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.INSERT_CUSTOMER_SME_SNAPSHOT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REPORT_CREDIT_NO_UPLOAD.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_MonthlyByAccount.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Report_Credit_By_Customer.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_MonthlyByAccountSelected.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspDIC05SelProc2.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\CLASSIFY.P_GET_CATE_KEY_BY_EMP.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Port_CustomerInControlling.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspCUS_Sel.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Port_CustomerInControllingSummary.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Law_All_Select.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ReportByCreditApproveGroupByEmp.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Coll_Person_Select.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CA_PIVOT_FOR_PRODUCT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ClassDebt_ALL_Select.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.EMPLOYEE_Get_Employee_By_EmpId.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CA_PIVOT_FOR_PRODUCT_RM_VALUE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspDIC07SelProc2.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CA_PIVOT_FOR_PRODUCT_APPROVE_VALUE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspDIC18SelProc2.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspDIC08SelProc.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.INPUT_CLS.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\SM.P_SM_HISTORY_INSERT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspDIC09SelProc.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\SM.P_SM_HISTORY_SELECT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\SM.P_SM_HISTORY_SELECT_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspDIC10SelProc.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CreateTempReportLCIDailyNEW.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\SM.P_SM_HISTORY_SELECT_BY_DATEIN.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\SM.P_SM_HISTORY_SELECT_BY_IDEN.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspDIC14SelProc.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\SM.P_SM_HISTORY_SELECT_DATEIN.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ReportByCreditApproveSelectGroup.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspDIC15SelProc.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\SM.P_SM_HISTORY_DELETE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\SM.P_SM_HISTORY_UPDATE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UspDIC99SelProc.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ControllingLineByEMP_ID.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Credit_Change_To_Annals.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\CLASSIFY.P_GET_ALL_ORGANIZE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ReportByCreditApproveSelectGroupRegionEmp.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REPORT_LCIDAILY_NEW.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Credit_Change_To_Annals2.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_CREDIT_CHECK_REFERENCE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ReportByCreditApproveSelectGroupRegionEmpLevel.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_EXPORT_CLS_APPROVE_BY_DATE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.AUTOGEN_GROUP_ID_FOR_CUSTOMER_SME.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_CREDIT_FLOOD_DELETE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_CREDIT_FLOOD_INSERT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CreateTempReport_ByCreditApproveSelectGroupRegionEmpLevel.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_CREDIT_FLOOD_INSERT_NOT_CONCERN.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_CREDIT_FLOOD_SELECT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_CREDIT_FLOOD_SELECT_CONCERN.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_CREDIT_FLOOD_TABLE_SELECT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_CREDIT_FLOOD_UPDATE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REPORT_EDW_ALSCOM_STATUS.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_RISK_TABLE_13.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Credit_Change_To_Annals_CA.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_CREDIT_FLOOD_UPDATE_NOT_CONCERN.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_SUMMARY_CHART_13.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_JOB_UPDATE_GROUP_ID_GROUP_EXPOSURE_REVIEW_DATE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Insert_New_Branch_From_TBM_CAT002_TO_Id_Branch.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_CHEQUE_SUMMARY_13.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_BACK_UP_ALL_DATABASE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Viewer_Delete_With_EmpId.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_COVENANT_DELETE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REPORT_CREDIT_NO_UPLOAD_UPDATE_STATUS.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_COVENANT_UPDATE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_COVENANT_INSERT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_JOB_UPDATE_GROUP_ID_GROUP_EXPOSURE_REVIEW_DATE_FROM_CA.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ReportPerformance1.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_NCB_AUTH1_SELECT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_NCB_AUTH2_SELECT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_SME_RATING_TYPE_GetAll.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_NCB_CUSTYPE_SELECT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_SME_RATING_GetByType.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ANNALS_NCB_DEPT_SELECT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Insert.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Update.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CreateTempReportProduct.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Viewer_Insert.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CreateTempReportProductCus.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_CHECK_CIF_WATCHLIST_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ControllingLevelLineByEMP_ID.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_CHECK_CIF_WATCHLIST_BY_CA.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ControllingUserLineByEMP_ID.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CUSTOMER_SME_MATCH_CA_IN_LEADER_LEADER1.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CA_IN_PROCESS.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_CREATE_TEMP_MAX_AGING_EDW.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ControllingLineByLevelRoot.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CA_IN_PROCESS_LEVEL_DROPDOWN.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ControllingUsersInLevelByLevelId.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CA_IN_PROCESS_TOTAL_BY_LEVEL.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_ACCNO_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CA_IN_PROCESS_JOB.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.ReportPerformance2.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Customer_Search.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_CHEQUE_SUMMARY.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_CREDIT_SUMMARY.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_RISK_TABLE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_SUMMARY_BY_ACC.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UPLOAD_COPY_FILE_BY_EMP_ID.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_SUMMARY_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Search_Filter.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REP_OD_SUMMARY_CHART.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_UPDATE_EXPORTER_DETAIL.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_GetNCBCustomersByNameFilter.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_INSERT_EXPORTER_DETAIL.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_GetNCBCustomersByIDFilter.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_GET_EXPORTER_PRE_DETAIL_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_GetNCBCustomersByCIFFilter.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.INSERTLOG.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.GET_CIFINFO.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_DELETE_EXPORTER_DETAIL_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_GetAllNCBCustomers.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_GET_EXPORTER_DETAIL_BY_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_SELECT_BY_CM_EXPORT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Viewer_Delete.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REPORT_EDW_PASS_BLACKLIST.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REPORT_LCIDAILY.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_R_MAP_CA.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_PIVOT_CLASS_HISTORY.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CustomerCollWithAppId_Select.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\CLASSIFY.RECURSIVE_CATEGORY_TYPE_4.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CustomerCollWithPledId_Select.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.INSERT_HOLIDAYS_SAT_SUN_TO_TB_HOLIDAYS.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_CLS_SELECT_BY_CA.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_Insert_Sat_Sun.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REPORT_EDW_PASS_DEFEND.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\CLASSIFY.RECURSIVE_CATEGORY_TYPE_8.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SummaryProcessByEmpID.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_CHECK_RATING_UPDATE_DATE_OLDER_BY_CA.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Delete_CifInRole.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Delete_EmpInRole.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Delete_Role.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Delete_RoleCategory.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Edit_CifInRole.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.UPLOAD_SELECT_FILE_BY_CA_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Edit_EmpInRole.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_AvailableRole_By_Cif.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.P_JOB_INSERT_CIF_FROM_CA_TO_CUSTOMER_SME.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_AvailableRole_By_Emp.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_CifDetail_By_Cif.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Credit_No_Cif_Search_Filter.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_CifInRole_By_Filter.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_CifInRole_By_RoleId.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_EmpDetail_By_Emp.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_EmpInRole_By_Filter.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_EmpInRole_By_RoleId.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REPORT_CREDIT_NO_UPLOAD_V2.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Credit_Search_Filter.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Insert_New_Branch_From_Leader.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_Role_By_RoleCategoryId.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_DailyByAccount.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_Role_By_RoleId.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_Role_RoleCategory_By_Filter.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_DailyByAccountSelected.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_RoleCategory_By_RoleCategoryId.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_RoleId_By_RoleCategoryId.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.sp_GridView_RowNumber.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_RoleInCif_By_Cif.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.CreateTempReportLCIDaily.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_RoleInEmp_By_Emp.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_SelectedRole_By_Cif.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Annals_Select.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.Insert_New_Branch_From_DWH_AUTO_BRANCH.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Get_SelectedRole_By_Emp.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.AnnalsType_Select.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_EXPOSURE_DELETE_EXPO.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_EXPOSURE_GET_AVAILABLE_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_GetAll_RoleCategory.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.GET_COLUMN_NAME.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_EXPOSURE_GET_CIF_IN_GROUP.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_GetAll_RoleLink.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_EXPOSURE_GET_EXPO_BY_G_EXPO_ID.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.REPORT_EDW_RISK_MAXAGING_DAILY_FACT.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.USP_DetailByCus_SelProc.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Insert_CifInRole.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_EXPOSURE_GET_EXPO_BY_GROUP.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.USP_DetailByAcc_SelProc.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Insert_EmpInRole.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.update_eam_unit_leader.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_EXPOSURE_GET_EXPO_TYPE.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_EXPOSURE_GET_SELECTED_CIF.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.USP_CustomerContact_Delete.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Insert_Role.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_EXPOSURE_INSERT_EXPO.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.USP_CustomerContact_Insert.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_Role_Insert_RoleCategory.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SP_CUSTOMER_SME_SELECT_BY_CM.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.SME_EXPOSURE_UPDATE_EXPO.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\CLASSIFY.P_EMP_IN_CATEGORY_BY_KEY.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\dbo.USP_CustomerContact_Select.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Membership_FullAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Membership_BasicAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Membership_ReportingAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Profile_FullAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Profile_BasicAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Profile_ReportingAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Roles_FullAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Roles_BasicAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Roles_ReportingAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Personalization_FullAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Personalization_BasicAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_Personalization_ReportingAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Roles\Database Roles\aspnet_WebEvent_FullAccess.role.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\BAY01Database.rolememberships.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.FormatAgingHist.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.GetLimitAvg.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.CompareAging.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.FindMaxAging.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.GetName.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.F_BEGIN_NPL_DATE_FROM_CLASS.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.FN_GET_CIF_IN_CA.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.OD_UTILIZE_PERCENT_BY_CIF.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.TimeDiff.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.CountCompareAging.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.FindWorkingTime.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.CalculateTime.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.WorkingTimePerDay.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.GetNameEng.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Programmability\Functions\dbo.MAP_DECB_RD.function.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.CUSTOMER._dta_stat_642817352_1_32.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.CUSTOMER._dta_stat_642817352_2_1.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.CLS_WHEN_APPROVE._dta_stat_775725866_3_2_51.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.CLS_WHEN_APPROVE._dta_stat_775725866_2_51_1.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.CLS_WHEN_APPROVE._dta_stat_775725866_2_1.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT._dta_stat_1032390747_1_13_4_3_2_9_26_10_28.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT._dta_stat_1032390747_1_9_13_4_3.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT._dta_stat_1032390747_4_3_2_1.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT._dta_stat_1032390747_1_4_3.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT._dta_stat_1032390747_1_4_3_2_9.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_2_1_4.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_2_4.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_1_6_5_4.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_1_5_4_6_2.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_5_4.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_4_6_1.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_5_4_2_1.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_1_4.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_1_4_6_2.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_6_5_4.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Statistics\dbo.ANNALS_CREDIT_PROCESS._dta_stat_1216723387_2_5.statistic.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Triggers\dbo.ANNALS_VIEWER.ANNALS_VIEWER_ON_DELETE.trigger.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Triggers\dbo.CUSTOMER_SME.CUSTOMER_SME_ON_UPDATE.trigger.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\sak.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\chonlamai.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\mee.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\CLASSIFY.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\CUSTOMER.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\EMPLOYEE.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\usersystemweb.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\chutima.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\dpassako.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\sprakit.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\careport.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\PERMISSION.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Users\thee.user.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CONTROLLING_LINE_FULL_WITH_REGION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_020_LAST_CA_APPROVE_ONLY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_002_EDW_RISK_MAXAGING_LAST_DATE_F_000_AND_001.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CONTROLLING_LINE_FULL_REGION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_021_LAST_CREDIT_CA_APPROVE_ONLY_PLUS_ONLY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_005_EDW_RISK_MAXAGING_MONTHLY_FACT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT11_10_BY_MONTH_LEVEL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_006_EDW_RISK_MAXAGING_MONTHLY_MAX_DATE_F_005.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.View_Perfomance.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT12_11_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Schedule_Risk_Team.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_007_EDW_RISK_MAXAGING_MONTHLY_LAST_DATE_F_005_AND_006.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_00_sum_cif_approve_process_group_by_month_and_REGION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.VIEW_DEPTBRANCH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT35_34_NO_UPLOAD_FILE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_employee.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_CREDIT_BY_CUSTOMER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_008_EDW_RISK_MAXAGING_D_M_CUST_F_007_AND_004.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_CIF_CLASS_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Report_by_date.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_038_CLS_CREATED_THIS_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_037_CIF_LAST_CA_ALL_SUBJECT_APPROVE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_REPORT_PRODUCT_AUDIT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_039_ACCOUNT_CA_APPROVED_THIS_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Report_by_date_by_emp.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Cust_Last_Date_In.view.sql">
+      <SubType>Code</SubType>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_040_CLS_CREATED_FROM_APPROVED_THIS_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Report_Sum_Credit_Approve.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_041_CLS_APPROVED_THIS_MONTH_SUMMARY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_009_LEADER_CRME_LAW_ALL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_014_BRANCH_AND_REGION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_CIF_CLASS_CA_NEW.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_010_DBF_IMPORT_T_MASTER_2.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Report_Approve.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Report_Approve_Sum_Detail.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT59_07_WITH_REASON.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_ANNALS_CUS_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT68_32_M_SUM_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_042_CA_APPROVED_AND_RUNED_CLS_THIS_MONTH_SUMMARY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_CREDIT_BY_CUSTOMER_NO_CM_PORT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT60_59_LAST_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT69_47_REJECT_SME_M.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_043_CLS_COMPARE_APPROVED_THIS_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_ANNALS_CUS_NCB_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT65_CIF_PASS_LEADER_LEADER1.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT62_61_SME_LAST_APPROVE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT70_69_REJECT_FOR_BOT_M.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT61_60_APPROVE_ONLY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT71_48_CANCEL_SME_M.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.COLL_ID_ALL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT72_71_CANCEL_FOR_BOT_M.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.COLL_ID_DISTINCT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_annals_account.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.BUSINESS_TYPE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Report_Product_1.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT73_53_APPROVE_SME_M.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_annals_process.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT74_73_APPROVE_FOR_BOT_M.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_011_CA_OLD_LIMIT_AND_REQUEST_BY_SPECIFY_TIME.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_02_HEAD_NAME.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME_FULL_DESC.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_INFO.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT38_36_WITH_REGION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT39_38_BY_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT40_38_ONLY_S_20M_DOWN_BY_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT41_40_SUM_CIF_PIVOT_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_TEMP_CA_NCB_WITH_LEVEL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT42_40_SUM_CREDIT_CA_PIVOT_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_UPLOAD_FILE_CIF2.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.Class_2008_06.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT43_40_SUM_REVIEW_CA_PIVOT_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CONTROLLING_LINE_WITH_ROOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT44_40_SUM_OTHER_CA_PIVOT_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_FILE_NO_UPLOAD.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_ANNALS_CUS_NCB.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT45_40_SUM_CA_PIVOT_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT99_07_TEMP.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME_LAST_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.TEMP_KPI_20091117.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_018_APPROVE_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT36_07_SUBJECT_NEW_CUS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.Class_2008_07.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_028_ALL_APPROVE_CIF_CA_PRIORITY_BY_CREDIT_UP.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.View_Report_Product Month 5.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME01_VIEW.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUS_OFFICE_DEP.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CM_SECTION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Controlling_LeadsInLevel_HeadOnly.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_REPORT_PRODUCT_CUS_TDR.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME02_01_WITH_LEVEL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CUSTOMER.V_005_CUSTOMER_SME_EXPORTER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.Controlling_LeadsInLevel_TopPriority.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.temp_top_100.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_NPL_SME_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME03_02_WITH_BYCUSTOMER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_ANNALS_COVENANT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_029_LAST_APPROVE_CA_PRIORITY_BY_CREDIT_UP.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT_TEMP100_07_GROUP_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CA_FROM_LEADER_SME_BY_CIF.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_034_CA_MAP_CLS_SIGNED.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_030_CIF_SME_S_M_PLUS_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_022_CIF_UNION_TO_TYPE1.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Customer_Pass_Leader.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME02_00_WITH_LEVEL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME04_03_WATCH_LIST_STATUS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT57_36_PREPARE_FOR_AUDIT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Credit_Account_ID_Last_Date.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_SM_SME_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Credit_Account_Process_Last_Process.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT37_36_PIVOT_SUBJECT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Cust_IN_CA_GROUP_BY_ID_CIF.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_009_CUSTOMER_NCB_TYPE_11.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT58_FOR_AUDIT_BY_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Cust_Account.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT_TEMP101_100_VINTAGE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT75_63_SME_LAST_APPROVE_UNION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT_TEMP102_100_VINTAGE_LEADER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.view_rowNumber.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_ANNALS_CREDIT_FLOOD.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_001_ANNALS_CREDIT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CUSTOMER.V_006_CUSTOMER_SME_WITH_BYCUSTOMER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_TEMP_PASS_LEADER_20110501.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_002_ANNALS_CREDIT_SUBJECT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_003_ANNALS_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_01_CM_HeadCM_Data_A.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT46_38_Weekly_Approve.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_005_CM_CATEGORY8_LEADER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_015_CA_PRODUCT_SUMMARY_101_102_103.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_005_LAST_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT01_ANNALS_CREDIT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_016_CA_CIF_SUMMARY_101_102_103.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.TEMP_KPI_BY_CUS_20091123.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_004_REGIS_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT02_ANNALS_CREDIT_SUBJECT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Chart1_AppIN.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_006_CA_SUBJECT_SUMMARY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT66_CA_SEND_TO_BOARD.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_015_CA_SUMMARY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_007_ACCOUNT_CA_BOARD_FINISHED.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT03_ANNALS_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT67_07_IN_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_019_CA_FILTER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT63_59_CUS_SME.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_008_CA_CIF_BOARD_FINISHED_THIS_MONTH_SUM_BY_PRODUCT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT04_LAST_APPROVE_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT64_63_BYCUS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME06_01_WITH_BYCUSTOMER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_credit_process.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT05_LAST_REJECT_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT06_LAST_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT47_19_REJECT_SME_REASON.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_SM_NPL_HISTORY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT07_SUMMARY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT48_18_CANCEL_SME_REASON.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.TEMP_KPI_BY_CUS_2_20091123.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT08_ACCEL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT49_47_REJECT_SME_S.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT77_18_CANCEL_PIVOT_CASHTYPE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT50_49_REJECT_FOR_BOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT78_19_REJECT_PIVOT_CASHTYPE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_006_CM_CATEGORY8_LEADER_PARENT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_009_SUM_PREVIOUS_LIMIT_FROM_CLS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CUSTOMER.V_007_CUSTOMER_SME_WITH_BYCUSTOMER_BR_PROVINCE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT51_48_CANCEL_SME_S.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT79_20_APPROVE_PIVOT_CASHTYPE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_001_EXPANDED_CATEGORY_TYPE_1.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT52_51_CANCEL_FOR_BOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT80_59_LAST_CA_CREDIT_ONLY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_02_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_010_CA_OLD_LIMIT_AND_REQUEST.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT09_07_SUBJECT_101_102_103.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT53_20_APPROVE_SME_REASON.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_012_REPORT_S_CANCEL_FOR_BOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_01_CREDIT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT54_53_APPROVE_SME_S.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_013_REPORT_S_REJECT_FOR_BOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_00_ALL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT55_54_APPROVE_FOR_BOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_014_REPORT_S_APPROVE_FOR_BOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_REPORT_PRODUCT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_03_CUSTOMER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_015_REPORT_M_CANCEL_FOR_BOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.TEMP_SIZE_M_EXP_OD.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CreditFilter02_CreditAccount.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT76_39_PIVOT_PRODUCT_TEST.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_UPLOADFILE_APPROVE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_016_REPORT_M_REJECT_FOR_BOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CreditFilter01_CreditMaxProcessDate.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_04_ACCOUNT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.TEMP_CIF_REGION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_LEVEL_HISTORY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_017_REPORT_M_APPROVE_FOR_BOT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_007_CM_CATEGORY8_HEAD_MANAGER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_04_SUM.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.TEMP_CIF_REGION_2.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_BAYSIZE_SUM_TOTAL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.TEMP_CIF_REGION_3.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_018_LAST_APPROVED_CA_WITH_DESC.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.View_Cifinfo.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT06B_REGIS_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME07_LAST_CA_ONLY_APPROVE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_04_ACCOUNT_VALUE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME08_01_07.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_UPLOADFILE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_031_ADD_BYCUS_EMP_NAME_ON_V_029.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CUSTOMER.V_001_EXPORT_SME_GROUP_CM_HEAD_MANAGER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_LOG.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_03_IDEN.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_02_PROCESS_DATE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_035_SUBJECT_NF00.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_Customer_flood.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CUSTOMER.V_003_CUSTOMER_SME.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_02_PRE_DATE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V01_00_EDW_RISK_MAXAGING_MAX_DATE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_ANNALS_CUS_NCB_ACC.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_02_PROCESS_LAST.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT46_SME_LAST_CA_WEEKLY_APPROVE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_002_CATEGORY_MAP_TYPE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_003_EDW_RISK_MAXAGING_30_DAY_LATER_F_000_AND_001.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_03_LIMIT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_003_LINKED_CATEGORY_TYPE_1_INFO.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_004_EDW_RISK_MAXAGING_LAST_DATE_60_DAY_F_002_AND_003.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME00_ALL_STATUS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_REPORT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CONTROLLING_LINE_FULL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME05_02_MAP_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CONTROLLING_LINE_BY_EMP_ID.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT77_02_ALL_SUBJECT_PIVOT_CASHTYPE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME02_00_WITH_BYCUSTOMER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_CM_TEAM_GROUP.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME09_P%27NOI.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Finde_Level_Process_From_Emp_id.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_023_FINISH_CA_101_102_103_114_115_Y2010_MAP_CIF_TYPE1.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_EXPORT_CIF_GROUP.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME09_P%27NOI_2.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_024_CA_OUTER_NCB_FROM023.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Role_Mapping.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_032_MIN_MAX_APPROVE_CA_SUBJECT_01.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.temp_PTT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_025_CA_MAPPED_NCB_FROM024.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_026_LAST_CA_FROM_REPORT60_59_LAST_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Role_EmpInRole_With_Mapping.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_033_NET_APPROVE_VALUE_BY_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Role_CifInRole_With_Mapping.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CreditSummary.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_EDW_RISK_MAXAGING_DAILY_FACT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT18_09_CANCEL_ONLY_C020_C050.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_CA_FROM_LEADER_SME01.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_UPLOAD_FILE_CIF.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_CA_FROM_LEADER_SME02_01_LAST_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_00_EMP_APPROVE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT19_09_REJECT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_CUSTOMER_STOP.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT20_09_APPROVE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT_CUS_LAST.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_027_CREDIT_UP_LAST_CA_FROM_REPORT07.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_017_LAST_APPROVED_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CreditFilter03_Credit_Account_Process.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_Credit_Account_Process_Rank.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_CUSTOMER_BY_PROVINCE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CUSTOMER.V_004_SME_WITH_LAST_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CreditFilter04_Credit_Account_Process_Viewer.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CUSTOMER.V_002_GROUP_SIZE_DETAIL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_008_CM_HEAD_MANAGER_SEQ1_ONLY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CreditFilter05_FULL_CA_WITH_CUSTOMER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Level_Lead_Emp.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT23_18_CANCEL_C020_C050__BY_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_REPORT_PRODUCT_CUS_NET.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CreditFilter06_FULL_CA_NO_CIF_IN_CUSTOMER.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.TEMP_TB_VINTAGE_BR.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_Level_User_Emp.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT24_19_REJECT_BY_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_CREDIT_BY_CUSTOMER_BOARD.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_REPORT_PROCESS_B070.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT25_20_APPROVE_BY_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_REPORT_PRODUCT_P_PU.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_CREDIT_NO_UPLOAD.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CM_REGION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_011_EDW_ALSCOM_APP.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT26_23_CANCEL_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_015_DEPARTMENT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CM_HEAD.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT27_24_REJECT_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_010_BRANCH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT28_25_APPROVE_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_011_OLD_REGION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT29_26_27_CANCEL_REJECT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.View_Tam_delete.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_012_REGION.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT30_29_28_CANCEL_REJECT_APPROVE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_004_LINKED_CATEGORY_TYPE_2_INFO.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT31_30_SUM_GROUP_BY_MONTH_LEVEL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUS_OFFICE_DEP_old.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.EMPLOYEE01.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_012_CA_SUBJECT_SUMMARY2.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT32_31_SUM_ALL_REQUEST.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_CREDIT_NO_UPLOAD_2010M1-4.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.CUSTOMER_SME11_GROUP_EXPOSURE_VIEW.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT33_32_SMALL_SUM_BY_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT14_07_PIVOT_OLD_VALUE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_00_sum_cif_approve_process_group_by_month_and_level.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT56_38_APPROVE_THIS_MONTH.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CLASSIFY.V_013_CM_HEAD_MANAGER_WITH_DESC.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT15_07_PIVOT_RM_VALUE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_036_CA_HAVE_PROJECT_CODE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_013_CA_PRODUCT_SUMMARY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT16_07_PIVOT_CM_VALUE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_00_id_approve_cancel_before.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\CA_REPORT.V_014_CA_CIF_SUMMARY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT10_07_SUBJECT_101_102_103_LESS_THEN_EQUAL_0_BY_CA.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_CREDIT_BY_CUSTOMER_LAST.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT34_07_CA_DETAIL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.v_00_sum_small_approve_by_level.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.Row_Cust.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_KFS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_018_APPROVE_CA_101_102_103_114_115.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_000_EDW_RISK_MAXAGING_DAILY_FACT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT17_07_PIVOT_APPROVE_VALUE.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.REPORT13_10_SUMMARY.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_REPORT_PRODUCT.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_KFS2.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_019_PORT_FOR_KPI.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_001_EDW_RISK_MAXAGING_MAX_DATE_F_000.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_REPORT_PRODUCT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_pnop.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2547.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_REPORT_PRODUCT_CUS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2548.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.PORT_20110404.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TBM_CAT002.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2549.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CA_P200_P300_P400_FROM_LEADER_SME.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2555.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2550.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CA_FROM_LEADER_SME.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CUS_CA_BACK.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_DepBranch.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2555.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_AUTHORITY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CIMfms.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Report_LciDaily_New.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_CLASS_HISTORY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_PROVINCE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_EDW_RISK_AGING_15_TO_60_DAY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_PROJECT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_CONTACT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_OBJECT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.cust_class.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TBDASOF.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.EX_SRC_S_BY_AREA_30062011.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_JUDGEMENT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_COVENANT_NEXT_ACTION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_SUBJECT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.annals_covenant_back.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_SUBJECT_DETAIL.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_REPORT_PRODUCT_201201.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUS_SME_IMPORT_WEIGHT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\EMPLOYEE.USER_DATA.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.SME_EXPOSURE_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_Contents.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Seng_Toey_20120201.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.TEMP_ORGANIZE_RM.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_EXCEL_RatingBayCheckValidate.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_REPORT_PRODUCT_201111.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUS_SME_EXPORT_WEIGHT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_LastTime_20100122.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CREDIT_ACCOUNT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_FIND_CM_HEAD_RM.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.CATE_AND_EMP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_KPI_LAST_CREDIT_CA.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_REPORT_PRODUCT_201112.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.LINKED_CATEGORY_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_KPI_LAST_CA.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.TEMP_BRANCH_MAPPING_RM.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCus_CIF.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.TEMP_CONTROLLING_RM.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CREDIT_PROCESS_BAK.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CUSTOMER.TEMP_UPDATE_SME_RISK_20110727.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.DEBTDATE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp20090312_sme_r_1_chkDel.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Authen_UsersInRoles_BAK_20110704.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_CIF_SM.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Controlling_User_Root_Viewer.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_EXPORT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.TEMP_RM_MAP_REGION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Report_LciDaily.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TBM_CAT902.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.tb_employee_bak_20110704.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_EMPLOYEE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_20111201.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.CATE_AND_CUS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CustomerTemp.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_VIEWER.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.JUDGEMENT_MONTHLY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.UPLOAD_FILE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CREDIT_FLOOD.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.LOG_LEVEL.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_REGION_BRANCH.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CREDIT_FLOOD_TABLE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CUS_NCB_EXCEPT_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_BRANCH.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_STATUS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Rep_od_All.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CUS_NCB_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_KPI_DEBT_20091117.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.upsys.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_POSITION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_R_APPROVE_2.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.LOG_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_Holiday_20120105.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_RISK_MANAGE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Controlling_Level.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_TITLE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_SME_BACKUP_20090831.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.FACILITY INFORMATION_back.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.LOG_TABLE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_PROPOSAL.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CUS_CA.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_VIEWER_DELETED.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_R_APPROVE_1.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\EMPLOYEE.EMP040316.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.UPLOAD_FILE_BAK_20120706.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_FORM_FIELD_LIST_20111103.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Controlling_UsersInLevel.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_PROCESS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.customer_sme_back_20110831.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_COVENANT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.tmp_ANNALS_CREDIT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_COVENANT_ACTION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Controlling_LeadsInLevel.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.tmp_annals_credit_account.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Cif_Class.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_NPL.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_COVENANT_DETAIL.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CLS_WHEN_APPROVE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.CATEGORY_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.tmp_annals_credit_process.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_JOB_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TempTop100.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CIF_WATCHLIST_CA.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUS_SME_EXPORTER.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_COMPARE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Detail.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_COVENANT_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.091009_I142927_CIMD110.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CA_REPORT.PREVIOUS_1_MONTH_LIMIT_OF_FINISHED_CA.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_V_001_EXPORT_SME_GROUP_CM_HEAD__.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_SM.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\EMPLOYEE.EMP20110531.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_SM_Dec_FILL_IN.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_Vintage_200906.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Authen_UsersInRoles.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.View_052009_cheng.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\PERMISSION.APPLICATION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_SM_Nov_FILL_IN.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Sheet1_.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2553.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_OLD_EMP_LINE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2553.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_CM_HISTORY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CIF_NOT_IN_CUSTOMER_SME.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_VINTAGE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_SME_SIZE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_OUT_OF_SCOPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CLS_WHEN_APPROVE_LAST_UPDATE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_DEGREE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Bus_Group.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_TRAIN_IN_OUT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ACCEL_RECONCILE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_EDUCATION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_SME_RATING.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_DepBranch_NewRegion_Maping_RM.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.CATE_AND_MENU.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_EMPTRANING.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_CIF_KUI.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.REGION10_DESC.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\PERMISSION.MENU_MASTER.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CREDIT.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_SME_RATING_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.upload_file_bak_20110905.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_RISK_CONTROL_SUMMARY_FILTER.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_EMPLOYEE_Backup.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Branch_From_Leader.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_SME.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.CATE_AND_APP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RoleGroup_Aspx.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RatingPivot.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_PORT_20111231.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\SM.SM_HISTORY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_GL_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RoleGroup_Permission.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.REP_OD13.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CM_PORT_BY_BRANCH.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_BOARD.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RoleGroup_Role.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CHANGE_TO_COMMON.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CUS_NCB_TYPE_DETAIL.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CREDIT_PROCESS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RoleGroup_CifInRole.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\EMPLOYEE.EMP040316_BACKUP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.customer_sme_backup_20110325.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\EMPLOYEE.EMP20110531_BACKUP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RoleGroup_EmpInRole.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Bus_Type.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Authen_UsersInRoles_20090907.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_LOG.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RoleGroup_PagePermission.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ChkNCB.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_20111201_NO_DUP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_20111201_CLEAN_CM_DUP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_TB_CLS_MAPPING_BY_CA.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Controlling_Level_Root_Viewer.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ca_s.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_TB_CLS_MAPPING_BY_CIF.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CUSTOMER.TEMP_CHECK_SIZE_P_NOP_20110810.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_TB_CLS_MAPPING_BY_IDEN.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_NEW_STATUS_20110713.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_CIFTYPE_PIVOT_REGION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_LOG_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_UPDATE_REVIEW_DATE_20111213.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.COLL_Person.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.COLLGROUP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_20090223_SIZE_SUMMARY_CIFTYPE1.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.NCB_RESPONSE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.UPLOAD_FILE_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_20090223_SIZE_SUMMARY_CIFTYPE2.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RoleGroup_RoleCategory.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.EX_SRC_PORT_20110620_1.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.REP_OD.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CLS_WHEN_APPROVE_BACKUP_20100310.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.COLLVAL.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Query.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_20090223_SIZE_SUMMARY_CIFTYPE3.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Bus_Type.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.EXPORT_LOOKUP_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RoleGroup_RoleLink.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_FORM_FIELD_BAK20110620.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_OLD_REGION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Dic05.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.annals_cus_ncb_back.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_LastCA_LastNCB_2010.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_CLS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Dic07.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.customer_sme_backup_20110329.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2551.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.UPLOAD_FILE_BAK_20110912.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Dic08.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_COVENANT_DETAIL_BACKUP_20120220.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Dic09.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Report_Chart.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Rating.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_SME_backup_20110621.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_COVENANT_TYPE_OLD.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_CASHFLOW.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Dic10.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Collat.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Dic14.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Table_1.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.MergeCOS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Dic15.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Build_Type.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_STATUS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Dic18.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.busi_map.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Dic99.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_UPDATE_REVIEW_DATE_20120221.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Fled_Type.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.lim_exp.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.BUSINESS_TYPE_1.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Rental_Type.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.customer_sme_backup_20110330.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_SME_BACK_20110622.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Shr_Type.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.BUSINESS_TYPE_2.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_21122009.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_CUS_NCB.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.LINKED_TYPE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_TypeCid05.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_R01_04.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.customer_sme_backup_20110331.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_R02_09.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.cif_back1.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_DSS.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.SME_GROUP_EXPOSURE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.BUSINESS_TYPE_3.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Law_ALL.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_R03_05.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_DepBranchLeader.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.cif_back100.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.LinkColl.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2549.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_R06.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.EXPORTER_LOOKUP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2554.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.REF_PROVINCE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_R07_08.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_SME_GROUP.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RELATION_GROUP_EXPOSURE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.BUSINESS_TYPE_4.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Branch_Province.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_R10_11.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.NPL_FLOW_20110307.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Department.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2550.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_R12_13.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_R14_15.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_CUSTOMER_RISK.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_Holiday.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2554.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2551.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Temp_Update_Port_R16_17_18_19.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.GROUP_SIZE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ANNALS_SUB_COMMITTEE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_DEPBRANCH.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.LINKED_CATEGORY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_EMPLOYEE_BACK_20111122.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Tmp_CUSTOMER.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.EDW_CLS_SNAP_CHECK_20100731.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CA_REPORT.CA_NET_APPROVE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_CHECK_CUST_SIZE_NOP_20110720.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.BUSINESS_DESTINATION.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.UPLOAD_FILE_BAK_20111019.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.EDW_SME_APPROVE_CHECK_20100731.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.RELATION_EXPOSURE_CIF.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2552.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2545.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.UPLOAD_FILE_BAK_20110912_2.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Branch_19092011.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Excel_npl_all_20100716.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2552.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Branch_ton.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2546.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\CLASSIFY.CATEGORY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.CUSTOMER_SME_HISTORY.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccDaily_541121.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_ALSCOM.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2547.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Region.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Controlling_Users_Region.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Detail_ByAcc.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TB_SCHEDULE.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByCustomer_2548.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Authen_Application.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_KFS_CIF_20100917.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_KFS_CIF_20100917_2.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Authen_Roles.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.Id_Branch.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2545.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.TEMP_REPORT_PRODUCT_201202.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.ByAccount_2546.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Service Broker\Routes\AutoCreatedLocal.route.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Membership_FullAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Membership_BasicAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Membership_ReportingAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Profile_FullAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Profile_BasicAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Profile_ReportingAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Roles_FullAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Roles_BasicAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Roles_ReportingAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Personalization_FullAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Personalization_BasicAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_Personalization_ReportingAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\aspnet_WebEvent_FullAccess.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\CLASSIFY.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\PERMISSION.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\CA_REPORT.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\CUSTOMER.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\EMPLOYEE.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\SM.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Security\Schemas\dpassako.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_CREDIT_ACCOUNT_PROCESS.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Views\dbo.V_TEMP_REPORT_PRODUCT_FULL.view.sql">
+      <SubType>Code</SubType>
+    </Build>
+  </ItemGroup>
+  <ItemGroup>
+    <NotInBuild Include="Schema Objects\Assemblies\SqlServerProject1.dll">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <Build Include="Schema Objects\Assemblies\SqlServerProject1.supporting.sql">
+      <SubType>NotInBuild</SubType>
+    </Build>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SqlServerProject1, Version=1.0.3000.17515, Culture=neutral, PublicKeyToken=null">
+      <Name>SqlServerProject1</Name>
+      <AssemblyName>SqlServerProject1.dll</AssemblyName>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Schema Objects\Assemblies\SqlServerProject1.dll</HintPath>
+      <Private>True</Private>
+      <SqlAssemblyName>SqlServerProject1</SqlAssemblyName>
+      <SqlOwnerName>dbo</SqlOwnerName>
+      <SqlPermissionSet>SAFE</SqlPermissionSet>
+    </Reference>
+  </ItemGroup>
+</Project>

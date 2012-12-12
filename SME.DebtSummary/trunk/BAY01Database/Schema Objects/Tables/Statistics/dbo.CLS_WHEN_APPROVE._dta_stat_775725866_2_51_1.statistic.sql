@@ -1,0 +1,3 @@
+﻿CREATE STATISTICS [_dta_stat_775725866_2_51_1]
+    ON [dbo].[CLS_WHEN_APPROVE]([CIF], [PRODUCT_NAME], [ID_KEY]);
+

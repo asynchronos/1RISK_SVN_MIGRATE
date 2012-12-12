@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[lim_exp] (
+    [cif]        DECIMAL (10)    NOT NULL,
+    [mcif]       DECIMAL (10)    NOT NULL,
+    [numcust]    DECIMAL (10)    NOT NULL,
+    [lim_amt]    DECIMAL (15, 2) NOT NULL,
+    [lim_use_tb] DECIMAL (15, 2) NOT NULL,
+    [lim_aval]   DECIMAL (15, 2) NOT NULL,
+    [glim_aval]  DECIMAL (15, 2) NOT NULL,
+    [lim_rev]    DECIMAL (15, 2) NOT NULL,
+    [lim_nrev]   DECIMAL (15, 2) NOT NULL,
+    [principal]  DECIMAL (15, 2) NOT NULL,
+    [sing_lim]   DECIMAL (15, 2) NOT NULL,
+    [gsing_lim]  DECIMAL (15, 2) NOT NULL,
+    [grp_lim]    DECIMAL (15, 2) NOT NULL,
+    [grp_coll]   DECIMAL (15, 2) NOT NULL,
+    [ltv]        DECIMAL (9, 2)  NOT NULL,
+    [mix_line]   CHAR (1)        NOT NULL,
+    [joint_line] CHAR (1)        NOT NULL,
+    [coll_co]    CHAR (1)        NOT NULL,
+    [g_coll]     DECIMAL (1)     NOT NULL,
+    [coll_depo]  DECIMAL (15, 2) NOT NULL,
+    [coll_ndepo] DECIMAL (15, 2) NOT NULL,
+    [cons_ltv]   DECIMAL (9, 2)  NOT NULL,
+    [leas_mac]   DECIMAL (15, 2) NOT NULL,
+    [over_aut]   DECIMAL (15, 2) NOT NULL
+);
+

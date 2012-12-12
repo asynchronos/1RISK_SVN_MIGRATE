@@ -1,0 +1,3 @@
+﻿CREATE STATISTICS [_dta_stat_642817352_1_32]
+    ON [dbo].[CUSTOMER]([CIF], [BUSI_TYPE]);
+
