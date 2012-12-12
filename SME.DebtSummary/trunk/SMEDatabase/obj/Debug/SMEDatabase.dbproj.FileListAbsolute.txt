@@ -1,0 +1,16 @@
+D:\workspaces\SME.DebtSummary\SMEDatabase\sql\debug\SME_Script.PreDeployment.sql
+D:\workspaces\SME.DebtSummary\SMEDatabase\sql\debug\SME_Script.PostDeployment.sql
+D:\workspaces\SME.DebtSummary\SMEDatabase\sql\debug\SME_Database.sqlsettings
+D:\workspaces\SME.DebtSummary\SMEDatabase\sql\debug\SME_Database.sqldeployment
+D:\workspaces\SME.DebtSummary\SMEDatabase\sql\debug\SME_Database.sqlcmdvars
+D:\workspaces\SME.DebtSummary\SMEDatabase\sql\debug\SMEDatabase.deploymanifest
+D:\workspaces\SME.DebtSummary\SMEDatabase\sql\debug\SMEDatabase.dbschema
+D:\workspaces\SME.DebtSummary\SMEDatabase\obj\Debug\SMEDatabase.dbschema
+D:\workspaces\2012\SME.DebtSummary\SMEDatabase\sql\debug\SME_Script.PreDeployment.sql
+D:\workspaces\2012\SME.DebtSummary\SMEDatabase\sql\debug\SME_Script.PostDeployment.sql
+D:\workspaces\2012\SME.DebtSummary\SMEDatabase\sql\debug\SME_Database.sqlsettings
+D:\workspaces\2012\SME.DebtSummary\SMEDatabase\sql\debug\SME_Database.sqldeployment
+D:\workspaces\2012\SME.DebtSummary\SMEDatabase\sql\debug\SME_Database.sqlcmdvars
+D:\workspaces\2012\SME.DebtSummary\SMEDatabase\sql\debug\SMEDatabase.deploymanifest
+D:\workspaces\2012\SME.DebtSummary\SMEDatabase\sql\debug\SMEDatabase.dbschema
+D:\workspaces\2012\SME.DebtSummary\SMEDatabase\obj\Debug\SMEDatabase.dbschema
