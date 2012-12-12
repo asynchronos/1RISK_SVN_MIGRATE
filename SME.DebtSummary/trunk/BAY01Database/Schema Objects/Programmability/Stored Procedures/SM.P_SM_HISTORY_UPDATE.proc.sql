@@ -1,0 +1,13 @@
+﻿CREATE  PROCEDURE  [SM].[P_SM_HISTORY_UPDATE]
+@IDEN int,
+@COMMENT nvarchar(max)
+AS
+BEGIN
+      
+  UPDATE  [Bay01].[SM].[SM_HISTORY]	
+  SET COMMENT = @COMMENT 
+  WHERE IDEN = @IDEN
+  
+  
+END
+

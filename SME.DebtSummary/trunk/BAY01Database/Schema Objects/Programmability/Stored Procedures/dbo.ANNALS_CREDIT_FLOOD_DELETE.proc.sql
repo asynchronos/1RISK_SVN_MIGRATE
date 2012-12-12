@@ -1,0 +1,12 @@
+﻿
+CREATE  PROCEDURE [dbo].[ANNALS_CREDIT_FLOOD_DELETE]
+		@ID nvarchar(10)
+ AS 
+ BEGIN 
+	DELETE FROM [dbo].[ANNALS_CREDIT_FLOOD]
+  	WHERE ID=@ID
+  END 
+
+
+
+

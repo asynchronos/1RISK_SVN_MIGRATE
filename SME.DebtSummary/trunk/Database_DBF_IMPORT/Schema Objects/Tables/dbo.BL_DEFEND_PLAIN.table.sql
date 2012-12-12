@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[BL_DEFEND_PLAIN] (
+    [DASOF]             DATETIME      NULL,
+    [COURT_TYPE]        NVARCHAR (7)  NULL,
+    [CASE_NO]           NVARCHAR (7)  NULL,
+    [LETTER_CASE]       NVARCHAR (1)  NULL,
+    [PERSON_TYPE]       NVARCHAR (1)  NULL,
+    [PERSON_NO]         NVARCHAR (3)  NULL,
+    [EXTEND_FLAG]       NVARCHAR (1)  NULL,
+    [TITLE]             NVARCHAR (20) NULL,
+    [DEFENDANT_NAME]    NVARCHAR (25) NULL,
+    [DEFENDANT_SURNAME] NVARCHAR (35) NULL,
+    [DEFENDANT_FLAG]    NVARCHAR (1)  NULL,
+    [CONFIS_FLAG]       NVARCHAR (1)  NULL
+);
+

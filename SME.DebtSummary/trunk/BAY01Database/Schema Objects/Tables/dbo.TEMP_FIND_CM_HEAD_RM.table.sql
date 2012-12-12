@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[TEMP_FIND_CM_HEAD_RM] (
+    [CIF] FLOAT NULL
+);
+

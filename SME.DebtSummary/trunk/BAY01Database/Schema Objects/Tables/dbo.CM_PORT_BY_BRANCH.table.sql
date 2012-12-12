@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[CM_PORT_BY_BRANCH] (
+    [BRANCH_ID] SMALLINT      NOT NULL,
+    [EMP_ID]    NVARCHAR (10) NOT NULL
+);
+

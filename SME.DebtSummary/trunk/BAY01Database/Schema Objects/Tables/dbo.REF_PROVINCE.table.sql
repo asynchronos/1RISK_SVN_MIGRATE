@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[REF_PROVINCE] (
+    [PROV_CODE]     CHAR (2)     NOT NULL,
+    [PROVINCE_NAME] VARCHAR (30) NULL
+);
+

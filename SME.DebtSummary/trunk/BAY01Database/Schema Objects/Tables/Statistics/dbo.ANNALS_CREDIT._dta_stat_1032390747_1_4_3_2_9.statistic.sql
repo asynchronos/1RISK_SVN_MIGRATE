@@ -1,0 +1,3 @@
+﻿CREATE STATISTICS [_dta_stat_1032390747_1_4_3_2_9]
+    ON [dbo].[ANNALS_CREDIT]([ID], [ANNALS_YEAR], [ANNALS_SEQ_NO], [ANNALS_TYPE], [Send_To_Board]);
+

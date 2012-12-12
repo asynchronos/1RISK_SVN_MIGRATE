@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[Id_Bus_Type] (
+    [Id_Bus_Type]    INT            NULL,
+    [Bus_TypeD]      NVARCHAR (255) NULL,
+    [Bus_TypeE]      NVARCHAR (90)  NULL,
+    [Id_Industry]    TINYINT        NULL,
+    [Industry]       NVARCHAR (50)  NULL,
+    [IndustryE]      NVARCHAR (50)  NULL,
+    [IndustryShort]  NVARCHAR (2)   NULL,
+    [Id_BusG1]       INT            NULL,
+    [BusG1]          NVARCHAR (255) NULL,
+    [Id_Bus_TypeTxT] NVARCHAR (50)  NULL,
+    [Head]           NVARCHAR (1)   NULL,
+    [G1_E]           NVARCHAR (40)  NULL,
+    [G2_E]           NVARCHAR (70)  NULL,
+    [G3_E]           NVARCHAR (50)  NULL,
+    [G1_T]           NVARCHAR (40)  NULL,
+    [G2_T]           NVARCHAR (70)  NULL,
+    [G3_T]           NVARCHAR (50)  NULL,
+    [Id_G1_60]       INT            NULL,
+    [G1_60]          NVARCHAR (30)  NULL,
+    [Id_G2_60]       INT            NULL,
+    [G2_60]          NVARCHAR (50)  NULL,
+    [BizTypeE]       NVARCHAR (30)  NULL,
+    [BizTypeE_HML]   NVARCHAR (6)   NULL
+);
+

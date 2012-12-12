@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[ANNALS_SUBJECT_DETAIL] (
+    [SUBJECT_DETAIL_ID]  NVARCHAR (5)   NOT NULL,
+    [SUBJECT_DETAIL]     NVARCHAR (100) NULL,
+    [SUBJECT_DETAIL_ENG] NVARCHAR (100) NULL,
+    [SUBJECT_ID]         CHAR (5)       NOT NULL,
+    [SUBJECT_ACTION]     INT            NULL,
+    [PRIORITY]           INT            NULL
+);
+

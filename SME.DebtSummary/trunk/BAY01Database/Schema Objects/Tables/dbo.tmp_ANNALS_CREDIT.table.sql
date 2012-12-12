@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[tmp_ANNALS_CREDIT] (
+    [ID]                 NVARCHAR (10)  NOT NULL,
+    [ANNALS_TYPE]        NVARCHAR (1)   NULL,
+    [ANNALS_SEQ_NO]      NVARCHAR (5)   NULL,
+    [ANNALS_YEAR]        NVARCHAR (4)   NULL,
+    [ID_OUT]             NVARCHAR (11)  NULL,
+    [EMP_APPROVE_ID]     NVARCHAR (10)  NULL,
+    [EMP_REQUEST_ID]     NVARCHAR (10)  NULL,
+    [EMP_APPROVE2_ID]    NVARCHAR (10)  NULL,
+    [Send_To_Board]      BIT            NULL,
+    [BOARD_ID]           NVARCHAR (2)   NULL,
+    [BOARD_Others]       NVARCHAR (50)  NULL,
+    [RM_ID]              NVARCHAR (10)  NULL,
+    [BRANCH_ID]          NVARCHAR (10)  NULL,
+    [Flag]               NVARCHAR (1)   NULL,
+    [DEP_ID]             NVARCHAR (10)  NULL,
+    [REGION_ID]          NVARCHAR (10)  NULL,
+    [Others]             NVARCHAR (MAX) NULL,
+    [Others2]            NVARCHAR (MAX) NULL,
+    [Result]             NVARCHAR (50)  NULL,
+    [Comment]            NVARCHAR (10)  NULL,
+    [CM_Judgement]       NVARCHAR (10)  NULL,
+    [CM_Judgement_Board] NVARCHAR (10)  NULL,
+    [CM_Remark]          NVARCHAR (MAX) NULL
+);
+

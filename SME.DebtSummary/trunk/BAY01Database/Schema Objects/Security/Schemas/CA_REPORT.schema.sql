@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [CA_REPORT]
+    AUTHORIZATION [careport];
+

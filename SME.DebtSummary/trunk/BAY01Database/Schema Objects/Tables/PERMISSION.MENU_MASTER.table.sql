@@ -1,0 +1,12 @@
+﻿CREATE TABLE [PERMISSION].[MENU_MASTER] (
+    [MENU_KEY]        INT           IDENTITY (1, 1) NOT NULL,
+    [MENU_TITLE]      NVARCHAR (50) NULL,
+    [MENU_URL]        NVARCHAR (50) NULL,
+    [MENU_POPUP_OPT]  NVARCHAR (50) NULL,
+    [MENU_REL]        NVARCHAR (50) NULL,
+    [MENU_TOOLTIP]    NVARCHAR (50) NULL,
+    [MENU_PRIORITY]   INT           NULL,
+    [MENU_DEL_FLAG]   BIT           NULL,
+    [MENU_PARENT_KEY] INT           NULL
+);
+

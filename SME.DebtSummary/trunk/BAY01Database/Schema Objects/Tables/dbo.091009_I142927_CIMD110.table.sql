@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[091009_I142927_CIMD110] (
+    [Column 0] NVARCHAR (50) NULL
+);
+

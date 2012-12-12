@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[BUSINESS_TYPE_3] (
+    [TYPE3_ID]       VARCHAR (6)    NOT NULL,
+    [RESEARCH_CODE]  VARCHAR (8)    NOT NULL,
+    [DESCRIPTION]    NVARCHAR (255) NOT NULL,
+    [DESCRIPTION_EN] VARCHAR (255)  NOT NULL,
+    [TYPE2_ID]       VARCHAR (4)    NOT NULL,
+    [NOTE]           CHAR (1)       NULL,
+    [PRIORITY]       INT            NOT NULL,
+    [UPDATE_BY]      NVARCHAR (10)  NOT NULL,
+    [UPDATE_DATE]    DATETIME       NOT NULL
+);
+

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [CLASSIFY].[CATE_AND_APP] (
+    [ID]           INT IDENTITY (1, 1) NOT NULL,
+    [CATEGORY_KEY] INT NULL,
+    [APP_KEY]      INT NULL,
+    [DEL_FLAG]     BIT NULL
+);
+

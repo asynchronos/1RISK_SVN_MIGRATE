@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[NOT_IN_OLD] (
+    [BUSI_RISK1_ID]     INT            NULL,
+    [BUSI_RISK1_DETAIL] NVARCHAR (255) NULL
+);
+

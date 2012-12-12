@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[TB_TEMP_CIF] (
+    [CIF]  VARCHAR (50) NULL,
+    [SIZE] VARCHAR (50) NULL
+);
+

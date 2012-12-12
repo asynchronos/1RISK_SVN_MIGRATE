@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[LOG_LEVEL] (
+    [LOG_LEVEL_ID] VARCHAR (5)   NULL,
+    [DESCRIPTION]  NVARCHAR (50) NULL,
+    [PRIORITY]     INT           NULL
+);
+
