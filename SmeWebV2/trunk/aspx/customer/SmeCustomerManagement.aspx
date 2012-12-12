@@ -235,7 +235,9 @@
 
             var cif = (new MyNumber(getValueFromQueryString('cif'))).getValue();
             if (cif != 0) {
-                localhost.CustomerWCFService.IsExporter(cif, onSuccessIsExporter, onFailedIsExporter, null);
+               // localhost.CustomerWCFService.IsExporter(cif, onSuccessIsExporter, onFailedIsExporter, null);
+                var service = new SmeWeb.CustomerWCFService();
+                service.IsExporter(cif, onSuccessIsExporter, onFailedIsExporter, null);
             }
 
             //result - this contains any values returned from my method. In this case it will be the id of the item that was inserted.
