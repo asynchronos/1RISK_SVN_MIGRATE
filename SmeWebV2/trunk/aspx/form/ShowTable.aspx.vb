@@ -250,7 +250,6 @@ Partial Class aspx_form_ShowTable
         TextBoxSQL.Text = sql
     End Sub
     Sub ChangeIndex(sender As Object, e As GridViewPageEventArgs)
-
         GridViewTable.PageIndex = e.NewPageIndex
         showData()
     End Sub
@@ -321,5 +320,11 @@ Partial Class aspx_form_ShowTable
             GridViewTable.EditIndex = -1
         End Try
 
+    End Sub
+
+    Protected Sub ButtonRunSQLSelect_Click(sender As Object, e As System.EventArgs) Handles ButtonRunSQLSelect.Click
+        If TextBoxSQLSelect.Text = "" Then Exit Sub
+        strTable = " ( " & TextBoxSQLSelect.Text & " ) as E "
+        showData()
     End Sub
 End Class

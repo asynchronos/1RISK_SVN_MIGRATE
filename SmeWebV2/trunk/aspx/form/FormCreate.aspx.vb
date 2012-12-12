@@ -4,11 +4,13 @@ Partial Class aspx_form_FormCreate
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    
+
         '  สร้าง dinamic  form  09/11/2010
         '  ใช้ในกรณีที่ต้องการกรอกข้อมูล แต่ไม่ต้องการเสียเวลาในการสร้าง form กรอกข้อมูล หรือ สร้าง table ใน database
 
         '  ไม่ใช้ store procedure  ใช้เป็น sql text เนื่องจากอยากให้ code รวมกันที่หน้านี้  สะดวกในการดู code
-        Dim ConnString = ConfigurationManager.ConnectionStrings("MISConnectionString").ToString
+        Dim ConnString = ConfigurationManager.ConnectionStrings("BAY01ConnectionString").ToString
         Dim FormID As Integer = 0
         ' Dim DataID As Integer = 0
         Dim DataID As String
@@ -59,7 +61,7 @@ Partial Class aspx_form_FormCreate
 
         ' ดึงข้อมูลจากตาราง form  ดูว่าต้องแสดงข้อมูลจากเริ่มต้นหรือไม่
 
-        Dim stringForm As String = " SELECT  *   FROM  TB_FORM"
+        Dim stringForm As String = " SELECT  *   FROM  FORM.TB_FORM"
         stringForm += " WHERE  FORM_ID= " & FormID
 
         Dim SqlForm As New SqlDataSource
@@ -97,7 +99,8 @@ Partial Class aspx_form_FormCreate
 
                 If strForm <> "" Then
                     ' สร้าง label ข้อมูลเพื่อแสดงว่าเป็นข้อมูลอะไร เช่น cif :15555  , name : พิชยา
-                    Dim strExForm As String = strForm
+                    Dim strExForm As String
+                    strExForm = " SELECT * FROM ( " & strForm & ") AS E"
                     strExForm += " WHERE  " & DtForm.Rows(0).Item("TB_NAME_KEY") & "= '" & DataID & "'"
                     Dim SqlxForm As New SqlDataSource
                     SqlxForm.ConnectionString = ConnString
@@ -155,7 +158,7 @@ Partial Class aspx_form_FormCreate
 
 
         ' ดึงข้อมูลจากตาราง form_field  ว่ามี field ใดบ้าง
-        Dim sqlField As String = " SELECT   *   FROM  TB_FORM_FIELD"
+        Dim sqlField As String = " SELECT   *   FROM  FORM.TB_FORM_FIELD"
         sqlField += " WHERE  FORM_ID= " & FormID
         sqlField += " ORDER  BY  FIELD_GROUP"
         Dim SqlFormField As New SqlDataSource
@@ -169,6 +172,7 @@ Partial Class aspx_form_FormCreate
         'MsgBox(sqlF & ":" & dt.Rows.Count)
 
 
+
         If Page.IsPostBack Then
             ' case  add  data
             If Request.Form("btnSave") = "Add data" Then
@@ -179,19 +183,20 @@ Partial Class aspx_form_FormCreate
                     ' จะมีการกำหนด dataid ให้โดยมีการดึงค่าจากฟิวแรกที่กรอก
                     If FormType = 2 Then
 
-                        DataID = CStr(Request.Form("F" & dt.Rows(0).Item("FIELD_ID")))
-
+                        'DataID = CStr(Request.Form("F" & dt.Rows(0).Item("FIELD_ID")))
+                        DataID = Math.Abs((Now.GetHashCode))
                     End If
                     For i = 0 To dt.Rows.Count - 1
-
-                        If Not IsDBNull(dt.Rows(i).Item("FIELD_NAME")) Then
-                            strInsert += " INSERT INTO TB_FORM_VALUE "
+                        ' กรณีที่เป็นฟิวส่งข้อมูล และไม่ใช่ฟิวแสดงผล (label)
+                        If Not IsDBNull(dt.Rows(i).Item("FIELD_NAME")) And dt.Rows(i).Item("FIELD_TYPE") <> "Label" Then
+                            strInsert += " INSERT INTO  FORM.TB_FORM_VALUE "
                             strInsert += "  VALUES (" + FormID.ToString + ","
                             strInsert += CStr(DataID) + ","
                             strInsert += CStr(dt.Rows(i).Item("FIELD_ID"))
                             If dt.Rows(i).Item("FIELD_TYPE") = "TimeStamp" Then
                                 strInsert += ",getdate());"
                             Else
+                                'MsgBox(dt.Rows(i).Item("FIELD_ID"))
                                 strInsert += ",'" + CStr(Request.Form("F" & dt.Rows(i).Item("FIELD_ID"))).Replace("'", "''") + "');"  ' กรณีที่มี single quot ให้เติมอีก 1ตัว ให้สามารถใส่ใน sql statement ได้
                             End If
                         End If
@@ -213,32 +218,12 @@ Partial Class aspx_form_FormCreate
             If Request.Form("btnSave") = "Edit data" Then
 
 
-                'Dim strUpdate As String = ""
-                'For y = 0 To dt.Rows.Count - 1
-                '    If Not IsDBNull(dt.Rows(y).Item("FIELD_ID")) Then
-                '        strUpdate += " Update  [MIS].[dbo].[TB_FORM_VALUE]"
-                '        strUpdate += "  SET   FORM_FIELD_VALUE"
-                '        strUpdate += "='" + CStr(Request.Form("F" & dt.Rows(y).Item("FIELD_ID"))) + "'"   ' กำหนดให้ค่าจาก form
-                '        strUpdate += " Where  Form_ID=" & FormID '  เงื่อนไขจาก form id
-                '        strUpdate += " AND   Form_Data_ID=" & DataID  '  เงื่อนไขจาก data_id
-                '        strUpdate += " AND   Form_Field_ID=" & dt.Rows(y).Item("FIELD_ID")    '  เงื่อนไขจาก field id
-                '        strUpdate += ";"
-                '    End If
-                'Next
-                ''MsgBox(strUpdate)
-                'Dim UpdateDatasource As New SqlDataSource
-                'UpdateDatasource.ConnectionString = ConnString
-                'UpdateDatasource.UpdateCommand = strUpdate
-                'UpdateDatasource.UpdateCommandType = SqlDataSourceCommandType.Text
-                'UpdateDatasource.Update()
-
-
                 '============  ลบข้อมูลที่เคยบันทึกและทำการเพิ่มเข้าไปใหม่
                 '==========สาเหตที่ไม่ไม่ใช้การ update เนื่องจากอาจมีการเพิ่มหรือลดฟิวที่ต้องกรอกทำให้หา id ในการ update ไม่ได้
                 Try
 
                     Dim strDelete As String = ""
-                    strDelete += " DELETE  FROM  TB_FORM_VALUE"
+                    strDelete += " DELETE  FROM  FORM.TB_FORM_VALUE"
                     strDelete += " Where  Form_ID=" & FormID '  เงื่อนไขจาก form id
                     strDelete += " AND   Form_Data_ID=" & DataID  '  เงื่อนไขจาก data_id
                     Dim DeleteDatasource As New SqlDataSource
@@ -249,8 +234,8 @@ Partial Class aspx_form_FormCreate
 
                     Dim strInsert As String = ""
                     For i = 0 To dt.Rows.Count - 1
-                        If Not IsDBNull(dt.Rows(i).Item("FIELD_NAME")) Then
-                            strInsert += " INSERT INTO TB_FORM_VALUE "
+                        If Not IsDBNull(dt.Rows(i).Item("FIELD_NAME")) And dt.Rows(i).Item("FIELD_TYPE") <> "Label" Then
+                            strInsert += " INSERT INTO FORM.TB_FORM_VALUE "
                             strInsert += "  VALUES (" + FormID.ToString + ","
                             strInsert += CStr(DataID) + ","
                             strInsert += CStr(dt.Rows(i).Item("FIELD_ID"))
@@ -276,6 +261,28 @@ Partial Class aspx_form_FormCreate
                 ' modal.Show()
             End If
 
+        Else  ' page post back
+            ' delete ไม่ใช่ post back เป็นการส่ง query มาตรง ๆ
+
+            If Request.QueryString("DeleteData") = "true" Then
+
+                Dim id As String = Request.QueryString("DataID")
+                Dim strDelete As String = ""
+                strDelete += " DELETE  FROM  FORM.TB_FORM_VALUE"
+                strDelete += " Where  Form_ID=" & FormID '  เงื่อนไขจาก form id
+                strDelete += " AND   Form_Data_ID=" & id  '  เงื่อนไขจาก data_id
+
+
+                Dim DeleteDatasource As New SqlDataSource
+                DeleteDatasource.ConnectionString = ConnString
+                DeleteDatasource.DeleteCommand = strDelete
+                DeleteDatasource.DeleteCommandType = SqlDataSourceCommandType.Text
+                DeleteDatasource.Delete()
+
+            End If
+
+
+
         End If
 
         ' ======= ค้นหาข้อมูลว่ากรอกไปหรือยัง  โดยดึงข้อมูลจากตารางที่ใช้เก็บค่าที่กรอก  TB_FORM_VALUE
@@ -283,8 +290,8 @@ Partial Class aspx_form_FormCreate
         Dim mode As String = ""
 
         Dim sqlValue As String = " SELECT     V.FORM_VALUE_ID, V.FORM_ID, V.FORM_DATA_ID, V.FORM_FIELD_ID, V.FORM_FIELD_VALUE, F.FIELD_TYPE"
-        sqlValue += " FROM   TB_FORM_VALUE AS V LEFT OUTER JOIN"
-        sqlValue += " TB_FORM_FIELD AS F ON V.FORM_FIELD_ID = F.FIELD_ID"
+        sqlValue += " FROM   FORM.TB_FORM_VALUE AS V LEFT OUTER JOIN"
+        sqlValue += " FORM.TB_FORM_FIELD AS F ON V.FORM_FIELD_ID = F.FIELD_ID"
         sqlValue += " WHERE  V.FORM_ID= " & FormID
         sqlValue += " AND  V.FORM_DATA_ID = '" & DataID & "'"
 
@@ -386,7 +393,7 @@ Partial Class aspx_form_FormCreate
                         ' get  field  from database
                         ' arrange by  group    
                         Dim FormFieldID = dt.Rows(i).Item("FIELD_LIST_ID")
-                        Dim sql As String = "SELECT   *  FROM  TB_FORM_FIELD_LIST WHERE  FORM_FIELD_ID= " & FormFieldID
+                        Dim sql As String = "SELECT   *  FROM  FORM.TB_FORM_FIELD_LIST WHERE  FORM_FIELD_ID= " & FormFieldID
                         Dim SqlDataSourceD As New SqlDataSource
                         SqlDataSourceD.ConnectionString = ConnString
                         SqlDataSourceD.SelectCommand = sql
@@ -410,6 +417,7 @@ Partial Class aspx_form_FormCreate
                     End If
 
                     T.Items.Insert(0, New ListItem("...Please select...", ""))
+                    T.Width = "200"
                     pn1.Controls.Add(T)
 
                 Case "RadioButtonList"
@@ -421,7 +429,7 @@ Partial Class aspx_form_FormCreate
                     T.TextAlign = TextAlign.Right
                     ' get  field  from database
                     ' arrange by  group 
-                    Dim sql As String = "SELECT   *  FROM  TB_FORM_FIELD_LIST WHERE  FORM_FIELD_ID= " & FormFieldID
+                    Dim sql As String = "SELECT   *  FROM  FORM.TB_FORM_FIELD_LIST WHERE  FORM_FIELD_ID= " & FormFieldID
 
                     Dim SqlDataSourceD As New SqlDataSource
                     SqlDataSourceD.ConnectionString = ConnString
@@ -539,6 +547,8 @@ Partial Class aspx_form_FormCreate
         btnSave.Text = mode
         pn1.Controls.Add(btnSave)
 
+
+
         pn1.Controls.Add(New LiteralControl("&nbsp"))   ' เว้นช่องว่าง
 
         Dim btnCancel As New Button()
@@ -547,6 +557,20 @@ Partial Class aspx_form_FormCreate
         btnCancel.Attributes.Add("onclick", "window.close();window.opener.location.reload(true);")
         pn1.Controls.Add(btnCancel)
 
+        If mode = "Edit data" Then
+
+            pn1.Controls.Add(New LiteralControl("&nbsp"))   ' เว้นช่องว่าง
+
+            Dim btnDelete As New Button()
+            btnDelete.ID = "btnDelete"
+            btnDelete.Text = "Delete data"
+            btnDelete.BackColor = Drawing.Color.Red
+            btnDelete.ForeColor = Drawing.Color.White
+            btnDelete.Attributes.Add("onclick", "window.location.href = 'FormCreate.aspx?DeleteData=true&FormID=" & FormID & "&DataID=" & DataID & "'")
+            pn1.Controls.Add(btnDelete)
+
+
+        End If
 
 
         '==== หลังจากสร้าง control แล้วกำหนดค่าให้กับ control 
@@ -571,6 +595,9 @@ Partial Class aspx_form_FormCreate
 
                 End Select
             Next
+
+
+
 
         End If
 
