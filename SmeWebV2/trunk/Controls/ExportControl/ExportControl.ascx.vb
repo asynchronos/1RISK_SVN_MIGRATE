@@ -164,20 +164,10 @@ Partial Class Controls_ExportControl_ExportControl
     End Sub
 
     Protected Sub ExportData(ByVal _contentType As String, ByVal filename As String)
-        ' remark ทดให้ส่งผ่าน SSL ได้ 17/10/2554
-
-        'Response.ClearContent()
-        'Response.AddHeader("content-disposition", "attachment;filename=" + filename)
-        'Response.Cache.SetCacheability(HttpCacheability.NoCache)
-        'Response.ContentType = _contentType
-
-
-        Response.ClearHeaders()
+        Response.ClearContent()
+        Response.AddHeader("content-disposition", "attachment;filename=" + filename)
+        Response.Cache.SetCacheability(HttpCacheability.NoCache)
         Response.ContentType = _contentType
-        HttpContext.Current.Response.AddHeader("Cache-Control", "")
-        Response.AppendHeader("content-disposition", "attachment;filename=" + filename)
-
-
         Response.ContentEncoding = System.Text.Encoding.UTF8
 
         Dim sw As New IO.StringWriter()
@@ -217,7 +207,6 @@ Partial Class Controls_ExportControl_ExportControl
         frm.Page = Me.Page.Page
 
         frm.RenderControl(htw)
-        'Response.Write("ข้อมูล " & filename)
         Response.Write(sw.ToString())
         Response.End()
 
