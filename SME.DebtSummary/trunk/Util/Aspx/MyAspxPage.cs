@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Security;
 using log4net;
 
-namespace SME.DebtSummary
+namespace Util.Aspx
 {
     public class MyAspxPage : System.Web.UI.Page
     {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using log4net;
 using SME.DebtSummary.Core.Cache;
 using SME.DebtSummary.Core.Model;
 
@@ -7,6 +8,10 @@ namespace SME.DebtSummary.Core.DAL
 {
     public class CustomerSmeRepository : ICustomerSmeRepository, ICacheRepository
     {
+        private static readonly ILog log = LogManager.GetLogger(
+    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly bool isDebugEnabled = log.IsDebugEnabled;
+
         public readonly static string CACHE_NAME = "MIS_STATUS";
 
         public ICacheProvider Cache { get; set; }

@@ -93,26 +93,26 @@ namespace SME.DebtSummary.Core.UnitTests
 
                 count++;
             }
-            Assert.AreEqual(2530, count);
+            Assert.AreEqual(2506, count);
             Assert.AreEqual((decimal)22587600.11, cif18.Principal);
 
             rootEmpId = "204263";
             actual = target.GetByCusCIFSMEsProjected(rootEmpId, misCustSizeId, misStatusId, customerClass);
-            Assert.AreEqual(543, actual.ToList().Count);
+            Assert.AreEqual(532, actual.ToList().Count);
 
             rootEmpId = "All";
             misCustSizeId = "All";
             actual = target.GetByCusCIFSMEsProjected(rootEmpId, misCustSizeId, misStatusId, customerClass);
-            Assert.AreEqual(32227, actual.ToList().Count);
+            Assert.AreEqual(25673, actual.ToList().Count);
 
             //rootEmpId = "119016";
             misCustSizeId = "1";
             actual = target.GetByCusCIFSMEsProjected(rootEmpId, misCustSizeId, misStatusId, customerClass);
-            Assert.AreEqual(670, actual.ToList().Count);
+            Assert.AreEqual(517, actual.ToList().Count);
 
             misCustSizeId = "4";
             actual = target.GetByCusCIFSMEsProjected(rootEmpId, misCustSizeId, misStatusId, customerClass);
-            Assert.AreEqual(469, actual.ToList().Count);
+            Assert.AreEqual(471, actual.ToList().Count);
         }
 
         ///// <summary>
@@ -153,7 +153,7 @@ namespace SME.DebtSummary.Core.UnitTests
             //IQueryable<CUSTOMER_SME> expected = null; // TODO: Initialize to an appropriate value
             IQueryable<CUSTOMER_SME> actual;
             actual = target.GetCustomerSMEs();
-            Assert.AreEqual(32227, actual.ToList().Count);
+            Assert.AreEqual(25673, actual.ToList().Count);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace SME.DebtSummary.Core.UnitTests
 
                 count++;
             }
-            Assert.AreEqual(2530, count);
+            Assert.AreEqual(2506, count);
             Assert.IsNotNull(cif18);
             Assert.AreEqual("093732", cif18.CM_CODE);
             Assert.AreEqual(18, cif18.RATING_KEY);
@@ -191,7 +191,7 @@ namespace SME.DebtSummary.Core.UnitTests
 
             empId = "204263";
             actual = target.GetCustomerSMEs(empId);
-            Assert.AreEqual(543, actual.ToList().Count);
+            Assert.AreEqual(532, actual.ToList().Count);
         }
     }
 }

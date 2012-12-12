@@ -19,9 +19,19 @@ namespace SME.DebtSummary.Account
                 log.Debug("AuthenticationType:" + User.Identity.AuthenticationType);
                 log.Debug("IsAuthenticated:" + User.Identity.IsAuthenticated);
                 log.Debug("IsInRole(admin):" + User.IsInRole("admin"));
+
+                log.Debug("---------------Profile---------------");
+                log.Debug("UserName:" + Context.Profile.UserName);
+                log.Debug("Profile:" + Context.Profile);
+                log.Debug("Profile.Context:" + Context.Profile.Context);
+                log.Debug("Profile.Details:" + Context.Profile.GetProfileGroup("Details").GetPropertyValue("ProfileViewModel"));
+                //log.Debug("MyProfile.Details.EMP_FULLNAME:" + ((MyProfile)Context.Profile).Details.EMP_FULLNAME);
             }
 
-            //Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+            //Response.Write("Profile<br/>");
+            //Response.Write("UserName:" + Context.Profile.UserName);
+
+            Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
         }
     }
 }

@@ -1,11 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Data.Objects;
 using System.Linq;
+using log4net;
 using SME.DebtSummary.Core.Model;
 
 namespace SME.DebtSummary.Core.DAL
 {
     public class ByCusCIFRespository : IByCusCIFRespository
     {
+        private static readonly ILog log = LogManager.GetLogger(
+    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly bool isDebugEnabled = log.IsDebugEnabled;
+
         public readonly static string ALL_CONSTANT_STR = "All";
 
         public IQueryable<ByCus_CIF> GetByCusCIFs()
@@ -13,6 +19,12 @@ namespace SME.DebtSummary.Core.DAL
             Bay01_Entities dataContext = new Bay01_Entities();
             IQueryable<ByCus_CIF> byCusCIFs = from b in dataContext.ByCus_CIF
                                               select b;
+            if (isDebugEnabled)
+            {
+                log.Debug("GetByCusCIFs");
+                log.Debug(((ObjectQuery)byCusCIFs).ToTraceString());
+                log.Debug("End GetByCusCIFs");
+            }
 
             return byCusCIFs;
         }
@@ -27,6 +39,13 @@ namespace SME.DebtSummary.Core.DAL
             Bay01_Entities dataContext = new Bay01_Entities();
             IQueryable<CUSTOMER_SME> customerSmes = from s in dataContext.CUSTOMER_SME
                                                     select s;
+
+            if (isDebugEnabled)
+            {
+                log.Debug("GetCustomerSMEs");
+                log.Debug(((ObjectQuery)customerSmes).ToTraceString());
+                log.Debug("End GetCustomerSMEs");
+            }
 
             return customerSmes;
         }
@@ -44,6 +63,13 @@ namespace SME.DebtSummary.Core.DAL
             }
 
             IQueryable<CUSTOMER_SME> cusSme = GetCustomerSMEs().Where(s => empList.Contains(s.CM_CODE));
+
+            if (isDebugEnabled)
+            {
+                log.Debug("GetCustomerSMEs_rootEmpId");
+                log.Debug(((ObjectQuery)cusSme).ToTraceString());
+                log.Debug("End GetCustomerSMEs_rootEmpId");
+            }
 
             return cusSme;
         }
@@ -78,9 +104,9 @@ namespace SME.DebtSummary.Core.DAL
                                     Rating = s.CUSTOMER.RATING,
                                     Class = s.CUSTOMER.CLASS,
                                     ClassE = s.CUSTOMER.ByCus_CIF.ClassE,
-                                    MISCustSizeID = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_SME_SIZE.SIZE_ID,
-                                    MISCustSize = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_SME_SIZE.SIZE_DETAIL,
-                                    MISCustSizeOrdersPriority = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_SME_SIZE.PRIORITY,
+                                    MISCustSizeID = s.CUSTOMER_SME_SIZE.SIZE_ID,
+                                    MISCustSize = s.CUSTOMER_SME_SIZE.SIZE_DETAIL,
+                                    MISCustSizeOrdersPriority = s.CUSTOMER_SME_SIZE.PRIORITY,
                                     BaySize = s.CUSTOMER.ByCus_CIF.BaySize,
                                     BranchMaxPrin = s.CUSTOMER.ByCus_CIF.BranchMaxPrin,
                                     TdrFlag = s.CUSTOMER.ByCus_CIF.TdrFlag,
@@ -90,10 +116,17 @@ namespace SME.DebtSummary.Core.DAL
                                     UseValue = s.CUSTOMER.ByCus_CIF.UseValue,
                                     TotResv = s.CUSTOMER.ByCus_CIF.Totresv,
                                     CM_Dep = s.CUSTOMER.ByCus_CIF.CM_Dep,
-                                    MISStatusID = s.CUSTOMER.CUSTOMER_SME.STATUS_ID,
-                                    MISStatus = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_STATUS.STATUS_DETAIL,
-                                    MISStatusPriority = s.CUSTOMER.CUSTOMER_SME.CUSTOMER_STATUS.PRIORITY
+                                    MISStatusID = s.STATUS_ID,
+                                    MISStatus = s.CUSTOMER_STATUS.STATUS_DETAIL,
+                                    MISStatusPriority = s.CUSTOMER_STATUS.PRIORITY
                                 });
+
+            if (isDebugEnabled)
+            {
+                log.Debug("GetByCusCIFSMEsProjected");
+                log.Debug(((ObjectQuery)customerDebtView).ToTraceString());
+                log.Debug("End GetByCusCIFSMEsProjected");
+            }
 
             if (!string.IsNullOrEmpty(rootEmpId) && !rootEmpId.Equals(ALL_CONSTANT_STR))
             {
@@ -148,6 +181,8 @@ namespace SME.DebtSummary.Core.DAL
                     {
                         customerDebtView = (from c in customerDebtView
                                             select c).Where(c => statusId.Equals(c.MISStatusID.Value));
+                        //customerDebtView = (from c in customerDebtView
+                        //                    select c).Where(c => statusId == c.MISStatusID.Value);
                     }
                 }
             }
@@ -158,18 +193,35 @@ namespace SME.DebtSummary.Core.DAL
                                     select c).Where(c => customerClass.Equals(c.Class));
             }
 
+            if (isDebugEnabled)
+            {
+                log.Debug("GetByCusCIFSMEsProjected2");
+                log.Debug(((ObjectQuery)customerDebtView).ToTraceString());
+                log.Debug("End GetByCusCIFSMEsProjected2");
+            }
+
             return customerDebtView;
         }
 
         public IQueryable<MISCustSieViewModel> GetMISCustSizeListFromData(string rootEmpId)
         {
-            return (from z in GetByCusCIFSMEsProjected(rootEmpId, null, null, null)
-                    select new MISCustSieViewModel
-                    {
-                        MISCustSizeID = z.MISCustSizeID,
-                        MISCustSize = z.MISCustSize,
-                        MISCustSizeOrdersPriority = z.MISCustSizeOrdersPriority
-                    }).Distinct().OrderBy(r => r.MISCustSizeOrdersPriority);
+            IQueryable<MISCustSieViewModel> MISCustSizeList =
+                        (from z in GetByCusCIFSMEsProjected(rootEmpId, null, null, null)
+                         select new MISCustSieViewModel
+                         {
+                             MISCustSizeID = z.MISCustSizeID,
+                             MISCustSize = z.MISCustSize,
+                             MISCustSizeOrdersPriority = z.MISCustSizeOrdersPriority
+                         }).Distinct().OrderBy(r => r.MISCustSizeOrdersPriority);
+
+            if (isDebugEnabled)
+            {
+                log.Debug("GetMISCustSizeListFromData");
+                log.Debug(((ObjectQuery)MISCustSizeList).ToTraceString());
+                log.Debug("End GetMISCustSizeListFromData");
+            }
+
+            return MISCustSizeList;
         }
     }
 }

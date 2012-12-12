@@ -40,13 +40,17 @@ namespace SME.DebtSummary
             //manage error to show on web
             if (err.InnerException != null)
             {
-                //err = err.InnerException;
+                err = err.InnerException;
             }
+
+            Application["LastError"] = err; //store the error for later
+            Application["PageError"] = HttpContext.Current.Request.Url.ToString();
+            Server.ClearError(); //clear the error so we can continue onwards
 
             if (HttpContext.Current.Session != null)
             {
-                HttpContext.Current.Session.Add("LastError", err);
-                HttpContext.Current.Session.Add("PageError", HttpContext.Current.Request.Url.ToString());
+                //HttpContext.Current.Session.Add("LastError", err);
+                //HttpContext.Current.Session.Add("PageError", HttpContext.Current.Request.Url.ToString());
             }
 
             //send mail

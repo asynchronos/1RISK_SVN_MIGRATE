@@ -1,4 +1,5 @@
 ﻿using System;
+using Util.Aspx;
 
 namespace SME.DebtSummary.Error
 {
@@ -9,14 +10,14 @@ namespace SME.DebtSummary.Error
             string page = string.Empty;
             string msg = string.Empty;
 
-            if (Session["PageError"] != null)
+            if (Application["PageError"] != null)
             {
-                page = Session["PageError"].ToString();
+                page = Application["PageError"].ToString();
             }
 
-            if (Session["LastError"] != null)
+            if (Application["LastError"] != null)
             {
-                msg = ((Exception)Session["LastError"]).Message;
+                msg = ((Exception)Application["LastError"]).Message;
             }
 
             Error_Label.Text = "Error : Please contact administrator.<br />"
