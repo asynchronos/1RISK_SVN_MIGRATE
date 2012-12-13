@@ -18,7 +18,11 @@ Namespace aspx.userControl
             AnnalsCAMenu.Style.Item("display") = "inline"
             AnnalsMenu.Style.Item("display") = "inline"
             ReportMenu.Style.Item("display") = "inline"
+<<<<<<< .mine
+            FinancialMenu.Style.Item("display") = "inline"
+=======
             'StopMenu.Style.Item("display") = "inline"
+>>>>>>> .r374
             AboutEmpMenu.Style.Item("display") = "inline"
             DownloadMenu.Style.Item("display") = "inline"
             ToolsMenu.Style.Item("display") = "inline"
@@ -76,7 +80,11 @@ Namespace aspx.userControl
 
                     AnnalsCAMenu.Style.Item("display") = "none"
                     AnnalsMenu.Style.Item("display") = "none"
+<<<<<<< .mine
+                    FinancialMenu.Style.Item("display") = "none"
+=======
                     'StopMenu.Style.Item("display") = "none"
+>>>>>>> .r374
                     ToolsMenu.Style.Item("display") = "none"
 
                     'sub menu
@@ -99,7 +107,11 @@ Namespace aspx.userControl
                     AnnalsCAMenu.Style.Item("display") = "none"
                     AnnalsMenu.Style.Item("display") = "none"
                     'ReportMenu.Style.Item("display") = "none"
+<<<<<<< .mine
+                    FinancialMenu.Style.Item("display") = "none"
+=======
                     'StopMenu.Style.Item("display") = "none"
+>>>>>>> .r374
                     DownloadMenu.Style.Item("display") = "none"
                     ToolsMenu.Style.Item("display") = "none"
 
@@ -217,6 +229,11 @@ Namespace aspx.userControl
         'Protected Sub label_InProcessGroup_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles label_InProcessGroup.Load
         '    DirectCast(sender, Label).Attributes.Add("onclick", "window.location.replace('" + Page.ResolveUrl("~/aspx/report/InProcessCA.aspx") + "');")
         'End Sub
+
+        Private Function StopMenu() As Object
+            Throw New NotImplementedException
+        End Function
+
     End Class
 End Namespace
 
