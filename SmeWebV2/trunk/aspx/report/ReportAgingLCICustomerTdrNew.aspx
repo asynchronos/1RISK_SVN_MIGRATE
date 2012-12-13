@@ -184,7 +184,7 @@
                 ItemStyle-BackColor="#FF99CC" >
 <ItemStyle BackColor="#FF99CC"></ItemStyle>
             </asp:BoundField>
-               <asp:BoundField DataField="cm_code" HeaderText="cm_code ReadOnly="True"  ItemStyle-Wrap="false" 
+               <asp:BoundField DataField="cm_code" HeaderText="cm_code" ReadOnly="True"  ItemStyle-Wrap="false" 
                 SortExpression="cm_code" >
 <ItemStyle Wrap="False"></ItemStyle>
             </asp:BoundField>
