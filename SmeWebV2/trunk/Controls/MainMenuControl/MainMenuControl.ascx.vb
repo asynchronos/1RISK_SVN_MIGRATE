@@ -18,7 +18,7 @@ Namespace aspx.userControl
             AnnalsCAMenu.Style.Item("display") = "inline"
             AnnalsMenu.Style.Item("display") = "inline"
             ReportMenu.Style.Item("display") = "inline"
-            StopMenu.Style.Item("display") = "inline"
+            'StopMenu.Style.Item("display") = "inline"
             AboutEmpMenu.Style.Item("display") = "inline"
             DownloadMenu.Style.Item("display") = "inline"
             ToolsMenu.Style.Item("display") = "inline"
@@ -76,7 +76,7 @@ Namespace aspx.userControl
 
                     AnnalsCAMenu.Style.Item("display") = "none"
                     AnnalsMenu.Style.Item("display") = "none"
-                    StopMenu.Style.Item("display") = "none"
+                    'StopMenu.Style.Item("display") = "none"
                     ToolsMenu.Style.Item("display") = "none"
 
                     'sub menu
@@ -99,7 +99,7 @@ Namespace aspx.userControl
                     AnnalsCAMenu.Style.Item("display") = "none"
                     AnnalsMenu.Style.Item("display") = "none"
                     'ReportMenu.Style.Item("display") = "none"
-                    StopMenu.Style.Item("display") = "none"
+                    'StopMenu.Style.Item("display") = "none"
                     DownloadMenu.Style.Item("display") = "none"
                     ToolsMenu.Style.Item("display") = "none"
 
