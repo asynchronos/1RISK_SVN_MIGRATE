@@ -171,12 +171,12 @@ var SSProject = function () {
     };
 
     this.PMT = function (rate, nper, pv) {
-//        alert('rate' + rate);
-//        alert('nper' + nper);
-//        alert('pv' + pv);
-//        alert(pv / ((1 / (rate)) * (1 - Math.pow(1 / (1 + rate), nper))));
+        //        alert('rate' + rate);
+        //        alert('nper' + nper);
+        //        alert('pv' + pv);
+        //        alert(pv / ((1 / (rate)) * (1 - Math.pow(1 / (1 + rate), nper))));
         if (pv / ((1 / (rate)) * (1 - Math.pow(1 / (1 + rate), nper)))) {
-            return  -1 * pv / ((1 / (rate)) * (1 - Math.pow(1 / (1 + rate), nper)));
+            return -1 * pv / ((1 / (rate)) * (1 - Math.pow(1 / (1 + rate), nper)));
         }
         else {
             return 0
@@ -899,11 +899,7 @@ SSProject.prototype = {
             if (this.getD8() * this.getD9() > 0) {
                 if (this.getD10() == 0) { return 0; }
                 else {
-                    if (this.getD24() == 0) { return 0; }
-                    else {
-                        if (this.getD10() < this.getF10()) return this.getD8() * this.getD9() * this.getD10() / 30;
-                        else this.getD8() * this.getD9() * this.getF10() / 30;
-                    }
+                      return this.getD8() * this.getD9() * this.getD10() / 30;
                 }
             } else {
                 return 0;
@@ -1093,16 +1089,13 @@ SSProject.prototype = {
         useNop = true;
         if (useNop) { // use p'nop function in excel
             if (this.getD13() * this.getD14() > 0) {
-                if (this.getD30() == 0) {
-                    return 0;
-                } else {
+             
                     if (this.getD15() > this.getF15()) {
                         return this.getD13() * this.getD14() * this.getD15() / 30;
                     } else {
                         return this.getD13() * this.getD14() * this.getF15() / 30;
                     }
-                }
-            } else {
+           } else {
                 if (this.getD30() > 0) {
                     return 0; //"ลูกค้าไม่มีรายการซื้อเชื่อ";
                 } else {
@@ -1277,19 +1270,19 @@ SSProject.prototype = {
         }
     }
     , M35: function () {
-        if (this.getI33() + this.getI34()==0) {
+        if (this.getI33() + this.getI34() == 0) {
             return 0;
         } else {
             var temp = 0;
             if (this.getO34() != 0) {
                 temp = -1 * this.PMT(this.getM34() / 12, this.getO34() * 12, this.getI34());
             }
-            return  ((this.I25() / 12) / (this.getD39() + this.getD37() + this.getD35() - this.getD45() + (((this.getD31() + this.getD32() + this.getD33() - this.getD45()) * this.M27()) / 12) + ((this.getI33() * this.getM33()) / 12) + temp));
+            return ((this.I25() / 12) / (this.getD39() + this.getD37() + this.getD35() - this.getD45() + (((this.getD31() + this.getD32() + this.getD33() - this.getD45()) * this.M27()) / 12) + ((this.getI33() * this.getM33()) / 12) + temp));
         }
     }
     , M36: function () {
         if (this.N20() + this.N21() == 0) {
-            return 0 ;
+            return 0;
         } else {
             return this.N18() / (this.N20() + this.N21());
         }
