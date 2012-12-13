@@ -49,7 +49,7 @@
     </asp:sqldatasource>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>" 
-        SelectCommand="SELECT top 1 ETL_ASOFDATE as 'DASOF'  FROM [DBF_IMPORT].[dbo].[TEMP_MAX_AGING_EDW]">
+        SelectCommand="SELECT top 1 ETL_ASOFDATE as 'DASOF'  FROM [BAY01].[dbo].[TEMP_MAX_AGING_EDW]">
     </asp:SqlDataSource>
     <table>
         <tr valign="top">
@@ -154,38 +154,51 @@
                 ReadOnly="True" SortExpression="Last_Date_In" DataFormatString="{0:d}" />
            <asp:BoundField DataField="process" HeaderText="Process" 
                 SortExpression="process" ItemStyle-Wrap="false" >
+<ItemStyle Wrap="False"></ItemStyle>
             </asp:BoundField>
-           <asp:BoundField DataField="judgement_detail" HeaderText="Judgement"        SortExpression="judgement_detail">
+           <asp:BoundField DataField="judgement_detail" HeaderText="Judgement" 
+                SortExpression="judgement_detail" ItemStyle-Wrap="false" >
          
+<ItemStyle Wrap="False"></ItemStyle>
             </asp:BoundField>
          
-            <asp:BoundField DataField="cif" HeaderText="cif" SortExpression="CIF" />           
-             <asp:BoundField DataField="custname" HeaderText="Customer Name" 
+            <asp:BoundField DataField="cif" HeaderText="cif" SortExpression="CIF" />
+            <asp:BoundField DataField="custname" HeaderText="Customer Name"  ItemStyle-Wrap="false" 
                 SortExpression="custname" >
-
+<ItemStyle Wrap="False"></ItemStyle>
             </asp:BoundField>
             <asp:BoundField DataField="aging" HeaderText="Aging" SortExpression="aging"  
                 ItemStyle-BackColor="#FF99CC" >
-
+<ItemStyle BackColor="#FF99CC"></ItemStyle>
             </asp:BoundField>
-            <asp:BoundField DataField="aging_h" HeaderText="Aging History" SortExpression="aging_h"  
+            <asp:BoundField DataField="aging_h" HeaderText="Aging History" SortExpression="aging_h"  ItemStyle-Wrap="false" 
                 ItemStyle-BackColor="#FF99CC" >
+<ItemStyle BackColor="#FF99CC"></ItemStyle>
             </asp:BoundField>  
              <asp:BoundField DataField=">3 in 6 Month" HeaderText=">=3 in 6 Month" SortExpression=">3 in 6 Month"  
                 ItemStyle-BackColor="#FF99CC" >
+<ItemStyle BackColor="#FF99CC"></ItemStyle>
             </asp:BoundField>  
            <%--  ระงับการ show เนื่องจากไม่มี source ที่ update--%>
-             <asp:BoundField DataField="class_h" HeaderText="class_h"  Visible="false" SortExpression="class_h" 
+             <asp:BoundField DataField="class_h" HeaderText="class_h"  Visible="false" SortExpression="class_h"  ItemStyle-Wrap="false" 
                 ItemStyle-BackColor="#FF99CC" >
+<ItemStyle BackColor="#FF99CC"></ItemStyle>
             </asp:BoundField>
-               <asp:BoundField DataField="cm_code" HeaderText="cm_code" ReadOnly="True"   SortExpression="cm_code" > </asp:BoundField>
-                <asp:BoundField DataField="cm_name" HeaderText="cm_name" ReadOnly="True"    SortExpression="cm_name" > </asp:BoundField>
-               <asp:BoundField DataField="level_name" HeaderText="level_name" ReadOnly="True"   SortExpression="cm_name" >
-
+               <asp:BoundField DataField="cm_code" HeaderText="cm_code ReadOnly="True"  ItemStyle-Wrap="false" 
+                SortExpression="cm_code" >
+<ItemStyle Wrap="False"></ItemStyle>
             </asp:BoundField>
-               <asp:BoundField DataField="controlling_unit" HeaderText="controlling_unit" ReadOnly="True"  
+                <asp:BoundField DataField="cm_name" HeaderText="cm_name" ReadOnly="True"  ItemStyle-Wrap="false" 
+                SortExpression="cm_name" >
+<ItemStyle Wrap="False"></ItemStyle>
+            </asp:BoundField>
+               <asp:BoundField DataField="level_name" HeaderText="level_name" ReadOnly="True"  ItemStyle-Wrap="false" 
+                SortExpression="cm_name" >
+<ItemStyle Wrap="False"></ItemStyle>
+            </asp:BoundField>
+               <asp:BoundField DataField="controlling_unit" HeaderText="controlling_unit" ReadOnly="True"  ItemStyle-Wrap="false" 
                 SortExpression="controlling_unit" >
-
+<ItemStyle Wrap="False"></ItemStyle>
                  </asp:BoundField>
         
 <%--            <asp:BoundField DataField="busi_type" HeaderText="busi_type" 
