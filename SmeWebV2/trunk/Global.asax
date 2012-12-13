@@ -35,7 +35,7 @@
         'redirect to error page
         If err.GetType().Equals(GetType(System.Runtime.InteropServices.COMException)) Or
             err.GetType().Equals(GetType(System.DirectoryServices.DirectoryServicesCOMException)) Then
-            Response.Redirect("~/aspx/account/LoginWithAD.aspx?errorMsg=" & err.Message)
+            Response.Redirect("~/aspx/account/LoginWithAD.aspx?errorMsg=" & err.Message.Replace(System.Environment.NewLine, "&#13;"))
         ElseIf err.GetType().Equals(GetType(System.Security.SecurityException)) Then
             Response.Redirect("~/aspx/error/unauthorized.aspx?page=" & Server.UrlEncode(Request.RawUrl))
         Else
