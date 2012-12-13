@@ -83,8 +83,8 @@
                         <asp:HyperLink ID="StopLink" runat="server" rel="DropStopMenu" ToolTip="SM Report"
                             NavigateUrl="JavaScript:void(0);">Stop Program</asp:HyperLink></li>      --%>
                     <li id="FinancialMenu" runat="server" style="display: none; white-space: nowrap;">
-                        <asp:HyperLink ID="FinancialLink" runat="server" rel="DropFinancialMenu" ToolTip="Financial Data"
-                            NavigateUrl="JavaScript:void(0);">Financial Program</asp:HyperLink></li>
+                        <asp:HyperLink ID="FinancialLink" runat="server" ToolTip="Financial Data"
+                            NavigateUrl="~/aspx/smes/financial_ca_list.aspx">Financial Program</asp:HyperLink></li>
                     <li id="AboutEmpMenu" runat="server" style="display: none; white-space: nowrap;">
                         <asp:HyperLink ID="AboutEmpLink" runat="server" Target="_self" ToolTip="ข้อมูลส่วนตัว"
                             NavigateUrl="~/aspx/employee/TbEmployee.aspx">ข้อมูลส่วนตัว</asp:HyperLink></li>
@@ -197,10 +197,6 @@
                  <asp:HyperLink ID="SMreportMenu" runat="server" Target="_self" ToolTip="SM Report"
                     NavigateUrl="~/aspx/stop/sm_history.aspx">SM Report</asp:HyperLink>
             </div>--%>
-             <div id="DropFinancialMenu" class="dropmenudiv">
-                <asp:HyperLink ID="FinancialProgramMenu" runat="server" Target="_self" ToolTip="Financial Program"
-                    NavigateUrl="~/aspx/smes/financial_ca_list.aspx">Financial Program</asp:HyperLink>
-            </div>
             <!--ToolsMenu drop down menu -->
             <div id="DropToolsMenu" class="dropmenudiv">
                 <asp:HyperLink ID="CustomerSearchMenu" runat="server" Target="_self" ToolTip="Customer Search"
