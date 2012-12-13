@@ -1,86 +1,121 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="financial_main.aspx.vb" Inherits="aspx_smes_financial_main" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="financial_main.aspx.vb"
+    Inherits="smes_financial_main" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<style>
-        body {
-            font-size: 10pt;
-            font-family: Tahoma;
-           background-image:url("../../images/gradient2.png");
-           background-repeat:repeat-x;
-          }
-</style>
-    <title></title>
-</head>
-<script type="text/javascript">
-    function jsPop(jsURL, jsWindowNm, jsWidth, jsHeight) {
-        var hdl;
-        if (jsURL != "") {
-            var jsoption = "scrollbars=yes,resizable=no,width=" + jsWidth + ",height=" + jsHeight;
-            hdl = window.open(jsURL, jsWindowNm, jsoption);
+    <title>SS project ( Financial data template )</title>
+    <script src="js/jquery-1.7.min.js" type="text/javascript"></script>
+    <script src="js/jquery.layout.all-1.2.0/jquery.layout.js" type="text/javascript"></script>
+    <%-- <link href="js/jquery-ui-1.8.18/css/sunny/jquery-ui-1.8.18.custom.css" rel="stylesheet"  type="text/css" />--%>
+    <link href="js/jquery-ui-1.8.18/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet"
+        type="text/css" />
+    <style type="text/css">
+        body
+        {
+            margin: 0px 0px;
+            overflow: hidden;
         }
-    }
-</script>
+        #leftDiv
+        {
+            width: 150px;
+            float: left;
+        }
+        #rightDiv
+        {
+            width: 900px;
+            float: right;
+        }
+        #mainFrame
+        {
+            width: 98%;
+        }
+        #menuFrame
+        {
+            width: 98%;
+            border-style: none;
+        }
+        .header
+        {
+            font-size: large;
+            width: 100%;
+        }
+        .ui-widget-header
+        {
+            height: 93%;
+        }
+        #divUser
+        {
+            position: absolute;
+            top: 0;
+            right: 200px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('body').layout({
+                applyDefaultStyles: true
+         	  , west__size: 140
+               , north__size: 28
+              , spacing_open: 4
+              , spacing_closed: 4
+            });
+
+            //            // เปลี่ยน style หลังจากประกาศ layout เพราะหา option ที่ทำให้ชิดของใน layout ไม่เจอ
+            //            $(".ui-layout-north").css({ "padding": "0px", "height": "100%", "backgroundColor" : "#ffeedd" });
+            //             $(".ui-layout-north").css({ "padding": "0px", "height": "26px" ,"border":"0px" });
+            //             $(".ui-layout-west").css({ "padding": "1px", "width": "108px", "border": "0px" });
+            //             $(".ui-layout-center").css({ "padding": "1px","height":"100%" });
+
+        });
+    </script>
+</head>
 <body>
     <form id="form1" runat="server">
-    <asp:Label runat="server" Text="ข้อมูลประมาณการความสามารถในการก่อหนี้" 
-        style="font-weight: 700"></asp:Label>
-    <br />
-    &nbsp;<asp:Label ID="Label1" runat="server" Text="ค้นหาข้อมูลจาก"></asp:Label>
-    &nbsp;<asp:DropDownList ID="TypeSearchDropDownList" runat="server">
-    </asp:DropDownList>
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-    <asp:Button ID="Button1" runat="server" Text="ค้นหา" />
-&nbsp;
-    <asp:HyperLink ID="HyperLink1" runat="server" 
-        NavigateUrl="financial_data.aspx?mode=add"  Target="_parent"
-        style="font-size: large; font-weight: 700">...เพิ่มข้อมูล...</asp:HyperLink>
-    <div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>" 
-            SelectCommand="[SME_S].[P_SS_FINANCIAL_DATA_SELECT_ALL]" SelectCommandType="StoredProcedure">
-          </asp:SqlDataSource>
-    
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
-            AllowSorting="True" DataSourceID="SqlDataSource1" 
-            EnableModelValidation="True" AutoGenerateColumns="False" 
-            DataKeyNames="SMES_ID" BackColor="White" BorderColor="#DEDFDE" 
-            BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" 
-            GridLines="Vertical">
-            <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:TemplateField HeaderText="ลำดับ" InsertVisible="False" 
-                    SortExpression="SMES_ID">
-                       <ItemTemplate>
-                               <a href = "#" title="click to view detail" onclick="return jsPop('financial_data.aspx?SMES_ID=<%# DataBinder.Eval (Container.DataItem,"SMES_ID")%>', 'win01', 700, 600);">
-                              <%# DataBinder.Eval(Container.DataItem, "SMES_ID")%></a>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField DataField="SMES_TYPE" HeaderText="SMES_TYPE" 
-                    SortExpression="SMES_TYPE" />
-                <asp:BoundField DataField="SMES_STATUS" HeaderText="SMES_STATUS" 
-                    SortExpression="SMES_STATUS" />
-                <asp:BoundField DataField="UPDATE_USER" HeaderText="UPDATE_USER" 
-                    SortExpression="UPDATE_USER" />
-                <asp:BoundField DataField="UPDATE_DATE" HeaderText="UPDATE_DATE" 
-                    SortExpression="UPDATE_DATE" />
-                <asp:BoundField DataField="SALES" HeaderText="SALES" SortExpression="SALES" />
-                <asp:BoundField DataField="CREDIT_SALE" HeaderText="CREDIT_SALE" 
-                    SortExpression="CREDIT_SALE" />
-                <asp:BoundField DataField="CREDIT_TERM" HeaderText="CREDIT_TERM" 
-                    SortExpression="CREDIT_TERM" />
-            
-         
-            </Columns>
-            <FooterStyle BackColor="#CCCC99" />
-            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-            <RowStyle BackColor="#F7F7DE" />
-            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-        </asp:GridView>
-    
+    <div class="ui-layout-north">
+        <div class="ui-widget-header">
+            <label>
+                <span class="header">โปรแกรมคำนวณความสามารถในการก่อหนี้ </span>&nbsp;
+            </label>
+        </div>
+        <div id="divUser">
+            <table>
+                <tr>
+                    <td>
+                        <span class="ui-state-error-text"><strong>User</strong></span>:
+                    </td>
+                    <td>
+                        <span id="spanUserName" runat="server" />
+                    </td>
+                    <td>
+                        <span class="ui-state-error-text"><strong>Name</strong></span>:
+                    </td>
+                    <td>
+                        <span id="spanName" runat="server" />
+                    </td>
+                    <td>
+                        <span class="ui-state-error-text"><strong>CA</strong></span>:
+                    </td>
+                    <td>
+                        <span id="spanRefID" runat="server" />
+                    </td>
+                    <td>
+                        <span class="ui-state-error-text"><strong>Template</strong></span>:
+                    </td>
+                    <td>
+                        <span id="spanTemplateID" runat="server" />:<span id="spanTemplateName" runat="server" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="leftDiv" class="ui-layout-west">
+        <iframe id="menuFrame" runat="server" marginheight="0" marginwidth="0" frameborder="0"
+            scrolling="no"></iframe>
+    </div>
+    <div id="rightDiv" class="ui-layout-center">
+        <iframe id="mainFrame" runat="server" marginheight="0" marginwidth="0" frameborder="0">
+        </iframe>
     </div>
     </form>
 </body>
