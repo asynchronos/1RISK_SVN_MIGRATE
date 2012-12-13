@@ -3,13 +3,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel='stylesheet' type='text/css' href="../../theme/divTable.css" />
-    <style id="printStyle" type="text/css" runat="server" media="print"> 
-        #table1 {
-            zoom:80%;
+    <style id="printStyle" type="text/css" runat="server" media="print">
+        #table1
+        {
+            zoom: 80%;
         }
-        
-        #table2 {
-            zoom:90%;
+
+        #table2
+        {
+            zoom: 90%;
         }
     </style>
     <style type="text/css">
@@ -18,7 +20,6 @@
             background-color: #EAFFE8;
         }
     </style>
-
     <script type="text/javascript">
         function getEleByClientSelector(ClientSelector) {
             var result = null;
@@ -49,7 +50,6 @@
             }
         }
     </script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptPlaceHolder" runat="Server">
 </asp:Content>
@@ -242,7 +242,6 @@
                                                 <br />
                                             </div>
                                         </div>
-                                        
                                     </div>
                                     <!-- end div section1_2 -->
                                 </div>
@@ -337,6 +336,10 @@
                                         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                                         <ItemTemplate>
+                                            <asp:Label ID="oldaccnoLabel" runat="server" Text="<%$ Resources:OdUtilization, oldaccnoLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="oldaccnoValue" runat="server" Text='<%# Bind("OLD_ACCT","000-0-00000-0") %>' />
+                                            <br />
                                             <asp:Label ID="od_limLabel" runat="server" Text="<%$ Resources:OdUtilization, od_limLabel %>"
                                                 Font-Bold="true"></asp:Label>
                                             <asp:Label ID="od_limLabelValue" runat="server" Text='<%# Bind("od_lim","{0:#,##0.00} บาท") %>' />
@@ -348,6 +351,14 @@
                                             <asp:Label ID="brnameLabel" runat="server" Text="<%$ Resources:OdUtilization, brnameLabel %>"
                                                 Font-Bold="true"></asp:Label>
                                             <asp:Label ID="brnameLabelValue" runat="server" Text='<%# Bind("brname") %>' />
+                                            <br />
+                                            <asp:Label ID="oldbrnameLabel" runat="server" Text="<%$ Resources:OdUtilization, oldbrnameLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="oldbrnameLabelValue" runat="server" Text='<%# Bind("BNAME_CLSD") %>' />
+                                            <br />
+                                            <asp:Label ID="oldbrnameCloseDateLabel" runat="server" Text="<%$ Resources:OdUtilization, oldbrnameCloseDateLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="oldbrnameCloseDateValue" runat="server" Text='<%# Bind("BR_CLOSED") %>' />
                                             <br />
                                             <asp:Label ID="od_intLabel" runat="server" Text="<%$ Resources:OdUtilization, od_intLabel %>"
                                                 Font-Bold="true"></asp:Label>
@@ -364,6 +375,10 @@
                                         </ItemTemplate>
                                         <EmptyDataRowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                                         <EmptyDataTemplate>
+                                            <asp:Label ID="oldaccnoLabel" runat="server" Text="<%$ Resources:OdUtilization, oldaccnoLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="oldaccnoValue" runat="server" Text='<%# Bind("OLD_ACCT","000-0-00000-0") %>' />
+                                            <br />
                                             <asp:Label ID="od_limLabel" runat="server" Text="<%$ Resources:OdUtilization, od_limLabel %>"
                                                 Font-Bold="true"></asp:Label>
                                             <asp:Label ID="od_limLabelValue" runat="server" Text='<%# Bind("od_lim","{0:#,##0.00} บาท") %>' />
@@ -376,13 +391,21 @@
                                                 Font-Bold="true"></asp:Label>
                                             <asp:Label ID="brnameLabelValue" runat="server" Text='<%# Bind("brname") %>' />
                                             <br />
+                                            <asp:Label ID="oldbrnameLabel" runat="server" Text="<%$ Resources:OdUtilization, oldbrnameLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="oldbrnameLabelValue" runat="server" Text='<%# Bind("BNAME_CLSD") %>' />
+                                            <br />
+                                            <asp:Label ID="oldbrnameCloseDateLabel" runat="server" Text="<%$ Resources:OdUtilization, oldbrnameCloseDateLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="oldbrnameCloseDateValue" runat="server" Text='<%# Bind("BR_CLOSED") %>' />
+                                            <br />
                                             <asp:Label ID="od_intLabel" runat="server" Text="<%$ Resources:OdUtilization, od_intLabel %>"
                                                 Font-Bold="true"></asp:Label>
                                             <asp:Label ID="od_intLabelValue" runat="server" Text='<%# Bind("od_int","{0:#,##0.00}%") %>' />
                                             <br />
                                             <asp:Label ID="od_dateLabel" runat="server" Text="<%$ Resources:OdUtilization, od_dateLabel %>"
                                                 Font-Bold="true"></asp:Label>
-                                            <asp:Label ID="od_dateLabelValue" runat="server" Text='<%# Bind("od_date") %>' />
+                                            <asp:Label ID="od_dateLabelValue" runat="server" Text='<%# Bind("od_date","{0:d MMMM yyyy}") %>' />
                                             <br />
                                             <asp:Label ID="class_hLabel" runat="server" Text="<%$ Resources:OdUtilization, class_hLabel %>"
                                                 Font-Bold="true"></asp:Label>
@@ -512,7 +535,6 @@
                                                 <br />
                                             </div>
                                         </div>
-                                        
                                     </div>
                                     <!-- end div section1_2 -->
                                 </div>
@@ -537,6 +559,10 @@
                                         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                                         <EmptyDataRowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                                         <EmptyDataTemplate>
+                                            <asp:Label ID="oldaccnoLabel" runat="server" Text="<%$ Resources:OdUtilization, oldaccnoLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="oldaccnoValue" runat="server" Text='N/A' />
+                                            <br />
                                             <asp:Label ID="od_limLabel" runat="server" Text="<%$ Resources:OdUtilization, od_limLabel %>"
                                                 Font-Bold="true"></asp:Label>
                                             <asp:Label ID="od_limLabelValue" runat="server" Text='N/A' />
@@ -544,6 +570,14 @@
                                             <asp:Label ID="brnameLabel" runat="server" Text="<%$ Resources:OdUtilization, brnameLabel %>"
                                                 Font-Bold="true"></asp:Label>
                                             <asp:Label ID="brnameLabelValue" runat="server" Text='N/A' />
+                                            <br />
+                                            <asp:Label ID="oldbrnameLabel" runat="server" Text="<%$ Resources:OdUtilization, oldbrnameLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="oldbrnameLabelValue" runat="server" Text='N/A' />
+                                            <br />
+                                            <asp:Label ID="oldbrnameCloseDateLabel" runat="server" Text="<%$ Resources:OdUtilization, oldbrnameCloseDateLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="oldbrnameCloseDateValue" runat="server" Text='N/A' />
                                             <br />
                                             <asp:Label ID="od_intLabel" runat="server" Text="<%$ Resources:OdUtilization, od_intLabel %>"
                                                 Font-Bold="true"></asp:Label>
@@ -719,7 +753,6 @@
                 </asp:SqlDataSource>
             </td>
         </tr>
-    
         <tr>
             <td style="text-align: left;">
                 <asp:Label ID="Part3Label" runat="server" Text="<%$ Resources:OdUtilization, Part3Label %>"
@@ -909,7 +942,8 @@
                     Font-Size="Small" CaptionAlign="Right">
                     <RowStyle BackColor="#EFF3FB" />
                     <Columns>
-                        <asp:BoundField DataField="SUMMARY" HeaderText="Cheque Summary(01-12)" ReadOnly="True" SortExpression="SUMMARY" />
+                        <asp:BoundField DataField="SUMMARY" HeaderText="Cheque Summary(01-12)" ReadOnly="True"
+                            SortExpression="SUMMARY" />
                         <asp:BoundField DataField="chqre_dact" HeaderText="No." SortExpression="chqre_dact"
                             ReadOnly="True">
                             <ItemStyle HorizontalAlign="Right" />
@@ -966,7 +1000,8 @@
                     Font-Names="Arial" Font-Size="Small" CaptionAlign="Right">
                     <RowStyle BackColor="#EFF3FB" />
                     <Columns>
-                        <asp:BoundField DataField="SUMMARY" HeaderText="Cheque Summary(13-24)" ReadOnly="True" SortExpression="SUMMARY" />
+                        <asp:BoundField DataField="SUMMARY" HeaderText="Cheque Summary(13-24)" ReadOnly="True"
+                            SortExpression="SUMMARY" />
                         <asp:BoundField DataField="chqre_dact" HeaderText="No." SortExpression="chqre_dact"
                             ReadOnly="True">
                             <ItemStyle HorizontalAlign="Right" />
@@ -1020,10 +1055,9 @@
     <div id="tableDiv3" class="tableLayout" style="width: 800px; vertical-align: top;">
         <div class="tableRow">
             <div class="leftTableCell" style="width: 100%; text-align: center;">
-                <asp:Chart ID="ChartPrevious1Year" runat="server" Height="1100px" 
-                    Width="800px" AlternateText="ChartPrevious1Year"
-                    ImageStorageMode="UseImageLocation" 
-                    ImageLocation="~/images/dundas/Previous1Year_#SEQ(300,3)" Palette="None">
+                <asp:Chart ID="ChartPrevious1Year" runat="server" Height="1100px" Width="800px" AlternateText="ChartPrevious1Year"
+                    ImageStorageMode="UseImageLocation" ImageLocation="~/images/dundas/Previous1Year_#SEQ(300,3)"
+                    Palette="None">
                     <Annotations>
                         <asp:CalloutAnnotation Name="Callout1" Font="Microsoft Sans Serif, 12pt" Text="*** Debt&lt;0 (ติดลบ) = Deposit ***"
                             X="0" Y="97">
@@ -1040,67 +1074,61 @@
                         </asp:Legend>
                         <asp:Legend Name="LegendBalancePrevious1Year" Alignment="Center" Docking="Top" IsDockedInsideChartArea="False"
                             BorderColor="Black" LegendStyle="Row" BackColor="LightCyan" DockedToChartArea="BalancePrevious1Year">
-                        </asp:Legend>                        
+                        </asp:Legend>
                     </Legends>
                     <Titles>
-                        <asp:Title Name="MovementTitle" Text="Deposit&amp;Withdraw Amount(Exclude P/N)" 
-                            Font="Microsoft Sans Serif, 16pt, style=Bold" 
+                        <asp:Title Name="MovementTitle" Text="Deposit&amp;Withdraw Amount(Exclude P/N)" Font="Microsoft Sans Serif, 16pt, style=Bold"
                             DockedToChartArea="MovementPrevious1Year" IsDockedInsideChartArea="False">
                         </asp:Title>
-                        <asp:Title DockedToChartArea="UtilizationPrevious1Year" 
-                            Font="Microsoft Sans Serif, 16pt, style=Bold" IsDockedInsideChartArea="False" 
-                            Name="UtiltzeTitle" Text="Out Standing Balance">
+                        <asp:Title DockedToChartArea="UtilizationPrevious1Year" Font="Microsoft Sans Serif, 16pt, style=Bold"
+                            IsDockedInsideChartArea="False" Name="UtiltzeTitle" Text="Out Standing Balance">
                         </asp:Title>
-                        <asp:Title DockedToChartArea="BalancePrevious1Year" 
-                            Font="Microsoft Sans Serif, 16pt, style=Bold" IsDockedInsideChartArea="False" 
-                            Name="BalanceTitle" Text="Highest&amp;Lowest Debt">
+                        <asp:Title DockedToChartArea="BalancePrevious1Year" Font="Microsoft Sans Serif, 16pt, style=Bold"
+                            IsDockedInsideChartArea="False" Name="BalanceTitle" Text="Highest&amp;Lowest Debt">
                         </asp:Title>
                     </Titles>
                     <Series>
                         <asp:Series ChartArea="MovementPrevious1Year" ChartType="Area" Name="LimitSeriesPrevious1Year"
                             BackGradientStyle="TopBottom" Color="153, 204, 255" Font="Microsoft Sans Serif, 12pt, style=Bold"
                             IsValueShownAsLabel="True" LabelForeColor="51, 153, 255" LabelFormat="#,###"
-                            Legend="LegendMovementPrevious1Year" 
-                            CustomProperties="EmptyPointValue=Zero" LegendText="Limit" 
-                            BackSecondaryColor="White" BorderColor="64, 64, 64">
+                            Legend="LegendMovementPrevious1Year" CustomProperties="EmptyPointValue=Zero"
+                            LegendText="Limit" BackSecondaryColor="White" BorderColor="64, 64, 64">
                         </asp:Series>
                         <asp:Series ChartArea="MovementPrevious1Year" ChartType="Line" Name="WithdrawSeriesPrevious1Year"
                             Color="Red" Font="Microsoft Sans Serif, 12pt, style=Bold" IsValueShownAsLabel="True"
-                            LabelForeColor="Red" LabelFormat="#,###" Legend="LegendMovementPrevious1Year" MarkerSize="8"
-                            MarkerStyle="Square" BorderWidth="3" CustomProperties="EmptyPointValue=Zero"
+                            LabelForeColor="Red" LabelFormat="#,###" Legend="LegendMovementPrevious1Year"
+                            MarkerSize="8" MarkerStyle="Square" BorderWidth="3" CustomProperties="EmptyPointValue=Zero"
                             LegendText="Withdraw" MarkerBorderColor="Black">
                         </asp:Series>
                         <asp:Series ChartArea="MovementPrevious1Year" ChartType="Line" Name="DepositSeriesPrevious1Year"
                             Color="Lime" Font="Microsoft Sans Serif, 12pt, style=Bold" IsValueShownAsLabel="True"
-                            LabelForeColor="0, 204, 0" LabelFormat="#,###" Legend="LegendMovementPrevious1Year" MarkerSize="10"
-                            MarkerStyle="Cross" BorderWidth="3" CustomProperties="EmptyPointValue=Zero" LegendText="Deposit"
-                            MarkerBorderColor="Black">
+                            LabelForeColor="0, 204, 0" LabelFormat="#,###" Legend="LegendMovementPrevious1Year"
+                            MarkerSize="10" MarkerStyle="Cross" BorderWidth="3" CustomProperties="EmptyPointValue=Zero"
+                            LegendText="Deposit" MarkerBorderColor="Black">
                         </asp:Series>
                         <asp:Series Name="UtilizeLimitSeriesPrevious1Year" BackGradientStyle="TopBottom"
-                            ChartArea="UtilizationPrevious1Year" ChartType="Area" 
-                            Color="153, 204, 255" Font="Microsoft Sans Serif, 12pt, style=Bold"
+                            ChartArea="UtilizationPrevious1Year" ChartType="Area" Color="153, 204, 255" Font="Microsoft Sans Serif, 12pt, style=Bold"
                             IsValueShownAsLabel="True" LabelForeColor="51, 153, 255" LabelFormat="#,###"
-                            Legend="LegendUtilizePrevious1Year" 
-                            CustomProperties="EmptyPointValue=Zero" LegendText="Limit" 
+                            Legend="LegendUtilizePrevious1Year" CustomProperties="EmptyPointValue=Zero" LegendText="Limit"
                             BackSecondaryColor="White" BorderColor="64, 64, 64">
                         </asp:Series>
                         <asp:Series BorderWidth="3" ChartArea="UtilizationPrevious1Year" ChartType="Line"
                             Color="Blue" Font="Microsoft Sans Serif, 12pt, style=Bold" IsValueShownAsLabel="True"
-                            LabelForeColor="Blue" LabelFormat="#,###" Legend="LegendUtilizePrevious1Year" MarkerSize="8"
-                            MarkerStyle="Circle" Name="UtilizationSeriesPrevious1Year" CustomProperties="EmptyPointValue=Zero"
+                            LabelForeColor="Blue" LabelFormat="#,###" Legend="LegendUtilizePrevious1Year"
+                            MarkerSize="8" MarkerStyle="Circle" Name="UtilizationSeriesPrevious1Year" CustomProperties="EmptyPointValue=Zero"
                             LegendText="Utilization" MarkerBorderColor="Black">
                         </asp:Series>
                         <asp:Series BorderWidth="3" ChartArea="UtilizationPrevious1Year" ChartType="Line"
                             Color="255, 128, 0" Font="Microsoft Sans Serif, 12pt, style=Bold" IsValueShownAsLabel="True"
-                            LabelForeColor="236, 118, 0" LabelFormat="P2" Legend="LegendUtilizePrevious1Year" MarkerSize="10"
-                            MarkerStyle="Diamond" Name="PercentUtilizationSeriesPrevious1Year" YAxisType="Secondary"
-                            CustomProperties="EmptyPointValue=Zero" LegendText="%Utilization" MarkerBorderColor="Black">
+                            LabelForeColor="236, 118, 0" LabelFormat="P2" Legend="LegendUtilizePrevious1Year"
+                            MarkerSize="10" MarkerStyle="Diamond" Name="PercentUtilizationSeriesPrevious1Year"
+                            YAxisType="Secondary" CustomProperties="EmptyPointValue=Zero" LegendText="%Utilization"
+                            MarkerBorderColor="Black">
                         </asp:Series>
                         <asp:Series ChartArea="BalancePrevious1Year" ChartType="Area" Name="BalLimitSeriesPrevious1Year"
                             BackGradientStyle="TopBottom" Color="153, 204, 255" Font="Microsoft Sans Serif, 12pt, style=Bold"
                             IsValueShownAsLabel="True" LabelForeColor="51, 153, 255" LabelFormat="#,###"
-                            Legend="LegendBalancePrevious1Year" 
-                            CustomProperties="EmptyPointValue=Zero" LegendText="Limit" 
+                            Legend="LegendBalancePrevious1Year" CustomProperties="EmptyPointValue=Zero" LegendText="Limit"
                             BackSecondaryColor="White" BorderColor="64, 64, 64">
                         </asp:Series>
                         <asp:Series ChartArea="BalancePrevious1Year" ChartType="Line" Name="MaxBalanceSeriesPrevious1Year"
@@ -1114,7 +1142,7 @@
                             LabelForeColor="192, 192, 0" LabelFormat="#,###" Legend="LegendBalancePrevious1Year"
                             MarkerSize="10" MarkerStyle="Star10" BorderWidth="3" CustomProperties="EmptyPointValue=Zero"
                             LegendText="Min Debt Balance" MarkerBorderColor="Black">
-                        </asp:Series>                        
+                        </asp:Series>
                     </Series>
                     <ChartAreas>
                         <asp:ChartArea Name="MovementPrevious1Year" BackColor="100, 235, 245, 255">
@@ -1136,8 +1164,7 @@
                                 <MajorGrid LineDashStyle="NotSet" Enabled="False" />
                                 <MajorTickMark Enabled="False" />
                             </AxisX>
-                            <AxisY2 Maximum="1.2" Minimum="0" Interval="0.1" IsLabelAutoFit="False" 
-                                IntervalAutoMode="VariableCount">
+                            <AxisY2 Maximum="1.2" Minimum="0" Interval="0.1" IsLabelAutoFit="False" IntervalAutoMode="VariableCount">
                                 <MajorGrid LineDashStyle="Dot" />
                                 <LabelStyle Format="P2" />
                             </AxisY2>
@@ -1159,8 +1186,8 @@
         <div class="tableRow">
             <div class="leftTableCell" style="width: 100%; text-align: center;">
                 <asp:Chart ID="ChartPast2Years" runat="server" Height="1100px" Width="800px" AlternateText="ChartPast2Years"
-                    ImageStorageMode="UseImageLocation" 
-                    ImageLocation="~/images/dundas/Past2Years_#SEQ(300,3)" Palette="None">
+                    ImageStorageMode="UseImageLocation" ImageLocation="~/images/dundas/Past2Years_#SEQ(300,3)"
+                    Palette="None">
                     <Annotations>
                         <asp:CalloutAnnotation Name="Callout1" Font="Microsoft Sans Serif, 12pt" Text="*** Debt&lt;0 (ติดลบ) = Deposit ***"
                             X="0" Y="97">
@@ -1181,25 +1208,22 @@
                         </asp:Legend>
                     </Legends>
                     <Titles>
-                        <asp:Title Name="MovementTitle" Text="Deposit&amp;Withdraw Amount(Exclude P/N)" 
-                            Font="Microsoft Sans Serif, 16pt, style=Bold" 
+                        <asp:Title Name="MovementTitle" Text="Deposit&amp;Withdraw Amount(Exclude P/N)" Font="Microsoft Sans Serif, 16pt, style=Bold"
                             DockedToChartArea="MovementPast2Years" IsDockedInsideChartArea="False">
                         </asp:Title>
-                        <asp:Title DockedToChartArea="UtilizationPast2Years" 
-                            Font="Microsoft Sans Serif, 16pt, style=Bold" IsDockedInsideChartArea="False" 
-                            Name="UtiltzeTitle" Text="Out Standing Balance">
+                        <asp:Title DockedToChartArea="UtilizationPast2Years" Font="Microsoft Sans Serif, 16pt, style=Bold"
+                            IsDockedInsideChartArea="False" Name="UtiltzeTitle" Text="Out Standing Balance">
                         </asp:Title>
-                        <asp:Title DockedToChartArea="BalancePast2Years" 
-                            Font="Microsoft Sans Serif, 16pt, style=Bold" IsDockedInsideChartArea="False" 
-                            Name="BalanceTitle" Text="Highest&amp;Lowest Debt">
+                        <asp:Title DockedToChartArea="BalancePast2Years" Font="Microsoft Sans Serif, 16pt, style=Bold"
+                            IsDockedInsideChartArea="False" Name="BalanceTitle" Text="Highest&amp;Lowest Debt">
                         </asp:Title>
                     </Titles>
                     <Series>
                         <asp:Series ChartArea="MovementPast2Years" ChartType="Area" Name="LimitSeriesPast2Years"
                             BackGradientStyle="TopBottom" Color="153, 204, 255" Font="Microsoft Sans Serif, 12pt, style=Bold"
                             IsValueShownAsLabel="True" LabelForeColor="51, 153, 255" LabelFormat="#,###"
-                            Legend="LegendMovementPast2Years" CustomProperties="EmptyPointValue=Zero" 
-                            LegendText="Limit" BackSecondaryColor="White" BorderColor="64, 64, 64">
+                            Legend="LegendMovementPast2Years" CustomProperties="EmptyPointValue=Zero" LegendText="Limit"
+                            BackSecondaryColor="White" BorderColor="64, 64, 64">
                         </asp:Series>
                         <asp:Series ChartArea="MovementPast2Years" ChartType="Line" Name="WithdrawSeriesPast2Years"
                             Color="Red" Font="Microsoft Sans Serif, 12pt, style=Bold" IsValueShownAsLabel="True"
@@ -1209,15 +1233,14 @@
                         </asp:Series>
                         <asp:Series ChartArea="MovementPast2Years" ChartType="Line" Name="DepositSeriesPast2Years"
                             Color="Lime" Font="Microsoft Sans Serif, 12pt, style=Bold" IsValueShownAsLabel="True"
-                            LabelForeColor="0, 204, 0" LabelFormat="#,###" Legend="LegendMovementPast2Years" MarkerSize="10"
-                            MarkerStyle="Cross" BorderWidth="3" CustomProperties="EmptyPointValue=Zero" LegendText="Deposit"
-                            MarkerBorderColor="Black">
+                            LabelForeColor="0, 204, 0" LabelFormat="#,###" Legend="LegendMovementPast2Years"
+                            MarkerSize="10" MarkerStyle="Cross" BorderWidth="3" CustomProperties="EmptyPointValue=Zero"
+                            LegendText="Deposit" MarkerBorderColor="Black">
                         </asp:Series>
                         <asp:Series BackGradientStyle="TopBottom" ChartArea="UtilizationPast2Years" ChartType="Area"
                             Color="153, 204, 255" Font="Microsoft Sans Serif, 12pt, style=Bold" IsValueShownAsLabel="True"
-                            LabelForeColor="51, 153, 255" LabelFormat="#,###" 
-                            Legend="LegendUtilizePast2Years" Name="UtilizeLimitSeriesPast2Years"
-                            CustomProperties="EmptyPointValue=Zero" LegendText="Limit" 
+                            LabelForeColor="51, 153, 255" LabelFormat="#,###" Legend="LegendUtilizePast2Years"
+                            Name="UtilizeLimitSeriesPast2Years" CustomProperties="EmptyPointValue=Zero" LegendText="Limit"
                             BackSecondaryColor="White" BorderColor="64, 64, 64">
                         </asp:Series>
                         <asp:Series BorderWidth="3" ChartArea="UtilizationPast2Years" ChartType="Line" Color="Blue"
@@ -1235,16 +1258,14 @@
                         <asp:Series ChartArea="BalancePast2Years" ChartType="Area" Name="BalLimitSeriesPast2Years"
                             BackGradientStyle="TopBottom" Color="153, 204, 255" Font="Microsoft Sans Serif, 12pt, style=Bold"
                             IsValueShownAsLabel="True" LabelForeColor="51, 153, 255" LabelFormat="#,###"
-                            Legend="LegendBalancePast2Years" CustomProperties="EmptyPointValue=Zero" 
-                            LegendText="Limit" BackSecondaryColor="White" BorderColor="64, 64, 64">
+                            Legend="LegendBalancePast2Years" CustomProperties="EmptyPointValue=Zero" LegendText="Limit"
+                            BackSecondaryColor="White" BorderColor="64, 64, 64">
                         </asp:Series>
                         <asp:Series ChartArea="BalancePast2Years" ChartType="Line" Name="MaxBalanceSeriesPast2Years"
                             Color="192, 0, 192" Font="Microsoft Sans Serif, 12pt, style=Bold" IsValueShownAsLabel="True"
-                            LabelForeColor="192, 0, 192" LabelFormat="#,###" 
-                            Legend="LegendBalancePast2Years" MarkerSize="10"
-                            MarkerStyle="Star5" BorderWidth="3" 
-                            CustomProperties="EmptyPointValue=Zero" LegendText="Max Debt Balance"
-                            MarkerBorderColor="Black">
+                            LabelForeColor="192, 0, 192" LabelFormat="#,###" Legend="LegendBalancePast2Years"
+                            MarkerSize="10" MarkerStyle="Star5" BorderWidth="3" CustomProperties="EmptyPointValue=Zero"
+                            LegendText="Max Debt Balance" MarkerBorderColor="Black">
                         </asp:Series>
                         <asp:Series ChartArea="BalancePast2Years" ChartType="Line" Name="MinBalanceSeriesPast2Years"
                             Color="192, 192, 0" Font="Microsoft Sans Serif, 12pt, style=Bold" IsValueShownAsLabel="True"
@@ -1264,7 +1285,6 @@
                                 <MajorTickMark Enabled="False" />
                             </AxisX>
                         </asp:ChartArea>
-                        
                         <asp:ChartArea Name="UtilizationPast2Years" BackColor="100, 235, 245, 255">
                             <AxisY Title="Thousand Baht" IntervalAutoMode="VariableCount" IsLabelAutoFit="False">
                                 <MajorGrid LineDashStyle="Dash" />
@@ -1274,8 +1294,7 @@
                                 <MajorGrid LineDashStyle="NotSet" Enabled="False" />
                                 <MajorTickMark Enabled="False" />
                             </AxisX>
-                            <AxisY2 Maximum="1.2" Minimum="0" Interval="0.1" IsLabelAutoFit="False" 
-                                IntervalAutoMode="VariableCount">
+                            <AxisY2 Maximum="1.2" Minimum="0" Interval="0.1" IsLabelAutoFit="False" IntervalAutoMode="VariableCount">
                                 <MajorGrid LineDashStyle="Dot" />
                                 <LabelStyle Format="P2" />
                             </AxisY2>
@@ -1295,8 +1314,8 @@
             </div>
         </div>
     </div>
-    <asp:SqlDataSource ID="SamplePivotDS" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>" SelectCommand="SELECT	CASE monthly 
+    <asp:SqlDataSource ID="SamplePivotDS" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
+        SelectCommand="SELECT	CASE monthly
 			WHEN 'MVMDAM12' THEN DATEADD(MONTH,-11,DATEADD(day,-1*DATEPART(day,run_date),run_date))
 			WHEN 'MVMDAM11' THEN DATEADD(MONTH,-10,DATEADD(day,-1*DATEPART(day,run_date),run_date))
 			WHEN 'MVMDAM10' THEN DATEADD(MONTH,-9,DATEADD(day,-1*DATEPART(day,run_date),run_date))
@@ -1309,7 +1328,7 @@
 			WHEN 'MVMDAM03' THEN DATEADD(MONTH,-2,DATEADD(day,-1*DATEPART(day,run_date),run_date))
 			WHEN 'MVMDAM02' THEN DATEADD(MONTH,-1,DATEADD(day,-1*DATEPART(day,run_date),run_date))
 			WHEN 'MVMDAM01' THEN DATEADD(day,-1*DATEPART(day,run_date),run_date)
-			ELSE run_date 
+			ELSE run_date
 		END AS ASOF
 	,DEBIT
 FROM (
@@ -1322,8 +1341,8 @@ FROM (
 				, MVMDAM04/1000 AS MVMDAM04, MVMDAM03/1000 AS MVMDAM03
 				, MVMDAM02/1000 AS MVMDAM02, MVMDAM01/1000 AS MVMDAM01
 				, MVMDR_AVG/1000 AS MVMDR_AVG, run_date
-			FROM REP_OD13 
-			WHERE (ACCNO = N'1320012123') 
+			FROM REP_OD13
+			WHERE (ACCNO = N'1320012123')
 
 ) AS T
 UNPIVOT(
@@ -1331,6 +1350,6 @@ UNPIVOT(
 		(MVMDAM12, MVMDAM11, MVMDAM10, MVMDAM09,
 		MVMDAM08, MVMDAM07, MVMDAM06, MVMDAM05,
 		MVMDAM04, MVMDAM03, MVMDAM02, MVMDAM01)
-	
+
 )AS unpvt"></asp:SqlDataSource>
 </asp:Content>
