@@ -17,16 +17,16 @@
     Sub Application_Error(ByVal sender As Object, ByVal e As EventArgs)
         Dim err As Exception = Server.GetLastError()
 
-        'Creation of event log if it does not exist
-        Dim eventLogName As String = ConfigurationManager.AppSettings("APPLICATION_NAME")
-        If Not EventLog.SourceExists(eventLogName) Then
-            EventLog.CreateEventSource(eventLogName, eventLogName)
-        End If
+        ''Creation of event log if it does not exist
+        'Dim eventLogName As String = ConfigurationManager.AppSettings("APPLICATION_NAME")
+        'If Not EventLog.SourceExists(eventLogName) Then
+        '    EventLog.CreateEventSource(eventLogName, eventLogName)
+        'End If
 
-        'Inserting into event log
-        Dim eLog As EventLog = New EventLog()
-        eLog.Source = eventLogName
-        eLog.WriteEntry(err.ToString(), EventLogEntryType.Error)
+        ''Inserting into event log
+        'Dim eLog As EventLog = New EventLog()
+        'eLog.Source = eventLogName
+        'eLog.WriteEntry(err.ToString(), EventLogEntryType.Error)
 
         If Not IsNothing(err.InnerException) Then
             err = err.InnerException
