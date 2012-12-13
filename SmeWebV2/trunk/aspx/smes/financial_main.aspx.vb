@@ -33,6 +33,8 @@ Partial Class smes_financial_main
                 spanTemplateName.InnerText = "Flood Template"
             ElseIf Request.QueryString("TEMPLATE_ID") = "3" Then
                 spanTemplateName.InnerText = "3X Template"
+            Else
+                spanTemplateName.InnerText = "Financial"
             End If
 
         End If
