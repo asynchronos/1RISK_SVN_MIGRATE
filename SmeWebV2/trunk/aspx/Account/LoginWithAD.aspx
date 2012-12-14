@@ -14,8 +14,8 @@
         <br />
         <br />
         <asp:Label ID="Label_Information" runat="server" Text="ใช้ Username Password เดียวกับที่ใช้เปิดเครื่องคอมพิวเตอร์(BAYAD)"
-            Font-Bold="True" Font-Italic="True" Font-Overline="False" Font-Size="Medium"
-            Font-Underline="True" ForeColor="#3366FF"></asp:Label>
+            Font-Bold="True" Font-Italic="True" Font-Overline="False" Font-Size="Large" Font-Underline="True"
+            ForeColor="#3366FF"></asp:Label>
         <br />
         <br />
         <br />
