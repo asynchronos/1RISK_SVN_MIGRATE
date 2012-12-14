@@ -22,6 +22,7 @@
 		<add key="LDAP_SERVER" value="192.168.32.115"/>
 		<add key="LDAP_SERVER_UAT" value="172.19.60.112"/>
 		<add key="LDAP_PORT" value="389"/>
+		<add key="IsProduction" value="1"/>
 	</appSettings>
 	<connectionStrings>
 		<add name="BAY01ConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=BAY01;Persist Security Info=True;User ID=smeweb;Password=Web#11sme;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>

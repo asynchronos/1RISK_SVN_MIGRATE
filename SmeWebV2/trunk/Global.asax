@@ -13,7 +13,7 @@
         log.Info("============================")
         log.Info(ConfigurationManager.AppSettings("APPLICATION_NAME") & "Started.")
         log.Info("============================")
-        log.Info("IsDebugEnabled : " + isDebugEnabled)
+        log.Info("IsDebugEnabled : " & isDebugEnabled.ToString())
 
         ' Code that runs on application startup
         Dim cul As System.Globalization.CultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture
