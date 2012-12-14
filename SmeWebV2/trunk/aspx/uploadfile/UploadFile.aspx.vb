@@ -378,7 +378,7 @@ End Sub
             arrFILE_TYPE = dalFILE_TYPE.getAllUploadFileType
 
             Dim TypeID As Integer
-            MsgBox(arrFILE_TYPE.Count)
+            'MsgBox(arrFILE_TYPE.Count)
             For i = 0 To arrFILE_TYPE.Count - 1
                 TypeID = arrFILE_TYPE(i).ID
                 If isProduction = "0" Then
@@ -395,19 +395,22 @@ End Sub
 
     Protected Sub GridUploadFile_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles GridUploadFile.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
-            Dim FileYear As Integer = Date.Now.Year
-            If FileYear > 2500 Then FileYear = FileYear - 543 '   triky ทำ year ให้เป็น คศ
+            'Dim FileYear As Integer = Date.Now.Year
+            'If FileYear > 2500 Then FileYear = FileYear - 543 '   triky ทำ year ให้เป็น คศ
+
 
             Dim linkPath As HyperLink = e.Row.FindControl("linkPath")
             Dim strPath As String = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "Path"))
             Dim strFILE_TYPE As String = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "FILE_TYPE"))
+            Dim strYear As String = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "FILE_YEAR"))
+
 
             If isProduction = "0" Then
                 linkPath.NavigateUrl = "../../FileUpload/" & strFILE_TYPE & "/" & strPath
                 linkPath.ToolTip = "../../FileUpload/" & strFILE_TYPE & "/" & strPath
             Else
-                linkPath.NavigateUrl = "../../FileUpload/" & FileYear & "/" & strFILE_TYPE & "/" & strPath
-                linkPath.ToolTip = "../../FileUpload/" & FileYear & "/" & strFILE_TYPE & "/" & strPath
+                linkPath.NavigateUrl = "../../FileUpload/" & strYear & "/" & strFILE_TYPE & "/" & strPath
+                linkPath.ToolTip = "../../FileUpload/" & strYear & "/" & strFILE_TYPE & "/" & strPath
             End If
 
         End If
