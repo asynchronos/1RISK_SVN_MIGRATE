@@ -6,7 +6,7 @@
     Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
-        log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("Log4net.SMEDebtSummaryWeb.config"))
+        log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("Log4net.SMEWeb.config"))
         log.Info(ConfigurationManager.AppSettings("APPLICATION_NAME") & "Started.")
 
         ' Code that runs on application startup
@@ -46,7 +46,7 @@
         Application("PageError") = HttpContext.Current.Request.Url.ToString()
         Server.ClearError() 'clear the error so we can continue onwards
 
-        If IsNothing(HttpContext.Current.Session) Then
+        If Not IsNothing(HttpContext.Current.Session) Then
             'HttpContext.Current.Session.Add("LastError", err);
             'HttpContext.Current.Session.Add("PageError", HttpContext.Current.Request.Url.ToString());
         End If
@@ -103,8 +103,12 @@
         ' Note: The Session_End event is raised only when the sessionstate mode
         ' is set to InProc in the Web.config file. If session mode is set to StateServer
         ' or SQLServer, the event is not raised.
-        Dim log As New ClsLog
-        log.InsertLog(2, Request.UserHostAddress, DirectCast(Session.Item(SessionKeyConst.EMP_ID), String))
+        'Dim log As New ClsLog
+        'log.InsertLog(2, Request.UserHostAddress, DirectCast(Session.Item(SessionKeyConst.EMP_ID), String))
+
+        If Not IsNothing(Session.Item(SessionKeyConst.EMP_ID)) Then
+            log.Info(DirectCast(Session.Item(SessionKeyConst.EMP_ID), String) & " logout.")
+        End If
 
         Application.Lock()
         Application("UserOnline") = CInt(Application("UserOnline")) - 1

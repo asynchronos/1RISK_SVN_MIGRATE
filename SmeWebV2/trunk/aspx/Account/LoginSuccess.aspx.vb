@@ -52,7 +52,7 @@ Partial Class LoginSuccess
                 'Response.Redirect(FormsAuthentication.GetRedirectUrl(User.Identity.Name, False))
                 'FormsAuthentication.RedirectFromLoginPage(Login1.UserName, False)
 
-                Response.Redirect(Page.ResolveUrl("~/aspx/mainpage.aspx"))
+                Response.Redirect("~/aspx/mainpage.aspx")
 
                 Exit Sub
             Else
@@ -61,6 +61,8 @@ Partial Class LoginSuccess
             End If
 
         End If
+
+        Response.Write("Unkown Error, Please contact administrator.")
     End Sub
 
     Private Sub showError(ByVal errorMsg As String)

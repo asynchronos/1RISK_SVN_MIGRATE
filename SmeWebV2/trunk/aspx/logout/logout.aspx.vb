@@ -2,7 +2,7 @@ Option Explicit On
 Option Strict On
 
 Partial Class logout
-    Inherits System.Web.UI.Page
+    Inherits aspx.MyPageClass
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim log As New ClsLog
@@ -10,6 +10,6 @@ Partial Class logout
         FormsAuthentication.SignOut()
         Session.Abandon()
         Context.Request.Cookies.Clear()
-        Response.Redirect(Page.ResolveUrl("~/aspx/account/LoginWithAD.aspx"))
+        Response.Redirect("~/aspx/account/LoginWithAD.aspx")
     End Sub
 End Class

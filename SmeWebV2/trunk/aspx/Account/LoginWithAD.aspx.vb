@@ -1,6 +1,6 @@
 ﻿
 Partial Class LoginWithAD
-    Inherits System.Web.UI.Page
+    Inherits aspx.MyPageClass
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim liter As Literal = DirectCast(Login1.FindControl("FailureText"), Literal)
