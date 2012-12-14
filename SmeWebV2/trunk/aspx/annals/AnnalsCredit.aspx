@@ -80,6 +80,7 @@
                 $("#btnIDOUT").removeAttr("onclick");
             }
 
+
             $("#tbGroupExposure").blur(function () {
                 //alert($(this).val());
                 if ($(this).val() != '') {
@@ -114,7 +115,7 @@
                 }
             }); // 
 
-        }); // $(document).ready
+        });   // $(document).ready
 
         function changeGroupExposureDesc(txtNum) {
             txtNum = txtNum.replace(',', '');
@@ -529,7 +530,10 @@
         function OnFailedFindEmployee(result) {
             alert('ไม่สามารถติดต่อ server');
         }
-       
+
+     
+
+
     </script>
     <script type="text/javascript">
         //var timerId = 0;
@@ -544,7 +548,8 @@
                 //      alert(d.style.color);
             }
         }
-
+     
+        
     </script>
     <script type="text/javascript">
         function getEleByClientSelector(ClientSelector, tagName) {
@@ -899,13 +904,13 @@
                 <td colspan="4">
                     <asp:UpdatePanel ID="UpdatePanelBranch" runat="server">
                         <ContentTemplate>
-                            <table style="width: 100%; border: 0">
+                           <table style="width: 100%; border: 0">
                                 <tr>
                                     <td style="width: 218px">
                                         <asp:Label ID="Label21" runat="server" Text="Branch ID (รหัสสาขา) *" Style="font-weight: 700;"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="tbBranch_ID" runat="server" MaxLength="10" Width="100px"></asp:TextBox>
+                                        <asp:TextBox ID="tbBranch_ID" runat="server" MaxLength="7" Width="100px"></asp:TextBox>
                                         &nbsp;<asp:ImageButton ID="SearchBranchBtn" runat="server" BorderColor="transparent"
                                             BorderWidth="0px" ImageUrl="~/images/Magnifying Glass.gif" />
                                         <asp:Label ID="lblBranchName" runat="server"></asp:Label>
@@ -926,7 +931,7 @@
                             <td>
                                 <%--                                <asp:TextBox ID="TextBoxCMControl" runat="server" MaxLength="10" Width="100px" onChange="empIdChange(this,'LabelCMControlDetail');"></asp:TextBox>
                                 --%>
-                                <asp:TextBox ID="TextBoxCMControl" runat="server" MaxLength="10" Width="100px"></asp:TextBox>
+                                <asp:TextBox ID="TextBoxCMControl" runat="server" MaxLength="7" Width="100px"></asp:TextBox>
                                 &nbsp;<asp:Image ID="ImageButtonCMControl" runat="server" BorderColor="transparent"
                                     BorderWidth="0px" ImageUrl="~/images/Magnifying Glass.gif" />
                                 <asp:TextBox ID="LabelCMControlDetail" ClientSelector="LabelCMControlDetail" runat="server"
@@ -1081,7 +1086,7 @@
                                         </tr>
                                     </table>
                                     <asp:GridView ID="GridAnnalsCreditAccount" runat="server" AutoGenerateColumns="False"
-                                        CellPadding="1" Width="100%" Height="16px"  ForeColor="#333333" GridLines="None"
+                                        CellPadding="1" Width="100%" Height="16px" ForeColor="#333333" GridLines="None"
                                         CellSpacing="1">
                                         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="true" ForeColor="#333333" />
                                         <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
@@ -1240,7 +1245,6 @@
                                                                     <asp:DropDownList ID="ddlPRODUCT_CODE" runat="server" OnSelectedIndexChanged="ChangeProductIndex"
                                                                         AutoPostBack="true">
                                                                     </asp:DropDownList>
-
                                                                 </td>
                                                             </tr>
                                                             <tr>

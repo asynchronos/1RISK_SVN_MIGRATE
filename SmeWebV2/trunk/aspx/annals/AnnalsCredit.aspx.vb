@@ -552,6 +552,8 @@ Partial Class _AnnalsCredit
     Protected Sub searchBranch()
         If tbBranch_ID.Text = "" Then Exit Sub
         If IsNumeric(tbBranch_ID.Text) = False Then Exit Sub
+        tbBranch_ID.Text = Replace(tbBranch_ID.Text, ".", "")
+
         Dim obj As New Branch_Region
         Dim dal As New Branch_RegionDAL
         obj.Id_Branch = tbBranch_ID.Text
@@ -2579,6 +2581,7 @@ Partial Class _AnnalsCredit
             Exit Sub
         Else
             tbBranch_ID.BackColor = Drawing.Color.White
+            tbBranch_ID.Text = Replace(tbBranch_ID.Text, ".", "")
         End If
 
 
