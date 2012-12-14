@@ -6,8 +6,14 @@
     Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
-        log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("Log4net.SMEWeb.config"))
+        log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("D:\workspaces\2012\SmeWebV2\Log4net.SMEWeb.config"))
+        'production
+        'log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("D:\Web\SmeWeb\Log4net.SMEWeb.config"))
+
+        log.Info("============================")
         log.Info(ConfigurationManager.AppSettings("APPLICATION_NAME") & "Started.")
+        log.Info("============================")
+        log.Info("IsDebugEnabled : " + isDebugEnabled)
 
         ' Code that runs on application startup
         Dim cul As System.Globalization.CultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture
@@ -64,14 +70,13 @@
         'redirect to error page
         If err.GetType().Equals(GetType(System.Runtime.InteropServices.COMException)) Or
             err.GetType().Equals(GetType(System.DirectoryServices.DirectoryServicesCOMException)) Then
-            Response.Redirect("~/aspx/account/LoginWithAD.aspx?errorMsg=" & err.Message.Replace(System.Environment.NewLine, "&#13;"))
+            Response.Redirect("~/aspx/account/LoginWithAD.aspx")
         ElseIf err.GetType().Equals(GetType(System.Security.SecurityException)) Then
-            Response.Redirect("~/aspx/error/unauthorized.aspx?page=" & Server.UrlEncode(Request.RawUrl))
+            Response.Redirect("~/aspx/error/unauthorized.aspx")
         Else
             'Response.Redirect("~/aspx/error/defaultError.aspx?page=" & Server.UrlEncode(Request.RawUrl) _
             '    & "&msg=" & err.InnerException.Message & err.InnerException.StackTrace)
-            Response.Redirect("~/aspx/error/defaultError.aspx?page=" & Server.UrlEncode(Request.RawUrl) _
-                & "&msg=" & err.Message & err.StackTrace)
+            Response.Redirect("~/aspx/error/defaultError.aspx")
         End If
     End Sub
 
