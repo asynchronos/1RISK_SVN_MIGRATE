@@ -1,0 +1,55 @@
+CIF
+Customer Name
+ชื่อลูกค้า
+Group CIF
+Group Name
+ชื่อกลุ่มลูกค้า
+CM code
+รหัสพนักงาน CM
+CM name
+ชื่อ CM
+Industry
+อุตสาหกรรม
+
+Purpose of credit facility 
+วัตถุประสงค์
+Tenor
+ระยะเวลากู้
+
+-------------------Qualification (Individual)
+คุณสมบัติของบุคคลธรรมดา
+Age
+อายุ
+Nationality
+สัญชาติ
+Experience
+ประสบการณ์
+Blacklist
+NCB
+TDR
+Rating
+Legal status
+สถานภาพทางกฎหมาย
+
+-------------------Qualification (Juristic)
+คุณสมบัติของนิติบุคคล
+Type of Juristic ประเภทธุรกิจ
+Age of business
+Registration Document  เอกสารการจดทะเบียน
+Nationality  สัญชาติ
+Experience ประสบการณ์
+Shareholders  ผู้ถือหุ้น
+Blacklist
+NCB
+TDR
+Rating
+Legal status
+สถานภาพทางกฎหมาย
+-----------------------------------------------
+Net Profit & Equity (Audited)
+Debt / EBITDA
+Debt / Equity
+DSCR
+
+Collateral_TYPE
+Industry_Watch List

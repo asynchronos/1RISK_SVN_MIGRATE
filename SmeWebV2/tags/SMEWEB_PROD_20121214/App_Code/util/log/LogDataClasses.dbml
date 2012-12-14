@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Bay01_test" Class="LogDataClassesDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=leader1;Initial Catalog=BAY01_TEST;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BAY01ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.LOG_TABLE" Member="LOG_TABLEs">
+    <Type Name="LOG_TABLE">
+      <Column Name="IP_ADDRESS" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LOG_TYPE_ID" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LOG_LEVEL_ID" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="EMP_ID" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="URL" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DETAIL" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+</Database>
