@@ -3,7 +3,7 @@ Partial Class LoginSuccess
     Inherits aspx.MyPageClass
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'Response.Write(User.Identity.Name)
+        Response.Write(User.Identity.Name)
 
         Dim dal = New TbEmployeeDAL()
         Dim emp As TbEmployee = dal.getTbEmployeeByUsername(User.Identity.Name)
