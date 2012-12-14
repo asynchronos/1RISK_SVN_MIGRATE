@@ -1,8 +1,14 @@
 <%@ Application Language="VB" %>
+<%@ Import Namespace="log4net" %>
 <%@ Import Namespace="System.Diagnostics" %>
 <script RunAt="server">
+    Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
+    Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
+        log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("Log4net.SMEDebtSummaryWeb.config"))
+        log.Info(ConfigurationManager.AppSettings("APPLICATION_NAME") & "Started.")
+
         ' Code that runs on application startup
         Dim cul As System.Globalization.CultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture
         Application.Add(ApplicationKeyConst.App_Culture, cul)
@@ -28,9 +34,32 @@
         'eLog.Source = eventLogName
         'eLog.WriteEntry(err.ToString(), EventLogEntryType.Error)
 
+        'Insert full stack log by log4net
+        log.Error(err.Message, err)
+
+        'manage error to show on web
         If Not IsNothing(err.InnerException) Then
             err = err.InnerException
         End If
+
+        Application("LastError") = err 'store the error for later
+        Application("PageError") = HttpContext.Current.Request.Url.ToString()
+        Server.ClearError() 'clear the error so we can continue onwards
+
+        If IsNothing(HttpContext.Current.Session) Then
+            'HttpContext.Current.Session.Add("LastError", err);
+            'HttpContext.Current.Session.Add("PageError", HttpContext.Current.Request.Url.ToString());
+        End If
+
+        'send mail
+        'System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
+        'String ErrorMessage = "The error description is as follows : " + ErrorDescription;
+        'mail.To = "mail@domail.com";
+        'mail.Subject = "Error in the " + EventLogName + "site";
+        'mail.Priority = System.Web.Mail.MailPriority.High;
+        'mail.BodyFormat = System.Web.Mail.MailFormat.Text;
+        'mail.Body = ErrorMessage;
+        'System.Web.Mail.SmtpMail.Send(mail);
 
         'redirect to error page
         If err.GetType().Equals(GetType(System.Runtime.InteropServices.COMException)) Or
