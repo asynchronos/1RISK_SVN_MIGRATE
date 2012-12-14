@@ -165,20 +165,17 @@
                         </tr>
                     </table>
                     <div id="divDoc">
-                        &nbsp;<strong><span class="style1">** ดาวโหลดเอกสารคู่มือ
-                        </span></strong>
-                        <asp:TreeView ID="TreeView2" runat="server" ExpandDepth="0" NodeIndent="15" 
-                            BackColor="#EEFFEE" Width="300px">
-                            <ParentNodeStyle Font-Bold="False" ImageUrl="~/images/imageIcon/folder.gif" 
-                               VerticalPadding="0px" />
+                        &nbsp;<strong><span class="style1">** ดาวโหลดเอกสารคู่มือ </span></strong>
+                        <asp:TreeView ID="TreeView2" runat="server" ExpandDepth="0" NodeIndent="15" BackColor="#EEFFEE"
+                            Width="300px">
+                            <ParentNodeStyle Font-Bold="False" ImageUrl="~/images/imageIcon/folder.gif" VerticalPadding="0px" />
                             <HoverNodeStyle Font-Underline="True" ForeColor="#6666AA" />
-                            <SelectedNodeStyle  Font-Underline="False" HorizontalPadding="0px"
-                                VerticalPadding="0px" BorderStyle="Ridge" />
+                            <SelectedNodeStyle Font-Underline="False" HorizontalPadding="0px" VerticalPadding="0px"
+                                BorderStyle="Ridge" />
                             <RootNodeStyle ImageUrl="~/images/imageIcon/My Computer.ico" VerticalPadding="0px" />
                             <NodeStyle Font-Names="Tahoma" Font-Size="8pt" ForeColor="Black" HorizontalPadding="0px"
                                 NodeSpacing="0px" VerticalPadding="0px" />
-                            <LeafNodeStyle ImageUrl="~/images/imageIcon/txt.gif" HorizontalPadding="0px" 
-                                VerticalPadding="0px" />
+                            <LeafNodeStyle ImageUrl="~/images/imageIcon/txt.gif" HorizontalPadding="0px" VerticalPadding="0px" />
                         </asp:TreeView>
                     </div>
                 </td>
@@ -221,7 +218,7 @@
                                         <td align="right">
                                             <asp:HyperLink ID="CAInProcessSingleHyperLink" runat="server" NavigateUrl="~/aspx/report/InProcessCA.aspx?single=yes"
                                                 ExtId="CAInProcessSingleHyperLink">
-                                                Individual : 
+                                                Individual :
                                             </asp:HyperLink>
                                         </td>
                                         <td id="CAInProcessSingleTd" align="center">
@@ -234,7 +231,7 @@
                                         <td align="right">
                                             <asp:HyperLink ID="CAInProcessGroupHyperLink" runat="server" NavigateUrl="~/aspx/report/InProcessCA.aspx"
                                                 ExtId="CAInProcessGroupHyperLink">
-                                                Group : 
+                                                Group :
                                             </asp:HyperLink>
                                         </td>
                                         <td id="CAInProcessGroupTd" align="center">
@@ -262,7 +259,7 @@
                                         <td align="right">
                                             <asp:HyperLink ID="CACovenantReportSingleHL" runat="server" NavigateUrl="~/aspx/report/CACovenantReport.aspx?single=yes"
                                                 ExtId="CACovenantReportSingleHL">
-                                                Individual : 
+                                                Individual :
                                             </asp:HyperLink>
                                         </td>
                                         <td id="CovenantSingleTd" align="center">
@@ -275,7 +272,7 @@
                                         <td align="right">
                                             <asp:HyperLink ID="CACovenantReportGroupHL" runat="server" NavigateUrl="~/aspx/report/CACovenantReport.aspx"
                                                 ExtId="CACovenantReportGroupHL">
-                                                Group : 
+                                                Group :
                                             </asp:HyperLink>
                                         </td>
                                         <td id="CovenantGroupTd" align="center">
@@ -303,7 +300,7 @@
                                         <td align="right">
                                             <asp:HyperLink ID="RatingExpiredReportSingleHL" runat="server" NavigateUrl="~/aspx/report/RatingNotification.aspx?single=yes"
                                                 ExtId="RatingExpiredReportSingleHL">
-                                                Individual : 
+                                                Individual :
                                             </asp:HyperLink>
                                         </td>
                                         <td id="RatingExpiredSingleTd" align="center">
@@ -315,7 +312,7 @@
                                         <td align="right">
                                             <asp:HyperLink ID="RatingExpiredReportGroupHL" runat="server" NavigateUrl="~/aspx/report/RatingNotification.aspx"
                                                 ExtId="RatingExpiredReportGroupHL">
-                                                Group : 
+                                                Group :
                                             </asp:HyperLink>
                                         </td>
                                         <td id="RatingExpiredGroupTd" align="center">
@@ -342,7 +339,7 @@
                                         <td align="left">
                                             <img alt="" src="../images/ball_glass_yellowS.gif" style="width: 16px; height: 16px" /><asp:HyperLink
                                                 ID="HyperLink2" runat="server" Font-Bold="True" Font-Size="10pt" ForeColor="White"
-                                                NavigateUrl="~/aspx/portfolio/smeCustomerDetail.aspx">Customer 
+                                                NavigateUrl="~/aspx/portfolio/smeCustomerDetail.aspx">Customer
                      Port/ พอร์ท ลูกค้า</asp:HyperLink>
                                         </td>
                                     </tr>
