@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="BranchLinq">
+  <DataContextMoniker Name="/BranchLinqDataContext" />
+  <nestedChildShapes>
+    <classShape Id="7cc631eb-17c4-4e80-acfb-c4a054a38476" absoluteBounds="0.5, 0.5, 2, 6.8483097330729157">
+      <DataClassMoniker Name="/BranchLinqDataContext/Id_Branch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b7e70959-25a3-4f4d-b72d-e911885ad763" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 6.2883097330729161" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

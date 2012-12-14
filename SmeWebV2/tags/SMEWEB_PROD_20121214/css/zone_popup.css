@@ -1,0 +1,63 @@
+﻿body, textarea
+{ 
+  font-family: "Tahoma", "Verdana", "Arial", "Geneva CE", "lucida", sans-serif; 
+  font-size: 0.90em; 
+  margin: 0px; }
+  
+textarea, input {font-size: 1.1em; color:#333; border:1px solid #ccc; padding:5px; }
+
+/*  Common Classes */
+body, table, h1, h2, h3, h4, h5, h6, ul, a, li, img, p, form, dl, dt, dd, frame, blockquote{
+	padding: 0px; 
+	margin: 0px; 
+	border: 0px; 
+}
+
+.hidden { display: none; } 
+.clr
+{ 
+	clear: both;
+	height: 0px;
+	overflow: hidden;
+	font-size: 1px;
+	border: 0px;
+	padding: 0px; 
+	margin: 0px;
+	line-height: 0px; 
+}
+h1{font-size: 0.90em; }
+h2{font-size: 1.1em;}
+h3{font-size: 1.2em; color: #819a48}
+
+
+.button {
+	font-weight: bold;	
+	display: block;	
+	padding: 4px 10px 4px 10px; 
+	background: #ff8311 url(../images/btn_bc.gif) no-repeat;	
+	float: left; 
+	line-height: 100%;	
+	text-decoration: none;	
+	color: #fff; 
+	cursor: pointer; 
+	_cursor: hand;	
+	border: 1px solid #000;	
+	border-top-color: #dd832f; 
+	border-right-color: #dd832f; 
+	border-bottom-color: #dd832f;	
+	border-left-color: #dd832f; 
+	margin: 10px 10px 10px 0;
+}
+
+.message2
+{
+	background-color:#FFFFCF; 
+	display:block; 
+	padding:5px 10px 5px 27px; 
+	margin-bottom:10px;
+	background-image :url(../images/icon_alert.gif);
+ 	background-repeat:no-repeat; 
+ 	background-position:5px 50%; 
+ 	font-weight:bold; 
+}
+#popup_wrapper{margin:20px 0  0 50px;}

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="STOP" Class="StopLinqDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=leader1;Initial Catalog=STOP;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="STOPConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.STOP_CUSTOMER" Member="STOP_CUSTOMERs">
+    <Type Name="STOP_CUSTOMER">
+      <Column Name="CIF" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AGING_DPD_IN" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="AGING_DPD_C_IN" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="AGING_DPD_O_IN" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="AGING_H_IN" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="HAS_OTHER_CLASS_IN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CLASS_H_IN" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="IS_TDR_IN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="OD_UTILIZE_IN" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="JUDGEMENT_ID_IN" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="BUSINESS_SIM_FLAG_IN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BUSINESS_CODE_IN" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="BUSINESS_DESC_IN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="AGING_CRITERIA_IN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CLASS_CRITERIA_IN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TDR_CRITERIA_IN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="OD_UTILIZE_CRITERIA_IN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JUDGEMENT_CRITERIA_IN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BUSINESS_CRITERIA_IN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DATE_IN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UPDATE_ACTION_ID" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="UPDATE_ACTION_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UPDATE_ACTION_USER" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="UPDATE_PAY_ABILITY_ID" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="UPDATE_DEPT_RESOLVE_ID" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="UPDATE_TDR_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SEQUENCE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
