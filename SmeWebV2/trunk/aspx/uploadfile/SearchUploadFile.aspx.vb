@@ -85,12 +85,13 @@ Partial Class SearchUploadFile
 
     Protected Sub GridViewForm_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles GridViewForm.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
-            Dim FileYear As Integer = Date.Now.Year
-            If FileYear > 2500 Then FileYear = FileYear - 543 '   triky ทำ year ให้เป็น คศ
+            'Dim FileYear As Integer = Date.Now.Year
+            'If FileYear > 2500 Then FileYear = FileYear - 543 '   triky ทำ year ให้เป็น คศ
 
             Dim linkPath As HyperLink = e.Row.FindControl("linkPath")
             Dim strPath As String = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "Path"))
             Dim strFILE_TYPE As String = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "FILE_TYPE"))
+            Dim strYear As String = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "FILE_YEAR"))
 
             '     <add key="IsProduction" value="0"/> ต้องการบันทัดนี้ใน web config เพื่อดูว่าเป็น server production หรือไม่ 0 ไม่ใช่ 1 ใช่
             '  กรณีใช่จะเพิ่มตัวแปรปีเข้าไปด้วย
@@ -98,8 +99,8 @@ Partial Class SearchUploadFile
                 linkPath.NavigateUrl = "../../FileUpload/" & strFILE_TYPE & "/" & strPath
                 linkPath.ToolTip = "../../FileUpload/" & strFILE_TYPE & "/" & strPath
             Else
-                linkPath.NavigateUrl = "../../FileUpload/" & FileYear & "/" & strFILE_TYPE & "/" & strPath
-                linkPath.ToolTip = "../../FileUpload/" & FileYear & "/" & strFILE_TYPE & "/" & strPath
+                linkPath.NavigateUrl = "../../FileUpload/" & strYear & "/" & strFILE_TYPE & "/" & strPath
+                linkPath.ToolTip = "../../FileUpload/" & strYear & "/" & strFILE_TYPE & "/" & strPath
             End If
 
         End If
