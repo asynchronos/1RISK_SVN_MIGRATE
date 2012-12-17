@@ -1,5 +1,5 @@
 ﻿Imports System.Data
-Imports System.Data.OracleClient
+Imports Oracle.DataAccess.Client
 Partial Class aspx_report_ReportPassALSCOM
     Inherits System.Web.UI.Page
 
@@ -15,7 +15,7 @@ Partial Class aspx_report_ReportPassALSCOM
     End Sub
     Sub getALSdataFromWH(ByVal cif As String)
 
-        Dim con As OracleConnection = New OracleConnection(ConfigurationManager.ConnectionStrings("EDW_Connectionstring").ConnectionString)
+        Dim con As OracleConnection = New OracleConnection(ConfigurationManager.ConnectionStrings("EDWConnectionstring").ConnectionString)
         '        SELECT  TOP 1 CONVERT(int, CIF) AS CIF, APPNUMBER, APPSTATUSTEXT, DECISION_DATE, PENDING_CODE_1, PENDING_DESC_1, PENDING_CODE_2, 
         '                      PENDING_DESC_2, PENDING_CODE_3, PENDING_DESC_3, PENDING_CODE_4, PENDING_DESC_4, PENDING_CODE_5, PENDING_DESC_5, 
         '                      CANCEL_CODE_1, CANCEL_DESC_1, CANCEL_CODE_2, CANCEL_DESC_2, CANCEL_CODE_3, CANCEL_DESC_3, CANCEL_CODE_4, CANCEL_DESC_4, 
