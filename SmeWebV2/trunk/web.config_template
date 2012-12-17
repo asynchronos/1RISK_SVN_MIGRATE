@@ -20,16 +20,34 @@
 		<add key="ChartImageHandler" value="storage=file;timeout=20;dir=c:\TempImageFiles\;"/>
 		<!--<add key="LDAP_SERVER" value="bayad.co.th"/>-->
 		<add key="LDAP_SERVER" value="192.168.32.115"/>
-		<add key="LDAP_SERVER_UAT" value="172.19.60.112"/>
+		<!--<add key="LDAP_SERVER_UAT" value="172.19.60.112"/>-->
 		<add key="LDAP_PORT" value="389"/>
 		<add key="IsProduction" value="1"/>
 	</appSettings>
+	<!--Dev-->
+	<!--<connectionStrings>
+		<add name="BAY01ConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=BAY01;Persist Security Info=True;User ID=smeweb;Password=sa0123;Max Pool Size=10;Min Pool Size=3;"
+		 providerName="System.Data.SqlClient" />
+		<add name="SMConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=SM;User ID=smeweb;Password=sa0123"
+		 providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;" />
+		<add name="NEW_DEPConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=NEW_DEP;Persist Security Info=True;User ID=smeweb;Password=sa0123;Max Pool Size=10;Min Pool Size=3;"
+		 providerName="System.Data.SqlClient" />
+		<add name="STOPConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=STOP;User ID=smeweb;Password=sa0123"
+		 providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;" />
+		-->
+	<!--<add name="EDW_Connectionstring" connectionString="Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.32.52)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edw)));User Id=SMETEAM;Password=SME#2010;"
+		 providerName="System.Data.OracleClient" />-->
+	<!--
+		<add name="EDWConnectionString" connectionString="DATA SOURCE=EDW;PASSWORD=sme#2010;PERSIST SECURITY INFO=True;USER ID=SMETEAM"
+		providerName="Oracle.DataAccess.Client" />
+	</connectionStrings>-->
+	<!--Production-->
 	<connectionStrings>
 		<add name="BAY01ConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=BAY01;Persist Security Info=True;User ID=smeweb;Password=Web#11sme;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
 		<add name="SMConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=SM;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
 		<add name="NEW_DEPConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=NEW_DEP;Persist Security Info=True;User ID=smeweb;Password=Web#11sme;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
 		<add name="STOPConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=STOP;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
-		<add name="EDW_Connectionstring" connectionString="Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.32.52)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edw)));User Id=SMETEAM;Password=SME#2010;" providerName="System.Data.OracleClient"/>
+		<add name="EDWConnectionString" connectionString="DATA SOURCE=EDW;PASSWORD=sme#2010;PERSIST SECURITY INFO=True;USER ID=SMETEAM" providerName="Oracle.DataAccess.Client" />
 		<!--<add name="UserSystemEntities" connectionString="metadata=res://*/UserSystemEntitiesModel.csdl|res://*/UserSystemEntitiesModel.ssdl|res://*/UserSystemEntitiesModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=172.19.14.244;Initial Catalog=SME;Persist Security Info=True;User ID=sa;Password=sa0123;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient"/>-->
 	</connectionStrings>
 	<system.web>
@@ -64,6 +82,8 @@
 				<add assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
 				<add assembly="System.Web.DataVisualization.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
 				<add assembly="System.Data.OracleClient, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+				<!--ODP 32BIT-->
+				<add assembly="Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89B483F429C47342"/>
 			</assemblies>
 		</compilation>
 		<httpHandlers>

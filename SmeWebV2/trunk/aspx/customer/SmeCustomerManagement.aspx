@@ -3,7 +3,6 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-
     <script type="text/javascript">
         function getEleByClientSelector(ClientSelector, tagName) {
             var result = null;
@@ -150,7 +149,6 @@
             //alert(error.get_message());
         }
     </script>
-
     <script type="text/javascript">
         function WeightValidate(sender, e) {
 
@@ -180,20 +178,20 @@
         }
     </script>
     <script type="text/javascript" src="../../js/ext3.0/iframeComponent.js"></script>
-    <script type="text/javascript" >
-        Ext.onReady(function() {
+    <script type="text/javascript">
+        Ext.onReady(function () {
             var exporterWindow;
             var exporterDetailButt = Ext.select('[ExtId=ExporterButton]').first();
 
-//            var exportValue = Number(Ext.select('[ClientSelector=Export_TextBox]').first().getValue(false));
+            //            var exportValue = Number(Ext.select('[ClientSelector=Export_TextBox]').first().getValue(false));
 
-//            if (exportValue > 0) {
-//                exporterDetailButt.dom.disabled = false;
-//            } else {
-//                exporterDetailButt.dom.disabled = true;
-//            }
-            if(exporterDetailButt)
-                exporterDetailButt.on('click', function(e, t, o) {
+            //            if (exportValue > 0) {
+            //                exporterDetailButt.dom.disabled = false;
+            //            } else {
+            //                exporterDetailButt.dom.disabled = true;
+            //            }
+            if (exporterDetailButt)
+                exporterDetailButt.on('click', function (e, t, o) {
                     // create the window on the first click and reuse on subsequent clicks
                     //                if (!exporterWindow) {
                     //                    exporterWindow = new Ext.Window({
@@ -235,7 +233,7 @@
 
             var cif = (new MyNumber(getValueFromQueryString('cif'))).getValue();
             if (cif != 0) {
-               // localhost.CustomerWCFService.IsExporter(cif, onSuccessIsExporter, onFailedIsExporter, null);
+                // localhost.CustomerWCFService.IsExporter(cif, onSuccessIsExporter, onFailedIsExporter, null);
                 var service = new SmeWeb.CustomerWCFService();
                 service.IsExporter(cif, onSuccessIsExporter, onFailedIsExporter, null);
             }
@@ -341,8 +339,7 @@
                                     Enabled="true" AutoPostBack="true" TabIndex="61">
                                 </asp:DropDownList>
                                 <asp:DropDownList ID="RatingDDL" runat="server" DataSourceID="RatingSqlDataSource"
-                                    DataTextField="RATING_DESC" DataValueField="RATING_KEY"
-                                    TabIndex="62">
+                                    DataTextField="RATING_DESC" DataValueField="RATING_KEY" TabIndex="62">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="RatingHidd" runat="server" Value='<%# Bind("RATING_KEY") %>' />
                                 <%--<asp:CompareValidator ID="CompareValidator3" runat="server" ControlToValidate="RatingDDL"
@@ -352,8 +349,8 @@
                                 <asp:SqlDataSource ID="RatingSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
                                     SelectCommand="P_SME_RATING_GetByType" SelectCommandType="StoredProcedure">
                                     <SelectParameters>
-                                        <asp:ControlParameter ControlID="RatingTypeDDL" DefaultValue="1" 
-                                            Name="RatingTypeKey" PropertyName="SelectedValue" Type="Int32" />
+                                        <asp:ControlParameter ControlID="RatingTypeDDL" DefaultValue="1" Name="RatingTypeKey"
+                                            PropertyName="SelectedValue" Type="Int32" />
                                     </SelectParameters>
                                 </asp:SqlDataSource>
                             </div>
@@ -556,7 +553,7 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="CM_CODE_ID"
                                     ErrorMessage="*" SetFocusOnError="True" ValidationGroup="beforeInsert"></asp:RequiredFieldValidator>
                             </div>
-                            <div id="OLD_CM_CODE_DIV" style="display:none;">
+                            <div id="OLD_CM_CODE_DIV" style="display: none;">
                                 <asp:Label ID="OLD_CM_CODE_Label" runat="server" Text="OLD CM : " ToolTip="CM ผู้ดูแลก่อนหน้า"></asp:Label>
                                 <asp:TextBox ID="OLD_CM_CODE_ID" runat="server" Text='<%# Bind("OLD_CM_CODE") %>'
                                     Wrap="False" CssClass="textBoxReadOnlyAlignCen" onfocus="this.blur();" Width="8ex"
@@ -573,8 +570,7 @@
                                     Enabled="true" AutoPostBack="true" TabIndex="61">
                                 </asp:DropDownList>
                                 <asp:DropDownList ID="RatingDDL" runat="server" DataSourceID="RatingSqlDataSource"
-                                    DataTextField="RATING_DESC" DataValueField="RATING_KEY"
-                                    TabIndex="62">
+                                    DataTextField="RATING_DESC" DataValueField="RATING_KEY" TabIndex="62">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="RatingHidd" runat="server" Value='<%# Bind("RATING_KEY") %>' />
                                 <%--<asp:CompareValidator ID="CompareValidator3" runat="server" ControlToValidate="RatingDDL"
@@ -584,8 +580,8 @@
                                 <asp:SqlDataSource ID="RatingSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
                                     SelectCommand="P_SME_RATING_GetByType" SelectCommandType="StoredProcedure">
                                     <SelectParameters>
-                                        <asp:ControlParameter ControlID="RatingTypeDDL" DefaultValue="1" 
-                                            Name="RatingTypeKey" PropertyName="SelectedValue" Type="Int32" />
+                                        <asp:ControlParameter ControlID="RatingTypeDDL" DefaultValue="1" Name="RatingTypeKey"
+                                            PropertyName="SelectedValue" Type="Int32" />
                                     </SelectParameters>
                                 </asp:SqlDataSource>
                             </div>
@@ -746,7 +742,7 @@
                 </table>
                 <asp:Button ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert"
                     Text="เพิ่มลูกค้ารายนี้เป็นลูกค้าSME" TabIndex="91" ValidationGroup="beforeInsert"
-                    OnPreRender="InsertButton_PreRender"/>
+                    OnPreRender="InsertButton_PreRender" />
                 <asp:Button ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel"
                     Text="Cancel" Visible="false" TabIndex="92" />
             </InsertItemTemplate>
@@ -781,7 +777,7 @@
                                 <asp:TextBox ID="CM_CODE_NAME" runat="server" Text='<%# Eval("CM_NAME") %>' Wrap="False"
                                     CssClass="textBoxReadOnly" ReadOnly="True" Width="50ex" />
                             </div>
-                            <div id="OLD_CM_CODE_DIV" style="display:none;">
+                            <div id="OLD_CM_CODE_DIV" style="display: none;">
                                 <asp:Label ID="OLD_CM_CODE_Label" runat="server" Text="OLD CM : " ToolTip="CM ผู้ดูแลก่อนหน้า"></asp:Label>
                                 <asp:TextBox ID="OLD_CM_CODE_ID" runat="server" Text='<%# Bind("OLD_CM_CODE") %>'
                                     Wrap="False" CssClass="textBoxReadOnlyAlignCen" ReadOnly="True" Width="8ex" />
@@ -795,14 +791,14 @@
                                     Enabled="false">
                                 </asp:DropDownList>
                                 <asp:DropDownList ID="RatingDDL" runat="server" DataSourceID="RatingSqlDataSource"
-                                    DataTextField="RATING_DESC" DataValueField="RATING_KEY" Enabled="false"                                   TabIndex="62">
+                                    DataTextField="RATING_DESC" DataValueField="RATING_KEY" Enabled="false" TabIndex="62">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="RatingHidd" runat="server" Value='<%# Bind("RATING_KEY") %>' />
                                 <asp:SqlDataSource ID="RatingSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
                                     SelectCommand="P_SME_RATING_GetByType" SelectCommandType="StoredProcedure">
                                     <SelectParameters>
-                                        <asp:ControlParameter ControlID="RatingTypeDDL" DefaultValue="1" 
-                                            Name="RatingTypeKey" PropertyName="SelectedValue" Type="Int32" />
+                                        <asp:ControlParameter ControlID="RatingTypeDDL" DefaultValue="1" Name="RatingTypeKey"
+                                            PropertyName="SelectedValue" Type="Int32" />
                                     </SelectParameters>
                                 </asp:SqlDataSource>
                             </div>
@@ -911,8 +907,7 @@
                                     runat="server"></iframe>
                                 <br />
                                 <asp:Button ID="Butt_ManageRole" runat="server" Text="จัดการสิทธิ์การเข้าดูข้อมูล"
-                                    OnPreRender="Butt_ManageRole_PreRender"
-                                    OnClientClick='<%# "openPopup(&#39;managePopup&#39;,&#39;" + Page.ResolveUrl("~/aspx/role/cifManageRole.aspx") + "&#39;,&#39;cif=" + (Eval("CIF")).ToString() + "&#39;,&#39;toolbar=No,width=570,height=525,resizable=no,scrollbars=yes&#39;);return false;" %>' />
+                                    OnPreRender="Butt_ManageRole_PreRender" OnClientClick='<%# "openPopup(&#39;managePopup&#39;,&#39;" + Page.ResolveUrl("~/aspx/role/cifManageRole.aspx") + "&#39;,&#39;cif=" + (Eval("CIF")).ToString() + "&#39;,&#39;toolbar=No,width=570,height=525,resizable=no,scrollbars=yes&#39;);return false;" %>' />
                                 <asp:Button ID="Ltv_PopupBt" runat="server" Text="Test LTV" OnClick="Ltv_PopupBt_Click"
                                     OnLoad="Ltv_PopupBt_Load" />
                                 <br />
@@ -927,11 +922,12 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <input id="ExporterButton" ExtId="ExporterButton" type="button" value="Exporter" runat="server" />
+                                            <input id="ExporterButton" extid="ExporterButton" type="button" value="Exporter"
+                                                runat="server" />
                                         </td>
                                         <td align="center" valign="middle">
-                                            <asp:Image ID="ExporterImage" ExtId="ExporterImage" runat="server"
-                                                ImageUrl="~/images/progress/cicle/indicator_arrows_black.gif" Width="20" Height="20" />
+                                            <asp:Image ID="ExporterImage" ExtId="ExporterImage" runat="server" ImageUrl="~/images/progress/cicle/indicator_arrows_black.gif"
+                                                Width="20" Height="20" />
                                         </td>
                                     </tr>
                                 </table>
@@ -950,7 +946,7 @@
                                 <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" />
                                 <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                                 <Fields>
-                                    <asp:BoundField DataField="custsize" HeaderText="CUST SIZE : " SortExpression="custsize" />
+                                    <%--<asp:BoundField DataField="custsize" HeaderText="CUST SIZE : " SortExpression="custsize" />--%>
                                     <asp:TemplateField HeaderText="ชั้นหนี้ : " SortExpression="class_h">
                                         <ItemTemplate>
                                             <asp:HiddenField ID="HF_class_h" runat="server" Value='<%# Eval("class_h") %>' />
@@ -970,7 +966,7 @@
                                                 <SelectParameters>
                                                     <asp:ControlParameter ControlID="HF_as_of" Name="startDate" PropertyName="Value"
                                                         Type="DateTime" />
-                                                    <asp:Parameter Name="monthStep" Type="Int32" DefaultValue="12" />
+                                                    <asp:Parameter Name="monthStep" Type="Int32" DefaultValue="24" />
                                                     <asp:ControlParameter ControlID="HF_class_h" DefaultValue="" Name="historyValue"
                                                         PropertyName="Value" Type="String" />
                                                 </SelectParameters>
@@ -982,16 +978,9 @@
                                 <EditRowStyle BackColor="#2461BF" />
                                 <AlternatingRowStyle BackColor="White" />
                             </asp:DetailsView>
-                            <asp:SqlDataSource ID="DS_RepProd" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
-                                SelectCommand="SELECT [custsize]
-                                          ,[class_h]
-                                          ,[as_of]
-                                      FROM [DBF_IMPORT].[dbo].[rep_prod]
-                                    WHERE CIF=@CIF">
-                                <SelectParameters>
-                                    <asp:QueryStringParameter Name="CIF" QueryStringField="cif" />
-                                </SelectParameters>
-                            </asp:SqlDataSource>
+                            <asp:SqlDataSource ID="DS_RepProd" runat="server" ConnectionString="<%$ ConnectionStrings:EDWConnectionString %>"
+                                SelectCommand="SELECT T.CLASS_HIST_24M CLASS_H, T.ETL_ASOFDATE AS_OF FROM DWHADMIN.RISK_MAXAGING_MONTHLY_FACT T, (SELECT MAX(MONTH_KEY) AS MONTH_KEY FROM DWHADMIN.RISK_MAXAGING_MONTHLY_FACT) A WHERE T.MONTH_KEY = A.MONTH_KEY"
+                                ProviderName="<%$ ConnectionStrings:EDWConnectionstring.ProviderName %>"></asp:SqlDataSource>
                         </td>
                     </tr>
                 </table>
@@ -1000,8 +989,7 @@
                 <asp:Button ID="EditButton" runat="server" CausesValidation="True" CommandName="Edit"
                     Text="Edit" OnPreRender="EditButton_PreRender" />
                 <asp:Button ID="DeleteButton" runat="server" CausesValidation="True" CommandName="Delete"
-                    Text="Delete" OnLoad="DeleteButton_Load" OnClientClick="false;" 
-                    OnPreRender="DeleteButton_PreRender"/>
+                    Text="Delete" OnLoad="DeleteButton_Load" OnClientClick="false;" OnPreRender="DeleteButton_PreRender" />
             </ItemTemplate>
             <PagerStyle ForeColor="#333333" HorizontalAlign="Center" BackColor="#FFCC66" />
             <EmptyDataTemplate>
@@ -1088,9 +1076,11 @@
             SelectCommand="SP_CUSTOMER_STATUS_GetAll" SelectCommandType="StoredProcedure">
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="RatingTypeSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
-            SelectCommand="P_SME_RATING_TYPE_GetAll" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+            SelectCommand="P_SME_RATING_TYPE_GetAll" SelectCommandType="StoredProcedure">
+        </asp:SqlDataSource>
         <asp:SqlDataSource ID="RatingAllSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
-            SelectCommand="SELECT [RATING_KEY], [RATING_CODE], [RATING_TYPE_KEY], [RATING_DESC], [PRIORITY] FROM [CUSTOMER_SME_RATING] ORDER BY [PRIORITY]"></asp:SqlDataSource>
+            SelectCommand="SELECT [RATING_KEY], [RATING_CODE], [RATING_TYPE_KEY], [RATING_DESC], [PRIORITY] FROM [CUSTOMER_SME_RATING] ORDER BY [PRIORITY]">
+        </asp:SqlDataSource>
         <asp:SqlDataSource ID="RatingBaySqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
             SelectCommand="P_SME_RATING_GetByType" SelectCommandType="StoredProcedure">
             <SelectParameters>
