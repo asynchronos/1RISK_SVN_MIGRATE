@@ -1,9 +1,14 @@
-﻿
+﻿Imports log4net
+
 Partial Class LoginSuccess
     Inherits aspx.MyPageClass
 
+    Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
+    Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Response.Write(User.Identity.Name)
+        log.Info(User.Identity.Name & " login.")
 
         Dim dal = New TbEmployeeDAL()
         Dim emp As TbEmployee = dal.getTbEmployeeByUsername(User.Identity.Name)
