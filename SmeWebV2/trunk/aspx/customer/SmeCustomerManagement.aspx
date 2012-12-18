@@ -979,8 +979,12 @@
                                 <AlternatingRowStyle BackColor="White" />
                             </asp:DetailsView>
                             <asp:SqlDataSource ID="DS_RepProd" runat="server" ConnectionString="<%$ ConnectionStrings:EDWConnectionString %>"
-                                SelectCommand="SELECT T.CLASS_HIST_24M CLASS_H, T.ETL_ASOFDATE AS_OF FROM DWHADMIN.RISK_MAXAGING_MONTHLY_FACT T, (SELECT MAX(MONTH_KEY) AS MONTH_KEY FROM DWHADMIN.RISK_MAXAGING_MONTHLY_FACT) A WHERE T.MONTH_KEY = A.MONTH_KEY"
-                                ProviderName="<%$ ConnectionStrings:EDWConnectionstring.ProviderName %>"></asp:SqlDataSource>
+                                SelectCommand="SELECT T.CLASS_HIST_24M AS CLASS_H, T.ETL_ASOFDATE AS AS_OF FROM DWHADMIN.RISK_MAXAGING_MONTHLY_FACT T, (SELECT MAX(M.MONTH_KEY) AS MONTH_KEY FROM DWHADMIN.RISK_MAXAGING_MONTHLY_FACT M) &quot;A&quot; WHERE (T.MONTH_KEY = &quot;A&quot;.MONTH_KEY) AND (CIF = :CIF)"
+                                ProviderName="<%$ ConnectionStrings:EDWConnectionString.ProviderName %>">
+                                <SelectParameters>
+                                    <asp:QueryStringParameter Name="CIF" QueryStringField="cif" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
                         </td>
                     </tr>
                 </table>

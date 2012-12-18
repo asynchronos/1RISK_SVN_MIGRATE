@@ -22,7 +22,7 @@
         <br />
         <asp:Login ID="Login1" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE" BorderPadding="4"
             BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="Small"
-            ForeColor="#333333" DisplayRememberMe="False">
+            ForeColor="#333333" DisplayRememberMe="False" align="center">
             <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
             <LayoutTemplate>
                 <table cellpadding="4" cellspacing="0" style="border-collapse: collapse;">

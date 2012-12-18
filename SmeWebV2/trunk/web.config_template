@@ -23,6 +23,10 @@
 		<!--<add key="LDAP_SERVER_UAT" value="172.19.60.112"/>-->
 		<add key="LDAP_PORT" value="389"/>
 		<add key="IsProduction" value="1"/>
+		<!--Dev-->
+		<!--<add key="Log4netConfigPath" value="D:\workspaces\2012\SmeWebV2\Log4net.SMEWeb.config"/>-->
+		<!--Production-->
+		<add key="Log4netConfigPath" value="E:\Web\SmeWeb\Log4net.SMEWeb.config"/>
 	</appSettings>
 	<!--Dev-->
 	<!--<connectionStrings>
@@ -83,7 +87,7 @@
 				<add assembly="System.Web.DataVisualization.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
 				<add assembly="System.Data.OracleClient, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
 				<!--ODP 32BIT-->
-				<add assembly="Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89B483F429C47342"/>
+				<!--<add assembly="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89B483F429C47342"/>-->
 			</assemblies>
 		</compilation>
 		<httpHandlers>
