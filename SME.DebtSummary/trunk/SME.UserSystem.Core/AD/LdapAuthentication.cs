@@ -55,15 +55,17 @@ namespace SME.UserSystem.Core.AD
 
                     if (isDebugEnabled)
                     {
-                        log.Debug("authenticated:" + authenticated);
+                        log.Debug(username + " authenticated:" + authenticated);
                     }
                 }
                 catch (DirectoryServicesCOMException cex)
                 {
+                    log.Error(cex.StackTrace);
                     throw cex;
                 }
                 catch (Exception ex)
                 {
+                    log.Error(ex.StackTrace);
                     throw ex;
                 }
             }
@@ -102,8 +104,8 @@ namespace SME.UserSystem.Core.AD
             }
             catch (Exception ex)
             {
-                throw new Exception("Error obtaining group names. " +
-                  ex.Message);
+                log.Error("Error obtaining group names. " + ex.Message);
+                throw new Exception("Error obtaining group names. " + ex.Message);
             }
             return groupNames.ToString();
         }
