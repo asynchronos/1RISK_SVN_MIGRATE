@@ -67,6 +67,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserSystemEntitiesModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Util\Log4NetFileCleanupTask.cs" />
+    <Compile Include="Util\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
