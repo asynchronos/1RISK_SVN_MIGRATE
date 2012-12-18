@@ -1,14 +1,22 @@
 <%@ Application Language="VB" %>
+<%@ Import Namespace="Util.Log4net" %>
 <%@ Import Namespace="log4net" %>
 <%@ Import Namespace="System.Diagnostics" %>
+<%@ Import Namespace="System.Linq" %>
 <script RunAt="server">
     Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
     Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
+        'Dev
         log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("D:\workspaces\2012\SmeWebV2\Log4net.SMEWeb.config"))
         'production
-        'log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("D:\Web\SmeWeb\Log4net.SMEWeb.config"))
+        'log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("E:\Web\SmeWeb\Log4net.SMEWeb.config"))
+        'log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo(ConfigurationManager.AppSettings("Log4netConfigPath")))
+
+        'Dim dateStart As DateTime? = DateTime.Now.AddDays(-5)
+        'Dim task As Log4NetFileCleanupTask = New Log4NetFileCleanupTask()
+        'task.CleanUp(dateStart)
 
         log.Info("============================")
         log.Info(ConfigurationManager.AppSettings("APPLICATION_NAME") & "Started.")
