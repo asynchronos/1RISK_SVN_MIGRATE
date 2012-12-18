@@ -50,6 +50,8 @@
     <Compile Include="Aspx\MyAspxPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Log4net\Log4NetFileCleanupTask.cs" />
+    <Compile Include="Log4net\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
