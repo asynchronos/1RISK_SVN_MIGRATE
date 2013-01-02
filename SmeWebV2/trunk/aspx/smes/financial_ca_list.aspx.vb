@@ -50,15 +50,21 @@ Partial Class aspx_smes_financial_ca_list
                 dv = ds.Tables(0).DefaultView
                 dv.Sort = Session("SortExpression") & " " & Session("SortDirection")
                 GridView1.DataSource = dv
+
             Else
                 GridView1.DataSource = ds
             End If
             GridView1.DataBind()
         End If
 
+
         reader.Close()
         sqlCmd.Dispose()
         conn.Close()
+        SqlConnection.ClearPool(conn)
+
+
+
 
     End Sub
 
