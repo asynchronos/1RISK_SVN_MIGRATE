@@ -15,7 +15,7 @@
             }
             table 
             {
-                padding:2px;
+                padding:1px;
              }
             input[type="submit"]
             {
@@ -86,8 +86,8 @@
                 <asp:GridView ID="GridView1" runat="server" AllowSorting="True" PageSize="15" AllowPaging="True"
                     EnableModelValidation="True" AutoGenerateColumns="False" OnSorting="GridView1_Sorting"
                     HeaderStyle-CssClass=" ui-widget-header" DataKeyNames="SMES_ID" BackColor="White"
-                    BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" RowStyle-CssClass="table"
-                    GridLines="Vertical" CssClass="ui-corner-all">
+                    BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black"
+                    GridLines="Vertical">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="เลขที่ CA" InsertVisible="False" SortExpression="CA_ID">
@@ -107,7 +107,7 @@
                     <FooterStyle BackColor="#CCCC99" />
                     <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                    <RowStyle BackColor="#F7F7DE"  VerticalAlign="Middle" />
+                    <RowStyle BackColor="#F7F7DE" />
                     <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
                 </asp:GridView>
             </div>
