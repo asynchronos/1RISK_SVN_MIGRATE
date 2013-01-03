@@ -156,6 +156,7 @@ Partial Class aspx_smes_FINANCIAL_DATA
 
                 If IsDBNull(reader("DEFAULT_MARGIN")) = False Then DefaultMarginTextBox.Text = String.Format("{0:n2}", reader("DEFAULT_MARGIN"))
                 If IsDBNull(reader("CURRENT_ASSET_OTHER")) = False Then CURRENT_ASSET_OTHERTextBox.Text = String.Format("{0:n0}", reader("CURRENT_ASSET_OTHER"))
+                If IsDBNull(reader("CURRENT_ASSET_OTHER")) = False Then CURRENT_ASSET_OTHER_CALTextBox.Text = String.Format("{0:n0}", reader("CURRENT_ASSET_OTHER"))
                 If IsDBNull(reader("FEE_CREDIT_CART_REPAYMENT")) = False Then FEE_CREDIT_CART_REPAYMENTTextBox.Text = String.Format("{0:n0}", reader("FEE_CREDIT_CART_REPAYMENT"))
 
                 If IsDBNull(reader("SALES2")) = False Then SALES2TextBox.Text = String.Format("{0:n0}", reader("SALES2"))
