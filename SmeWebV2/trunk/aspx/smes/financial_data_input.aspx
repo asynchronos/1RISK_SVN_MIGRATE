@@ -201,6 +201,7 @@
             var INVENTORY_VISITTextBox = $("#INVENTORY_VISITTextBox");
             var ACCOUNT_RECEIVABLETextBox = $("#ACCOUNT_RECEIVABLETextBox");
             var CURRENT_ASSET_OTHERTextBox = $("#CURRENT_ASSET_OTHERTextBox");
+            var CURRENT_ASSET_OTHER_CALTextBox = $("#CURRENT_ASSET_OTHER_CALTextBox");
             var MACHINERY_EQUIPMENTTextBox = $("#MACHINERY_EQUIPMENTTextBox");
             var CORE_ASSETSTextBox = $("#CORE_ASSETSTextBox");
             var OTHER_FIXED_ASSETS_OTHER_BANKTextBox = $("#OTHER_FIXED_ASSETS_OTHER_BANKTextBox");
@@ -299,6 +300,8 @@
             INVENTORY_VISITTextBox.autoNumeric({ aPad: false });
             ACCOUNT_RECEIVABLETextBox.autoNumeric({ aPad: false });
             CURRENT_ASSET_OTHERTextBox.autoNumeric({ aPad: false });
+            CURRENT_ASSET_OTHER_CALTextBox.autoNumeric({ aPad: false });
+
             MACHINERY_EQUIPMENTTextBox.autoNumeric({ aPad: false });
             CORE_ASSETSTextBox.autoNumeric({ aPad: false });
             OTHER_FIXED_ASSETS_OTHER_BANKTextBox.autoNumeric({ aPad: false });
@@ -338,7 +341,7 @@
             LG_AVALTextBox.autoNumeric({ aPad: false });
             ASSETS_INCREASE_LOANTextBox.autoNumeric({ aPad: false });
             BOND_DEPOSIT_PLEDGE_PERSONTextBox.autoNumeric({ aPad: false });
-            LTVTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
+            LTVTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '999.99' });
             TCG_LOANTextBox.autoNumeric({ aPad: false });
             TCG_INTEREST_RATE_PERCENT_USEDTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
             TCG_CONTRACT_YEARTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
@@ -439,7 +442,7 @@
             STMT_EL = $(STMT_EL).add(CASH_BONDTextBox).add(BOND_DEPOSIT_PLEDGE_PERSONTextBox);
             STMT_EL = $(STMT_EL).add(ACCOUNT_RECEIVABLETextBox);
             STMT_EL = $(STMT_EL).add(INVENTORY_INTERVIEWTextBox).add(INVENTORY_VISITTextBox);
-            STMT_EL = $(STMT_EL).add(MACHINERY_EQUIPMENTTextBox);
+            STMT_EL = $(STMT_EL).add(MACHINERY_EQUIPMENTTextBox).add(CURRENT_ASSET_OTHERTextBox);
             STMT_EL = $(STMT_EL).add(CORE_ASSETSTextBox);
             STMT_EL = $(STMT_EL).add(OTHER_FIXED_ASSETS_OTHER_BANKTextBox).add(OTHER_FIXED_ASSETSTextBox);
             STMT_EL = $(STMT_EL).add(ASSETS_INCREASE_LOANTextBox);
@@ -456,6 +459,7 @@
                 obj.setCASH_BOND(parseFloat(CASH_BONDTextBox.autoNumericGet()));
                 obj.setBOND_DEPOSIT_PLEDGE_PERSON(parseFloat(BOND_DEPOSIT_PLEDGE_PERSONTextBox.autoNumericGet()));
                 obj.setACCOUNT_RECEIVABLE(parseFloat(ACCOUNT_RECEIVABLETextBox.autoNumericGet()));
+                obj.setCURRENT_ASSET_OTHER(parseFloat(CURRENT_ASSET_OTHERTextBox.autoNumericGet()));
                 obj.setINVENTORY_INTERVIEW(parseFloat(INVENTORY_INTERVIEWTextBox.autoNumericGet()));
                 obj.setINVENTORY_VISIT(parseFloat(INVENTORY_VISITTextBox.autoNumericGet()));
                 obj.setMACHINERY_EQUIPMENT(parseFloat(MACHINERY_EQUIPMENTTextBox.autoNumericGet()));
@@ -508,6 +512,7 @@
                 LOANS_REL_CO_DIRECTORS_CALTextBox.autoNumericSet(obj.getLOANS_REL_CO_DIRECTORS());
                 EQUITY_CALTextBox.autoNumericSet(obj.getEQUITY());
                 LIABILITY_EQUITY_CALTextBox.autoNumericSet(obj.getLIABILITY_EQUITY());
+                CURRENT_ASSET_OTHER_CALTextBox.val(CURRENT_ASSET_OTHERTextBox.val());
 
             });
 
@@ -522,7 +527,7 @@
 
 
 
-        });                                       // document.ready
+        });                                          // document.ready
 
         var obj = new FNSTMT();
 
@@ -1640,6 +1645,20 @@
                             <asp:TextBox ID="OTHER_CURRENT_LIABILITY_CALTextBox" ToolTip="N11:หนี้สินหมุนเวียนอื่น"
                                 Width="85px" CELL="N11" runat="server" Text='<%# Bind("OTHER_CURRENT_LIABILITY_CAL") %>' />
                         </td>
+                    </tr>
+                    <tr>
+                        <td class="style30">
+                            สินทรัพย์หมุนเวียนอื่น ๆ</td>
+                        <td class="style28">
+                                <asp:TextBox ID="CURRENT_ASSET_OTHER_CALTextBox" Width="85px" runat="server" 
+                                Text='<%# Bind("CURRENT_ASSET_OTHER_CAL") %>' />
+                        </td>
+                        <td class="style33">
+                            &nbsp;</td>
+                        <td class="style29">
+                            &nbsp;</td>
+                        <td class="style34">
+                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td class="style30">
