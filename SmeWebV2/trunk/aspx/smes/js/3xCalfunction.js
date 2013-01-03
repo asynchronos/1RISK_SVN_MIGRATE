@@ -25,6 +25,7 @@
     var LONG_TERM_OTHER_LIABILITY;
     var REFINANCE_WORKING_LOAN_OTHER;
     var LOANS_REL_CO_DIRECTORS;
+    var CURRENT_ASSET_OTHER;
 
     return {
         // Public methods
@@ -43,6 +44,12 @@
         getACCOUNT_RECEIVABLE: function () {
             return ACCOUNT_RECEIVABLE;
         },
+        setCURRENT_ASSET_OTHER: function (newCURRENT_ASSET_OTHER) {
+            CURRENT_ASSET_OTHER = newCURRENT_ASSET_OTHER;
+        },
+        getCURRENT_ASSET_OTHER: function () {
+            return CURRENT_ASSET_OTHER;
+        },
 
         setINVENTORY_INTERVIEW: function (newINVENTORY_INTERVIEW) {
             INVENTORY_INTERVIEW = newINVENTORY_INTERVIEW;
@@ -59,7 +66,7 @@
             }
         },
         getTOTAL_CURRENT_ASSETS: function () {
-            return this.getCASH_BOND() + this.getACCOUNT_RECEIVABLE() + this.getINVENTORY();
+            return this.getCASH_BOND() + this.getACCOUNT_RECEIVABLE() + this.getINVENTORY() + this.getCURRENT_ASSET_OTHER();
         },
         setMACHINERY_EQUIPMENT: function (newMACHINERY_EQUIPMENT) {
             MACHINERY_EQUIPMENT = newMACHINERY_EQUIPMENT;
@@ -177,7 +184,7 @@
             return this.getTOTAL_ASSETS() - this.getTOTAL_LIABILITY() - this.getLOANS_REL_CO_DIRECTORS();
         },
         getLIABILITY_EQUITY: function () {
-            return this.getTOTAL_LIABILITY()+ this.getLOANS_REL_CO_DIRECTORS() +  this.getEQUITY();
+            return this.getTOTAL_LIABILITY() + this.getLOANS_REL_CO_DIRECTORS() + this.getEQUITY();
         }
 
     };
