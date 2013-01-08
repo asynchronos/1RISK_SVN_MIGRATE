@@ -9,10 +9,12 @@
 
     Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
         'Dev
-        log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("D:\workspaces\2012\SmeWebV2\Log4net.SMEWeb.config"))
+        'log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("D:\workspaces\2012\SmeWebV2\Log4net.SMEWeb.config"))
         'production
         'log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo("E:\Web\SmeWeb\Log4net.SMEWeb.config"))
-        'log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo(ConfigurationManager.AppSettings("Log4netConfigPath")))
+
+        'Read Config
+        log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo(ConfigurationManager.AppSettings("Log4netConfigPath")))
 
         'Dim dateStart As DateTime? = DateTime.Now.AddDays(-5)
         'Dim task As Log4NetFileCleanupTask = New Log4NetFileCleanupTask()
@@ -57,12 +59,16 @@
         End If
 
         Application("LastError") = err 'store the error for later
-        Application("PageError") = HttpContext.Current.Request.Url.ToString()
+        Application("PageError") = HttpContext.Current.Request.Url.ToString() _
+            .Substring(0, IIf(HttpContext.Current.Request.Url.ToString().IndexOf("?") < 0 _
+                              , HttpContext.Current.Request.Url.ToString().Length _
+                              , HttpContext.Current.Request.Url.ToString().IndexOf("?")))
+
         Server.ClearError() 'clear the error so we can continue onwards
 
         If Not IsNothing(HttpContext.Current.Session) Then
-            'HttpContext.Current.Session.Add("LastError", err);
-            'HttpContext.Current.Session.Add("PageError", HttpContext.Current.Request.Url.ToString());
+            HttpContext.Current.Session.Add("LastError", Application("LastError"))
+            HttpContext.Current.Session.Add("PageError", Application("PageError"))
         End If
 
         'send mail
@@ -76,15 +82,20 @@
         'System.Web.Mail.SmtpMail.Send(mail);
 
         'redirect to error page
-        If err.GetType().Equals(GetType(System.Runtime.InteropServices.COMException)) Or
-            err.GetType().Equals(GetType(System.DirectoryServices.DirectoryServicesCOMException)) Then
-            Response.Redirect("~/aspx/account/LoginWithAD.aspx")
+        'If err.GetType().Equals(GetType(System.Runtime.InteropServices.COMException)) Or
+        '    err.GetType().Equals(GetType(System.DirectoryServices.DirectoryServicesCOMException)) Then
+        If err.GetType().Equals(GetType(SME.UserSystem.Core.Exceptions.LDAPInfoException)) Then
+            Response.Redirect("~/aspx/account/LoginWithAD.aspx?pages=" _
+                              & Application("PageError").ToString() _
+                              & "&msg=" + DirectCast(Application("LastError"), Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
         ElseIf err.GetType().Equals(GetType(System.Security.SecurityException)) Then
             Response.Redirect("~/aspx/error/unauthorized.aspx")
         Else
             'Response.Redirect("~/aspx/error/defaultError.aspx?page=" & Server.UrlEncode(Request.RawUrl) _
             '    & "&msg=" & err.InnerException.Message & err.InnerException.StackTrace)
-            Response.Redirect("~/aspx/error/defaultError.aspx")
+            Response.Redirect("~/aspx/error/defaultError.aspx?pages=" _
+                              & Application("PageError").ToString() _
+                              & "&msg=" + DirectCast(Application("LastError"), Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
         End If
     End Sub
 
