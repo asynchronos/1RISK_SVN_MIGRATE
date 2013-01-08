@@ -6,9 +6,31 @@ Partial Class LoginWithAD
         Dim liter As Literal = DirectCast(Login1.FindControl("FailureText"), Literal)
         liter.Text = String.Empty
 
-        If Not IsNothing(Request.QueryString.Item("errorMsg")) Then
-            'show error message
-            liter.Text = Request.QueryString.Item("errorMsg").Replace("&#13;", "<br/>").TrimStart().TrimEnd()
+        'If Not IsNothing(Application("PageError")) Then
+        '    pages = Application("PageError").ToString()
+        'End If
+        'If Not IsNothing(Application("LastError")) Then
+        '    msg = (DirectCast(Application("LastError"), Exception)).Message
+        'End If
+
+        Dim errorsMsg As String = String.Empty
+
+        If hasQueryString("msg") Then
+            errorsMsg = errorsMsg & "Message : " + getQueryString("msg") + "<br />"
+        End If
+        If hasQueryString("pages") Then
+            errorsMsg = errorsMsg & "Page : " + getQueryString("pages") + "<br />"
+        End If
+        
+
+        If Not errorsMsg.Equals(String.Empty) Then
+            If errorsMsg.IndexOf("in AD is Locked") >= 0 Then
+                liter.Text = "Error : Please Call 5555 To Unlock Your AD.<br />" _
+                & errorsMsg
+            Else
+                liter.Text = "Error : Please contact administrator.<br />" _
+                & errorsMsg
+            End If
         ElseIf Not IsNothing(Request.QueryString.Item("ReturnUrl")) Then
             Dim authCookie As HttpCookie = Context.Request.Cookies(FormsAuthentication.FormsCookieName)
 
@@ -32,5 +54,6 @@ Partial Class LoginWithAD
                 liter.Text = "Can not find session."
             End If
         End If
+
     End Sub
 End Class

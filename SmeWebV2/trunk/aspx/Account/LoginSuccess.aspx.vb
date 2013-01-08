@@ -8,7 +8,7 @@ Partial Class LoginSuccess
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Response.Write(User.Identity.Name)
-        log.Info(User.Identity.Name & " login.")
+        log.Info(User.Identity.Name & " login.Now Checking Roles.")
 
         Dim dal = New TbEmployeeDAL()
         Dim emp As TbEmployee = dal.getTbEmployeeByUsername(User.Identity.Name)
@@ -49,8 +49,8 @@ Partial Class LoginSuccess
                 'Redirect the user to the originally requested page
                 'Response.Redirect(FormsAuthentication.GetRedirectUrl(Login1.UserName, False))
 
-                Dim log As New ClsLog
-                log.InsertLog(1, Request.UserHostAddress, User.Identity.Name)
+                Dim clslog As New ClsLog
+                clslog.InsertLog(1, Request.UserHostAddress, User.Identity.Name)
 
                 'Redirect to Default URL
                 'Response.Redirect(FormsAuthentication.DefaultUrl)
@@ -67,11 +67,11 @@ Partial Class LoginSuccess
 
         End If
 
-        Response.Write("Unkown Error, Please contact administrator.")
+        showError("Unkown Error, Please contact administrator.")
     End Sub
 
     Private Sub showError(ByVal errorMsg As String)
         'Redirect to login URL with error message
-        Response.Redirect(FormsAuthentication.LoginUrl + "?errorMsg=" + errorMsg)
+        Response.Redirect(FormsAuthentication.LoginUrl + "?msg=" + errorMsg)
     End Sub
 End Class
