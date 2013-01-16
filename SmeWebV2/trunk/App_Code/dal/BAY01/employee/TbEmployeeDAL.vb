@@ -111,25 +111,10 @@ Public Class TbEmployeeDAL
                 & " EMPSURNAME_E=@EMPSURNAME_E, " _
                 & " EMAIL=@EMAIL, " _
                 & " IDCARD=@IDCARD, " _
-                & " TAX_NO=@TAX_NO, " _
-                & " ACCNO=@ACCNO, " _
                 & " ADDRESS=@ADDRESS, " _
-                & " SOI=@SOI, " _
-                & " ROAD=@ROAD, " _
-                & " LOCALITY=@LOCALITY, " _
-                & " DISTRINCT=@DISTRINCT, " _
-                & " PROV_CODE=@PROV_CODE, " _
-                & " ZIPCODE=@ZIPCODE, " _
-                & " TEL_HOME=@TEL_HOME, " _
-                & " TEL_MOBILE=@TEL_MOBILE, " _
-                & " TEL_INDOOR=@TEL_INDOOR, " _
-                & " DATEOFBIRTH=@DATEOFBIRTH, " _
-                & " IMAGENAME=@IMAGENAME, " _
-                & " DATEOFSTART=@DATEOFSTART, " _
                 & " USERNAME=@USERNAME, " _
                 & " PASSWD=@PASSWD, " _
-                & " UP_DT=getdate(), " _
-                & " POSITION_CODE=@POSITION_CODE " _
+                & " UP_DT=getdate()" _
                 & " WHERE EMP_ID=@EMP_ID "
 
             Dim sqlCmd As New SqlCommand(sql, conn)
@@ -143,37 +128,9 @@ Public Class TbEmployeeDAL
             sqlCmd.Parameters.AddWithValue("@EMPSURNAME_E", objTbEmployee.EMPSURNAME_E)
             sqlCmd.Parameters.AddWithValue("@EMAIL", objTbEmployee.EMAIL)
             sqlCmd.Parameters.AddWithValue("@IDCARD", objTbEmployee.IDCARD)
-            sqlCmd.Parameters.AddWithValue("@TAX_NO", objTbEmployee.TAX_NO)
-            sqlCmd.Parameters.AddWithValue("@ACCNO", objTbEmployee.ACCNO)
             sqlCmd.Parameters.AddWithValue("@ADDRESS", objTbEmployee.ADDRESS)
-            sqlCmd.Parameters.AddWithValue("@SOI", objTbEmployee.SOI)
-            sqlCmd.Parameters.AddWithValue("@ROAD", objTbEmployee.ROAD)
-            sqlCmd.Parameters.AddWithValue("@LOCALITY", objTbEmployee.LOCALITY)
-            sqlCmd.Parameters.AddWithValue("@DISTRINCT", objTbEmployee.DISTRINCT)
-            sqlCmd.Parameters.AddWithValue("@PROV_CODE", objTbEmployee.PROV_CODE)
-            sqlCmd.Parameters.AddWithValue("@ZIPCODE", objTbEmployee.ZIPCODE)
-            sqlCmd.Parameters.AddWithValue("@TEL_HOME", objTbEmployee.TEL_HOME)
-            sqlCmd.Parameters.AddWithValue("@TEL_MOBILE", objTbEmployee.TEL_MOBILE)
-            sqlCmd.Parameters.AddWithValue("@TEL_INDOOR", objTbEmployee.TEL_INDOOR)
-            sqlCmd.Parameters.AddWithValue("@DATEOFBIRTH", objTbEmployee.DATEOFBIRTH)
-            sqlCmd.Parameters.AddWithValue("@IMAGENAME", objTbEmployee.IMAGENAME)
-            sqlCmd.Parameters.AddWithValue("@DATEOFSTART", objTbEmployee.DATEOFSTART)
-            ' sqlCmd.Parameters.AddWithValue("@STATUS", objTbEmployee.STATUS)
-            ' sqlCmd.Parameters.AddWithValue("@TEAM_ID", objTbEmployee.TEAM_ID)
-            ' sqlCmd.Parameters.AddWithValue("@GROUP_HEAD", objTbEmployee.GROUP_HEAD)
-            ' sqlCmd.Parameters.AddWithValue("@ROLE", objTbEmployee.ROLE)
-            'sqlCmd.Parameters.AddWithValue("@PERMIT", objTbEmployee.PERMIT)
             sqlCmd.Parameters.AddWithValue("@USERNAME", objTbEmployee.USERNAME)
             sqlCmd.Parameters.AddWithValue("@PASSWD", objTbEmployee.PASSWD)
-            '  sqlCmd.Parameters.AddWithValue("@UP_DT", objTbEmployee.UP_DT)
-            ' sqlCmd.Parameters.AddWithValue("@Dept", objTbEmployee.Dept)
-            ' sqlCmd.Parameters.AddWithValue("@Id_Region", objTbEmployee.Id_Region)
-            ' sqlCmd.Parameters.AddWithValue("@Id_Branch", objTbEmployee.Id_Branch)
-            sqlCmd.Parameters.AddWithValue("@POSITION_CODE", objTbEmployee.POSITION_CODE)
-            ' sqlCmd.Parameters.AddWithValue("@Id_Region_Group", objTbEmployee.Id_Region_Group)
-            ' sqlCmd.Parameters.AddWithValue("@Id_Branch_Group", objTbEmployee.Id_Branch_Group)
-            ' sqlCmd.Parameters.AddWithValue("@Id_Group_Group", objTbEmployee.Id_Group_Group)
-            ' sqlCmd.Parameters.AddWithValue("@LEVEL_ID", objTbEmployee.LEVEL_ID)
 
             sqlCmd.ExecuteNonQuery()
         Catch ex As Exception
@@ -412,8 +369,8 @@ Public Class TbEmployeeDAL
         Try
             conn = ConnectionUtil.getSqlConnectionFromWebConfig()
             Dim sql As String = "INSERT INTO TB_EMPLOYEE " _
-                & " (EMP_ID, TITLE_CODE, EMPNAME, EMPSURNAME, EMPNAME_E, EMPSURNAME_E, EMAIL, IDCARD, TAX_NO, ACCNO, ADDRESS, SOI, ROAD, LOCALITY, DISTRINCT, PROV_CODE, ZIPCODE, TEL_HOME, TEL_MOBILE, TEL_INDOOR, DATEOFBIRTH, IMAGENAME, DATEOFSTART, STATUS, TEAM_ID, GROUP_HEAD, ROLE, PERMIT, USERNAME, PASSWD, UP_DT, Dept, Id_Region, Id_Branch, POSITION_CODE, Id_Region_Group, Id_Branch_Group, Id_Group_Group, LEVEL_ID) " _
-                & " VALUES(@EMP_ID, @TITLE_CODE, @EMPNAME, @EMPSURNAME, @EMPNAME_E, @EMPSURNAME_E, @EMAIL, @IDCARD, @TAX_NO, @ACCNO, @ADDRESS, @SOI, @ROAD, @LOCALITY, @DISTRINCT, @PROV_CODE, @ZIPCODE, @TEL_HOME, @TEL_MOBILE, @TEL_INDOOR, @DATEOFBIRTH, @IMAGENAME, @DATEOFSTART, @STATUS, @TEAM_ID, @GROUP_HEAD, @ROLE, @PERMIT, @USERNAME, @PASSWD, @UP_DT, @Dept, @Id_Region, @Id_Branch, @POSITION_CODE, @Id_Region_Group, @Id_Branch_Group, @Id_Group_Group, @LEVEL_ID) "
+                & " (EMP_ID, TITLE_CODE, EMPNAME, EMPSURNAME, EMPNAME_E, EMPSURNAME_E, EMAIL, IDCARD,  ADDRESS,  USERNAME, PASSWD, UP_DT) " _
+                & " VALUES(@EMP_ID, @TITLE_CODE, @EMPNAME, @EMPSURNAME, @EMPNAME_E, @EMPSURNAME_E, @EMAIL, @IDCARD,@ADDRESS, @USERNAME, @PASSWD, getdate()) "
 
             Dim sqlCmd As New SqlCommand(sql, conn)
             sqlCmd.Prepare()
@@ -426,37 +383,10 @@ Public Class TbEmployeeDAL
             sqlCmd.Parameters.AddWithValue("@EMPSURNAME_E", objTbEmployee.EMPSURNAME_E)
             sqlCmd.Parameters.AddWithValue("@EMAIL", objTbEmployee.EMAIL)
             sqlCmd.Parameters.AddWithValue("@IDCARD", objTbEmployee.IDCARD)
-            sqlCmd.Parameters.AddWithValue("@TAX_NO", objTbEmployee.TAX_NO)
-            sqlCmd.Parameters.AddWithValue("@ACCNO", objTbEmployee.ACCNO)
             sqlCmd.Parameters.AddWithValue("@ADDRESS", objTbEmployee.ADDRESS)
-            sqlCmd.Parameters.AddWithValue("@SOI", objTbEmployee.SOI)
-            sqlCmd.Parameters.AddWithValue("@ROAD", objTbEmployee.ROAD)
-            sqlCmd.Parameters.AddWithValue("@LOCALITY", objTbEmployee.LOCALITY)
-            sqlCmd.Parameters.AddWithValue("@DISTRINCT", objTbEmployee.DISTRINCT)
-            sqlCmd.Parameters.AddWithValue("@PROV_CODE", objTbEmployee.PROV_CODE)
-            sqlCmd.Parameters.AddWithValue("@ZIPCODE", objTbEmployee.ZIPCODE)
-            sqlCmd.Parameters.AddWithValue("@TEL_HOME", objTbEmployee.TEL_HOME)
-            sqlCmd.Parameters.AddWithValue("@TEL_MOBILE", objTbEmployee.TEL_MOBILE)
-            sqlCmd.Parameters.AddWithValue("@TEL_INDOOR", objTbEmployee.TEL_INDOOR)
-            sqlCmd.Parameters.AddWithValue("@DATEOFBIRTH", objTbEmployee.DATEOFBIRTH)
-            sqlCmd.Parameters.AddWithValue("@IMAGENAME", objTbEmployee.IMAGENAME)
-            sqlCmd.Parameters.AddWithValue("@DATEOFSTART", objTbEmployee.DATEOFSTART)
-            sqlCmd.Parameters.AddWithValue("@STATUS", objTbEmployee.STATUS)
-            sqlCmd.Parameters.AddWithValue("@TEAM_ID", objTbEmployee.TEAM_ID)
-            sqlCmd.Parameters.AddWithValue("@GROUP_HEAD", objTbEmployee.GROUP_HEAD)
-            sqlCmd.Parameters.AddWithValue("@ROLE", objTbEmployee.ROLE)
-            sqlCmd.Parameters.AddWithValue("@PERMIT", objTbEmployee.PERMIT)
             sqlCmd.Parameters.AddWithValue("@USERNAME", objTbEmployee.USERNAME)
             sqlCmd.Parameters.AddWithValue("@PASSWD", objTbEmployee.PASSWD)
-            sqlCmd.Parameters.AddWithValue("@UP_DT", objTbEmployee.UP_DT)
-            sqlCmd.Parameters.AddWithValue("@Dept", objTbEmployee.Dept)
-            sqlCmd.Parameters.AddWithValue("@Id_Region", objTbEmployee.Id_Region)
-            sqlCmd.Parameters.AddWithValue("@Id_Branch", objTbEmployee.Id_Branch)
-            sqlCmd.Parameters.AddWithValue("@POSITION_CODE", objTbEmployee.POSITION_CODE)
-            sqlCmd.Parameters.AddWithValue("@Id_Region_Group", objTbEmployee.Id_Region_Group)
-            sqlCmd.Parameters.AddWithValue("@Id_Branch_Group", objTbEmployee.Id_Branch_Group)
-            sqlCmd.Parameters.AddWithValue("@Id_Group_Group", objTbEmployee.Id_Group_Group)
-            sqlCmd.Parameters.AddWithValue("@LEVEL_ID", objTbEmployee.LEVEL_ID)
+
 
             sqlCmd.ExecuteNonQuery()
         Catch ex As Exception
