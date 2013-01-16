@@ -17,6 +17,7 @@
     <script type="text/javascript">
         //  ฟังชั่นซ่อนแสดง ข้อมูล
         var strCIF;
+        var templateID;
         $(document).ready(function () {
             var userName;
             if (window.parent.document.getElementById("spanUserName")) {
@@ -25,6 +26,11 @@
                 userName = 'test';
             }
             $("#USERTextBox").val(userName);
+
+            if (window.parent.document.getElementById("spanTemplateID")) {
+                templateID = window.parent.document.getElementById("spanTemplateID").innerText;
+            }
+            
             sizeFrame();
 
             $("#ExperienceTextBox").autoNumeric({ aPad: true, vMin: '0', vMax: '200' });
@@ -76,8 +82,8 @@
             $('#OD_SWING_PERCENTTextBox').autoNumeric({ aPad: true, vMin: '0', vMax: '100' });
             $('#FIXED_ASSET_NO_LANDTextBox').autoNumeric({ aPad: true, vMin: '0', vMax: '99999999999' });
             $('#CHECK_NCB_6MONTHTextBox').autoNumeric({ aPad: true, vMin: '0', vMax: '100' });
-            
-            
+
+
 
 
         });
@@ -157,7 +163,16 @@
             }
         }
         $(document).ready(function () {
+
             $("#tabs").tabs({ cookie: { expires: 30} });
+            if (templateID == 3) {
+
+            } else {
+//                $("#aTab3").hide();
+//                $("#tabs-3").hide();
+                $(".trTemplate3").hide();
+            }
+
             checkPerson();
             $("#CustomerTypeDropDownList").change(function () {
                 checkPerson();
@@ -376,9 +391,9 @@
     <div id="divForm" runat="server">
         <div id="tabs">
             <ul>
-                <li><a href="#tabs-1">ข้อมูลลูกค้า</a></li>
-                <li><a href="#tabs-2">ข้อมูลสินเชื่อ(บสย)</a></li>
-                <li><a href="#tabs-3">ข้อมูลประวัติ NCB</a></li>
+                <li><a id="aTab1" href="#tabs-1">ข้อมูลลูกค้า</a></li>
+                <li><a id="aTab2" href="#tabs-2">ข้อมูลสินเชื่อ(บสย)</a></li>
+                <li><a id="aTab3" href="#tabs-3">ข้อมูลประวัติ NCB</a></li>
             </ul>
             <div id="tabs-1">
                 <table id="tableForm">
@@ -566,7 +581,8 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
-                    <tr>
+                    
+                    <tr class="trTemplate3">
                         <td>
                             เช็คคืนในรอบ 6 เดือน
                         </td>
@@ -584,7 +600,7 @@
                             &nbsp;บาท
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="trTemplate3">
                         <td>
                             OD Utilization
                         </td>
@@ -600,7 +616,7 @@
                             &nbsp;%
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="trTemplate3">
                         <td>
                             จำนวนครั้งที่เกินวงเงิน OD
                         </td>
@@ -740,7 +756,7 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="trTemplate3">
                         <td>
                             ขาดทุนในงบการเงินส่งสรรพากร
                         </td>
@@ -756,7 +772,7 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="trTemplate3">
                         <td>
                             จำนวนครั้งในการตรวจสอบ NCB ของผู้กู้ในรอบ 6 เดือน
                         </td>
@@ -768,7 +784,7 @@
                         <td>&nbsp</td>
                         <td>&nbsp</td>
                     </tr>
-                    <tr>
+                    <tr class="trTemplate3">
                         <td>
                             NCB Record
                         </td>

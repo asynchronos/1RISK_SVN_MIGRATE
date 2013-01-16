@@ -42,21 +42,21 @@
         #tab1
         {
             float: left;
-            width: 450px;
+            width: 420px;
             background-image: url("images/gradient2.png");
             background-repeat: repeat-x;
         }
         #tab4
         {
             float: left;
-            width: 528px;
+            width: 500px;
             background-image: url('images/gradient2.png');
             background-repeat: repeat-x;
         }
         #tab2, #tab3, #tab5, #tab6
         {
             float: left;
-            width: 550px;
+            width: 500px;
             background-image: url("images/gradient1.png");
             background-repeat: repeat-x;
         }
@@ -138,7 +138,7 @@
         , I9, I10, I11, I13, I15, I16, I17, I18, I20, I22
         , I25, I26, I27, I28
         , I30, I31, I33, I34, I35, I36, I37
-        , I39, I40, I41, I42, I43, I44, T17 // หลักประกันรวม
+        , I39, I40, I41, I42, I43, I44, T17 ,I45, I46, I47 // หลักประกันรวม
         , J28, J29
         , M25, M27, M33, M34, M35, M36, M37
         , N9, N10, N11, N13, N15, N16, N18, N20, N21, N22
@@ -210,6 +210,9 @@
 
         var INPUT_EL;
         var CALCULATE_EL;
+
+        var CURRENT_ASSET_OTHERTextBox ;
+        var CURRENT_ASSET_OTHER_CALTextBox;
 
         $(document).ready(function () {
 
@@ -323,6 +326,10 @@
             I43 = $("#APPRAISAL_VALUE_ZONE_ETextBox");
             I44 = $("#BOND_DEPOSIT_PLEDGETextBox");
             T17 = $("#TOTAL_AMOUNT_OF_COLLATERALTextBox");
+            I45 = $("#APPRAISAL_VALUE_ZONE_GTextBox");
+            I46 = $("#APPRAISAL_VALUE_ZONE_FTextBox");
+            I47 = $("#TCG_GUARANTEETextBox");
+
 
             J28 = $("#AR_DAY_CALTextBox");
             J29 = $("#INVENTORY_DAY_CALTextBox");
@@ -374,6 +381,12 @@
             DX06 = $("#OTHER_FIXED_ASSETS_OTHER_BANKTextBox");
             DX07 = $("#OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox");
 
+            CURRENT_ASSET_OTHERTextBox = $("#CURRENT_ASSET_OTHERTextBox");
+            CURRENT_ASSET_OTHER_CALTextBox = $("#CURRENT_ASSET_OTHER_CALTextBox");
+
+            CURRENT_ASSET_OTHERTextBox.autoNumeric({ aPad: false });
+            CURRENT_ASSET_OTHER_CALTextBox.autoNumeric({ aPad: false });
+
             // ประกาศตัวแปรกลุ่มของ element ที่เกี่ยวข้องกัน
 
             //CASH_BOND_CAL_EL = $("[CELL = 'D28'],[CELL = 'D37']");
@@ -383,7 +396,7 @@
             //INVENTORY_CAL_EL = $("[CELL='D21'],[CELL='D20'],[CELL='D13'],[CELL='STOCK_TABLE']");
             INVENTORY_CAL_EL = $(D21).add(D20).add(D13).add("[CELL='STOCK_TABLE']");
             //TOTAL_CURRENT_ASSETS_CAL_EL = $("[CELL='I9'],[CELL='I10'],[CELL='I11']");
-            TOTAL_CURRENT_ASSETS_CAL_EL = $(I9).add(I10).add(I11);
+            TOTAL_CURRENT_ASSETS_CAL_EL = $(I9).add(I10).add(I11).add(CURRENT_ASSET_OTHERTextBox);
             // MACHINERY_EQUIPMENT_CAL_EL = $("[CELL='D25']");
             MACHINERY_EQUIPMENT_CAL_EL = $(D25);
             //PROPERTY_PLANT_CAL_BUILDING_EL = $("[CELL='D26']");
@@ -461,19 +474,19 @@
             //LOAN_DEFAULT_APPROVE_EL = $("[CELL='N10'],[CELL='N15'],[CELL='I35'],[CELL='I44'],[CELL='T17'],[CELL='O37'],[CELL='D41']");  //   N44  วงเงินที่สามารถอนุมัติ
             LOAN_DEFAULT_APPROVE_EL = $(N10).add(N15).add(I35).add(I44).add(T17).add(O37).add(D41).add(I33).add(N43);  //   N44  วงเงินที่สามารถอนุมัติ
             //TOTAL_AMOUNT_OF_COLLATERAL_EL = $("[CELL='I39'],[CELL='I40'],[CELL='I41'],[CELL='I42'],[CELL='I43']");
-            TOTAL_AMOUNT_OF_COLLATERAL_EL = $(I39).add(I40).add(I41).add(I42).add(I43);
+            TOTAL_AMOUNT_OF_COLLATERAL_EL = $(I39).add(I40).add(I41).add(I42).add(I43).add(I45).add(I46);
             //TEMP_CAL_LOAN_MAX_CAN_APPROVE_EL = $("[CELL='D35'],[CELL='D37'],[CELL='D39'],[CELL='D45'],[CELL='O35'],[CELL='M27'],[CELL='M33'],[CELL='M34'],[CELL='O27'],[CELL='O34'],[CELL='O35'],[CELL='N10'],[CELL='N11'],[CELL='I33'],[CELL='I34']");
             TEMP_CAL_LOAN_MAX_CAN_APPROVE_EL = $(D35).add(D37).add(D39).add(D45).add(O35).add(M27).add(M33).add(M34).add(O27).add(O34).add(O35).add(N10).add(N11).add(I33).add(I34);
 
             OTHER_FIXED_ASSETS_OTHER_BANK_CAL_EL = $(DX06);
 
-            INPUT_EL = $(D8).add(D9).add(D10).add(D13).add(D14).add(D15).add(D17).add(D20).add(D21).add(D24).add(D25).add(D26).add(D27).add(D28).add(D29).add(D30).add(D31).add(D32).add(D33).add(D34).add(D35).add(D37).add(D36).add(D38).add(D39).add(D40).add(D41).add(D43).add(D44).add(D45).add(I39).add(I40).add(I41).add(I42).add(I43).add(I44).add(I33).add(I34).add(I35).add(I36).add(I37).add(M33).add(M34).add(O34);
+            INPUT_EL = $(D8).add(D9).add(D10).add(D13).add(D14).add(D15).add(D17).add(D20).add(D21).add(D24).add(D25).add(D26).add(D27).add(D28).add(D29).add(D30).add(D31).add(D32).add(D33).add(D34).add(D35).add(D37).add(D36).add(D38).add(D39).add(D40).add(D41).add(D43).add(D44).add(D45).add(I39).add(I40).add(I41).add(I42).add(I43).add(I44).add(I45).add(I46).add(I47).add(I33).add(I34).add(I35).add(I36).add(I37).add(M33).add(M34).add(O34);
 
             CALCULATE_EL = $(I9).add(I10).add(I11).add(I13).add(I15).add(I16).add(I17).add(I18).add(I20).add(I22).add(H25).add(I25).add(I26).add(I27).add(I28).add(J28).add(J29).add(I30).add(I31).add(N9).add(N10).add(N11).add(N13).add(N15).add(N16).add(N18).add(N20).add(N21).add(N22).add(N25).add(M27).add(O27).add(O28).add(O28).add(N30).add(N31).add(M35).add(M36).add(M37).add(N40).add(N41).add(N43).add(N44).add(O35).add(O37);
             //CALCULATE_EL.addClass('purpleBG');
 
-            INPUT_EL = $(INPUT_EL).add(COST_OF_SALESTextBox).add(COST_OF_SALES_PERCENTTextBox).add(OPERATING_EXPENSESTextBox).add(OPERATING_EXPENSES_PERCENTTextBox).add(TAXTextBox).add(OTHER_FIXED_ASSETS_OTHER_BANKTextBox).add($("#OWNERS_EQUITY_PERCENT_INPUTTextBox"));
-            CALCULATE_EL = $(CALCULATE_EL).add(OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox);
+            INPUT_EL = $(INPUT_EL).add(COST_OF_SALESTextBox).add(COST_OF_SALES_PERCENTTextBox).add(OPERATING_EXPENSESTextBox).add(OPERATING_EXPENSES_PERCENTTextBox).add(TAXTextBox).add(OTHER_FIXED_ASSETS_OTHER_BANKTextBox).add($("#OWNERS_EQUITY_PERCENT_INPUTTextBox")).add(CURRENT_ASSET_OTHERTextBox);
+            CALCULATE_EL = $(CALCULATE_EL).add(OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox).add(CURRENT_ASSET_OTHER_CALTextBox);
 
 
             // ใช้ function autonumeric จาก  js/autoNumeric
@@ -503,7 +516,7 @@
             D29.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
             M33.autoNumeric({ aPad: true, vMin: '0.000', vMax: '100.000' });
             M34.autoNumeric({ aPad: true, vMin: '0.000', vMax: '100.000' });
-            I36.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
+            I36.autoNumeric({ aPad: true, vMin: '0.00', vMax: '999999999.99' });
             $("#OWNERS_EQUITY_PERCENT_INPUTTextBox").autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
             COST_OF_SALES_PERCENTTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
             OPERATING_EXPENSES_PERCENTTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
@@ -642,6 +655,15 @@
                 } else {
                     obj.setD24(parseFloat($(D24).autoNumericGet()));
                 }
+
+                if (CURRENT_ASSET_OTHERTextBox.val() == '') {
+                    obj.setCURRENT_ASSET_OTHER(0);
+                    CURRENT_ASSET_OTHERTextBox.val(0);
+                } else {
+                    obj.setCURRENT_ASSET_OTHER(parseFloat($(CURRENT_ASSET_OTHERTextBox).autoNumericGet()));
+                    CURRENT_ASSET_OTHER_CALTextBox.autoNumericSet(parseFloat($(CURRENT_ASSET_OTHERTextBox).autoNumericGet()))
+                }
+
                 if (F10.val() == '') {
                     obj.setF10(0);
                     alert('กรุณาเลือกประเภทธุรกิจ');
@@ -660,6 +682,16 @@
             });
 
             // END  I10 ลูกหนี้การค้า======================
+
+            CURRENT_ASSET_OTHERTextBox.change(function () {
+                var chkErr = false;
+                if (CURRENT_ASSET_OTHERTextBox.val() == '') {
+                    obj.setCURRENT_ASSET_OTHER(0);
+                } else {
+                    obj.setCURRENT_ASSET_OTHER(parseFloat($(CURRENT_ASSET_OTHERTextBox).autoNumericGet()));
+                    CURRENT_ASSET_OTHER_CALTextBox.autoNumericSet($(CURRENT_ASSET_OTHERTextBox).autoNumericGet());
+                }
+            });
 
 
             // I11 สต๊อกสินค้า======================
@@ -731,7 +763,9 @@
                 if (I11.val() == '') {
                     checkErr = true;
                 }
-
+                if (CURRENT_ASSET_OTHERTextBox.val() == '') {
+                    checkErr = true;
+                }
                 if (checkErr == false) {
                     I13.autoNumericSet(obj.I13());
                     I13.change();
@@ -1955,6 +1989,10 @@
                 } else {
                     obj.setI44(parseFloat($(I44).autoNumericGet()));
                 }
+
+                obj.setI45(0);
+                obj.setI46(0);
+
                 if (N10.val() == '') {
                     chkErr = true;
                 }
@@ -2157,6 +2195,9 @@
                 var v42 = 1.0; // v42 = 0.7;
                 var v43 = 1.0; // v43 = 0.6;
 
+                var v45 = 1.0;
+                var v46 = 1.0;
+
                 //var sum;
                 if (I39.val() == '') {
                     //   v39 = 0;
@@ -2193,6 +2234,17 @@
                     // v43 = parseFloat($(I43).autoNumericGet());
                     obj.setI43(parseFloat($(I43).autoNumericGet() * v43));
                 }
+                if (I45.val() == '') {
+                    obj.setI45(0);
+                } else {
+                    obj.setI45(parseFloat($(I45).autoNumericGet() * v45));
+                }
+                if (I46.val() == '') {
+                    obj.setI46(0);
+                } else {
+                    obj.setI46(parseFloat($(I46).autoNumericGet() * v46));
+                }
+
                 //sum = v39 + (v40 * (0.9)) + (v41 * (0.8)) + (v42 * (0.7)) + (v43 * (0.6));
                 T17.autoNumericSet(obj.T17());
                 T17.change();
@@ -2340,7 +2392,7 @@
             setAllObjValue();
 
 
-        });                                                                                                   // end document ready
+        });                                                                                                           // end document ready
 
         function maxD8() {
             return D8.autoNumericGet()
@@ -2435,6 +2487,18 @@
                 } else {
                     obj.setI43(parseFloat($(I43).autoNumericGet()));
                 }
+
+                if (I45.val() == '') {
+                    obj.setI45(0);
+                } else {
+                    obj.setI45(parseFloat($(I45).autoNumericGet()));
+                }
+                if (I46.val() == '') {
+                    obj.setI46(0);
+                } else {
+                    obj.setI46(parseFloat($(I46).autoNumericGet()));
+                }
+
 
                 if (D8.val() == '') {
                     obj.setD8(0);
@@ -2670,7 +2734,11 @@
                 } else {
                     obj.setDX06(parseFloat($(DX06).autoNumericGet()));
                 }
-
+                if (CURRENT_ASSET_OTHERTextBox.val() == '') {
+                    obj.setCURRENT_ASSET_OTHER(0);
+                } else {
+                    obj.setCURRENT_ASSET_OTHER(parseFloat(CURRENT_ASSET_OTHERTextBox.autoNumericGet()));
+                }
 
 
             } //  if SMES_IDTextBox <> ''
@@ -2689,6 +2757,10 @@
                 obj.setI41(0);
                 obj.setI42(0);
                 obj.setI43(0);
+                obj.setI44(0);
+                obj.setI45(0);
+                obj.setI46(0);
+  
                 obj.setD8(0);
                 obj.setD9(0);
                 obj.setD10(0);
@@ -2735,7 +2807,7 @@
                 obj.setO34(0);
                 obj.setO37(0);
                 obj.setDX06(0);
-
+                obj.setCURRENT_ASSET_OTHER(0);
 
 
                 INPUT_EL.val(0); // กำหนดให้ filed input default เป็น 0
@@ -3275,6 +3347,17 @@
                     </td>
                 </tr>
                 <tr>
+                            <td>
+                                สินทรัพย์หมุนเวียน อื่น ๆ
+                            </td>
+                            <td>
+                                <asp:TextBox ID="CURRENT_ASSET_OTHERTextBox" Width="85px" runat="server" Text='<%# Bind("CURRENT_ASSET_OTHER") %>' />
+                            </td>
+                            <td>
+                                บาท
+                            </td>
+                        </tr>
+                <tr>
                     <td class="style6">
                         เครื่องจักร / อุปกรณ์สำนักงาน
                     </td>
@@ -3300,7 +3383,8 @@
                 </tr>
                 <tr>
                     <td class="style6">
-                        สินทรัพย์ถาวรที่จำนองสถาบันการเงินอื่นๆ
+                        สินทรัพย์ถาวรที่จำนอง<br />
+                        สถาบันการเงินอื่นๆ
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="OTHER_FIXED_ASSETS_OTHER_BANKTextBox" ToolTip="DX06: สินทรัพย์ถาวรที่จำนองสถาบันการเงินอื่นๆ "
@@ -3420,7 +3504,8 @@
                 </tr>
                 <tr>
                     <td class="style38">
-                        หนี้สินระยะยาวกับสถาบันการเงินอื่น (เกิน 1 ปี)
+                        หนี้สินระยะยาวกับ<br />
+                        สถาบันการเงินอื่น (เกิน 1 ปี)
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="LONG_TERM_LIABILITY_OTHER_BANKTextBox" runat="server" ToolTip="D36: หนี้สินระยะยาวกับสถาบันการเงินอื่น (เกิน 1 ปี)"
@@ -3491,19 +3576,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="style6">
+                    <td class="style6" colspan="3">
                         <strong>เฉพาะการขออนุัมัติครั้งนี้มีการ Refinance </strong>
-                    </td>
-                    <td class="style9">
                         &nbsp;
-                    </td>
-                    <td class="style37">
                         &nbsp;
                     </td>
                 </tr>
                 <tr>
                     <td class="style6">
-                        Refinance Working Capital จากสถาบันอื่น
+                        Refinance Working Capital 
+                        <br />
+                        จากสถาบันอื่น
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_OTHERTextBox" runat="server" Width="85px"
@@ -3610,6 +3693,28 @@
                 </tr>
                 <tr>
                     <td class="style35">
+                        ราคาประเมินหลักทรัพย์ Zone G</td>
+                    <td class="style9">
+                        <asp:TextBox ID="APPRAISAL_VALUE_ZONE_GTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone G"
+                            Width="85px"  runat="server" 
+                            Text='<%# Bind("APPRAISAL_VALUE_ZONE_E") %>' />
+                    </td>
+                    <td class="style37">
+                        บาท</td>
+                </tr>
+                <tr>
+                    <td class="style35">
+                        ราคาประเมินหลักทรัพย์ Zone F</td>
+                    <td class="style9">
+                        <asp:TextBox ID="APPRAISAL_VALUE_ZONE_FTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone F"
+                            Width="85px" runat="server" 
+                            Text='<%# Bind("APPRAISAL_VALUE_ZONE_F") %>' />
+                    </td>
+                    <td class="style37">
+                        บาท</td>
+                </tr>
+                <tr>
+                    <td class="style35">
                         จำนำเงินฝาก &amp; พันธบัตร 100%
                     </td>
                     <td class="style9">
@@ -3619,6 +3724,16 @@
                     <td class="style37">
                         บาท
                     </td>
+                </tr>
+                <tr>
+                    <td class="style35">
+                        บสยคำประกันรวม</td>
+                    <td class="style9">
+                        <asp:TextBox ID="TCG_GUARANTEETextBox" ToolTip="บสยค้ำประกัน"
+                            Width="85px" runat="server" Text='<%# Bind("TCG_GUARANTEE") %>' />
+                    </td>
+                    <td class="style37">
+                        บาท</td>
                 </tr>
                 <tr>
                     <td class="style35">
@@ -3743,6 +3858,20 @@
                     </td>
                 </tr>
                 <tr>
+                     <td class="style30">
+                            สินทรัพย์หมุนเวียนอื่น ๆ</td>
+                        <td class="style28">
+                                <asp:TextBox ID="CURRENT_ASSET_OTHER_CALTextBox" Width="85px" runat="server" 
+                                Text='<%# Bind("CURRENT_ASSET_OTHER_CAL") %>' />
+                        </td>
+                        <td class="style33">
+                            &nbsp;</td>
+                        <td class="style29">
+                            &nbsp;</td>
+                        <td class="style34">
+                            &nbsp;</td>
+                </tr>
+                <tr>
                     <td class="style30">
                         <strong>รวมสินทรัพย์หมุนเวียน</strong>
                     </td>
@@ -3818,7 +3947,8 @@
                 </tr>
                 <tr>
                     <td class="style30">
-                        สินทรัพย์ถาวรที่จำนองสถาบันการเงินอื่น
+                        สินทรัพย์ถาวรที่จำนอง<br />
+                        สถาบันการเงินอื่น
                     </td>
                     <td class="style28">
                         <asp:TextBox ID="OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox" ToolTip="DX07: สินทรัพย์ถาวรที่จำนองสถาบันการเงินอื่นๆ "
@@ -4017,7 +4147,8 @@
                         วัน
                     </td>
                     <td class="style18" colspan="2">
-                        <strong>คำนวณวงเงินสินเชื่อที่ยังสามารถอนุมัติเพิ่มได้</strong>
+                        <strong>คำนวณวงเงินสินเชื่อที่ยัง<br />
+                        สามารถอนุมัติเพิ่มได้</strong>
                     </td>
                 </tr>
                 <tr>

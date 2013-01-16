@@ -449,10 +449,11 @@ Partial Class smes_financial_customer
             err = True
             errMsg += " ไม่ระบุประเภทลูกค้า "
         End If
-        If CIFNameTextBox.Text = "" Then
-            err = True
-            errMsg += " ไม่พบลูกค้ารายนี้"
-        End If
+
+        'If CIFNameTextBox.Text = "" Then
+        '    err = True
+        '    errMsg += " ไม่พบลูกค้ารายนี้"
+        'End If
 
         ' ยกเลิกการเช็คลูกค้าซ้ำใน grid เนื่องจากมีการดึงลูกค้ามาแล้วจาก ca
         'If action = "Insert" Then

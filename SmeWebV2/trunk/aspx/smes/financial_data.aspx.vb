@@ -97,6 +97,11 @@ Partial Class aspx_smes_FINANCIAL_DATA
                 If IsDBNull(reader("INVENTORY_INTERVIEW")) = False Then INVENTORY_INTERVIEWTextBox.Text = String.Format("{0:n0}", reader("INVENTORY_INTERVIEW"))
                 If IsDBNull(reader("INVENTORY_VISIT")) = False Then INVENTORY_VISITTextBox.Text = String.Format("{0:n0}", reader("INVENTORY_VISIT"))
                 If IsDBNull(reader("ACCOUNT_RECEIVABLE")) = False Then ACCOUNT_RECEIVABLETextBox.Text = String.Format("{0:n0}", reader("ACCOUNT_RECEIVABLE"))
+
+                If IsDBNull(reader("CURRENT_ASSET_OTHER")) = False Then CURRENT_ASSET_OTHERTextBox.Text = String.Format("{0:n0}", reader("CURRENT_ASSET_OTHER"))
+                If IsDBNull(reader("CURRENT_ASSET_OTHER")) = False Then CURRENT_ASSET_OTHER_CALTextBox.Text = String.Format("{0:n0}", reader("CURRENT_ASSET_OTHER"))
+
+
                 If IsDBNull(reader("MACHINERY_EQUIPMENT")) = False Then MACHINERY_EQUIPMENTTextBox.Text = String.Format("{0:n0}", reader("MACHINERY_EQUIPMENT"))
                 If IsDBNull(reader("CORE_ASSETS")) = False Then CORE_ASSETSTextBox.Text = String.Format("{0:n0}", reader("CORE_ASSETS"))
 
@@ -129,8 +134,11 @@ Partial Class aspx_smes_FINANCIAL_DATA
                 If IsDBNull(reader("APPRAISAL_VALUE_ZONE_C")) = False Then APPRAISAL_VALUE_ZONE_CTextBox.Text = String.Format("{0:n0}", reader("APPRAISAL_VALUE_ZONE_C"))
                 If IsDBNull(reader("APPRAISAL_VALUE_ZONE_D")) = False Then APPRAISAL_VALUE_ZONE_DTextBox.Text = String.Format("{0:n0}", reader("APPRAISAL_VALUE_ZONE_D"))
                 If IsDBNull(reader("APPRAISAL_VALUE_ZONE_E")) = False Then APPRAISAL_VALUE_ZONE_ETextBox.Text = String.Format("{0:n0}", reader("APPRAISAL_VALUE_ZONE_E"))
+                If IsDBNull(reader("APPRAISAL_VALUE_ZONE_F")) = False Then APPRAISAL_VALUE_ZONE_FTextBox.Text = String.Format("{0:n0}", reader("APPRAISAL_VALUE_ZONE_F"))
+                If IsDBNull(reader("APPRAISAL_VALUE_ZONE_G")) = False Then APPRAISAL_VALUE_ZONE_GTextBox.Text = String.Format("{0:n0}", reader("APPRAISAL_VALUE_ZONE_G"))
+                If IsDBNull(reader("TCG_GUARANTEE")) = False Then TCG_GUARANTEETextBox.Text = String.Format("{0:n0}", reader("TCG_GUARANTEE"))
                 Dim totalAPPRAISAL_VALUE_ZONE As Decimal
-                totalAPPRAISAL_VALUE_ZONE = ToDecimal(APPRAISAL_VALUE_ZONE_ATextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_BTextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_CTextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_DTextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_ETextBox.Text)
+                totalAPPRAISAL_VALUE_ZONE = ToDecimal(APPRAISAL_VALUE_ZONE_ATextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_BTextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_CTextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_DTextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_ETextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_FTextBox.Text) + ToDecimal(APPRAISAL_VALUE_ZONE_GTextBox.Text)
                 TOTAL_AMOUNT_OF_COLLATERALTextBox.Text = String.Format("{0:n0}", totalAPPRAISAL_VALUE_ZONE)
                 If IsDBNull(reader("BOND_DEPOSIT_PLEDGE")) = False Then BOND_DEPOSIT_PLEDGETextBox.Text = String.Format("{0:n0}", reader("BOND_DEPOSIT_PLEDGE"))
                 If IsDBNull(reader("CASH_BOND_CAL")) = False Then CASH_BOND_CALTextBox.Text = String.Format("{0:n0}", reader("CASH_BOND_CAL"))
@@ -1199,11 +1207,32 @@ Partial Class aspx_smes_FINANCIAL_DATA
         Else
             sqlCmd.Parameters.AddWithValue("APPRAISAL_VALUE_ZONE_D", ToDecimal(APPRAISAL_VALUE_ZONE_DTextBox.Text))
         End If
+
         If APPRAISAL_VALUE_ZONE_ETextBox.Text = "" Then
             sqlCmd.Parameters.AddWithValue("APPRAISAL_VALUE_ZONE_E", 0)
         Else
             sqlCmd.Parameters.AddWithValue("APPRAISAL_VALUE_ZONE_E", ToDecimal(APPRAISAL_VALUE_ZONE_ETextBox.Text))
         End If
+
+        If APPRAISAL_VALUE_ZONE_FTextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("APPRAISAL_VALUE_ZONE_F", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("APPRAISAL_VALUE_ZONE_F", ToDecimal(APPRAISAL_VALUE_ZONE_FTextBox.Text))
+        End If
+
+        If APPRAISAL_VALUE_ZONE_GTextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("APPRAISAL_VALUE_ZONE_G", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("APPRAISAL_VALUE_ZONE_G", ToDecimal(APPRAISAL_VALUE_ZONE_GTextBox.Text))
+        End If
+
+        If TCG_GUARANTEETextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("TCG_GUARANTEE", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("TCG_GUARANTEE", ToDecimal(TCG_GUARANTEETextBox.Text))
+        End If
+
+
         If BOND_DEPOSIT_PLEDGETextBox.Text = "" Then
             sqlCmd.Parameters.AddWithValue("BOND_DEPOSIT_PLEDGE", 0)
         Else
@@ -1492,6 +1521,12 @@ Partial Class aspx_smes_FINANCIAL_DATA
             sqlCmd.Parameters.AddWithValue("LOAN_DEFAULT_APPROVE", 0)
         Else
             sqlCmd.Parameters.AddWithValue("LOAN_DEFAULT_APPROVE", ToDecimal(LOAN_DEFAULT_APPROVETextBox.Text))
+        End If
+
+        If CURRENT_ASSET_OTHERTextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("CURRENT_ASSET_OTHER", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("CURRENT_ASSET_OTHER", ToDecimal(CURRENT_ASSET_OTHERTextBox.Text))
         End If
 
         sqlCmd.ExecuteNonQuery()

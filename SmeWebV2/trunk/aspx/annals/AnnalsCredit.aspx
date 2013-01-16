@@ -1567,16 +1567,16 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <asp:Label ID="lblEMP_REQUEST_ID" runat="server" Text="Request By (ผู้ขออนุมัติ)"></asp:Label>
+                                                        <asp:Label ID="lblEMP_REQUEST_ID" runat="server" Text="Request By (ผู้ขออนุมัติ)" ToolTip="ผุ้ขออนุมัติ (CategoryKey 1203)"></asp:Label>
                                                     </td>
                                                     <td colspan="2">
-                                                        <asp:DropDownList ID="DDLRequestApprove" runat="server">
+                                                        <asp:DropDownList ID="DDLRequestApprove" runat="server" >
                                                         </asp:DropDownList>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <asp:Label ID="LabelSubComittee1" runat="server" Text="Sub Committee ( ผู้อนุมัติเบื้องต้น ) 1"></asp:Label>
+                                                        <asp:Label ID="LabelSubComittee1" runat="server" Text="Sub Committee ( ผู้อนุมัติเบื้องต้น ) 1" ToolTip="ผู้อนุมัติเบื้องต้น (CategoryKey 1205)"></asp:Label>
                                                     </td>
                                                     <td>
                                                         <asp:DropDownList ID="DDLSubcommittee1" runat="server">
@@ -1585,7 +1585,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <asp:Label ID="LabelSubComittee2" runat="server" Text="Sub Committee ( ผู้อนุมัติเบื้องต้น ) 2"></asp:Label>
+                                                        <asp:Label ID="LabelSubComittee2" runat="server" Text="Sub Committee ( ผู้อนุมัติเบื้องต้น ) 2" ToolTip="ผู้อนุมัติเบื้องต้น (CategoryKey 1205)"></asp:Label>
                                                     </td>
                                                     <td>
                                                         <asp:DropDownList ID="DDLSubcommittee2" runat="server">
@@ -1594,7 +1594,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <asp:Label ID="LabelSubComittee3" runat="server" Text="Sub Committee ( ผู้อนุมัติเบื้องต้น ) 3"></asp:Label>
+                                                        <asp:Label ID="LabelSubComittee3" runat="server" Text="Sub Committee ( ผู้อนุมัติเบื้องต้น ) 3" ToolTip="ผู้อนุมัติเบื้องต้น (CategoryKey 1205)"></asp:Label>
                                                     </td>
                                                     <td>
                                                         <asp:DropDownList ID="DDLSubcommittee3" runat="server">
@@ -1698,7 +1698,7 @@
                                                         <table style="width: 1000px">
                                                             <tr>
                                                                 <td style="width: 197">
-                                                                    <asp:Label ID="lblEMP_APPROVE_ID" runat="server" Text="Approve 1 BY (ผู้อนุมัติที่ 1)"></asp:Label>
+                                                                    <asp:Label ID="lblEMP_APPROVE_ID" runat="server" Text="Approve 1 BY (ผู้อนุมัติที่ 1)" ToolTip="ผู้อนุมัติ (CategoryKey 1204)"></asp:Label>
                                                                 </td>
                                                                 <td colspan="2">
                                                                     <asp:DropDownList ID="DDLApprove1" runat="server">
@@ -1707,7 +1707,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label25" runat="server" Text="Approve 2 BY (ผู้อนุมัติที่2)" Width="154px"></asp:Label>
+                                                                    <asp:Label ID="Label25" runat="server" Text="Approve 2 BY (ผู้อนุมัติที่2)" Width="154px" ToolTip="ผู้อนุมัติ (CategoryKey 1204)"></asp:Label>
                                                                 </td>
                                                                 <td colspan="2">
                                                                     <asp:DropDownList ID="DDLApprove2" runat="server">
@@ -1716,7 +1716,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label37" runat="server" Text="Approve 3 BY (ผู้อนุมัติที่ 3)" Width="154px"></asp:Label>
+                                                                    <asp:Label ID="Label37" runat="server" Text="Approve 3 BY (ผู้อนุมัติที่ 3)" Width="154px" ToolTip="ผู้อนุมัติ (CategoryKey 1204)"></asp:Label>
                                                                 </td>
                                                                 <td colspan="2">
                                                                     <asp:DropDownList ID="DDLApprove3" runat="server">
@@ -1725,7 +1725,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label38" runat="server" Text="Approve 4 BY (ผู้อนุมัติที่ 4)" Width="154px"></asp:Label>
+                                                                    <asp:Label ID="Label38" runat="server" Text="Approve 4 BY (ผู้อนุมัติที่ 4)" Width="154px" ToolTip="ผู้อนุมัติ (CategoryKey 1204)"></asp:Label>
                                                                 </td>
                                                                 <td colspan="2">
                                                                     <asp:DropDownList ID="DDLApprove4" runat="server">

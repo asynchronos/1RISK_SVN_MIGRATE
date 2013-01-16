@@ -110,7 +110,7 @@
         <Columns>
             <asp:TemplateField ShowHeader="False">
                 <ItemTemplate>
-                    <asp:ImageButton ID="imgLocation" runat="server" ImageUrl="~/smes/images/qmv_bb_preview.gif"
+                    <asp:ImageButton ID="imgLocation" runat="server" ImageUrl="~/images/qmv_bb_preview.gif"
                         ToolTip="เลือกลูกค้า" OnClientClick='<%# "returnValue("""+Eval("BUSINESS_ID").toString() + """,""" +Eval("BUSINESS_CODE").toString() + """,""" + Eval("BUSINESS_NAME").toString() +""","""+Eval("BUSINESS_GROUP_ID").toString()+""","""+Eval("BUSINESS_GROUP_NAME").toString()+ """,""" + Eval("MARGIN").toString() + """,""" + Eval("DSCR").toString() + ""","""  + Eval("AP").toString() + """,""" + Eval("AR").toString() + """,""" + Eval("STOCK").toString() + """,""" + Eval("LTV").toString() + """,""" + Eval("WORKING_CAPITAL").toString() + """,""" + Eval("RATE").toString() + """,""" + Eval("CONTRACT").toString() +""") ; return false;" %>' />
                 </ItemTemplate>
             </asp:TemplateField>

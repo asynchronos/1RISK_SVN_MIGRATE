@@ -19,7 +19,7 @@ Partial Class aspx_customer_BusinessType
     End Sub
 
     Protected Sub SearchButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles SearchButton.Click
-        Response.Redirect(Page.ResolveUrl("~/smes/BusinessType.aspx?businessTypeDetail=") + keywordsTextBox.Text + "&returnIdTarget=" + Request.QueryString("returnIdTarget") + "&returnDetailTarget=" + Request.QueryString("returnDetailTarget"))
+        Response.Redirect(Page.ResolveUrl("BusinessType.aspx?businessTypeDetail=") + keywordsTextBox.Text + "&returnIdTarget=" + Request.QueryString("returnIdTarget") + "&returnDetailTarget=" + Request.QueryString("returnDetailTarget"))
     End Sub
 
     'Protected Sub insertFirstItem(ByVal sender As Object)
