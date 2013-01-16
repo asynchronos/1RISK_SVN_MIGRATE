@@ -205,7 +205,7 @@ var SSProject = function () {
     //RM Input
     var I33, I34, I35, I36, I37;
 
-    var I39, I40, I41, I42, I43, I44;
+    var I39, I40, I41, I42, I43, I44 ,I45,I46;
 
     var M25, M27, O27;
 
@@ -213,6 +213,8 @@ var SSProject = function () {
     // Table Lookup  
     var O35, O37;
     var MARGIN, DSCR, AP, AR, STOCK, LTV, WORKING_CAPITAL, RATE, CONTRACT;
+    // สินทรัพถาวรอื่น ๆ
+    var CURRENT_ASSET_OTHER;
 
 };
 
@@ -793,7 +795,28 @@ SSProject.prototype = {
             return this.I44;
         }
     },
-
+    setI45: function (input) {
+        this.I45 = (new MyNumber(input)).getValue();
+        return this;
+    },
+    getI45: function () {
+        if (!this.I45 && this.I45 != 0) {
+            return this.ShowNotAssignedMsg("I45");
+        } else {
+            return this.I45;
+        }
+    },
+    setI46: function (input) {
+        this.I46 = (new MyNumber(input)).getValue();
+        return this;
+    },
+    getI46: function () {
+        if (!this.I46 && this.I46 != 0) {
+            return this.ShowNotAssignedMsg("I46");
+        } else {
+            return this.I46;
+        }
+    },
     setM25: function (input) {
         this.M25 = (new MyNumber(input)).getValue();
         return this;
@@ -904,6 +927,12 @@ SSProject.prototype = {
             return this.WORKING_CAPITAL;
         }
     }
+    , setCURRENT_ASSET_OTHER: function (newCURRENT_ASSET_OTHER) {
+            CURRENT_ASSET_OTHER = newCURRENT_ASSET_OTHER;
+        },
+        getCURRENT_ASSET_OTHER: function () {
+            return CURRENT_ASSET_OTHER;
+    }
     //calculator functional
    , I9: function () {
        return this.getD28() + this.getI37();
@@ -964,7 +993,7 @@ SSProject.prototype = {
         }
     }
     , I13: function () {
-        return this.I9() + this.I10() + this.I11();
+        return this.I9() + this.I10() + this.I11() + this.getCURRENT_ASSET_OTHER(); 
     }
     , I15: function () {
         return this.getD25();
@@ -1431,8 +1460,14 @@ SSProject.prototype = {
     , T11: function () {
         return this.getI43();
     }
+     , T12: function () {
+         return this.getI45();
+     }
+    , T13: function () {
+     return this.getI46();
+    }
     , T17: function () {
-        return this.T7() + this.T8() + this.T9() + this.T10() + this.T11();
+        return this.T7() + this.T8() + this.T9() + this.T10() + this.T11() + this.T12() + this.T13();
     }
     , X99: function () {
         if (useNop) { // use p'nop function in excel

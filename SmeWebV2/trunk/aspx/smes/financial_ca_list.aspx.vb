@@ -120,6 +120,8 @@ Partial Class aspx_smes_financial_ca_list
             SField = "CIF"
         ElseIf SearchDropDownList.SelectedValue = "ID" Then
             SField = "ID"
+        ElseIf SearchDropDownList.SelectedValue = "EMP2" Then
+            SField = "EMP2"
         Else
             SField = ""
         End If

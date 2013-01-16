@@ -304,20 +304,24 @@ Partial Class aspx_form_ShowTable
 
 
     Protected Sub BtnRun_Click(sender As Object, e As System.EventArgs) Handles BtnRun.Click
-
+        Dim conn As SqlConnection = Nothing
+        conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+        Dim Sql As String = TextBoxSQL.Text
+        Dim sqlCmd As New SqlCommand(Sql, conn)
+        sqlCmd.CommandType = CommandType.Text
         Try
-            Dim conn As SqlConnection = Nothing
-            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
-            Dim Sql As String = TextBoxSQL.Text
-            Dim sqlCmd As New SqlCommand(Sql, conn)
-            sqlCmd.CommandType = CommandType.Text
             sqlCmd.ExecuteNonQuery()
         Catch ex As Exception
             Response.Write(ex.Message)
         Finally
+
+            sqlCmd.Dispose()
+            conn.Close()
+
             Response.Write("Complete")
             showData()
             GridViewTable.EditIndex = -1
+
         End Try
 
     End Sub

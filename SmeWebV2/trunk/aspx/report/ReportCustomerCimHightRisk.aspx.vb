@@ -2,11 +2,13 @@
 Imports Oracle.DataAccess.Client
 Imports System.IO
 
+
 Partial Class aspx_report_ReportCustomerCimHightRisk
     Inherits System.Web.UI.Page
     Dim objConn As OracleConnection
     Dim objCmd As OracleCommand
     Dim dtAdapter As OracleDataAdapter
+
     Dim strSQL As String
 
 

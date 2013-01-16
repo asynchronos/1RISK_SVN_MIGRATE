@@ -93,7 +93,7 @@
         , I9, I10, I11, I13, I15, I16, I17, I18, I20, I22
         , I25, I26, I27, I28
         , I30, I31, I33, I34, I35, I36, I37
-        , I39, I40, I41, I42, I43, I44, T17 // หลักประกันรวม
+        , I39, I40, I41, I42, I43, I44, I45, I46, T17 // หลักประกันรวม
         , J28, J29
         , M25, M27, M33, M34, M35, M36, M37
         , N9, N10, N11, N13, N15, N16, N18, N20, N21, N22
@@ -170,6 +170,8 @@
             I42 = $("#APPRAISAL_VALUE_ZONE_D_CMTextBox");
             I43 = $("#APPRAISAL_VALUE_ZONE_E_CMTextBox");
             I44 = $("#BOND_DEPOSIT_PLEDGE_CMTextBox");
+
+
             T17 = $("#TOTAL_AMOUNT_OF_COLLATERAL_CMTextBox");
 
             RATE_TABLE = $("[CELL='RATE_TABLE']");  // ไม่มีใน cell pnop
@@ -326,6 +328,9 @@
             } else {
                 obj.setI44(parseFloat($(I44).autoNumericGet()));
             }
+
+            obj.setI45(0);
+            obj.setI46(0);
 
             if (D8.val() == '') {
                 obj.setD8(0);
@@ -664,7 +669,7 @@
 
             $("#EBIDA_PERCENT_CALTextBox").autoNumericSet(obj.H25() * 100);
             $("#WORKING_CAPITAL_NEED_CALTextBox").autoNumericSet(obj.I30());
-            
+
             $("#LOAN_NEED_CALTextBox").autoNumericSet(obj.I31());
             $("#WORKING_CAPITAL_APPROVE_CALTextBox").autoNumericSet(obj.N30());
             $("#LOAN_APPROVE_CALTextBox").autoNumericSet(obj.N31());
@@ -1757,7 +1762,8 @@
                                     ToolTip="D16: Default Margin" Width="85px" />
                             </td>
                             <td class="style23">
-                                <asp:TextBox ID="DEFAULT_MARGINTextBox" runat="server" CELL="D16"  ToolTip="D16: Default Margin" Width="85px" />
+                                <asp:TextBox ID="DEFAULT_MARGINTextBox" runat="server" CELL="D16" ToolTip="D16: Default Margin"
+                                    Width="85px" />
                             </td>
                         </tr>
                     </table>

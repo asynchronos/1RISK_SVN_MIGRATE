@@ -389,6 +389,7 @@ End Sub
             Next
         Catch ex As Exception
             st = False
+            Throw New Exception("Create folder upload failed." + ex.Message, ex)
         End Try
         Return st
     End Function
