@@ -110,8 +110,7 @@
     </style>
     <script src="js/jquery-1.7.min.js" type="text/javascript"></script>
     <script src="js/jquery-ui-1.8.18/js/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
-    <%--    <link href="js/jquery-ui-1.8.18/css/redmond/jquery-ui-1.8.18.custom.css" rel="stylesheet"    type="text/css" />--%>
-    <%--    <link href="js/jquery-ui-1.8.18/css/sunny/jquery-ui-1.8.18.custom.css" rel="stylesheet"    type="text/css" />--%>
+    <%--    <link href="js/jquery-ui-1.8.18/css/redmond/jquery-ui-1.8.18.custom.css" rel="stylesheet"    type="text/css" />--%>    <%--    <link href="js/jquery-ui-1.8.18/css/sunny/jquery-ui-1.8.18.custom.css" rel="stylesheet"    type="text/css" />--%>
     <link href="js/jquery-ui-1.8.18/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet"
         type="text/css" />
     <script src="js/autoNumeric.js" type="text/javascript"></script>
@@ -326,8 +325,9 @@
             I43 = $("#APPRAISAL_VALUE_ZONE_ETextBox");
             I44 = $("#BOND_DEPOSIT_PLEDGETextBox");
             T17 = $("#TOTAL_AMOUNT_OF_COLLATERALTextBox");
-            I45 = $("#APPRAISAL_VALUE_ZONE_GTextBox");
-            I46 = $("#APPRAISAL_VALUE_ZONE_FTextBox");
+            
+            I45 = $("#APPRAISAL_VALUE_ZONE_FTextBox");
+            I46 = $("#APPRAISAL_VALUE_ZONE_GTextBox");
             I47 = $("#TCG_GUARANTEETextBox");
 
 
@@ -396,7 +396,7 @@
             //INVENTORY_CAL_EL = $("[CELL='D21'],[CELL='D20'],[CELL='D13'],[CELL='STOCK_TABLE']");
             INVENTORY_CAL_EL = $(D21).add(D20).add(D13).add("[CELL='STOCK_TABLE']");
             //TOTAL_CURRENT_ASSETS_CAL_EL = $("[CELL='I9'],[CELL='I10'],[CELL='I11']");
-            TOTAL_CURRENT_ASSETS_CAL_EL = $(I9).add(I10).add(I11).add(CURRENT_ASSET_OTHERTextBox);
+            TOTAL_CURRENT_ASSETS_CAL_EL = $(I9).add(I10).add(I11).add(CURRENT_ASSET_OTHER_CALTextBox);
             // MACHINERY_EQUIPMENT_CAL_EL = $("[CELL='D25']");
             MACHINERY_EQUIPMENT_CAL_EL = $(D25);
             //PROPERTY_PLANT_CAL_BUILDING_EL = $("[CELL='D26']");
@@ -540,7 +540,9 @@
             TAXTextBox.autoNumeric({ aPad: true });
             OTHER_FIXED_ASSETS_OTHER_BANKTextBox.autoNumeric({ aPad: true });
             OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox.autoNumeric({ aPad: true, vMin: '-9999999999', vMax: '9999999999' });
-
+            
+            J28.autoNumeric({ aPad: true });
+            J29.autoNumeric({ aPad: true });
 
             //$("#tab1 input[type='text'],#tab2 input[type='text'],#tab3 input[type='text'],#tab4 input[type='text']").autoNumeric({ aPad: false }); // ให้ใช้ autonumeric และ ไม่ให้มีทศนิยม
 
@@ -2189,11 +2191,13 @@
                 $(this).blur();
             });
             TOTAL_AMOUNT_OF_COLLATERAL_EL.change(function () {
-                var v39 = 1.0;
-                var v40 = 1.0; // v40 = 0.9;
-                var v41 = 1.0; //v41 = 0.8;
-                var v42 = 1.0; // v42 = 0.7;
-                var v43 = 1.0; // v43 = 0.6;
+
+
+                var v39 = 1.0; //  Zone A  I39 0.85
+                var v40 = 1.0; //  Zone B  I40 0.75
+                var v41 = 1.0; //  Zone C  I41  0.60
+                var v42 = 1.0; //  Zone D  I42 0.60
+                var v43 = 1.0; //  Zone E  I43 0.50
 
                 var v45 = 1.0;
                 var v46 = 1.0;
@@ -3633,7 +3637,7 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        ราคาประเมินหลักทรัพย์ Zone A
+                        CBD : Core Asset
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_ATextBox" ToolTip="I39: ราคาประเมินหลักทรัพย์ Zone A"
@@ -3645,8 +3649,7 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        ราคาประเมินหลักทรัพย์ Zone B
-                    </td>
+                        CBD : Non Core Asset</td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_BTextBox" ToolTip="I40: ราคาประเมินหลักทรัพย์ Zone B"
                             Width="85px" CELL="I40" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_B") %>' />
@@ -3657,11 +3660,10 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        ราคาประเมินหลักทรัพย์ Zone C
-                    </td>
+                        CBD : Land</td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_CTextBox" ToolTip="I41: ราคาประเมินหลักทรัพย์ Zone C"
-                            Width="85px" CELL="I41" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_C") %>' />
+                            Width="85px" CELL="I41" runat="server" />
                     </td>
                     <td class="style37">
                         บาท
@@ -3669,11 +3671,11 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        ราคาประเมินหลักทรัพย์ Zone D
+                        Not CBD :Core Asset
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_DTextBox" ToolTip="I42: ราคาประเมินหลักทรัพย์ Zone D"
-                            Width="85px" CELL="I42" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_D") %>' />
+                            Width="85px" CELL="I42" runat="server"  />
                     </td>
                     <td class="style37">
                         บาท
@@ -3681,11 +3683,10 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        ราคาประเมินหลักทรัพย์ Zone E
-                    </td>
+                        Not CBD :Non Core Asset</td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_ETextBox" ToolTip="I43: ราคาประเมินหลักทรัพย์ Zone E"
-                            Width="85px" CELL="I43" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_E") %>' />
+                            Width="85px" CELL="I43" runat="server"/>
                     </td>
                     <td class="style37">
                         บาท
@@ -3693,22 +3694,20 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        ราคาประเมินหลักทรัพย์ Zone G</td>
+                        Not CBD :Land</td>
                     <td class="style9">
-                        <asp:TextBox ID="APPRAISAL_VALUE_ZONE_GTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone G"
-                            Width="85px"  runat="server" 
-                            Text='<%# Bind("APPRAISAL_VALUE_ZONE_E") %>' />
+                        <asp:TextBox ID="APPRAISAL_VALUE_ZONE_FTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone F"
+                            Width="85px" runat="server" />
                     </td>
                     <td class="style37">
                         บาท</td>
                 </tr>
                 <tr>
                     <td class="style35">
-                        ราคาประเมินหลักทรัพย์ Zone F</td>
+                        ราคาประเมินหลักทรัพย์ Zone G</td>
                     <td class="style9">
-                        <asp:TextBox ID="APPRAISAL_VALUE_ZONE_FTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone F"
-                            Width="85px" runat="server" 
-                            Text='<%# Bind("APPRAISAL_VALUE_ZONE_F") %>' />
+                        <asp:TextBox ID="APPRAISAL_VALUE_ZONE_GTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone G"
+                            Width="85px"  runat="server" />
                     </td>
                     <td class="style37">
                         บาท</td>
@@ -4347,7 +4346,7 @@
             <table width="100%">
                 <tr>
                     <td colspan="4">
-                        <span class="ui-state-highlight"><strong>วงเงินสินเชื่อที่ขออนุมัติครั้งนี้ (RM)</strong>
+                        <span class="ui-state-highlight"><strong>วงเงินสินเชื่อที่ขออนุมัติครั้งนี้ </strong>
                         </span>&nbsp;
                     </td>
                 </tr>
