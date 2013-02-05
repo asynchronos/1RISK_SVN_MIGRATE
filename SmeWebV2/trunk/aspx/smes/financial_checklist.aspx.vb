@@ -129,19 +129,19 @@ Partial Class smes_financial_checklist
                 countResult(PurposeResultLabel.Text)
             End If
 
-            If IsDBNull(reader("INVEST_IN")) = False Then
-                InvestInLabel.Text = reader("INVEST_IN")
-            End If
-            If IsDBNull(reader("INVEST_IN_RESULT")) = False Then
-                InvestInResultLabel.Text = reader("INVEST_IN_RESULT")
-                countResult(InvestInResultLabel.Text)
-            End If
+            'If IsDBNull(reader("INVEST_IN")) = False Then
+            '    InvestInLabel.Text = reader("INVEST_IN")
+            'End If
+            'If IsDBNull(reader("INVEST_IN_RESULT")) = False Then
+            '    InvestInResultLabel.Text = reader("INVEST_IN_RESULT")
+            '    countResult(InvestInResultLabel.Text)
+            'End If
 
-            If IsDBNull(reader("TENOR_LIST_NAME")) = False Then
-                TenorLabel.Text = reader("TENOR_LIST_NAME")
+            If IsDBNull(reader("TENOR")) = False Then
+                TenorLabel.Text = reader("TENOR")
             End If
-            If IsDBNull(reader("TENOR_LIST_RESULT")) = False Then
-                TenorResultLabel.Text = reader("TENOR_LIST_RESULT")
+            If IsDBNull(reader("TENOR_RESULT")) = False Then
+                TenorResultLabel.Text = reader("TENOR_RESULT")
                 countResult(TenorResultLabel.Text)
             End If
 
@@ -232,8 +232,10 @@ Partial Class smes_financial_checklist
             If IsDBNull(dt.Rows(i).Item("TDR_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("TDR_LIST_RESULT"))
             If IsDBNull(dt.Rows(i).Item("RATING_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("RATING_LIST_RESULT"))
             If IsDBNull(dt.Rows(i).Item("LEGAL_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("LEGAL_LIST_RESULT"))
-            If IsDBNull(dt.Rows(i).Item("REGIS_DOC_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("REGIS_DOC_LIST_RESULT"))
-            If IsDBNull(dt.Rows(i).Item("SHaREHOLDER_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("SHaREHOLDER_LIST_RESULT"))
+            ' เปลี่ยนไม่ใช้ crieteria นี้ 28/1/2556
+            'If IsDBNull(dt.Rows(i).Item("REGIS_DOC_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("REGIS_DOC_LIST_RESULT"))
+            'If IsDBNull(dt.Rows(i).Item("SHaREHOLDER_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("SHaREHOLDER_LIST_RESULT"))
+            If IsDBNull(dt.Rows(i).Item("DPD_RESULT")) = False Then countResult(dt.Rows(i).Item("DPD_RESULT"))
 
         Next
 

@@ -177,18 +177,6 @@
                 </td>
             </tr>
             <tr>
-                <td class="style6">
-                    <asp:Label ID="InvestInResultLabel" runat="server" Text=""></asp:Label>
-                </td>
-                <td class="style1">
-                    มีแผนลงทุนภายใน
-                </td>
-                <td class="style4">
-                    <asp:Label ID="InvestInLabel" runat="server" Text=""></asp:Label>
-                    &nbsp;ปี
-                </td>
-            </tr>
-            <tr>
                 <td class="style7">
                     <asp:Label ID="TenorResultLabel" runat="server" Text=""></asp:Label>
                 </td>
@@ -197,7 +185,7 @@
                 </td>
                 <td class="style5">
                     <asp:Label ID="TenorLabel" runat="server" Text=""></asp:Label>
-                </td>
+                &nbsp;ปี</td>
             </tr>
             <tr>
                 <td class="style6">
@@ -264,9 +252,9 @@
             <asp:BoundField DataField="TDR_LIST_RESULT" HeaderText="TDR" ReadOnly="true" />
             <asp:BoundField DataField="RATING_LIST_RESULT" HeaderText="Rating" ReadOnly="true" />
             <asp:BoundField DataField="LEGAL_LIST_RESULT" HeaderText="Legal" ReadOnly="true" />
-            <asp:BoundField DataField="REGIS_DOC_LIST_RESULT" HeaderText="Document" ReadOnly="true" />
-            <asp:BoundField DataField="SHaREHOLDER_LIST_RESULT" HeaderText="Shareholder" ReadOnly="true" />
-        </Columns>
+            <asp:BoundField DataField="DPD_RESULT" HeaderText="DPD" ReadOnly="true" />
+
+           </Columns>
         <FooterStyle BackColor="#CCCC99" />
         <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
