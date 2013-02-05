@@ -5,6 +5,7 @@ Partial Class aspx_smes_financial_ca_list
     Inherits System.Web.UI.Page
     Shared SField As String
     Shared SValue As String
+    Shared STemplate As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim strUsername As String = Session("EMP_ID")
         Session("User") = Session("EMP_ID")     '  กำหนดให้ session ที่ใช้ใน smes เป็นอันเดียวกับ leader1
@@ -13,16 +14,39 @@ Partial Class aspx_smes_financial_ca_list
  
         End If
         If Not Page.IsPostBack Then
-            SField = ""
-            SValue = ""
-            showData(Session("User"), SField, SValue)
-      
+            SField = " "
+            SValue = " "
+            STemplate = ""
+            showData(Session("User"), SField, SValue, STemplate)
+            bindDropDown()
         End If
 
     End Sub
 
+    Sub bindDropDown()
 
-    Sub showData(EmpID As String, Field As String, Value As String)
+        Dim conn As SqlConnection = Nothing
+        conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+        Dim Sql As String = "[SME_S].[P_SS_TEMPLATE_SELECT]"
+        Dim sqlCmd As New SqlCommand(Sql, conn)
+        sqlCmd.Prepare()
+        Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
+        DropDownListTemplate.DataSource = reader
+        DropDownListTemplate.DataValueField = "TEMPLATE_ID"
+        DropDownListTemplate.DataTextField = "TEMPLATE_NAME"
+        DropDownListTemplate.DataBind()
+
+        reader.Close()
+        conn.Close()
+
+        DropDownListTemplate.Items.Insert(0, New ListItem("ทั้งหมด", "", True))
+
+
+    End Sub
+
+    Sub showData(EmpID As String, Field As String, Value As String, TemplateID As String)
+
+        ' MsgBox("emp=" & EmpID & "field=" & Field & "value=" & Value & "Template=" & STemplate)
 
         Dim conn As New SqlConnection
         conn.ConnectionString = ConfigurationManager.ConnectionStrings("BAY01ConnectionString").ConnectionString
@@ -36,6 +60,7 @@ Partial Class aspx_smes_financial_ca_list
         sqlCmd.Parameters.AddWithValue("EMP_ID", EmpID)
         sqlCmd.Parameters.AddWithValue("FIELD", Field)
         sqlCmd.Parameters.AddWithValue("VALUE", Value)
+        sqlCmd.Parameters.AddWithValue("TEMPLATE", TemplateID)
 
         Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
 
@@ -83,7 +108,8 @@ Partial Class aspx_smes_financial_ca_list
         End If
 
         Session("SortExpression") = e.SortExpression
-        showData(Session("User"), "", "")
+
+        showData(Session("User"), SField, SValue, STemplate)
 
     End Sub
 
@@ -99,7 +125,7 @@ Partial Class aspx_smes_financial_ca_list
     End Function
     Protected Sub GridView1_PageIndexChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles GridView1.PageIndexChanging
         GridView1.PageIndex = e.NewPageIndex
-        showData(Session("User"), SField, SValue)
+        showData(Session("User"), SField, SValue, STemplate)
     End Sub
 
     Protected Sub GridView1_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles GridView1.RowDataBound
@@ -128,14 +154,19 @@ Partial Class aspx_smes_financial_ca_list
 
         If SField <> "" Then
             SValue = SearchTextBox.Text
-            showData(Session("User"), SField, SValue)
+            showData(Session("User"), SField, SValue, STemplate)
         End If
     End Sub
 
     Protected Sub AllButton_Click(sender As Object, e As System.EventArgs) Handles AllButton.Click
         SField = ""
         SValue = ""
-        showData(Session("User"), SField, SValue)
+        showData(Session("User"), SField, SValue, STemplate)
     End Sub
 
+    Protected Sub DropDownListTemplate_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles DropDownListTemplate.SelectedIndexChanged
+        STemplate = DropDownListTemplate.Items(DropDownListTemplate.SelectedIndex).Value
+
+        showData(Session("User"), SField, SValue, STemplate)
+    End Sub
 End Class
