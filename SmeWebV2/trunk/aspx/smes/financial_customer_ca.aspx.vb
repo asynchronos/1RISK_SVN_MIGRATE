@@ -54,106 +54,110 @@ Partial Class smes_financial_customer
     Sub showForm()
 
         Dim CIF As String = CustomersGridView.Rows(CustomersGridView.EditIndex).Cells(1).Text
-
+        'MsgBox(CIF)
         Dim conn As SqlConnection = Nothing
-        ' Try
-        conn = ConnectionUtil.getSqlConnectionFromWebConfig()
-        'Dim Sql As String = "SME_S.P_SS_FINANCIAL_CUSTOMER_SELECT_CIF"
-        Dim Sql As String = "SME_S.P_SS_FINANCIAL_CUSTOMER_CA_SELECT_CIF"
-        Dim sqlCmd As New SqlCommand(Sql, conn)
-        sqlCmd.CommandType = CommandType.StoredProcedure
-        sqlCmd.Prepare()
-        sqlCmd.Parameters.AddWithValue("@SMES_ID", Request.QueryString("SMES_ID"))
-        sqlCmd.Parameters.AddWithValue("@CIF", CIF)
+        Try
+            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+            'Dim Sql As String = "SME_S.P_SS_FINANCIAL_CUSTOMER_SELECT_CIF"
+            Dim Sql As String = "SME_S.P_SS_FINANCIAL_CUSTOMER_CA_SELECT_CIF"
+            Dim sqlCmd As New SqlCommand(Sql, conn)
+            sqlCmd.CommandType = CommandType.StoredProcedure
+            sqlCmd.Prepare()
+            sqlCmd.Parameters.AddWithValue("@SMES_ID", Request.QueryString("SMES_ID"))
+            sqlCmd.Parameters.AddWithValue("@CIF", CIF)
 
-        Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
-        If reader.HasRows = False Then
-            clearInput()
-            setAdd()
-
-            CIFTextBox.Text = CustomersGridView.Rows(CustomersGridView.EditIndex).Cells(1).Text
-            CIFNameTextBox.Text = CustomersGridView.Rows(CustomersGridView.EditIndex).Cells(2).Text
-
-        Else
-            While reader.Read()
+            Dim reader As SqlDataReader = sqlCmd.ExecuteReader()
+            If reader.HasRows = False Then
                 clearInput()
-                '   Console.WriteLine(String.Format("{0}, {1}", reader(0), reader(1)))
-                If IsDBNull(reader("CIF")) = False Then CIFTextBox.Text = reader("CIF").ToString()
-                If IsDBNull(reader("NAME")) = False Then CIFNameTextBox.Text = reader("NAME").ToString()
-                If IsDBNull(reader("CUSTOMER_TYPE")) = False Then
-                    CustomerTypeDropDownList.SelectedIndex = CustomerTypeDropDownList.Items.IndexOf(CustomerTypeDropDownList.Items.FindByValue(reader("CUSTOMER_TYPE")))
-                End If
+                setAdd()
 
-                If IsDBNull(reader("BIRTH_DATE")) = False Then BirthDateTextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("BIRTH_DATE"), cul)
-                If IsDBNull(reader("OPERATE_DATE")) = False Then OperateDateTextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("OPERATE_DATE"))
-                If IsDBNull(reader("REGISTER_DATE")) = False Then RegisterDateTextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("REGISTER_DATE"))
-                If IsDBNull(reader("NATIONALITY_LISt_ID")) = False Then NationalityDropDownList.SelectedIndex = NationalityDropDownList.Items.IndexOf(NationalityDropDownList.Items.FindByValue(reader("NATIONALITY_LISt_ID")))
-                If IsDBNull(reader("BNATIONALITY_LISt_ID")) = False Then BNationalityDropDownList.SelectedIndex = BNationalityDropDownList.Items.IndexOf(BNationalityDropDownList.Items.FindByValue(reader("BNATIONALITY_LISt_ID")))
-                If IsDBNull(reader("JURISTIC_LIST_ID")) = False Then JuristicDropDownList.SelectedIndex = JuristicDropDownList.Items.IndexOf(JuristicDropDownList.Items.FindByValue(reader("JURISTIC_LIST_ID")))
-                If IsDBNull(reader("BLACKLIST_LIST_ID")) = False Then BlackListDropDownList.SelectedIndex = BlackListDropDownList.Items.IndexOf(BlackListDropDownList.Items.FindByValue(reader("BLACKLIST_LIST_ID")))
-                If IsDBNull(reader("NCB_LIST_ID")) = False Then NCBDropDownList.SelectedIndex = NCBDropDownList.Items.IndexOf(NCBDropDownList.Items.FindByValue(reader("NCB_LIST_ID")))
-                If IsDBNull(reader("NCB_CODE")) = False Then NCBCodeDropDownList.SelectedIndex = NCBCodeDropDownList.Items.IndexOf(NCBCodeDropDownList.Items.FindByValue(reader("NCB_CODE")))
-                If IsDBNull(reader("TDR_LIST_ID")) = False Then TDRDropDownList.SelectedIndex = TDRDropDownList.Items.IndexOf(TDRDropDownList.Items.FindByValue(reader("TDR_LIST_ID")))
-                If IsDBNull(reader("RATING_LIST_ID")) = False Then RatingDropDownList.SelectedIndex = RatingDropDownList.Items.IndexOf(RatingDropDownList.Items.FindByValue(reader("RATING_LIST_ID")))
-                If IsDBNull(reader("LEGAL_LIST_ID")) = False Then LegalDropDownList.SelectedIndex = LegalDropDownList.Items.IndexOf(LegalDropDownList.Items.FindByValue(reader("LEGAL_LIST_ID")))
-                If IsDBNull(reader("REGIS_DOC_LIST_ID")) = False Then RegisDocDropDownList.SelectedIndex = RegisDocDropDownList.Items.IndexOf(RegisDocDropDownList.Items.FindByValue(reader("REGIS_DOC_LIST_ID")))
-                If IsDBNull(reader("SHAREHOLDER_LIST_ID")) = False Then ShareHolderDropDownList.SelectedIndex = ShareHolderDropDownList.Items.IndexOf(ShareHolderDropDownList.Items.FindByValue(reader("SHAREHOLDER_LIST_ID")))
-                If IsDBNull(reader("EXPERIENCE")) = False Then ExperienceTextBox.Text = reader("EXPERIENCE")
+                CIFTextBox.Text = CustomersGridView.Rows(CustomersGridView.EditIndex).Cells(1).Text
+                CIFNameTextBox.Text = CustomersGridView.Rows(CustomersGridView.EditIndex).Cells(2).Text
 
+            Else
+                While reader.Read()
+                    clearInput()
+                    '   Console.WriteLine(String.Format("{0}, {1}", reader(0), reader(1)))
+                    If IsDBNull(reader("CIF")) = False Then CIFTextBox.Text = reader("CIF").ToString()
+                    If IsDBNull(reader("NAME")) = False Then CIFNameTextBox.Text = reader("NAME").ToString()
+                    If IsDBNull(reader("CUSTOMER_TYPE")) = False Then
+                        CustomerTypeDropDownList.SelectedIndex = CustomerTypeDropDownList.Items.IndexOf(CustomerTypeDropDownList.Items.FindByValue(reader("CUSTOMER_TYPE")))
+                    End If
 
-                If IsDBNull(reader("AGE_CEO")) = False Then CEOAgeTextBox.Text = reader("AGE_CEO")
-                If IsDBNull(reader("FIXED_ASSET_NO_LAND")) = False Then FIXED_ASSET_NO_LANDTextBox.Text = String.Format("{0:n0}", reader("FIXED_ASSET_NO_LAND"))
-                If IsDBNull(reader("CHECK_NCB_6MONTH")) = False Then CHECK_NCB_6MONTHTextBox.Text = reader("CHECK_NCB_6MONTH")
-                If IsDBNull(reader("CHECK_NCB_6MONTH")) = False Then CHECK_NCB_6MONTHTextBox.Text = reader("CHECK_NCB_6MONTH")
-
-                If IsDBNull(reader("DSS_OPERATE_STATUS")) = False Then DSS_OPERATE_STATUSDropDownList.SelectedIndex = DSS_OPERATE_STATUSDropDownList.Items.IndexOf(DSS_OPERATE_STATUSDropDownList.Items.FindByValue(reader("DSS_OPERATE_STATUS")))
-                If IsDBNull(reader("POSITIVE_EQUITY")) = False Then POSITIVE_EQUITYDropDownList.SelectedIndex = POSITIVE_EQUITYDropDownList.Items.IndexOf(POSITIVE_EQUITYDropDownList.Items.FindByValue(reader("POSITIVE_EQUITY")))
-                If IsDBNull(reader("PROFIT_LAST_2YEARS")) = False Then PROFIT_LAST_2YEARSDropDownList.SelectedIndex = PROFIT_LAST_2YEARSDropDownList.Items.IndexOf(PROFIT_LAST_2YEARSDropDownList.Items.FindByValue(reader("PROFIT_LAST_2YEARS")))
-                If IsDBNull(reader("INSIGNIFICANT_LOST")) = False Then INSIGNIFICANT_LOSTDropDownList.SelectedIndex = INSIGNIFICANT_LOSTDropDownList.Items.IndexOf(INSIGNIFICANT_LOSTDropDownList.Items.FindByValue(reader("INSIGNIFICANT_LOST")))
-
-                If IsDBNull(reader("CHEQUE_RETURN_6MONTH")) = False Then CHEQUE_RETURN_6MONTHTextBox.Text = String.Format("{0:n0}", reader("CHEQUE_RETURN_6MONTH"))
-                If IsDBNull(reader("TRADING_CHEQUE_RETURN_VAL_6MONTH")) = False Then TRADING_CHEQUE_RETURN_VAL_6MONTHTextBox.Text = String.Format("{0:n2}", reader("TRADING_CHEQUE_RETURN_VAL_6MONTH"))
-                If IsDBNull(reader("OD_UTILIZATION_PERCENT")) = False Then OD_UTILIZATION_PERCENTTextBox.Text = reader("OD_UTILIZATION_PERCENT")
-                If IsDBNull(reader("OD_SWING_PERCENT")) = False Then OD_SWING_PERCENTTextBox.Text = reader("OD_SWING_PERCENT")
-                If IsDBNull(reader("OD_OVER_NUMBER")) = False Then OD_OVER_NUMBERTextBox.Text = reader("OD_OVER_NUMBER")
+                    If IsDBNull(reader("BIRTH_DATE")) = False Then BirthDateTextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("BIRTH_DATE"), cul)
+                    If IsDBNull(reader("OPERATE_DATE")) = False Then OperateDateTextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("OPERATE_DATE"))
+                    If IsDBNull(reader("REGISTER_DATE")) = False Then RegisterDateTextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("REGISTER_DATE"))
+                    If IsDBNull(reader("NATIONALITY_LISt_ID")) = False Then NationalityDropDownList.SelectedIndex = NationalityDropDownList.Items.IndexOf(NationalityDropDownList.Items.FindByValue(reader("NATIONALITY_LISt_ID")))
+                    If IsDBNull(reader("BNATIONALITY_LISt_ID")) = False Then BNationalityDropDownList.SelectedIndex = BNationalityDropDownList.Items.IndexOf(BNationalityDropDownList.Items.FindByValue(reader("BNATIONALITY_LISt_ID")))
+                    If IsDBNull(reader("JURISTIC_LIST_ID")) = False Then JuristicDropDownList.SelectedIndex = JuristicDropDownList.Items.IndexOf(JuristicDropDownList.Items.FindByValue(reader("JURISTIC_LIST_ID")))
+                    If IsDBNull(reader("BLACKLIST_LIST_ID")) = False Then BlackListDropDownList.SelectedIndex = BlackListDropDownList.Items.IndexOf(BlackListDropDownList.Items.FindByValue(reader("BLACKLIST_LIST_ID")))
+                    If IsDBNull(reader("NCB_LIST_ID")) = False Then NCBDropDownList.SelectedIndex = NCBDropDownList.Items.IndexOf(NCBDropDownList.Items.FindByValue(reader("NCB_LIST_ID")))
+                    If IsDBNull(reader("NCB_CODE")) = False Then NCBCodeDropDownList.SelectedIndex = NCBCodeDropDownList.Items.IndexOf(NCBCodeDropDownList.Items.FindByValue(reader("NCB_CODE")))
+                    If IsDBNull(reader("TDR_LIST_ID")) = False Then TDRDropDownList.SelectedIndex = TDRDropDownList.Items.IndexOf(TDRDropDownList.Items.FindByValue(reader("TDR_LIST_ID")))
+                    If IsDBNull(reader("RATING_LIST_ID")) = False Then RatingDropDownList.SelectedIndex = RatingDropDownList.Items.IndexOf(RatingDropDownList.Items.FindByValue(reader("RATING_LIST_ID")))
+                    If IsDBNull(reader("LEGAL_LIST_ID")) = False Then LegalDropDownList.SelectedIndex = LegalDropDownList.Items.IndexOf(LegalDropDownList.Items.FindByValue(reader("LEGAL_LIST_ID")))
+                    If IsDBNull(reader("REGIS_DOC_LIST_ID")) = False Then RegisDocDropDownList.SelectedIndex = RegisDocDropDownList.Items.IndexOf(RegisDocDropDownList.Items.FindByValue(reader("REGIS_DOC_LIST_ID")))
+                    If IsDBNull(reader("SHAREHOLDER_LIST_ID")) = False Then ShareHolderDropDownList.SelectedIndex = ShareHolderDropDownList.Items.IndexOf(ShareHolderDropDownList.Items.FindByValue(reader("SHAREHOLDER_LIST_ID")))
+                    If IsDBNull(reader("EXPERIENCE")) = False Then ExperienceTextBox.Text = reader("EXPERIENCE")
 
 
-                If IsDBNull(reader("DPD_MORE_10_30_MONTH_1_3")) = False Then DPD_MORE_10_30_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_1_3")))
-                If IsDBNull(reader("DPD_MORE_30_60_MONTH_1_3")) = False Then DPD_MORE_30_60_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_1_3")))
-                If IsDBNull(reader("DPD_MORE_60_90_MONTH_1_3")) = False Then DPD_MORE_60_90_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_1_3")))
-                If IsDBNull(reader("DPD_MORE_90_MONTH_1_3")) = False Then DPD_MORE_90_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_90_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_1_3")))
+                    If IsDBNull(reader("AGE_CEO")) = False Then CEOAgeTextBox.Text = reader("AGE_CEO")
+                    If IsDBNull(reader("FIXED_ASSET_NO_LAND")) = False Then FIXED_ASSET_NO_LANDTextBox.Text = String.Format("{0:n0}", reader("FIXED_ASSET_NO_LAND"))
+                    If IsDBNull(reader("CHECK_NCB_6MONTH")) = False Then CHECK_NCB_6MONTHTextBox.Text = reader("CHECK_NCB_6MONTH")
+                 
+                    If IsDBNull(reader("DSS_OPERATE_STATUS")) = False Then DSS_OPERATE_STATUSDropDownList.SelectedIndex = DSS_OPERATE_STATUSDropDownList.Items.IndexOf(DSS_OPERATE_STATUSDropDownList.Items.FindByValue(reader("DSS_OPERATE_STATUS")))
+                    If IsDBNull(reader("POSITIVE_EQUITY")) = False Then POSITIVE_EQUITYDropDownList.SelectedIndex = POSITIVE_EQUITYDropDownList.Items.IndexOf(POSITIVE_EQUITYDropDownList.Items.FindByValue(reader("POSITIVE_EQUITY")))
+                    If IsDBNull(reader("PROFIT_LAST_2YEARS")) = False Then PROFIT_LAST_2YEARSDropDownList.SelectedIndex = PROFIT_LAST_2YEARSDropDownList.Items.IndexOf(PROFIT_LAST_2YEARSDropDownList.Items.FindByValue(reader("PROFIT_LAST_2YEARS")))
+                    If IsDBNull(reader("INSIGNIFICANT_LOST")) = False Then INSIGNIFICANT_LOSTDropDownList.SelectedIndex = INSIGNIFICANT_LOSTDropDownList.Items.IndexOf(INSIGNIFICANT_LOSTDropDownList.Items.FindByValue(reader("INSIGNIFICANT_LOST")))
+
+                    If IsDBNull(reader("CHEQUE_RETURN_6MONTH")) = False Then CHEQUE_RETURN_6MONTHTextBox.Text = String.Format("{0:n0}", reader("CHEQUE_RETURN_6MONTH"))
+                    If IsDBNull(reader("TRADING_CHEQUE_RETURN_VAL_6MONTH")) = False Then TRADING_CHEQUE_RETURN_VAL_6MONTHTextBox.Text = String.Format("{0:n2}", reader("TRADING_CHEQUE_RETURN_VAL_6MONTH"))
+                    If IsDBNull(reader("OD_UTILIZATION_PERCENT")) = False Then OD_UTILIZATION_PERCENTTextBox.Text = reader("OD_UTILIZATION_PERCENT")
+                    If IsDBNull(reader("OD_SWING_PERCENT")) = False Then OD_SWING_PERCENTTextBox.Text = reader("OD_SWING_PERCENT")
+                    If IsDBNull(reader("OD_OVER_NUMBER")) = False Then OD_OVER_NUMBERTextBox.Text = reader("OD_OVER_NUMBER")
 
 
-                If IsDBNull(reader("DPD_MORE_10_30_MONTH_4_12")) = False Then DPD_MORE_10_30_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_4_12")))
-                If IsDBNull(reader("DPD_MORE_30_60_MONTH_4_12")) = False Then DPD_MORE_30_60_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_4_12")))
-                If IsDBNull(reader("DPD_MORE_60_90_MONTH_4_12")) = False Then DPD_MORE_60_90_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_4_12")))
-                If IsDBNull(reader("DPD_MORE_90_MONTH_4_12")) = False Then DPD_MORE_90_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_90_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_4_12")))
+                    If IsDBNull(reader("DPD_MORE_10_30_MONTH_1_3")) = False Then DPD_MORE_10_30_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_1_3")))
+                    If IsDBNull(reader("DPD_MORE_30_60_MONTH_1_3")) = False Then DPD_MORE_30_60_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_1_3")))
+                    If IsDBNull(reader("DPD_MORE_60_90_MONTH_1_3")) = False Then DPD_MORE_60_90_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_1_3")))
+                    If IsDBNull(reader("DPD_MORE_90_MONTH_1_3")) = False Then DPD_MORE_90_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_90_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_1_3")))
 
 
-                If IsDBNull(reader("DPD_MORE_10_30_MONTH_12_24")) = False Then DPD_MORE_10_30_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_12_24")))
-                If IsDBNull(reader("DPD_MORE_30_60_MONTH_12_24")) = False Then DPD_MORE_30_60_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_12_24")))
-                If IsDBNull(reader("DPD_MORE_60_90_MONTH_12_24")) = False Then DPD_MORE_60_90_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_12_24")))
-                If IsDBNull(reader("DPD_MORE_90_MONTH_12_24")) = False Then DPD_MORE_90_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_90_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_10_30_MONTH_4_12")) = False Then DPD_MORE_10_30_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_4_12")))
+                    If IsDBNull(reader("DPD_MORE_30_60_MONTH_4_12")) = False Then DPD_MORE_30_60_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_4_12")))
+                    If IsDBNull(reader("DPD_MORE_60_90_MONTH_4_12")) = False Then DPD_MORE_60_90_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_4_12")))
+                    If IsDBNull(reader("DPD_MORE_90_MONTH_4_12")) = False Then DPD_MORE_90_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_90_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_4_12")))
 
 
+                    If IsDBNull(reader("DPD_MORE_10_30_MONTH_12_24")) = False Then DPD_MORE_10_30_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_30_60_MONTH_12_24")) = False Then DPD_MORE_30_60_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_60_90_MONTH_12_24")) = False Then DPD_MORE_60_90_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_90_MONTH_12_24")) = False Then DPD_MORE_90_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_90_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_12_24")))
 
-                setEdit()
+                    If IsDBNull(reader("CHECK_NCB_DATE")) = False Then CHECK_NCB_DATETextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("CHECK_NCB_DATE"), cul)
+                    If IsDBNull(reader("CO_BIRTH_DATE")) = False Then CO_BirthDateTextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("CO_BIRTH_DATE"), cul)
+                    If IsDBNull(reader("CO_LEGAL_LIST_ID")) = False Then CO_LegalDropDownList.SelectedIndex = CO_LegalDropDownList.Items.IndexOf(CO_LegalDropDownList.Items.FindByValue(reader("CO_LEGAL_LIST_ID")))
+                    If IsDBNull(reader("NET_PROFIT_LIST_ID")) = False Then NET_PROFITDropDownList.SelectedIndex = NET_PROFITDropDownList.Items.IndexOf(NET_PROFITDropDownList.Items.FindByValue(reader("NET_PROFIT_LIST_ID")))
+                    If IsDBNull(reader("NET_WORTH_LIST_ID")) = False Then NET_WORTHDropDownList.SelectedIndex = NET_WORTHDropDownList.Items.IndexOf(NET_WORTHDropDownList.Items.FindByValue(reader("NET_WORTH_LIST_ID")))
+                    If IsDBNull(reader("BEGIN_NCB_DATE")) = False Then BEGIN_NCB_DATETextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("BEGIN_NCB_DATE"), cul)
 
-            End While
-        End If
+                    setEdit()
 
-        reader.Close()
+                End While
+            End If
 
-        reader.Close()
-        sqlCmd.Dispose()
-        conn.Close()
+            reader.Close()
 
-        ActionLabel.Text = "แก้ไขข้อมูล"
-        ' Catch ex As Exception
+            reader.Close()
+            sqlCmd.Dispose()
+            conn.Close()
 
-        'runScirpt("alert('" & ex.ToString().Substring(0, 50).Replace("'", "") & "');")
-        '  Finally
-        'End Try
+            ActionLabel.Text = "แก้ไขข้อมูล"
+        Catch ex As Exception
+
+            runScirpt("alert('" & ex.ToString().Substring(0, 50).Replace("'", "") & "');")
+        Finally
+        End Try
 
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -290,6 +294,13 @@ Partial Class smes_financial_customer
         Next i
         LegalDropDownList.Items.Insert(0, New ListItem("...โปรดเลือก...", ""))
 
+        dr = dt.Select("LIST_TYPE='8' ")
+        For i = 0 To dr.GetUpperBound(0)
+            Dim item As New ListItem(dr(i)(2), dr(i)(1))
+            CO_LegalDropDownList.Items.Add(item)
+        Next i
+        CO_LegalDropDownList.Items.Insert(0, New ListItem("...โปรดเลือก...", ""))
+
 
         dr = dt.Select("LIST_TYPE='21'")
         For i = 0 To dr.GetUpperBound(0)
@@ -318,6 +329,20 @@ Partial Class smes_financial_customer
             INSIGNIFICANT_LOSTDropDownList.Items.Add(item)
         Next i
         INSIGNIFICANT_LOSTDropDownList.Items.Insert(0, New ListItem("...โปรดเลือก...", ""))
+
+        dr = dt.Select("LIST_TYPE='25'")  ' net profit
+        For i = 0 To dr.GetUpperBound(0)
+            Dim item As New ListItem(dr(i)(2), dr(i)(1))
+            NET_PROFITDropDownList.Items.Add(item)
+        Next i
+        NET_PROFITDropDownList.Items.Insert(0, New ListItem("...โปรดเลือก...", ""))
+
+        dr = dt.Select("LIST_TYPE='26'")  ' net profit
+        For i = 0 To dr.GetUpperBound(0)
+            Dim item As New ListItem(dr(i)(2), dr(i)(1))
+            NET_WORTHDropDownList.Items.Add(item)
+        Next i
+        NET_WORTHDropDownList.Items.Insert(0, New ListItem("...โปรดเลือก...", ""))
 
 
 
@@ -369,6 +394,13 @@ Partial Class smes_financial_customer
         LegalDropDownList.SelectedIndex = 0
         RatingDropDownList.SelectedIndex = 0
         ExperienceTextBox.Text = ""
+        CHECK_NCB_DATETextBox.Text = ""
+        CO_BirthDateTextBox.Text = ""
+        CO_LegalDropDownList.SelectedIndex = 0
+        NET_PROFITDropDownList.SelectedIndex = 0
+        NET_WORTHDropDownList.SelectedIndex = 0
+        BEGIN_NCB_DATETextBox.Text = ""
+        CHECK_NCB_6MONTHTextBox.Text = ""
     End Sub
 
     Private Function ToDecimal(ByVal Value As String) As Decimal
@@ -477,212 +509,284 @@ Partial Class smes_financial_customer
         End If
 
         ElseIf CustomerTypeDropDownList.Items(CustomerTypeDropDownList.SelectedIndex).Value = "CU02" Then ' นิติบุคคล
-            If IsDate(RegisterDateTextBox.Text) = False Then
+
+            If RegisterDateTextBox.Text = "" Then
                 err = True
-                errMsg += " วันที่จดทะเบียนไม่ถูกต้อง "
+                errMsg += " ระบุวันที่จดทะเบียน "
             Else
-                If Year(RegisterDateTextBox.Text) < 2400 Then
+                If IsDate(RegisterDateTextBox.Text) = False Then
                     err = True
-                    errMsg += " วันที่จดทะเบียนต้องเป็น พ.ศ. "
+                    errMsg += " วันที่จดทะเบียนไม่ถูกต้อง "
+                Else
+                    If Year(RegisterDateTextBox.Text) < 2400 Then
+                        err = True
+                        errMsg += " วันที่จดทะเบียนต้องเป็น พ.ศ. "
+                    End If
                 End If
             End If
             If JuristicDropDownList.Items(JuristicDropDownList.SelectedIndex).Value = "" Then
                 err = True
                 errMsg += " ไม่ระบุประเภทธุรกิจ "
             End If
-            If ShareHolderDropDownList.Items(ShareHolderDropDownList.SelectedIndex).Value = "" Then
-                err = True
-                errMsg += " ไม่ระบุประเภทผู้ถือหุ้น "
-            End If
 
-            If IsDate(OperateDateTextBox.Text) = False Then
+            If OperateDateTextBox.Text = "" Then
                 err = True
-                errMsg += " วันที่ดำเนินการไม่ถูกต้อง "
+                errMsg += " ระบุวันที่ดำเนินการ "
+
             Else
-                If Year(OperateDateTextBox.Text) < 2400 Then
+                If IsDate(OperateDateTextBox.Text) = False Then
                     err = True
-                    errMsg += " วันที่ดำเนินการต้องเป็น พ.ศ. "
+                    errMsg += " วันที่ดำเนินการไม่ถูกต้อง "
+                Else
+                    If Year(OperateDateTextBox.Text) < 2400 Then
+                        err = True
+                        errMsg += " วันที่ดำเนินการต้องเป็น พ.ศ. "
+                    End If
                 End If
+
             End If
 
         End If
+
         If IsNumeric(ExperienceTextBox.Text) = False Then
             err = True
             errMsg += " ระบุประสบการณ์ไม่ถูกต้อง "
         End If
 
-       
+        If CHECK_NCB_DATETextBox.Text = "" Then
+            err = True
+            errMsg += " ระบุวันที่ CREDIT CHECKING  "
+        Else
+            If IsDate(CHECK_NCB_DATETextBox.Text) = False Then
+                err = True
+                errMsg += " วันที่เช็ค CREDIT CHECKING ไม่ถูกต้อง "
+            Else
+                If Year(CHECK_NCB_DATETextBox.Text) < 2400 Then
+                    err = True
+                    errMsg += " วันที่ดำเนินการต้องเป็น พ.ศ. "
+                End If
+            End If
+        End If
+
+
+        If CO_BirthDateTextBox.Text = "" Then
+            ' ว่างไม่เป็นไร แสดงว่าไม่มีผู้กู้ร่วม
+        Else
+            If IsDate(CO_BirthDateTextBox.Text) = False Then
+                err = True
+                errMsg += " วันเกิดผู้กู้ร่วมไม่ถูกต้อง "
+            Else
+                If Year(CO_BirthDateTextBox.Text) < 2400 Then
+                    err = True
+                    errMsg += " วันเกิดผู้กู้ร่วมต้องเป็น พ.ศ. "
+                End If
+            End If
+        End If
+
+        If BEGIN_NCB_DATETextBox.Text = "" Then
+            ' ว่างไม่เป็นไร แสดงว่าไม่มีผู้กู้ร่วม
+        Else
+            If IsDate(BEGIN_NCB_DATETextBox.Text) = False Then
+                err = True
+                errMsg += " วันที่เริ่มมีข้อมูลไม่ถูกต้อง "
+            Else
+                If Year(BEGIN_NCB_DATETextBox.Text) < 2400 Then
+                    err = True
+                    errMsg += "วันที่เริ่มมีข้อมูลไม่ถูก ต้องเป็น พ.ศ. "
+                End If
+            End If
+        End If
+  
 
         If err = True Then
-            '  MsgBox(err)
             runScirpt("showErrorDialog('" & errMsg & "');")
             Exit Sub
         End If
-
 
 
         'declare connection
         Dim conn As SqlConnection = Nothing
         Dim sqlCmd As New SqlCommand()
         Dim sql As String = Nothing
-        'Try
-        conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+        Try
+            conn = ConnectionUtil.getSqlConnectionFromWebConfig()
 
-        sqlCmd.Connection = conn
-        sqlCmd.Transaction = sqlCmd.Connection.BeginTransaction()
-        If action = "Insert" Then
-            sqlCmd.CommandText = "[SME_S].[P_SS_FINANCIAL_CUSTOMER_INSERT]"
-        Else
-            sqlCmd.CommandText = "[SME_S].[P_SS_FINANCIAL_CUSTOMER_UPDATE]"
-        End If
-        sqlCmd.CommandType = CommandType.StoredProcedure
-        sqlCmd.Parameters.AddWithValue("CIF", CIFTextBox.Text)
+            sqlCmd.Connection = conn
+            sqlCmd.Transaction = sqlCmd.Connection.BeginTransaction()
+            If action = "Insert" Then
+                sqlCmd.CommandText = "[SME_S].[P_SS_FINANCIAL_CUSTOMER_INSERT]"
+            Else
+                sqlCmd.CommandText = "[SME_S].[P_SS_FINANCIAL_CUSTOMER_UPDATE]"
+            End If
+            sqlCmd.CommandType = CommandType.StoredProcedure
+            sqlCmd.Parameters.AddWithValue("CIF", CIFTextBox.Text)
 
-        sqlCmd.Parameters.AddWithValue("CUSTOMER_TYPE", CustomerTypeDropDownList.Items(CustomerTypeDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("CUSTOMER_TYPE", CustomerTypeDropDownList.Items(CustomerTypeDropDownList.SelectedIndex).Value)
 
-        sqlCmd.Parameters.AddWithValue("NATIONALITY_LIST_ID", NationalityDropDownList.Items(NationalityDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("BNATIONALITY_LIST_ID", BNationalityDropDownList.Items(BNationalityDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("NATIONALITY_LIST_ID", NationalityDropDownList.Items(NationalityDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("BNATIONALITY_LIST_ID", BNationalityDropDownList.Items(BNationalityDropDownList.SelectedIndex).Value)
 
-        If CustomerTypeDropDownList.Items(CustomerTypeDropDownList.SelectedIndex).Value = "CU01" Then ' บุคคลธรรมดา
-            Dim BIRTH_DATE As Date = New Date(Year(BirthDateTextBox.Text), Month(BirthDateTextBox.Text), Day(BirthDateTextBox.Text), 0, 0, 0, cul.Calendar)
-            sqlCmd.Parameters.AddWithValue("BIRTH_DATE", BIRTH_DATE)
-            sqlCmd.Parameters.AddWithValue("JURISTIC_LIST_ID", System.DBNull.Value)
-            sqlCmd.Parameters.AddWithValue("REGISTER_DATE", System.DBNull.Value)
-            sqlCmd.Parameters.AddWithValue("SHAREHOLDER_LIST_ID", System.DBNull.Value)
-            sqlCmd.Parameters.AddWithValue("OPERATE_DATE", System.DBNull.Value)
+            If CustomerTypeDropDownList.Items(CustomerTypeDropDownList.SelectedIndex).Value = "CU01" Then ' บุคคลธรรมดา
+                Dim BIRTH_DATE As Date = New Date(Year(BirthDateTextBox.Text), Month(BirthDateTextBox.Text), Day(BirthDateTextBox.Text), 0, 0, 0, cul.Calendar)
+                sqlCmd.Parameters.AddWithValue("BIRTH_DATE", BIRTH_DATE)
+                sqlCmd.Parameters.AddWithValue("JURISTIC_LIST_ID", System.DBNull.Value)
+                sqlCmd.Parameters.AddWithValue("REGISTER_DATE", System.DBNull.Value)
+                sqlCmd.Parameters.AddWithValue("SHAREHOLDER_LIST_ID", System.DBNull.Value)
+                sqlCmd.Parameters.AddWithValue("OPERATE_DATE", System.DBNull.Value)
 
-        Else  ' CU02'
-            sqlCmd.Parameters.AddWithValue("BIRTH_DATE", System.DBNull.Value)
-            sqlCmd.Parameters.AddWithValue("JURISTIC_LIST_ID", JuristicDropDownList.Items(JuristicDropDownList.SelectedIndex).Value)
-            Dim REGISTER_DATE As Date = New Date(Year(RegisterDateTextBox.Text), Month(RegisterDateTextBox.Text), Day(RegisterDateTextBox.Text), 0, 0, 0, cul.Calendar)
-            sqlCmd.Parameters.AddWithValue("REGISTER_DATE", REGISTER_DATE)
-            sqlCmd.Parameters.AddWithValue("SHAREHOLDER_LIST_ID", ShareHolderDropDownList.Items(ShareHolderDropDownList.SelectedIndex).Value)
-            Dim OPERATE_DATE As Date = New Date(Year(OperateDateTextBox.Text), Month(OperateDateTextBox.Text), Day(OperateDateTextBox.Text), 0, 0, 0, cul.Calendar)
-            sqlCmd.Parameters.AddWithValue("OPERATE_DATE", OPERATE_DATE)
-        End If
-
-       
-        sqlCmd.Parameters.AddWithValue("EXPERIENCE", CInt(ExperienceTextBox.Text))
-        sqlCmd.Parameters.AddWithValue("BLACKLIST_LIST_ID", BlackListDropDownList.Items(BlackListDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("NCB_LIST_ID", NCBDropDownList.Items(NCBDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("NCB_CODE", NCBCodeDropDownList.Items(NCBCodeDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("TDR_LIST_ID", TDRDropDownList.Items(TDRDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("RATING_LIST_ID", RatingDropDownList.Items(RatingDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("LEGAL_LIST_ID", LegalDropDownList.Items(LegalDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("REGIS_DOC_LIST_ID", RegisDocDropDownList.Items(RegisDocDropDownList.SelectedIndex).Value)
+            Else  ' CU02'
+                sqlCmd.Parameters.AddWithValue("BIRTH_DATE", System.DBNull.Value)
+                sqlCmd.Parameters.AddWithValue("JURISTIC_LIST_ID", JuristicDropDownList.Items(JuristicDropDownList.SelectedIndex).Value)
+                Dim REGISTER_DATE As Date = New Date(Year(RegisterDateTextBox.Text), Month(RegisterDateTextBox.Text), Day(RegisterDateTextBox.Text), 0, 0, 0, cul.Calendar)
+                sqlCmd.Parameters.AddWithValue("REGISTER_DATE", REGISTER_DATE)
+                sqlCmd.Parameters.AddWithValue("SHAREHOLDER_LIST_ID", ShareHolderDropDownList.Items(ShareHolderDropDownList.SelectedIndex).Value)
+                Dim OPERATE_DATE As Date = New Date(Year(OperateDateTextBox.Text), Month(OperateDateTextBox.Text), Day(OperateDateTextBox.Text), 0, 0, 0, cul.Calendar)
+                sqlCmd.Parameters.AddWithValue("OPERATE_DATE", OPERATE_DATE)
+            End If
 
 
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_10_30_MONTH_1_3", DPD_MORE_10_30_MONTH_1_3DropDownList.Items(DPD_MORE_10_30_MONTH_1_3DropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_30_60_MONTH_1_3", DPD_MORE_30_60_MONTH_1_3DropDownList.Items(DPD_MORE_30_60_MONTH_1_3DropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_60_90_MONTH_1_3", DPD_MORE_60_90_MONTH_1_3DropDownList.Items(DPD_MORE_60_90_MONTH_1_3DropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_90_MONTH_1_3", DPD_MORE_90_MONTH_1_3DropDownList.Items(DPD_MORE_90_MONTH_1_3DropDownList.SelectedIndex).Value)
-
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_10_30_MONTH_4_12", DPD_MORE_10_30_MONTH_4_12DropDownList.Items(DPD_MORE_10_30_MONTH_4_12DropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_30_60_MONTH_4_12", DPD_MORE_30_60_MONTH_4_12DropDownList.Items(DPD_MORE_30_60_MONTH_4_12DropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_60_90_MONTH_4_12", DPD_MORE_60_90_MONTH_4_12DropDownList.Items(DPD_MORE_60_90_MONTH_4_12DropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_90_MONTH_4_12", DPD_MORE_90_MONTH_4_12DropDownList.Items(DPD_MORE_90_MONTH_4_12DropDownList.SelectedIndex).Value)
-
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_10_30_MONTH_12_24", DPD_MORE_10_30_MONTH_12_24DropDownList.Items(DPD_MORE_10_30_MONTH_12_24DropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_30_60_MONTH_12_24", DPD_MORE_30_60_MONTH_12_24DropDownList.Items(DPD_MORE_30_60_MONTH_12_24DropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_60_90_MONTH_12_24", DPD_MORE_60_90_MONTH_12_24DropDownList.Items(DPD_MORE_60_90_MONTH_12_24DropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("DPD_MORE_90_MONTH_12_24", DPD_MORE_90_MONTH_12_24DropDownList.Items(DPD_MORE_90_MONTH_12_24DropDownList.SelectedIndex).Value)
-
-        If CEOAgeTextBox.Text = "" Then
-            sqlCmd.Parameters.AddWithValue("AGE_CEO", System.DBNull.Value)
-        Else
-            sqlCmd.Parameters.AddWithValue("AGE_CEO", CInt(CEOAgeTextBox.Text))
-        End If
-
-        If FIXED_ASSET_NO_LANDTextBox.Text = "" Then
-            sqlCmd.Parameters.AddWithValue("FIXED_ASSET_NO_LAND", System.DBNull.Value)
-        Else
-            sqlCmd.Parameters.AddWithValue("FIXED_ASSET_NO_LAND", ToDecimal(FIXED_ASSET_NO_LANDTextBox.Text))
-        End If
-
-        If CHECK_NCB_6MONTHTextBox.Text = "" Then
-            sqlCmd.Parameters.AddWithValue("CHECK_NCB_6MONTH", System.DBNull.Value)
-        Else
-            sqlCmd.Parameters.AddWithValue("CHECK_NCB_6MONTH", ToDecimal(CHECK_NCB_6MONTHTextBox.Text))
-        End If
-       
-        sqlCmd.Parameters.AddWithValue("DSS_OPERATE_STATUS", DSS_OPERATE_STATUSDropDownList.Items(DSS_OPERATE_STATUSDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("POSITIVE_EQUITY", POSITIVE_EQUITYDropDownList.Items(POSITIVE_EQUITYDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("PROFIT_LAST_2YEARS", PROFIT_LAST_2YEARSDropDownList.Items(PROFIT_LAST_2YEARSDropDownList.SelectedIndex).Value)
-        sqlCmd.Parameters.AddWithValue("INSIGNIFICANT_LOST", INSIGNIFICANT_LOSTDropDownList.Items(INSIGNIFICANT_LOSTDropDownList.SelectedIndex).Value)
-
-        If CHEQUE_RETURN_6MONTHTextBox.Text = "" Then
-            sqlCmd.Parameters.AddWithValue("CHEQUE_RETURN_6MONTH", System.DBNull.Value)
-        Else
-            sqlCmd.Parameters.AddWithValue("CHEQUE_RETURN_6MONTH", CInt(CHEQUE_RETURN_6MONTHTextBox.Text))
-        End If
-
-        If TRADING_CHEQUE_RETURN_VAL_6MONTHTextBox.Text = "" Then
-            sqlCmd.Parameters.AddWithValue("TRADING_CHEQUE_RETURN_VAL_6MONTH", System.DBNull.Value)
-        Else
-            sqlCmd.Parameters.AddWithValue("TRADING_CHEQUE_RETURN_VAL_6MONTH", ToDecimal(TRADING_CHEQUE_RETURN_VAL_6MONTHTextBox.Text))
-        End If
-
-        If OD_UTILIZATION_PERCENTTextBox.Text = "" Then
-            sqlCmd.Parameters.AddWithValue("OD_UTILIZATION_PERCENT", System.DBNull.Value)
-        Else
-            sqlCmd.Parameters.AddWithValue("OD_UTILIZATION_PERCENT", CInt(OD_UTILIZATION_PERCENTTextBox.Text))
-        End If
-
-        If OD_SWING_PERCENTTextBox.Text = "" Then
-            sqlCmd.Parameters.AddWithValue("OD_SWING_PERCENT", System.DBNull.Value)
-        Else
-            sqlCmd.Parameters.AddWithValue("OD_SWING_PERCENT", CInt(OD_SWING_PERCENTTextBox.Text))
-        End If
-        If OD_OVER_NUMBERTextBox.Text = "" Then
-            sqlCmd.Parameters.AddWithValue("OD_OVER_NUMBER", System.DBNull.Value)
-        Else
-            sqlCmd.Parameters.AddWithValue("OD_OVER_NUMBER", CInt(OD_OVER_NUMBERTextBox.Text))
-        End If
+            sqlCmd.Parameters.AddWithValue("EXPERIENCE", CInt(ExperienceTextBox.Text))
+            sqlCmd.Parameters.AddWithValue("BLACKLIST_LIST_ID", BlackListDropDownList.Items(BlackListDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("NCB_LIST_ID", NCBDropDownList.Items(NCBDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("NCB_CODE", NCBCodeDropDownList.Items(NCBCodeDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("TDR_LIST_ID", TDRDropDownList.Items(TDRDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("RATING_LIST_ID", RatingDropDownList.Items(RatingDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("LEGAL_LIST_ID", LegalDropDownList.Items(LegalDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("REGIS_DOC_LIST_ID", RegisDocDropDownList.Items(RegisDocDropDownList.SelectedIndex).Value)
 
 
-      
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_10_30_MONTH_1_3", DPD_MORE_10_30_MONTH_1_3DropDownList.Items(DPD_MORE_10_30_MONTH_1_3DropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_30_60_MONTH_1_3", DPD_MORE_30_60_MONTH_1_3DropDownList.Items(DPD_MORE_30_60_MONTH_1_3DropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_60_90_MONTH_1_3", DPD_MORE_60_90_MONTH_1_3DropDownList.Items(DPD_MORE_60_90_MONTH_1_3DropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_90_MONTH_1_3", DPD_MORE_90_MONTH_1_3DropDownList.Items(DPD_MORE_90_MONTH_1_3DropDownList.SelectedIndex).Value)
 
-        ',@OD_OVER_NUMBER int
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_10_30_MONTH_4_12", DPD_MORE_10_30_MONTH_4_12DropDownList.Items(DPD_MORE_10_30_MONTH_4_12DropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_30_60_MONTH_4_12", DPD_MORE_30_60_MONTH_4_12DropDownList.Items(DPD_MORE_30_60_MONTH_4_12DropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_60_90_MONTH_4_12", DPD_MORE_60_90_MONTH_4_12DropDownList.Items(DPD_MORE_60_90_MONTH_4_12DropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_90_MONTH_4_12", DPD_MORE_90_MONTH_4_12DropDownList.Items(DPD_MORE_90_MONTH_4_12DropDownList.SelectedIndex).Value)
 
-        sqlCmd.Parameters.AddWithValue("SMES_ID", SMES_IDTextBox.Text)
-        If action = "Insert" Then
-            sqlCmd.Parameters.AddWithValue("CREATE_USER", USERTextBox.Text)
-        Else
-            sqlCmd.Parameters.AddWithValue("UPDATE_USER", USERTextBox.Text)
-        End If
-        sqlCmd.ExecuteNonQuery()
-        sqlCmd.Transaction.Commit()
-        'Catch ex As Exception
-        'sqlCmd.Transaction.Rollback()
-        'runScirpt("alert('Cannot save data. \n " & ex.Message.ToString.Replace("'", "") & "');")
-        'Exit Sub
-        'Finally
-        If (conn.State = ConnectionState.Open) Then
-            conn.Close()
-        End If
-        conn = Nothing
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_10_30_MONTH_12_24", DPD_MORE_10_30_MONTH_12_24DropDownList.Items(DPD_MORE_10_30_MONTH_12_24DropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_30_60_MONTH_12_24", DPD_MORE_30_60_MONTH_12_24DropDownList.Items(DPD_MORE_30_60_MONTH_12_24DropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_60_90_MONTH_12_24", DPD_MORE_60_90_MONTH_12_24DropDownList.Items(DPD_MORE_60_90_MONTH_12_24DropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("DPD_MORE_90_MONTH_12_24", DPD_MORE_90_MONTH_12_24DropDownList.Items(DPD_MORE_90_MONTH_12_24DropDownList.SelectedIndex).Value)
 
-        Dim jscript As String = ""
-        'If action = "Insert" Then
-        '    jscript = jscript & "changeMain('Insert Complete.',""" & SMES_IDTextBox.Text & """);"
-        'Else
-        '    jscript = jscript & "changeMain('Update Complete.',""" & SMES_IDTextBox.Text & """);"
-        'End If
+            If CEOAgeTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("AGE_CEO", System.DBNull.Value)
+            Else
+                sqlCmd.Parameters.AddWithValue("AGE_CEO", CInt(CEOAgeTextBox.Text))
+            End If
 
-        setShow()
-        If action = "Insert" Then
-            InsertButton.Visible = False
-            UpdateButton.Visible = True
-            jscript = jscript & "changeMenu(""" & SMES_IDTextBox.Text & """);"
-            jscript = jscript & "showDialog('Insert Complete');"
-            'jscript = jscript & "alert('Insert Complete');"
-        Else
-            jscript = jscript & "changeMenu(""" & SMES_IDTextBox.Text & """);"
-            jscript = jscript & "showDialog('Update Complete');"
-            'jscript = jscript & "alert('Insert Complete');"
-        End If
-        runScirpt(jscript)  ' เรียก javascript 
-        ' End Try
+            If FIXED_ASSET_NO_LANDTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("FIXED_ASSET_NO_LAND", System.DBNull.Value)
+            Else
+                sqlCmd.Parameters.AddWithValue("FIXED_ASSET_NO_LAND", ToDecimal(FIXED_ASSET_NO_LANDTextBox.Text))
+            End If
+
+            If CHECK_NCB_6MONTHTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("CHECK_NCB_6MONTH", System.DBNull.Value)
+            Else
+                sqlCmd.Parameters.AddWithValue("CHECK_NCB_6MONTH", ToDecimal(CHECK_NCB_6MONTHTextBox.Text))
+            End If
+
+            sqlCmd.Parameters.AddWithValue("DSS_OPERATE_STATUS", DSS_OPERATE_STATUSDropDownList.Items(DSS_OPERATE_STATUSDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("POSITIVE_EQUITY", POSITIVE_EQUITYDropDownList.Items(POSITIVE_EQUITYDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("PROFIT_LAST_2YEARS", PROFIT_LAST_2YEARSDropDownList.Items(PROFIT_LAST_2YEARSDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("INSIGNIFICANT_LOST", INSIGNIFICANT_LOSTDropDownList.Items(INSIGNIFICANT_LOSTDropDownList.SelectedIndex).Value)
+
+            If CHEQUE_RETURN_6MONTHTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("CHEQUE_RETURN_6MONTH", System.DBNull.Value)
+            Else
+                sqlCmd.Parameters.AddWithValue("CHEQUE_RETURN_6MONTH", CInt(CHEQUE_RETURN_6MONTHTextBox.Text))
+            End If
+
+            If TRADING_CHEQUE_RETURN_VAL_6MONTHTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("TRADING_CHEQUE_RETURN_VAL_6MONTH", System.DBNull.Value)
+            Else
+                sqlCmd.Parameters.AddWithValue("TRADING_CHEQUE_RETURN_VAL_6MONTH", ToDecimal(TRADING_CHEQUE_RETURN_VAL_6MONTHTextBox.Text))
+            End If
+
+            If OD_UTILIZATION_PERCENTTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("OD_UTILIZATION_PERCENT", System.DBNull.Value)
+            Else
+                sqlCmd.Parameters.AddWithValue("OD_UTILIZATION_PERCENT", CInt(OD_UTILIZATION_PERCENTTextBox.Text))
+            End If
+
+            If OD_SWING_PERCENTTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("OD_SWING_PERCENT", System.DBNull.Value)
+            Else
+                sqlCmd.Parameters.AddWithValue("OD_SWING_PERCENT", CInt(OD_SWING_PERCENTTextBox.Text))
+            End If
+
+            If OD_OVER_NUMBERTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("OD_OVER_NUMBER", System.DBNull.Value)
+            Else
+                sqlCmd.Parameters.AddWithValue("OD_OVER_NUMBER", CInt(OD_OVER_NUMBERTextBox.Text))
+            End If
+
+            If CHECK_NCB_DATETextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("CHECK_NCB_DATE", System.DBNull.Value)
+            Else
+                Dim CHECK_NCB_DATE As Date = New Date(Year(CHECK_NCB_DATETextBox.Text), Month(CHECK_NCB_DATETextBox.Text), Day(CHECK_NCB_DATETextBox.Text), 0, 0, 0, cul.Calendar)
+                sqlCmd.Parameters.AddWithValue("CHECK_NCB_DATE", CHECK_NCB_DATE)
+            End If
+            If CO_BirthDateTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("CO_BIRTH_DATE", System.DBNull.Value)
+            Else
+                Dim CO_BirthDate As Date = New Date(Year(CO_BirthDateTextBox.Text), Month(CO_BirthDateTextBox.Text), Day(CO_BirthDateTextBox.Text), 0, 0, 0, cul.Calendar)
+                sqlCmd.Parameters.AddWithValue("CO_BIRTH_DATE", CO_BirthDate)
+            End If
+
+            sqlCmd.Parameters.AddWithValue("CO_LEGAL_LIST_ID", CO_LegalDropDownList.Items(CO_LegalDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("NET_PROFIT_LIST_ID", NET_PROFITDropDownList.Items(NET_PROFITDropDownList.SelectedIndex).Value)
+            sqlCmd.Parameters.AddWithValue("NET_WORTH_LIST_ID", NET_WORTHDropDownList.Items(NET_WORTHDropDownList.SelectedIndex).Value)
+
+            If BEGIN_NCB_DATETextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("BEGIN_NCB_DATE", System.DBNull.Value)
+            Else
+                Dim BEGIN_NCB_DATE As Date = New Date(Year(BEGIN_NCB_DATETextBox.Text), Month(BEGIN_NCB_DATETextBox.Text), Day(BEGIN_NCB_DATETextBox.Text), 0, 0, 0, cul.Calendar)
+                sqlCmd.Parameters.AddWithValue("BEGIN_NCB_DATE", BEGIN_NCB_DATE)
+            End If
+
+
+            sqlCmd.Parameters.AddWithValue("SMES_ID", SMES_IDTextBox.Text)
+            If action = "Insert" Then
+                sqlCmd.Parameters.AddWithValue("CREATE_USER", USERTextBox.Text)
+            Else
+                sqlCmd.Parameters.AddWithValue("UPDATE_USER", USERTextBox.Text)
+            End If
+            sqlCmd.ExecuteNonQuery()
+            sqlCmd.Transaction.Commit()
+        Catch ex As Exception
+            sqlCmd.Transaction.Rollback()
+            runScirpt("alert('Cannot save data. \n " & ex.Message.ToString.Replace("'", "") & "');")
+            Exit Sub
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+            conn = Nothing
+
+            Dim jscript As String = ""
+            'If action = "Insert" Then
+            '    jscript = jscript & "changeMain('Insert Complete.',""" & SMES_IDTextBox.Text & """);"
+            'Else
+            '    jscript = jscript & "changeMain('Update Complete.',""" & SMES_IDTextBox.Text & """);"
+            'End If
+
+            setShow()
+            If action = "Insert" Then
+                InsertButton.Visible = False
+                UpdateButton.Visible = True
+                jscript = jscript & "changeMenu(""" & SMES_IDTextBox.Text & """);"
+                jscript = jscript & "showDialog('Insert Complete');"
+                'jscript = jscript & "alert('Insert Complete');"
+            Else
+                jscript = jscript & "changeMenu(""" & SMES_IDTextBox.Text & """);"
+                jscript = jscript & "showDialog('Update Complete');"
+                'jscript = jscript & "alert('Insert Complete');"
+            End If
+            runScirpt(jscript)  ' เรียก javascript 
+        End Try
 
     End Sub
     Protected Sub InsertButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles InsertButton.Click
@@ -852,5 +956,9 @@ Partial Class smes_financial_customer
                 e.Row.Attributes.Add("OnMouseOut", "this.style.backgroundColor ='" & bkColor & "'")
             End If
         End If
+    End Sub
+
+    Protected Sub RegisDocDropDownList_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles RegisDocDropDownList.SelectedIndexChanged
+
     End Sub
 End Class
