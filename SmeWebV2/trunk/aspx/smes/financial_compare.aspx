@@ -81,6 +81,7 @@
         type="text/css" />
     <script src="js/autoNumeric.js" type="text/javascript"></script>
     <script src="js/SSCalFunction01.js?n=1" type="text/javascript"></script>
+    <script src="js/DscrCalLtv.js?n=2" type="text/javascript"></script>
     <script type="text/javascript">
         var obj = new SSProject();
 
@@ -102,7 +103,9 @@
         , R44 // Temp cal loan max
          , MARGIN_TABLE, DSCR_TABLE, AP_TABLE, AR_TABLE, STOCK_TABLE // ตัวแปรจาก table ที่ไม่มีใน excell
         , LTV_TABLE, WORKING_CAPITAL_TABLE, RATE_TABLE, CONTRACT_TABLE
-        , DX06, DX07;
+        , DX06, DX07
+        , CURRENT_ASSET_OTHER
+        , DSCR_THIS_TIME;
 
         $(document).ready(function () {
 
@@ -129,7 +132,9 @@
             D14 = $("#CREDIT_PURCHASE_CMTextBox");
             D15 = $("#TERM_PURCHASE_CMTextBox");
             D16 = $("#DEFAULT_MARGIN_CMTextBox");
+
             D17 = $("#GROSS_PROFIT_CMTextBox");
+
             D20 = $("#INVENTORY_INTERVIEW_CMTextBox");
             D21 = $("#INVENTORY_VISIT_CMTextBox");
             D24 = $("#ACCOUNT_RECEIVABLE_CMTextBox");
@@ -220,6 +225,7 @@
             M34 = $("#INTEREST_RATE_PERCENT_USED_CMTextBox");
 
             M35 = $("#DSCR_THIS_TIME_CMTextBox");
+
             M36 = $("#DE_THIS_TIME_CMTextBox");
             M37 = $("#LTV_THIS_TIME_CMTextBox");
 
@@ -266,6 +272,8 @@
             DX06 = $("#OTHER_FIXED_ASSETS_OTHER_BANK_CMTextBox");
             DX07 = $("#OTHER_FIXED_ASSETS_OTHER_BANK_CAL_CMTextBox");
 
+            CURRENT_ASSET_OTHER = $("#CURRENT_ASSET_OTHER_CMTextBox");
+
             var CALCULATE_EL = N43.add(N44).add(I30).add(I31).add(N30).add(N31);
             CALCULATE_EL.autoNumeric({ aPad: true, vMin: '-9999999999.99', vMax: '9999999999.99' });
 
@@ -298,35 +306,50 @@
             } else {
                 obj.setI37(parseFloat($(I37).autoNumericGet()));
             }
+
+            // หา ltv จาก dscr ที่ได้ (default 1.0)
+
+            var v39 = 1.0; //  Zone A  // CBD Core Asset  I39  0.85
+            var v40 = 1.0; //  Zone B  // CBD Non Core Asset I40 0.75
+            var v41 = 1.0; //  Zone C // CBD Land  I41  0.60
+            var v42 = 1.0; //  Zone D // Not CBD Core Asset  I42 0.60
+            var v43 = 1.0; //  Zone E // Not CBD Non Core Asset  I43 0.50
+            var v44 = 1.0; //  Zone F // Not CBD Land  I
+
+            var v45 = 1.0; //  Zone G //  
+            var v46 = 1.0;
+
+
+
             if (I39.val() == '') {
                 obj.setI39(0);
             } else {
-                obj.setI39(parseFloat($(I39).autoNumericGet()));
+                obj.setI39(parseFloat($(I39).autoNumericGet()) * v39);
             }
             if (I40.val() == '') {
                 obj.setI40(0);
             } else {
-                obj.setI40(parseFloat($(I40).autoNumericGet()));
+                obj.setI40(parseFloat($(I40).autoNumericGet()) * v40);
             }
             if (I41.val() == '') {
                 obj.setI41(0);
             } else {
-                obj.setI41(parseFloat($(I41).autoNumericGet()));
+                obj.setI41(parseFloat($(I41).autoNumericGet()) * v41);
             }
             if (I42.val() == '') {
                 obj.setI42(0);
             } else {
-                obj.setI42(parseFloat($(I42).autoNumericGet()));
+                obj.setI42(parseFloat($(I42).autoNumericGet()) * v42);
             }
             if (I43.val() == '') {
                 obj.setI43(0);
             } else {
-                obj.setI43(parseFloat($(I43).autoNumericGet()));
+                obj.setI43(parseFloat($(I43).autoNumericGet()) * v43);
             }
             if (I44.val() == '') {
                 obj.setI44(0);
             } else {
-                obj.setI44(parseFloat($(I44).autoNumericGet()));
+                obj.setI44(parseFloat($(I44).autoNumericGet()) * v44);
             }
 
             obj.setI45(0);
@@ -576,6 +599,15 @@
             } else {
                 obj.setO37(parseFloat(LTV_TABLE.autoNumericGet())); // นำค่าจากตารางแทนเพราะจะใช้ o37 แสดงเป็น %
             }
+
+            if (CURRENT_ASSET_OTHER.val() == '') {
+                obj.setCURRENT_ASSET_OTHER(0);
+            } else {
+
+                obj.setCURRENT_ASSET_OTHER(parseFloat(CURRENT_ASSET_OTHER.val()));
+
+            }
+
             //            if (DX06.val() == '') {
             //                obj.setDX06(0);
             //            } else {
@@ -584,7 +616,6 @@
 
             // กำหนดค่าให้ obj ที่เป็นค่า default
 
-
             $("#SALESTextBox").val(D8.val());
             $("#CREDIT_SALETextBox").val(D9.val());
             $("#CREDIT_TERMTextBox").val(D10.val());
@@ -592,10 +623,16 @@
             $("#CREDIT_PURCHASETextBox").val(D14.val());
             $("#TERM_PURCHASETextBox").val(D15.val());
             $("#DEFAULT_MARGINTextBox").val(D16.val());
-            $("#GROSS_PROFITTextBox").val(D17.val());
+
+            $("#GROSS_PROFITTextBox").val($(MARGIN_TABLE).autoNumericGet() * 100);  // แสดงให้เห็นว่า margin มาจาก default
+
             $("#INVENTORY_INTERVIEWTextBox").val(D20.val());
             $("#INVENTORY_VISITTextBox").val(D21.val());
             $("#ACCOUNT_RECEIVABLETextBox").val(D24.val());
+
+            $("#CURRENT_ASSET_OTHERTextBox").val(CURRENT_ASSET_OTHER.val());
+            $("#CURRENT_ASSET_OTHER_CALTextBox").val(CURRENT_ASSET_OTHER.val());
+
             $("#MACHINERY_EQUIPMENTTextBox").val(D25.val());
             $("#CORE_ASSETSTextBox").val(D26.val());
             $("#OTHER_FIXED_ASSETSTextBox").val(D27.val());
@@ -637,6 +674,9 @@
             $("#TOTAL_AMOUNT_OF_COLLATERALTextBox").val(T17.val());
 
             // ใส่ค่าช่วงคำนวณ
+
+
+
             $("#ACCOUNT_PAYABLE_CALTextBox").autoNumericSet(obj.N9());
             $("#CURRENT_LIABILITY_BAY_CALTextBox").autoNumericSet(obj.N10());
             $("#OTHER_CURRENT_LIABILITY_CALTextBox").autoNumericSet(obj.N11());
@@ -663,7 +703,9 @@
             $("#ASSETS_FROM_CREDIT_CALTextBox").autoNumericSet(obj.I18());
             $("#TOTAL_FIXED_ASSETS_CALTextBox").autoNumericSet(obj.I20());
             $("#TOTAL_ASSETS_CALTextBox").autoNumericSet(obj.I22());
+
             $("#EBIDA_CALTextBox").autoNumericSet(obj.I25());
+
             $("#DE_BEFORE_LOAN_CALTextBox").autoNumericSet(obj.I26());
             $("#DSCR_BEFORE_LOAN_CALTextBox").autoNumericSet(obj.I27());
 
@@ -684,6 +726,8 @@
             $("#WORKING_CAPITAL_DEFAULT_APPROVETextBox").autoNumericSet(obj.N43());
             $("#LOAN_DEFAULT_APPROVETextBox").autoNumericSet(obj.N44());
 
+            // alert(obj.M36());
+
             $("#DE_THIS_TIMETextBox").autoNumericSet(obj.M36());
             $("#DSCR_THIS_TIMETextBox").autoNumericSet(obj.M35());
             $("#DSCR_THIS_TIME_PERCENTTextBox").autoNumericSet(DSCR_TABLE.val());
@@ -702,6 +746,16 @@
 
 
             // คำนวณผลอนุมัติ
+
+
+            // คำนวณ LTV % จาก dscr
+            DSCR_THIS_TIME = $("#DSCR_THIS_TIMETextBox").val();
+            switch (DSCR_THIS_TIME) {
+                case DSCR_THIS_TIME <= 1.2:
+                        
+                case 2: result = 'two'; break;
+                default: result = 'unknown';
+            }
 
             var a;
             var b;
@@ -762,6 +816,7 @@
 
         });
     </script>
+    
     <script type="text/javascript">
         $(document).ready(function () {
             // กำหนด size frame
@@ -1151,23 +1206,6 @@
                         </tr>
                         <tr>
                             <td class="style4">
-                                กำไรจากการดำเนินงาน %
-                            </td>
-                            <td class="style25">
-                                <asp:TextBox ID="GROSS_PROFIT_RMTextBox" ToolTip="D17: กำไรจากการดำเนินงาน" CELL="D17"
-                                    Width="85px" runat="server" Text='<%# Bind("GROSS_PROFIT") %>' />
-                            </td>
-                            <td class="style26">
-                                <asp:TextBox ID="GROSS_PROFIT_CMTextBox" ToolTip="D17: กำไรจากการดำเนินงาน" CELL="D17"
-                                    Width="85px" runat="server" Text='<%# Bind("GROSS_PROFIT") %>' />
-                            </td>
-                            <td class="style23">
-                                <asp:TextBox ID="GROSS_PROFITTextBox" ToolTip="D17: กำไรจากการดำเนินงาน" CELL="D17"
-                                    Width="85px" runat="server" Text='<%# Bind("GROSS_PROFIT") %>' />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="style4">
                                 TAX
                             </td>
                             <td class="style25">
@@ -1243,6 +1281,19 @@
                             <td class="style23">
                                 <asp:TextBox ID="ACCOUNT_RECEIVABLETextBox" ToolTip="D24: ลูกหนี้การค้า" CELL="D24"
                                     Width="85px" runat="server" Text='<%# Bind("ACCOUNT_RECEIVABLE") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style4">
+                                สินทรัพย์หมุนเวียนอื่น ๆ</td>
+                            <td class="style25">
+                                <asp:TextBox ID="CURRENT_ASSET_OTHER_RMTextBox" Width="85px" runat="server"/>
+                            </td>
+                            <td class="style26">
+                                <asp:TextBox ID="CURRENT_ASSET_OTHER_CMTextBox" Width="85px" runat="server" />
+                            </td>
+                            <td class="style23">
+                                <asp:TextBox ID="CURRENT_ASSET_OTHERTextBox" Width="85px" runat="server"/>
                             </td>
                         </tr>
                         <tr>
@@ -1828,11 +1879,11 @@
                             </td>
                             <td class="style2">
                                 <asp:TextBox ID="CASH_BOND_CAL_CMTextBox" ToolTip=" I9:เงินสด/ฝาก/พันธบัตร" CELL="I9"
-                                    Width="85px" runat="server" Text='<%# Bind("CASH_BOND_CAL") %>' />
+                                    Width="85px" runat="server" />
                             </td>
                             <td class="style30">
                                 <asp:TextBox ID="CASH_BOND_CALTextBox" ToolTip=" I9:เงินสด/ฝาก/พันธบัตร" CELL="I9"
-                                    Width="85px" runat="server" Text='<%# Bind("CASH_BOND_CAL") %>' />
+                                    Width="85px" runat="server"  />
                             </td>
                         </tr>
                         <tr>
@@ -1849,7 +1900,7 @@
                             </td>
                             <td class="style30">
                                 <asp:TextBox ID="ACCOUNT_RECEIVABLE_CALTextBox" ToolTip="I10: ลูกหนี้การค้า" CELL="I10"
-                                    Width="85px" runat="server" Text='<%# Bind("ACCOUNT_RECEIVABLE_CAL") %>' />
+                                    Width="85px" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -1867,6 +1918,20 @@
                             <td class="style30">
                                 <asp:TextBox ID="INVENTORY_CALTextBox" ToolTip="I11: สต๊อกสินค้า" CELL="I11" runat="server"
                                     Width="85px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style22">
+                                สินทรัพย์หมุนเวียนอื่น ๆ</td>
+                            <td class="style79">
+                                <asp:TextBox ID="CURRENT_ASSET_OTHER_CAL_RMTextBox" Width="85px" runat="server"/>
+                            </td>
+                            <td class="style2">
+                                <asp:TextBox ID="CURRENT_ASSET_OTHER_CAL_CMTextBox" Width="85px" 
+                                    runat="server"/>
+                            </td>
+                            <td class="style30">
+                                <asp:TextBox ID="CURRENT_ASSET_OTHER_CALTextBox" Width="85px" runat="server"  />
                             </td>
                         </tr>
                         <tr>
@@ -2448,7 +2513,7 @@
                 <tr>
                     <td class="style4">
                         Ebitda
-                    </td>
+                        / ปี</td>
                     <td class="style5">
                         <asp:TextBox ID="EBIDA_CAL_RMTextBox" runat="server" ToolTip="I25: Ebitda" CELL="I25"
                             Width="85px" Text='' />
@@ -2906,16 +2971,19 @@
                 </tr>
                 <tr>
                     <td class="style21">
-                        &nbsp;
+                                กำไรจากการดำเนินงาน %
+                            /เดือน</td>
+                    <td class="style2">
+                                <asp:TextBox ID="GROSS_PROFIT_RMTextBox" ToolTip="D17: กำไรจากการดำเนินงาน" CELL="D17"
+                                    Width="85px" runat="server" Text='<%# Bind("GROSS_PROFIT") %>' />
                     </td>
                     <td class="style2">
-                        &nbsp;
+                                <asp:TextBox ID="GROSS_PROFIT_CMTextBox" ToolTip="D17: กำไรจากการดำเนินงาน" CELL="D17"
+                                    Width="85px" runat="server" Text='<%# Bind("GROSS_PROFIT") %>' />
                     </td>
                     <td class="style2">
-                        &nbsp;
-                    </td>
-                    <td class="style2">
-                        &nbsp;
+                                <asp:TextBox ID="GROSS_PROFITTextBox" ToolTip="D17: กำไรจากการดำเนินงาน" CELL="D17"
+                                    Width="85px" runat="server" Text='<%# Bind("GROSS_PROFIT") %>' />
                     </td>
                 </tr>
             </table>
