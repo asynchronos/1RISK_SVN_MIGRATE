@@ -76,6 +76,7 @@ Partial Class smes_financial_information
             End If
 
             If IsDBNull(reader("LIMIT_DEBT")) = False Then LimitDebtTextBox.Text = String.Format("{0:n0}", reader("LIMIT_DEBT"))
+            If IsDBNull(reader("TENOR")) = False Then TenorTextBox.Text = String.Format("{0:n0}", reader("TENOR"))
 
 
 
@@ -281,6 +282,11 @@ Partial Class smes_financial_information
             sqlCmd.Parameters.AddWithValue("NET_PROFIT_LIST_ID", NetProfitDropDownList.Items(NetProfitDropDownList.SelectedIndex).Value)
             sqlCmd.Parameters.AddWithValue("TEMPLATE_ID", TemplateTextBox.Text)
             sqlCmd.Parameters.AddWithValue("LIMIT_DEBT", ToDecimal(LimitDebtTextBox.Text))
+            If TenorTextBox.Text = "" Then
+                sqlCmd.Parameters.AddWithValue("TENOR", System.DBNull.Value)
+            Else
+                sqlCmd.Parameters.AddWithValue("TENOR", ToDecimal(TenorTextBox.Text))
+            End If
 
             If action = "Insert" Then
                 Dim SMES_ID_OUT As New SqlParameter("@SMES_ID_OUT", SqlDbType.Int)
