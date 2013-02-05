@@ -18,6 +18,7 @@
         //  ฟังชั่นซ่อนแสดง ข้อมูล
         var strCIF;
         var templateID;
+        var msgTop;
         $(document).ready(function () {
             var userName;
             if (window.parent.document.getElementById("spanUserName")) {
@@ -30,7 +31,7 @@
             if (window.parent.document.getElementById("spanTemplateID")) {
                 templateID = window.parent.document.getElementById("spanTemplateID").innerText;
             }
-            
+
             sizeFrame();
 
             $("#ExperienceTextBox").autoNumeric({ aPad: true, vMin: '0', vMax: '200' });
@@ -84,8 +85,6 @@
             $('#CHECK_NCB_6MONTHTextBox').autoNumeric({ aPad: true, vMin: '0', vMax: '100' });
 
 
-
-
         });
 
         function search_CIF(CIF) {
@@ -119,7 +118,6 @@
     <script type="text/javascript">
         function clearDate(id) {
             $('#' + id).val('');
-
         }
         function sizeFrame() {
             //   $("#iframeBlackList", top.document).css({ height: 0 });   
@@ -165,13 +163,13 @@
         $(document).ready(function () {
 
             $("#tabs").tabs({ cookie: { expires: 30} });
-            if (templateID == 3) {
 
-            } else {
-//                $("#aTab3").hide();
-//                $("#tabs-3").hide();
-                $(".trTemplate3").hide();
-            }
+            //            if (templateID == 3) {
+            //            } else {
+            ////              $("#aTab3").hide();
+            ////              $("#tabs-3").hide();
+            //                $(".trTemplate3").hide();
+            //            }
 
             checkPerson();
             $("#CustomerTypeDropDownList").change(function () {
@@ -253,11 +251,28 @@
             //            });
             $("input[type=submit]").button();
 
+            // หาความสูงของปุ่ม อัพเดท หรือ insert เพื่อสร้าง dialog
+
+            var obj = $("#UpdateButton");
+            var obj2 = $("#InsertButton");
+            var msgP = obj.position();
+            var msgP2 = obj2.position();
+            if (msgP) {
+                msgTop = msgP.top;
+            } else if (msgP2) {
+                msgTop = msgP2.top;
+            } else {
+                msgTop = 200;
+            }
+
         });
+
+
+
         function showErrorDialog(msg) {
             $("#dialog").dialog({
                 autoOpen: true,
-                position: [300, 100],
+                position: [300, msgTop],
                 title: "ไม่สามารถบันทึกข้อมูล",
                 modal: "true",
                 buttons: {
@@ -273,7 +288,7 @@
 
             $("#dialog").dialog({
                 autoOpen: true,
-                position: [300, 100],
+                position: [300, msgTop],
                 title: msg,
                 modal: "true",
                 buttons: {
@@ -309,7 +324,7 @@
         {
             width: 950px;
             font-size: 12px;
-            padding:2px;
+            padding: 2px;
         }
         input[type=submit]
         {
@@ -328,11 +343,10 @@
         {
             font-size: 12px;
         }
-        td 
+        td
         {
-            font-size:12px;   
-         }
-        
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -393,7 +407,7 @@
             <ul>
                 <li><a id="aTab1" href="#tabs-1">ข้อมูลลูกค้า</a></li>
                 <li><a id="aTab2" href="#tabs-2">ข้อมูลสินเชื่อ(บสย)</a></li>
-                <li><a id="aTab3" href="#tabs-3">ข้อมูลประวัติ NCB</a></li>
+                <li><a id="aTab3" href="#tabs-3">ข้อมูลประวัติ Credit Checking</a></li>
             </ul>
             <div id="tabs-1">
                 <table id="tableForm">
@@ -407,7 +421,7 @@
                             CIF
                         </td>
                         <td colspan="3">
-                            <asp:TextBox ID="CIFTextBox" runat="server" Width="100" ></asp:TextBox>
+                            <asp:TextBox ID="CIFTextBox" runat="server" Width="100"></asp:TextBox>
                             <asp:ImageButton ID="CustomerSearchImageButton" runat="server" BorderColor="#CCCCCC"
                                 ImageUrl="~/aspx/smes/images/Magnifying Glass.gif" />
                             &nbsp;<asp:TextBox ID="CIFNameTextBox" runat="server" Width="300"></asp:TextBox>
@@ -430,15 +444,59 @@
                     </tr>
                     <tr class="clsPerson">
                         <td>
-                            วันเกิด
+                            วันเกิดผู้กู้ (dd/mm/yyyy) พ.ศ.
                         </td>
                         <td>
                             <asp:TextBox ID="BirthDateTextBox" runat="server" ViewStateMode="Enabled" Width="100"></asp:TextBox>
                             <ajaxToolkit:CalendarExtender ID="cal1" runat="server" TargetControlID="BirthDateTextBox"
                                 PopupPosition="Right" />
                             <img id="imgClearAnnalsDate" runat="server" alt="clear date" onclick="clearDate('BirthDateTextBox')"
-                                src="images/close_button.gif" />&nbsp; (dd/mm/yyyy) พ.ศ.
+                                src="images/close_button.gif" />&nbsp;
                         </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr class="clsPerson">
+                        <td>
+                            สถานะทางกฎหมายผู้กู้
+                        </td>
+                        <td colspan="3">
+                            <asp:DropDownList ID="LegalDropDownList" runat="server">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            วันเกิดผู้กู้ร่วมผู้ค้ำ (dd/mm/yyyy) พ.ศ.
+                        </td>
+                        <td>
+                            <asp:TextBox ID="CO_BirthDateTextBox" runat="server" ViewStateMode="Enabled" Width="100"></asp:TextBox>
+                            <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="CO_BirthDateTextBox"
+                                PopupPosition="Right" />
+                            <img id="img4" runat="server" alt="clear date" onclick="clearDate('CO_BirthDateTextBox')"
+                                src="images/close_button.gif" />&nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            สถานะทางกฎหมายผู้กู้ร่วมผู้ค้ำ
+                        </td>
+                        <td colspan="3">
+                            <asp:DropDownList ID="CO_LegalDropDownList" runat="server">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr class="clsPerson">
                         <td>
                             สัญชาติ
                         </td>
@@ -446,10 +504,14 @@
                             <asp:DropDownList ID="NationalityDropDownList" runat="server">
                             </asp:DropDownList>
                         </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                     <tr class="clsBusiness">
                         <td>
-                            วันที่จดทะเบียน
+                            วันที่จดทะเบียน (dd/mm/yyyy) พ.ศ.
                         </td>
                         <td>
                             <asp:TextBox ID="RegisterDateTextBox" runat="server" Width="100"></asp:TextBox>
@@ -457,29 +519,20 @@
                                 PopupPosition="Right" />
                             <img id="img2" runat="server" alt="clear date" onclick="clearDate('RegisterDateTextBox')"
                                 src="images/close_button.gif" />
-                            (dd/mm/yyyy) พ.ศ.
                         </td>
                         <td>
-                            สัญชาติ
+                            &nbsp;
                         </td>
                         <td>
-                            <asp:DropDownList ID="BNationalityDropDownList" runat="server">
-                            </asp:DropDownList>
+                            &nbsp;
                         </td>
                     </tr>
                     <tr class="clsBusiness">
                         <td>
                             ประเภทธุรกิจ
                         </td>
-                        <td>
+                        <td colspan="3">
                             <asp:DropDownList ID="JuristicDropDownList" runat="server">
-                            </asp:DropDownList>
-                        </td>
-                        <td>
-                            ผู้ถือหุ้น
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ShareHolderDropDownList" runat="server">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -499,21 +552,20 @@
                     </tr>
                     <tr class="clsBusiness">
                         <td>
-                            วันที่ดำเนินกิจการ
+                            วันที่ดำเนินกิจการ (dd/mm/yyyy) พ.ศ.
                         </td>
                         <td>
                             <asp:TextBox ID="OperateDateTextBox" runat="server" Width="100"></asp:TextBox>
                             <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="OperateDateTextBox"
                                 PopupPosition="Right" />
                             <img id="img1" runat="server" alt="clear date" onclick="clearDate('OperateDateTextBox')"
-                                src="images/close_button.gif" />
-                            (dd/mm/yyyy) พ.ศ.
+                                src="images/close_button.gif" />&nbsp;
                         </td>
                         <td>
-                            เอกสารการจดทะเบียน
+                            สัญชาติ
                         </td>
                         <td>
-                            <asp:DropDownList ID="RegisDocDropDownList" runat="server">
+                            <asp:DropDownList ID="BNationalityDropDownList" runat="server">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -534,23 +586,6 @@
                     </tr>
                     <tr>
                         <td>
-                            TDR
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="TDRDropDownList" runat="server">
-                            </asp:DropDownList>
-                        </td>
-                        <td>
-                            ประสบการณ์
-                        </td>
-                        <td>
-                            <asp:TextBox ID="ExperienceTextBox" runat="server" Width="50"></asp:TextBox>
-                            &nbsp;ปี
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td>
                             Rating
                         </td>
                         <td>
@@ -558,11 +593,51 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            สถานะทางกฎหมาย
+                            &nbsp;
                         </td>
                         <td>
-                            <asp:DropDownList ID="LegalDropDownList" runat="server">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="labeldoc" Visible="false" Text="เอกสารการจดทะเบียน">
+                            </asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="RegisDocDropDownList" runat="server" Visible="false">
                             </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="labelShareHol" Text="ผู้ถือหุ้น" Visible="false"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ShareHolderDropDownList" runat="server" Visible="false">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            TDR
+                        </td>
+                        <td colspan="3">
+                            <asp:DropDownList ID="TDRDropDownList" runat="server">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ประสบการณ์ในธุรกิจ
+                        </td>
+                        <td>
+                            <asp:TextBox ID="ExperienceTextBox" runat="server" Width="50"></asp:TextBox>
+                            &nbsp;ปี
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
                         </td>
                     </tr>
                     <tr>
@@ -581,7 +656,6 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
-                    
                     <tr class="trTemplate3">
                         <td>
                             เช็คคืนในรอบ 6 เดือน
@@ -625,8 +699,7 @@
                             &nbsp;ครั้ง
                         </td>
                         <td>
-                            มูลค่าทรัพย์สินถาวรไม่รวมที่ดิน
-                            &nbsp;
+                            มูลค่าทรัพย์สินถาวรไม่รวมที่ดิน &nbsp;
                         </td>
                         <td>
                             <asp:TextBox ID="FIXED_ASSET_NO_LANDTextBox" runat="server" Width="100px" MaxLength="12"
@@ -634,7 +707,6 @@
                             &nbsp;บาท
                         </td>
                     </tr>
-                  
                 </table>
             </div>
             <div id="tabs-2">
@@ -743,17 +815,16 @@
                 <table>
                     <tr>
                         <td>
-                            NCB</td>
-                        <td>
-                            <asp:DropDownList ID="NCBDropDownList" runat="server">
-                            </asp:DropDownList>
+                            &nbsp;
                         </td>
                         <td>
-                            NCB Code
+                            &nbsp;
                         </td>
                         <td>
-                            <asp:DropDownList ID="NCBCodeDropDownList" runat="server">
-                            </asp:DropDownList>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
                         </td>
                     </tr>
                     <tr class="trTemplate3">
@@ -774,19 +845,93 @@
                     </tr>
                     <tr class="trTemplate3">
                         <td>
-                            จำนวนครั้งในการตรวจสอบ NCB ของผู้กู้ในรอบ 6 เดือน
+                            NET Profit (งบราชการปีล่าสุด)
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="NET_PROFITDropDownList" runat="server">
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            NET Worth (งบราชการปีล่าสุด)
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="NET_WORTHDropDownList" runat="server">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr class="trTemplate3">
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr class="trTemplate3">
+                        <td>
+                            วันที่ตรวจสอบ Credit Checking(dd/mm/yyyy) พ.ศ.
+                        </td>
+                        <td>
+                            <asp:TextBox ID="CHECK_NCB_DATETextBox" runat="server" ViewStateMode="Enabled" Width="100"></asp:TextBox>
+                            <ajaxToolkit:CalendarExtender ID="CalendarExtenderCHECK_NCB_DATE" runat="server"
+                                TargetControlID="CHECK_NCB_DATETextBox" PopupPosition="Right" />
+                            <img id="img3" runat="server" alt="clear date" onclick="clearDate('CHECK_NCB_DATETextBox')"
+                                src="images/close_button.gif" />
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr class="trTemplate3">
+                        <td>
+                            วันที่เิิริ่มมีข้อมูลใน Credit Checking(dd/mm/yyyy) พ.ศ.
+                        </td>
+                        <td>
+                            <asp:TextBox ID="BEGIN_NCB_DATETextBox" runat="server" ViewStateMode="Enabled" Width="100"></asp:TextBox>
+                            <ajaxToolkit:CalendarExtender ID="CalendarExtender4" runat="server" TargetControlID="BEGIN_NCB_DATETextBox"
+                                PopupPosition="Right" />
+                            <img id="img5" runat="server" alt="clear date" onclick="clearDate('BEGIN_NCB_DATETextBox')"
+                                src="images/close_button.gif" />
+                        </td>
+                        <td>
+                            จำนวนครั้งในการตรวจสอบ Credit Checking ผู้กู้ในรอบ 6 เดือน
                         </td>
                         <td>
                             <asp:TextBox ID="CHECK_NCB_6MONTHTextBox" runat="server" Width="50px" MaxLength="2"
                                 Height="22px"></asp:TextBox>
-                            &nbsp;ครั้ง
+                            ครั้ง
                         </td>
-                        <td>&nbsp</td>
-                        <td>&nbsp</td>
                     </tr>
                     <tr class="trTemplate3">
                         <td>
-                            NCB Record
+                            Credit Checking
+                        </td>
+                        <td colspan="3">
+                            <asp:DropDownList ID="NCBDropDownList" runat="server">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr class="trTemplate3">
+                        <td>
+                            Credit Checking Code
+                        </td>
+                        <td colspan="3">
+                            <asp:DropDownList ID="NCBCodeDropDownList" runat="server">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr class="trTemplate3">
+                        <td>
+                            Credit Checking Record
                         </td>
                         <td colspan="3">
                             <table id="DPDTable">
@@ -795,153 +940,151 @@
                                     </td>
                                     .
                                     <th colspan="4" class="ui-widget-header">
-                                        ประวัตการค้างชำระ
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ui-widget-header">
-                                        เดือนที่
-                                    </td>
-                                    <td class="ui-widget-header">
-                                        10 - 30 วัน
-                                    </td>
-                                    <td class="ui-widget-header">
-                                        30 - 60 วัน
-                                    </td>
-                                    <td class="ui-widget-header">
-                                        > 60-90 วัน
-                                    </td>
-                                    <td class="ui-widget-header">
-                                        > 90 วัน
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ui-widget-header">
-                                        1-3
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_10_30_MONTH_1_3DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_30_60_MONTH_1_3DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_60_90_MONTH_1_3DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_90_MONTH_1_3DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ui-widget-header">
-                                        4-12
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_10_30_MONTH_4_12DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_30_60_MONTH_4_12DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_60_90_MONTH_4_12DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_90_MONTH_4_12DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ui-widget-header">
-                                        12-24
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_10_30_MONTH_12_24DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_30_60_MONTH_12_24DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_60_90_MONTH_12_24DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="DPD_MORE_90_MONTH_12_24DropDownList" runat="server">
-                                            <asp:ListItem Text="No" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text=">3" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                </tr>
-                            </table>
+                            ประวัตการค้างชำระ
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui-widget-header">
+                            เดือนที่
+                        </td>
+                        <td class="ui-widget-header">
+                            10 - 30 วัน
+                        </td>
+                        <td class="ui-widget-header">
+                            30 - 60 วัน
+                        </td>
+                        <td class="ui-widget-header">
+                            > 60-90 วัน
+                        </td>
+                        <td class="ui-widget-header">
+                            > 90 วัน
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui-widget-header">
+                            1-3
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_10_30_MONTH_1_3DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_30_60_MONTH_1_3DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_60_90_MONTH_1_3DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_90_MONTH_1_3DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui-widget-header">
+                            4-12
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_10_30_MONTH_4_12DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_30_60_MONTH_4_12DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_60_90_MONTH_4_12DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_90_MONTH_4_12DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui-widget-header">
+                            12-24
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_10_30_MONTH_12_24DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_30_60_MONTH_12_24DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_60_90_MONTH_12_24DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DPD_MORE_90_MONTH_12_24DropDownList" runat="server">
+                                <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text=">3" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                     </tr>
                 </table>
+                </td> </tr> </table>
             </div>
         </div>
         <div id="divSave">
@@ -952,7 +1095,7 @@
             <asp:Button ID="CancelButton" runat="server" Text="Cancel" Height="30px" Width="200px" />
             &nbsp;
             <asp:Button ID="DeleteButton" runat="server" Text="Delete this customer" Height="30px"
-                Width="200px"  Enabled="false"/>
+                Width="200px" Enabled="false" />
         </div>
     </div>
     </form>
