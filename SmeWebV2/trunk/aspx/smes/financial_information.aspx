@@ -13,6 +13,8 @@
     <script src="js/autoNumeric.js" type="text/javascript"></script>
     <script type="text/javascript">
         //  ฟังชั่นซ่อนแสดง ข้อมูล
+        var templateID;
+
         $(document).ready(function () {
             var userName;
             if (window.parent.document.getElementById("spanUserName")) {
@@ -36,11 +38,11 @@
 
             $('#InvestInTextBox').autoNumeric({ aPad: true, vMin: '0', vMax: '99' });
             $('#LimitDebtTextBox').autoNumeric({ aPad: true, vMin: '0', vMax: '99999999999' });
-
-
+            $('#TenorTextBox').autoNumeric({ aPad: true, vMin: '0', vMax: '99' });
+           
 
             var tempPid = $("#TemplateTextBox").val();
-            var templateID = parseInt(tempPid);
+            templateID = parseInt(tempPid);
 
             //  ส่วนนี้เป็น การเลือก ว่าจะแสดงข้อมูล business จากที่ได
             // กรณีที่ template 1 ให้เลือก business จาก ss ,2  business จาก leader ,3 ( 3x  business จาก leader 
@@ -301,6 +303,14 @@
                 bValid = false;
                 showErrorDialog("กรุณาระบุข้อมูล Customer ");
             }
+
+            if (templateID == 1) {  // กรณีเป็น ss ต้องบังคับกรอก
+                if ($("#TenorTextBox").val() == '') {
+                    bValid = false;
+                    showErrorDialog("กรุณาระบุข้อมูล ระยะเวลากู้ ");
+                }
+            }
+
             if (bValid) {
                 return true;
             } else {
@@ -340,6 +350,10 @@
         .show
         {
             background-color: Red;
+        }
+        .style4
+        {
+            height: 25px;
         }
     </style>
     <link href="css/AjaxControlStyleSheet.css" rel="stylesheet" type="text/css" />
@@ -385,16 +399,16 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="style4">
                     AP Table
                 </td>
-                <td>
+                <td class="style4">
                     <asp:TextBox ID="AP_TABLETextBox" runat="server" ToolTip="AP" CELL="AP_TABLE" />
                 </td>
-                <td>
+                <td class="style4">
                     AR Table
                 </td>
-                <td>
+                <td class="style4">
                     <asp:TextBox ID="AR_TABLETextBox" runat="server" ToolTip="Credit Term" CELL="AR_TABLE" />
                 </td>
             </tr>
@@ -492,7 +506,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr template="134">
+        <tr template="34">
             <td class="style1">
                 จะลงทุนในธุรกิจภายใน
             </td>
@@ -506,8 +520,10 @@
                 ระยะเวลากู้
             </td>
             <td>
-                <asp:DropDownList ID="TenorDropDownList" runat="server">
+                <asp:DropDownList ID="TenorDropDownList" runat="server" visible="false" >
                 </asp:DropDownList>
+                <asp:TextBox ID="TenorTextBox" runat="server" MaxLength="2" Width="40"></asp:TextBox>
+                &nbsp; ปี
             </td>
         </tr>
         <tr template="134">
