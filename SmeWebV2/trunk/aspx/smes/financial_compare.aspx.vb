@@ -46,13 +46,17 @@ Partial Class smes_financial_compare
             If IsDBNull(reader("OPERATING_EXPENSES")) = False Then OPERATING_EXPENSES_RMTextBox.Text = String.Format("{0:n0}", reader("OPERATING_EXPENSES"))
             If IsDBNull(reader("OPERATING_EXPENSES_PERCENT")) = False Then OPERATING_EXPENSES_PERCENT_RMTextBox.Text = String.Format("{0:n2}", reader("OPERATING_EXPENSES_PERCENT"))
 
-            If IsDBNull(reader("DEFAULT_MARGIN")) = False Then DEFAULT_MARGIN_RMTextBox.Text = String.Format("{0:n0}", reader("DEFAULT_MARGIN"))
-            If IsDBNull(reader("GROSS_PROFIT")) = False Then GROSS_PROFIT_RMTextBox.Text = String.Format("{0:n0}", reader("GROSS_PROFIT"))
+            If IsDBNull(reader("DEFAULT_MARGIN")) = False Then DEFAULT_MARGIN_RMTextBox.Text = String.Format("{0:n2}", reader("DEFAULT_MARGIN"))
+            If IsDBNull(reader("GROSS_PROFIT")) = False Then GROSS_PROFIT_RMTextBox.Text = String.Format("{0:n2}", reader("GROSS_PROFIT"))
             If IsDBNull(reader("TAX")) = False Then TAX_RMTextBox.Text = String.Format("{0:n0}", reader("TAX"))
 
             If IsDBNull(reader("INVENTORY_INTERVIEW")) = False Then INVENTORY_INTERVIEW_RMTextBox.Text = String.Format("{0:n0}", reader("INVENTORY_INTERVIEW"))
             If IsDBNull(reader("INVENTORY_VISIT")) = False Then INVENTORY_VISIT_RMTextBox.Text = String.Format("{0:n0}", reader("INVENTORY_VISIT"))
             If IsDBNull(reader("ACCOUNT_RECEIVABLE")) = False Then ACCOUNT_RECEIVABLE_RMTextBox.Text = String.Format("{0:n0}", reader("ACCOUNT_RECEIVABLE"))
+
+            If IsDBNull(reader("CURRENT_ASSET_OTHER")) = False Then CURRENT_ASSET_OTHER_RMTextBox.Text = String.Format("{0:n0}", reader("CURRENT_ASSET_OTHER"))
+            CURRENT_ASSET_OTHER_CAL_RMTextBox.Text = CURRENT_ASSET_OTHER_RMTextBox.Text
+
             If IsDBNull(reader("MACHINERY_EQUIPMENT")) = False Then MACHINERY_EQUIPMENT_RMTextBox.Text = String.Format("{0:n0}", reader("MACHINERY_EQUIPMENT"))
             If IsDBNull(reader("CORE_ASSETS")) = False Then CORE_ASSETS_RMTextBox.Text = String.Format("{0:n0}", reader("CORE_ASSETS"))
             If IsDBNull(reader("OTHER_FIXED_ASSETS_OTHER_BANK")) = False Then OTHER_FIXED_ASSETS_OTHER_BANK_RMTextBox.Text = String.Format("{0:n0}", reader("OTHER_FIXED_ASSETS_OTHER_BANK"))
@@ -117,16 +121,16 @@ Partial Class smes_financial_compare
             If IsDBNull(reader("EBIDA_CAL")) = False Then EBIDA_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("EBIDA_CAL"))
             If IsDBNull(reader("DE_BEFORE_LOAN_CAL")) = False Then DE_BEFORE_LOAN_CAL_RMTextBox.Text = String.Format("{0:n2}", reader("DE_BEFORE_LOAN_CAL"))
             If IsDBNull(reader("DSCR_BEFORE_LOAN_CAL")) = False Then DSCR_BEFORE_LOAN_CAL_RMTextBox.Text = String.Format("{0:n2}", reader("DSCR_BEFORE_LOAN_CAL"))
-            If IsDBNull(reader("AR_DAY_CAL")) = False Then AR_DAY_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("AR_DAY_CAL"))
-            If IsDBNull(reader("INVENTORY_DAY_CAL")) = False Then INVENTORY_DAY_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("INVENTORY_DAY_CAL"))
+            If IsDBNull(reader("AR_DAY_CAL")) = False Then AR_DAY_CAL_RMTextBox.Text = String.Format("{0:n2}", reader("AR_DAY_CAL"))
+            If IsDBNull(reader("INVENTORY_DAY_CAL")) = False Then INVENTORY_DAY_CAL_RMTextBox.Text = String.Format("{0:n2}", reader("INVENTORY_DAY_CAL"))
             If IsDBNull(reader("WORKING_CAPITAL_NEED_CAL")) = False Then WORKING_CAPITAL_NEED_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("WORKING_CAPITAL_NEED_CAL"))
             If IsDBNull(reader("LOAN_NEED_CAL")) = False Then LOAN_NEED_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("LOAN_NEED_CAL"))
             If IsDBNull(reader("OWNERS_EQUITY_PERCENT_CAL")) = False Then OWNERS_EQUITY_PERCENT_CAL_RMTextBox.Text = String.Format("{0:n2}", reader("OWNERS_EQUITY_PERCENT_CAL"))
 
             If IsDBNull(reader("OWNERS_EQUITY_CAL")) = False Then OWNERS_EQUITY_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("OWNERS_EQUITY_CAL"))
             If IsDBNull(reader("FIXED_INTEREST_PERCENT_CAL")) = False Then FIXED_INTEREST_PERCENT_CAL_RMTextBox.Text = String.Format("{0:n2}", reader("FIXED_INTEREST_PERCENT_CAL"))
-            If IsDBNull(reader("PAYMENT_PERIOD_CAL")) = False Then PAYMENT_PERIOD_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("PAYMENT_PERIOD_CAL"))
-            If IsDBNull(reader("AVERAGE_PAYMENT_PERIOD_CAL")) = False Then AVERAGE_PAYMENT_PERIOD_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("AVERAGE_PAYMENT_PERIOD_CAL"))
+            If IsDBNull(reader("PAYMENT_PERIOD_CAL")) = False Then PAYMENT_PERIOD_CAL_RMTextBox.Text = String.Format("{0:n2}", reader("PAYMENT_PERIOD_CAL"))
+            If IsDBNull(reader("AVERAGE_PAYMENT_PERIOD_CAL")) = False Then AVERAGE_PAYMENT_PERIOD_CAL_RMTextBox.Text = String.Format("{0:n2}", reader("AVERAGE_PAYMENT_PERIOD_CAL"))
             If IsDBNull(reader("WORKING_CAPITAL_APPROVE_CAL")) = False Then WORKING_CAPITAL_APPROVE_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("WORKING_CAPITAL_APPROVE_CAL"))
             If IsDBNull(reader("LOAN_APPROVE_CAL")) = False Then LOAN_APPROVE_CAL_RMTextBox.Text = String.Format("{0:n0}", reader("LOAN_APPROVE_CAL"))
             If IsDBNull(reader("INTEREST_RATE_PERCENT")) = False Then INTEREST_RATE_PERCENT_RMTextBox.Text = String.Format("{0:n2}", reader("INTEREST_RATE_PERCENT"))
@@ -171,13 +175,17 @@ Partial Class smes_financial_compare
             If IsDBNull(reader("OPERATING_EXPENSES")) = False Then OPERATING_EXPENSES_CMTextBox.Text = String.Format("{0:n0}", reader("OPERATING_EXPENSES"))
             If IsDBNull(reader("OPERATING_EXPENSES_PERCENT")) = False Then OPERATING_EXPENSES_PERCENT_CMTextBox.Text = String.Format("{0:n2}", reader("OPERATING_EXPENSES_PERCENT"))
 
-            If IsDBNull(reader("DEFAULT_MARGIN")) = False Then DEFAULT_MARGIN_CMTextBox.Text = String.Format("{0:n0}", reader("DEFAULT_MARGIN"))
-            If IsDBNull(reader("GROSS_PROFIT")) = False Then GROSS_PROFIT_CMTextBox.Text = String.Format("{0:n0}", reader("GROSS_PROFIT"))
+            If IsDBNull(reader("DEFAULT_MARGIN")) = False Then DEFAULT_MARGIN_CMTextBox.Text = String.Format("{0:n2}", reader("DEFAULT_MARGIN"))
+            If IsDBNull(reader("GROSS_PROFIT")) = False Then GROSS_PROFIT_CMTextBox.Text = String.Format("{0:n2}", reader("GROSS_PROFIT"))
             If IsDBNull(reader("TAX")) = False Then TAX_CMTextBox.Text = String.Format("{0:n0}", reader("TAX"))
 
             If IsDBNull(reader("INVENTORY_INTERVIEW")) = False Then INVENTORY_INTERVIEW_CMTextBox.Text = String.Format("{0:n0}", reader("INVENTORY_INTERVIEW"))
             If IsDBNull(reader("INVENTORY_VISIT")) = False Then INVENTORY_VISIT_CMTextBox.Text = String.Format("{0:n0}", reader("INVENTORY_VISIT"))
             If IsDBNull(reader("ACCOUNT_RECEIVABLE")) = False Then ACCOUNT_RECEIVABLE_CMTextBox.Text = String.Format("{0:n0}", reader("ACCOUNT_RECEIVABLE"))
+            If IsDBNull(reader("CURRENT_ASSET_OTHER")) = False Then CURRENT_ASSET_OTHER_CMTextBox.Text = String.Format("{0:n0}", reader("CURRENT_ASSET_OTHER"))
+
+            CURRENT_ASSET_OTHER_CAL_CMTextBox.Text = CURRENT_ASSET_OTHER_CMTextBox.Text
+
             If IsDBNull(reader("MACHINERY_EQUIPMENT")) = False Then MACHINERY_EQUIPMENT_CMTextBox.Text = String.Format("{0:n0}", reader("MACHINERY_EQUIPMENT"))
             If IsDBNull(reader("CORE_ASSETS")) = False Then CORE_ASSETS_CMTextBox.Text = String.Format("{0:n0}", reader("CORE_ASSETS"))
 
@@ -243,21 +251,21 @@ Partial Class smes_financial_compare
             If IsDBNull(reader("EBIDA_CAL")) = False Then EBIDA_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("EBIDA_CAL"))
             If IsDBNull(reader("DE_BEFORE_LOAN_CAL")) = False Then DE_BEFORE_LOAN_CAL_CMTextBox.Text = String.Format("{0:n2}", reader("DE_BEFORE_LOAN_CAL"))
             If IsDBNull(reader("DSCR_BEFORE_LOAN_CAL")) = False Then DSCR_BEFORE_LOAN_CAL_CMTextBox.Text = String.Format("{0:n2}", reader("DSCR_BEFORE_LOAN_CAL"))
-            If IsDBNull(reader("AR_DAY_CAL")) = False Then AR_DAY_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("AR_DAY_CAL"))
-            If IsDBNull(reader("INVENTORY_DAY_CAL")) = False Then INVENTORY_DAY_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("INVENTORY_DAY_CAL"))
+            If IsDBNull(reader("AR_DAY_CAL")) = False Then AR_DAY_CAL_CMTextBox.Text = String.Format("{0:n2}", reader("AR_DAY_CAL"))
+            If IsDBNull(reader("INVENTORY_DAY_CAL")) = False Then INVENTORY_DAY_CAL_CMTextBox.Text = String.Format("{0:n2}", reader("INVENTORY_DAY_CAL"))
             If IsDBNull(reader("WORKING_CAPITAL_NEED_CAL")) = False Then WORKING_CAPITAL_NEED_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("WORKING_CAPITAL_NEED_CAL"))
             If IsDBNull(reader("LOAN_NEED_CAL")) = False Then LOAN_NEED_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("LOAN_NEED_CAL"))
             If IsDBNull(reader("OWNERS_EQUITY_PERCENT_CAL")) = False Then OWNERS_EQUITY_PERCENT_CAL_CMTextBox.Text = String.Format("{0:n2}", reader("OWNERS_EQUITY_PERCENT_CAL"))
 
             If IsDBNull(reader("OWNERS_EQUITY_CAL")) = False Then OWNERS_EQUITY_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("OWNERS_EQUITY_CAL"))
             If IsDBNull(reader("FIXED_INTEREST_PERCENT_CAL")) = False Then FIXED_INTEREST_PERCENT_CAL_CMTextBox.Text = String.Format("{0:n2}", reader("FIXED_INTEREST_PERCENT_CAL"))
-            If IsDBNull(reader("PAYMENT_PERIOD_CAL")) = False Then PAYMENT_PERIOD_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("PAYMENT_PERIOD_CAL"))
-            If IsDBNull(reader("AVERAGE_PAYMENT_PERIOD_CAL")) = False Then AVERAGE_PAYMENT_PERIOD_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("AVERAGE_PAYMENT_PERIOD_CAL"))
+            If IsDBNull(reader("PAYMENT_PERIOD_CAL")) = False Then PAYMENT_PERIOD_CAL_CMTextBox.Text = String.Format("{0:n2}", reader("PAYMENT_PERIOD_CAL"))
+            If IsDBNull(reader("AVERAGE_PAYMENT_PERIOD_CAL")) = False Then AVERAGE_PAYMENT_PERIOD_CAL_CMTextBox.Text = String.Format("{0:n2}", reader("AVERAGE_PAYMENT_PERIOD_CAL"))
             If IsDBNull(reader("WORKING_CAPITAL_APPROVE_CAL")) = False Then WORKING_CAPITAL_APPROVE_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("WORKING_CAPITAL_APPROVE_CAL"))
             If IsDBNull(reader("LOAN_APPROVE_CAL")) = False Then LOAN_APPROVE_CAL_CMTextBox.Text = String.Format("{0:n0}", reader("LOAN_APPROVE_CAL"))
             If IsDBNull(reader("INTEREST_RATE_PERCENT")) = False Then INTEREST_RATE_PERCENT_CMTextBox.Text = String.Format("{0:n2}", reader("INTEREST_RATE_PERCENT"))
             If IsDBNull(reader("INTEREST_RATE_PERCENT_USED")) = False Then INTEREST_RATE_PERCENT_USED_CMTextBox.Text = String.Format("{0:n2}", reader("INTEREST_RATE_PERCENT_USED"))
-            If IsDBNull(reader("CONTRACT_YEAR")) = False Then CONTRACT_YEAR_CMTextBox.Text = String.Format("{0:n0}", reader("CONTRACT_YEAR"))
+            If IsDBNull(reader("CONTRACT_YEAR")) = False Then CONTRACT_YEAR_CMTextBox.Text = String.Format("{0:n2}", reader("CONTRACT_YEAR"))
             If IsDBNull(reader("DSCR_THIS_TIME")) = False Then DSCR_THIS_TIME_CMTextBox.Text = String.Format("{0:n2}", reader("DSCR_THIS_TIME"))
             If IsDBNull(reader("DSCR_THIS_TIME_PERCENT")) = False Then DSCR_THIS_TIME_PERCENT_CMTextBox.Text = String.Format("{0:n2}", reader("DSCR_THIS_TIME_PERCENT"))
             If IsDBNull(reader("DE_THIS_TIME")) = False Then DE_THIS_TIME_CMTextBox.Text = String.Format("{0:n2}", reader("DE_THIS_TIME"))
