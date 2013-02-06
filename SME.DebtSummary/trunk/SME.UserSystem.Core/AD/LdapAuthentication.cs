@@ -2,43 +2,64 @@
 using System.DirectoryServices;
 using System.Text;
 using log4net;
+using SME.UserSystem.Core.Exceptions;
 
 namespace SME.UserSystem.Core.AD
 {
+    /// <summary>
+    /// Must Config LDAP_SERVER,LDAP_PORT,LDAP_USERNAME,LDAP_PASSWORD
+    /// </summary>
     public class LdapAuthentication
     {
         private static readonly ILog log = LogManager.GetLogger(
     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
 
+        private static string _domainName;
         private static string _path;
         private static string _filterAttribute;
 
-        public LdapAuthentication(string path)
+        public LdapAuthentication()
         {
-            _path = path;
+            _domainName = System.Configuration.ConfigurationManager.AppSettings["LDAP_SERVER"];
+            _path = "LDAP://" + _domainName
+                + ":" + System.Configuration.ConfigurationManager.AppSettings["LDAP_PORT"];
+        }
+
+        public LdapAuthentication(string ldapServer)
+        {
+            _domainName = ldapServer;
+            _path = "LDAP://" + _domainName
+                + ":" + System.Configuration.ConfigurationManager.AppSettings["LDAP_PORT"];
         }
 
         /*
-        string username = "use id"; // Who has the permission to access the AD
+        string username = "user id"; // Who has the permission to access the AD
         string pwd = "passwod"; //Password for the user
-        string domainName = ""; //"LDAP://<IP Address of the Server where AD data is stored>"
         */
 
-        //วิธีนี้ถ้า Fail จะได้ return แค่ว่า unknown user name or bad password. เพียงอย่างเดียว
-        //ถ้าต้องการ message อื่นๆ เช่น User Lock ต้องมี user ที่ Authen ผ่าน เผื่อไป get list user
-        //และ attribute ต่างๆ
-        public bool IsAuthenticated(string username, string pwd, string domainName)
+        /// <summary>
+        /// Authenticate And Check Locked if Authenticate Fail
+        /// throw UserSystemInfoException
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
+        public bool IsAuthenticated(string username, string pwd)
         {
+            if (isDebugEnabled)
+            {
+                log.Debug(username + " Start Authenticate.");
+            }
+
             bool authenticated = false;
 
-            string domainAndUsername = domainName + @"\" + username;
-            using (DirectoryEntry entry = new DirectoryEntry(_path, domainAndUsername, pwd))
+            try
             {
-                try
+                using (DirectoryEntry entry = new DirectoryEntry(_path, _domainName + @"\" + username, pwd))
                 {
                     // Bind to the native AdsObject to force authentication.
-                    Object obj = entry.NativeObject;
+                    //Object obj = entry.NativeObject;
                     DirectorySearcher search = new DirectorySearcher(entry);
                     search.Filter = "(SAMAccountName=" + username + ")";
                     search.PropertiesToLoad.Add("cn");
@@ -58,19 +79,53 @@ namespace SME.UserSystem.Core.AD
                         log.Debug(username + " authenticated:" + authenticated);
                     }
                 }
-                catch (DirectoryServicesCOMException cex)
-                {
-                    log.Error(cex.StackTrace);
-                    throw cex;
-                }
-                catch (Exception ex)
-                {
-                    log.Error(ex.StackTrace);
-                    throw ex;
-                }
+            }
+            catch (DirectoryServicesCOMException cex)
+            {
+                IsUserLocked(username);
+
+                log.Error(cex.StackTrace);
+                throw new LDAPInfoException(cex.Message, cex);
+            }
+            catch (System.Exception ex)
+            {
+                log.Error(ex.StackTrace);
+                throw ex;
             }
 
             return authenticated;
+        }
+
+        private void IsUserLocked(string username)
+        {
+            string LDAPUser = System.Configuration.ConfigurationManager.AppSettings["LDAP_USERNAME"];
+            string LDAPPass = System.Configuration.ConfigurationManager.AppSettings["LDAP_PASSWORD"];
+
+            using (DirectoryEntry entry = new DirectoryEntry(_path, _domainName + @"\" + LDAPUser, LDAPPass))
+            {
+                // Bind to the native AdsObject to force authentication.
+                //Object obj = entry.NativeObject;
+                DirectorySearcher search = new DirectorySearcher(entry);
+                search.Filter = "(SAMAccountName=" + username + ")";
+                search.PropertiesToLoad.Add("cn");
+                SearchResult result = search.FindOne();
+                if (null == result)
+                {
+                    log.Info("Can't not find username " + username + "in AD");
+                    throw new LDAPInfoException("Can't not find username " + username + " in AD.");
+                }
+                else
+                {
+                    DirectoryEntry getSearchEntry = result.GetDirectoryEntry();
+                    bool IsAccountLocked = Convert.ToBoolean(getSearchEntry.InvokeGet("IsAccountLocked"));
+
+                    if (IsAccountLocked)
+                    {
+                        log.Info("Username " + username + "in AD is Locked.");
+                        throw new LDAPInfoException("Username " + username + " in AD is Locked.");
+                    }
+                }
+            }
         }
 
         public string GetGroups()
@@ -82,7 +137,9 @@ namespace SME.UserSystem.Core.AD
             try
             {
                 SearchResult result = search.FindOne();
+
                 int propertyCount = result.Properties["memberOf"].Count;
+
                 String dn;
                 int equalsIndex, commaIndex;
 
@@ -102,10 +159,10 @@ namespace SME.UserSystem.Core.AD
                     groupNames.Append("|");
                 }
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 log.Error("Error obtaining group names. " + ex.Message);
-                throw new Exception("Error obtaining group names. " + ex.Message);
+                throw new LDAPInfoException("Error obtaining group names. " + ex.Message);
             }
             return groupNames.ToString();
         }

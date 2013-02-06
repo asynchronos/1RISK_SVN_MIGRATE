@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using log4net;
+using SME.UserSystem.Core.Exceptions;
 using SME.UserSystem.Core.Model;
 
 namespace SME.UserSystem.Core.DAL
@@ -95,7 +96,7 @@ namespace SME.UserSystem.Core.DAL
                 {
                     //not exists in TB_EMPLOYEE too
                     //insert new data to TB_EMPLOYEE or throw exception
-                    throw new Exception("Can't find employee " + userData + " in System.");
+                    throw new UserProfileException("Can't find employee " + userData + " in System.");
                 }
                 else
                 {

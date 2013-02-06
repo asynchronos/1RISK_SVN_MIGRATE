@@ -190,7 +190,7 @@ namespace SME.UserSystem.Core.Providers
                                 pv.PropertyValue = p.CATEGORIES_STR;
                                 break;
                             default:
-                                throw new ProviderException("Unsupported property");
+                                throw new ProviderException("Unsupported property:" + prop.Name);
                         }
 
                         //u.LAST_SIGN_ON_DATE = DateTime.Now;
