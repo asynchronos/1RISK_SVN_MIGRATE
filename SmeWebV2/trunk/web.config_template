@@ -16,17 +16,20 @@
 		</system.web>
 	</location>
 	<appSettings>
+		<add key="ReleaseNote" value="Ver 1.0.01 (15-Jan-2013)" />
 		<add key="APPLICATION_NAME" value="SmeWeb"/>
 		<add key="ChartImageHandler" value="storage=file;timeout=20;dir=c:\TempImageFiles\;"/>
-		<!--<add key="LDAP_SERVER" value="bayad.co.th"/>-->
-		<add key="LDAP_SERVER" value="192.168.32.115"/>
-		<!--<add key="LDAP_SERVER_UAT" value="172.19.60.112"/>-->
 		<add key="LDAP_PORT" value="389"/>
+		<add key="LDAP_USERNAME" value="kec_admin" />
+		<add key="LDAP_PASSWORD" value="P@ssw0rd" />
 		<add key="IsProduction" value="1"/>
 		<!--Dev-->
 		<!--<add key="Log4netConfigPath" value="D:\workspaces\2012\SmeWebV2\Log4net.SMEWeb.config"/>-->
+		<!--<add key="LDAP_SERVER_UAT" value="172.19.60.112"/>-->
 		<!--Production-->
 		<add key="Log4netConfigPath" value="E:\Web\SmeWeb\Log4net.SMEWeb.config"/>
+		<!--<add key="LDAP_SERVER" value="bayad.co.th"/>-->
+		<add key="LDAP_SERVER" value="192.168.32.111"/>
 	</appSettings>
 	<!--Dev-->
 	<!--<connectionStrings>
@@ -87,7 +90,7 @@
 				<add assembly="System.Web.DataVisualization.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
 				<add assembly="System.Data.OracleClient, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
 				<!--ODP 32BIT-->
-				<!--<add assembly="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89B483F429C47342"/>-->
+				<add assembly="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89B483F429C47342"/>
 			</assemblies>
 		</compilation>
 		<httpHandlers>
