@@ -31,14 +31,13 @@ namespace TestLDapConsole
             Console.WriteLine("LDAP_WRONG_PASSWORD : " + wrongPassword);
             Console.WriteLine("");
 
-            string path = "LDAP://" + ldapServer + ":" + ldapPort;
-            LdapAuthentication target = new LdapAuthentication(path); // TODO: Initialize to an appropriate value
+            LdapAuthentication target = new LdapAuthentication(ldapServer); // TODO: Initialize to an appropriate value
 
             Console.WriteLine("Test wrong password.");
             try
             {
-                Console.WriteLine("Authen : " + target.IsAuthenticated(username, wrongPassword, ldapServer));
-                target.IsAuthenticated(username, wrongPassword, ldapServer);
+                Console.WriteLine("Authen : " + target.IsAuthenticated(username, wrongPassword));
+                target.IsAuthenticated(username, wrongPassword);
             }
             catch (Exception ex)
             {
@@ -57,7 +56,7 @@ namespace TestLDapConsole
             Console.WriteLine("Test right password.");
             try
             {
-                if (target.IsAuthenticated(username, password, ldapServer))
+                if (target.IsAuthenticated(username, password))
                 {
                     Console.WriteLine("Test Pass >> Authen success.");
                 }
