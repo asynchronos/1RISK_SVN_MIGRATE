@@ -56,6 +56,8 @@
     <Compile Include="DAL\IApplicationRepository.cs" />
     <Compile Include="DAL\IUserProfileRepository.cs" />
     <Compile Include="DAL\UserProfileRepository.cs" />
+    <Compile Include="Exceptions\LDAPInfoException.cs" />
+    <Compile Include="Exceptions\UserProfileException.cs" />
     <Compile Include="Model\ProfileViewModel.cs" />
     <Compile Include="Profile\MyProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -177,14 +177,9 @@ namespace SME.UserSystem.Core.Providers
             //    }
             //}
 
-            //use ldap
-            string ldapServer = ConfigurationManager.AppSettings["LDAP_SERVER"];//domain name
-            string ldapPort = ConfigurationManager.AppSettings["LDAP_PORT"];
+            LdapAuthentication adAuth = new LdapAuthentication();
 
-            string adPath = "LDAP://" + ldapServer + ":" + ldapPort; //Path to your LDAP directory server
-            LdapAuthentication adAuth = new LdapAuthentication(adPath);
-
-            return adAuth.IsAuthenticated(username, password, ldapServer);
+            return adAuth.IsAuthenticated(username, password);
         }
     }
 }
