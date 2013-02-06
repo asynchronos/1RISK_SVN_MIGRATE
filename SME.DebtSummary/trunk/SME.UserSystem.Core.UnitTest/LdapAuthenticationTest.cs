@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using System.DirectoryServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SME.UserSystem.Core.AD;
 
 namespace SME.UserSystem.Core.UnitTest
@@ -63,6 +61,31 @@ namespace SME.UserSystem.Core.UnitTest
 
         #endregion Additional test attributes
 
+        private bool MakeLockedUser(string username)
+        {
+            LdapAuthentication target = new LdapAuthentication(); // TODO: Initialize to an appropriate value
+            for (int i = 1; i <= 6; i++)
+            {
+                try
+                {
+                    target.IsAuthenticated(username, "12345678");
+                }
+                catch (System.Runtime.InteropServices.COMException ComEx)
+                {
+                    if (ComEx.Message.Equals("Logon failure: unknown user name or bad password."))
+                    {
+                        //ignore
+                    }
+                    else
+                    {
+                        throw new System.Exception("i:" + i + "-" + ComEx.Message);
+                    }
+                }
+            }
+
+            return true;
+        }
+
         /// <summary>
         ///A test for GetGroups
         ///</summary>
@@ -79,58 +102,74 @@ namespace SME.UserSystem.Core.UnitTest
         //}
 
         [TestMethod]
-        [ExpectedException(typeof(DirectoryServicesCOMException),
+        [ExpectedException(typeof(System.Runtime.InteropServices.COMException),
            "Logon failure: unknown user name or bad password.")]
         public void AuthenticatedFailureTest()
         {
-            string ldapServer = ConfigurationManager.AppSettings["LDAP_SERVER_UAT"];//domain name
-            string ldapPort = ConfigurationManager.AppSettings["LDAP_PORT"];
-
-            string path = "LDAP://" + ldapServer + ":" + ldapPort;
-
-            LdapAuthentication target = new LdapAuthentication(path); // TODO: Initialize to an appropriate value
-            string username = "136143"; // TODO: Initialize to an appropriate value
+            LdapAuthentication target = new LdapAuthentication(); // TODO: Initialize to an appropriate value
+            string username = "249888"; // TODO: Initialize to an appropriate value
             string pwd = "test"; // TODO: Initialize to an appropriate value
 
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.IsAuthenticated(username, pwd, ldapServer);
-            Assert.AreEqual(expected, actual);
+            //bool expected = false; // TODO: Initialize to an appropriate value
+            //bool actual;
+            target.IsAuthenticated(username, pwd);
+            //Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
         ///A test for IsAuthenticated
         ///</summary>
         [TestMethod()]
-        public void IsAuthenticatedTest()
+        public void AuthenticatedSuccessTest()
         {
-            string ldapServer = ConfigurationManager.AppSettings["LDAP_SERVER_UAT"];//domain name
-            string ldapPort = ConfigurationManager.AppSettings["LDAP_PORT"];
-            Assert.AreEqual("172.19.60.112", ldapServer);
+            string username = "249888";
+            string pwd = "Big!7426";
 
-            string path = "LDAP://" + ldapServer + ":" + ldapPort;
-            LdapAuthentication target = new LdapAuthentication(path); // TODO: Initialize to an appropriate value
-            string username = "136143"; // TODO: Initialize to an appropriate value
+            bool expected = true;
+            LdapAuthentication target = new LdapAuthentication();
+            bool actual = target.IsAuthenticated(username, pwd);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(SME.UserSystem.Core.Exceptions.LDAPInfoException),
+           "Can't not find username 338251 in AD.")]
+        public void NotFoundUserTest()
+        {
+            //string ldapServer = ConfigurationManager.AppSettings["LDAP_SERVER_UAT"];//domain name
+            //Assert.AreEqual("172.19.60.112", ldapServer);
+            //LdapAuthentication target = new LdapAuthentication(ldapServer); // TODO: Initialize to an appropriate value
+
+            LdapAuthentication target = new LdapAuthentication(); // TODO: Initialize to an appropriate value
+            string username = "338251"; // TODO: Initialize to an appropriate value
             string pwd = "P@ssw0rd"; // TODO: Initialize to an appropriate value
 
-            bool expected = true; // TODO: Initialize to an appropriate value
+            //bool expected = true; // TODO: Initialize to an appropriate value
             bool actual;
-            //actual = target.IsAuthenticated(username, pwd, ldapServer);
+            actual = target.IsAuthenticated(username, pwd);
             //Assert.AreEqual(expected, actual);
+        }
 
-            //production server
-            ldapServer = ConfigurationManager.AppSettings["LDAP_SERVER"];
-            Assert.AreEqual("bayad.co.th", ldapServer);
+        [TestMethod]
+        [ExpectedException(typeof(SME.UserSystem.Core.Exceptions.LDAPInfoException),
+           "Username 249888 in AD is Locked.")]
+        public void UserLockedTest()
+        {
+            LdapAuthentication target = new LdapAuthentication(); // TODO: Initialize to an appropriate value
+            string username = "249888"; // TODO: Initialize to an appropriate value
+            string pwd = "Big!7426"; // TODO: Initialize to an appropriate value
 
-            path = "LDAP://" + ldapServer + ":" + ldapPort;
-
-            username = "249888";
-            pwd = "big(7426";
-
-            expected = true;
-            target = new LdapAuthentication(path);
-            actual = target.IsAuthenticated(username, pwd, ldapServer);
-            Assert.AreEqual(expected, actual);
+            if (MakeLockedUser("249888"))
+            {
+                try
+                {
+                    target.IsAuthenticated(username, pwd);
+                }
+                catch (System.Exception ex)
+                {
+                    Assert.AreEqual("Username 249888 in AD is Locked.", ex.Message);
+                }
+            }
         }
     }
 }
