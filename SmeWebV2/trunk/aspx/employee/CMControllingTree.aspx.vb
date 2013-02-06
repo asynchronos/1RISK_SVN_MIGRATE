@@ -42,6 +42,7 @@ Partial Class employee_CMControllingTree
             'xmlFile.WriteEndDocument()
         Catch ex As Exception
             System.Diagnostics.Debug.Print(ex.StackTrace)
+			Throw ex
         Finally
             'xmlFile.Flush()
             'xmlFile.Close()
