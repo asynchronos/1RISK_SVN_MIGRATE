@@ -53,6 +53,8 @@ Partial Class LoginWithAD
             If IsNothing(Session.Item(SessionKeyConst.EMP_ID)) Then
                 liter.Text = "Can not find session."
             End If
+        Else
+            liter.Text = errorsMsg
         End If
 
     End Sub
