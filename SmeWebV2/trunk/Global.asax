@@ -84,7 +84,8 @@
         'redirect to error page
         'If err.GetType().Equals(GetType(System.Runtime.InteropServices.COMException)) Or
         '    err.GetType().Equals(GetType(System.DirectoryServices.DirectoryServicesCOMException)) Then
-        If err.GetType().Equals(GetType(SME.UserSystem.Core.Exceptions.LDAPInfoException)) Then
+        If err.GetType().Equals(GetType(SME.UserSystem.Core.Exceptions.LDAPInfoException)) _
+            Or err.GetType().Equals(GetType(SME.UserSystem.Core.Exceptions.UserProfileException)) Then
             Response.Redirect("~/aspx/account/LoginWithAD.aspx?pages=" _
                               & Application("PageError").ToString() _
                               & "&msg=" + DirectCast(Application("LastError"), Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())

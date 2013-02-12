@@ -77,6 +77,6 @@
             <TextBoxStyle Font-Size="0.8em" />
             <TitleTextStyle BackColor="#507CD1" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
         </asp:Login>
-        <asp:Label ID="Label3" runat="server" Text="ติดต่อผู้ดูแลระบบ 1797,4703,2630"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Text="ติดต่อผู้ดูแลระบบ 1797,4703,2630,1748"></asp:Label>
     </div>
 </asp:Content>
