@@ -47,6 +47,13 @@
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <div id="verDiv" style="float: right;">
+                                <asp:Label ID="verLabel" runat="server"></asp:Label>
+                            </div>
+                        </td>
+                    </tr>
                 </table>
             </td>
         </tr>
@@ -61,8 +68,7 @@
                         <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/aspx/logout/logout.aspx" />
                     </li>
                     <li id="HomeMenu" runat="server" style="display: none; white-space: nowrap;">
-                        <asp:HyperLink ID="HyperLink1" runat="server" Target="_self" ToolTip="หน้าแรก"
-                           NavigateUrl="~/aspx/mainpage.aspx">Home</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink1" runat="server" Target="_self" ToolTip="หน้าแรก" NavigateUrl="~/aspx/mainpage.aspx">Home</asp:HyperLink>
                     </li>
                     <li id="PortfolioMenu" runat="server" style="display: none; white-space: nowrap;">
                         <asp:HyperLink ID="PortfolioLink" runat="server" rel="DropPortfolioMenu" ToolTip="Portfolio"
@@ -79,12 +85,11 @@
                     <li id="ReportMenu" runat="server" style="display: none; white-space: nowrap;">
                         <asp:HyperLink ID="ReportLink" runat="server" rel="DropReportMenu" ToolTip="รายงาน"
                             NavigateUrl="JavaScript:void(0);">รายงาน</asp:HyperLink></li>
-               <%--     <li id="StopMenu" runat="server" style="display: none; white-space: nowrap;">
+                    <%--     <li id="StopMenu" runat="server" style="display: none; white-space: nowrap;">
                         <asp:HyperLink ID="StopLink" runat="server" rel="DropStopMenu" ToolTip="SM Report"
                             NavigateUrl="JavaScript:void(0);">Stop Program</asp:HyperLink></li>      --%>
                     <li id="FinancialMenu" runat="server" style="display: none; white-space: nowrap;">
-                        <asp:HyperLink ID="FinancialLink" runat="server" ToolTip="Financial Data"
-                            NavigateUrl="~/aspx/smes/financial_ca_list.aspx">Financial Program</asp:HyperLink></li>
+                        <asp:HyperLink ID="FinancialLink" runat="server" ToolTip="Financial Data" NavigateUrl="~/aspx/smes/financial_ca_list.aspx">Financial Program</asp:HyperLink></li>
                     <li id="AboutEmpMenu" runat="server" style="display: none; white-space: nowrap;">
                         <asp:HyperLink ID="AboutEmpLink" runat="server" Target="_self" ToolTip="ข้อมูลส่วนตัว"
                             NavigateUrl="~/aspx/employee/TbEmployee.aspx">ข้อมูลส่วนตัว</asp:HyperLink></li>
@@ -161,7 +166,7 @@
             </div>
             <!--Report drop down menu -->
             <div id="DropReportMenu" class="dropmenudiv">
-                   <asp:HyperLink ID="ReportCaById" runat="server" Target="_self" ToolTip="รายงานสินเชื่อรายหนังสือ"
+                <asp:HyperLink ID="ReportCaById" runat="server" Target="_self" ToolTip="รายงานสินเชื่อรายหนังสือ"
                     NavigateUrl="~/aspx/report/SelectReport.aspx?Reptype=cr">รายงานสินเชื่อรายหนังสือ</asp:HyperLink>
                 <asp:HyperLink ID="ReportCaByCus" runat="server" Target="_self" ToolTip="รายงานสินเชื่อรายลูกค้า"
                     NavigateUrl="~/aspx/report/SelectReport.aspx?Reptype=crdt">รายงานสินเชื่อรายลูกค้า</asp:HyperLink>
@@ -179,21 +184,20 @@
                 <span class="qmdividerx"></span>
                 <asp:HyperLink ID="ReportOdUtilization" runat="server" Target="_self" ToolTip="รายงานสรุปการใช้วงเงินO/D"
                     NavigateUrl="~/aspx/report/OdUtilization24.aspx">รายงานสรุปการใช้วงเงินO/D</asp:HyperLink>
-                <asp:HyperLink ID="ReportPN2OD" runat="server" Target="_self"
-                    ToolTip="PN to OD" NavigateUrl="JavaScript:void(0);">PN TO OD</asp:HyperLink>
+                <asp:HyperLink ID="ReportPN2OD" runat="server" Target="_self" ToolTip="PN to OD"
+                    NavigateUrl="JavaScript:void(0);">PN TO OD</asp:HyperLink>
                 <asp:HyperLink ID="ReportCustomerCimHightRisk" runat="server" Target="_self" ToolTip="Construction Draw Down"
                     NavigateUrl="~/aspx/report/ReportCustomerCimHightRisk.aspx">Construction Draw Down</asp:HyperLink>
-              
             </div>
             <!--DownloadMenu drop down menu -->
             <div id="DropDownloadMenu" class="dropmenudiv">
             </div>
             <!--StopMenu drop down menu -->
-<%--            <div id="DropStopMenu" class="dropmenudiv">
+            <%--            <div id="DropStopMenu" class="dropmenudiv">
                 <asp:HyperLink ID="StopProgramMenu" runat="server" Target="_self" ToolTip="Stop Program"
                     NavigateUrl="~/aspx/stop/stop_summary.aspx">Stop Program</asp:HyperLink>
                 <asp:HyperLink ID="StopHistoryMenu" runat="server" Target="_self" ToolTip="Stop History"
-                    NavigateUrl="~/aspx/stop/StopHistory.aspx">Stop History</asp:HyperLink>  
+                    NavigateUrl="~/aspx/stop/StopHistory.aspx">Stop History</asp:HyperLink>
                  <asp:HyperLink ID="SMreportMenu" runat="server" Target="_self" ToolTip="SM Report"
                     NavigateUrl="~/aspx/stop/sm_history.aspx">SM Report</asp:HyperLink>
             </div>--%>

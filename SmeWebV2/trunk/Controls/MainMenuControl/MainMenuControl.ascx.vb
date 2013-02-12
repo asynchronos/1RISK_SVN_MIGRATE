@@ -192,6 +192,8 @@ Namespace aspx.userControl
 
             'set today date label
             todayDateLabel.Text = ConvertUtil.getDateFormatWithCulture(Date.Today, Application.Item(ApplicationKeyConst.App_Culture), ConvertUtil.DateWithCultureEnum.FullDate)
+            'set version release label
+            verLabel.Text = ConfigurationManager.AppSettings("ReleaseNote").ToString()
 
             'startchrome menu
             Page.ClientScript.RegisterStartupScript(Me.GetType(), "startchrome", "cssdropdown.startchrome(""chromemenu"");", True)

@@ -165,7 +165,8 @@ Partial Class Controls_ExportControl_ExportControl
 
     Protected Sub ExportData(ByVal _contentType As String, ByVal filename As String)
         Response.ClearContent()
-        Response.AddHeader("content-disposition", "attachment;filename=" + filename)
+        Response.ClearHeaders()
+        Response.AppendHeader("content-disposition", "attachment;filename=" + filename)
         Response.Cache.SetCacheability(HttpCacheability.NoCache)
         Response.ContentType = _contentType
         Response.ContentEncoding = System.Text.Encoding.UTF8
