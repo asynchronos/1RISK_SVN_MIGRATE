@@ -16,7 +16,7 @@
 		</system.web>
 	</location>
 	<appSettings>
-		<add key="ReleaseNote" value="Ver 1.0.01 (15-Jan-2013)" />
+		<add key="ReleaseNote" value="Ver 1.0.02 (12-Feb-2013)" />
 		<add key="APPLICATION_NAME" value="SmeWeb"/>
 		<add key="ChartImageHandler" value="storage=file;timeout=20;dir=c:\TempImageFiles\;"/>
 		<add key="LDAP_PORT" value="389"/>
