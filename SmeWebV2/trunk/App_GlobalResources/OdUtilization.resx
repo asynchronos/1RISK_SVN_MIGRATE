@@ -231,4 +231,10 @@
   <data name="oldbrnameLabel" xml:space="preserve">
     <value>OLD BRANCH :</value>
   </data>
+  <data name="productODLabel" xml:space="preserve">
+    <value>PRODUCT</value>
+  </data>
+  <data name="productODLabelValue" xml:space="preserve">
+    <value>N/A</value>
+  </data>
 </root>

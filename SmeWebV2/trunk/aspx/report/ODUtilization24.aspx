@@ -234,7 +234,7 @@
                                                     </EmptyDataTemplate>
                                                 </asp:FormView>
                                                 <asp:SqlDataSource ID="CustomerDetailFormViewDS" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
-                                                    SelectCommand="SELECT CM_CODE, CM_NAME, BRANCH_ID, BRANCH_NAME, GROUP_SIZE_DETAIL, CASE WHEN JUDGEMENT_ID='000' THEN '' ELSE JUDGEMENT_DETAIL END AS JUDGEMENT_DETAIL, BUSI_RISK1_ID, BUSI_RISK1_DETAIL, BUSI_RISK2_ID, BUSI_RISK2_DETAIL, BUSI_RISK3_ID, BUSI_RISK3_DETAIL, CIF FROM CUSTOMER_SME_FULL_DESC WHERE (CIF = @CIF)">
+                                                    SelectCommand="REP_OD_CUSTOMER_DETAIL" SelectCommandType="StoredProcedure">
                                                     <SelectParameters>
                                                         <asp:ControlParameter ControlID="cifTextBox" Name="CIF" PropertyName="Text" Type="Int32" />
                                                     </SelectParameters>
@@ -338,7 +338,11 @@
                                         <ItemTemplate>
                                             <asp:Label ID="oldaccnoLabel" runat="server" Text="<%$ Resources:OdUtilization, oldaccnoLabel %>"
                                                 Font-Bold="true"></asp:Label>
-                                            <asp:Label ID="oldaccnoValue" runat="server" Text='<%# Bind("OLD_ACCT","000-0-00000-0") %>' />
+                                            <asp:Label ID="oldaccnoValue" runat="server" Text='<%# Bind("OLD_ACCT","{0:000-0-00000-0}") %>' />
+                                            <br />
+                                            <asp:Label ID="productODLabel" runat="server" Text="<%$ Resources:OdUtilization, productODLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="productODValue" runat="server" Text='<%# Bind("PRODUCT_OD") %>' />
                                             <br />
                                             <asp:Label ID="od_limLabel" runat="server" Text="<%$ Resources:OdUtilization, od_limLabel %>"
                                                 Font-Bold="true"></asp:Label>
@@ -377,7 +381,11 @@
                                         <EmptyDataTemplate>
                                             <asp:Label ID="oldaccnoLabel" runat="server" Text="<%$ Resources:OdUtilization, oldaccnoLabel %>"
                                                 Font-Bold="true"></asp:Label>
-                                            <asp:Label ID="oldaccnoValue" runat="server" Text='<%# Bind("OLD_ACCT","000-0-00000-0") %>' />
+                                            <asp:Label ID="oldaccnoValue" runat="server" Text='<%# Bind("OLD_ACCT","{0:000-0-00000-0}") %>' />
+                                            <br />
+                                            <asp:Label ID="productODLabel" runat="server" Text="<%$ Resources:OdUtilization, productODLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="productODValue" runat="server" Text='<%# Bind("PRODUCT_OD") %>' />
                                             <br />
                                             <asp:Label ID="od_limLabel" runat="server" Text="<%$ Resources:OdUtilization, od_limLabel %>"
                                                 Font-Bold="true"></asp:Label>
@@ -562,6 +570,10 @@
                                             <asp:Label ID="oldaccnoLabel" runat="server" Text="<%$ Resources:OdUtilization, oldaccnoLabel %>"
                                                 Font-Bold="true"></asp:Label>
                                             <asp:Label ID="oldaccnoValue" runat="server" Text='N/A' />
+                                            <br />
+                                            <asp:Label ID="productODLabel" runat="server" Text="<%$ Resources:OdUtilization, productODLabel %>"
+                                                Font-Bold="true"></asp:Label>
+                                            <asp:Label ID="productODValue" runat="server" Text='N/A' />
                                             <br />
                                             <asp:Label ID="od_limLabel" runat="server" Text="<%$ Resources:OdUtilization, od_limLabel %>"
                                                 Font-Bold="true"></asp:Label>
@@ -1314,7 +1326,7 @@
             </div>
         </div>
     </div>
-    <asp:SqlDataSource ID="SamplePivotDS" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
+    <%--<asp:SqlDataSource ID="SamplePivotDS" runat="server" ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>"
         SelectCommand="SELECT	CASE monthly
 			WHEN 'MVMDAM12' THEN DATEADD(MONTH,-11,DATEADD(day,-1*DATEPART(day,run_date),run_date))
 			WHEN 'MVMDAM11' THEN DATEADD(MONTH,-10,DATEADD(day,-1*DATEPART(day,run_date),run_date))
@@ -1351,5 +1363,5 @@ UNPIVOT(
 		MVMDAM08, MVMDAM07, MVMDAM06, MVMDAM05,
 		MVMDAM04, MVMDAM03, MVMDAM02, MVMDAM01)
 
-)AS unpvt"></asp:SqlDataSource>
+)AS unpvt"></asp:SqlDataSource>--%>
 </asp:Content>
