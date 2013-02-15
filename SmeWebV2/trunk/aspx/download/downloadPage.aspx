@@ -9,7 +9,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
     <div style="width: 100%">
-        <table width="auto" style="float:left">
+        <table width="auto" style="float: left">
             <tr valign="top">
                 <td>
                     <fieldset>
@@ -111,7 +111,7 @@
                 </td>
             </tr>
         </table>
-        <table style="float:left;min-width:300px;">
+        <table style="float: left; min-width: 300px;">
             <tr>
                 <td>
                     <fieldset>
@@ -132,12 +132,11 @@
                 </td>
             </tr>
         </table>
-        <table style="float:left;min-width:300px;">
+        <table style="float: left; min-width: 300px;">
             <tr>
                 <td>
                     <fieldset>
-                        <legend>
-                            DSS Manual
+                        <legend>DSS Manual
                             <asp:Image ID="Image2" runat="server" ImageUrl="~/images/ani_new.gif" />
                         </legend>
                         <div>
@@ -156,12 +155,11 @@
                 </td>
             </tr>
         </table>
-        <table style="float:left;min-width:300px;">
+        <table style="float: left; min-width: 300px;">
             <tr>
                 <td>
                     <fieldset>
-                        <legend>
-                            Credit Rating New Model 21/02/2554
+                        <legend>Credit Rating New Model 21/02/2554
                             <asp:Image ID="Image3" runat="server" ImageUrl="~/images/ani_new.gif" />
                         </legend>
                         <div>
@@ -180,13 +178,32 @@
                 </td>
             </tr>
         </table>
-        <table style="float:left;min-width:300px;">
+        <table style="float: left; min-width: 300px;">
             <tr>
                 <td>
                     <fieldset>
                         <legend>คู่มือระบบ KEC(Krunsri External Credit)</legend>
                         <div>
                             <asp:TreeView ID="TreeView9" runat="server" ExpandDepth="2" NodeIndent="15">
+                                <ParentNodeStyle Font-Bold="False" ImageUrl="~/images/imageIcon/folder.gif" />
+                                <HoverNodeStyle Font-Underline="True" ForeColor="#6666AA" />
+                                <SelectedNodeStyle BackColor="#B5B5B5" Font-Underline="False" HorizontalPadding="0px"
+                                    VerticalPadding="0px" />
+                                <RootNodeStyle ImageUrl="~/images/imageIcon/My Computer.ico" />
+                                <NodeStyle Font-Names="Tahoma" Font-Size="8pt" ForeColor="Black" HorizontalPadding="2px"
+                                    NodeSpacing="0px" VerticalPadding="2px" />
+                                <LeafNodeStyle ImageUrl="~/images/imageIcon/txt.gif" />
+                            </asp:TreeView>
+                        </div>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>all_DSS_region</legend>
+                        <div>
+                            <asp:TreeView ID="TreeView10" runat="server" ExpandDepth="2" NodeIndent="15">
                                 <ParentNodeStyle Font-Bold="False" ImageUrl="~/images/imageIcon/folder.gif" />
                                 <HoverNodeStyle Font-Underline="True" ForeColor="#6666AA" />
                                 <SelectedNodeStyle BackColor="#B5B5B5" Font-Underline="False" HorizontalPadding="0px"

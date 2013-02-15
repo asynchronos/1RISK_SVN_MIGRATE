@@ -143,5 +143,10 @@ Namespace aspx.download
                 DirectCast(sender, TreeView).Nodes.Add(createTree(Page, "~/download/KEC/"))
             End If
         End Sub
+        Protected Sub TreeView10_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles TreeView10.Load
+            If Not Me.IsPostBack Then
+                DirectCast(sender, TreeView).Nodes.Add(createTree(Page, "~/download/all_DSS_region/"))
+            End If
+        End Sub
     End Class
 End Namespace
