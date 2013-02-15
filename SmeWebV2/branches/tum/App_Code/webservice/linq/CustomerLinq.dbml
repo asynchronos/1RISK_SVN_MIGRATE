@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Bay01_test" Class="CustomerLinqDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=172.19.54.2;Initial Catalog=BAY01_TEST;Persist Security Info=True;User ID=smeweb;Min Pool Size=3;Max Pool Size=10" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BAY01ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CUSTOMER" Member="CUSTOMERs">
+    <Type Name="CUSTOMER">
+      <Column Name="CIF" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CUS_TITLE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CUS_FIRST" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CUS_LAST" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CUS1_TITLE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CUS1_FIRST" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CUS1_LAST" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CUS2_TITLE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CUS2_FIRST" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CUS2_LAST" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CUS3_TITLE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CUS3_FIRST" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CUS3_LAST" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="CTITLE_E" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="CFIRST_E" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="CLAST_E" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="CifType" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="BOTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MAIN_CUST" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GROUP_CUST" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="GROUPCIF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BAYRATING" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="RATING" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="ADDR1" Type="System.String" DbType="NVarChar(110)" CanBeNull="true" />
+      <Column Name="ADDR2" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Column Name="PROV" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="ZIPCODE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TEL_HOME" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TEL_OFF" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TAX_NO" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CUS_TYPE" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="BUSI_TYPE" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="CLASS" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="IDCARD" Type="System.String" DbType="NVarChar(13)" CanBeNull="true" />
+      <Column Name="OFFICR_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="DATEFAS" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BEINGCUST" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BTHDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DEPTFLAG" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DEPTTRAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CIF0" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CIF1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CIF2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PROVSHOP" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="SEX" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ADDRWORK1" Type="System.String" DbType="NVarChar(110)" CanBeNull="true" />
+      <Column Name="ADDRWORK2" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Column Name="ZIPSHOP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CARDTYPE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CARDNO" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SP_CUSTOMER_SME_SELECT_BY_CIF" Method="SP_CUSTOMER_SME_SELECT_BY_CIF">
+    <Parameter Name="CIF" Parameter="cIF" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_CUSTOMER_SME_SELECT_BY_CIFResult">
+      <Column Name="CIF" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="NVarChar(72) NOT NULL" CanBeNull="false" />
+      <Column Name="GROUP_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CM_CODE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CM_NAME" Type="System.String" DbType="NVarChar(121) NOT NULL" CanBeNull="false" />
+      <Column Name="OLD_CM_CODE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="OLD_CM_NAME" Type="System.String" DbType="NVarChar(121) NOT NULL" CanBeNull="false" />
+      <Column Name="BRANCH_ID" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="BRANCH_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GROUP_SIZE_ID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="JUDGEMENT_ID" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="BUSI_RISK1_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BUSI_RISK1_DETAIL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BUSI_RISK2_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BUSI_RISK2_DETAIL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BUSI_RISK3_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BUSI_RISK3_DETAIL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UPDATE_BY" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="UPDATE_BY_NAME" Type="System.String" DbType="NVarChar(121) NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.P_GET_EXPORTER_PRE_DETAIL_BY_CIF" Method="P_GET_EXPORTER_PRE_DETAIL_BY_CIF">
+    <Parameter Name="CIF" Parameter="cIF" Type="System.Int32" DbType="Int" />
+    <ElementType Name="P_GET_EXPORTER_PRE_DETAIL_BY_CIFResult">
+      <Column Name="CIF" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(120)" CanBeNull="true" />
+      <Column Name="BUSINESS_1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Total_OS" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OS_AsOf" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.P_GET_EXPORTER_DETAIL_BY_CIF" Method="P_GET_EXPORTER_DETAIL_BY_CIF">
+    <Parameter Name="CIF" Parameter="cIF" Type="System.Int32" DbType="Int" />
+    <ElementType Name="P_GET_EXPORTER_DETAIL_BY_CIFResult">
+      <Column Name="CIF" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(120)" CanBeNull="true" />
+      <Column Name="BUSINESS_1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TOTAL_LIMIT" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="Total_OS" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OS_AsOf" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="GROUP_EXPOSURE" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="EXPORT_TO_1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EXPORT_TO_2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EXPORT_TO_3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="REVENUE" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="REVENUE_EXPORT" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="REVENUE_LOCAL" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="EX_CURRENCY_TYPE_1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EX_PERCENTAGE_1" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="EX_CURRENCY_TYPE_2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EX_PERCENTAGE_2" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="EX_CURRENCY_TYPE_3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EX_PERCENTAGE_3" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="COGS" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="COGS_IMPORT" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="COGS_LOCAL" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="IM_CURRENCY_TYPE_1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IM_PERCENTAGE_1" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="IM_CURRENCY_TYPE_2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IM_PERCENTAGE_2" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="IM_CURRENCY_TYPE_3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IM_PERCENTAGE_3" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="GROSS_MARGIN" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="SG_AND_A" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="NET_MARGIN" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="PAY_INTEREST" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="PAY_PRINCIPAL" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="UPDATE_BY" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="UPDATE_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UPDATE_NAME" Type="System.String" DbType="NVarChar(120)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
