@@ -1,0 +1,79 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="SMEWeb.MasterPage" %>
+
+<%@ Register Src="~/Controls/MainMenuControl/MainMenuControl.ascx" TagName="MainMenuControl"
+    TagPrefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style id="printStyle" type="text/css" runat="server" media="print">
+        #inProcessDiv
+        {
+            display: none;
+        }
+        #inProcessGroupDiv
+        {
+            display: none;
+        }
+    </style>
+    <style type="text/css">
+        body{
+            margin: 0 0 0 0;
+        }
+        .navy
+        {
+            background-color: Lime;
+            color: Navy;
+        }
+        .red
+        {
+            background-color: Aqua;
+            color: Red;
+        }
+    </style>
+
+    <%--<script type="text/javascript">
+        //label_InProcessJob;
+        Ext.onReady(function() {
+            var timerId = 0;
+
+            Ext.fly('inProcessDiv').addClass('navy');
+            Ext.fly('inProcessGroupDiv').addClass('red');
+
+            timerId = setInterval(bink, 1000);
+
+            function bink() {
+                changeInProcessDiv(Ext.fly('inProcessDiv'));
+                changeInProcessDiv(Ext.fly('inProcessGroupDiv'));
+
+                //                if (Ext.fly('inProcessDiv').hasClass('navy')) {
+                //                    Ext.fly('inProcessDiv').replaceClass('navy', 'red');
+                //                } else {
+                //                    Ext.fly('inProcessDiv').replaceClass('red', 'navy');
+                //                }
+            }
+
+            function changeInProcessDiv(div) {
+                if (div.hasClass('navy')) {
+                    div.replaceClass('navy', 'red');
+                } else {
+                    div.replaceClass('red', 'navy');
+                }
+            }
+        });
+    </script>--%>
+</head>
+<body id="MasterPageBodyTag" runat="server" >
+    <form id="form1" runat="server">
+        <asp:ContentPlaceHolder ID="ScriptPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+        <uc1:MainMenuControl ID="MainMenuControl" runat="server" />
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

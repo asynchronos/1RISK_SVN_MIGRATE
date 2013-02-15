@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="webservice.wcf.service.EmployeeWCFService" CodeBehind="~/App_Code/webservice/wcf/service/EmployeeWCFService.vb" %>

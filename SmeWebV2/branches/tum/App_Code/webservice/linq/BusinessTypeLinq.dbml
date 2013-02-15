@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="BAY01_TEST" Class="BusinessTypeLinqDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=172.19.54.2;Initial Catalog=BAY01_TEST;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BAY01ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BUSI_TYPE3" Member="BUSI_TYPE3s">
+    <Type Name="BUSI_TYPE3">
+      <Column Name="TYPE3_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TYPE3_DETAIL" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="PRIORITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE2_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CODE_BAY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CODE_RESEARCH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLAG" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="UPDATE_BY" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="BUSI_TYPE3_BUSI_TYPE2" Member="BUSI_TYPE2s" ThisKey="TYPE2_ID" OtherKey="TYPE2_ID" Type="BUSI_TYPE2" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BUSI_TYPE2" Member="BUSI_TYPE2s">
+    <Type Name="BUSI_TYPE2">
+      <Column Name="TYPE2_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TYPE2_DETAIL" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="PRIORITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE1_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_BY" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="BUSI_TYPE2_BUSI_TYPE1" Member="BUSI_TYPE1s" ThisKey="TYPE1_ID" OtherKey="TYPE1_ID" Type="BUSI_TYPE1" />
+      <Association Name="BUSI_TYPE3_BUSI_TYPE2" Member="BUSI_TYPE3" ThisKey="TYPE2_ID" OtherKey="TYPE2_ID" Type="BUSI_TYPE3" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BUSI_TYPE1" Member="BUSI_TYPE1s">
+    <Type Name="BUSI_TYPE1">
+      <Column Name="TYPE1_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TYPE1_DETAIL" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="PRIORITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_BY" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="BUSI_TYPE2_BUSI_TYPE1" Member="BUSI_TYPE2" ThisKey="TYPE1_ID" OtherKey="TYPE1_ID" Type="BUSI_TYPE2" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BUSINESS_TYPE_1" Member="BUSINESS_TYPE_1s">
+    <Type Name="BUSINESS_TYPE_1">
+      <Column Name="TYPE1_ID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RESEARCH_CODE" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION_EN" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="NOTE" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="PRIORITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_BY" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="BUSINESS_TYPE_2_BUSINESS_TYPE_1" Member="BUSINESS_TYPE_2" ThisKey="TYPE1_ID" OtherKey="TYPE1_ID" Type="BUSINESS_TYPE_2" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BUSINESS_TYPE_2" Member="BUSINESS_TYPE_2s">
+    <Type Name="BUSINESS_TYPE_2">
+      <Column Name="TYPE2_ID" Type="System.String" DbType="VarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RESEARCH_CODE" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION_EN" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE1_ID" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="NOTE" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="PRIORITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_BY" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="BUSINESS_TYPE_2_BUSINESS_TYPE_1" Member="BUSINESS_TYPE_1s" ThisKey="TYPE1_ID" OtherKey="TYPE1_ID" Type="BUSINESS_TYPE_1" />
+      <Association Name="BUSINESS_TYPE_3_BUSINESS_TYPE_2" Member="BUSINESS_TYPE_3" ThisKey="TYPE2_ID" OtherKey="TYPE2_ID" Type="BUSINESS_TYPE_3" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BUSINESS_TYPE_3" Member="BUSINESS_TYPE_3s">
+    <Type Name="BUSINESS_TYPE_3">
+      <Column Name="TYPE3_ID" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RESEARCH_CODE" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION_EN" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE2_ID" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="NOTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PRIORITY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_BY" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UPDATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="BUSINESS_TYPE_3_BUSINESS_TYPE_2" Member="BUSINESS_TYPE_2s" ThisKey="TYPE2_ID" OtherKey="TYPE2_ID" Type="BUSINESS_TYPE_2" />
+      <Association Name="BUSINESS_TYPE_4_BUSINESS_TYPE_3" Member="BUSINESS_TYPE_4" ThisKey="TYPE3_ID" OtherKey="TYPE3_ID" Type="BUSINESS_TYPE_4" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BUSINESS_TYPE_4" Member="BUSINESS_TYPE_4s">
+    <Type Name="BUSINESS_TYPE_4">
+      <Column Name="TYPE4_ID" Type="System.String" DbType="VarChar(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RESEARCH_CODE" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION_EN" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE3_ID" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="NOTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PRIORITY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UPDATE_BY" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="UPDATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="BUSINESS_TYPE_4_BUSINESS_TYPE_3" Member="BUSINESS_TYPE_3s" ThisKey="TYPE3_ID" OtherKey="TYPE3_ID" Type="BUSINESS_TYPE_3" />
+    </Type>
+  </Table>
+</Database>

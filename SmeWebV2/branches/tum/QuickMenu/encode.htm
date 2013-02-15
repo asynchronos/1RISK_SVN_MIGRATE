@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+    <script type="text/javascript">
+        var myKey = "abcdefghijkl"
+        //function for get element by id
+        function ele(id,obj) {
+	        if(!obj)obj=this;
+	        return obj.document.getElementById(id);
+        }
+
+        function qa(a,b){
+            return String.fromCharCode(a.charCodeAt(0)-(b-(parseInt(b/2)*2)));
+        }
+        
+        function qb(a,b){
+            return String.fromCharCode(a.charCodeAt(0)+(b-(parseInt(b/2)*2)));
+        }
+        
+        //ตอนนี้ยังหาวิธี Replace Special character ไม่ได้
+        function myEncode(str){
+            //str.replace(/./g,qb);
+            //เปลี่ยน " เป็น \" หลังทำการ Encode
+            //return str.replace("\"","\\\"");
+            return str.replace(/./g,qb);
+        }
+        
+        function myDecode(str){
+            //เปลี่ยน \" เป็น " ก่อนทำการ Decode
+            //str.replace(/&#92;/g,"abcd");
+            return str.replace(/./g,qa);
+        }
+        
+        function getResult(funcName){
+            var result = "";
+            
+            if(funcName == "Decode"){
+                result = myDecode(ele("DecodeTxt").innerText);
+            }else if(funcName == "Encode"){
+                result = myEncode(ele("EncodeTxt").innerText);
+            }
+            ele("ResultDiv").innerText = result
+        }
+    </script>
+</head>
+<body>
+    <textarea id="EncodeTxt" cols="80" rows="5"></textarea>
+    <input id="EncodeBtn" type="button" value="Encode" onclick="getResult('Encode')"/>
+    <br />
+    <textarea id="DecodeTxt" cols="80" rows="5"></textarea>
+    <input id="DecodeBtn" type="button" value="Decode" onclick="getResult('Decode')"/><br />
+    กรณีข้อความที่จะทำการ Decode มากจากภายในเครื่องหมายคำพูด(".....") ก่อน Decode หากมีเครื่องหมาย \" ต้องเปลี่ยนเป็น " ให้หมด<br />
+    <br />
+    Result<br />
+    <div id="ResultDiv">
+    </div>
+</body>
+</html>

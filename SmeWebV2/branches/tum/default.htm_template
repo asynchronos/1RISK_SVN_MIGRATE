@@ -1,0 +1,4 @@
+<script>window.location.replace("http://leader1/SMEWebTest/login.aspx");</script>
+<html>
+<a href="http://leader1/SMEWebTest/login.aspx">test leader1 </a>
+</html> 

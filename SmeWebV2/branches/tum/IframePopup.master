@@ -1,0 +1,121 @@
+﻿<%@ Master Language="VB" CodeFile="IframePopup.master.vb" Inherits="IframePopup" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+    <script id="initFnSetHeight" type="text/javascript">
+        function goSetWidthHeight() {
+            var iframes = window.parent.Ext.select("iframe");
+
+            var isSet = false;
+            for (i = 0; i < iframes.getCount(); i++) {
+//                for (j = 0; j < iframesDummy.getCount(); j++) {
+//                    if (iframes.item(i).dom.id == iframesDummy.item(j).dom.id.replace("Dummy", "")) {
+//                        iframes.item(i).dom.height = iframesDummy.item(j).dom.contentWindow.document.body.offsetHeight;
+//                        iframes.item(i).dom.width = iframesDummy.item(j).dom.contentWindow.document.body.offsetWidth;
+
+//                        alert(iframesDummy.item(j).dom.contentWindow.document.body.offsetWidth);
+//                        iframes.item(i).parent().setStyle('width', Number(iframesDummy.item(j).dom.contentWindow.document.body.offsetWidth) + 5);
+//                        iframes.item(i).parent().setStyle('height', Number(iframesDummy.item(j).dom.contentWindow.document.body.offsetHeight) + 15);
+//                        isSet = true;
+//                        break;
+//                    }
+//                }
+
+                if (!isSet) {
+                    //alert(iframesDummy.item(i).dom.contentWindow.document.body.offsetWidth + "," + iframesDummy.item(i).dom.contentWindow.document.body.offsetHeight);
+//                    var width = new String(Number(iframes.item(i).dom.contentWindow.document.body.offsetWidth));
+//                    var height = new String(Number(iframes.item(i).dom.contentWindow.document.body.offsetHeight));
+//                    
+//                    iframes.item(i).dom.width = width + "px";
+//                    iframes.item(i).dom.height = new String(Number(height) + 4) + "px";
+
+//                    iframes.item(i).parent().setStyle('width', width + "px");
+//                    iframes.item(i).parent().setStyle('height', new String(Number(height)+30) + "px");
+
+//                    alert("iframe:" + iframes.item(i).dom.width + "," + iframes.item(i).dom.height);
+//                    alert("div:" + iframes.item(i).parent().getStyle('width') + "," + iframes.item(i).parent().getStyle('height'));
+                }
+
+//                alert(iframes.item(i).dom.contentWindow.document.body.offsetWidth + "," + iframes.item(i).dom.contentWindow.document.body.offsetHeight)
+                
+            }
+        }
+    </script>
+    <script language="javascript" type="text/javascript">
+        function okay() {
+            window.parent.document.getElementById('btnOkay').click();
+        }
+        function cancel() {
+            window.parent.document.getElementById('btnCancel').click();
+        }
+    </script>
+    <style type="text/css">
+        .popup_Container {
+	        background-color:#fffeb2;
+	        border:2px solid #000000;
+	        padding: 0px 0px 0px 0px;
+        }
+
+
+        .popup_Titlebar {
+	        background: url(images/titlebar_bg.jpg);
+	        height: 29px;
+        }
+
+        .popup_Body
+        {
+	        padding:15px 15px 15px 15px;
+	        font-family:Arial;
+	        font-weight:bold;
+	        font-size:12px;
+	        color:#ffffdd;
+	        line-height:15pt;
+	        clear:both;
+	        padding:20px;
+        }
+
+        .TitlebarLeft 
+        {
+	        float:left;
+	        padding-left:5px;
+	        padding-top:5px;
+	        font-weight:bold;
+	        font-size:12px;
+        }
+        .TitlebarRight 
+        {
+	        background:url(images/cross_icon_normal.png);
+	        background-position:right;
+	        background-repeat:no-repeat;
+	        height:15px;
+	        width:16px;
+	        float:right;
+	        cursor:pointer;
+	        margin-right:5px;
+	        margin-top:5px;
+        }
+    </style>
+</head>
+<body id="iframeBody" style="margin:0;">
+    <form id="form1" runat="server">
+        <asp:ContentPlaceHolder ID="ScriptPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolderPopupBody" runat="server">
+                    
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
+
+<script id="callHeightScript" type="text/javascript">
+    //set width height ของ IFrmae
+    goSetWidthHeight();
+</script>
