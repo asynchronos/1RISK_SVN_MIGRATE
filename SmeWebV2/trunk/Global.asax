@@ -58,8 +58,8 @@
             err = err.InnerException
         End If
 
-        Application("LastError") = err 'store the error for later
-        Application("PageError") = HttpContext.Current.Request.Url.ToString() _
+        Dim LastError As Exception = err 'store the error for later
+        Dim PageError As String = HttpContext.Current.Request.Url.ToString() _
             .Substring(0, IIf(HttpContext.Current.Request.Url.ToString().IndexOf("?") < 0 _
                               , HttpContext.Current.Request.Url.ToString().Length _
                               , HttpContext.Current.Request.Url.ToString().IndexOf("?")))
@@ -67,8 +67,8 @@
         Server.ClearError() 'clear the error so we can continue onwards
 
         If Not IsNothing(HttpContext.Current.Session) Then
-            HttpContext.Current.Session.Add("LastError", Application("LastError"))
-            HttpContext.Current.Session.Add("PageError", Application("PageError"))
+            HttpContext.Current.Session.Add("LastError", LastError)
+            HttpContext.Current.Session.Add("PageError", PageError)
         End If
 
         'send mail
@@ -87,16 +87,16 @@
         If err.GetType().Equals(GetType(SME.UserSystem.Core.Exceptions.LDAPInfoException)) _
             Or err.GetType().Equals(GetType(SME.UserSystem.Core.Exceptions.UserProfileException)) Then
             Response.Redirect("~/aspx/account/LoginWithAD.aspx?pages=" _
-                              & Application("PageError").ToString() _
-                              & "&msg=" + DirectCast(Application("LastError"), Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
+                              & PageError.ToString() _
+                              & "&msg=" + DirectCast(LastError, Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
         ElseIf err.GetType().Equals(GetType(System.Security.SecurityException)) Then
             Response.Redirect("~/aspx/error/unauthorized.aspx")
         Else
             'Response.Redirect("~/aspx/error/defaultError.aspx?page=" & Server.UrlEncode(Request.RawUrl) _
             '    & "&msg=" & err.InnerException.Message & err.InnerException.StackTrace)
             Response.Redirect("~/aspx/error/defaultError.aspx?pages=" _
-                              & Application("PageError").ToString() _
-                              & "&msg=" + DirectCast(Application("LastError"), Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
+                              & PageError.ToString() _
+                              & "&msg=" + DirectCast(LastError, Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
         End If
     End Sub
 

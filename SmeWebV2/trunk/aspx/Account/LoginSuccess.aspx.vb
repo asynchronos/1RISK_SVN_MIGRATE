@@ -7,8 +7,8 @@ Partial Class LoginSuccess
     Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Response.Write(User.Identity.Name)
-        log.Info(User.Identity.Name & " login.Now Checking Roles.")
+        'Response.Write(User.Identity.Name)
+        'log.Info(User.Identity.Name & " login.Now Checking Roles.")
 
         Dim dal = New TbEmployeeDAL()
         Dim emp As TbEmployee = dal.getTbEmployeeByUsername(User.Identity.Name)
@@ -57,12 +57,13 @@ Partial Class LoginSuccess
                 'Response.Redirect(FormsAuthentication.GetRedirectUrl(User.Identity.Name, False))
                 'FormsAuthentication.RedirectFromLoginPage(Login1.UserName, False)
 
+                log.Info(Request.UserHostAddress & ":" & User.Identity.Name & ":Checking Roles Pass.")
                 Response.Redirect("~/aspx/mainpage.aspx")
 
                 Exit Sub
             Else
                 'user don't have role
-                showError("Your username don't have role")
+                showError("Your username don't have role.")
             End If
 
         End If
@@ -72,6 +73,9 @@ Partial Class LoginSuccess
 
     Private Sub showError(ByVal errorMsg As String)
         'Redirect to login URL with error message
-        Response.Redirect(FormsAuthentication.LoginUrl + "?msg=" + errorMsg)
+        log.Info(Request.UserHostAddress & ":" & User.Identity.Name & ":" & errorMsg)
+        'log.Info(Page.ResolveUrl(FormsAuthentication.LoginUrl & "?msg=" & HttpUtility.UrlEncode(errorMsg)))
+        Response.Redirect(Page.ResolveUrl(FormsAuthentication.LoginUrl & "?msg=" & HttpUtility.UrlEncode(errorMsg)))
+        'Throw New SME.UserSystem.Core.Exceptions.UserProfileException(errorMsg)
     End Sub
 End Class
