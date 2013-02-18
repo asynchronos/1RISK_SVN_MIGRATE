@@ -1,11 +1,16 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Globalization
+Imports log4net
+
 Partial Class smes_check_list
     Inherits System.Web.UI.Page
     Shared Result_A As Integer
     Shared Result_R As Integer
     Shared Result_O As Integer
+
+    Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
+    Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Sub ShowCheckList()
 
@@ -33,7 +38,7 @@ Partial Class smes_check_list
         cmd2.Connection = cnn
         Dim sql2 As String = "SME_S.P_SS_CHECK_LIST_SELECT_VALUE"
         cmd2.CommandType = CommandType.StoredProcedure
-        cmd2.Parameters.AddWithValue("SMES_ID", Request.QueryString("SMES_ID"))
+        cmd2.Parameters.AddWithValue("@SMES_ID", Request.QueryString("SMES_ID"))
         cmd2.CommandText = sql2
         Dim dt2 As DataTable = New DataTable()
         cmd2.ExecuteNonQuery()
@@ -45,6 +50,7 @@ Partial Class smes_check_list
         'End Try
         Dim imgStr As String = Nothing
         Dim CG As String = Nothing
+        Dim chkname As String = Nothing
         Dim CD As String = Nothing
         Dim endQT As Boolean = False
         Dim endQG As Boolean = False
@@ -54,9 +60,20 @@ Partial Class smes_check_list
                 'imgStr += "<h4>"
                 'imgStr += dt.Rows(i).Item("CK_NAME")
                 'imgStr += "</h4>"
-                Dim hl As New LiteralControl
-                hl.Text = "<h3 class='ckName ui-state-highlight'>" & dt.Rows(i).Item("CK_NAME") & "</h3>"
+                Dim hl, Guarantor, Tenor As New LiteralControl
+                chkname = dt.Rows(i).Item("CK_ID").ToString
+                If chkname = "29" Then
+                    Guarantor.Text = "<h3 class='data-header  ui-state-highlight ui-corner-all'>ผู้ค้ำประกัน (Guarantor)</h3>"
+                    PanelForm.Controls.Add(Guarantor)
+                End If
+                If chkname = "31" Then
+                    Tenor.Text = "<h3 class='data-header  ui-state-highlight ui-corner-all'> Tenor (ระยะเวลากู้)</h3>"
+                    PanelForm.Controls.Add(Tenor)
+                End If
+                hl.Text += "<h3 class='ckName ui-state-highlight'>" & dt.Rows(i).Item("CK_NAME") & "</h3>"
                 PanelForm.Controls.Add(hl)
+
+
             End If
             '' imgStr += "<a target='_blank'  href='FileUpload/Pictures/" & dt.Rows(i).Item("PATH_FILE_NAME") & "'><img class='thumbPic' src='FileUpload/Pictures/" & dt.Rows(i).Item("PATH_FILE_NAME") & "'></a>"
             'imgStr += "<br><input type='checkbox'  class='ckBox' onclick='checkResult(""" & dt.Rows(i).Item("RESULT") & """);'  name='nameCK" & dt.Rows(i).Item("CK_DETAIL_ID") & "' runat ='server' id='idCK" & dt.Rows(i).Item("CK_DETAIL_ID") & "' value='" & dt.Rows(i).Item("CK_DETAIL_NAME") & "' >" & dt.Rows(i).Item("CK_DETAIL_NAME")
@@ -106,10 +123,10 @@ Partial Class smes_check_list
                     rk.CssClass = "ui-state-highlight"
                 ElseIf result = "R" Then
                     Result_R = Result_R + 1
-                     rk.CssClass = "ui-state-error"
+                    rk.CssClass = "ui-state-error"
                 ElseIf result = "O" Then
                     Result_O = Result_O + 1
-                      rk.CssClass = "ui-state-error"
+                    rk.CssClass = "ui-state-error"
                 End If
             Else
                 Response.Write("Cannot find :" & dt2.Rows(y).Item("CK_DETAIL_ID"))
@@ -284,11 +301,11 @@ Partial Class smes_check_list
 
     End Sub
 
-    Protected Sub ButtonSave_Click(sender As Object, e As System.EventArgs) Handles ButtonSave.Click
+    Protected Sub ButtonSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonSave.Click
         SaveValue()
     End Sub
 
-    Protected Sub ButtonSave2_Click(sender As Object, e As System.EventArgs) Handles ButtonSave2.Click
+    Protected Sub ButtonSave2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonSave2.Click
         SaveValue()
     End Sub
 End Class
