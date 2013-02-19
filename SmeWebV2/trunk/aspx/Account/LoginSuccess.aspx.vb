@@ -58,7 +58,20 @@ Partial Class LoginSuccess
                 'FormsAuthentication.RedirectFromLoginPage(Login1.UserName, False)
 
                 log.Info(Request.UserHostAddress & ":" & User.Identity.Name & ":Checking Roles Pass.")
-                Response.Redirect("~/aspx/mainpage.aspx")
+
+                If (isDebugEnabled) Then
+                    log.Debug("Check ReturnUrl.")
+                End If
+
+                If (hasQueryString("ReturnUrl")) Then
+                    If (isDebugEnabled) Then
+                        log.Debug("ReturnUrl:" + getQueryString("ReturnUrl"))
+                    End If
+                    Response.Redirect(getQueryString("ReturnUrl"))
+                Else
+                    Response.Redirect("~/aspx/mainpage.aspx")
+                End If
+
 
                 Exit Sub
             Else
