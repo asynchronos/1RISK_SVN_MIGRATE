@@ -11,12 +11,9 @@ Partial Class smes_check_list
 
         Try
 
-
-
             Dim result As String = ""
             Dim cnn As New SqlConnection
             cnn = ConnectionUtil.getSqlConnectionFromWebConfig()
-
 
             ' ส่วนแรกดึงข้อมูล check list เพื่อ สร้าง control
 
@@ -58,7 +55,7 @@ Partial Class smes_check_list
             Dim pkRA As Panel = Nothing
             Dim pkRO As Panel = Nothing
             Dim pkRR As Panel = Nothing
-
+            Dim chkname As String = Nothing
             For i = 0 To dt.Rows.Count - 1
 
 
@@ -67,15 +64,15 @@ Partial Class smes_check_list
                     'imgStr += dt.Rows(i).Item("CK_NAME")
                     'imgStr += "</h4>"
                     Dim hl, Guarantor, Tenor As New LiteralControl
-                chkname = dt.Rows(i).Item("CK_ID").ToString
-                If chkname = "29" Then
-                    Guarantor.Text = "<h3 class='data-header  ui-state-highlight ui-corner-all'>ผู้ค้ำประกัน (Guarantor)</h3>"
-                    PanelForm.Controls.Add(Guarantor)
-                End If
-                If chkname = "31" Then
-                    Tenor.Text = "<h3 class='data-header  ui-state-highlight ui-corner-all'> Tenor (ระยะเวลากู้)</h3>"
-                    PanelForm.Controls.Add(Tenor)
-                End If
+                    chkname = dt.Rows(i).Item("CK_ID").ToString
+                    If chkname = "29" Then
+                        Guarantor.Text = "<h3 class='data-header  ui-state-highlight ui-corner-all'>ผู้ค้ำประกัน (Guarantor)</h3>"
+                        PanelForm.Controls.Add(Guarantor)
+                    End If
+                    If chkname = "31" Then
+                        Tenor.Text = "<h3 class='data-header  ui-state-highlight ui-corner-all'> Tenor (ระยะเวลากู้)</h3>"
+                        PanelForm.Controls.Add(Tenor)
+                    End If
                     hl.Text += "<h3 class='ckName ui-state-highlight'><div>" & dt.Rows(i).Item("CK_NAME") & "</div></h3>"
                     PanelForm.Controls.Add(hl)
 
