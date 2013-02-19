@@ -159,11 +159,6 @@
             D44 = $("#REFINANCE_WORKING_LOAN_OTHER_CMTextBox");
             D45 = $("#REFINANCE_REPAYMENT_CMTextBox");
 
-            F10 = $("[CELL='AR_TABLE']");
-            F15 = $("[CELL='AP_TABLE']");
-            F21 = $("[CELL='STOCK_TABLE']");
-
-
             I33 = $("#WORKING_CAPITAL_CMTextBox");
             I34 = $("#LOAN_CMTextBox");
             I35 = $("#LG_AVAL_CMTextBox");
@@ -251,6 +246,10 @@
             O35 = $("#DSCR_TABLETextBox"); // กำหนดให้ค่า default จากโปรแกรม
 
             O37 = $("#LTV_TABLETextBox");
+
+            F10 = $("[CELL='AR_TABLE']");
+            F15 = $("[CELL='AP_TABLE']");
+            F21 = $("[CELL='STOCK_TABLE']");
 
 
             COST_OF_SALES_CMTextBox = $("#COST_OF_SALES_CMTextBox");
