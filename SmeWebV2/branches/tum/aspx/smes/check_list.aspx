@@ -52,6 +52,30 @@
               margin:5px;
               border:1px;
              }
+             
+            .divPKRA 
+            {
+                margin:5px;
+               float:left;
+               width:30%;
+               background-color:#DDFFDD; 
+            }             
+            .divPKRO 
+            {
+                margin:5px;
+               float:left;
+               width:30%;
+                background-color:#FFFFCC; 
+              
+            } 
+             .divPKRR 
+
+            {
+               margin:5px;
+               float:left;
+               width:30%;
+               background-color:#FFDDCC; 
+            } 
             #divRef
             {
                 position: absolute;
@@ -119,23 +143,22 @@
                 Style="font-weight: 700; color: #0000FF"></asp:Label>
         </h3>
         <br />
-             <h3>
-            <asp:Label ID="label1" runat="server" Text="ผลการพิจารณา"
-                Style="font-weight: 700; color: #000000"></asp:Label>
-             &nbsp;
-             <asp:Label ID="ResultLabel" runat="server" Text="ยังไม่ได้บันทึก"></asp:Label>
-                 <br />
-                 <br />
-        <asp:Button ID="ButtonSave" runat="server" Text=" บันทึกผล " />
+        <h3>
+            <asp:Label ID="label1" runat="server" Text="ผลการพิจารณา" Style="font-weight: 700;
+                color: #000000"></asp:Label>
+            &nbsp;
+            <asp:Label ID="ResultLabel" runat="server" Text="ยังไม่ได้บันทึก"></asp:Label>
+            <br />
+            <br />
+            <asp:Button ID="ButtonSave" runat="server" Text=" บันทึกผล " />
         </h3>
-
     </div>
     <div id="divTotalResult">
         <span id="spanTotalResult"></span>
         <asp:Panel runat="server" ID="PanelForm">
         </asp:Panel>
     </div>
-     <asp:Button ID="ButtonSave2" runat="server" Text=" บันทึกผล " />
+    <asp:Button ID="ButtonSave2" runat="server" Text=" บันทึกผล " />
     </form>
 </body>
 </html>
