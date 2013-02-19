@@ -21,6 +21,7 @@ Partial Class smes_check_list
             cmd.Connection = cnn
             Dim sql As String = "SME_S.P_SS_CHECK_LIST_SELECT"
             cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("TEMPLATE_ID", Request.QueryString("TEMPLATE_ID"))
             cmd.CommandText = sql
             Dim dt As DataTable = New DataTable()
             cmd.ExecuteNonQuery()
@@ -45,10 +46,12 @@ Partial Class smes_check_list
 
             cnn.Close()
 
-            'End Try
-            Dim imgStr As String = Nothing
+
+
+
             Dim CG As String = Nothing
             Dim CD As String = Nothing
+
             Dim endQT As Boolean = False
             Dim endQG As Boolean = False
 
@@ -56,33 +59,41 @@ Partial Class smes_check_list
             Dim pkRO As Panel = Nothing
             Dim pkRR As Panel = Nothing
             Dim chkname As String = Nothing
+
             For i = 0 To dt.Rows.Count - 1
+
+                If dt.Rows(i).Item("CK_GROUP_ID").ToString <> CG Then          ' ตัวแปรเช็คชื่อ Group ถ้าไม่เท่ากันแสดงว่าขึ้น Group ใหม่
+                    Dim hl As New LiteralControl
+                    hl.Text += "<h3 class='ckGroupName ui-state-highlight'><div>" & dt.Rows(i).Item("CK_GROUP_NAME") & "</div></h3>"
+                    PanelForm.Controls.Add(hl)
+                End If
 
 
                 If dt.Rows(i).Item("CK_ID").ToString <> CD Then   ' ตัวแปรเช็คชื่อข้อไม่เท่ากันแสดงว่าขึ้นข้อใหม่
-                    'imgStr += "<h4>"
-                    'imgStr += dt.Rows(i).Item("CK_NAME")
-                    'imgStr += "</h4>"
-                    Dim hl, Guarantor, Tenor As New LiteralControl
-                    chkname = dt.Rows(i).Item("CK_ID").ToString
-                    If chkname = "29" Then
-                        Guarantor.Text = "<h3 class='data-header  ui-state-highlight ui-corner-all'>ผู้ค้ำประกัน (Guarantor)</h3>"
-                        PanelForm.Controls.Add(Guarantor)
-                    End If
-                    If chkname = "31" Then
-                        Tenor.Text = "<h3 class='data-header  ui-state-highlight ui-corner-all'> Tenor (ระยะเวลากู้)</h3>"
-                        PanelForm.Controls.Add(Tenor)
-                    End If
-                    hl.Text += "<h3 class='ckName ui-state-highlight'><div>" & dt.Rows(i).Item("CK_NAME") & "</div></h3>"
+
+                    Dim hl As New LiteralControl
+                    hl.Text += "<h4 class='ckName ui-state-highlight'><div>" & dt.Rows(i).Item("CK_NAME") & "</div></h3>"
                     PanelForm.Controls.Add(hl)
 
                     pkRA = New Panel
-                    pkRO = New Panel
-                    pkRR = New Panel
+                    Dim resultA As New LiteralControl
+                    resultA.Text += "<div class='divResultHead'>A</div>"
+                    pkRA.Controls.Add(resultA)
 
-                    pkRA.CssClass = "divPKRA"
-                    pkRO.CssClass = "divPKRO"
-                    pkRR.CssClass = "divPKRR"
+                    pkRO = New Panel
+                    Dim resultO As New LiteralControl
+                    resultO.Text += "<div class='divResultHead'>O</div>"
+                    pkRO.Controls.Add(resultO)
+
+
+                    pkRR = New Panel
+                    Dim resultR As New LiteralControl
+                    resultR.Text += "<div class='divResultHead'>R</div>"
+                    pkRR.Controls.Add(resultR)
+
+                    pkRA.CssClass = "divResult ui-widget-content"
+                    pkRO.CssClass = "divResult ui-widget-content"
+                    pkRR.CssClass = "divResult ui-widget-content"
 
                     PanelForm.Controls.Add(pkRA)
                     PanelForm.Controls.Add(pkRO)
@@ -91,10 +102,9 @@ Partial Class smes_check_list
                 Else
                     '  Response.Write("ยังไม่ขึ้น")
                 End If
-                '' imgStr += "<a target='_blank'  href='FileUpload/Pictures/" & dt.Rows(i).Item("PATH_FILE_NAME") & "'><img class='thumbPic' src='FileUpload/Pictures/" & dt.Rows(i).Item("PATH_FILE_NAME") & "'></a>"
-                'imgStr += "<br><input type='checkbox'  class='ckBox' onclick='checkResult(""" & dt.Rows(i).Item("RESULT") & """);'  name='nameCK" & dt.Rows(i).Item("CK_DETAIL_ID") & "' runat ='server' id='idCK" & dt.Rows(i).Item("CK_DETAIL_ID") & "' value='" & dt.Rows(i).Item("CK_DETAIL_NAME") & "' >" & dt.Rows(i).Item("CK_DETAIL_NAME")
 
-                CD = dt.Rows(i).Item("CK_ID").ToString
+                CG = dt.Rows(i).Item("CK_GROUP_ID").ToString  ' กำหนดค่า group id เพื่อใช้เปรียบเทียบการขึ้น group ใหม่
+                CD = dt.Rows(i).Item("CK_ID").ToString ' กำหนดค่า ck list id เพื่อใช้เปรียบเทียบการขึ้น check list ใหม่
 
                 Dim pk As New Panel
                 pk.CssClass = "divCK"
@@ -265,7 +275,7 @@ Partial Class smes_check_list
     Sub SaveValue()
         ' ตัวแปรที่จำเป็นต้องมี
         Dim SMES_ID As String = SMES_IDTextBox.Text
-
+        Dim TEMPLATE_ID As String = TemplateTextBox.Text
 
         Dim result As String = ""
         Dim cnn As New SqlConnection
@@ -274,6 +284,7 @@ Partial Class smes_check_list
         cmd.Connection = cnn
         Dim sql As String = "SME_S.P_SS_CHECK_LIST_SELECT"
         cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("TEMPLATE_ID", Request.QueryString("TEMPLATE_ID"))
         cmd.CommandText = sql
         Dim dt As DataTable = New DataTable()
 
@@ -296,7 +307,6 @@ Partial Class smes_check_list
                 strInsert += " INSERT INTO  SME_S.CHECK_LIST_VALUE "
                 strInsert += "  VALUES (" + SMES_ID + ","
                 strInsert += dt.Rows(i).Item("CK_DETAIL_ID").ToString + ","
-                strInsert += "'" + dt.Rows(i).Item("CK_DETAIL_NAME").ToString.Replace("'", "") + "',"
                 strInsert += "'" + dt.Rows(i).Item("RESULT").ToString + "');"
             End If
 
@@ -313,7 +323,7 @@ Partial Class smes_check_list
 
         cnn.Close()
 
-        Response.Redirect("check_list.aspx?SMES_ID=" & SMES_ID)
+        Response.Redirect("check_list.aspx?SMES_ID=" & SMES_ID & "&TEMPLATE_ID=" & TEMPLATE_ID)
     End Sub
 
     Protected Sub form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles form1.Load
@@ -330,6 +340,7 @@ Partial Class smes_check_list
         Else
             clearResult()
             SMES_IDTextBox.Text = Request.QueryString("SMES_ID")
+            TemplateTextBox.Text = Request.QueryString("TEMPLATE_ID")
             ShowCheckList()
         End If
 

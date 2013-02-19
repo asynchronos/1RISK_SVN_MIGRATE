@@ -907,8 +907,8 @@ SSProject.prototype = {
     // get table lookup 
 
 
-    setUSE_TABLE: function (newUSE_TABLE) {  
-     // กำหนดค่าว่าให้ใช้ table lookup หรือไม่ 1=yes,0=no
+    setUSE_TABLE: function (newUSE_TABLE) {
+        // กำหนดค่าว่าให้ใช้ table lookup หรือไม่ 1=yes,0=no
         this.USE_TABLE = newUSE_TABLE;
     },
     getDSCR: function () {
@@ -920,10 +920,10 @@ SSProject.prototype = {
     },
     getMARGIN: function () {
         if (this.USE_TABLE == 1) {
-           // alert('use default' + this.MARGIN);
+            // alert('use default' + this.MARGIN);
             return this.MARGIN;
         } else {
-          //  alert('use input' + this.getD17());
+            //  alert('use input' + this.getD17());
             return this.getD17();
         }
     },
@@ -1385,11 +1385,11 @@ SSProject.prototype = {
     , M27: function () {
         //        alert('d29' + this.getD29());
         //        alert('getRate' + this.getRATE());
-        if (this.getD29() > this.getRATE()) {
+        //if (this.getD29() > this.getRATE()) {
             return this.getD29();
-        } else {
-            return this.getRATE();
-        }
+        //} else {
+        //    return this.getRATE();
+        //}
     }
     , M35: function () {
         // ไม่ต้องเช็ค woking cap และ loan ว่าเป็น 0 หรือไม่ เพราะทำให้ dscr เป็น 0
@@ -1434,37 +1434,38 @@ SSProject.prototype = {
         }
     }
     , N43: function () {
-       // alert('O35:' + this.getO35());
-         
+        // alert('O35:' + this.getO35());
+
         if (this.getO35() == 0) {
             return 0;
         } else {
             // (ebida / dscr /12) -  (หนี้สินหมุนเวียน * อัตราดอกเบี้ย /12) -(ทุก ๆ ภาระผ่อนชำระหนี้ต่อเดือน )
             x = (((this.I25() / this.getO35()) / 12) - ((this.N11() * this.M27() / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45())));
-            //alert('x=' + x );
+            //alert('x=' + x);
             if (x > 0) {
                 y = ((this.N40() * this.M27()) / 12);
                 if ((x - y) > 0) {
                     if ((this.N40() + this.N15() + this.getD41() - this.getI44()) > (this.T17() * this.getO37())) {
-                         //alert('x1');
-                         return this.RoundDown((this.T17() * this.getO37()) - this.N15() - this.getD41() - this.N10(), -4);  // x1
+                       // alert('x1');
+                        return this.RoundDown((this.T17() * this.getO37()) - this.N15() - this.getD41() - this.N10(), -4);  // x1
 
                     } else {
-                          // alert('x2');
+                        //alert('x2');
                         return this.RoundDown((this.N40() - this.N10()), -4);
                     }
                 } else {
                     if ((((x * 12) / this.M27()) + this.N15() + this.getD41() - this.getI44()) > (this.T17() * this.getO37())) {
-                        //  alert('x3');
+                       // alert('x3');
                         return this.RoundDown((this.T17() * this.getO37()) - this.N15() - this.getD41() - this.N10(), -4);
                     } else {
-                          //alert('x4');  // correct
+                        //alert('x4');  // correct
+                       // alert(this.M27());
                         //  return this.RoundDown(((((((this.I25() / this.getO35()) / 12) - ((this.N11() * this.M27()) / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45())) * 12) / this.M27()) - this.N10()), -4);
                         return this.RoundDown((((x * 12) / this.M27()) - this.N10()), -4);
                     }
                 }
             } else {
-                 // alert('x5');
+              //  alert('x5');
                 return this.RoundDown(0 - this.N10(), -4);
             }
         }
