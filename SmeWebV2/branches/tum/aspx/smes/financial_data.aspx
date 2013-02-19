@@ -1095,10 +1095,12 @@
                     obj.setD39(parseFloat($(D39).autoNumericGet()));
                 }
 
-                if (M27.val() == '') {
-                    chkErr = true;
+        		if (M27.val() == '') {
+                    obj.setD29(0);
+                } else {
+                    obj.setD29(parseFloat($(M27).autoNumericGet()));
                 }
-
+				//alert(obj.I27());
                 if (chkErr == false) {
                     I27.autoNumericSet(obj.I27());
                     I27.change()
@@ -1128,9 +1130,10 @@
                 }
 
                 if (checkErr == false) {
-                    M27.autoNumericSet(obj.M27() * 100);
-                    M27.change()
-                }
+				   
+                    M27.autoNumericSet($(D29).autoNumericGet());
+                    M27.change();
+			    }
 
             });
 
