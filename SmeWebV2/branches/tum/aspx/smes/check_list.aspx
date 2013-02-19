@@ -34,12 +34,18 @@
           {
              height:20px;
             }
-            .ckName 
+             .ckGroupName 
             {
                 width:90%;
                 font-size:large;   
                 padding:5px;
-                margin:10px;
+                margin:5px;
+             }
+            .ckName 
+            {
+                width:90%;
+                padding:5px;
+                margin:12px;
 
              }
            .ckBox 
@@ -49,33 +55,21 @@
             }
             .divCK 
             {
-              margin:5px;
+              margin:10px;
               border:1px;
              }
              
-            .divPKRA 
-            {
-                margin:5px;
-               float:left;
-               width:30%;
-               background-color:#DDFFDD; 
-            }             
-            .divPKRO 
-            {
-                margin:5px;
-               float:left;
-               width:30%;
-                background-color:#FFFFCC; 
-              
-            } 
-             .divPKRR 
-
+            .divResult
             {
                margin:5px;
                float:left;
                width:30%;
-               background-color:#FFDDCC; 
-            } 
+            }             
+            .divResultHead 
+            {
+                  width:100%;
+                    border:1px;
+             }
             #divRef
             {
                 position: absolute;

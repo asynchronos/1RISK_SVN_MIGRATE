@@ -488,7 +488,7 @@
             CALCULATE_EL = $(I9).add(I10).add(I11).add(I13).add(I15).add(I16).add(I17).add(I18).add(I20).add(I22).add(H25).add(I25).add(I26).add(I27).add(I28).add(J28).add(J29).add(I30).add(I31).add(N9).add(N10).add(N11).add(N13).add(N15).add(N16).add(N18).add(N20).add(N21).add(N22).add(N25).add(M27).add(O27).add(O28).add(O28).add(N30).add(N31).add(M35).add(M36).add(M37).add(N40).add(N41).add(N43).add(N44).add(O35).add(O37);
             //CALCULATE_EL.addClass('purpleBG');
 
-            INPUT_EL = $(INPUT_EL).add(COST_OF_SALESTextBox).add(COST_OF_SALES_PERCENTTextBox).add(OPERATING_EXPENSESTextBox).add(OPERATING_EXPENSES_PERCENTTextBox).add(TAXTextBox).add(OTHER_FIXED_ASSETS_OTHER_BANKTextBox).add($("#OWNERS_EQUITY_PERCENT_INPUTTextBox")).add(CURRENT_ASSET_OTHERTextBox);
+            INPUT_EL = $(INPUT_EL).add(COST_OF_SALESTextBox).add(COST_OF_SALES_PERCENTTextBox).add(OPERATING_EXPENSESTextBox).add(OPERATING_EXPENSES_PERCENTTextBox).add(TAXTextBox).add(OTHER_FIXED_ASSETS_OTHER_BANKTextBox).add(CURRENT_ASSET_OTHERTextBox);
             CALCULATE_EL = $(CALCULATE_EL).add(OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox).add(CURRENT_ASSET_OTHER_CALTextBox);
 
 
@@ -572,6 +572,8 @@
             $("input[type='text']").css("text-align", "right");  // กำหนดให้ text box ชิดขวาทั้งหมด
             //$("input[type='text'][title]").tooltip();
             //INPUT_EL.tooltip();
+            
+            // readonly
 
             $(O27).keydown(function () {  // อายุสัญญา cal
                 $(this).blur();
@@ -582,10 +584,12 @@
             $(O35).focus(function () { $(this).blur(); });
             $(O37).focus(function () { $(this).blur(); });
 
-            $("#OWNERS_EQUITY_PERCENT_INPUTTextBox").change(function () {
-                M25.val($(this).val());
-                M25.change();
-            });
+            // แก้ไขไม่ให้เปลี่ยน % ส่วนของเจ้าของ 
+            $("#OWNERS_EQUITY_PERCENT_INPUTTextBox").focus(function () { $(this).blur(); });
+            //            $("#OWNERS_EQUITY_PERCENT_INPUTTextBox").change(function () {
+            //                M25.val($(this).val());
+            //                M25.change();
+            //            });
 
             //  I9  เงินสดเงินฝากพันธบัตร ==========
 
@@ -4466,7 +4470,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="OWNERS_EQUITY_PERCENT_INPUTTextBox" ToolTip="กระทบ % ส่วนของเจ้าของ"
-                            Width="35px" CELL="I36" runat="server" Text='' />
+                            Width="35px" CELL="I36" runat="server"  />
                         %
                     </td>
                     <td>
