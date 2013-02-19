@@ -5,7 +5,7 @@
 <%@ Import Namespace="System.Linq" %>
 <script RunAt="server">
     Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
-    Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
+    Private Shared isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
         'Dev
@@ -15,6 +15,7 @@
 
         'Read Config
         log4net.Config.XmlConfigurator.ConfigureAndWatch(New System.IO.FileInfo(ConfigurationManager.AppSettings("Log4netConfigPath")))
+        isDebugEnabled = log.IsDebugEnabled
 
         'Dim dateStart As DateTime? = DateTime.Now.AddDays(-5)
         'Dim task As Log4NetFileCleanupTask = New Log4NetFileCleanupTask()
@@ -114,26 +115,8 @@
         ' Note: The Session_End event is raised only when the sessionstate mode
         ' is set to InProc in the Web.config file. If session mode is set to StateServer
         ' or SQLServer, the event is not raised.
-        Dim log As New ClsLog
-        log.InsertLog(2, Request.UserHostAddress, DirectCast(Session.Item(SessionKeyConst.EMP_ID), String))
-
-        Application.Lock()
-        Application("UserOnline") = CInt(Application("UserOnline")) - 1
-        Application.UnLock()
-
-    End Sub
-
-    Sub Session_OnEnd(ByVal sender As Object, ByVal e As EventArgs)
-        ' Code that runs when a session ends.
-        ' Note: The Session_End event is raised only when the sessionstate mode
-        ' is set to InProc in the Web.config file. If session mode is set to StateServer
-        ' or SQLServer, the event is not raised.
         'Dim log As New ClsLog
         'log.InsertLog(2, Request.UserHostAddress, DirectCast(Session.Item(SessionKeyConst.EMP_ID), String))
-
-        If Not IsNothing(Session.Item(SessionKeyConst.EMP_ID)) Then
-            log.Info(DirectCast(Session.Item(SessionKeyConst.EMP_ID), String) & " logout.")
-        End If
 
         Application.Lock()
         Application("UserOnline") = CInt(Application("UserOnline")) - 1
