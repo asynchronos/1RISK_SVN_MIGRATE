@@ -1098,7 +1098,7 @@
         		if (M27.val() == '') {
                     obj.setD29(0);
                 } else {
-                    obj.setD29(parseFloat($(M27).autoNumericGet()));
+                    obj.setD29(parseFloat($(D29).autoNumericGet()));
                 }
 				//alert(obj.I27());
                 if (chkErr == false) {
@@ -2831,8 +2831,11 @@
                 CALCULATE_EL.val(0); // // กำหนดให้ filed calculate default เป็น 0
 
 
+                
                 H25.val(100);
+                // *** สำคัญ***  ค่า rate default ในตาราง ถ้าเป็น 8% จะต้องเก็บเป็น 0.08
                 D29.val(RATE_TABLE.val() * 100); // กำหนดให้อัตราดอกเบี้ยเริ่มต้นมี่ค่าเท่ากับ default
+
                 M27.val(D29.val());
                 M33.val(RATE_TABLE.val() * 100); // กำหนดให้อัตราดอกเบี้ยเริ่มต้นมี่ค่าเท่ากับ default
                 M34.val(RATE_TABLE.val() * 100); // กำหนดให้อัตราดอกเบี้ยเริ่มต้นมี่ค่าเท่ากับ default
