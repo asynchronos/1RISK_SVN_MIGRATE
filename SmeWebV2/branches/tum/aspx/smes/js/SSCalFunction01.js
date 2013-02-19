@@ -919,13 +919,7 @@ SSProject.prototype = {
         return this;
     },
     getMARGIN: function () {
-        if (this.USE_TABLE == 1) {
-            // alert('use default' + this.MARGIN);
-            return this.MARGIN;
-        } else {
-            //  alert('use input' + this.getD17());
-            return this.getD17();
-        }
+         return this.MARGIN;
     },
     setMARGIN: function (input) {
         this.MARGIN = (new MyNumber(input)).getValue();
@@ -991,44 +985,31 @@ SSProject.prototype = {
    , I9: function () {
        return this.getD28() + this.getI37();
    }
-    , I10: function (useNop) {
-        useNop = true;
-        if (useNop) { // use p'nop function in excel
-            if (this.getD8() * this.getD9() > 0) {
-                if (this.getD10() == 0) { return 0; }
-                else {
+    , I10: function () {
+        if (this.USE_TABLE == 1) { 
+             // ยอดขาย * % ขายเชื่อ * AR_table / 30
+             return this.getD8() * this.getD9() * this.getAR() / 30;
+        } else {
+          if (this.getD8() * this.getD9() > 0) {
+                if (this.getD10() == 0) { 
+                    return 0; 
+                } else {
                     return this.getD8() * this.getD9() * this.getD10() / 30;
                 }
             } else {
                 return 0;
-            }
-        } else { //use my function
-            if (this.getD24() != 0) {
-                var min;
-                if (this.getD10() < this.getF10()) {
-                    min = this.getD10();
-                } else {
-                    min = this.getF10();
-                }
-
-                return this.getD8() * this.getD9() * min / 30;
-            } else {
-                return 0;
-            }
-        }
+            } 
+         } // use table
     }
-    , I11: function (useNop) {
-        useNop = true;
-        if (useNop) { // use p'nop function in excel
+    , I11: function () {
+        if (this.USE_TABLE == 1) {
+            // ยอดซื้อ  *  จำนวนวัน default /30
+            return this.getD13() * this.getSTOCK() / 30
+        } else {
+            // กรณีที่ไม่ใช้ค่า  table ให้คำนวณค่า stock จากการกรอก
             if (this.getD21() == 0) {
                 return this.getD20();
-                //                if (this.getD20() < this.getD13() * this.getF21() / 30) {
-                //                    return this.getD20()
-                //                } else {
-                //                    return this.getD13() * this.getF21() / 30
-                //                }
             } else {
-
                 return this.getD21();  // ไม่ใช้ code ด้านล่างเนื่องจากไม่ได้เป็นสูตร Default
                 //                if (this.getD21() < this.getD13() * this.getF21() / 30) {
                 //                    return this.getD21()
@@ -1036,15 +1017,7 @@ SSProject.prototype = {
                 //                    return this.getD13() * this.getF21() / 30
                 //                }
             }
-
-        } else { //use my function
-            var stock = this.getD13() * this.getF21() / 30;
-            if (this.getD21() == 0) {
-                return (this.getD20() < stock ? this.getD20() : stock);
-            } else {
-                return (this.getD21() < stock ? this.getD21() : stock);
-            }
-        }
+        } // use table
     }
     , I13: function () {
         return this.I9() + this.I10() + this.I11() + this.getCURRENT_ASSET_OTHER();
@@ -1075,8 +1048,14 @@ SSProject.prototype = {
         return (100 - this.getM25()) / 100;
 
     }
-    , I25: function (useNop) {
-        return (this.getD8() * 12 * this.getMARGIN()) * this.H25();
+    , I25: function (useNop) {  // ebida
+         if (this.USE_TABLE == 1) { 
+             // ยอดขาย * 12 (เป็นปี) * Margin table * % ebda
+             return (this.getD8() * 12 * this.getMARGIN()) * this.H25();
+         }  else {
+             // ยอดขาย * 12 (เป็นปี) * กำไรจากการดำเนินการ * % ebda
+             return (this.getD8() * 12 * this.getD17()) * this.H25();
+         }
     }
     , I26: function () {
 
@@ -1183,35 +1162,21 @@ SSProject.prototype = {
             }
         }
     }
-    , N9: function (useNop) {
-        useNop = true;
-        if (useNop) { // use p'nop function in excel
+    , N9: function () { // เจ้าหนี้การค้า
+        if (this.USE_TABLE == 1) {
+            //alert(this.getAP() );
+            // ยอดซื้อ * % ซื้อเชื่อ * ap_table / 30
+             return this.getD13() * this.getD14() * this.getAP() / 30;
+        } else {
             if (this.getD13() * this.getD14() > 0) {
-
-                if (this.getD15() > this.getF15()) {
-                    return this.getD13() * this.getD14() * this.getD15() / 30;
-                } else {
-                    return this.getD13() * this.getD14() * this.getF15() / 30;
-                }
+               // alert('not use table');
+                 return this.getD13() * this.getD14() * this.getD15() / 30;
             } else {
                 if (this.getD30() > 0) {
                     return 0; //"ลูกค้าไม่มีรายการซื้อเชื่อ";
                 } else {
                     return 0;
                 }
-            }
-        } else { //use my function
-            if (this.getD30() > 0) {
-                var min;
-                if (this.getD15() > this.getF15()) {
-                    min = this.getF15();
-                } else {
-                    min = this.getD15();
-                }
-
-                return this.getD13() * this.getD14() * min / 30;
-            } else {
-                return 0;
             }
         }
     }
@@ -1386,7 +1351,7 @@ SSProject.prototype = {
         //        alert('d29' + this.getD29());
         //        alert('getRate' + this.getRATE());
         //if (this.getD29() > this.getRATE()) {
-            return this.getD29();
+        return this.getD29();
         //} else {
         //    return this.getRATE();
         //}
@@ -1446,7 +1411,7 @@ SSProject.prototype = {
                 y = ((this.N40() * this.M27()) / 12);
                 if ((x - y) > 0) {
                     if ((this.N40() + this.N15() + this.getD41() - this.getI44()) > (this.T17() * this.getO37())) {
-                       // alert('x1');
+                        // alert('x1');
                         return this.RoundDown((this.T17() * this.getO37()) - this.N15() - this.getD41() - this.N10(), -4);  // x1
 
                     } else {
@@ -1455,17 +1420,17 @@ SSProject.prototype = {
                     }
                 } else {
                     if ((((x * 12) / this.M27()) + this.N15() + this.getD41() - this.getI44()) > (this.T17() * this.getO37())) {
-                       // alert('x3');
+                        // alert('x3');
                         return this.RoundDown((this.T17() * this.getO37()) - this.N15() - this.getD41() - this.N10(), -4);
                     } else {
                         //alert('x4');  // correct
-                       // alert(this.M27());
+                        // alert(this.M27());
                         //  return this.RoundDown(((((((this.I25() / this.getO35()) / 12) - ((this.N11() * this.M27()) / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45())) * 12) / this.M27()) - this.N10()), -4);
                         return this.RoundDown((((x * 12) / this.M27()) - this.N10()), -4);
                     }
                 }
             } else {
-              //  alert('x5');
+                //  alert('x5');
                 return this.RoundDown(0 - this.N10(), -4);
             }
         }
