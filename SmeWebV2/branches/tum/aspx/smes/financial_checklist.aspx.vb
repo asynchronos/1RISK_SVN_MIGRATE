@@ -164,13 +164,13 @@ Partial Class smes_financial_checklist
             '    countResult(IndusWathResultLabel.Text)
             'End If
 
-            If IsDBNull(reader("NET_PROFIT_LIST_NAME")) = False Then
-                NetProfitLabel.Text = reader("NET_PROFIT_LIST_NAME")
-            End If
-            If IsDBNull(reader("NET_PROFIT_LIST_RESULT")) = False Then
-                NetProfitResultLabel.Text = reader("NET_PROFIT_LIST_RESULT")
-                countResult(NetProfitResultLabel.Text)
-            End If
+            'If IsDBNull(reader("NET_PROFIT_LIST_NAME")) = False Then
+            '    NetProfitLabel.Text = reader("NET_PROFIT_LIST_NAME")
+            'End If
+            'If IsDBNull(reader("NET_PROFIT_LIST_RESULT")) = False Then
+            '    NetProfitResultLabel.Text = reader("NET_PROFIT_LIST_RESULT")
+            '    countResult(NetProfitResultLabel.Text)
+            'End If
 
             ' ยกไปคำนวณ ต่อที่หน้า สรุปรวม
 
@@ -209,7 +209,7 @@ Partial Class smes_financial_checklist
 
         reader.Close()
         sqlCmd.Parameters.Clear()
-        sqlCmd.CommandText = "SME_S.P_SS_FINANCIAL_CUSTOMER_SELECT_CIF_CHECKLIST_TEMPLATE"
+        sqlCmd.CommandText = "SME_S.P_SS_FINANCIAL_CUSTOMER_SELECT_CIF_CHECKLIST"
         sqlCmd.CommandType = CommandType.StoredProcedure
         sqlCmd.Parameters.Add(SMES_ID_PARM)
         reader = sqlCmd.ExecuteReader()
@@ -228,12 +228,12 @@ Partial Class smes_financial_checklist
             If IsDBNull(dt.Rows(i).Item("NATIONALITY_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("NATIONALITY_LIST_RESULT"))
             If IsDBNull(dt.Rows(i).Item("JURISTICT_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("JURISTICT_LIST_RESULT"))
             If IsDBNull(dt.Rows(i).Item("EXPERIENCE_RESULT")) = False Then countResult(dt.Rows(i).Item("EXPERIENCE_RESULT"))
-            If IsDBNull(dt.Rows(i).Item("BLACKLIST_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("BLACKLIST_LIST_RESULT"))
+            ' If IsDBNull(dt.Rows(i).Item("BLACKLIST_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("BLACKLIST_LIST_RESULT"))
             If IsDBNull(dt.Rows(i).Item("NCB_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("NCB_LIST_RESULT"))
             If IsDBNull(dt.Rows(i).Item("NCB_CODE_RESULT")) = False Then countResult(dt.Rows(i).Item("NCB_CODE_RESULT"))
-            If IsDBNull(dt.Rows(i).Item("TDR_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("TDR_LIST_RESULT"))
-            If IsDBNull(dt.Rows(i).Item("RATING_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("RATING_LIST_RESULT"))
-            If IsDBNull(dt.Rows(i).Item("LEGAL_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("LEGAL_LIST_RESULT"))
+            '  If IsDBNull(dt.Rows(i).Item("TDR_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("TDR_LIST_RESULT"))
+            '  If IsDBNull(dt.Rows(i).Item("RATING_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("RATING_LIST_RESULT"))
+            '  If IsDBNull(dt.Rows(i).Item("LEGAL_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("LEGAL_LIST_RESULT"))
             ' เปลี่ยนไม่ใช้ crieteria นี้ 28/1/2556
             'If IsDBNull(dt.Rows(i).Item("REGIS_DOC_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("REGIS_DOC_LIST_RESULT"))
             'If IsDBNull(dt.Rows(i).Item("SHaREHOLDER_LIST_RESULT")) = False Then countResult(dt.Rows(i).Item("SHaREHOLDER_LIST_RESULT"))

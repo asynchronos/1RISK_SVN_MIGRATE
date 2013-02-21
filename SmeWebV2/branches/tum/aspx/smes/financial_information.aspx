@@ -553,7 +553,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr template="134">
+        <tr template="34">
             <td class="style1">
                 หนี้ที่สามารถก่อได้ (Tricker point)
             </td>

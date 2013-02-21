@@ -189,14 +189,11 @@
             </tr>
             <tr>
                 <td class="style8">
-                    <asp:Label ID="NetProfitResultLabel" runat="server" Text=""></asp:Label>
-                </td>
+                    &nbsp;</td>
                 <td class="style9">
-                    Net Profit &amp; Equity (Audited)
-                </td>
+                    &nbsp;</td>
                 <td class="style10">
-                    <asp:Label ID="NetProfitLabel" runat="server" Text=""></asp:Label>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="style6">
@@ -221,15 +218,15 @@
             <asp:BoundField DataField="Name" HeaderText="Customer Name" ReadOnly="true" />
             <asp:BoundField DataField="CUSTOMER_TYPE_NAME" HeaderText="Customer Type" ReadOnly="true" />
             <asp:BoundField DataField="AGE_RESULT" HeaderText="AGE" ReadOnly="true" />
-            <asp:BoundField DataField="NATIONALITY_LIST_RESULT" HeaderText="Nationality" ReadOnly="true" />
-            <asp:BoundField DataField="JURISTICT_LIST_RESULT" HeaderText="Juristict" ReadOnly="true" />
+            <%--<asp:BoundField DataField="NATIONALITY_LIST_RESULT" HeaderText="Nationality" ReadOnly="true" />--%>
+            <%--<asp:BoundField DataField="JURISTICT_LIST_RESULT" HeaderText="Juristict" ReadOnly="true" />--%>
             <asp:BoundField DataField="EXPERIENCE_RESULT" HeaderText="Experience" ReadOnly="true" />
-            <asp:BoundField DataField="BLACKLIST_LIST_RESULT" HeaderText="Blacklist" ReadOnly="true" />
-            <asp:BoundField DataField="NCB_LIST_RESULT" HeaderText="NCB" ReadOnly="true" />
-            <asp:BoundField DataField="NCB_CODE_RESULT" HeaderText="NCB Code" ReadOnly="true" />
-            <asp:BoundField DataField="TDR_LIST_RESULT" HeaderText="TDR" ReadOnly="true" />
-            <asp:BoundField DataField="RATING_LIST_RESULT" HeaderText="Rating" ReadOnly="true" />
-            <asp:BoundField DataField="LEGAL_LIST_RESULT" HeaderText="Legal" ReadOnly="true" />
+           <%-- <asp:BoundField DataField="BLACKLIST_LIST_RESULT" HeaderText="Blacklist" ReadOnly="true" />--%>
+           <%-- <asp:BoundField DataField="NCB_LIST_RESULT" HeaderText="NCB" ReadOnly="true" />--%>
+           <%-- <asp:BoundField DataField="NCB_CODE_RESULT" HeaderText="NCB Code" ReadOnly="true" />--%>
+           <%-- <asp:BoundField DataField="TDR_LIST_RESULT" HeaderText="TDR" ReadOnly="true" />--%>
+         <%--   <asp:BoundField DataField="RATING_LIST_RESULT" HeaderText="Rating" ReadOnly="true" />--%>
+          <%--  <asp:BoundField DataField="LEGAL_LIST_RESULT" HeaderText="Legal" ReadOnly="true" />--%>
             <asp:BoundField DataField="DPD_RESULT" HeaderText="DPD" ReadOnly="true" />
 
            </Columns>
