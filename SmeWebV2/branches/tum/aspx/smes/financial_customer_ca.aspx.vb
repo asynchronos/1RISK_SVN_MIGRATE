@@ -13,6 +13,7 @@ Partial Class smes_financial_customer
     Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
     Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
+
     Sub CustomerGridEditCommand(ByVal sender As Object, ByVal e As GridViewEditEventArgs)
         CustomersGridView.EditIndex = e.NewEditIndex
         showForm()
@@ -57,8 +58,19 @@ Partial Class smes_financial_customer
     Sub showForm()
 
         Dim CIF As String = CustomersGridView.Rows(CustomersGridView.EditIndex).Cells(1).Text
+        Dim TEMPLATE As String = TemplateTextBox.Text
+        If TEMPLATE = "" Then
+            TEMPLATE = Request.QueryString("TEMPLATE_ID")
+        End If
+        If TEMPLATE <> "1" Then  ' ถ้าเป็น template อื่น ๆ ที่ไม่ใช่ ss แสดง
+            DPDT3Panel.Visible = True
+            DPDT1Panel.Visible = False
+        Else
+            DPDT3Panel.Visible = False
+            DPDT1Panel.Visible = True
+        End If
         If isDebugEnabled Then
-            log.Debug(TemplateTextBox.Text)
+            log.Debug("template=" & TEMPLATE)
         End If
         'MsgBox(CIF)
         Dim conn As SqlConnection = Nothing
@@ -122,49 +134,43 @@ Partial Class smes_financial_customer
                     If IsDBNull(reader("OD_SWING_PERCENT")) = False Then OD_SWING_PERCENTTextBox.Text = reader("OD_SWING_PERCENT")
                     If IsDBNull(reader("OD_OVER_NUMBER")) = False Then OD_OVER_NUMBERTextBox.Text = reader("OD_OVER_NUMBER")
 
-                    If TemplateTextBox.Text <> "1" Then  ' ถ้าเป็น template อื่น ๆ ที่ไม่ใช่ ss แสดง
-                        DPDT3Panel.Visible = True
-                        DPDT1Panel.Visible = False
-
-                        If IsDBNull(reader("DPD_MORE_10_30_MONTH_1_3")) = False Then DPD_MORE_10_30_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_1_3")))
-                        If IsDBNull(reader("DPD_MORE_30_60_MONTH_1_3")) = False Then DPD_MORE_30_60_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_1_3")))
-                        If IsDBNull(reader("DPD_MORE_60_90_MONTH_1_3")) = False Then DPD_MORE_60_90_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_1_3")))
-                        If IsDBNull(reader("DPD_MORE_90_MONTH_1_3")) = False Then DPD_MORE_90_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_90_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_1_3")))
-
-                        If IsDBNull(reader("DPD_MORE_10_30_MONTH_4_12")) = False Then DPD_MORE_10_30_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_4_12")))
-                        If IsDBNull(reader("DPD_MORE_30_60_MONTH_4_12")) = False Then DPD_MORE_30_60_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_4_12")))
-                        If IsDBNull(reader("DPD_MORE_60_90_MONTH_4_12")) = False Then DPD_MORE_60_90_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_4_12")))
-                        If IsDBNull(reader("DPD_MORE_90_MONTH_4_12")) = False Then DPD_MORE_90_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_90_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_4_12")))
-
-                        If IsDBNull(reader("DPD_MORE_10_30_MONTH_12_24")) = False Then DPD_MORE_10_30_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_12_24")))
-                        If IsDBNull(reader("DPD_MORE_30_60_MONTH_12_24")) = False Then DPD_MORE_30_60_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_12_24")))
-                        If IsDBNull(reader("DPD_MORE_60_90_MONTH_12_24")) = False Then DPD_MORE_60_90_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_12_24")))
-                        If IsDBNull(reader("DPD_MORE_90_MONTH_12_24")) = False Then DPD_MORE_90_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_90_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_12_24")))
-
-
-                    End If
-
-
-                    If TemplateTextBox.Text = "1" Then  ' ถ้าเป็น template ss
-                        DPDT1Panel.Visible = True
-                        DPDT3Panel.Visible = False
-
-                        If IsDBNull(reader("DPD_MORE_0_29_MONTH_1_12")) = False Then DPD_MORE_0_29_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_0_29_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_0_29_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_0_29_MONTH_1_12")))
-                        If IsDBNull(reader("DPD_MORE_30_59_MONTH_1_12")) = False Then DPD_MORE_30_59_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_30_59_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_30_59_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_30_59_MONTH_1_12")))
-                        If IsDBNull(reader("DPD_MORE_60_89_MONTH_1_12")) = False Then DPD_MORE_60_89_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_60_89_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_60_89_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_60_89_MONTH_1_12")))
-                        If IsDBNull(reader("DPD_MORE_90_119_MONTH_1_12")) = False Then DPD_MORE_90_119_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_90_119_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_90_119_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_90_119_MONTH_1_12")))
-                        If IsDBNull(reader("DPD_MORE_120_MONTH_1_12")) = False Then DPD_MORE_120_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_120_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_120_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_120_MONTH_1_12")))
 
 
 
-                        If IsDBNull(reader("DPD_MORE_0_29_MONTH_12_24")) = False Then DPD_MORE_0_29_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_0_29_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_0_29_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_0_29_MONTH_12_24")))
-                        If IsDBNull(reader("DPD_MORE_30_59_MONTH_12_24")) = False Then DPD_MORE_30_59_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_30_59_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_30_59_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_30_59_MONTH_12_24")))
-                        If IsDBNull(reader("DPD_MORE_60_89_MONTH_12_24")) = False Then DPD_MORE_60_89_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_60_89_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_60_89_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_60_89_MONTH_12_24")))
-                        If IsDBNull(reader("DPD_MORE_90_119_MONTH_12_24")) = False Then DPD_MORE_90_119_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_90_119_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_90_119_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_90_119_MONTH_12_24")))
-                        If IsDBNull(reader("DPD_MORE_120_MONTH_12_24")) = False Then DPD_MORE_120_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_120_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_120_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_120_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_10_30_MONTH_1_3")) = False Then DPD_MORE_10_30_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_1_3")))
+                    If IsDBNull(reader("DPD_MORE_30_60_MONTH_1_3")) = False Then DPD_MORE_30_60_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_1_3")))
+                    If IsDBNull(reader("DPD_MORE_60_90_MONTH_1_3")) = False Then DPD_MORE_60_90_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_1_3")))
+                    If IsDBNull(reader("DPD_MORE_90_MONTH_1_3")) = False Then DPD_MORE_90_MONTH_1_3DropDownList.SelectedIndex = DPD_MORE_90_MONTH_1_3DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_1_3DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_1_3")))
+
+                    If IsDBNull(reader("DPD_MORE_10_30_MONTH_4_12")) = False Then DPD_MORE_10_30_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_4_12")))
+                    If IsDBNull(reader("DPD_MORE_30_60_MONTH_4_12")) = False Then DPD_MORE_30_60_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_4_12")))
+                    If IsDBNull(reader("DPD_MORE_60_90_MONTH_4_12")) = False Then DPD_MORE_60_90_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_4_12")))
+                    If IsDBNull(reader("DPD_MORE_90_MONTH_4_12")) = False Then DPD_MORE_90_MONTH_4_12DropDownList.SelectedIndex = DPD_MORE_90_MONTH_4_12DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_4_12DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_4_12")))
+
+                    If IsDBNull(reader("DPD_MORE_10_30_MONTH_12_24")) = False Then DPD_MORE_10_30_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_10_30_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_10_30_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_10_30_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_30_60_MONTH_12_24")) = False Then DPD_MORE_30_60_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_30_60_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_30_60_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_30_60_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_60_90_MONTH_12_24")) = False Then DPD_MORE_60_90_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_60_90_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_60_90_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_60_90_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_90_MONTH_12_24")) = False Then DPD_MORE_90_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_90_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_90_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_90_MONTH_12_24")))
 
 
-                    End If
+
+
+
+                    If IsDBNull(reader("DPD_MORE_0_29_MONTH_1_12")) = False Then DPD_MORE_0_29_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_0_29_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_0_29_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_0_29_MONTH_1_12")))
+                    If IsDBNull(reader("DPD_MORE_30_59_MONTH_1_12")) = False Then DPD_MORE_30_59_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_30_59_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_30_59_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_30_59_MONTH_1_12")))
+                    If IsDBNull(reader("DPD_MORE_60_89_MONTH_1_12")) = False Then DPD_MORE_60_89_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_60_89_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_60_89_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_60_89_MONTH_1_12")))
+                    If IsDBNull(reader("DPD_MORE_90_119_MONTH_1_12")) = False Then DPD_MORE_90_119_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_90_119_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_90_119_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_90_119_MONTH_1_12")))
+                    If IsDBNull(reader("DPD_MORE_120_MONTH_1_12")) = False Then DPD_MORE_120_MONTH_1_12DropDownList.SelectedIndex = DPD_MORE_120_MONTH_1_12DropDownList.Items.IndexOf(DPD_MORE_120_MONTH_1_12DropDownList.Items.FindByValue(reader("DPD_MORE_120_MONTH_1_12")))
+
+
+
+                    If IsDBNull(reader("DPD_MORE_0_29_MONTH_12_24")) = False Then DPD_MORE_0_29_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_0_29_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_0_29_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_0_29_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_30_59_MONTH_12_24")) = False Then DPD_MORE_30_59_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_30_59_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_30_59_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_30_59_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_60_89_MONTH_12_24")) = False Then DPD_MORE_60_89_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_60_89_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_60_89_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_60_89_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_90_119_MONTH_12_24")) = False Then DPD_MORE_90_119_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_90_119_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_90_119_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_90_119_MONTH_12_24")))
+                    If IsDBNull(reader("DPD_MORE_120_MONTH_12_24")) = False Then DPD_MORE_120_MONTH_12_24DropDownList.SelectedIndex = DPD_MORE_120_MONTH_12_24DropDownList.Items.IndexOf(DPD_MORE_120_MONTH_12_24DropDownList.Items.FindByValue(reader("DPD_MORE_120_MONTH_12_24")))
+
+
 
 
                     If IsDBNull(reader("CHECK_NCB_DATE")) = False Then CHECK_NCB_DATETextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("CHECK_NCB_DATE"), cul)
@@ -187,7 +193,6 @@ Partial Class smes_financial_customer
 
             ActionLabel.Text = "แก้ไขข้อมูล"
         Catch ex As Exception
-
             runScirpt("alert('" & ex.ToString().Substring(0, 50).Replace("'", "") & "');")
         Finally
         End Try
@@ -448,7 +453,9 @@ Partial Class smes_financial_customer
             Return CDec(Value.Replace(",", ""))
         End If
     End Function
-
+    Protected Sub alert(str As String)
+        runScirpt("alert('" & str & "');")
+    End Sub
     Protected Sub runScirpt(ByVal str As String)
         str = " $(document).ready(function(){" & str & "});"
         Page.ClientScript.RegisterStartupScript(Me.GetType(), "", str, True)
