@@ -88,7 +88,7 @@
             <li><a id="aMain" href="#" runat="server">INFORMATION</a></li>
             <li><a id="aCKL" href="#" runat="server">CHECK LIST</a></li>
             <li><a id="aCIF" href="#" runat="server">CUSTOMER</a></li>
-            <li><a id="aCK" href="#" runat="server">BASIC RESULT</a></li>
+            <li><a id="aCK" href="#" runat="server">RESULT</a></li>
             <li><a id="aRM" href="#" runat="server">RM FINANCIAL</a></li>
             <li><a id="aCM" href="#" runat="server">CM FINANCIAL</a></li>
             <li><a id="aCP" href="#" runat="server">COMPARE</a></li>

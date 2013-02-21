@@ -77,18 +77,18 @@ Partial Class smes_check_list
 
                     pkRA = New Panel
                     Dim resultA As New LiteralControl
-                    resultA.Text += "<div class='divResultHead'>A</div>"
+                    resultA.Text += "<div class='divResultHead'>Acceptable</div>"
                     pkRA.Controls.Add(resultA)
 
                     pkRO = New Panel
                     Dim resultO As New LiteralControl
-                    resultO.Text += "<div class='divResultHead'>O</div>"
+                    resultO.Text += "<div class='divResultHead'>Out of scope</div>"
                     pkRO.Controls.Add(resultO)
 
 
                     pkRR = New Panel
                     Dim resultR As New LiteralControl
-                    resultR.Text += "<div class='divResultHead'>R</div>"
+                    resultR.Text += "<div class='divResultHead'>Reject</div>"
                     pkRR.Controls.Add(resultR)
 
                     pkRA.CssClass = "divResult ui-widget-content"

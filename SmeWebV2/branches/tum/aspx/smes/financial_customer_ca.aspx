@@ -29,9 +29,9 @@
             }
             $("#USERTextBox").val(userName);
 
-            if (window.parent.document.getElementById("spanTemplateID")) {
-                templateID = window.parent.document.getElementById("spanTemplateID").innerText;
-            }
+            //            if (window.parent.document.getElementById("spanTemplateID")) {
+            //                templateID = window.parent.document.getElementById("spanTemplateID").innerText;
+            //            }
 
             sizeFrame();
 

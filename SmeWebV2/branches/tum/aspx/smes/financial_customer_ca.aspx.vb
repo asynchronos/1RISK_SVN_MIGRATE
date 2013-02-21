@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Globalization
+Imports log4net
 
 Partial Class smes_financial_customer
 
@@ -9,6 +10,8 @@ Partial Class smes_financial_customer
     Shared Action As String
     Protected cul As New CultureInfo("th-TH") ' ปี ไทย  
     'Protected cul As New CultureInfo("en-US") ' ปี ไทย  
+    Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
+    Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Sub CustomerGridEditCommand(ByVal sender As Object, ByVal e As GridViewEditEventArgs)
         CustomersGridView.EditIndex = e.NewEditIndex
@@ -54,6 +57,9 @@ Partial Class smes_financial_customer
     Sub showForm()
 
         Dim CIF As String = CustomersGridView.Rows(CustomersGridView.EditIndex).Cells(1).Text
+        If isDebugEnabled Then
+            log.Debug(TemplateTextBox.Text)
+        End If
         'MsgBox(CIF)
         Dim conn As SqlConnection = Nothing
         Try
@@ -159,7 +165,7 @@ Partial Class smes_financial_customer
 
 
                     End If
-  
+
 
                     If IsDBNull(reader("CHECK_NCB_DATE")) = False Then CHECK_NCB_DATETextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("CHECK_NCB_DATE"), cul)
                     If IsDBNull(reader("CO_BIRTH_DATE")) = False Then CO_BirthDateTextBox.Text = String.Format("{0:dd/MM/yyyy}", reader("CO_BIRTH_DATE"), cul)
@@ -492,7 +498,7 @@ Partial Class smes_financial_customer
         InsertButton.Visible = True
         UpdateButton.Visible = False
         DeleteButton.Visible = False
-    
+
         CIFTextBox.Attributes.Add("onfocus", "this.blur();")
         CIFNameTextBox.Attributes.Add("onfocus", "this.blur();")
         'CIFTextBox.Attributes.Remove("onfocus")
@@ -534,7 +540,7 @@ Partial Class smes_financial_customer
                     err = True
                     errMsg += " วันเกิดต้องเป็น พ.ศ. "
                 End If
-        End If
+            End If
 
         ElseIf CustomerTypeDropDownList.Items(CustomerTypeDropDownList.SelectedIndex).Value = "CU02" Then ' นิติบุคคล
 
@@ -624,7 +630,7 @@ Partial Class smes_financial_customer
                 End If
             End If
         End If
-  
+
 
         If err = True Then
             runScirpt("showErrorDialog('" & errMsg & "');")
