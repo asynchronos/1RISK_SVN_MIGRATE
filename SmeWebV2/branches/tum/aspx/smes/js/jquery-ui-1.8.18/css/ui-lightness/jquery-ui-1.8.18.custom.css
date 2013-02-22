@@ -60,6 +60,29 @@
 .ui-widget-content a { color: #333333; }
 .ui-widget-header { border: 1px solid #e78f08; background: #f6a828 url(images/ui-bg_gloss-wave_35_f6a828_500x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
 .ui-widget-header a { color: #ffffff; }
+.ui-widget-header2 {
+border: 1px solid #817865;
+background: #817865 url(images/ui-bg_gloss-wave_45_817865_500x100.png) 50% 50% repeat-x;
+color: #ffffff;
+font-weight: bold;
+}
+.ui-state-a{
+border: 1px solid #7ac270;
+background: #e69700 url(images/ui-bg_diagonals-thick_15_afe17a_40x40.png) 50% 50% repeat;
+color: #ffffff;
+font-weight: bold; 
+}
+.ui-state-o{
+border: 1px solid #ef8c08;
+background: #e69700 url(images/ui-bg_diagonals-thick_20_e69700_40x40.png) 50% 50% repeat;
+color: #ffffff;
+font-weight: bold; 
+}
+.ui-widget-contentChk {
+border: 1px solid #dddddd;
+background: #eeeeee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat ;
+color: #553e30;
+}
 
 /* Interaction states
 ----------------------------------*/
@@ -88,6 +111,8 @@
 /* states and images */
 .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_222222_256x240.png); }
 .ui-widget-content .ui-icon {background-image: url(images/ui-icons_222222_256x240.png); }
+
+
 .ui-widget-header .ui-icon {background-image: url(images/ui-icons_ffffff_256x240.png); }
 .ui-state-default .ui-icon { background-image: url(images/ui-icons_ef8c08_256x240.png); }
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_ef8c08_256x240.png); }
