@@ -8,6 +8,8 @@
     <script src="js/jquery-ui-1.8.18/js/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
     <link href="js/jquery-ui-1.8.18/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet"
         type="text/css" />
+           <link href="js/jquery-ui-1.8.18/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+        type="text/css" />
     <style type="text/css">
         body
         {
@@ -45,7 +47,8 @@
             {
                 width:90%;
                 padding:5px;
-                margin:12px;
+                margin:5px;
+                margin-bottom:0px;
 
              }
            .ckBox 
@@ -64,11 +67,14 @@
                margin:5px;
                float:left;
                width:30%;
+               margin-top:0;
             }             
             .divResultHead 
             {
-                  width:100%;
+                 
                     border:1px;
+                    padding-left :150px;
+                    
              }
             #divRef
             {
@@ -80,12 +86,15 @@
             {
               margin:5px;    
             }
+            .clear {
+    clear: both;
+}
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
             var heightDiv = $(document).height();
             $("#mainFrame", parent.document).height(heightDiv + 100);  // กำหนด
-            $("input[type=submit]").button();
+         //  $("input[type=submit]").button();
             $("#accordion").accordion({ autoHeight: false, collapsible: true });
 
             if (window.parent.document.getElementById("spanUserName")) {
@@ -134,17 +143,18 @@
     <div id="header">
         <h3>
             <asp:Label ID="labelHead" runat="server" Text="Check List (ตรวจสอบข้อมูลเบื้องต้น)"
-                Style="font-weight: 700; color: #0000FF"></asp:Label>
+                Style="font-weight: 700; color: #9999"></asp:Label>
         </h3>
         <br />
         <h3>
             <asp:Label ID="label1" runat="server" Text="ผลการพิจารณา" Style="font-weight: 700;
-                color: #000000"></asp:Label>
+                color: #d88403"></asp:Label>
             &nbsp;
             <asp:Label ID="ResultLabel" runat="server" Text="ยังไม่ได้บันทึก"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="ButtonSave" runat="server" Text=" บันทึกผล " />
+            
+            <asp:Button ID="ButtonSave" runat="server" Text="    บันทึกผล    " class ="ui-widget-header2" /> 
         </h3>
     </div>
     <div id="divTotalResult">
@@ -152,7 +162,8 @@
         <asp:Panel runat="server" ID="PanelForm">
         </asp:Panel>
     </div>
-    <asp:Button ID="ButtonSave2" runat="server" Text=" บันทึกผล " />
+    <div class ="clear ckName ui-widget-contentChk" align="right">
+    <asp:Button ID="ButtonSave2"  runat="server" Text="     บันทึกผล    " class ="ui-widget-header2"/></div>
     </form>
 </body>
 </html>

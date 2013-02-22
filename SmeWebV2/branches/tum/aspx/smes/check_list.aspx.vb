@@ -1,11 +1,16 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Globalization
+Imports log4net
+
 Partial Class smes_check_list
     Inherits System.Web.UI.Page
     Shared Result_A As Integer
     Shared Result_R As Integer
     Shared Result_O As Integer
+
+    Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
+    Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Sub ShowCheckList()
 
@@ -64,7 +69,7 @@ Partial Class smes_check_list
 
                 If dt.Rows(i).Item("CK_GROUP_ID").ToString <> CG Then          ' ตัวแปรเช็คชื่อ Group ถ้าไม่เท่ากันแสดงว่าขึ้น Group ใหม่
                     Dim hl As New LiteralControl
-                    hl.Text += "<h3 class='ckGroupName ui-state-highlight'><div>" & dt.Rows(i).Item("CK_GROUP_NAME") & "</div></h3>"
+                    hl.Text += "<h3 class='clear ckGroupName ui-widget-header2'><div>" & dt.Rows(i).Item("CK_GROUP_NAME") & "</div></h3>"
                     PanelForm.Controls.Add(hl)
                 End If
 
@@ -72,32 +77,30 @@ Partial Class smes_check_list
                 If dt.Rows(i).Item("CK_ID").ToString <> CD Then   ' ตัวแปรเช็คชื่อข้อไม่เท่ากันแสดงว่าขึ้นข้อใหม่
 
                     Dim hl As New LiteralControl
-                    hl.Text += "<h4 class='ckName ui-state-highlight'><div>" & dt.Rows(i).Item("CK_NAME") & "</div></h3>"
+                    hl.Text += "<h4 class='clear ckName ui-widget-contentChk'><div><i class='icon-th-list'></i>&nbsp;" & dt.Rows(i).Item("CK_NAME") & "</div></h3>"
                     PanelForm.Controls.Add(hl)
 
                     pkRA = New Panel
                     Dim resultA As New LiteralControl
-                    resultA.Text += "<div class='divResultHead'>Acceptable</div>"
+                    resultA.Text += "<div class='divResultHead ui-state-a'><i class='icon-ok icon-white'></i>&nbsp;A</div>"
                     pkRA.Controls.Add(resultA)
 
                     pkRO = New Panel
                     Dim resultO As New LiteralControl
-                    resultO.Text += "<div class='divResultHead'>Out of scope</div>"
+                    resultO.Text += "<div class='divResultHead ui-state-o'><i class='icon-share-alt icon-white'></i>&nbsp;O</div>"
                     pkRO.Controls.Add(resultO)
 
 
                     pkRR = New Panel
                     Dim resultR As New LiteralControl
-                    resultR.Text += "<div class='divResultHead'>Reject</div>"
+                    resultR.Text += "<div class='divResultHead ui-state-error ui-corner-all'><i class='icon-remove icon-white'></i>&nbsp;R</div>"
                     pkRR.Controls.Add(resultR)
 
                     pkRA.CssClass = "divResult ui-widget-content"
                     pkRO.CssClass = "divResult ui-widget-content"
                     pkRR.CssClass = "divResult ui-widget-content"
 
-                    PanelForm.Controls.Add(pkRA)
-                    PanelForm.Controls.Add(pkRO)
-                    PanelForm.Controls.Add(pkRR)
+
 
                 Else
                     '  Response.Write("ยังไม่ขึ้น")
@@ -122,7 +125,7 @@ Partial Class smes_check_list
                 Dim rk As New Label
                 rk.ID = "idRK" & dt.Rows(i).Item("CK_DETAIL_ID")
                 rk.Text = result
-                rk.Visible = False
+                'rk.Visible = False
 
 
                 Dim lk As New LiteralControl
@@ -130,24 +133,36 @@ Partial Class smes_check_list
 
 
                 pk.Controls.Add(ck)
-                pk.Controls.Add(rk)
+                'pk.Controls.Add(rk)
                 pk.Controls.Add(lk)
 
                 'Response.Write(ck.ID & "-result=" & result & "<br>")
 
                 If result = "A" Then
                     pkRA.Controls.Add(pk)
+                    PanelForm.Controls.Add(pkRA)
                 ElseIf result = "O" Then
                     pkRO.Controls.Add(pk)
+                    PanelForm.Controls.Add(pkRO)
                 ElseIf result = "R" Then
                     pkRR.Controls.Add(pk)
+                    PanelForm.Controls.Add(pkRR)
                 End If
+
+
+
+
+
+
+
+
+
 
             Next
 
             'PanelForm.Controls.Add(New LiteralControl(imgStr))
             Dim en As New LiteralControl
-            en.Text = "<h3 class='ckName ui-state-highlight'></h3>"
+            en.Text = ""
             PanelForm.Controls.Add(en)
 
 
@@ -155,8 +170,8 @@ Partial Class smes_check_list
 
                 Dim DL As CheckBox = Me.FindControl("idCK" & dt2.Rows(y).Item("CK_DETAIL_ID"))
                 DL.Checked = True
-                Dim rk As Label = Me.FindControl("idRK" & dt2.Rows(y).Item("CK_DETAIL_ID"))
-                rk.Visible = True
+                'Dim rk As Label = Me.FindControl("idRK" & dt2.Rows(y).Item("CK_DETAIL_ID"))
+                'rk.Visible = True
 
 
                 If IsNothing(DL) = False Then
@@ -166,13 +181,13 @@ Partial Class smes_check_list
                     result = dt2.Rows(y).Item("RESULT")
                     If result = "A" Then
                         Result_A = Result_A + 1
-                        rk.CssClass = "ui-state-highlight"
+                        'rk.CssClass = "ui-state-highlight"
                     ElseIf result = "R" Then
                         Result_R = Result_R + 1
-                        rk.CssClass = "ui-state-error"
+                        'rk.CssClass = "ui-state-error"
                     ElseIf result = "O" Then
                         Result_O = Result_O + 1
-                        rk.CssClass = "ui-state-error"
+                        'rk.CssClass = "ui-state-error"
                     End If
                 Else
                     Response.Write("Cannot find :" & dt2.Rows(y).Item("CK_DETAIL_ID"))
@@ -182,7 +197,7 @@ Partial Class smes_check_list
             showResult()
 
         Catch ex As Exception
-            Response.Write(ex.Message.ToString)
+            log.Error(ex.Message, ex)
         End Try
 
     End Sub
@@ -312,7 +327,7 @@ Partial Class smes_check_list
 
         Next
 
-        ' Response.Write(strInsert)
+        Response.Write(strInsert)
 
         Dim cmd2 As SqlCommand = New SqlCommand()
         cmd2.Connection = cnn
@@ -352,11 +367,11 @@ Partial Class smes_check_list
 
     End Sub
 
-    Protected Sub ButtonSave_Click(sender As Object, e As System.EventArgs) Handles ButtonSave.Click
+    Protected Sub ButtonSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonSave.Click
         SaveValue()
     End Sub
 
-    Protected Sub ButtonSave2_Click(sender As Object, e As System.EventArgs) Handles ButtonSave2.Click
+    Protected Sub ButtonSave2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonSave2.Click
         SaveValue()
     End Sub
 End Class
