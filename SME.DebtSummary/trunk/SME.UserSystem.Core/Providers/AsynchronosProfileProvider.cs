@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Configuration.Provider;
 using System.Web.Profile;
 using log4net;
 using SME.UserSystem.Core.DAL;
-using SME.UserSystem.Core.Model;
+using SME.UserSystem.Core.Profile;
 
 namespace SME.UserSystem.Core.Providers
 {
@@ -14,21 +15,31 @@ namespace SME.UserSystem.Core.Providers
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
 
-        //can't use in this framework
-        //private IUserDataRepository _userDataRepository;
+        private string _appName;
+        private Guid _appGuid;
+        private string _providerName;
 
-        //public AsynchronosProfileProvider()
-        //    : base()
-        //{
-        //    this._userDataRepository = new UserDataRepository(new UserSystemEntities());
-        //}
+        //private string _connString;
 
-        //public AsynchronosProfileProvider(IUserDataRepository userDataRepository)
-        //{
-        //    this._userDataRepository = userDataRepository;
-        //}
+        public override string Name
+        {
+            get
+            {
+                return _providerName;
+            }
+        }
 
-        private string connectionString;
+        public override string ApplicationName
+        {
+            get
+            {
+                return _appName;
+            }
+            set
+            {
+                return;
+            }
+        }
 
         //
         //  System.Configuration.Provider.ProviderBase.Initialize Method
@@ -38,11 +49,29 @@ namespace SME.UserSystem.Core.Providers
             if (config == null)
                 throw new ArgumentNullException("config");
 
+            if (config["applicationGUID"] == null || config["applicationGUID"].Trim() == "")
+            {
+                throw new ArgumentNullException("applicationGUID");
+            }
+            else
+            {
+                _appGuid = new Guid(config["applicationGUID"]);
+            }
+
+            if (config["applicationName"] == null || config["applicationName"].Trim() == "")
+            {
+                _appName = System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath;
+            }
+            else
+            {
+                _appName = config["applicationName"];
+            }
+
             if (name == null || name.Length == 0)
                 name = "AsynchronosProfileProvider";
-
             if (string.IsNullOrEmpty(name))
                 name = "AsynchronosProfileProvider";
+            _providerName = name;
 
             if (string.IsNullOrEmpty(config["description"]))
             {
@@ -52,41 +81,19 @@ namespace SME.UserSystem.Core.Providers
 
             base.Initialize(name, config);
 
-            if (config["applicationName"] == null || config["applicationName"].Trim() == "")
-            {
-                pApplicationName = System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath;
-            }
-            else
-            {
-                pApplicationName = config["applicationName"];
-            }
-
             //
             // Initialize connection string.
             //
+            //ConnectionStringSettings pConnectionStringSettings = ConfigurationManager.
+            //    ConnectionStrings[config["connectionStringName"]];
 
-            ConnectionStringSettings pConnectionStringSettings = ConfigurationManager.
-                ConnectionStrings[config["connectionStringName"]];
+            //if (pConnectionStringSettings == null ||
+            //    pConnectionStringSettings.ConnectionString.Trim() == "")
+            //{
+            //    throw new ProviderException("Connection string cannot be blank.");
+            //}
 
-            if (pConnectionStringSettings == null ||
-                pConnectionStringSettings.ConnectionString.Trim() == "")
-            {
-                throw new ProviderException("Connection string cannot be blank.");
-            }
-
-            connectionString = pConnectionStringSettings.ConnectionString;
-        }
-
-        //
-        // System.Configuration.SettingsProvider.ApplicationName
-        //
-
-        private string pApplicationName;
-
-        public override string ApplicationName
-        {
-            get { return pApplicationName; }
-            set { pApplicationName = value; }
+            //_connString = pConnectionStringSettings.ConnectionString;
         }
 
         public override int DeleteInactiveProfiles(ProfileAuthenticationOption authenticationOption, System.DateTime userInactiveSinceDate)
@@ -129,18 +136,6 @@ namespace SME.UserSystem.Core.Providers
             throw new System.NotImplementedException();
         }
 
-        //public override string ApplicationName
-        //{
-        //    get
-        //    {
-        //        return ConfigurationManager.AppSettings["APPLICATION_NAME"];
-        //    }
-        //    set
-        //    {
-        //        throw new System.NotImplementedException();
-        //    }
-        //}
-
         public override System.Configuration.SettingsPropertyValueCollection GetPropertyValues(System.Configuration.SettingsContext context, System.Configuration.SettingsPropertyCollection collection)
         {
             if (isDebugEnabled)
@@ -153,6 +148,13 @@ namespace SME.UserSystem.Core.Providers
             //ใช้สำหรับเก็บ Flag ลง database ถ้าต้องการเก็บข้อมูลการ Authenticated
             //bool isAuthenticated = (bool)context["IsAuthenticated"];
 
+            Dictionary<string, object> properties = new Dictionary<string, object>();
+            properties.Add("SettingsCollection", collection);
+            properties.Add("UserName", username);
+            properties.Add("ApplicationGuid", _appGuid);
+            properties.Add("ApplicationName", ApplicationName);
+            properties.Add("ProfileSettings", null);
+
             // The serializeAs attribute is ignored in this provider implementation.
             SettingsPropertyValueCollection svc = new SettingsPropertyValueCollection();
 
@@ -164,7 +166,7 @@ namespace SME.UserSystem.Core.Providers
                 {
                     using (IUserProfileRepository repo = new UserProfileRepository(dataContext))
                     {
-                        ProfileViewModel p = repo.GetUserProfile(username, ApplicationName);
+                        UserProfileBase p = repo.GetUserProfile(username, ApplicationName);
 
                         switch (prop.Name)
                         {
@@ -182,9 +184,6 @@ namespace SME.UserSystem.Core.Providers
                                 break;
                             case "USER_DATA_DEL_FLAG":
                                 pv.PropertyValue = p.USER_DATA_DEL_FLAG;
-                                break;
-                            case "APP_PROFILE_DEL_FLAG":
-                                pv.PropertyValue = p.APP_PROFILE_DEL_FLAG;
                                 break;
                             case "CATEGORY_LIST":
                                 pv.PropertyValue = p.CATEGORIES_STR;
@@ -220,7 +219,7 @@ namespace SME.UserSystem.Core.Providers
             {
                 using (IUserProfileRepository repo = new UserProfileRepository(dataContext))
                 {
-                    ProfileViewModel p = repo.GetUserProfile(username, ApplicationName);
+                    UserProfileBase p = repo.GetUserProfile(username, ApplicationName);
                     if (null == p)
                     {
                         p = repo.CreateProfileForUser(username, ApplicationName);
@@ -246,9 +245,6 @@ namespace SME.UserSystem.Core.Providers
                                 case "USER_DATA_DEL_FLAG":
                                     p.USER_DATA_DEL_FLAG = (bool)pv.PropertyValue;
                                     break;
-                                case "APP_PROFILE_DEL_FLAG":
-                                    p.APP_PROFILE_DEL_FLAG = (bool)pv.PropertyValue;
-                                    break;
                                 case "CATEGORY_LIST":
                                     p.CATEGORIES_STR = (string)pv.PropertyValue;
                                     break;
@@ -261,6 +257,15 @@ namespace SME.UserSystem.Core.Providers
                     repo.Save();
                 }
             }
+        }
+
+        /*
+         * Custom ProfileManager methods
+         */
+
+        public int GetTotalNumberofProfiles()
+        {
+            throw new NotImplementedException();
         }
     }
 }
