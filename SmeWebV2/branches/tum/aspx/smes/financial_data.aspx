@@ -571,7 +571,7 @@
             //$("#tab5 input[type='text']").autoNumeric({ aPad: false }); // ให้ใช้ autonumeric และ ไม่ให้มีทศนิยม
             $("input[type='text']").css("text-align", "right");  // กำหนดให้ text box ชิดขวาทั้งหมด
             //$("input[type='text'][title]").tooltip();
-            //INPUT_EL.tooltip();
+           // INPUT_EL.tooltip();
             
             // readonly
 
@@ -3774,6 +3774,30 @@
                             ToolTip="D16: Default Margin" Width="85px" />
                     </td>
                 </tr>
+                <tr>
+                    <td class="style35">
+                        &nbsp;</td>
+                    <td class="style9">
+                        &nbsp;</td>
+                    <td class="style37">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="style35">
+                        &nbsp;</td>
+                    <td class="style9">
+                        &nbsp;</td>
+                    <td class="style37">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="style35">
+                        &nbsp;</td>
+                    <td class="style9">
+                        &nbsp;</td>
+                    <td class="style37">
+                        &nbsp;</td>
+                </tr>
             </table>
         </div>
         <div id="tab2">
@@ -4493,6 +4517,36 @@
                     <td class="style31">
                         &nbsp;
                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                    <td class="style31">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                    <td class="style31">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                    <td class="style31">
+                        &nbsp;</td>
                 </tr>
             </table>
             <div id="divSave">
