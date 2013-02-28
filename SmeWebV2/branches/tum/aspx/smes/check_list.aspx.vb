@@ -8,7 +8,7 @@ Partial Class smes_check_list
     Shared Result_A As Integer
     Shared Result_R As Integer
     Shared Result_O As Integer
-
+    Shared Result_S As Integer
     Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
     Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
@@ -63,6 +63,7 @@ Partial Class smes_check_list
             Dim pkRA As Panel = Nothing
             Dim pkRO As Panel = Nothing
             Dim pkRR As Panel = Nothing
+            Dim pkRS As Panel = Nothing
             Dim chkname As String = Nothing
 
             For i = 0 To dt.Rows.Count - 1
@@ -77,27 +78,33 @@ Partial Class smes_check_list
                 If dt.Rows(i).Item("CK_ID").ToString <> CD Then   ' ตัวแปรเช็คชื่อข้อไม่เท่ากันแสดงว่าขึ้นข้อใหม่
 
                     Dim hl As New LiteralControl
-                    hl.Text += "<h4 class='clear ckName ui-widget-contentChk'><div><i class='icon-th-list'></i>&nbsp;" & dt.Rows(i).Item("CK_NAME") & "</div></h3>"
+                    hl.Text += "<h4 class='clear ckName ui-widget-contentChk'><div>&nbsp;&nbsp;&nbsp;&nbsp;" & dt.Rows(i).Item("CK_NAME") & "</div></h3>"
                     PanelForm.Controls.Add(hl)
 
                     pkRA = New Panel
                     Dim resultA As New LiteralControl
-                    resultA.Text += "<div class='divResultHead ui-state-a'><i class='icon-ok icon-white'></i>&nbsp;A</div>"
+                    resultA.Text += "<div class='divResultHead ui-state-a'><i class='icon-ok icon-white'></i>&nbsp;SME-SS (In scope)</div>"
                     pkRA.Controls.Add(resultA)
 
                     pkRO = New Panel
                     Dim resultO As New LiteralControl
-                    resultO.Text += "<div class='divResultHead ui-state-o'><i class='icon-share-alt icon-white'></i>&nbsp;O</div>"
+                    resultO.Text += "<div class='divResultHead ui-state-o'><i class='icon-share-alt icon-white'></i>&nbsp;SME-SS (Out of scope)</div>"
                     pkRO.Controls.Add(resultO)
+
+                    pkRS = New Panel
+                    Dim resultS As New LiteralControl
+                    resultS.Text += "<div class='divResultHead ui-state-s'><i class='icon-share-alt icon-white'></i>&nbsp;SME-S</div>"
+                    pkRS.Controls.Add(resultS)
 
 
                     pkRR = New Panel
                     Dim resultR As New LiteralControl
-                    resultR.Text += "<div class='divResultHead ui-state-error ui-corner-all'><i class='icon-remove icon-white'></i>&nbsp;R</div>"
+                    resultR.Text += "<div class='divResultHead ui-state-error ui-corner-all'><i class='icon-remove icon-white'></i>&nbsp;Reject</div>"
                     pkRR.Controls.Add(resultR)
 
                     pkRA.CssClass = "divResult ui-widget-content"
                     pkRO.CssClass = "divResult ui-widget-content"
+                    pkRS.CssClass = "divResult ui-widget-content"
                     pkRR.CssClass = "divResult ui-widget-content"
 
 
@@ -144,6 +151,9 @@ Partial Class smes_check_list
                 ElseIf result = "O" Then
                     pkRO.Controls.Add(pk)
                     PanelForm.Controls.Add(pkRO)
+                ElseIf result = "S" Then
+                    pkRS.Controls.Add(pk)
+                    PanelForm.Controls.Add(pkRS)
                 ElseIf result = "R" Then
                     pkRR.Controls.Add(pk)
                     PanelForm.Controls.Add(pkRR)
@@ -182,11 +192,15 @@ Partial Class smes_check_list
                     If result = "A" Then
                         Result_A = Result_A + 1
                         'rk.CssClass = "ui-state-highlight"
-                    ElseIf result = "R" Then
-                        Result_R = Result_R + 1
-                        'rk.CssClass = "ui-state-error"
                     ElseIf result = "O" Then
                         Result_O = Result_O + 1
+                        'rk.CssClass = "ui-state-error" 
+                    ElseIf result = "S" Then
+                        Result_S = Result_S + 1
+                        'rk.CssClass = "ui-state-error"
+
+                    ElseIf result = "R" Then
+                        Result_R = Result_R + 1
                         'rk.CssClass = "ui-state-error"
                     End If
                 Else
@@ -208,6 +222,9 @@ Partial Class smes_check_list
         If Result_R > 0 Then
             ResultLabel.Text = "REJECT"
             ResultLabel.CssClass = "ui-state-error"
+        ElseIf Result_S > 0 Then
+            ResultLabel.Text = "Go to SME-S"
+            ResultLabel.CssClass = "ui-state-s"
         ElseIf Result_O > 0 Then
             ResultLabel.Text = "OUT OF SCOPE"
             ResultLabel.CssClass = "ui-state-error"
@@ -352,6 +369,10 @@ Partial Class smes_check_list
             '    End If
 
             'Next
+            clearResult()
+            SMES_IDTextBox.Text = Request.QueryString("SMES_ID")
+            TemplateTextBox.Text = Request.QueryString("TEMPLATE_ID")
+            ShowCheckList()
         Else
             clearResult()
             SMES_IDTextBox.Text = Request.QueryString("SMES_ID")
@@ -364,7 +385,7 @@ Partial Class smes_check_list
         Result_A = 0
         Result_R = 0
         Result_O = 0
-
+        Result_S = 0
     End Sub
 
     Protected Sub ButtonSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonSave.Click
@@ -374,4 +395,20 @@ Partial Class smes_check_list
     Protected Sub ButtonSave2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonSave2.Click
         SaveValue()
     End Sub
+
+    
+   
+    Protected Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+
+        Dim queryString As String = "check_list.aspx?SMES_ID=" & Request.QueryString("SMES_ID") & "&TEMPLATE_ID=" & Request.QueryString("TEMPLATE_ID")
+
+        Dim newWin As String = "window.open('" & queryString & "');"
+        ClientScript.RegisterStartupScript(Me.GetType(), "pop", newWin, True)
+        
+     
+    End Sub
+
+    
+ 
 End Class

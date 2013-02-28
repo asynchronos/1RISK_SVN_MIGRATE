@@ -64,16 +64,17 @@
              
             .divResult
             {
-               margin:5px;
+               margin:1px;
                float:left;
                width:30%;
                margin-top:0;
+               margin-bottom:20px;
             }             
             .divResultHead 
             {
                  
                     border:1px;
-                    padding-left :150px;
+                    padding-left :75px;
                     
              }
             #divRef
@@ -90,7 +91,16 @@
     clear: both;
 }
     </style>
+
     <script type="text/javascript">
+        function HideButtons() {
+
+
+            document.getElementById('<%=ButtonSave.ClientID %>').style.display = 'none';
+            document.getElementById('<%=Button1.ClientID %>').style.display = 'none';
+            
+
+        }
         $(document).ready(function () {
             var heightDiv = $(document).height();
             $("#mainFrame", parent.document).height(heightDiv + 100);  // กำหนด
@@ -129,6 +139,8 @@
             }
 
         }
+       
+
     </script>
 </head>
 <body>
@@ -140,13 +152,13 @@
         &nbsp;Template:<asp:TextBox ID="TemplateTextBox" ToolTip="TEMPLATE_ID" runat="server"
             Width="20" />
     </div>
-    <div id="header">
-        <h3>
+    <div id="header"><br /> <br /> 
+       <h3>
             <asp:Label ID="labelHead" runat="server" Text="Check List (ตรวจสอบข้อมูลเบื้องต้น)"
                 Style="font-weight: 700; color: #9999"></asp:Label>
         </h3>
-        <br />
-        <h3>
+        
+        <h4>
             <asp:Label ID="label1" runat="server" Text="ผลการพิจารณา" Style="font-weight: 700;
                 color: #d88403"></asp:Label>
             &nbsp;
@@ -155,7 +167,10 @@
             <br />
             
             <asp:Button ID="ButtonSave" runat="server" Text="    บันทึกผล    " class ="ui-widget-header2" /> 
-        </h3>
+            <asp:Button ID="Button1" runat="server" Text="แสดงผลพิมพ์"  />
+               
+              
+        </h4>
     </div>
     <div id="divTotalResult">
         <span id="spanTotalResult"></span>
