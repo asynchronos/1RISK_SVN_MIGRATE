@@ -1,5 +1,0 @@
-﻿CREATE TABLE [SS].[FINANCIAL_STATUS]
-(
-	[STATUS_ID] [int] NOT NULL,
-	[STATUS_NAME] [nvarchar](50) NULL
-)

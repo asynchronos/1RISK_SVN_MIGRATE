@@ -1,0 +1,3 @@
+﻿ALTER DATABASE [$(DatabaseName)]
+    ADD LOG FILE (NAME = [SME_log], FILENAME = 'D:\Data\SME_log.ldf', SIZE = 625792 KB, MAXSIZE = 2097152 MB, FILEGROWTH = 10 %);
+

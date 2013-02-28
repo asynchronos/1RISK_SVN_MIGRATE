@@ -1,17 +1,19 @@
-﻿CREATE TABLE [EMPLOYEE].[USER_DATA]
-(
-	[EMP_ID] [varchar](10) NOT NULL,
-	[EMP_TITLE] [nvarchar](20) NOT NULL,
-	[EMP_NAME] [nvarchar](50) NOT NULL,
-	[EMP_SURNAME] [nvarchar](50) NOT NULL,
-	[EMP_TITLE_E] [nvarchar](20) NULL,
-	[EMP_NAME_E] [nvarchar](50) NULL,
-	[EMP_SURNAME_E] [nvarchar](50) NULL,
-	[PASSWD] [nvarchar](20) NULL,
-	[EMAIL] [nvarchar](50) NULL,
-	[CREATE_DATE] [datetime] NULL,
-	[UPDATE_DATE] [datetime] NULL,
-	[LAST_SIGN_ON_DATE] [datetime] NULL,
-	[LAST_CHANGE_PASS_DATE] [datetime] NULL,
-	[DEL_FLAG] [bit] NULL
-)
+﻿CREATE TABLE [EMPLOYEE].[USER_DATA] (
+    [EMP_ID]                VARCHAR (10)  NOT NULL,
+    [EMP_TITLE]             NVARCHAR (20) NOT NULL,
+    [EMP_NAME]              NVARCHAR (50) NOT NULL,
+    [EMP_SURNAME]           NVARCHAR (50) NOT NULL,
+    [EMP_TITLE_E]           NVARCHAR (20) NULL,
+    [EMP_NAME_E]            NVARCHAR (50) NULL,
+    [EMP_SURNAME_E]         NVARCHAR (50) NULL,
+    [PASSWD]                NVARCHAR (20) NULL,
+    [EMAIL]                 NVARCHAR (50) NULL,
+    [CREATE_DATE]           DATETIME      NULL,
+    [EXPIRE_DATE]           DATETIME      NULL,
+    [UPDATE_DATE]           DATETIME      NULL,
+    [LAST_SIGN_ON_DATE]     DATETIME      NULL,
+    [LAST_CHANGE_PASS_DATE] DATETIME      NULL,
+    [DEL_FLAG]              BIT           NULL
+);
+
+

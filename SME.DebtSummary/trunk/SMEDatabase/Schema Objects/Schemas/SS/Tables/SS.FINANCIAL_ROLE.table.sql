@@ -1,5 +1,0 @@
-﻿CREATE TABLE [SS].[FINANCIAL_ROLE]
-(
-	[ROLE_ID] [int] NOT NULL,
-	[ROLE_GROUP] [nvarchar](255) NULL
-)
