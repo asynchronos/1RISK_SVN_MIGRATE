@@ -2,7 +2,7 @@
 using System.Linq;
 using log4net;
 using SME.UserSystem.Core.Exceptions;
-using SME.UserSystem.Core.Model;
+using SME.UserSystem.Core.Profile;
 
 namespace SME.UserSystem.Core.DAL
 {
@@ -55,7 +55,7 @@ namespace SME.UserSystem.Core.DAL
             _context.SaveChanges();
         }
 
-        public ProfileViewModel CreateProfileForUser(string username, string ApplicationName)
+        public UserProfileBase CreateProfileForUser(string username, string ApplicationName)
         {
             if (isDebugEnabled)
             {
@@ -76,7 +76,6 @@ namespace SME.UserSystem.Core.DAL
                 ap.CREATE_DATE = DateTime.Now;
                 ap.LAST_ACTIVITY = "CreateProfileForUser";
                 ap.LAST_ACTIVITY_DATE = DateTime.Now;
-                ap.DEL_FLAG = false;
             }
             else
             {
@@ -114,29 +113,29 @@ namespace SME.UserSystem.Core.DAL
                 userData.APP_PROFILE.Add(ap);
             }
 
-            return new ProfileViewModel(ap);
+            return new UserProfileBase(ap);
         }
 
-        public ProfileViewModel GetUserProfile(string empId, string appDesc)
+        public UserProfileBase GetUserProfile(string empId, string appDesc)
         {
             if (isDebugEnabled)
             {
                 log.Debug("GetUserProfile");
             }
 
-            ProfileViewModel pm = null;
+            UserProfileBase pm = null;
 
             APP_PROFILE profile = GetAppProfile(empId, appDesc);
 
             if (null != profile)
             {
-                pm = new ProfileViewModel(profile);
+                pm = new UserProfileBase(profile);
             }
 
             return pm;
         }
 
-        public void UpdateUserProfile(ProfileViewModel profile, string appDesc)
+        public void UpdateUserProfile(UserProfileBase profile, string appDesc)
         {
             if (isDebugEnabled)
             {
@@ -211,7 +210,7 @@ namespace SME.UserSystem.Core.DAL
 
             if (ap == null)
             {
-                ProfileViewModel pv = CreateProfileForUser(empId, appDesc);
+                UserProfileBase pv = CreateProfileForUser(empId, appDesc);
                 ap = GetAppProfile(empId, appDesc);
             }
 

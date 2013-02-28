@@ -1,5 +1,6 @@
 ﻿using System;
 using log4net;
+using SME.UserSystem.Core.Profile;
 
 namespace SME.DebtSummary.Account
 {
@@ -22,10 +23,12 @@ namespace SME.DebtSummary.Account
 
                 log.Debug("---------------Profile---------------");
                 log.Debug("UserName:" + Context.Profile.UserName);
-                log.Debug("Profile:" + Context.Profile);
+                log.Debug("Profile EMP_FULLNAME:" + ((UserProfileBase)Context.Profile).EMP_FULLNAME);
+                log.Debug("Profile EMP_FULLNAME:" + Context.Profile.PropertyValues["EMP_FULLNAME"]);
+                //log.Debug("Profile LastActivityDate:" + Context.Profile.LastActivityDate.ToString());
                 log.Debug("Profile.Context:" + Context.Profile.Context);
-                log.Debug("Profile.Details:" + Context.Profile.GetProfileGroup("Details").GetPropertyValue("ProfileViewModel"));
-                //log.Debug("MyProfile.Details.EMP_FULLNAME:" + ((MyProfile)Context.Profile).Details.EMP_FULLNAME);
+                //log.Debug("Profile.Details:" + Context.Profile.GetProfileGroup("Details").GetPropertyValue("ProfileViewModel"));
+                //log.Debug("MyProfile.Details.EMP_FULLNAME:" + ((SME.UserSystem.Core.Profile.MyProfile)Context.Profile).Details.EMP_FULLNAME);
             }
 
             //Response.Write("Profile<br/>");
