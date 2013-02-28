@@ -209,14 +209,20 @@ var SSProject = function () {
 
     var M25, M27, O27;
 
-    // tam
+
     // Table Lookup  
     var O35, O37;
     var USE_TABLE;
     var MARGIN, DSCR, AP, AR, STOCK, LTV, WORKING_CAPITAL, RATE, CONTRACT;
-    // สินทรัพถาวรอื่น ๆ
-    var CURRENT_ASSET_OTHER;
 
+    // ฟิวที่เพิ่มภายหลัง
+   
+    var CURRENT_ASSET_OTHER; // สินทรัพถาวรอื่น ๆ
+    var NEW_WORKING_CAPITAL; // เงินทุนหมุนเวียนเกิดใหม่
+    var REFINANCE_WORKING_CAPITAL_BAY // refinance wc bay
+    var REFINANCE_WORKING_LOAN_BAY // refinnance loan bay
+    var REFINANCE_REPAYMENT_BAY  // ภาระผ่อน
+      
 };
 
 SSProject.prototype = {
@@ -975,12 +981,39 @@ SSProject.prototype = {
         return this;
     }
     // other field
-    , setCURRENT_ASSET_OTHER: function (newCURRENT_ASSET_OTHER) {
+    , setNEW_WORKING_CAPITAL: function (newCURRENT_ASSET_OTHER) {
+        this.NEW_WORKING_CAPITAL = newCURRENT_ASSET_OTHER;
+    },
+    getNEW_WORKING_CAPITAL: function () {
+        this.NEW_WORKING_CAPITAL = this.getI33() + this.getI34() + this.getI36();
+        return this.NEW_WORKING_CAPITAL;
+    }
+   , setCURRENT_ASSET_OTHER: function (newCURRENT_ASSET_OTHER) {
         this.CURRENT_ASSET_OTHER = newCURRENT_ASSET_OTHER;
     },
     getCURRENT_ASSET_OTHER: function () {
         return this.CURRENT_ASSET_OTHER;
     }
+   , setREFINANCE_WORKING_CAPITAL_BAY: function (newREFINANCE_WORKING_CAPITAL_BAY) {
+        this.REFINANCE_WORKING_CAPITAL_BAY = newREFINANCE_WORKING_CAPITAL_BAY;
+    },
+    getREFINANCE_WORKING_CAPITAL_BAY: function () {
+        return this.REFINANCE_WORKING_CAPITAL_BAY;
+    }
+  , setREFINANCE_WORKING_LOAN_BAY: function (newREFINANCE_WORKING_LOAN_BAY) {
+        this.REFINANCE_WORKING_LOAN_BAY = newREFINANCE_WORKING_LOAN_BAY;
+    },
+    getREFINANCE_WORKING_LOAN_BAY: function () {
+        return this.REFINANCE_WORKING_LOAN_BAY;
+    }
+    ,setREFINANCE_REPAYMENT_BAY: function (newREFINANCE_REPAYMENT_BAY) {
+        this.REFINANCE_REPAYMENT_BAY = newREFINANCE_REPAYMENT_BAY;
+    },
+    getREFINANCE_REPAYMENT_BAY: function () {
+        return this.REFINANCE_REPAYMENT_BAY;
+    }
+  
+
     //calculator functional
    , I9: function () {
        return this.getD28() + this.getI37();
@@ -1020,7 +1053,7 @@ SSProject.prototype = {
         } // use table
     }
     , I13: function () {
-        return this.I9() + this.I10() + this.I11() + this.getCURRENT_ASSET_OTHER();
+        return this.I9() + this.I10() + this.I11() + this.getCURRENT_ASSET_OTHER() + this.getNEW_WORKING_CAPITAL();
     }
     , I15: function () {
         return this.getD25();
@@ -1181,20 +1214,20 @@ SSProject.prototype = {
         }
     }
     , N10: function () {
-        return this.getD31() + this.getI33();
+        return this.getD31() + this.getI33() - this.getREFINANCE_WORKING_CAPITAL_BAY();
     }
     , N11: function () {
         if (this.getI33() + this.getI34() == 0) {
             return this.getD32() + this.getD33();
         } else {
-            return this.getD32() + this.getD33() - this.getD43();
+            return this.getD32() + this.getD33() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY());
         }
     }
     , N13: function () {
         return this.N9() + this.N10() + this.N11();
     }
     , N15: function () {
-        return this.getD34() + this.getI34();
+        return this.getD34() + this.getI34() - this.getREFINANCE_WORKING_LOAN_BAY();
     }
     , N16: function () {
         if (this.getI33() + this.getI34() == 0) {
@@ -1246,14 +1279,14 @@ SSProject.prototype = {
                     I30 = 0;
                 }
 
-                if ((this.I25() / this.getO35() / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45()) > 0) {
-                    if (((this.I25() / this.getO35()) / 12) - ((I30 * this.M27()) / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45()) > 0) {
-                        return this.RoundDown(I30 - (this.N10() + this.N11() - this.getD43()), -4);
+                if ((this.I25() / this.getO35() / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY())) > 0) {
+                    if (((this.I25() / this.getO35()) / 12) - ((I30 * this.M27()) / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY())) > 0) {
+                        return this.RoundDown(I30 - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
                     } else {
-                        return this.RoundDown(((((this.I25() / this.getO35()) / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45())) * 12) / this.M27() - (this.N10() + this.N11() - this.getD43()), -4);
+                        return this.RoundDown(((((this.I25() / this.getO35()) / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()))) * 12) / this.M27() - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
                     }
                 } else {
-                    return this.RoundDown(0 - (this.N10() + this.N11() - this.getD43()), -4);
+                    return this.RoundDown(0 - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
                 }
             }
         } else { //use my function
@@ -1261,16 +1294,16 @@ SSProject.prototype = {
                 return 0;
             } else {
                 var temp1 = this.I25() / this.getO35() / 12;
-                var temp2 = this.getD35() + this.getD37() + this.getD39() - this.getD45();
+                var temp2 = this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY());
 
                 if (temp1 - temp2 > 0) {
                     if (temp1 - (this.I30() * this.M27() / 12) - temp2 > 0) {
-                        return this.RoundDown(this.I30() - this.N10() + this.N11() - this.getD43(), -4);
+                        return this.RoundDown(this.I30() - this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY()), -4);
                     } else {
-                        return this.RoundDown(temp1 - (temp2 * 12 / this.M27()) - (this.N10() + this.N11() - this.getD43()), -4);
+                        return this.RoundDown(temp1 - (temp2 * 12 / this.M27()) - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
                     }
                 } else {
-                    return this.RoundDown(0 - (this.N10() + this.N11() - this.getD43()), -4);
+                    return this.RoundDown(0 - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
                 }
             }
         }
@@ -1298,8 +1331,8 @@ SSProject.prototype = {
             } else {
                 c = 0;
             }
-            if (((this.getD31() + this.getD32() + this.getD33() - this.getD43()) * this.M27())) {
-                d = ((this.getD31() + this.getD32() + this.getD33() - this.getD43()) * this.M27());
+            if (((this.getD31() + this.getD32() + this.getD33() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())) * this.M27())) {
+                d = ((this.getD31() + this.getD32() + this.getD33() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())) * this.M27());
             } else {
                 d = 0;
             }
@@ -1310,8 +1343,8 @@ SSProject.prototype = {
             }
 
 
-            if ((this.getD35() + this.getD37() + this.getD39() - this.getD45())) {
-                f = (this.getD35() + this.getD37() + this.getD39() - this.getD45());
+            if ((this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()))) {
+                f = (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()));
             } else {
                 f = 0;
             }
@@ -1365,7 +1398,7 @@ SSProject.prototype = {
         if (this.getO34() != 0) {
             temp = -1 * this.PMT(this.getM34() / 12, this.getO34() * 12, this.getI34());
         }
-        return ((this.I25() / 12) / (this.getD39() + this.getD37() + this.getD35() - this.getD45() + (((this.getD31() + this.getD32() + this.getD33() - this.getD43()) * this.M27()) / 12) + ((this.getI33() * this.getM33()) / 12) + temp));
+        return ((this.I25() / 12) / (this.getD39() + this.getD37() + this.getD35() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()) + (((this.getD31() + this.getD32() + this.getD33() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())) * this.M27()) / 12) + ((this.getI33() * this.getM33()) / 12) + temp));
         // }
     }
     , M36: function () {
@@ -1405,7 +1438,7 @@ SSProject.prototype = {
             return 0;
         } else {
             // (ebida / dscr /12) -  (หนี้สินหมุนเวียน * อัตราดอกเบี้ย /12) -(ทุก ๆ ภาระผ่อนชำระหนี้ต่อเดือน )
-            x = (((this.I25() / this.getO35()) / 12) - ((this.N11() * this.M27() / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45())));
+            x = (((this.I25() / this.getO35()) / 12) - ((this.N11() * this.M27() / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()))));
             //alert('x=' + x);
             if (x > 0) {
                 y = ((this.N40() * this.M27()) / 12);
@@ -1455,12 +1488,12 @@ SSProject.prototype = {
             return 0;
         } else {
 
-            if (this.RoundDown(-1 * this.PV(this.M27() / 12, this.getO27() * 12, (this.I25() / this.getO35() / 12) - ((this.N10() + this.N11() - this.getI33()) * this.M27() / 12) - (this.getI33() * this.getM33() / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45()) + this.PMT(this.getM34() / 12, this.getO34() * 12, this.getI34())), -4)) {
+            if (this.RoundDown(-1 * this.PV(this.M27() / 12, this.getO27() * 12, (this.I25() / this.getO35() / 12) - ((this.N10() + this.N11() - this.getI33()) * this.M27() / 12) - (this.getI33() * this.getM33() / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY())) + this.PMT(this.getM34() / 12, this.getO34() * 12, this.getI34())), -4)) {
                 return this.RoundDown((-1 * this.PV(this.M27() / 12
                                                                      , this.getO27() * 12
                                                                      , ((this.I25() / this.getO35()) / 12) - (((this.N10() + this.N11() - this.getI33()) * this.M27()) / 12)
                                                                         - ((this.getI33() * this.getM33()) / 12)
-                                                                        - (this.getD35() + this.getD37() + this.getD39() - this.getD45())
+                                                                        - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()))
                                                                         + this.PMT(this.getM34() / 12, this.getO34() * 12, this.getI34(), 0)
                                                                      , 0
                                                              )

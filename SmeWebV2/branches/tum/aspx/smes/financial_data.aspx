@@ -2,6 +2,7 @@
     MaintainScrollPositionOnPostback="true" EnableEventValidation="true" Inherits="aspx_smes_FINANCIAL_DATA" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<html>
 <head runat="server">
     <title></title>
     <style type="text/css">
@@ -49,7 +50,7 @@
         #tab4
         {
             float: left;
-            width: 500px;
+            width: 420px;
             background-image: url('images/gradient2.png');
             background-repeat: repeat-x;
         }
@@ -107,10 +108,19 @@
         {
             width: 239px;
         }
+        .space
+        {
+            margin: 10px;
+        }
+        .style5
+        {
+            width: 125px;
+        }
     </style>
     <script src="js/jquery-1.7.min.js" type="text/javascript"></script>
     <script src="js/jquery-ui-1.8.18/js/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
-    <%--    <link href="js/jquery-ui-1.8.18/css/redmond/jquery-ui-1.8.18.custom.css" rel="stylesheet"    type="text/css" />--%>    <%--    <link href="js/jquery-ui-1.8.18/css/sunny/jquery-ui-1.8.18.custom.css" rel="stylesheet"    type="text/css" />--%>
+    <%--    <link href="js/jquery-ui-1.8.18/css/redmond/jquery-ui-1.8.18.custom.css" rel="stylesheet"    type="text/css" />--%>
+    <%--    <link href="js/jquery-ui-1.8.18/css/sunny/jquery-ui-1.8.18.custom.css" rel="stylesheet"    type="text/css" />--%>
     <link href="js/jquery-ui-1.8.18/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet"
         type="text/css" />
     <script src="js/autoNumeric.js" type="text/javascript"></script>
@@ -120,7 +130,7 @@
         function sizeFrame() {
 
             var heightDiv = $(document).height();
-            $("#mainFrame", parent.document).height(1400);
+            $("#mainFrame", parent.document).height(heightDiv);
 
 
         }
@@ -136,8 +146,8 @@
         , H25
         , I9, I10, I11, I13, I15, I16, I17, I18, I20, I22
         , I25, I26, I27, I28
-        , I30, I31, I33, I34, I35, I36, I37
-        , I39, I40, I41, I42, I43, I44, T17 ,I45, I46, I47 // หลักประกันรวม
+        , I30, I31, I33, I34, I35, I36  // I37 พันธบัตรไม่ใช้ 27/3/2556
+        , I39, I40, I41, I42, I43, I44, T17, I45, I46, I47 // หลักประกันรวม
         , J28, J29
         , M25, M27, M33, M34, M35, M36, M37
         , N9, N10, N11, N13, N15, N16, N18, N20, N21, N22
@@ -210,8 +220,16 @@
         var INPUT_EL;
         var CALCULATE_EL;
 
-        var CURRENT_ASSET_OTHERTextBox ;
+        var CURRENT_ASSET_OTHERTextBox;
         var CURRENT_ASSET_OTHER_CALTextBox;
+
+        var REFINANCE_WORKING_CAPITAL_BAYTextBox;
+        var REFINANCE_WORKING_LOAN_BAYTextBox;
+
+        var REFINANCE_REPAYMENT_BAYTextBox;
+
+        var NEW_WORKING_CAPITAL_CALTextBox;
+        var NEW_WORKING_CAPITAL_CAL_EL;
 
         $(document).ready(function () {
 
@@ -276,7 +294,7 @@
 
             F10 = $("[CELL='AR_TABLE']");
             F15 = $("[CELL='AP_TABLE']");
-            F21 = $("[CELL='STOCK_TABLE']");
+            F21 = $("#STOCK_TABLETextBox");
 
             RATE_TABLE = $("[CELL='RATE_TABLE']");  // ไม่มีใน cell pnop
             WORKING_CAPITAL_TABLE = $("[CELL='WORKING_CAPITAL_TABLE']");
@@ -317,7 +335,7 @@
             I34 = $("#LOANTextBox");
             I35 = $("#LG_AVALTextBox");
             I36 = $("#ASSETS_INCREASE_LOANTextBox");
-            I37 = $("#BOND_DEPOSIT_PLEDGE_PERSONTextBox");
+            //I37 = $("#BOND_DEPOSIT_PLEDGE_PERSONTextBox");
             I39 = $("#APPRAISAL_VALUE_ZONE_ATextBox");
             I40 = $("#APPRAISAL_VALUE_ZONE_BTextBox");
             I41 = $("#APPRAISAL_VALUE_ZONE_CTextBox");
@@ -390,106 +408,86 @@
             CURRENT_ASSET_OTHERTextBox.autoNumeric({ aPad: false });
             CURRENT_ASSET_OTHER_CALTextBox.autoNumeric({ aPad: false });
 
+            REFINANCE_WORKING_CAPITAL_BAYTextBox = $("#REFINANCE_WORKING_CAPITAL_BAYTextBox");
+            REFINANCE_WORKING_LOAN_BAYTextBox = $("#REFINANCE_WORKING_LOAN_BAYTextBox");
+            REFINANCE_REPAYMENT_BAYTextBox = $("#REFINANCE_REPAYMENT_BAYTextBox");
+            NEW_WORKING_CAPITAL_CALTextBox = $("#NEW_WORKING_CAPITAL_CALTextBox");
+
+
+
             // ประกาศตัวแปรกลุ่มของ element ที่เกี่ยวข้องกัน
 
-            //CASH_BOND_CAL_EL = $("[CELL = 'D28'],[CELL = 'D37']");
-            CASH_BOND_CAL_EL = $(D28).add(I37);
-            //ACCOUNT_RECEIVABLE_CAL_EL = $("[CELL='D8'],[CELL='D9'],[CELL='D10'],[CELL='D24'],[CELL='AR_TABLE']");
-            ACCOUNT_RECEIVABLE_CAL_EL = $(D8).add(D9).add(D10).add(D24).add("[CELL='AR_TABLE']");
-            //INVENTORY_CAL_EL = $("[CELL='D21'],[CELL='D20'],[CELL='D13'],[CELL='STOCK_TABLE']");
-            INVENTORY_CAL_EL = $(D21).add(D20).add(D13).add("[CELL='STOCK_TABLE']");
-            //TOTAL_CURRENT_ASSETS_CAL_EL = $("[CELL='I9'],[CELL='I10'],[CELL='I11']");
-            TOTAL_CURRENT_ASSETS_CAL_EL = $(I9).add(I10).add(I11).add(CURRENT_ASSET_OTHERTextBox);
-            // MACHINERY_EQUIPMENT_CAL_EL = $("[CELL='D25']");
+            CASH_BOND_CAL_EL = $(D28)
+            ACCOUNT_RECEIVABLE_CAL_EL = $(D8).add(D9).add(D10).add(D24).add(AR_TABLE);
+            INVENTORY_CAL_EL = $(D21).add(D20).add(D13).add(STOCK_TABLE);
+
+            NEW_WORKING_CAPITAL_CAL_EL = $(I33).add(I34).add(I36);
+
+            TOTAL_CURRENT_ASSETS_CAL_EL = $(I9).add(I10).add(I11).add(CURRENT_ASSET_OTHERTextBox).add(CURRENT_ASSET_OTHER_CALTextBox).add(NEW_WORKING_CAPITAL_CALTextBox);
+
             MACHINERY_EQUIPMENT_CAL_EL = $(D25);
-            //PROPERTY_PLANT_CAL_BUILDING_EL = $("[CELL='D26']");
             PROPERTY_PLANT_CAL_BUILDING_EL = $(D26);
-            //OTHER_FIXED_ASSETS_CAL_EL = $("[CELL='D27']");
             OTHER_FIXED_ASSETS_CAL_EL = $(D27);
-            //ASSETS_FROM_CREDIT_CAL_EL = $("[CELL='I36']")
             ASSETS_FROM_CREDIT_CAL_EL = $(I36);
-            //TOTAL_FIXED_ASSETS_CAL_EL = $("[CELL='I15'],[CELL='I16'],[CELL='I17'],[CELL='I18']");
             TOTAL_FIXED_ASSETS_CAL_EL = $(I15).add(I16).add(I17).add(I18).add(DX07);
-            //TOTAL_ASSETS_CAL_EL = $("[CELL='I13'],[CELL='I20']");
             TOTAL_ASSETS_CAL_EL = $(I13).add(I20);
 
-            //EBIDA_PERCENT_CAL_EL = $("[CELL='M25']");
             EBIDA_PERCENT_CAL_EL = $(M25);
-            //EBIDA_CAL_EL = $("[CELL='D17'],[CELL='D16'],[CELL='D8'],[CELL='H25'],[CELL='M25']");
+
             EBIDA_CAL_EL = $(D17).add(D16).add(D8).add(H25).add(M25);
-            //OWNERS_EQUITY_CAL_EL = $("[CELL='I25'],[CELL='M25'],[CELL='H25']");
+
             OWNERS_EQUITY_CAL_EL = $(I25).add(M25).add(H25);
-            //DE_BEFORE_LOAN_CAL_EL = $("[CELL='I22'],[CELL='I35'],[CELL='I36'],[CELL='N18'],[CELL='I33'],[CELL='I34']");
+
             DE_BEFORE_LOAN_CAL_EL = $(I22).add(I35).add(I36).add(N18).add(I33).add(I34);
-            //DSCR_BEFORE_LOAN_CAL_EL = $("[CELL='D31'],[CELL='D32'],[CELL='D33'],[CELL='D35'],[CELL='D37'],[CELL='D39'],[CELL='N25'],[CELL='M27']");
             DSCR_BEFORE_LOAN_CAL_EL = $(D31).add(D32).add(D33).add(D35).add(D37).add(D39).add(N25).add(M27);
-            //FIXED_INTEREST_PERCENT_CAL_EL = $("[CELL='D29']");
             FIXED_INTEREST_PERCENT_CAL_EL = $(D29);
-            //AVERAGE_PAYMENT_PERIOD_CAL_EL = $("[CELL='D13'],[CELL='D14'],[CELL='D30'],[CELL='N9']");
             AVERAGE_PAYMENT_PERIOD_CAL_EL = $(D13).add(D14).add(D30).add(N9);
-            //AR_DAY_CAL_EL = $("[CELL='I10'],[CELL='D8'],[CELL='D9'],[CELL='D24'],[CELL='J29'],[CELL='STOCK_TABLE']");
             AR_DAY_CAL_EL = $(I10).add(D8).add(D9).add(D24).add(J29).add("[CELL='STOCK_TABLE']");
-            //INVENTORY_DAY_CAL_EL = $("[CELL='I11'],[CELL='D13'],[CELL='D20'],[CELL='D21']");
             INVENTORY_DAY_CAL_EL = $(I11).add(D13).add(D20).add(D21);
-            //WORKING_CAPITAL_NEED_CAL_EL = $("[CELL='I10'],[CELL='I11'],[CELL='N9']");
             WORKING_CAPITAL_NEED_CAL_EL = $(I10).add(I11).add(N9);
-            //LOAN_NEED_CAL_EL = $("[CELL='O27'],[CELL='O35'],[CELL='I25'],[CELL='M27']");
             LOAN_NEED_CAL_EL = $(O27).add(O35).add(I25).add(M27);
 
-            //ACCOUNT_PAYABLE_CAL_EL = $("[CELL='D13'],[CELL='D14'],[CELL='D15'],[CELL='D30'],[CELL='AP_TABLE']");
             ACCOUNT_PAYABLE_CAL_EL = $(D13).add(D14).add(D15).add(D30).add("[CELL='AP_TABLE']");
-            //CURRENT_LIABILITY_BAY_CAL_EL = $("[CELL='D31'],[CELL='I33']");
-            CURRENT_LIABILITY_BAY_CAL_EL = $(D31).add(I33);
-            // OTHER_CURRENT_LIABILITY_CAL_EL = $("[CELL='D32'],[CELL='D33'],[CELL='D43'],[CELL='I33'],[CELL='I34']");
+            CURRENT_LIABILITY_BAY_CAL_EL = $(D31).add(I33).add(REFINANCE_WORKING_CAPITAL_BAYTextBox);
             OTHER_CURRENT_LIABILITY_CAL_EL = $(D32).add(D33).add(D43).add(I33).add(I34);
-            //TOTAL_CURRENT_LIABILITY_CAL_EL = $("[CELL='N9'],[CELL='N10'],[CELL='N11']");
+
             TOTAL_CURRENT_LIABILITY_CAL_EL = $(N9).add(N10).add(N11);
-            //LONG_TERM_LIABILITY_BAY_CAL_EL = $("[CELL='D34'],[CELL='I34']");
-            LONG_TERM_LIABILITY_BAY_CAL_EL = $(D34).add(I34);
-            // OTHER_LONG_TERM_LIABILITY_CAL_EL = $("[CELL='D36'],[CELL='D38'],[CELL='D44'],[CELL='I33'],[CELL='I34']");
+            LONG_TERM_LIABILITY_BAY_CAL_EL = $(D34).add(I34).add(REFINANCE_WORKING_LOAN_BAYTextBox);
             OTHER_LONG_TERM_LIABILITY_CAL_EL = $(D36).add(D38).add(D44).add(I33).add(I34);
-            //TOTAL_LIABILITY_CAL_EL = $("[CELL='N13'],[CELL='N15'],[CELL='N16']");
             TOTAL_LIABILITY_CAL_EL = $(N13).add(N15).add(N16);
-            //LOANS_REL_CO_DIRECTORS_CAL_EL = $("[CELL='D40']");
             LOANS_REL_CO_DIRECTORS_CAL_EL = $(D40);
-            //EQUITY_CAL_EL = $("[CELL='I22'],[CELL='N18'],[CELL='N20']");
+
             EQUITY_CAL_EL = $(I22).add(N18).add(N20);
-            //LIABILITY_EQUITY_CAL_EL = $("[CELL='N18'],[CELL='N20'],[CELL='N21']");
             LIABILITY_EQUITY_CAL_EL = $(N18).add(N20).add(N21);
 
-            //WORKING_CAPITAL_APPROVE_CAL_EL = $("[CELL = 'D35'], [CELL = 'D37'], [CELL = 'D39'], [CELL = 'D43'], [CELL = 'D45'],[CELL = 'I25'],[CELL = 'I30'], [CELL = 'O35'], [CELL = 'M27'] ,[CELL='N10'],[CELL='N11']"); // N30
-            WORKING_CAPITAL_APPROVE_CAL_EL = $(D35).add(D37).add(D39).add(D43).add(D45).add(I25).add(I30).add(O35).add(M27).add(N10).add(N11); // N30
-            //LOAN_APPROVE_CAL_EL = $("[CELL='O34'],[CELL='O35'],[CELL='M27'],[CELL='O27'],[CELL='I25'],[CELL='D31'], [CELL='D32'],[CELL='D33'], [CELL='D35'],[CEL='D37'],[CELL='D39'],[CELL='D43'],[CELL='D45'],[CELL='I33'],[CELL='M33'],[CELL='M34'],[CELL='I34']"); // N31
-            LOAN_APPROVE_CAL_EL = $(O34).add(O35).add(M27).add(O27).add(I25).add(D31).add(D32).add(D33).add(D35).add(D37).add(D39).add(D43).add(D45).add(I33).add(M33).add(M34).add(I34); // N31
+            WORKING_CAPITAL_APPROVE_CAL_EL = $(D35).add(D37).add(D39).add(D43).add(D45).add(REFINANCE_REPAYMENT_BAYTextBox).add(I25).add(I30).add(O35).add(M27).add(N10).add(N11); // N30
+            LOAN_APPROVE_CAL_EL = $(O34).add(O35).add(M27).add(O27).add(I25).add(D31).add(D32).add(D33).add(D35).add(D37).add(D39).add(D43).add(D45).add(REFINANCE_REPAYMENT_BAYTextBox).add(I33).add(M33).add(M34).add(I34); // N31
 
-            // DSCR_THIS_TIME_EL = $("[CELL='D31'],[CELL='D32'],[CELL='D33'],[CELL='D35'],[CELL='D37'],[CELL='D39'],[CELL='D43'],[CELL='D45'],[CELL='I25'],[CELL='I33'],[CELL='I25'],[CELL='I34'],[CELL='M27'],[CELL='M33'],[CELL='M34'],[CELL='O34']");
-            DSCR_THIS_TIME_EL = $(D31).add(D32).add(D33).add(D35).add(D37).add(D39).add(D43).add(D45).add(I25).add(I33).add(I25).add(I34).add(M27).add(M33).add(M34).add(O34);
-            // DE_THIS_TIME_EL = $("[CELL='N18'],[CELL='N21'],[CELL='N20']");
+            DSCR_THIS_TIME_EL = $(D31).add(D32).add(D33).add(D35).add(D37).add(D39).add(D43).add(D45).add(REFINANCE_WORKING_CAPITAL_BAYTextBox).add(REFINANCE_REPAYMENT_BAYTextBox).add(I25).add(I33).add(I25).add(I34).add(M27).add(M33).add(M34).add(O34);
             DE_THIS_TIME_EL = $(N18).add(N21).add(N20);
-            // LTV_THIS_TIME_EL = $("[CELL='D41'],[CELL='I39'],[CELL='I35'],[CELL='I40'],[CELL='I41'],[CELL='I42'],[CELL='I43'],[CELL='I44'],[CELL='N10'],[CELL='N15']");
             LTV_THIS_TIME_EL = $(D41).add(I39).add(I35).add(I40).add(I41).add(I42).add(I43).add(I44).add(N10).add(N15);
-            //WORKING_CAPITAL_DEFAULT_EL = $("[CELL='D8'],[CELL='WORKING_CAPITAL_TABLE']")
             WORKING_CAPITAL_DEFAULT_EL = $(I30);
-            //LOAN_DEFAULT_EL = $("[CELL='O35'],[CELL='O27'],[CELL='I25'],[CELL='N40'],[CELL='M27']");  //    N41   วงเงินที่เห้นควรอนุมัติ
             LOAN_DEFAULT_EL = $(O35).add(O27).add(I25).add(N40).add(M27);  //    N41   วงเงินที่เห้นควรอนุมัติ
-            //WORKING_CAPITAL_DEFAULT_APPROVE_EL = $("[CELL='I25'],[CELL='I44'],[CELL='O35'],[CELL='N11'],[CELL='N15'],[CELL='N40'],[CELL='M27'],[CELL='D35'],[CELL='D37'],[CELL='D39'],[CELL='D41'],[CELL='D45'],[T17]");
-            WORKING_CAPITAL_DEFAULT_APPROVE_EL = $(I25).add(I44).add(O35).add(N10).add(N15).add(N40).add(M27).add(D35).add(D37).add(D39).add(D41).add(D45).add(T17);
-            //LOAN_DEFAULT_APPROVE_EL = $("[CELL='N10'],[CELL='N15'],[CELL='I35'],[CELL='I44'],[CELL='T17'],[CELL='O37'],[CELL='D41']");  //   N44  วงเงินที่สามารถอนุมัติ
+            WORKING_CAPITAL_DEFAULT_APPROVE_EL = $(I25).add(I44).add(O35).add(N10).add(N15).add(N40).add(M27).add(D35).add(D37).add(D39).add(D41).add(D45).add(REFINANCE_REPAYMENT_BAYTextBox).add(T17);
             LOAN_DEFAULT_APPROVE_EL = $(N10).add(N15).add(I35).add(I44).add(T17).add(O37).add(D41).add(I33).add(N43);  //   N44  วงเงินที่สามารถอนุมัติ
-            //TOTAL_AMOUNT_OF_COLLATERAL_EL = $("[CELL='I39'],[CELL='I40'],[CELL='I41'],[CELL='I42'],[CELL='I43']");
             TOTAL_AMOUNT_OF_COLLATERAL_EL = $(I39).add(I40).add(I41).add(I42).add(I43).add(I45).add(I46);
-            //TEMP_CAL_LOAN_MAX_CAN_APPROVE_EL = $("[CELL='D35'],[CELL='D37'],[CELL='D39'],[CELL='D45'],[CELL='O35'],[CELL='M27'],[CELL='M33'],[CELL='M34'],[CELL='O27'],[CELL='O34'],[CELL='O35'],[CELL='N10'],[CELL='N11'],[CELL='I33'],[CELL='I34']");
             TEMP_CAL_LOAN_MAX_CAN_APPROVE_EL = $(D35).add(D37).add(D39).add(D45).add(O35).add(M27).add(M33).add(M34).add(O27).add(O34).add(O35).add(N10).add(N11).add(I33).add(I34);
 
             OTHER_FIXED_ASSETS_OTHER_BANK_CAL_EL = $(DX06);
 
-            INPUT_EL = $(D8).add(D9).add(D10).add(D13).add(D14).add(D15).add(D17).add(D20).add(D21).add(D24).add(D25).add(D26).add(D27).add(D28).add(D29).add(D30).add(D31).add(D32).add(D33).add(D34).add(D35).add(D37).add(D36).add(D38).add(D39).add(D40).add(D41).add(D43).add(D44).add(D45).add(I39).add(I40).add(I41).add(I42).add(I43).add(I44).add(I45).add(I46).add(I47).add(I33).add(I34).add(I35).add(I36).add(I37).add(M33).add(M34).add(O34);
 
-            CALCULATE_EL = $(I9).add(I10).add(I11).add(I13).add(I15).add(I16).add(I17).add(I18).add(I20).add(I22).add(H25).add(I25).add(I26).add(I27).add(I28).add(J28).add(J29).add(I30).add(I31).add(N9).add(N10).add(N11).add(N13).add(N15).add(N16).add(N18).add(N20).add(N21).add(N22).add(N25).add(M27).add(O27).add(O28).add(O28).add(N30).add(N31).add(M35).add(M36).add(M37).add(N40).add(N41).add(N43).add(N44).add(O35).add(O37);
+
+            // เพิ่ม element ให้กับ input
+
+            INPUT_EL = $(D8).add(D9).add(D10).add(D13).add(D14).add(D15).add(D17).add(D20).add(D21).add(D24).add(D25).add(D26).add(D27).add(D28).add(D29).add(D30).add(D31).add(D32).add(D33).add(D34).add(D35).add(D37).add(D36).add(D38).add(D39).add(D40).add(D41).add(D43).add(D44).add(D45).add(REFINANCE_REPAYMENT_BAYTextBox).add(I39).add(I40).add(I41).add(I42).add(I43).add(I44).add(I45).add(I46).add(I47).add(I33).add(I34).add(I35).add(I36).add(M33).add(M34).add(O34);
+            INPUT_EL = $(INPUT_EL).add(COST_OF_SALESTextBox).add(COST_OF_SALES_PERCENTTextBox).add(OPERATING_EXPENSESTextBox).add(OPERATING_EXPENSES_PERCENTTextBox).add(TAXTextBox).add(OTHER_FIXED_ASSETS_OTHER_BANKTextBox).add(CURRENT_ASSET_OTHERTextBox);
+            INPUT_EL = $(INPUT_EL).add(REFINANCE_WORKING_CAPITAL_BAYTextBox).add(REFINANCE_WORKING_LOAN_BAYTextBox).add(REFINANCE_REPAYMENT_BAYTextBox);
+            // เพิ่ม element ให้กับ calculate
+            CALCULATE_EL = $(CALCULATE_EL).add(OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox).add(CURRENT_ASSET_OTHER_CALTextBox);
+            CALCULATE_EL = $(I9).add(I10).add(I11).add(I13).add(I15).add(I16).add(I17).add(I18).add(I20).add(I22).add(H25).add(I25).add(I26).add(I27).add(I28).add(J28).add(J29).add(I30).add(I31).add(N9).add(N10).add(N11).add(N13).add(N15).add(N16).add(N18).add(N20).add(N21).add(N22).add(N25).add(M27).add(O27).add(O28).add(O28).add(N30).add(N31).add(M35).add(M36).add(M37).add(N40).add(N41).add(N43).add(N44).add(O35).add(O37).add(NEW_WORKING_CAPITAL_CALTextBox);
             //CALCULATE_EL.addClass('purpleBG');
 
-            INPUT_EL = $(INPUT_EL).add(COST_OF_SALESTextBox).add(COST_OF_SALES_PERCENTTextBox).add(OPERATING_EXPENSESTextBox).add(OPERATING_EXPENSES_PERCENTTextBox).add(TAXTextBox).add(OTHER_FIXED_ASSETS_OTHER_BANKTextBox).add(CURRENT_ASSET_OTHERTextBox);
-            CALCULATE_EL = $(CALCULATE_EL).add(OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox).add(CURRENT_ASSET_OTHER_CALTextBox);
+
 
 
             // ใช้ function autonumeric จาก  js/autoNumeric
@@ -519,8 +517,9 @@
             D29.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
             M33.autoNumeric({ aPad: true, vMin: '0.000', vMax: '100.000' });
             M34.autoNumeric({ aPad: true, vMin: '0.000', vMax: '100.000' });
-            I36.autoNumeric({ aPad: true, vMin: '0.00', vMax: '999999999.99' });
+            I36.autoNumeric({ aPad: false });
             $("#OWNERS_EQUITY_PERCENT_INPUTTextBox").autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
+
             COST_OF_SALES_PERCENTTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
             OPERATING_EXPENSES_PERCENTTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
 
@@ -571,8 +570,8 @@
             //$("#tab5 input[type='text']").autoNumeric({ aPad: false }); // ให้ใช้ autonumeric และ ไม่ให้มีทศนิยม
             $("input[type='text']").css("text-align", "right");  // กำหนดให้ text box ชิดขวาทั้งหมด
             //$("input[type='text'][title]").tooltip();
-           // INPUT_EL.tooltip();
-            
+            // INPUT_EL.tooltip();
+
             // readonly
 
             $(O27).keydown(function () {  // อายุสัญญา cal
@@ -609,12 +608,9 @@
                 } else {
                     obj.setD28(parseFloat($(D28).autoNumericGet()));
                 }
-                if (I37.val() == '') {
-                    obj.setI37(0);
-                    I37.val(0);
-                } else {
-                    obj.setI37(parseFloat($(I37).autoNumericGet()));
-                }
+                // แก้ไข กำหนดเงินสดเงินฝากพันธบัตรตรงช่องครั้งนี้ไม่ต้องกรอก 27/2/2556
+                obj.setI37(0);
+
 
                 I9.autoNumericSet(obj.I9());
                 I9.change();
@@ -749,6 +745,42 @@
 
             });
 
+            NEW_WORKING_CAPITAL_CALTextBox.click(function () {
+                NEW_WORKING_CAPITAL_CAL_EL.addClass('yellowBG');
+            }).blur(function () {
+                NEW_WORKING_CAPITAL_CAL_EL.removeClass('yellowBG');
+            }).keydown(function () {
+                $(this).blur();
+            });
+
+            NEW_WORKING_CAPITAL_CAL_EL.change(function () {
+                var checkErr = false;
+                if (I33.val() == '') {
+                    obj.setI33(0);
+                } else {
+                    obj.setI33(parseFloat($(I33).autoNumericGet()));
+                }
+                if (I34.val() == '') {
+                    obj.setI34(0);
+                } else {
+                    obj.setI34(parseFloat($(I34).autoNumericGet()));
+                }
+                if (I36.val() == '') {
+                    obj.setI36(0);
+                } else {
+                    obj.setI36(parseFloat($(I36).autoNumericGet()));
+                }
+
+                if (checkErr == false) {
+                    NEW_WORKING_CAPITAL_CALTextBox.autoNumericSet(obj.getNEW_WORKING_CAPITAL());
+                    NEW_WORKING_CAPITAL_CALTextBox.change();
+                } else {
+                    NEW_WORKING_CAPITAL_CALTextBox.autoNumericSet(0);
+                    NEW_WORKING_CAPITAL_CALTextBox.change();
+                }
+
+            });
+
             // END I11 ===================
             // I13 รวมสินทรพัย์หมุนเวียน===================
 
@@ -759,6 +791,7 @@
             }).keydown(function () {
                 $(this).blur();
             });
+
 
             TOTAL_CURRENT_ASSETS_CAL_EL.change(function () {
                 var checkErr = false;
@@ -775,6 +808,7 @@
                 if (CURRENT_ASSET_OTHERTextBox.val() == '') {
                     checkErr = true;
                 }
+
                 if (checkErr == false) {
                     I13.autoNumericSet(obj.I13());
                     I13.change();
@@ -1099,12 +1133,12 @@
                     obj.setD39(parseFloat($(D39).autoNumericGet()));
                 }
 
-        		if (M27.val() == '') {
+                if (M27.val() == '') {
                     obj.setD29(0);
                 } else {
                     obj.setD29(parseFloat($(D29).autoNumericGet()));
                 }
-				//alert(obj.I27());
+                //alert(obj.I27());
                 if (chkErr == false) {
                     I27.autoNumericSet(obj.I27());
                     I27.change()
@@ -1134,10 +1168,10 @@
                 }
 
                 if (checkErr == false) {
-				   
+
                     M27.autoNumericSet($(D29).autoNumericGet());
                     M27.change();
-			    }
+                }
 
             });
 
@@ -1407,7 +1441,11 @@
                 } else {
                     obj.setI34(parseFloat($(I34).autoNumericGet()));
                 }
-
+                if (REFINANCE_WORKING_CAPITAL_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_WORKING_CAPITAL_BAY(0);
+                } else {
+                    obj.setREFINANCE_WORKING_CAPITAL_BAY(parseFloat($(REFINANCE_WORKING_CAPITAL_BAYTextBox).autoNumericGet()));
+                }
                 //            obj.setD31(parseFloat($(D31).autoNumericGet()));
                 //            obj.setD32(parseFloat($(D32).autoNumericGet()));
                 //            obj.setD43(parseFloat($(D43).autoNumericGet()));
@@ -1509,6 +1547,13 @@
                 } else {
                     obj.setD34(parseFloat($(D34).autoNumericGet()));
                 }
+
+                if (REFINANCE_WORKING_LOAN_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_WORKING_LOAN_BAY(0);
+                } else {
+                    obj.setREFINANCE_WORKING_LOAN_BAY(parseFloat($(REFINANCE_WORKING_LOAN_BAYTextBox).autoNumericGet()));
+                }
+
                 N15.autoNumericSet(obj.N15());
                 N15.change();
             });
@@ -1691,6 +1736,12 @@
                 } else {
                     obj.setD45(parseFloat($(D45).autoNumericGet()));
                 }
+                if (REFINANCE_REPAYMENT_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_REPAYMENT_BAY(0);
+                } else {
+                    obj.setREFINANCE_REPAYMENT_BAY(parseFloat($(REFINANCE_REPAYMENT_BAYTextBox).autoNumericGet()));
+                }
+
                 if (I25.val() == '') {
                     chkErr = true;
                 }
@@ -1796,6 +1847,11 @@
                 } else {
                     obj.setD45(parseFloat($(D45).autoNumericGet()));
                 }
+                if (REFINANCE_REPAYMENT_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_REPAYMENT_BAY(0);
+                } else {
+                    obj.setREFINANCE_REPAYMENT_BAY(parseFloat($(REFINANCE_REPAYMENT_BAYTextBox).autoNumericGet()));
+                }
                 if (I33.val() == '') {
                     obj.setI33(0);
                 } else {
@@ -1882,6 +1938,19 @@
                 } else {
                     obj.setD45(parseFloat($(D45).autoNumericGet()));
                 }
+
+                if (REFINANCE_WORKING_CAPITAL_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_WORKING_CAPITAL_BAY(0);
+                } else {
+                    obj.setREFINANCE_WORKING_CAPITAL_BAY(parseFloat($(REFINANCE_WORKING_CAPITAL_BAYTextBox).autoNumericGet()));
+                }
+
+                if (REFINANCE_REPAYMENT_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_REPAYMENT_BAY(0);
+                } else {
+                    obj.setREFINANCE_REPAYMENT_BAY(parseFloat($(REFINANCE_REPAYMENT_BAYTextBox).autoNumericGet()));
+                }
+
                 if (I25.val() == '') {
                     chkErr = true;
                 }
@@ -2143,6 +2212,11 @@
                 } else {
                     obj.setD45(parseFloat($(D45).autoNumericGet()));
                 }
+                if (REFINANCE_REPAYMENT_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_REPAYMENT_BAY(0);
+                } else {
+                    obj.setREFINANCE_REPAYMENT_BAY(parseFloat($(REFINANCE_REPAYMENT_BAYTextBox).autoNumericGet()));
+                }
                 if (T17.val() == '') {
                 }
                 if (chkErr == false) {
@@ -2290,6 +2364,11 @@
                 } else {
                     obj.setD45(parseFloat($(D45).autoNumericGet()));
                 }
+                if (REFINANCE_REPAYMENT_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_REPAYMENT_BAY(0);
+                } else {
+                    obj.setREFINANCE_REPAYMENT_BAY(parseFloat($(REFINANCE_REPAYMENT_BAYTextBox).autoNumericGet()));
+                }
                 if (O35.val() == '') {
                     obj.setO35(0);
                 } else {
@@ -2408,7 +2487,7 @@
             setAllObjValue();
 
 
-        });                                                                                                            // end document ready
+        });                                                                                                                    // end document ready
 
         function maxD8() {
             return D8.autoNumericGet()
@@ -2477,11 +2556,9 @@
                 } else {
                     obj.setI36(parseFloat($(I36).autoNumericGet()));
                 }
-                if (I37.val() == '') {
-                    obj.setI37(0);
-                } else {
-                    obj.setI37(parseFloat($(I37).autoNumericGet()));
-                }
+
+                obj.setI37(0);
+
                 if (I39.val() == '') {
                     obj.setI39(0);
                 } else {
@@ -2673,6 +2750,11 @@
                 } else {
                     obj.setD45(parseFloat($(D45).autoNumericGet()));
                 }
+                if (REFINANCE_REPAYMENT_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_REPAYMENT_BAY(0);
+                } else {
+                    obj.setREFINANCE_REPAYMENT_BAY(parseFloat($(REFINANCE_REPAYMENT_BAYTextBox).autoNumericGet()));
+                }
                 if (D13.val() == '') {
                     obj.setD13(0);
                 } else {
@@ -2780,7 +2862,7 @@
                 obj.setI44(0);
                 obj.setI45(0);
                 obj.setI46(0);
-  
+
                 obj.setD8(0);
                 obj.setD9(0);
                 obj.setD10(0);
@@ -2811,6 +2893,9 @@
                 obj.setD43(0);
                 obj.setD44(0);
                 obj.setD45(0);
+
+                obj.setREFINANCE_REPAYMENT_BAY(0);
+
                 obj.setD13(0);
                 obj.setF10(0);
                 obj.setF15(0);
@@ -2829,13 +2914,13 @@
 
                 obj.setRATE(0);
                 obj.setWORKING_CAPITAL(0);
-       
+
 
                 INPUT_EL.val(0); // กำหนดให้ filed input default เป็น 0
                 CALCULATE_EL.val(0); // // กำหนดให้ filed calculate default เป็น 0
 
 
-                
+
                 H25.val(100);
                 // *** สำคัญ***  ค่า rate default ในตาราง ถ้าเป็น 8% จะต้องเก็บเป็น 0.08
                 D29.val(RATE_TABLE.val() * 100); // กำหนดให้อัตราดอกเบี้ยเริ่มต้นมี่ค่าเท่ากับ default
@@ -2921,7 +3006,7 @@
         function showErrorDialog(t) {
             $("#dialog").dialog({
                 autoOpen: true,
-                position: [350, 940],
+                position: [350, 1040],
                 modal: "true",
                 height: "auto !important",
                 buttons: {
@@ -2939,7 +3024,7 @@
             $("#dialog .msg").text(t).addClass("ui-state-highlight");
             $("#dialog").dialog({
                 autoOpen: true,
-                position: [350, 940],
+                position: [350, 1040],
                 modal: "true",
                 height: "auto !important",
                 title: "Complete",
@@ -2993,7 +3078,7 @@
             if (D38.autoNumericGet() > 0) {
                 bValid = bValid && checkZero(D39, "ภาระผ่อนชำระต่อเดือน");
             }
-            if (D44.autoNumericGet() > 0) {
+            if (D45.autoNumericGet() > 0) {
                 bValid = bValid && checkZero(D45, " ภาระการผ่อนหนี้ Loan ที่ Refinance ");
             }
             if (I33.autoNumericGet() > 0) {
@@ -3012,11 +3097,11 @@
 
             if (parseFloat(D43.autoNumericGet()) > parseFloat(D32.autoNumericGet()) + parseFloat(D33.autoNumericGet())) {
                 bValid = false;
-                showErrorDialog('Refinance working capital มีค่ามากเกินไป');
+                showErrorDialog('Refinance working capital มีค่ามากเกินภาระหนี้กับ bank อื่น');
             }
             if (parseFloat(D44.autoNumericGet()) > parseFloat(D36.autoNumericGet()) + parseFloat(D38.autoNumericGet())) {
                 bValid = false;
-                showErrorDialog('Refinance Loan มีค่ามากเกินไป');
+                showErrorDialog('Refinance Loan มีค่ามากเกินไปหนี้สินที่มี');
             }
             if (parseFloat(D45.autoNumericGet()) > parseFloat(D44.autoNumericGet())) {
                 bValid = false;
@@ -3027,6 +3112,14 @@
                 showErrorDialog('ภาระการผ่อนหนี้ Loan มีค่ามากกว่า ภาระผ่อนรายเดือน');
             }
 
+            if (parseFloat(REFINANCE_WORKING_CAPITAL_BAYTextBox.autoNumericGet()) > parseFloat(D31.autoNumericGet())) {
+                bValid = false;
+                showErrorDialog('Refinance working capital bay มีค่ามากเกิน ภาระหนี้ bay');
+            }
+            if (parseFloat(REFINANCE_WORKING_LOAN_BAYTextBox.autoNumericGet()) > parseFloat(D34.autoNumericGet())) {
+                bValid = false;
+                showErrorDialog('Refinance Loan Bay มีค่ามากเกินหนี้สิน BAY');
+            }
             //}
 
             //        bValid = bValid && checkRegexp(name, /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter.");
@@ -3378,16 +3471,16 @@
                     </td>
                 </tr>
                 <tr>
-                            <td>
-                                สินทรัพย์หมุนเวียน อื่น ๆ
-                            </td>
-                            <td>
-                                <asp:TextBox ID="CURRENT_ASSET_OTHERTextBox" Width="85px" runat="server" Text='<%# Bind("CURRENT_ASSET_OTHER") %>' />
-                            </td>
-                            <td>
-                                บาท
-                            </td>
-                        </tr>
+                    <td>
+                        สินทรัพย์หมุนเวียน อื่น ๆ
+                    </td>
+                    <td>
+                        <asp:TextBox ID="CURRENT_ASSET_OTHERTextBox" Width="85px" runat="server" Text='<%# Bind("CURRENT_ASSET_OTHER") %>' />
+                    </td>
+                    <td>
+                        บาท
+                    </td>
+                </tr>
                 <tr>
                     <td class="style6">
                         เครื่องจักร / อุปกรณ์สำนักงาน
@@ -3451,7 +3544,15 @@
                 </tr>
                 <tr>
                     <td class="style36">
-                        <strong>หนี้สิน ของกิจการ (คำนวณที่เรท)</strong>
+                        <strong>หนี้สิน ของกิจการ</strong></td>
+                    <td class="style9">
+                        &nbsp;</td>
+                    <td class="style37">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="style36">
+                       อัตราดอกเบี้ยของกิจการ
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="CALCULATE_RATETextBox" ToolTip="D29: คำนวณที่เรท" CELL="D29" runat="server"
@@ -3607,49 +3708,87 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="style6" colspan="3">
-                        <strong>เฉพาะการขออนุัมัติครั้งนี้มีการ Refinance </strong>
-                        &nbsp;
-                        &nbsp;
-                    </td>
+                    <td class="style38" colspan="3">
+                        <strong>เฉพาะการขออนุัมัติครั้งนี้มีการ Refinance </strong>&nbsp;&nbsp; &nbsp;&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="style6">
-                        Refinance Working Capital 
-                        <br />
-                        จากสถาบันอื่น
-                    </td>
-                    <td class="style9">
-                        <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_OTHERTextBox" runat="server" Width="85px"
-                            ToolTip="D43: Refinance Working Capital จากสถาบันอื่น" CELL="D43" Text='<%# Bind("REFINANCE_WORKING_CAPITAL_OTHER") %>' />
-                    </td>
-                    <td class="style37">
-                        บาท
-                    </td>
+                        <td>
+                            Refinance Working Capital
+                            <br />
+                            จากสถาบันอื่น
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_OTHERTextBox" runat="server" Width="85px"
+                                ToolTip="D43: Refinance Working Capital จากสถาบันอื่น" CELL="D43" Text='<%# Bind("REFINANCE_WORKING_CAPITAL_OTHER") %>' />
+                        </td>
+                        <td class="style5">
+                            บาท
+                        </td>
                 </tr>
                 <tr>
-                    <td class="style6">
-                        Refinance Loan จากสถาบันอื่น
-                    </td>
-                    <td class="style9">
-                        <asp:TextBox ID="REFINANCE_WORKING_LOAN_OTHERTextBox" runat="server" Width="85px"
-                            ToolTip="D44: Refinance Loan จากสถาบันอื่น" CELL="D44" Text='<%# Bind("REFINANCE_WORKING_LOAN_OTHER") %>' />
-                    </td>
-                    <td class="style37">
-                        บาท
-                    </td>
+                        <td>
+                            Refinance Loan จากสถาบันอื่น
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_WORKING_LOAN_OTHERTextBox" runat="server" Width="85px"
+                                ToolTip="D44: Refinance Loan จากสถาบันอื่น" CELL="D44" Text='<%# Bind("REFINANCE_WORKING_LOAN_OTHER") %>' />
+                        </td>
+                        <td class="style5">
+                            บาท
+                        </td>
                 </tr>
                 <tr>
-                    <td class="style6">
-                        ภาระการผ่อนหนี้ Loan ที่ Refinance
-                    </td>
-                    <td class="style9">
-                        <asp:TextBox ID="REFINANCE_REPAYMENTTextBox" ToolTip="D45: ภาระการผ่อนหนี้ Loan ที่ Refinance"
-                            Width="85px" CELL="D45" runat="server" Text='<%# Bind("REFINANCE_REPAYMENT") %>' />
-                    </td>
-                    <td class="style37">
-                        บาท/เดือน
-                    </td>
+                        <td>
+                            ภาระการผ่อนหนี้ Loan ที่ Refinance
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_REPAYMENTTextBox" ToolTip="D45: ภาระการผ่อนหนี้ Loan ที่ Refinance"
+                                Width="85px" CELL="D45" runat="server" Text='<%# Bind("REFINANCE_REPAYMENT") %>' />
+                        </td>
+                        <td class="style5">
+                            บาท/เดือน
+                        </td>
+                </tr>
+                <tr>
+                        <td colspan="3">
+                            <strong>เฉพาะการขออนุัมัติครั้งนี้มีการ Refinance กับ Bay</strong> &nbsp; </td>
+                </tr>
+                <tr>
+                        <td>
+                            Refinance Working Capital
+                            <br />
+                            กับ Bay
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_BAYTextBox" runat="server" Width="85px"
+                                ToolTip="" />
+                        </td>
+                        <td class="style5">
+                            บาท
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                            Refinance Loan กับ Bay
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_WORKING_LOAN_BAYTextBox" runat="server" Width="85px" ToolTip=""
+                                CELL="" />
+                        </td>
+                        <td class="style5">
+                            บาท
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                            ภาระการผ่อนหนี้ Loan ที่ Refinance
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_REPAYMENT_BAYTextBox" ToolTip="" Width="85px" runat="server"></asp:TextBox>
+                        </td>
+                        <td class="style5">
+                            บาท/เดือน
+                        </td>
                 </tr>
                 <tr>
                     <td class="style35">
@@ -3676,7 +3815,8 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        CBD : Non Core Asset</td>
+                        CBD : Non Core Asset
+                    </td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_BTextBox" ToolTip="I40: ราคาประเมินหลักทรัพย์ Zone B"
                             Width="85px" CELL="I40" runat="server" Text='<%# Bind("APPRAISAL_VALUE_ZONE_B") %>' />
@@ -3687,7 +3827,8 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        CBD : Land</td>
+                        CBD : Land
+                    </td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_CTextBox" ToolTip="I41: ราคาประเมินหลักทรัพย์ Zone C"
                             Width="85px" CELL="I41" runat="server" />
@@ -3702,7 +3843,7 @@
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_DTextBox" ToolTip="I42: ราคาประเมินหลักทรัพย์ Zone D"
-                            Width="85px" CELL="I42" runat="server"  />
+                            Width="85px" CELL="I42" runat="server" />
                     </td>
                     <td class="style37">
                         บาท
@@ -3710,10 +3851,11 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        Not CBD :Non Core Asset</td>
+                        Not CBD :Non Core Asset
+                    </td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_ETextBox" ToolTip="I43: ราคาประเมินหลักทรัพย์ Zone E"
-                            Width="85px" CELL="I43" runat="server"/>
+                            Width="85px" CELL="I43" runat="server" />
                     </td>
                     <td class="style37">
                         บาท
@@ -3721,23 +3863,27 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        Not CBD :Land</td>
+                        Not CBD :Land
+                    </td>
                     <td class="style9">
                         <asp:TextBox ID="APPRAISAL_VALUE_ZONE_FTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone F"
                             Width="85px" runat="server" />
                     </td>
                     <td class="style37">
-                        บาท</td>
+                        บาท
+                    </td>
                 </tr>
                 <tr>
                     <td class="style35">
-                        &nbsp;</td>
+                        &nbsp;
+                    </td>
                     <td class="style9">
-                        <asp:TextBox ID="APPRAISAL_VALUE_ZONE_GTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone G"  Text="0"
-                            Width="85px"  runat="server" />
+                        <asp:TextBox ID="APPRAISAL_VALUE_ZONE_GTextBox" ToolTip="ราคาประเมินหลักทรัพย์ Zone G"
+                            Text="0" Width="85px" runat="server" />
                     </td>
                     <td class="style37">
-                        &nbsp;</td>
+                        &nbsp;
+                    </td>
                 </tr>
                 <tr>
                     <td class="style35">
@@ -3753,13 +3899,15 @@
                 </tr>
                 <tr>
                     <td class="style35">
-                        บสยคำประกันรวม</td>
+                        บสยคำประกันรวม
+                    </td>
                     <td class="style9">
-                        <asp:TextBox ID="TCG_GUARANTEETextBox" ToolTip="บสยค้ำประกัน"
-                            Width="85px" runat="server" Text='<%# Bind("TCG_GUARANTEE") %>' />
+                        <asp:TextBox ID="TCG_GUARANTEETextBox" ToolTip="บสยค้ำประกัน" Width="85px" runat="server"
+                            Text='<%# Bind("TCG_GUARANTEE") %>' />
                     </td>
                     <td class="style37">
-                        บาท</td>
+                        บาท
+                    </td>
                 </tr>
                 <tr>
                     <td class="style35">
@@ -3774,37 +3922,147 @@
                             ToolTip="D16: Default Margin" Width="85px" />
                     </td>
                 </tr>
-                <tr>
-                    <td class="style35">
-                        &nbsp;</td>
-                    <td class="style9">
-                        &nbsp;</td>
-                    <td class="style37">
-                        &nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="style35">
-                        &nbsp;</td>
-                    <td class="style9">
-                        &nbsp;</td>
-                    <td class="style37">
-                        &nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="style35">
-                        &nbsp;</td>
-                    <td class="style9">
-                        &nbsp;</td>
-                    <td class="style37">
-                        &nbsp;</td>
-                </tr>
             </table>
+            <div id="tab4">
+                <table width="100%">
+                    <tr>
+                        <td colspan="4">
+                            <span class="ui-state-highlight"><strong>วงเงินสินเชื่อที่ขออนุมัติครั้งนี้ </strong>
+                            </span>&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="width: 120px; height: 15px;">Working Capital</span></td>
+                        <td>
+                            <asp:TextBox ID="WORKING_CAPITALTextBox" ToolTip="I33: WORKING CAPITAL" CELL="I33"
+                                Width="85px" runat="server" Text='<%# Bind("WORKING_CAPITAL") %>' />
+                        </td>
+                        <td class="style5">
+                            บาท</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ดอกเบี้ย Working Capital</td>
+                        <td>
+                            <asp:TextBox ID="INTEREST_RATE_PERCENTTextBox" ToolTip="M33: อัตราดอกเบี้ย"
+                                CELL="M33" runat="server" Text='<%# Bind("INTEREST_RATE_PERCENT") %>' Width="45px" />
+                        </td>
+                        <td class="style5">
+                            %
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="width: 120px">Loan</span></td>
+                        <td>
+                            <asp:TextBox ID="LOANTextBox" runat="server" ToolTip="I34: LOAN" CELL="I34" Width="85px" />
+                        </td>
+                        <td class="style5">
+                            บาท</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ดอกเบี้ย Loan</td>
+                        <td>
+                            <asp:TextBox ID="INTEREST_RATE_PERCENT_USEDTextBox" ToolTip="M34: อัตราดอกเบี้ย"
+                                CELL="M34" runat="server" Text='<%# Bind("INTEREST_RATE_PERCENT_USED") %>' Width="45px" />
+                        </td>
+                        <td class="style5">
+                            %</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            อายุสัญญา Loan</td>
+                        <td>
+                            <asp:TextBox ID="CONTRACT_YEARTextBox" runat="server" ToolTip="O34: อายุสัญญา"
+                                Width="30" CELL="O34" Text='<%# Bind("CONTRACT_YEAR") %>' />
+                        </td>
+                        <td class="style5">
+                            ปี
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            วงเงินL/G&amp;AVAL(Non-cash)
+                        </td>
+                        <td>
+                            <asp:TextBox ID="LG_AVALTextBox" runat="server" ToolTip="I35: วงเงิน" CELL="I35"
+                                Width="85px" Text='<%# Bind("LG_AVAL") %>' />
+                        </td>
+                        <td class="style5">
+                            บาท</td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            สินทรัพย์เพิ่มจากการให้สินเชื่อ
+                        </td>
+                        <td class="style27">
+                            <asp:TextBox ID="ASSETS_INCREASE_LOANTextBox" ToolTip="I36:สินทรัพย์เพิ่มจากการให้สินเชื่อ"
+                                Width="85px" CELL="I36" runat="server" Text='' />
+                        </td>
+                        <td class="style5">
+                            บาท&nbsp;</td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;</td>
+                        <td class="style27">
+                            &nbsp;</td>
+                        <td class="style5">
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            &nbsp;
+                            <asp:Button ID="BtnInsert" runat="server" Text="Insert/Save Data" OnClientClick="return checkValidAll()"
+                                class="saveButton" Height="30px" Width="200px" />&nbsp;<asp:Button ID="BtnUpdate"
+                                    runat="server" Text="Update Data" OnClientClick="return checkValidAll()" class="saveButton"
+                                    Height="30px" Width="200px" />&nbsp;&nbsp; &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td class="style5">
+                            &nbsp;
+                        </td>
+                        <td class="style31">
+                            &nbsp;
+                        </td>
+                    </tr>
+                </table>
+                <div id="divSave">
+                    &nbsp &nbsp</div>
+            </div>
         </div>
         <div id="tab2">
             <table style="bgcolor: #FFFFCC">
                 <tr>
                     <td class="style13">
-                        <strong class="ui-state-highlight">สมมุติฐานงบการเงิน</strong>
+                        <strong class="ui-state-highlight">มมุติฐานงบการเงิน</strong>
                     </td>
                     <td class="style28">
                         &nbsp;
@@ -3908,18 +4166,38 @@
                     </td>
                 </tr>
                 <tr>
-                     <td class="style30">
-                            สินทรัพย์หมุนเวียนอื่น ๆ</td>
-                        <td class="style28">
-                                <asp:TextBox ID="CURRENT_ASSET_OTHER_CALTextBox" Width="85px" runat="server" 
-                                Text='<%# Bind("CURRENT_ASSET_OTHER_CAL") %>' />
-                        </td>
-                        <td class="style33">
-                            &nbsp;</td>
-                        <td class="style29">
-                            &nbsp;</td>
-                        <td class="style34">
-                            &nbsp;</td>
+                    <td class="style30">
+                        สินทรัพย์หมุนเวียนอื่น ๆ
+                    </td>
+                    <td class="style28">
+                        <asp:TextBox ID="CURRENT_ASSET_OTHER_CALTextBox" Width="85px" runat="server" Text='<%# Bind("CURRENT_ASSET_OTHER_CAL") %>' />
+                    </td>
+                    <td class="style33">
+                        &nbsp;
+                    </td>
+                    <td class="style29">
+                        &nbsp;
+                    </td>
+                    <td class="style34">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style30">
+                        เงินทุนหมุนเวียนเกิดใหม่
+                    </td>
+                    <td class="style28">
+                        <asp:TextBox ID="NEW_WORKING_CAPITAL_CALTextBox" Width="85px" runat="server" />
+                    </td>
+                    <td class="style33">
+                        &nbsp;
+                    </td>
+                    <td class="style29">
+                        &nbsp;
+                    </td>
+                    <td class="style34">
+                        &nbsp;
+                    </td>
                 </tr>
                 <tr>
                     <td class="style30">
@@ -4198,7 +4476,7 @@
                     </td>
                     <td class="style18" colspan="2">
                         <strong>คำนวณวงเงินสินเชื่อที่ยัง<br />
-                        สามารถอนุมัติเพิ่มได้</strong>
+                            สามารถอนุมัติเพิ่มได้</strong>
                     </td>
                 </tr>
                 <tr>
@@ -4393,172 +4671,9 @@
                 </tr>
             </table>
         </div>
-        <div id="tab4">
-            <table width="100%">
-                <tr>
-                    <td colspan="4">
-                        <span class="ui-state-highlight"><strong>วงเงินสินเชื่อที่ขออนุมัติครั้งนี้ </strong>
-                        </span>&nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        WORKING CAPITAL
-                    </td>
-                    <td class="style27">
-                        <asp:TextBox ID="WORKING_CAPITALTextBox" ToolTip="I33: WORKING CAPITAL" CELL="I33"
-                            Width="85px" runat="server" Text='<%# Bind("WORKING_CAPITAL") %>' />
-                    </td>
-                    <td>
-                        อัตราดอกเบี้ย
-                        <asp:TextBox ID="INTEREST_RATE_PERCENTTextBox" ToolTip="M33: อัตราดอกเบี้ย" CELL="M33"
-                            runat="server" Text='<%# Bind("INTEREST_RATE_PERCENT") %>' Width="45px" />
-                        %
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        LOAN
-                    </td>
-                    <td class="style27">
-                        <asp:TextBox ID="LOANTextBox" runat="server" ToolTip="I34: LOAN" CELL="I34" Width="85px" />
-                    </td>
-                    <td>
-                        อัตราดอกเบี้ย
-                        <asp:TextBox ID="INTEREST_RATE_PERCENT_USEDTextBox" ToolTip="M34: อัตราดอกเบี้ย"
-                            CELL="M34" runat="server" Text='<%# Bind("INTEREST_RATE_PERCENT_USED") %>' Width="45px" />
-                        %
-                    </td>
-                    <td class="style29">
-                        อายุสัญญา<asp:TextBox ID="CONTRACT_YEARTextBox" runat="server" ToolTip="O34: อายุสัญญา"
-                            Width="30" CELL="O34" Text='<%# Bind("CONTRACT_YEAR") %>' />
-                        ปี
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        วงเงินL/G&amp;AVAL(Non-cash)
-                    </td>
-                    <td>
-                        <asp:TextBox ID="LG_AVALTextBox" runat="server" ToolTip="I35: วงเงิน" CELL="I35"
-                            Width="85px" Text='<%# Bind("LG_AVAL") %>' />
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        สินทรัพย์เพิ่มจากการให้สินเชื่อ
-                    </td>
-                    <td class="style27">
-                        <asp:TextBox ID="ASSETS_INCREASE_LOANTextBox" ToolTip="I36:สินทรัพย์เพิ่มจากการให้สินเชื่อ"
-                            Width="85px" CELL="I36" runat="server" Text='' />
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        เงินฝาก/พันธบัตร บุคคลอื่นจำนำ
-                    </td>
-                    <td>
-                        <asp:TextBox ID="BOND_DEPOSIT_PLEDGE_PERSONTextBox" ToolTip="I37: เงินฝาก / พันธบัตร บุคคลอื่นจำนำ (นำไปคำนวณในงบการเงิน)"
-                            Width="85px" CELL="I37" runat="server" Text='<%# Bind("BOND_DEPOSIT_PLEDGE_PERSON") %>' />
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        % ส่วนของเจ้าของ
-                    </td>
-                    <td>
-                        <asp:TextBox ID="OWNERS_EQUITY_PERCENT_INPUTTextBox" ToolTip="กระทบ % ส่วนของเจ้าของ"
-                            Width="35px" CELL="I36" runat="server"  />
-                        %
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td class="style31">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-                    <td class="style31">
-                        &nbsp;</td>
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-                    <td class="style31">
-                        &nbsp;</td>
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-                    <td class="style31">
-                        &nbsp;</td>
-                </tr>
-            </table>
-            <div id="divSave">
-                <asp:Button ID="BtnInsert" runat="server" Text="Insert/Save Data" OnClientClick="return checkValidAll()"
-                    class="saveButton" Height="30px" Width="200px" />&nbsp
-                <asp:Button ID="BtnUpdate" runat="server" Text="Update Data" OnClientClick="return checkValidAll()"
-                    class="saveButton" Height="30px" Width="200px" />&nbsp ** บันทึกข้อมูลที่นี่
-                **</div>
-        </div>
         <div id="accordion">
         </div>
     </div>
     </form>
 </body>
-</html> 
+</html>

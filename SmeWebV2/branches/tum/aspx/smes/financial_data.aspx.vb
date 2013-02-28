@@ -126,7 +126,8 @@ Partial Class aspx_smes_FINANCIAL_DATA
                 If IsDBNull(reader("LOAN")) = False Then LOANTextBox.Text = String.Format("{0:n0}", reader("LOAN"))
                 If IsDBNull(reader("LG_AVAL")) = False Then LG_AVALTextBox.Text = String.Format("{0:n0}", reader("LG_AVAL"))
                 If IsDBNull(reader("ASSETS_INCREASE_LOAN")) = False Then ASSETS_INCREASE_LOANTextBox.Text = String.Format("{0:n0}", reader("ASSETS_INCREASE_LOAN"))
-                If IsDBNull(reader("BOND_DEPOSIT_PLEDGE_PERSON")) = False Then BOND_DEPOSIT_PLEDGE_PERSONTextBox.Text = String.Format("{0:n0}", reader("BOND_DEPOSIT_PLEDGE_PERSON"))
+                ' แก้ไขไม่ต้องมี ฟิว พันธบัตร 27/2/2556
+                'If IsDBNull(reader("BOND_DEPOSIT_PLEDGE_PERSON")) = False Then BOND_DEPOSIT_PLEDGE_PERSONTextBox.Text = String.Format("{0:n0}", reader("BOND_DEPOSIT_PLEDGE_PERSON"))
                 If IsDBNull(reader("APPRAISAL_VALUE_ZONE_A")) = False Then APPRAISAL_VALUE_ZONE_ATextBox.Text = String.Format("{0:n0}", reader("APPRAISAL_VALUE_ZONE_A"))
                 If IsDBNull(reader("APPRAISAL_VALUE_ZONE_B")) = False Then APPRAISAL_VALUE_ZONE_BTextBox.Text = String.Format("{0:n0}", reader("APPRAISAL_VALUE_ZONE_B"))
                 If IsDBNull(reader("APPRAISAL_VALUE_ZONE_C")) = False Then APPRAISAL_VALUE_ZONE_CTextBox.Text = String.Format("{0:n0}", reader("APPRAISAL_VALUE_ZONE_C"))
@@ -169,7 +170,7 @@ Partial Class aspx_smes_FINANCIAL_DATA
                 If IsDBNull(reader("WORKING_CAPITAL_NEED_CAL")) = False Then WORKING_CAPITAL_NEED_CALTextBox.Text = String.Format("{0:n0}", reader("WORKING_CAPITAL_NEED_CAL"))
                 If IsDBNull(reader("LOAN_NEED_CAL")) = False Then LOAN_NEED_CALTextBox.Text = String.Format("{0:n0}", reader("LOAN_NEED_CAL"))
                 If IsDBNull(reader("OWNERS_EQUITY_PERCENT_CAL")) = False Then OWNERS_EQUITY_PERCENT_CALTextBox.Text = String.Format("{0:n2}", reader("OWNERS_EQUITY_PERCENT_CAL"))
-                OWNERS_EQUITY_PERCENT_INPUTTextBox.Text = OWNERS_EQUITY_PERCENT_CALTextBox.Text
+
                 If IsDBNull(reader("OWNERS_EQUITY_CAL")) = False Then OWNERS_EQUITY_CALTextBox.Text = String.Format("{0:n0}", reader("OWNERS_EQUITY_CAL"))
                 If IsDBNull(reader("FIXED_INTEREST_PERCENT_CAL")) = False Then FIXED_INTEREST_PERCENT_CALTextBox.Text = String.Format("{0:n2}", reader("FIXED_INTEREST_PERCENT_CAL"))
                 If IsDBNull(reader("PAYMENT_PERIOD_CAL")) = False Then PAYMENT_PERIOD_CALTextBox.Text = String.Format("{0:n0}", reader("PAYMENT_PERIOD_CAL"))
@@ -188,6 +189,11 @@ Partial Class aspx_smes_FINANCIAL_DATA
                 If IsDBNull(reader("LOAN_DEFAULT")) = False Then LOAN_DEFAULTTextBox.Text = String.Format("{0:n0}", reader("LOAN_DEFAULT"))
                 If IsDBNull(reader("WORKING_CAPITAL_DEFAULT_APPROVE")) = False Then WORKING_CAPITAL_DEFAULT_APPROVETextBox.Text = String.Format("{0:n0}", reader("WORKING_CAPITAL_DEFAULT_APPROVE"))
                 If IsDBNull(reader("LOAN_DEFAULT_APPROVE")) = False Then LOAN_DEFAULT_APPROVETextBox.Text = String.Format("{0:n0}", reader("LOAN_DEFAULT_APPROVE"))
+
+                If IsDBNull(reader("REFINANCE_WORKING_CAPITAL_BAY")) = False Then REFINANCE_WORKING_CAPITAL_BAYTextBox.Text = String.Format("{0:n0}", reader("REFINANCE_WORKING_CAPITAL_BAY"))
+                If IsDBNull(reader("REFINANCE_WORKING_LOAN_BAY")) = False Then REFINANCE_WORKING_LOAN_BAYTextBox.Text = String.Format("{0:n0}", reader("REFINANCE_WORKING_LOAN_BAY"))
+                If IsDBNull(reader("REFINANCE_REPAYMENT_BAY")) = False Then REFINANCE_REPAYMENT_BAYTextBox.Text = String.Format("{0:n0}", reader("REFINANCE_REPAYMENT_BAY"))
+                If IsDBNull(reader("NEW_WORKING_CAPITAL_CAL")) = False Then NEW_WORKING_CAPITAL_CALTextBox.Text = String.Format("{0:n0}", reader("NEW_WORKING_CAPITAL_CAL"))
 
 
             End While
@@ -1180,11 +1186,9 @@ Partial Class aspx_smes_FINANCIAL_DATA
         Else
             sqlCmd.Parameters.AddWithValue("ASSETS_INCREASE_LOAN", ToDecimal(ASSETS_INCREASE_LOANTextBox.Text))
         End If
-        If BOND_DEPOSIT_PLEDGE_PERSONTextBox.Text = "" Then
-            sqlCmd.Parameters.AddWithValue("BOND_DEPOSIT_PLEDGE_PERSON", 0)
-        Else
-            sqlCmd.Parameters.AddWithValue("BOND_DEPOSIT_PLEDGE_PERSON", ToDecimal(BOND_DEPOSIT_PLEDGE_PERSONTextBox.Text))
-        End If
+        ' แก้ไขให้ส่งค่า 0 สำหรับพันธบัตร 27/2/2556
+        sqlCmd.Parameters.AddWithValue("BOND_DEPOSIT_PLEDGE_PERSON", 0)
+
         If APPRAISAL_VALUE_ZONE_ATextBox.Text = "" Then
             sqlCmd.Parameters.AddWithValue("APPRAISAL_VALUE_ZONE_A", 0)
         Else
@@ -1526,6 +1530,31 @@ Partial Class aspx_smes_FINANCIAL_DATA
         Else
             sqlCmd.Parameters.AddWithValue("CURRENT_ASSET_OTHER", ToDecimal(CURRENT_ASSET_OTHERTextBox.Text))
         End If
+
+        If REFINANCE_WORKING_CAPITAL_BAYTextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("REFINANCE_WORKING_CAPITAL_BAY", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("REFINANCE_WORKING_CAPITAL_BAY", ToDecimal(REFINANCE_WORKING_CAPITAL_BAYTextBox.Text))
+        End If
+
+        If REFINANCE_WORKING_LOAN_BAYTextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("REFINANCE_WORKING_LOAN_BAY", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("REFINANCE_WORKING_LOAN_BAY", ToDecimal(REFINANCE_WORKING_LOAN_BAYTextBox.Text))
+        End If
+
+        If REFINANCE_REPAYMENT_BAYTextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("REFINANCE_REPAYMENT_BAY", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("REFINANCE_REPAYMENT_BAY", ToDecimal(REFINANCE_REPAYMENT_BAYTextBox.Text))
+        End If
+
+        If NEW_WORKING_CAPITAL_CALTextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("NEW_WORKING_CAPITAL_CAL", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("NEW_WORKING_CAPITAL_CAL", ToDecimal(NEW_WORKING_CAPITAL_CALTextBox.Text))
+        End If
+
 
         sqlCmd.ExecuteNonQuery()
 
