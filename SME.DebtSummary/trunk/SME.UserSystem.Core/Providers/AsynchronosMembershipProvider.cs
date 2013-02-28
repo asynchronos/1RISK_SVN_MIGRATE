@@ -1,7 +1,13 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.Objects;
+using System.Linq;
 using System.Web.Security;
 using log4net;
 using SME.UserSystem.Core.AD;
+using SME.UserSystem.Core.DAL;
+using SME.UserSystem.Core.Exceptions;
 
 namespace SME.UserSystem.Core.Providers
 {
@@ -154,7 +160,7 @@ namespace SME.UserSystem.Core.Providers
 
         public override bool ValidateUser(string username, string password)
         {
-            //bool result = false;
+            bool result = false;
 
             //use own database
             //using (Bay01_Entities en = new Bay01_Entities())
@@ -178,8 +184,87 @@ namespace SME.UserSystem.Core.Providers
             //}
 
             LdapAuthentication adAuth = new LdapAuthentication();
+            bool adResult = adAuth.IsAuthenticated(username, password);
 
-            return adAuth.IsAuthenticated(username, password);
+            if (adResult)
+            {
+                DateTime currentDate = new DateTime(DateTime.Now.Year,
+                                        DateTime.Now.Month,
+                                        DateTime.Now.Day);
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IQueryable<USER_DATA> user = uow.UserData
+                        .FindBy(u => u.EMP_ID.Equals(username)
+                                && u.DEL_FLAG != true);
+
+                    log.Debug(((ObjectQuery)user).ToTraceString());
+
+                    //IUserProfileDTO profile = uow.GetUserProfileDTO(username, ApplicationName);
+
+                    if (user.FirstOrDefault<USER_DATA>() != null)
+                    {
+                        //check expire date (All App)
+                        if (user.FirstOrDefault<USER_DATA>().EXPIRE_DATE != null
+                            && user.FirstOrDefault<USER_DATA>().EXPIRE_DATE >= currentDate)
+                        {
+                            throw new UserInfoException
+                                    ("You account is expired on "
+                                    + user.FirstOrDefault<USER_DATA>()
+                                    .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
+                        }
+
+                        //get profile
+                        APP_PROFILE profile = user.FirstOrDefault<USER_DATA>()
+                            .APP_PROFILE.Where(p => p.APPLICATION.APP_DESC == ApplicationName)
+                            .FirstOrDefault();
+
+                        //get categoryList
+                        List<CATE_AND_EMP> categoryList = user.FirstOrDefault<USER_DATA>()
+                        .CATE_AND_EMP.Where(cae => cae.DEL_FLAG.Value != true
+                            && cae.CATEGORY.CATE_AND_APP
+                                .Any(caa => caa.APP_KEY == profile.APP_KEY))
+                        .ToList<CATE_AND_EMP>();
+
+                        if (profile != null) //&& profile.APPLICATION.APP_DESC.Equals(ApplicationName)
+                        {
+                            if (categoryList != null
+                                && categoryList.Count >= 1)
+                            {
+                                result = true;
+
+                                profile.LAST_ACTIVITY_DATE = DateTime.Now;
+                                profile.LAST_ACTIVITY = "Sign On.";
+                                profile.IS_AUTHENTICATED = true;
+
+                                user.FirstOrDefault<USER_DATA>()
+                                    .LAST_SIGN_ON_DATE = DateTime.Now;
+
+                                //update profile
+                                uow.Save();
+                            }
+                            else
+                            {
+                                throw new UserInfoException
+                                    ("You don't have any roles on application "
+                                    + ApplicationName + ".");
+                            }
+                        }
+                        else
+                        {
+                            throw new UserInfoException
+                                ("You don't have permission to use application "
+                                + ApplicationName + ".");
+                        }
+                    }
+                    else
+                    {
+                        throw new UserInfoException
+                            ("Can't find user data " + username + ".");
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }
