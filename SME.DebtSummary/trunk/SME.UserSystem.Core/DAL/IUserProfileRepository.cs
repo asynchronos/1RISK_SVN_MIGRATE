@@ -1,5 +1,5 @@
 ﻿using System;
-using SME.UserSystem.Core.Model;
+using SME.UserSystem.Core.Profile;
 
 namespace SME.UserSystem.Core.DAL
 {
@@ -7,11 +7,11 @@ namespace SME.UserSystem.Core.DAL
     {
         void Save();
 
-        ProfileViewModel CreateProfileForUser(string username, string ApplicationName);
+        UserProfileBase CreateProfileForUser(string username, string ApplicationName);
 
-        ProfileViewModel GetUserProfile(string empId, string appDesc);
+        UserProfileBase GetUserProfile(string empId, string appDesc);
 
-        void UpdateUserProfile(ProfileViewModel profile, string appDesc);
+        void UpdateUserProfile(UserProfileBase profile, string appDesc);
 
         APP_PROFILE GetAppProfile(string empId, string appDesc);
 
