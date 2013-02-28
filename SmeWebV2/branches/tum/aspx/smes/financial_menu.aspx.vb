@@ -68,6 +68,7 @@ Partial Class smes_financial_menu
         If SMES_ID = "" Then  ' ถ้ายังไม่มีเลขให้ออกเลขก่อนที่ หน้า information
             aMain.Attributes.Add("onclick", "changeFrame('MAIN'," & TEMPLATE_ID & ",'');")
             aCKL.Visible = False
+            aCKLCM.Visible = False
             aCIF.Visible = False
             aCK.Visible = False
             aRM.Visible = False
@@ -93,6 +94,7 @@ Partial Class smes_financial_menu
                 Case 1
                     aMain.Attributes.Add("onclick", "changeFrame('MAIN'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCKL.Attributes.Add("onclick", "changeFrame('CKL'," & TEMPLATE_ID & "," & SMES_ID & ");")
+                    aCKLCM.Attributes.Add("onclick", "changeFrame('CKLCM'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCIF.Attributes.Add("onclick", "changeFrame('CIF'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCIF.Visible = True
 
@@ -101,6 +103,7 @@ Partial Class smes_financial_menu
 
                     aMain.Attributes.Add("onclick", "changeFrame('MAIN'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCKL.Attributes.Add("onclick", "changeFrame('CKL'," & TEMPLATE_ID & "," & SMES_ID & ");")
+                    aCKLCM.Attributes.Add("onclick", "changeFrame('CKLCM'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCIF.Attributes.Add("onclick", "changeFrame('CIF'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCK.Attributes.Add("onclick", "changeFrame('CK'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aRM.Attributes.Add("onclick", "changeFrame('RM'," & TEMPLATE_ID & "," & SMES_ID & ");")
@@ -111,6 +114,7 @@ Partial Class smes_financial_menu
                 Case 3
                     aMain.Attributes.Add("onclick", "changeFrame('MAIN'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCKL.Attributes.Add("onclick", "changeFrame('CKL'," & TEMPLATE_ID & "," & SMES_ID & ");")
+                    aCKLCM.Attributes.Add("onclick", "changeFrame('CKLCM'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCIF.Attributes.Add("onclick", "changeFrame('CIF'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCK.Attributes.Add("onclick", "changeFrame('CK'," & TEMPLATE_ID & "," & SMES_ID & ");")
 
@@ -120,6 +124,7 @@ Partial Class smes_financial_menu
                 Case 4
                     aMain.Attributes.Add("onclick", "changeFrame('MAIN'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCKL.Attributes.Add("onclick", "changeFrame('CKL'," & TEMPLATE_ID & "," & SMES_ID & ");")
+                    aCKLCM.Attributes.Add("onclick", "changeFrame('CKLCM'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCIF.Attributes.Add("onclick", "changeFrame('CIF'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCK.Attributes.Add("onclick", "changeFrame('CK'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aRM.Attributes.Add("onclick", "changeFrame('RM'," & TEMPLATE_ID & "," & SMES_ID & ");")
@@ -130,6 +135,7 @@ Partial Class smes_financial_menu
 
                     aMain.Attributes.Add("onclick", "changeFrame('MAIN'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCKL.Attributes.Add("onclick", "changeFrame('CKL'," & TEMPLATE_ID & "," & SMES_ID & ");")
+                    aCKLCM.Attributes.Add("onclick", "changeFrame('CKLCM'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCIF.Attributes.Add("onclick", "changeFrame('CIF'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCK.Attributes.Add("onclick", "changeFrame('CK'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aRM.Attributes.Add("onclick", "changeFrame('RM'," & TEMPLATE_ID & "," & SMES_ID & ");")
@@ -143,6 +149,7 @@ Partial Class smes_financial_menu
 
                     aMain.Attributes.Add("onclick", "changeFrame('MAIN'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCKL.Attributes.Add("onclick", "changeFrame('CKL'," & TEMPLATE_ID & "," & SMES_ID & ");")
+                    aCKLCM.Attributes.Add("onclick", "changeFrame('CKLCM'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCIF.Attributes.Add("onclick", "changeFrame('CIF'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aCK.Attributes.Add("onclick", "changeFrame('CK'," & TEMPLATE_ID & "," & SMES_ID & ");")
                     aRM.Attributes.Add("onclick", "changeFrame('RM'," & TEMPLATE_ID & "," & SMES_ID & ");")
@@ -163,7 +170,7 @@ Partial Class smes_financial_menu
                 aCP.Visible = False
             End If
 
-            If TEMPLATE_ID >= 3 Then
+            If (TEMPLATE_ID = 3) Or (TEMPLATE_ID = 4) Or (TEMPLATE_ID = 5) Then
                 ' เป็น template 3x ไม่มี checklist และ compare
                 aCK.Visible = False
                 aCP.Visible = False

@@ -42,6 +42,8 @@ Partial Class smes_check_list
             Dim sql2 As String = "SME_S.P_SS_CHECK_LIST_SELECT_VALUE"
             cmd2.CommandType = CommandType.StoredProcedure
             cmd2.Parameters.AddWithValue("SMES_ID", Request.QueryString("SMES_ID"))
+            cmd2.Parameters.AddWithValue("SMES_TYPE", Request.QueryString("SMES_TYPE"))
+
             cmd2.CommandText = sql2
             Dim dt2 As DataTable = New DataTable()
             cmd2.ExecuteNonQuery()
@@ -255,6 +257,7 @@ Partial Class smes_check_list
         'Finally
         cnn.Close()
         'End Try
+
         Dim imgStr As String = Nothing
         Dim QG As String = Nothing
         Dim QT As String = Nothing
@@ -308,6 +311,7 @@ Partial Class smes_check_list
         ' ตัวแปรที่จำเป็นต้องมี
         Dim SMES_ID As String = SMES_IDTextBox.Text
         Dim TEMPLATE_ID As String = TemplateTextBox.Text
+        Dim SMES_TYPE As String = SMES_TYPETextBox.Text
 
         Dim result As String = ""
         Dim cnn As New SqlConnection
@@ -327,7 +331,7 @@ Partial Class smes_check_list
 
         Dim strInsert As String = ""
         ' ใส่ systax delete เพื่อลบของเก่าและinsert ของใหม่
-        strInsert = " DELETE FROM SME_S.CHECK_LIST_VALUE WHERE SMES_ID=" & SMES_ID & ";"
+        strInsert = " DELETE  FROM SME_S.CHECK_LIST_VALUE WHERE SMES_ID=" & SMES_ID & " AND SMES_TYPE=" & SMES_TYPE & ";"
 
         Dim idValue As String = ""
         Dim textValue As String = ""
@@ -338,13 +342,14 @@ Partial Class smes_check_list
                 'Response.Write("<br>nameCK" & dt.Rows(i).Item("CK_DETAIL_ID") & "=" & Request.Form("nameCK" & dt.Rows(i).Item("CK_DETAIL_ID")))
                 strInsert += " INSERT INTO  SME_S.CHECK_LIST_VALUE "
                 strInsert += "  VALUES (" + SMES_ID + ","
+                strInsert += SMES_TYPE + ","
                 strInsert += dt.Rows(i).Item("CK_DETAIL_ID").ToString + ","
                 strInsert += "'" + dt.Rows(i).Item("RESULT").ToString + "');"
             End If
 
         Next
 
-        Response.Write(strInsert)
+        'Response.Write(strInsert)
 
         Dim cmd2 As SqlCommand = New SqlCommand()
         cmd2.Connection = cnn
@@ -355,10 +360,14 @@ Partial Class smes_check_list
 
         cnn.Close()
 
-        Response.Redirect("check_list.aspx?SMES_ID=" & SMES_ID & "&TEMPLATE_ID=" & TEMPLATE_ID)
+        Response.Redirect("check_list.aspx?SMES_ID=" & SMES_ID & "&TEMPLATE_ID=" & TEMPLATE_ID & "&SMES_TYPE=" & SMES_TYPE)
     End Sub
 
     Protected Sub form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles form1.Load
+
+        SMES_IDTextBox.Text = Request.QueryString("SMES_ID")
+        TemplateTextBox.Text = Request.QueryString("TEMPLATE_ID")
+        SMES_TYPETextBox.Text = Request.QueryString("SMES_TYPE")
 
         If Page.IsPostBack = True Then
             ''MsgBox(Request.Form.Count)
@@ -370,13 +379,9 @@ Partial Class smes_check_list
 
             'Next
             clearResult()
-            SMES_IDTextBox.Text = Request.QueryString("SMES_ID")
-            TemplateTextBox.Text = Request.QueryString("TEMPLATE_ID")
             ShowCheckList()
         Else
             clearResult()
-            SMES_IDTextBox.Text = Request.QueryString("SMES_ID")
-            TemplateTextBox.Text = Request.QueryString("TEMPLATE_ID")
             ShowCheckList()
         End If
 
@@ -401,7 +406,7 @@ Partial Class smes_check_list
     Protected Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
 
 
-        Dim queryString As String = "check_list.aspx?SMES_ID=" & Request.QueryString("SMES_ID") & "&TEMPLATE_ID=" & Request.QueryString("TEMPLATE_ID")
+        Dim queryString As String = "check_list.aspx?SMES_ID=" & Request.QueryString("SMES_ID") & "&TEMPLATE_ID=" & Request.QueryString("TEMPLATE_ID") & "&SMES_TYPE=" & Request.QueryString("SMES_TYPE")
 
         Dim newWin As String = "window.open('" & queryString & "');"
         ClientScript.RegisterStartupScript(Me.GetType(), "pop", newWin, True)

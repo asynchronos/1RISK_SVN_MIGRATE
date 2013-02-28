@@ -147,6 +147,7 @@
     <form id="form1" runat="server">
     <div id="divRef">
         SMES_ID:<asp:TextBox ID="SMES_IDTextBox" runat="server" MaxLength="10" Width="30"></asp:TextBox>
+        TYPE:<asp:TextBox ID="SMES_TYPETextBox" runat="server" MaxLength="2" Width="10"></asp:TextBox>
         &nbsp;REF:&nbsp;<asp:TextBox ID="REF_IDTextBox" ToolTip="ref_id" runat="server" Width="100" />
         &nbsp;User:<asp:TextBox ID="USERTextBox" ToolTip="ref_id" runat="server" Width="100" />
         &nbsp;Template:<asp:TextBox ID="TemplateTextBox" ToolTip="TEMPLATE_ID" runat="server"

@@ -41,42 +41,49 @@
            // alert(page);
             //alert(template_id);
             //alert(smes_id);
+            var location;
+            var param;
 
-           if (page == 'MAIN') {
-                top.frames['mainFrame'].location = "financial_information.aspx" + "?TEMPLATE_ID=" + template_id + "&SMES_ID=" + smes_id;
-            }
-          
-           if (page == 'CKL') {
-                top.frames['mainFrame'].location = "check_list.aspx" + "?TEMPLATE_ID=" + template_id + "&SMES_ID=" + smes_id;
-            }
-     
-            else if (page == 'CIF') {
-                top.frames['mainFrame'].location = "financial_customer_ca.aspx" + "?TEMPLATE_ID=" + template_id + "&SMES_ID=" + smes_id;
-            }
-            else if (page == 'CK') {
-                top.frames['mainFrame'].location = "financial_checklist.aspx" + "?SMES_ID=" + smes_id;
-            }
-            else if (page == 'RM') {
-                var page
-                if (template_id >= 3) {
-                    page = "financial_data_input.aspx";
-                } else {
-                    page = "financial_data.aspx";
+            if (page == 'MAIN') {
+                location = "financial_information.aspx";
+                param ="?TEMPLATE_ID=" + template_id + "&SMES_ID=" + smes_id;
+            } else if (page == 'CKL') {
+                location = "check_list.aspx";
+                param = "?SMES_TYPE=1&TEMPLATE_ID=" + template_id + "&SMES_ID=" + smes_id;
+            } else if (page == 'CKLCM') {
+                location = "check_list.aspx";
+                param ="?SMES_TYPE=2&TEMPLATE_ID=" + template_id + "&SMES_ID=" + smes_id;
+            } else if (page == 'CIF') {
+                location = "financial_customer_ca.aspx";
+                param = "?TEMPLATE_ID=" + template_id + "&SMES_ID=" + smes_id;
+            }   else if (page == 'CK') {
+                location = "financial_checklist.aspx";
+                param = "?TEMPLATE_ID=" + template_id + "&SMES_ID=" + smes_id;
+            } else if (page == 'RM') {
+                  switch (template_id) {
+                      case 1: location = "financial_data.aspx"; break;
+                      case 2: location = "financial_data.aspx"; break;
+                      case 3: location = "financial_data_input.aspx"; break;
+                      case 4: location = "financial_data_input.aspx"; break;
+                      default: location = "financial_data.aspx"; break;
                 }
-                top.frames['mainFrame'].location = page + "?TEMPLATE_ID=" + template_id + "&SMES_TYPE=1&SMES_ID=" + smes_id;
+                  param = "?TEMPLATE_ID=" + template_id + "&SMES_TYPE=1&SMES_ID=" + smes_id;
+            } else if (page == 'CM') {
+                  switch (template_id) {
+                      case 1: location = "financial_data.aspx"; break;
+                      case 2: location = "financial_data.aspx"; break;
+                      case 3: location = "financial_data_input.aspx"; break;
+                      case 4: location = "financial_data_input.aspx"; break;
+                      default: location = "financial_data.aspx"; break;
+                  }
+                  param = "?TEMPLATE_ID=" + template_id + "&SMES_TYPE=2&SMES_ID=" + smes_id;
+            } else if (page=='CP') {
+                  location = "financial_compare.aspx" 
+                  param="?SMES_ID=" + smes_id;
             }
-            else if (page == 'CM') {
-                var page
-                if (template_id >= 3) {
-                    page = "financial_data_input.aspx";
-                } else {
-                    page = "financial_data.aspx";
-                }
-                top.frames['mainFrame'].location = page + "?TEMPLATE_ID=" + template_id + "&SMES_TYPE=2&SMES_ID=" + smes_id;
-            }
-            else if (page == 'CP') {
-                top.frames['mainFrame'].location = "financial_compare.aspx" + "?SMES_ID=" + smes_id;
-            }
+            
+            top.frames['mainFrame'].location = location + param;
+
 
         }
     </script>
@@ -86,7 +93,8 @@
     <div id="selectable">
         <ul id="navigation">
             <li><a id="aMain" href="#" runat="server">INFORMATION</a></li>
-            <li><a id="aCKL" href="#" runat="server">CHECK LIST</a></li>
+            <li><a id="aCKL" href="#" runat="server">RM CHECK LIST</a></li>
+            <li><a id="aCKLCM" href="#" runat="server">CM CHECK LIST</a></li>
             <li><a id="aCIF" href="#" runat="server">CUSTOMER</a></li>
             <li><a id="aCK" href="#" runat="server">RESULT</a></li>
             <li><a id="aRM" href="#" runat="server">RM FINANCIAL</a></li>
