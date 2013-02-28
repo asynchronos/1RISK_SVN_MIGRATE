@@ -75,7 +75,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var heightDiv = $(document).height();
-            $("#mainFrame", parent.document).height(600);  // กำหนด
+            $("#mainFrame", parent.document).height(heightDiv);  // กำหนด
             $("input[type=submit]").button();
         });
     </script>
@@ -217,7 +217,8 @@
             <asp:BoundField DataField="CIF" HeaderText="CIF" ReadOnly="true" />
             <asp:BoundField DataField="Name" HeaderText="Customer Name" ReadOnly="true" />
             <asp:BoundField DataField="CUSTOMER_TYPE_NAME" HeaderText="Customer Type" ReadOnly="true" />
-            <asp:BoundField DataField="AGE_RESULT" HeaderText="AGE" ReadOnly="true" />
+            <asp:BoundField DataField="AGE" HeaderText="AGE" ReadOnly="true" />
+           <asp:BoundField DataField="AGE_RESULT" HeaderText="AGE (RESULT)" ReadOnly="true" />
             <%--<asp:BoundField DataField="NATIONALITY_LIST_RESULT" HeaderText="Nationality" ReadOnly="true" />--%>
             <%--<asp:BoundField DataField="JURISTICT_LIST_RESULT" HeaderText="Juristict" ReadOnly="true" />--%>
             <asp:BoundField DataField="EXPERIENCE_RESULT" HeaderText="Experience" ReadOnly="true" />
