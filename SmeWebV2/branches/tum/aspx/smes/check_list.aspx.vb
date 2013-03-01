@@ -234,14 +234,14 @@ Partial Class smes_check_list
             ResultLabel.Text = "REJECT"
             ResultLabel.CssClass = "ui-state-error"
         ElseIf Result_S > 0 Then
-            ResultLabel.Text = "Go to SME-S"
+            ResultLabel.Text = "SME-S"
             ResultLabel.CssClass = "ui-state-s"
         ElseIf Result_O > 0 Then
-            ResultLabel.Text = "OUT OF SCOPE"
-            ResultLabel.CssClass = "ui-state-error"
+            ResultLabel.Text = "SME-SS (Out of scope)"
+            ResultLabel.CssClass = "ui-state-o"
         ElseIf Result_A > 0 Then
-            ResultLabel.Text = "ACCEPTABLE"
-            ResultLabel.CssClass = "ui-state-highlight"
+            ResultLabel.Text = "SME-SS (In scope)"
+            ResultLabel.CssClass = "ui-state-a"
         End If
         'Dim score As String = "<br>R=" & Result_R & "O=" & Result_O & "A=" & Result_A
         'ResultLabel.Text += score
