@@ -164,14 +164,17 @@ Partial Class smes_financial_menu
 
             End Select
 
-            If TEMPLATE_ID = 1 Or TEMPLATE_ID = 2 Or TEMPLATE_ID = 3 Or TEMPLATE_ID = 4 Then
+            If TEMPLATE_ID = 2 Or TEMPLATE_ID = 3 Or TEMPLATE_ID = 4 Then
                 ' เป็น template flood ไม่มี checklist และ compare
                 aCK.Visible = False
                 aCKL.Visible = False
                 aCKLCM.Visible = False
                 aCP.Visible = False
             End If
-
+            If TEMPLATE_ID = 1 Then
+                aCKL.Visible = False
+                aCKLCM.Visible = False
+            End If
 
         End If
 
