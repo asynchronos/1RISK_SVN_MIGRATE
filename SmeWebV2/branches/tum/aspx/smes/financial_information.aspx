@@ -47,7 +47,7 @@
             //  ส่วนนี้เป็น การเลือก ว่าจะแสดงข้อมูล business จากที่ได
             // กรณีที่ template 1 ให้เลือก business จาก ss ,2  business จาก leader ,3 ( 3x  business จาก leader 
 
-            if (templateID == 1) {
+            if (templateID == 1 ||templateID==5 || templateID==6) {
                 // กรณี่ที่เป็น template 1 ss project
                 $("#BusinessImageButton").click(function () {
                     //var popup = $find('mpeBehaviorEditProject');
@@ -102,7 +102,7 @@
 
                 // $("[hide=2]").hide();
 
-            } else if (templateID > 2) {
+            } else if (templateID ==3 || templateID==4) {
 
                // template จุใจ  buyer
                 $("#BusinessImageButton").click(function () {
@@ -473,7 +473,7 @@
         </table>
     </div>
     <table style="width: 100%">
-        <tr template="1234">
+        <tr template="123456">
             <td class="style2">
                 ประเภทธุรกิจ
             </td>
@@ -487,7 +487,7 @@
                     Width="250" />
             </td>
         </tr>
-        <tr template="14">
+        <tr template="1456">
             <td class="style1">
                 กลุ่มธุรกิจ&nbsp; (เลือกประเภทธุรกิจ)
             </td>
@@ -506,7 +506,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr template="34">
+        <tr template="134">
             <td class="style1">
                 จะลงทุนในธุรกิจภายใน
             </td>
@@ -515,7 +515,7 @@
                 &nbsp; ปี
             </td>
         </tr>
-        <tr template="134">
+        <tr template="13456">
             <td class="style1">
                 ระยะเวลากู้
             </td>
@@ -526,7 +526,7 @@
                 &nbsp; ปี
             </td>
         </tr>
-        <tr template="34">
+        <tr template="134">
             <td class="style1">
                 ประเภทหลักประกัน
             </td>
@@ -535,7 +535,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr template="34">
+        <tr template="134">
             <td class="style1">
                 ธุรกิจ wathch list
             </td>
@@ -544,7 +544,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr template="34">
+        <tr template="134">
             <td class="style1">
                 Net Profit &amp; Equity (Audited)
             </td>
@@ -553,7 +553,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-        <tr template="34">
+        <tr template="134">
             <td class="style1">
                 หนี้ที่สามารถก่อได้ (Tricker point)
             </td>
