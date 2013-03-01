@@ -75,22 +75,20 @@ Partial Class smes_financial_checklist
 
         If Result_R > 0 Then
             ResultLabel.Text = "REJECT"
-            RejectButton.Visible = True
-            NextButton.Visible = False
-
         ElseIf Result_O > 0 Then
             ResultLabel.Text = "OUT OF SCOPE"
-            RejectButton.Visible = True
-            NextButton.Visible = False
         ElseIf Result_E > 0 Then
             ResultLabel.Text = "ESCALATE TO >=VP"
-            RejectButton.Visible = False
-            NextButton.Visible = True
         ElseIf Result_A > 0 Then
             ResultLabel.Text = "ACCEPTABLE"
-            RejectButton.Visible = False
-            NextButton.Visible = True
         End If
+
+        'กำหนดให้ทุกกรณ๊สามารถ key template ได้
+        RejectButton.Visible = False
+        NextButton.Visible = True
+
+
+
         'Dim score As String = "<br>R=" & Result_R & "O=" & Result_O & "E=" & Result_E & "A=" & Result_A
         'ResultLabel.Text += score
     End Sub
