@@ -34,23 +34,6 @@ Partial Class smes_check_list
             dt.Load(dr)
 
 
-
-            ' ส่วนที่ 2 ดึงค่าเก่าที่เคยตอบไปแล้ว
-            '' ดึงข้อมูลถ้าเคยมีการกรอกในใน smes_id นี้
-            Dim cmd2 As SqlCommand = New SqlCommand()
-            cmd2.Connection = cnn
-            Dim sql2 As String = "SME_S.P_SS_CHECK_LIST_SELECT_VALUE"
-            cmd2.CommandType = CommandType.StoredProcedure
-            cmd2.Parameters.AddWithValue("SMES_ID", Request.QueryString("SMES_ID"))
-            cmd2.Parameters.AddWithValue("SMES_TYPE", Request.QueryString("SMES_TYPE"))
-
-            cmd2.CommandText = sql2
-            Dim dt2 As DataTable = New DataTable()
-            cmd2.ExecuteNonQuery()
-            Dim dr2 As SqlDataReader = cmd2.ExecuteReader()
-            dt2.Load(dr2)
-
-
             cnn.Close()
 
 
@@ -161,15 +144,6 @@ Partial Class smes_check_list
                     PanelForm.Controls.Add(pkRR)
                 End If
 
-
-
-
-
-
-
-
-
-
             Next
 
             'PanelForm.Controls.Add(New LiteralControl(imgStr))
@@ -177,47 +151,82 @@ Partial Class smes_check_list
             en.Text = ""
             PanelForm.Controls.Add(en)
 
-
-            For y = 0 To dt2.Rows.Count - 1
-
-                Dim DL As CheckBox = Me.FindControl("idCK" & dt2.Rows(y).Item("CK_DETAIL_ID"))
-                DL.Checked = True
-                'Dim rk As Label = Me.FindControl("idRK" & dt2.Rows(y).Item("CK_DETAIL_ID"))
-                'rk.Visible = True
-
-
-                If IsNothing(DL) = False Then
-
-
-                    'countResult(dt2.Rows(y).Item("RESULT"))
-                    result = dt2.Rows(y).Item("RESULT")
-                    If result = "A" Then
-                        Result_A = Result_A + 1
-                        'rk.CssClass = "ui-state-highlight"
-                    ElseIf result = "O" Then
-                        Result_O = Result_O + 1
-                        'rk.CssClass = "ui-state-error" 
-                    ElseIf result = "S" Then
-                        Result_S = Result_S + 1
-                        'rk.CssClass = "ui-state-error"
-
-                    ElseIf result = "R" Then
-                        Result_R = Result_R + 1
-                        'rk.CssClass = "ui-state-error"
-                    End If
-                Else
-                    Response.Write("Cannot find :" & dt2.Rows(y).Item("CK_DETAIL_ID"))
-                End If
-            Next
-
-            showResult()
+            ' แสดงค่าที่เลือกมาจาก smes_type rm=1,cm=2
+            ShowValue(Request.QueryString("SMES_TYPE"))
 
         Catch ex As Exception
-            log.Error(ex.Message, ex)
+            Response.Write(ex.Message)
         End Try
 
     End Sub
+    Sub ShowValue(SMES_TYPE As String)
 
+        Dim result As String = ""
+
+        Dim cnn As New SqlConnection
+        cnn = ConnectionUtil.getSqlConnectionFromWebConfig()
+
+        ' ส่วนที่ 2 ดึงค่าเก่าที่เคยตอบไปแล้ว
+        '' ดึงข้อมูลถ้าเคยมีการกรอกในใน smes_id นี้
+        Dim cmd2 As SqlCommand = New SqlCommand()
+        cmd2.Connection = cnn
+        Dim sql2 As String = "SME_S.P_SS_CHECK_LIST_SELECT_VALUE"
+        cmd2.CommandType = CommandType.StoredProcedure
+        cmd2.Parameters.AddWithValue("SMES_ID", Request.QueryString("SMES_ID"))
+        cmd2.Parameters.AddWithValue("SMES_TYPE", SMES_TYPE)
+
+        cmd2.CommandText = sql2
+        Dim dt2 As DataTable = New DataTable()
+        cmd2.ExecuteNonQuery()
+        Dim dr2 As SqlDataReader = cmd2.ExecuteReader()
+        dt2.Load(dr2)
+
+        cnn.Close()
+
+        ' ในกรณีที่เป็นหน้า cm แล้วไม่มี record มาก่อนให้ดึง ค่า rm
+        If SMES_TYPE = "2" Then
+            If dt2.Rows.Count < 1 Then
+                ShowValue(1)
+            End If
+        End If
+
+        For y = 0 To dt2.Rows.Count - 1
+
+            Dim DL As CheckBox = Me.FindControl("idCK" & dt2.Rows(y).Item("CK_DETAIL_ID"))
+            DL.Checked = True
+            'Dim rk As Label = Me.FindControl("idRK" & dt2.Rows(y).Item("CK_DETAIL_ID"))
+            'rk.Visible = True
+
+
+            If IsNothing(DL) = False Then
+
+
+                'countResult(dt2.Rows(y).Item("RESULT"))
+                result = dt2.Rows(y).Item("RESULT")
+                If result = "A" Then
+                    Result_A = Result_A + 1
+                    'rk.CssClass = "ui-state-highlight"
+                ElseIf result = "O" Then
+                    Result_O = Result_O + 1
+                    'rk.CssClass = "ui-state-error" 
+                ElseIf result = "S" Then
+                    Result_S = Result_S + 1
+                    'rk.CssClass = "ui-state-error"
+
+                ElseIf result = "R" Then
+                    Result_R = Result_R + 1
+                    'rk.CssClass = "ui-state-error"
+                End If
+            Else
+                Response.Write("Cannot find :" & dt2.Rows(y).Item("CK_DETAIL_ID"))
+            End If
+        Next
+
+        showResult()
+
+
+
+    End Sub
     Sub showResult()
 
         ' เรียงตามความสำคัญของการกรองข้อมูลออก

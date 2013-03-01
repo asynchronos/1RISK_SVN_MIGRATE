@@ -65,6 +65,8 @@
                       case 2: location = "financial_data.aspx"; break;
                       case 3: location = "financial_data_input.aspx"; break;
                       case 4: location = "financial_data_input.aspx"; break;
+                      case 5: location = "financial_data.aspx"; break;
+                      case 6: location = "financial_data.aspx"; break;
                       default: location = "financial_data.aspx"; break;
                 }
                   param = "?TEMPLATE_ID=" + template_id + "&SMES_TYPE=1&SMES_ID=" + smes_id;
@@ -74,6 +76,8 @@
                       case 2: location = "financial_data.aspx"; break;
                       case 3: location = "financial_data_input.aspx"; break;
                       case 4: location = "financial_data_input.aspx"; break;
+                      case 5: location = "financial_data.aspx"; break;
+                      case 6: location = "financial_data.aspx"; break;
                       default: location = "financial_data.aspx"; break;
                   }
                   param = "?TEMPLATE_ID=" + template_id + "&SMES_TYPE=2&SMES_ID=" + smes_id;
