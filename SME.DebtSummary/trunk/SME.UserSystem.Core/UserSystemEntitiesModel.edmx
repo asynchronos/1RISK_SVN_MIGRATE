@@ -6,19 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="UserSystemEntitiesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="UserSystemEntitiesModelStoreContainer">
-          <EntitySet Name="APP_PROFILE" EntityType="UserSystemEntitiesModel.Store.APP_PROFILE" store:Type="Tables" store:Schema="CLASSIFY" store:Name="APP_PROFILE">
-            <DefiningQuery>SELECT 
-      [APP_PROFILE].[ID] AS [ID], 
-      [APP_PROFILE].[APP_KEY] AS [APP_KEY], 
-      [APP_PROFILE].[EMP_ID] AS [EMP_ID], 
-      [APP_PROFILE].[CREATE_DATE] AS [CREATE_DATE], 
-      [APP_PROFILE].[EXPIRE_DATE] AS [EXPIRE_DATE], 
-      [APP_PROFILE].[LAST_ACTIVITY] AS [LAST_ACTIVITY], 
-      [APP_PROFILE].[LAST_ACTIVITY_DATE] AS [LAST_ACTIVITY_DATE], 
-      [APP_PROFILE].[IS_AUTHENTICATED] AS [IS_AUTHENTICATED], 
-      [APP_PROFILE].[DEL_FLAG] AS [DEL_FLAG]
-      FROM [CLASSIFY].[APP_PROFILE] AS [APP_PROFILE]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="APP_PROFILE" EntityType="UserSystemEntitiesModel.Store.APP_PROFILE" store:Type="Tables" Schema="CLASSIFY" />
           <EntitySet Name="APPLICATION" EntityType="UserSystemEntitiesModel.Store.APPLICATION" store:Type="Tables" Schema="CLASSIFY" />
           <EntitySet Name="CATE_AND_APP" EntityType="UserSystemEntitiesModel.Store.CATE_AND_APP" store:Type="Tables" Schema="CLASSIFY" />
           <EntitySet Name="CATE_AND_CUS" EntityType="UserSystemEntitiesModel.Store.CATE_AND_CUS" store:Type="Tables" Schema="CLASSIFY" />
@@ -81,9 +69,6 @@
             <End Role="MENU_MASTER1" EntitySet="MENU_MASTER" />
           </AssociationSet>
         </EntityContainer>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'SME.CLASSIFY.APP_PROFILE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="APP_PROFILE">
           <Key>
             <PropertyRef Name="ID" />

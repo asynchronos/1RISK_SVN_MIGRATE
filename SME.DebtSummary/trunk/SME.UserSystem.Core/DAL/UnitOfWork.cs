@@ -16,6 +16,7 @@ namespace SME.UserSystem.Core.DAL
         private GenericRespository<USER_DATA> userDataRepo;
         private GenericRespository<CATE_AND_EMP> cateAndEmpRepo;
         private GenericRespository<CATEGORY> categoryRepo;
+        private GenericRespository<CATE_AND_APP> cateAndAppRepo;
 
         public UserSystemEntities Context
         {
@@ -38,7 +39,7 @@ namespace SME.UserSystem.Core.DAL
         //    }
         //}
 
-        public GenericRespository<APPLICATION> Application
+        public GenericRespository<APPLICATION> ApplicationRepo
         {
             get
             {
@@ -51,7 +52,7 @@ namespace SME.UserSystem.Core.DAL
             }
         }
 
-        public GenericRespository<APP_PROFILE> AppProfile
+        public GenericRespository<APP_PROFILE> AppProfileRepo
         {
             get
             {
@@ -64,7 +65,7 @@ namespace SME.UserSystem.Core.DAL
             }
         }
 
-        public GenericRespository<USER_DATA> UserData
+        public GenericRespository<USER_DATA> UserDataRepo
         {
             get
             {
@@ -77,7 +78,7 @@ namespace SME.UserSystem.Core.DAL
             }
         }
 
-        public GenericRespository<CATE_AND_EMP> CateAndEMP
+        public GenericRespository<CATE_AND_EMP> CateAndEMPRepo
         {
             get
             {
@@ -100,6 +101,19 @@ namespace SME.UserSystem.Core.DAL
                 }
 
                 return this.categoryRepo;
+            }
+        }
+
+        public GenericRespository<CATE_AND_APP> CateAndAppRepo
+        {
+            get
+            {
+                if (this.cateAndAppRepo == null)
+                {
+                    this.cateAndAppRepo = new GenericRespository<CATE_AND_APP>(context);
+                }
+
+                return this.cateAndAppRepo;
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.Objects;
 using System.Linq;
 using System.Web.Security;
 using log4net;
@@ -41,12 +40,125 @@ namespace SME.UserSystem.Core.Providers
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            throw new System.NotImplementedException();
+            AsynchronosMembershipUser membershipUser = null;
+            status = MembershipCreateStatus.UserRejected;
+
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    USER_DATA user = uow.UserDataRepo.FindBy(u => u.EMP_ID == username)
+                        .FirstOrDefault<USER_DATA>();
+
+                    if (null != user)
+                    {
+                        if (user.DEL_FLAG == true)
+                        {
+                            user.DEL_FLAG = false;
+                        }
+                        else
+                        {
+                            status = MembershipCreateStatus.DuplicateUserName;
+                            throw new AsynchronosProviderException("User " + username
+                                + " is already exists.");
+                        }
+                    }
+                    else
+                    {
+                        DateTime current = DateTime.Now;
+                        //create user in db
+                        user = new USER_DATA();
+                        user.EMP_ID = username;
+                        user.PASSWD = password;
+                        user.EMAIL = email;
+                        user.CREATE_DATE = current;
+                        user.EXPIRE_DATE = current.AddYears(1);
+                        user.DEL_FLAG = false;
+                    }
+
+                    APP_PROFILE profile = user.APP_PROFILE
+                        .Where(ap => ap.APPLICATION.APP_DESC == ApplicationName)
+                        .FirstOrDefault<APP_PROFILE>();
+
+                    if (null == profile)
+                    {
+                        APPLICATION app = uow.ApplicationRepo
+                            .FindBy(a => a.APP_DESC == ApplicationName)
+                            .FirstOrDefault<APPLICATION>();
+
+                        profile = new APP_PROFILE();
+                        profile.APP_KEY = app.APP_KEY;
+                        profile.EMP_ID = user.EMP_ID;
+                        profile.IS_AUTHENTICATED = null;
+
+                        user.APP_PROFILE.Add(profile);
+                        app.APP_PROFILE.Add(profile);
+                    }
+
+                    profile.LAST_ACTIVITY_DATE = DateTime.Now;
+                    profile.LAST_ACTIVITY = Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name;
+
+                    uow.Save();
+
+                    membershipUser = new AsynchronosMembershipUser(this.Name,
+                                                      user.EMP_ID,
+                                                      user.EMP_ID,
+                                                      user.EMAIL,
+                                                      String.Empty,
+                                                      String.Empty,
+                                                      false,//isApproved,
+                                                      false,//isLockedOut,
+                                                      null != user.CREATE_DATE ? user.CREATE_DATE.Value : DateTime.Now,//creationDate,
+                                                      null != user.LAST_SIGN_ON_DATE ? user.LAST_SIGN_ON_DATE.Value : DateTime.Now, //lastLoginDate,
+                                                      null != profile ? profile.LAST_ACTIVITY_DATE.Value : DateTime.Now,//lastActivityDate,
+                                                      DateTime.Now,//lastPasswordChangedDate,
+                                                      DateTime.Now,//lastLockedOutDate,
+                                                      user.EMP_TITLE,
+                                                      user.EMP_NAME,
+                                                      user.EMP_SURNAME,
+                                                      user.EMP_TITLE_E,
+                                                      user.EMP_NAME_E,
+                                                      user.EMP_SURNAME_E,
+                                                      user.PASSWD,
+                                                      user.CREATE_DATE,
+                                                      user.EXPIRE_DATE,
+                                                      user.UPDATE_DATE,
+                                                      user.LAST_SIGN_ON_DATE,
+                                                      user.LAST_CHANGE_PASS_DATE,
+                                                      user.DEL_FLAG);
+
+                    status = MembershipCreateStatus.Success;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = MembershipCreateStatus.ProviderError;
+                throw ex;
+            }
+
+            return membershipUser;
         }
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
         {
-            throw new System.NotImplementedException();
+            bool result = false;
+
+            using (UnitOfWork uow = new UnitOfWork())
+            {
+                USER_DATA user = uow.UserDataRepo
+                    .FindBy(u => u.EMP_ID == username
+                        && u.DEL_FLAG != true)
+                    .FirstOrDefault<USER_DATA>();
+
+                if (null != user)
+                {
+                    user.DEL_FLAG = true;
+                }
+
+                result = true;
+            }
+
+            return result;
         }
 
         public override bool EnablePasswordReset
@@ -84,14 +196,26 @@ namespace SME.UserSystem.Core.Providers
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// GetUser
+        /// </summary>
+        /// <param name="username">รหัสพนักงาน</param>
+        /// <param name="userIsOnline">Flag ว่าจะเก็บค่า Last Activity หรือไม่</param>
+        /// <returns></returns>
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
-            throw new System.NotImplementedException();
+            return GetUserFromLinq(username, userIsOnline);
         }
 
+        /// <summary>
+        /// GetUser
+        /// </summary>
+        /// <param name="providerUserKey">รหัสพนักงาน</param>
+        /// <param name="userIsOnline">Flag ว่าจะเก็บค่า Last Activity หรือไม่</param>
+        /// <returns></returns>
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
-            throw new System.NotImplementedException();
+            return GetUserFromLinq(providerUserKey.ToString(), userIsOnline);
         }
 
         public override string GetUserNameByEmail(string email)
@@ -148,40 +272,56 @@ namespace SME.UserSystem.Core.Providers
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// Test Unlocked AD
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
         public override bool UnlockUser(string userName)
         {
-            throw new System.NotImplementedException();
+            LdapAuthentication adAuth = new LdapAuthentication();
+            return adAuth.UnlockedUser(userName);
         }
 
         public override void UpdateUser(MembershipUser user)
         {
-            throw new System.NotImplementedException();
+            using (UnitOfWork uow = new UnitOfWork())
+            {
+                USER_DATA userData = uow.UserDataRepo
+                    .FindBy(u => u.EMP_ID == ((AsynchronosMembershipUser)user).UserName)
+                    .FirstOrDefault<USER_DATA>();
+
+                if (null != userData)
+                {
+                    //userData.EMP_ID = ((AsynchronosMembershipUser)user).UserName;
+                    userData.EMP_TITLE = ((AsynchronosMembershipUser)user).EMP_TITLE;
+                    userData.EMP_NAME = ((AsynchronosMembershipUser)user).EMP_NAME;
+                    userData.EMP_SURNAME = ((AsynchronosMembershipUser)user).EMP_SURNAME;
+                    userData.EMP_TITLE_E = ((AsynchronosMembershipUser)user).EMP_TITLE_E;
+                    userData.EMP_NAME_E = ((AsynchronosMembershipUser)user).EMP_NAME_E;
+                    userData.EMP_SURNAME_E = ((AsynchronosMembershipUser)user).EMP_SURNAME_E;
+                    userData.PASSWD = ((AsynchronosMembershipUser)user).PASSWD;
+                    userData.EMAIL = ((AsynchronosMembershipUser)user).Email;
+                    userData.CREATE_DATE = ((AsynchronosMembershipUser)user).CREATE_DATE;
+                    userData.EXPIRE_DATE = ((AsynchronosMembershipUser)user).EXPIRE_DATE;
+                    userData.UPDATE_DATE = ((AsynchronosMembershipUser)user).UPDATE_DATE;
+                    userData.LAST_SIGN_ON_DATE = ((AsynchronosMembershipUser)user).LAST_SIGN_ON_DATE;
+                    userData.LAST_CHANGE_PASS_DATE = ((AsynchronosMembershipUser)user).LAST_CHANGE_PASS_DATE;
+                    userData.DEL_FLAG = ((AsynchronosMembershipUser)user).DEL_FLAG;
+
+                    uow.Save();
+                }
+                else
+                {
+                    throw new AsynchronosProviderException("User " + user.UserName
+                        + " not exists.");
+                }
+            }
         }
 
         public override bool ValidateUser(string username, string password)
         {
             bool result = false;
-
-            //use own database
-            //using (Bay01_Entities en = new Bay01_Entities())
-            //{
-            //    var queryUser = (from user in en.TB_EMPLOYEE
-            //                     where user.EMP_ID == username
-            //                     //&& user.EXPIRE_DATE >= DateTime.Now
-            //                     //&& user.DEL_FLAG == false
-            //                     select user);
-
-            //    if (queryUser.FirstOrDefault() != null)
-            //    {
-            //        if (queryUser.FirstOrDefault().PASSWD.Equals(password))
-            //        {
-            //            result = true;
-            //            //queryUser.FirstOrDefault().LAST_SIGN_ON_DATE = DateTime.Now;
-            //            //en.SaveChanges();
-            //            en.Dispose();
-            //        }
-            //    }
-            //}
 
             LdapAuthentication adAuth = new LdapAuthentication();
             bool adResult = adAuth.IsAuthenticated(username, password);
@@ -191,39 +331,39 @@ namespace SME.UserSystem.Core.Providers
                 DateTime currentDate = new DateTime(DateTime.Now.Year,
                                         DateTime.Now.Month,
                                         DateTime.Now.Day);
+
                 using (UnitOfWork uow = new UnitOfWork())
                 {
-                    IQueryable<USER_DATA> user = uow.UserData
+                    USER_DATA user = uow.UserDataRepo
                         .FindBy(u => u.EMP_ID.Equals(username)
-                                && u.DEL_FLAG != true);
+                                && u.DEL_FLAG != true)
+                        .FirstOrDefault<USER_DATA>();
 
-                    log.Debug(((ObjectQuery)user).ToTraceString());
+                    //if (isDebugEnabled) log.Debug(((ObjectQuery)user).ToTraceString());
 
-                    //IUserProfileDTO profile = uow.GetUserProfileDTO(username, ApplicationName);
-
-                    if (user.FirstOrDefault<USER_DATA>() != null)
+                    if (user != null)
                     {
                         //check expire date (All App)
-                        if (user.FirstOrDefault<USER_DATA>().EXPIRE_DATE != null
-                            && user.FirstOrDefault<USER_DATA>().EXPIRE_DATE >= currentDate)
+                        if (user.EXPIRE_DATE != null
+                            && user.EXPIRE_DATE < currentDate)
                         {
                             throw new UserInfoException
                                     ("You account is expired on "
-                                    + user.FirstOrDefault<USER_DATA>()
+                                    + user
                                     .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
                         }
 
                         //get profile
-                        APP_PROFILE profile = user.FirstOrDefault<USER_DATA>()
+                        APP_PROFILE profile = user
                             .APP_PROFILE.Where(p => p.APPLICATION.APP_DESC == ApplicationName)
                             .FirstOrDefault();
 
                         //get categoryList
-                        List<CATE_AND_EMP> categoryList = user.FirstOrDefault<USER_DATA>()
-                        .CATE_AND_EMP.Where(cae => cae.DEL_FLAG.Value != true
-                            && cae.CATEGORY.CATE_AND_APP
-                                .Any(caa => caa.APP_KEY == profile.APP_KEY))
-                        .ToList<CATE_AND_EMP>();
+                        List<CATE_AND_EMP> categoryList = user
+                            .CATE_AND_EMP.Where(cae => cae.DEL_FLAG.Value != true
+                                && cae.CATEGORY.CATE_AND_APP
+                                    .Any(caa => caa.APP_KEY == profile.APP_KEY))
+                            .ToList<CATE_AND_EMP>();
 
                         if (profile != null) //&& profile.APPLICATION.APP_DESC.Equals(ApplicationName)
                         {
@@ -236,8 +376,7 @@ namespace SME.UserSystem.Core.Providers
                                 profile.LAST_ACTIVITY = "Sign On.";
                                 profile.IS_AUTHENTICATED = true;
 
-                                user.FirstOrDefault<USER_DATA>()
-                                    .LAST_SIGN_ON_DATE = DateTime.Now;
+                                user.LAST_SIGN_ON_DATE = DateTime.Now;
 
                                 //update profile
                                 uow.Save();
@@ -265,6 +404,83 @@ namespace SME.UserSystem.Core.Providers
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// GetUserFromLinq
+        /// </summary>
+        /// <param name="empId">รหัสพนักงาน</param>
+        /// <param name="userIsOnline">จะเก็บค่า Last Activity หรือไม่</param>
+        /// <returns>MembershipUser</returns>
+        private MembershipUser GetUserFromLinq(string empId, bool userIsOnline)
+        {
+            AsynchronosMembershipUser membershipUser = null;
+
+            using (UnitOfWork uow = new UnitOfWork())
+            {
+                USER_DATA user = uow.UserDataRepo.FindBy(u => u.EMP_ID == empId)
+                    .FirstOrDefault<USER_DATA>();
+
+                if (null != user)
+                {
+                    throw new AsynchronosProviderException("Can't find user " + empId);
+                }
+
+                APP_PROFILE profile = user.APP_PROFILE
+                    .Where(ap => ap.APPLICATION.APP_DESC == ApplicationName)
+                    .FirstOrDefault<APP_PROFILE>();
+
+                membershipUser = new AsynchronosMembershipUser(this.Name,
+                                                  user.EMP_ID,
+                                                  user.EMP_ID,
+                                                  user.EMAIL,
+                                                  String.Empty,
+                                                  String.Empty,
+                                                  false,//isApproved,
+                                                  false,//isLockedOut,
+                                                  null != user.CREATE_DATE ? user.CREATE_DATE.Value : DateTime.Now,//creationDate,
+                                                  null != user.LAST_SIGN_ON_DATE ? user.LAST_SIGN_ON_DATE.Value : DateTime.Now, //lastLoginDate,
+                                                  null != profile ? profile.LAST_ACTIVITY_DATE.Value : DateTime.Now,//lastActivityDate,
+                                                  DateTime.Now,//lastPasswordChangedDate,
+                                                  DateTime.Now,//lastLockedOutDate,
+                                                  user.EMP_TITLE,
+                                                  user.EMP_NAME,
+                                                  user.EMP_SURNAME,
+                                                  user.EMP_TITLE_E,
+                                                  user.EMP_NAME_E,
+                                                  user.EMP_SURNAME_E,
+                                                  user.PASSWD,
+                                                  user.CREATE_DATE,
+                                                  user.EXPIRE_DATE,
+                                                  user.UPDATE_DATE,
+                                                  user.LAST_SIGN_ON_DATE,
+                                                  user.LAST_CHANGE_PASS_DATE,
+                                                  user.DEL_FLAG);
+
+                if (userIsOnline)
+                {
+                    if (null == profile)
+                    {
+                        APPLICATION app = uow.ApplicationRepo
+                            .FindBy(a => a.APP_DESC == ApplicationName)
+                            .FirstOrDefault<APPLICATION>();
+
+                        profile = new APP_PROFILE();
+                        profile.APP_KEY = app.APP_KEY;
+                        profile.EMP_ID = user.EMP_ID;
+                        profile.IS_AUTHENTICATED = null;
+
+                        user.APP_PROFILE.Add(profile);
+                        app.APP_PROFILE.Add(profile);
+                    }
+
+                    profile.LAST_ACTIVITY_DATE = DateTime.Now;
+                    profile.LAST_ACTIVITY = Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name;
+
+                    uow.Save();
+                }
+            }
+            return membershipUser;
         }
     }
 }
