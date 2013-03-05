@@ -147,7 +147,7 @@ namespace SME.UserSystem.Core.BL
 
         public USER_DATA GetUserData(string empId)
         {
-            return this.UOW.UserData.FindBy(u => u.EMP_ID == empId)
+            return this.UOW.UserDataRepo.FindBy(u => u.EMP_ID == empId)
                 .FirstOrDefault<USER_DATA>();
         }
 
@@ -207,19 +207,19 @@ namespace SME.UserSystem.Core.BL
 
         public APPLICATION GetApplication(int appKey)
         {
-            return this.UOW.Application.FindBy(a => a.APP_KEY == appKey)
+            return this.UOW.ApplicationRepo.FindBy(a => a.APP_KEY == appKey)
                 .FirstOrDefault<APPLICATION>();
         }
 
         public APPLICATION GetApplication(string appName)
         {
-            return this.UOW.Application.FindBy(a => a.APP_DESC == appName)
+            return this.UOW.ApplicationRepo.FindBy(a => a.APP_DESC == appName)
                 .FirstOrDefault<APPLICATION>();
         }
 
         public IEnumerable<APP_PROFILE> GetAllAppProfile()
         {
-            return this.UOW.AppProfile.GetAll().DefaultIfEmpty<APP_PROFILE>();
+            return this.UOW.AppProfileRepo.GetAll().DefaultIfEmpty<APP_PROFILE>();
         }
 
         //public void InsertAppProfile(APP_PROFILE appProfile)

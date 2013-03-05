@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Configuration.Provider;
 using System.Linq;
 using System.Web.Profile;
 using log4net;
 using SME.UserSystem.Core.BL;
 using SME.UserSystem.Core.DTO;
+using SME.UserSystem.Core.Exceptions;
 
 namespace SME.UserSystem.Core.Providers
 {
@@ -61,7 +61,7 @@ namespace SME.UserSystem.Core.Providers
 
             if (config["applicationName"] == null || config["applicationName"].Trim() == "")
             {
-                _appName = System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath;
+                _appName = ConfigurationManager.AppSettings["APPLICATION_NAME"];
             }
             else
             {
@@ -225,12 +225,14 @@ namespace SME.UserSystem.Core.Providers
                             pv.PropertyValue = p.CATEGORY_LIST;
                             break;
                         default:
-                            throw new ProviderException("Unsupported property:" + prop.Name);
+                            AsynchronosProviderException ex = new AsynchronosProviderException("Unsupported property:" + prop.Name);
+                            log.Error(ex.Message);
+                            throw ex;
                     }
 
                     p.IS_AUTHENTICATED = isAuthenticated;
                     p.LAST_SIGN_ON_DATE = DateTime.Now;
-                    //p.LAST_ACTIVITY = "GetProfile";
+                    p.LAST_ACTIVITY = "GetProfile";
                     p.LAST_ACTIVITY_DATE = DateTime.Now;
 
                     bl.UpdateUserProfileDTO(p, p.APP_KEY.Value);
@@ -302,7 +304,7 @@ namespace SME.UserSystem.Core.Providers
                             p.APP_DESC = (string)pv.PropertyValue;
                             break;
                         case "LAST_ACTIVITY":
-                            p.LAST_ACTIVITY = (string)pv.PropertyValue;
+                            p.LAST_ACTIVITY = "SetProfile";//(string)pv.PropertyValue;
                             break;
                         case "LAST_ACTIVITY_DATE":
                             p.LAST_ACTIVITY_DATE = DateTime.Now;//(DateTime)pv.PropertyValue;
@@ -317,7 +319,9 @@ namespace SME.UserSystem.Core.Providers
                             p.CATEGORY_LIST = (List<CATEGORY>)pv.PropertyValue;
                             break;
                         default:
-                            throw new ProviderException("Unsupported property");
+                            AsynchronosProviderException ex = new AsynchronosProviderException("Unsupported property:" + pv.Property.Name);
+                            log.Error(ex.Message);
+                            throw ex;
                     }
                 }
 

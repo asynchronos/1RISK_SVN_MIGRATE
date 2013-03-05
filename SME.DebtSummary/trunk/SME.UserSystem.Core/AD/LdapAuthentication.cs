@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.DirectoryServices;
 using System.Text;
 using log4net;
@@ -68,6 +69,40 @@ namespace SME.UserSystem.Core.AD
                     {
                         authenticated = false;
                     }
+
+                    if (isDebugEnabled)
+                    {
+                        //username = "249987";
+                        //search = new DirectorySearcher(entry);
+                        //search.Filter = "(SAMAccountName=" + username + ")";
+                        //search.PropertiesToLoad.Add("cn");
+                        //result = search.FindOne();
+
+                        log.Debug("");
+                        log.Debug("result.Path:" + result.Path);
+                        log.Debug("filterAttribute:" + (String)result.Properties["cn"][0]);
+
+                        DirectoryEntry entry2 = result.GetDirectoryEntry();
+                        //log.Debug("entry2.Username:" + entry2.Username);
+                        //log.Debug("entry2.AuthenticationType:" + entry2.AuthenticationType);
+                        //log.Debug("entry2.Children:" + entry2.Children);
+                        log.Debug("entry2.Name:" + entry2.Name);
+                        //log.Debug("entry2.Parent.Username:" + entry2.Parent.Username);
+                        log.Debug("entry2.Properties.Count:" + entry2.Properties.Count);
+
+                        IDictionaryEnumerator myEnumerator = entry2.Properties.GetEnumerator();
+                        while (myEnumerator.MoveNext())
+                        {
+                            log.Debug(myEnumerator.Key + ":" + myEnumerator.Value);
+
+                            IEnumerator myEnumerator2 = ((PropertyValueCollection)myEnumerator.Value).GetEnumerator();
+                            while (myEnumerator2.MoveNext())
+                            {
+                                log.Debug("   " + myEnumerator2.Current.ToString());
+                            }
+                        }
+                    }
+
                     // Update the new path to the user in the directory
                     _path = result.Path;
                     _filterAttribute = (String)result.Properties["cn"][0];
@@ -82,7 +117,11 @@ namespace SME.UserSystem.Core.AD
             }
             catch (DirectoryServicesCOMException cex)
             {
-                IsUserLocked(username);
+                if (IsUserLocked(username))
+                {
+                    log.Info("Username " + username + "in AD is Locked.");
+                    throw new LDAPInfoException("Username " + username + " in AD is Locked.");
+                }
 
                 log.Error(cex.StackTrace);
                 throw new LDAPInfoException(cex.Message, cex);
@@ -96,8 +135,10 @@ namespace SME.UserSystem.Core.AD
             return authenticated;
         }
 
-        private void IsUserLocked(string username)
+        public bool IsUserLocked(string username)
         {
+            bool isLocked = false;
+
             string LDAPUser = System.Configuration.ConfigurationManager.AppSettings["LDAP_USERNAME"];
             string LDAPPass = System.Configuration.ConfigurationManager.AppSettings["LDAP_PASSWORD"];
 
@@ -117,15 +158,50 @@ namespace SME.UserSystem.Core.AD
                 else
                 {
                     DirectoryEntry getSearchEntry = result.GetDirectoryEntry();
+                    isLocked = Convert.ToBoolean(getSearchEntry.InvokeGet("IsAccountLocked"));
+                    log.Debug("IsAccountLocked Type:" + getSearchEntry.InvokeGet("IsAccountLocked").ToString());
+                }
+            }
+
+            return isLocked;
+        }
+
+        public bool UnlockedUser(string username)
+        {
+            bool success = false;
+
+            string LDAPUser = System.Configuration.ConfigurationManager.AppSettings["LDAP_USERNAME"];
+            string LDAPPass = System.Configuration.ConfigurationManager.AppSettings["LDAP_PASSWORD"];
+
+            using (DirectoryEntry entry = new DirectoryEntry(_path, _domainName + @"\" + LDAPUser, LDAPPass))
+            {
+                // Bind to the native AdsObject to force authentication.
+                //Object obj = entry.NativeObject;
+                DirectorySearcher search = new DirectorySearcher(entry);
+                search.Filter = "(SAMAccountName=" + username + ")";
+                search.PropertiesToLoad.Add("cn");
+                SearchResult result = search.FindOne();
+                if (null == result)
+                {
+                    log.Info("Can't not find username " + username + "in AD");
+                    throw new LDAPInfoException("Can't not find username " + username + " in AD.");
+                }
+                else
+                {
+                    DirectoryEntry getSearchEntry = result.GetDirectoryEntry();
+
                     bool IsAccountLocked = Convert.ToBoolean(getSearchEntry.InvokeGet("IsAccountLocked"));
 
                     if (IsAccountLocked)
                     {
-                        log.Info("Username " + username + "in AD is Locked.");
-                        throw new LDAPInfoException("Username " + username + " in AD is Locked.");
+                        getSearchEntry.InvokeSet("IsAccountLocked", false);
+                        log.Info("Username " + username + "in AD is Unlocked.");
+                        success = true;
                     }
                 }
             }
+
+            return success;
         }
 
         public string GetGroups()
