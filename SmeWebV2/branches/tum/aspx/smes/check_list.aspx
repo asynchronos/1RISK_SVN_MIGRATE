@@ -20,6 +20,10 @@
             margin: 5px5px;.
             padding-left:5px;
         }
+        .hidebutton
+        {
+            display:none;
+            }
         .qg
         {
             background-color:#0088FF;
@@ -92,20 +96,44 @@
 }
     </style>
 
+    <style id="printStyle" type="text/css" runat="server" media="print">
+        .noPrint
+        {
+            display:none;
+        }
+    </style>
+
     <script type="text/javascript">
         function HideButtons() {
+//            document.getElementById("<%=ButtonPrint.ClientID %>").setAttribute("class", "hidebutton");
+            var checklistPopup = window.open('check_list.aspx?mode=print&SMES_ID=<%= Request.QueryString("SMES_ID") & "&TEMPLATE_ID=" & Request.QueryString("TEMPLATE_ID") & "&SMES_TYPE=" & Request.QueryString("SMES_TYPE") %> ', 'checklistPopup', 'width=800,height=400');
+            checklistPopup.focus();
+//            alert("w:"+w);
+//            w.focus();
+//            w.document.getElementById("ButtonPrint").value = "change text";
+//            alert("id:"+w.document.getElementById("ButtonPrint").id);
+//            w.document.getElementById("ButtonPrint").setAttribute("class", "hidebutton");
+//            $(w.document).find('#ButtonPrint').addClass('hidebutton');
+         //$("#ButtonPrint")._addClass('hidebutton');
+//            $(w.document).find('#ButtonPrint').addClass('hidebutton');
 
-
-            document.getElementById('<%=ButtonSave.ClientID %>').style.display = 'none';
-            document.getElementById('<%=Button1.ClientID %>').style.display = 'none';
-            
 
         }
+
         $(document).ready(function () {
             var heightDiv = $(document).height();
             $("#mainFrame", parent.document).height(heightDiv + 100);  // กำหนด
-         //  $("input[type=submit]").button();
+            //  $("input[type=submit]").button();
             $("#accordion").accordion({ autoHeight: false, collapsible: true });
+
+//            if (!window.parent) {
+//                userName = window.parent.document.getElementById("spanUserName").innerText;
+//            } else if (!window.opener) {
+//                userName = window.opener.document.getElementById("spanUserName").innerText;
+//            } else {
+//                alert("no parent nor opener window.");
+//                //userName = getValueFromQueryString("username");
+//            }
 
             if (window.parent.document.getElementById("spanUserName")) {
                 userName = window.parent.document.getElementById("spanUserName").innerText;
@@ -119,11 +147,12 @@
                 TemplateID = window.parent.document.getElementById("spanTemplateID").innerText;
             }
 
-            $("#USERTextBox").val(userName);
-            $("#REF_IDTextBox").val(RefID);
-            $("#TemplateTextBox").val(TemplateID);
+            //$("#USERTextBox").val(userName);
+            //$("#REF_IDTextBox").val(RefID);
+            //$("#TemplateTextBox").val(TemplateID);
 
         });
+
         var totalResult;
         function checkResult(newResult) {
             var spanTotalResult = $("#spanTotalResult");
@@ -166,15 +195,18 @@
             <asp:Label ID="ResultLabel" runat="server" Text="ยังไม่ได้บันทึก"></asp:Label>
             <br />
             <br />
-            
-            <asp:Button ID="ButtonSave" runat="server" Text="    บันทึกผล    " class ="ui-widget-header2" /> 
-            <asp:Button ID="Button1" runat="server" Text="แสดงผลพิมพ์"  />
-               
+           
+              <asp:Button ID="ButtonSave" runat="server" Text="    บันทึกผล    " class ="ui-widget-header2" /> 
+       <asp:Button ID="ButtonPrint" runat="server" Text="แสดงผลพิมพ์"   
+                class ="ui-widget-header2 noPrint" onclientclick="HideButtons();return false;" UseSubmitBehavior="False" 
+               />
+          
               
         </h4>
     </div>
     <div id="divTotalResult">
         <span id="spanTotalResult"></span>
+
         <asp:Panel runat="server" ID="PanelForm">
         </asp:Panel>
     </div>
