@@ -1,5 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SME.UserSystem.Core.AD;
+using SME.UserSystem.Core.Exceptions;
 
 namespace SME.UserSystem.Core.UnitTest
 {
@@ -70,16 +72,21 @@ namespace SME.UserSystem.Core.UnitTest
                 {
                     target.IsAuthenticated(username, "12345678");
                 }
+                catch (LDAPInfoException ldapEx)
+                {
+                    //ignore
+                }
                 catch (System.Runtime.InteropServices.COMException ComEx)
                 {
-                    if (ComEx.Message.Equals("Logon failure: unknown user name or bad password."))
-                    {
-                        //ignore
-                    }
-                    else
-                    {
-                        throw new System.Exception("i:" + i + "-" + ComEx.Message);
-                    }
+                    Assert.AreEqual(6, i);
+                    //if (ComEx.Message.Equals("Logon failure: unknown user name or bad password."))
+                    //{
+                    //    //ignore
+                    //}
+                    //else
+                    //{
+                    //    throw new System.Exception("i:" + i + "-" + ComEx.Message);
+                    //}
                 }
             }
 
@@ -123,7 +130,7 @@ namespace SME.UserSystem.Core.UnitTest
         public void AuthenticatedSuccessTest()
         {
             string username = "249888";
-            string pwd = "Big!7426";
+            string pwd = "big@7426";
 
             bool expected = true;
             LdapAuthentication target = new LdapAuthentication();
@@ -150,14 +157,14 @@ namespace SME.UserSystem.Core.UnitTest
             //Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
+        //[TestMethod]
         [ExpectedException(typeof(SME.UserSystem.Core.Exceptions.LDAPInfoException),
            "Username 249888 in AD is Locked.")]
-        public void UserLockedTest()
+        public void UserLockedTest(string username)
         {
             LdapAuthentication target = new LdapAuthentication(); // TODO: Initialize to an appropriate value
-            string username = "249888"; // TODO: Initialize to an appropriate value
-            string pwd = "Big!7426"; // TODO: Initialize to an appropriate value
+            //string username = "249888"; // TODO: Initialize to an appropriate value
+            string pwd = "big@7426"; // TODO: Initialize to an appropriate value
 
             if (MakeLockedUser("249888"))
             {
@@ -170,6 +177,27 @@ namespace SME.UserSystem.Core.UnitTest
                     Assert.AreEqual("Username 249888 in AD is Locked.", ex.Message);
                 }
             }
+        }
+
+        //[TestMethod]
+        public void UserUnlockedTest()
+        {
+            LdapAuthentication target = new LdapAuthentication(); // TODO: Initialize to an appropriate value
+            string username = "249888"; // TODO: Initialize to an appropriate value
+            string pwd = "big@7426"; // TODO: Initialize to an appropriate value
+
+            try
+            {
+                this.UserLockedTest(username);
+            }
+            catch (Exception ex)
+            {
+                //ignore
+            }
+
+            Assert.IsTrue(target.IsUserLocked(username));
+            target.UnlockedUser(username);
+            Assert.IsFalse(target.IsUserLocked(username));
         }
     }
 }
