@@ -4,7 +4,8 @@ Imports System.Globalization
 Imports log4net
 
 Partial Class smes_check_list
-    Inherits System.Web.UI.Page
+    Inherits aspx.MyPageClass
+
     Shared Result_A As Integer
     Shared Result_R As Integer
     Shared Result_O As Integer
@@ -12,6 +13,7 @@ Partial Class smes_check_list
     Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
     Private Shared ReadOnly isDebugEnabled As Boolean = log.IsDebugEnabled
 
+    Private refId As String = String.Empty
     Sub ShowCheckList()
 
         Try
@@ -191,6 +193,10 @@ Partial Class smes_check_list
         End If
 
         For y = 0 To dt2.Rows.Count - 1
+
+            If refId.Equals(String.Empty) Then
+                refId = dt2.Rows(y).Item("REF_ID")
+            End If
 
             Dim DL As CheckBox = Me.FindControl("idCK" & dt2.Rows(y).Item("CK_DETAIL_ID"))
             DL.Checked = True
@@ -375,8 +381,10 @@ Partial Class smes_check_list
     Protected Sub form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles form1.Load
 
         SMES_IDTextBox.Text = Request.QueryString("SMES_ID")
+
         TemplateTextBox.Text = Request.QueryString("TEMPLATE_ID")
         SMES_TYPETextBox.Text = Request.QueryString("SMES_TYPE")
+        USERTextBox.Text = User.Identity.Name
 
         If Page.IsPostBack = True Then
             ''MsgBox(Request.Form.Count)
@@ -392,6 +400,16 @@ Partial Class smes_check_list
         Else
             clearResult()
             ShowCheckList()
+        End If
+
+        REF_IDTextBox.Text = refId
+
+        If Me.hasQueryString("mode") Then
+            If getQueryString("mode").Equals("print") Then
+                ButtonPrint.Visible = False
+                ButtonSave.Visible = False
+                ButtonSave2.Visible = False
+            End If
         End If
 
     End Sub
@@ -412,17 +430,21 @@ Partial Class smes_check_list
 
     
    
-    Protected Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Protected Sub ButtonPrint_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonPrint.Click
 
 
-        Dim queryString As String = "check_list.aspx?SMES_ID=" & Request.QueryString("SMES_ID") & "&TEMPLATE_ID=" & Request.QueryString("TEMPLATE_ID") & "&SMES_TYPE=" & Request.QueryString("SMES_TYPE")
+        'Dim queryString As String = "check_list.aspx?SMES_ID=" & Request.QueryString("SMES_ID") & "&TEMPLATE_ID=" & Request.QueryString("TEMPLATE_ID") & "&SMES_TYPE=" & Request.QueryString("SMES_TYPE")
 
-        Dim newWin As String = "window.open('" & queryString & "');"
-        ClientScript.RegisterStartupScript(Me.GetType(), "pop", newWin, True)
-        
-     
+        'Dim newWin As String = "window.open('" & queryString & "');"
+        'ClientScript.RegisterStartupScript(Me.GetType(), "pop", newWin, True)
+
+        'Page.ResolveClientUrl("~/aspx/smes/check_list.aspx") ?SMES_ID=" & Request.QueryString("SMES_ID"))
+
+
+
     End Sub
 
     
  
+    
 End Class
