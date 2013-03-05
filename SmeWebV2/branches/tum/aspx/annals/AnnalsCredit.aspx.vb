@@ -2185,7 +2185,7 @@ Partial Class _AnnalsCredit
 
         Dim conn As SqlConnection = Nothing
         conn = ConnectionUtil.getSqlConnectionFromWebConfig()
-        Dim sqlProgram As String = "SELECT * FROM ANNALS_PROJECT WHERE PROGRAM_ID = '" & PROGRAM_ID & "' AND DEL_FLAG <> 1 ORDER BY PROJECT_ID"
+        Dim sqlProgram As String = "SELECT * FROM ANNALS_PROJECT WHERE PROGRAM_ID = '" & PROGRAM_ID & "' AND DEL_FLAG <> 1 ORDER BY  PRIORITY"
         Dim sqlCmd As New SqlCommand(sqlProgram, conn)
 
         Dim dr = sqlCmd.ExecuteReader(CommandBehavior.CloseConnection)
