@@ -22,6 +22,10 @@ Partial Class smes_financial_information
             Sql = "SME_S.P_SS_FINANCIAL_MAIN_TEMPLATE_3_SELECT"
         ElseIf Request.QueryString("TEMPLATE_ID") = "4" Then
             Sql = "SME_S.P_SS_FINANCIAL_MAIN_TEMPLATE_3_SELECT"
+        ElseIf Request.QueryString("TEMPLATE_ID") = "5" Then
+            Sql = "SME_S.P_SS_FINANCIAL_MAIN_SELECT"
+        ElseIf Request.QueryString("TEMPLATE_ID") = "6" Then
+            Sql = "SME_S.P_SS_FINANCIAL_MAIN_SELECT"
         Else
             Sql = "SME_S.P_SS_FINANCIAL_MAIN_TEMPLATE_3_SELECT"
         End If
