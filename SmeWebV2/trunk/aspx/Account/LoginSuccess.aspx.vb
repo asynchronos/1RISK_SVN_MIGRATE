@@ -8,7 +8,10 @@ Partial Class LoginSuccess
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'Response.Write(User.Identity.Name)
-        'log.Info(User.Identity.Name & " login.Now Checking Roles.")
+        If (isDebugEnabled) Then
+            log.Debug(User.Identity.Name & " login.Now Checking Roles.")
+        End If
+
 
         Dim dal = New TbEmployeeDAL()
         Dim emp As TbEmployee = dal.getTbEmployeeByUsername(User.Identity.Name)
@@ -49,8 +52,8 @@ Partial Class LoginSuccess
                 'Redirect the user to the originally requested page
                 'Response.Redirect(FormsAuthentication.GetRedirectUrl(Login1.UserName, False))
 
-                Dim clslog As New ClsLog
-                clslog.InsertLog(1, Request.UserHostAddress, User.Identity.Name)
+                Dim hisLog As New ClsLog
+                hisLog.InsertLog(1, Request.UserHostAddress, User.Identity.Name)
 
                 'Redirect to Default URL
                 'Response.Redirect(FormsAuthentication.DefaultUrl)
@@ -67,7 +70,7 @@ Partial Class LoginSuccess
                     If (isDebugEnabled) Then
                         log.Debug("ReturnUrl:" + getQueryString("ReturnUrl"))
                     End If
-                    Response.Redirect(getQueryString("ReturnUrl"))
+                    Response.Redirect("~" & getQueryString("ReturnUrl"))
                 Else
                     Response.Redirect("~/aspx/mainpage.aspx")
                 End If

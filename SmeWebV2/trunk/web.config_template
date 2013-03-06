@@ -20,16 +20,14 @@
 		<add key="APPLICATION_NAME" value="SmeWeb"/>
 		<add key="ChartImageHandler" value="storage=file;timeout=20;dir=c:\TempImageFiles\;"/>
 		<add key="LDAP_PORT" value="389"/>
-		<add key="LDAP_USERNAME" value="kec_admin" />
-		<add key="LDAP_PASSWORD" value="P@ssw0rd" />
+		<add key="LDAP_USERNAME" value="leader1_adm" />
+		<add key="LDAP_PASSWORD" value="E6ncTK@D" />
 		<add key="IsProduction" value="1"/>
+		<add key="LDAP_SERVER" value="bayad.co.th"/>
 		<!--Dev-->
 		<!--<add key="Log4netConfigPath" value="D:\workspaces\2012\SmeWebV2\Log4net.SMEWeb.config"/>-->
-		<!--<add key="LDAP_SERVER_UAT" value="172.19.60.112"/>-->
 		<!--Production-->
 		<add key="Log4netConfigPath" value="E:\Web\SmeWeb\Log4net.SMEWeb.config"/>
-		<!--<add key="LDAP_SERVER" value="bayad.co.th"/>-->
-		<add key="LDAP_SERVER" value="192.168.32.111"/>
 	</appSettings>
 	<!--Dev-->
 	<!--<connectionStrings>

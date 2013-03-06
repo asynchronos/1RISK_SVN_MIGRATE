@@ -53,7 +53,7 @@ Public Class TbEmployeeDAL
             reader.Close()
             conn.Close()
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             If (conn.State = ConnectionState.Open) Then
                 conn.Close()
@@ -85,7 +85,7 @@ Public Class TbEmployeeDAL
             reader.Close()
             conn.Close()
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             If (conn.State = ConnectionState.Open) Then
                 conn.Close()
@@ -134,7 +134,7 @@ Public Class TbEmployeeDAL
 
             sqlCmd.ExecuteNonQuery()
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             If (conn.State = ConnectionState.Open) Then
                 conn.Close()
@@ -195,7 +195,7 @@ Public Class TbEmployeeDAL
 
             reader.Close()
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             'close connction & set to Nothing
             Try
@@ -239,7 +239,7 @@ Public Class TbEmployeeDAL
             End While
             reader.Close()
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             'close connction & set to Nothing
             Try
@@ -298,7 +298,7 @@ Public Class TbEmployeeDAL
             reader.Close()
             conn.Close()
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             If (conn.State = ConnectionState.Open) Then
                 conn.Close()
@@ -347,7 +347,7 @@ Public Class TbEmployeeDAL
             reader.Close()
             conn.Close()
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             If (conn.State = ConnectionState.Open) Then
                 conn.Close()
@@ -390,7 +390,7 @@ Public Class TbEmployeeDAL
 
             sqlCmd.ExecuteNonQuery()
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             If (conn.State = ConnectionState.Open) Then
                 conn.Close()
@@ -422,7 +422,7 @@ Public Class TbEmployeeDAL
 
             sqlCmd.ExecuteNonQuery()
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             If (conn.State = ConnectionState.Open) Then
                 conn.Close()
