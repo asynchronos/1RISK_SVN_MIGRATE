@@ -36,7 +36,7 @@ Public Class ClsLog
             Return 0
 
         Catch ex As Exception
-            Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            Throw ex
         Finally
             If (sqlConn.State = ConnectionState.Open) Then
                 sqlConn.Close()

@@ -4,8 +4,9 @@ Option Strict On
 Partial Class Controls_ExportControl_ExportControl
     Inherits System.Web.UI.UserControl
 
-    Private Const excelContentType As String = "application/vnd.xls; charset=utf-8"
-    Private Const wordContentType As String = "application/vnd.word; charset=utf-8"
+    Private Const excelContentType As String = "application/vnd.xls;"
+    'Private Const excelContentType As String = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    Private Const wordContentType As String = "application/vnd.word;"
     Private Const excelExt As String = ".xls"
     Private Const wordExt As String = ".doc"
 
@@ -167,13 +168,19 @@ Partial Class Controls_ExportControl_ExportControl
         Response.ClearContent()
         Response.ClearHeaders()
         Response.AppendHeader("content-disposition", "attachment;filename=" + filename)
-        Response.Cache.SetCacheability(HttpCacheability.NoCache)
+        'Response.Cache.SetCacheability(HttpCacheability.NoCache)
         Response.ContentType = _contentType
         Response.ContentEncoding = System.Text.Encoding.UTF8
+        Response.Charset = "utf-8"
+        'Response.ContentEncoding = System.Text.Encoding.GetEncoding("windows-874")
 
-        Dim sw As New IO.StringWriter()
-        Dim htw As New HtmlTextWriter(sw)
+        'Dim sw As New IO.StringWriter()
+        'Dim htw As New HtmlTextWriter(sw)
         Dim frm As New HtmlForm()
+
+        Dim ms As New System.IO.MemoryStream()
+        Dim streamWrite As New System.IO.StreamWriter(ms, Encoding.UTF8)
+        Dim htw As New System.Web.UI.HtmlTextWriter(streamWrite)
 
         Dim cont As GridView = Nothing
 
@@ -208,7 +215,9 @@ Partial Class Controls_ExportControl_ExportControl
         frm.Page = Me.Page.Page
 
         frm.RenderControl(htw)
-        Response.Write(sw.ToString())
+
+        'Response.Write(sw.ToString())
+        Response.Write(Encoding.UTF8.GetString(ms.ToArray))
         Response.End()
 
         'เปลี่ยนค่า paging กลับเหมือนเดิม
