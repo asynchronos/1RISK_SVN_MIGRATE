@@ -25,16 +25,32 @@ namespace SME.DebtSummary.Account
                 log.Debug("UserName:" + Context.Profile.UserName);
                 log.Debug("Profile EMP_FULLNAME:" + ((UserProfileBase)Context.Profile).EMP_FULLNAME);
                 log.Debug("Profile EMP_FULLNAME:" + Context.Profile.PropertyValues["EMP_FULLNAME"]);
-                //log.Debug("Profile LastActivityDate:" + Context.Profile.LastActivityDate.ToString());
                 log.Debug("Profile.Context:" + Context.Profile.Context);
-                //log.Debug("Profile.Details:" + Context.Profile.GetProfileGroup("Details").GetPropertyValue("ProfileViewModel"));
-                //log.Debug("MyProfile.Details.EMP_FULLNAME:" + ((SME.UserSystem.Core.Profile.MyProfile)Context.Profile).Details.EMP_FULLNAME);
             }
 
-            //Response.Write("Profile<br/>");
-            //Response.Write("UserName:" + Context.Profile.UserName);
+            Response.Write("Authenticate Finish.");
+            Response.Write("<br/>");
+            Response.Write(User.Identity.Name + " login.");
+            Response.Write("<br/>");
+            Response.Write("Iden:" + User.Identity.Name);
+            Response.Write("<br/>");
+            Response.Write("AuthenticationType:" + User.Identity.AuthenticationType);
+            Response.Write("<br/>");
+            Response.Write("IsAuthenticated:" + User.Identity.IsAuthenticated);
+            Response.Write("<br/>");
+            Response.Write("IsInRole(admin):" + User.IsInRole("admin"));
+            Response.Write("<br/>");
+            Response.Write("IsInRole(1100):" + User.IsInRole("1100"));
+            Response.Write("<br/>");
+            Response.Write("IsInRole(1165):" + User.IsInRole("1165"));
+            Response.Write("<br/>");
 
-            Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+            Response.Write("----- Profile Section -----");
+            Response.Write("<br/>");
+            Response.Write("Profile EMP_FULLNAME:" + ((UserProfileBase)Context.Profile).EMP_FULLNAME);
+            Response.Write("<br/>");
+
+            //Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
         }
     }
 }

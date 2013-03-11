@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Security;
 using System.Web;
+using System.Web.Security;
 using log4net;
+using SME.UserSystem.Core.Exceptions;
 
 namespace SME.DebtSummary
 {
@@ -28,11 +31,11 @@ namespace SME.DebtSummary
             // Code that runs when an unhandled error occurs
             Exception err = Server.GetLastError();
 
-            if (HttpContext.Current.User != null)
-            {
-                MDC.Set("user", HttpContext.Current.User.Identity.Name);
-            }
-            MDC.Set("url", HttpContext.Current.Request.Url.ToString());
+            //if (HttpContext.Current.User != null)
+            //{
+            //    MDC.Set("user", HttpContext.Current.User.Identity.Name);
+            //}
+            //MDC.Set("url", HttpContext.Current.Request.Url.ToString());
 
             //Insert full stack log by log4net
             log.Error(err.Message, err);
@@ -43,14 +46,21 @@ namespace SME.DebtSummary
                 err = err.InnerException;
             }
 
-            Application["LastError"] = err; //store the error for later
-            Application["PageError"] = HttpContext.Current.Request.Url.ToString();
+            Exception lastError = err;
+            String pageError = HttpContext.Current.Request.Url.ToString()
+                                .Substring(0
+                                    , HttpContext.Current.Request.Url.ToString().IndexOf("?") < 0
+                                        ? HttpContext.Current.Request.Url.ToString().Length
+                                        : HttpContext.Current.Request.Url.ToString().IndexOf("?"));
+
+            //Application["LastError"] = err; //store the error for later
+            //Application["PageError"] = HttpContext.Current.Request.Url.ToString();
             Server.ClearError(); //clear the error so we can continue onwards
 
             if (HttpContext.Current.Session != null)
             {
-                //HttpContext.Current.Session.Add("LastError", err);
-                //HttpContext.Current.Session.Add("PageError", HttpContext.Current.Request.Url.ToString());
+                HttpContext.Current.Session.Add("LastError", lastError);
+                HttpContext.Current.Session.Add("PageError", pageError);
             }
 
             //send mail
@@ -64,7 +74,15 @@ namespace SME.DebtSummary
             //System.Web.Mail.SmtpMail.Send(mail);
 
             //redirect to error page
-            if (err.GetType().Equals(typeof(System.Security.SecurityException)))
+            if (err.GetType().Equals(typeof(LDAPInfoException))
+                || err.GetType().Equals(typeof(UserInfoException))
+                || err.GetType().Equals(typeof(AsynchronosProviderException)))
+            {
+                Response.Redirect(FormsAuthentication.LoginUrl
+                              + "?pages=" + pageError.ToString()
+                              + "&msg=" + ((Exception)lastError).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd());
+            }
+            else if (err.GetType().Equals(typeof(SecurityException)))
             {
                 Response.Redirect("~/Error/UnAuthorized.aspx");
             }

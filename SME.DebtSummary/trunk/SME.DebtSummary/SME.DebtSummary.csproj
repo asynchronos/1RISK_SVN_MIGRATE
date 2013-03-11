@@ -68,6 +68,7 @@
     <Content Include="Account\LoginSucceeded.aspx" />
     <Content Include="Account\Logout.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Account\TestRoleAccess.aspx" />
     <Content Include="Images\BackButton.gif" />
     <Content Include="Error\DefaultError.aspx" />
     <Content Include="Error\NotImplemented.aspx" />
@@ -143,6 +144,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TestRoleAccess.aspx.cs">
+      <DependentUpon>TestRoleAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TestRoleAccess.aspx.designer.cs">
+      <DependentUpon>TestRoleAccess.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
