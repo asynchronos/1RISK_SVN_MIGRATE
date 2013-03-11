@@ -394,20 +394,24 @@ namespace SME.UserSystem.Core.Providers
                             throw (ex);
                         }
 
+                        //get categoryList
+                        List<CATE_AND_EMP> categoryList = user
+                            .CATE_AND_EMP.Where(cae => cae.DEL_FLAG.Value != true
+                                && cae.CATEGORY.CATE_AND_APP
+                                    .Any(caa => caa.APPLICATION.APP_DESC == ApplicationName))
+                            .ToList<CATE_AND_EMP>();
+
+
+                        
                         //get profile
                         APP_PROFILE profile = user
                             .APP_PROFILE.Where(p => p.APPLICATION.APP_DESC == ApplicationName)
                             .FirstOrDefault();
 
-                        //get categoryList
-                        List<CATE_AND_EMP> categoryList = user
-                            .CATE_AND_EMP.Where(cae => cae.DEL_FLAG.Value != true
-                                && cae.CATEGORY.CATE_AND_APP
-                                    .Any(caa => caa.APP_KEY == profile.APP_KEY))
-                            .ToList<CATE_AND_EMP>();
-
                         if (profile != null) //&& profile.APPLICATION.APP_DESC.Equals(ApplicationName)
                         {
+                            
+
                             if (profile.EXPIRE_DATE != null
                                 && DateTime.Now > profile.EXPIRE_DATE.Value)
                             {
