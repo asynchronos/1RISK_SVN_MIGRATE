@@ -281,22 +281,7 @@ namespace SME.UserSystem.Core.UnitTest
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
-        /// <summary>
-        ///A test for GetUserFromLinq
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("SME.UserSystem.Core.dll")]
-        public void GetUserFromLinqTest()
-        {
-            AsynchronosMembershipProvider_Accessor target = new AsynchronosMembershipProvider_Accessor(); // TODO: Initialize to an appropriate value
-            string empId = string.Empty; // TODO: Initialize to an appropriate value
-            bool userIsOnline = false; // TODO: Initialize to an appropriate value
-            MembershipUser expected = null; // TODO: Initialize to an appropriate value
-            MembershipUser actual;
-            actual = target.GetUserFromLinq(empId, userIsOnline);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
+        
 
         /// <summary>
         ///A test for GetUserNameByEmail

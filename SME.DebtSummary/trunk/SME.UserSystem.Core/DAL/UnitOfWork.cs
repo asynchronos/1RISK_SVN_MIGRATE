@@ -9,7 +9,7 @@ namespace SME.UserSystem.Core.DAL
     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
 
-        private UserSystemEntities context;
+        private UserSystemEntities context = new UserSystemEntities();
         //private ApplicationRepository applicationRepo;
         private GenericRespository<APPLICATION> applicationRepo;
         private GenericRespository<APP_PROFILE> appProfileRepo;
@@ -17,11 +17,6 @@ namespace SME.UserSystem.Core.DAL
         private GenericRespository<CATE_AND_EMP> cateAndEmpRepo;
         private GenericRespository<CATEGORY> categoryRepo;
         private GenericRespository<CATE_AND_APP> cateAndAppRepo;
-
-        //public UnitOfWork(EntityConnection connection)
-        //{
-        //    this.context = new UserSystemEntities(connection);
-        //}
 
         public UserSystemEntities Context
         {
