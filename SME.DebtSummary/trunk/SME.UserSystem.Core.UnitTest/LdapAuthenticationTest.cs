@@ -109,7 +109,7 @@ namespace SME.UserSystem.Core.UnitTest
         //}
 
         [TestMethod]
-        [ExpectedException(typeof(System.Runtime.InteropServices.COMException),
+        [ExpectedException(typeof(LDAPInfoException),
            "Logon failure: unknown user name or bad password.")]
         public void AuthenticatedFailureTest()
         {
@@ -117,10 +117,7 @@ namespace SME.UserSystem.Core.UnitTest
             string username = "249888"; // TODO: Initialize to an appropriate value
             string pwd = "test"; // TODO: Initialize to an appropriate value
 
-            //bool expected = false; // TODO: Initialize to an appropriate value
-            //bool actual;
             target.IsAuthenticated(username, pwd);
-            //Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
@@ -139,7 +136,7 @@ namespace SME.UserSystem.Core.UnitTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(SME.UserSystem.Core.Exceptions.LDAPInfoException),
+        [ExpectedException(typeof(LDAPInfoException),
            "Can't not find username 338251 in AD.")]
         public void NotFoundUserTest()
         {
@@ -151,10 +148,8 @@ namespace SME.UserSystem.Core.UnitTest
             string username = "338251"; // TODO: Initialize to an appropriate value
             string pwd = "P@ssw0rd"; // TODO: Initialize to an appropriate value
 
-            //bool expected = true; // TODO: Initialize to an appropriate value
             bool actual;
             actual = target.IsAuthenticated(username, pwd);
-            //Assert.AreEqual(expected, actual);
         }
 
         //[TestMethod]
