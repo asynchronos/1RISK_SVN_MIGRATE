@@ -56,6 +56,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="account\LoginWithAD.aspx" />
+    <Content Include="account\LoginWithAD.aspx.vb" />
+    <Content Include="account\logon.aspx" />
+    <Content Include="account\logon.aspx.vb" />
+    <Content Include="account\logout.aspx" />
+    <Content Include="account\logout.aspx.vb" />
+    <Content Include="account\member.aspx" />
+    <Content Include="account\member.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="Default.aspx" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
