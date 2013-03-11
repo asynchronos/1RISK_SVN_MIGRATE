@@ -16,16 +16,50 @@ namespace SME.UserSystem.Core.Providers
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
 
+        private string _appName;
+        private string _providerName;
+
         public override string ApplicationName
         {
             get
             {
-                return ConfigurationManager.AppSettings["APPLICATION_NAME"];
+                return _appName;
             }
             set
             {
                 throw new System.NotImplementedException();
             }
+        }
+
+        public override string Name
+        {
+            get
+            {
+                return _providerName;
+            }
+        }
+
+        public override void Initialize(string name, System.Collections.Specialized.NameValueCollection config)
+        {
+            if (config == null)
+                throw new ArgumentNullException("config");
+
+            if (config["applicationName"] == null || config["applicationName"].Trim() == "")
+            {
+                _appName = ConfigurationManager.AppSettings["APPLICATION_NAME"];
+            }
+            else
+            {
+                _appName = config["applicationName"];
+            }
+
+            if (name == null || name.Length == 0)
+                name = "AsynchronosProfileProvider";
+            if (string.IsNullOrEmpty(name))
+                name = "AsynchronosProfileProvider";
+            _providerName = name;
+
+            base.Initialize(name, config);
         }
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
@@ -43,9 +77,9 @@ namespace SME.UserSystem.Core.Providers
             AsynchronosMembershipUser membershipUser = null;
             status = MembershipCreateStatus.UserRejected;
 
-            try
+            using (UnitOfWork uow = new UnitOfWork())
             {
-                using (UnitOfWork uow = new UnitOfWork())
+                try
                 {
                     USER_DATA user = uow.UserDataRepo.FindBy(u => u.EMP_ID == username)
                         .FirstOrDefault<USER_DATA>();
@@ -69,6 +103,9 @@ namespace SME.UserSystem.Core.Providers
                         //create user in db
                         user = new USER_DATA();
                         user.EMP_ID = username;
+                        user.EMP_TITLE = username;
+                        user.EMP_NAME = username;
+                        user.EMP_SURNAME = username;
                         user.PASSWD = password;
                         user.EMAIL = email;
                         user.CREATE_DATE = current;
@@ -90,6 +127,7 @@ namespace SME.UserSystem.Core.Providers
                         profile.APP_KEY = app.APP_KEY;
                         profile.EMP_ID = user.EMP_ID;
                         profile.IS_AUTHENTICATED = null;
+                        profile.CREATE_DATE = DateTime.Now;
 
                         user.APP_PROFILE.Add(profile);
                         app.APP_PROFILE.Add(profile);
@@ -98,8 +136,7 @@ namespace SME.UserSystem.Core.Providers
                     profile.LAST_ACTIVITY_DATE = DateTime.Now;
                     profile.LAST_ACTIVITY = Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name;
 
-                    uow.Save();
-
+                    //create MembershipUser Object
                     membershipUser = new AsynchronosMembershipUser(this.Name,
                                                       user.EMP_ID,
                                                       user.EMP_ID,
@@ -128,12 +165,14 @@ namespace SME.UserSystem.Core.Providers
                                                       user.DEL_FLAG);
 
                     status = MembershipCreateStatus.Success;
+                    uow.Save();
                 }
-            }
-            catch (Exception ex)
-            {
-                status = MembershipCreateStatus.ProviderError;
-                throw ex;
+                catch (Exception ex)
+                {
+                    status = MembershipCreateStatus.ProviderError;
+                    log.Error(ex);
+                    throw ex;
+                }
             }
 
             return membershipUser;
@@ -347,10 +386,12 @@ namespace SME.UserSystem.Core.Providers
                         if (user.EXPIRE_DATE != null
                             && user.EXPIRE_DATE < currentDate)
                         {
-                            throw new UserInfoException
-                                    ("You account is expired on "
+                            UserInfoException ex = new UserInfoException
+                                    ("Your account is expired on "
                                     + user
                                     .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
+                            log.Error(ex);
+                            throw (ex);
                         }
 
                         //get profile
@@ -367,6 +408,19 @@ namespace SME.UserSystem.Core.Providers
 
                         if (profile != null) //&& profile.APPLICATION.APP_DESC.Equals(ApplicationName)
                         {
+                            if (profile.EXPIRE_DATE != null
+                                && DateTime.Now > profile.EXPIRE_DATE.Value)
+                            {
+                                UserInfoException ex = new UserInfoException
+                                    ("Your account permission ["
+                                    + ApplicationName
+                                    + "] is expired on "
+                                    + user
+                                    .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
+                                log.Error(ex);
+                                throw ex;
+                            }
+
                             if (categoryList != null
                                 && categoryList.Count >= 1)
                             {
@@ -383,22 +437,28 @@ namespace SME.UserSystem.Core.Providers
                             }
                             else
                             {
-                                throw new UserInfoException
+                                UserInfoException ex = new UserInfoException
                                     ("You don't have any roles on application "
                                     + ApplicationName + ".");
+                                log.Error(ex);
+                                throw ex;
                             }
                         }
                         else
                         {
-                            throw new UserInfoException
+                            UserInfoException ex = new UserInfoException
                                 ("You don't have permission to use application "
                                 + ApplicationName + ".");
+                            log.Error(ex);
+                            throw ex;
                         }
                     }
                     else
                     {
-                        throw new UserInfoException
+                        UserInfoException ex = new UserInfoException
                             ("Can't find user data " + username + ".");
+                        log.Error(ex);
+                        throw ex;
                     }
                 }
             }

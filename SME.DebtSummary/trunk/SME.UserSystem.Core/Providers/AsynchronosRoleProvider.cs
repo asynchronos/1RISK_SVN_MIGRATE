@@ -16,6 +16,32 @@ namespace SME.UserSystem.Core.Providers
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
 
+        private string _appName;
+        private string _providerName;
+
+        public override void Initialize(string name, System.Collections.Specialized.NameValueCollection config)
+        {
+            if (config == null)
+                throw new ArgumentNullException("config");
+
+            if (config["applicationName"] == null || config["applicationName"].Trim() == "")
+            {
+                _appName = ConfigurationManager.AppSettings["APPLICATION_NAME"];
+            }
+            else
+            {
+                _appName = config["applicationName"];
+            }
+
+            if (name == null || name.Length == 0)
+                name = "AsynchronosRoleProvider";
+            if (string.IsNullOrEmpty(name))
+                name = "AsynchronosRoleProvider";
+            _providerName = name;
+
+            base.Initialize(name, config);
+        }
+
         /// <summary>
         ///
         /// </summary>
@@ -47,56 +73,40 @@ namespace SME.UserSystem.Core.Providers
 
             using (UnitOfWork uow = new UnitOfWork())
             {
-                using (DbTransaction tran = uow.Context.Connection.BeginTransaction())
+                foreach (string username in usernames)
                 {
-                    try
+                    foreach (string roleName in roleNames)
                     {
-                        foreach (string username in usernames)
+                        USER_DATA user = uow.UserDataRepo
+                            .FindBy(u => u.EMP_ID == username
+                                && u.DEL_FLAG != true)
+                            .FirstOrDefault<USER_DATA>();
+
+                        if (null != user)
                         {
-                            foreach (string roleName in roleNames)
-                            {
-                                USER_DATA user = uow.UserDataRepo
-                                    .FindBy(u => u.EMP_ID == username
-                                        && u.DEL_FLAG != true)
-                                    .FirstOrDefault<USER_DATA>();
+                            int categoryKey = this.ParseRoleName(roleName);
 
-                                if (null != user)
-                                {
-                                    CATE_AND_APP cateAndApp = uow.CateAndAppRepo
-                                        .FindBy(caa => caa.DEL_FLAG != true
-                                            && caa.APPLICATION.APP_DESC == ApplicationName
-                                            && caa.CATEGORY_KEY == int.Parse(roleName)
-                                            && caa.CATEGORY.DEL_FLAG != true
-                                        ).FirstOrDefault<CATE_AND_APP>();
+                            CATE_AND_EMP cateAndEmp = new CATE_AND_EMP();
+                            cateAndEmp.EMP_ID = user.EMP_ID;
+                            cateAndEmp.CATEGORY_KEY = categoryKey;
+                            cateAndEmp.DEL_FLAG = false;
 
-                                    cateAndApp.CATEGORY.CATE_AND_EMP
-                                        .FirstOrDefault<CATE_AND_EMP>()
-                                        .USER_DATAReference.Attach(user);
-                                }
-                                else
-                                {
-                                    throw new AsynchronosProviderException(
-                                        "Can't not fine username " + username
-                                        + "for add to role " + roleName + "."
-                                        );
-                                }
-                            }
+                            user.CATE_AND_EMP.Add(cateAndEmp);
+                            uow.CategoryRepo.FindBy(c => c.CATEGORY_KEY == categoryKey)
+                                .FirstOrDefault<CATEGORY>()
+                                .CATE_AND_EMP.Add(cateAndEmp);
                         }
-
-                        tran.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        tran.Rollback();
-                        throw ex;
-                    }
-                    finally
-                    {
-                        tran.Dispose();
+                        else
+                        {
+                            throw new AsynchronosProviderException(
+                                "Can't not fine username " + username
+                                + "for add to role " + roleName + "."
+                                );
+                        }
                     }
                 }
+                uow.Save();
             }
-            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -107,11 +117,19 @@ namespace SME.UserSystem.Core.Providers
         {
             get
             {
-                return ConfigurationManager.AppSettings["APPLICATION_NAME"];
+                return _appName;
             }
             set
             {
                 throw new System.NotImplementedException();
+            }
+        }
+
+        public override string Name
+        {
+            get
+            {
+                return _providerName;
             }
         }
 
@@ -152,18 +170,15 @@ namespace SME.UserSystem.Core.Providers
                 {
                     try
                     {
+                        int categoryKey = this.ParseRoleName(roleName);
                         CATEGORY category = uow.CategoryRepo
                                     .FindBy(c => c.DEL_FLAG != true
-                                        && c.CATEGORY_KEY == int.Parse(roleName)
+                                        && c.CATEGORY_KEY == categoryKey
                                         && c.CATE_AND_APP
                                             .Any(caa => caa.APPLICATION
                                                 .APP_DESC == ApplicationName
                                                 && caa.DEL_FLAG != true))
                                     .FirstOrDefault<CATEGORY>();
-
-                        //CATEGORY category = uow.CategoryRepo
-                        //    .FindBy(c => c.CATEGORY_KEY == int.Parse(roleName))
-                        //    .FirstOrDefault<CATEGORY>();
 
                         if (null != category)
                         {
@@ -213,9 +228,10 @@ namespace SME.UserSystem.Core.Providers
 
             using (UnitOfWork uow = new UnitOfWork())
             {
+                int categoryKey = this.ParseRoleName(roleName);
                 result = uow.CateAndEMPRepo
                             .FindBy(cae => cae.DEL_FLAG != true
-                                && cae.CATEGORY_KEY == int.Parse(roleName)
+                                && cae.CATEGORY_KEY == categoryKey
                                 && cae.CATEGORY.DEL_FLAG != true
                                 && cae.CATEGORY.CATE_AND_APP
                                     .Any(caa => caa.APPLICATION.APP_DESC == ApplicationName
@@ -241,7 +257,10 @@ namespace SME.UserSystem.Core.Providers
                 result = uow.CateAndAppRepo
                     .FindBy(caa => caa.DEL_FLAG != true
                             && caa.APPLICATION.APP_DESC == ApplicationName)
-                    .Select(caa => caa.CATEGORY_KEY.ToString()).ToArray<string>();
+                    .Select(caa => caa.CATEGORY_KEY)
+                    .AsEnumerable<int?>()
+                    .Select(key => key.ToString())
+                    .ToArray<string>();
             }
 
             return result;
@@ -254,6 +273,9 @@ namespace SME.UserSystem.Core.Providers
         /// <returns>CATEGORY_KEY LIST</returns>
         public override string[] GetRolesForUser(string username)
         {
+            if (isDebugEnabled)
+                log.Debug("Invoke " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             string[] result = null;
 
             using (UnitOfWork uow = new UnitOfWork())
@@ -266,10 +288,10 @@ namespace SME.UserSystem.Core.Providers
                                     .Any(caa =>
                                         caa.APPLICATION.APP_DESC == ApplicationName
                                         && caa.DEL_FLAG != true))
-                            .Select(cae => cae.CATEGORY_KEY.ToString()).ToArray<string>();
-
-                //result = uow.CateAndEMPRepo.FindBy(cae => cae.EMP_ID == username)
-                //    .Select(cae => cae.CATEGORY_KEY.ToString()).ToArray<string>();
+                            .Select(cae => cae.CATEGORY_KEY)
+                            .AsEnumerable<int>()
+                            .Select(key => key.ToString())
+                            .ToArray<string>();
             }
 
             return result;
@@ -286,19 +308,16 @@ namespace SME.UserSystem.Core.Providers
 
             using (UnitOfWork uow = new UnitOfWork())
             {
+                int categoryKey = this.ParseRoleName(roleName);
                 result = uow.CateAndEMPRepo
                             .FindBy(cae => cae.DEL_FLAG != true
-                                && cae.CATEGORY_KEY == int.Parse(roleName)
+                                && cae.CATEGORY_KEY == categoryKey
                                 && cae.CATEGORY.DEL_FLAG != true
                                 && cae.CATEGORY.CATE_AND_APP
                                     .Any(caa =>
                                         caa.APPLICATION.APP_DESC == ApplicationName
                                         && caa.DEL_FLAG != true))
                             .Select(cae => cae.EMP_ID).ToArray<string>();
-
-                //result = uow.CateAndEMPRepo
-                //    .FindBy(cae => cae.CATEGORY_KEY == int.Parse(roleName))
-                //    .Select(cae => cae.EMP_ID).ToArray<string>();
             }
 
             return result;
@@ -314,11 +333,13 @@ namespace SME.UserSystem.Core.Providers
         {
             int count = 0;
 
+            int categoryKey = this.ParseRoleName(roleName);
+
             using (UnitOfWork uow = new UnitOfWork())
             {
                 count = uow.CategoryRepo
                             .FindBy(c => c.DEL_FLAG != true
-                                && c.CATEGORY_KEY == int.Parse(roleName)
+                                && c.CATEGORY_KEY == categoryKey
                                 && c.CATE_AND_APP
                                     .Any(caa =>
                                         caa.APPLICATION.APP_DESC == ApplicationName
@@ -370,9 +391,11 @@ namespace SME.UserSystem.Core.Providers
                         {
                             foreach (string rolename in roleNames)
                             {
+                                int categoryKey = this.ParseRoleName(rolename);
+
                                 category = uow.CategoryRepo
                                     .FindBy(c => c.DEL_FLAG != true
-                                        && c.CATEGORY_KEY == int.Parse(rolename)
+                                        && c.CATEGORY_KEY == categoryKey
                                         && c.CATE_AND_APP
                                             .Any(caa => caa.APPLICATION
                                                 .APP_DESC == ApplicationName
@@ -417,8 +440,9 @@ namespace SME.UserSystem.Core.Providers
 
             using (UnitOfWork uow = new UnitOfWork())
             {
+                int categoryKey = this.ParseRoleName(roleName);
                 CATE_AND_APP cateAndApp = uow.CateAndAppRepo
-                    .FindBy(caa => caa.CATEGORY_KEY == int.Parse(roleName)
+                    .FindBy(caa => caa.CATEGORY_KEY == categoryKey
                         && caa.APPLICATION.APP_DESC == ApplicationName
                         && caa.DEL_FLAG != true)
                     .FirstOrDefault<CATE_AND_APP>();
@@ -427,6 +451,22 @@ namespace SME.UserSystem.Core.Providers
                 {
                     result = true;
                 }
+            }
+
+            return result;
+        }
+
+        private int ParseRoleName(string roleName)
+        {
+            int result = 0;
+
+            if (!int.TryParse(roleName, out result))
+            {
+                AsynchronosProviderException ex
+                    = new AsynchronosProviderException
+                        ("RoleName(Category Key) must be integer");
+                log.Error(ex);
+                throw ex;
             }
 
             return result;

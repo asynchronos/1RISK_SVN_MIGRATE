@@ -14,7 +14,12 @@ namespace SME.UserSystem.Core.BL
     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly bool isDebugEnabled = log.IsDebugEnabled;
 
-        private UnitOfWork uow = new UnitOfWork();
+        //public UserBL(EntityConnection connection)
+        //{
+        //    this.uow = new UnitOfWork(connection);
+        //}
+
+        private UnitOfWork uow;
 
         public UnitOfWork UOW
         {
