@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.DirectoryServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using log4net;
 using SME.UserSystem.Core.Exceptions;
@@ -64,13 +65,19 @@ namespace SME.UserSystem.Core.AD
                     DirectorySearcher search = new DirectorySearcher(entry);
                     search.Filter = "(SAMAccountName=" + username + ")";
                     search.PropertiesToLoad.Add("cn");
+
+                    if (null == search)
+                    {
+                    }
+
                     SearchResult result = search.FindOne();
+
                     if (null == result)
                     {
                         authenticated = false;
                     }
 
-                    if (isDebugEnabled)
+                    if (false)//(isDebugEnabled)
                     {
                         //username = "249987";
                         //search = new DirectorySearcher(entry);
@@ -115,6 +122,7 @@ namespace SME.UserSystem.Core.AD
                     }
                 }
             }
+
             catch (DirectoryServicesCOMException cex)
             {
                 if (IsUserLocked(username))
@@ -123,12 +131,17 @@ namespace SME.UserSystem.Core.AD
                     throw new LDAPInfoException("Username " + username + " in AD is Locked.");
                 }
 
-                log.Error(cex.StackTrace);
+                log.Error(cex);
                 throw new LDAPInfoException(cex.Message, cex);
+            }
+            catch (COMException comEx)
+            {
+                log.Error(comEx);
+                throw new LDAPInfoException(comEx.Message, comEx);
             }
             catch (System.Exception ex)
             {
-                log.Error(ex.StackTrace);
+                log.Error(ex);
                 throw ex;
             }
 
