@@ -26,16 +26,9 @@ Partial Class smes_financial_main
         End If
 
         If Request.QueryString("TEMPLATE_ID") <> "" Then
+
             spanTemplateID.InnerText = Request.QueryString("TEMPLATE_ID")
-            If Request.QueryString("TEMPLATE_ID") = "1" Then
-                spanTemplateName.InnerText = "SS Template"
-            ElseIf Request.QueryString("TEMPLATE_ID") = "2" Then
-                spanTemplateName.InnerText = "Flood Template"
-            ElseIf Request.QueryString("TEMPLATE_ID") = "3" Then
-                spanTemplateName.InnerText = "3X Template"
-            Else
-                spanTemplateName.InnerText = "Financial"
-            End If
+            spanTemplateName.InnerText = Request.QueryString("TEMPLATE_NAME")
 
         End If
 

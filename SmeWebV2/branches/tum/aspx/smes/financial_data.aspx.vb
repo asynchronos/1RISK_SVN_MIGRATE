@@ -195,6 +195,13 @@ Partial Class aspx_smes_FINANCIAL_DATA
                 If IsDBNull(reader("REFINANCE_REPAYMENT_BAY")) = False Then REFINANCE_REPAYMENT_BAYTextBox.Text = String.Format("{0:n0}", reader("REFINANCE_REPAYMENT_BAY"))
                 If IsDBNull(reader("NEW_WORKING_CAPITAL_CAL")) = False Then NEW_WORKING_CAPITAL_CALTextBox.Text = String.Format("{0:n0}", reader("NEW_WORKING_CAPITAL_CAL"))
 
+                If IsDBNull(reader("SME_SS_OLD_VALUE")) = False Then SME_SS_OLD_VALUETextBox.Text = String.Format("{0:n0}", reader("SME_SS_OLD_VALUE"))
+                If IsDBNull(reader("SME_SS_THIS_TIME_VALUE")) = False Then SME_SS_THIS_TIME_VALUETextBox.Text = String.Format("{0:n0}", reader("SME_SS_THIS_TIME_VALUE"))
+                If IsDBNull(reader("SME_S_LTV_PERCENT")) = False Then SME_S_LTV_PERCENTTextBox.Text = String.Format("{0:n0}", reader("SME_S_LTV_PERCENT"))
+                If IsDBNull(reader("TCG_FEE_YEAR_PERCENT")) = False Then TCG_FEE_YEAR_PERCENTTextBox.Text = String.Format("{0:n0}", reader("TCG_FEE_YEAR_PERCENT"))
+
+
+
 
             End While
 
@@ -1553,6 +1560,28 @@ Partial Class aspx_smes_FINANCIAL_DATA
             sqlCmd.Parameters.AddWithValue("NEW_WORKING_CAPITAL_CAL", 0)
         Else
             sqlCmd.Parameters.AddWithValue("NEW_WORKING_CAPITAL_CAL", ToDecimal(NEW_WORKING_CAPITAL_CALTextBox.Text))
+        End If
+
+
+        If SME_SS_OLD_VALUETextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("SME_SS_OLD_VALUE", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("SME_SS_OLD_VALUE", ToDecimal(SME_SS_OLD_VALUETextBox.Text))
+        End If
+        If SME_SS_THIS_TIME_VALUETextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("SME_SS_THIS_TIME_VALUE", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("SME_SS_THIS_TIME_VALUE", ToDecimal(SME_SS_THIS_TIME_VALUETextBox.Text))
+        End If
+        If SME_S_LTV_PERCENTTextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("SME_S_LTV_PERCENT", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("SME_S_LTV_PERCENT", ToDecimal(SME_S_LTV_PERCENTTextBox.Text))
+        End If
+        If TCG_FEE_YEAR_PERCENTTextBox.Text = "" Then
+            sqlCmd.Parameters.AddWithValue("TCG_FEE_YEAR_PERCENT", 0)
+        Else
+            sqlCmd.Parameters.AddWithValue("TCG_FEE_YEAR_PERCENT", ToDecimal(TCG_FEE_YEAR_PERCENTTextBox.Text))
         End If
 
 

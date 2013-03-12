@@ -101,13 +101,43 @@
         , N30, N31, N40, N41, N43, N44
         , O27, O28, O34, O35, O37
         , R44 // Temp cal loan max
-         , MARGIN_TABLE, DSCR_TABLE, AP_TABLE, AR_TABLE, STOCK_TABLE // ตัวแปรจาก table ที่ไม่มีใน excell
+        , MARGIN_TABLE, DSCR_TABLE, AP_TABLE, AR_TABLE, STOCK_TABLE // ตัวแปรจาก table ที่ไม่มีใน excell
         , LTV_TABLE, WORKING_CAPITAL_TABLE, RATE_TABLE, CONTRACT_TABLE
         , DX06, DX07
         , CURRENT_ASSET_OTHER
+        , REFINANCE_WORKING_CAPITAL_BAYTextBox,REFINANCE_WORKING_LOAN_BAYTextBox,REFINANCE_REPAYMENT_BAYTextBox  // 6/3/2556
         , DSCR_THIS_TIME;
 
         $(document).ready(function () {
+
+            // กำหนด size frame
+            sizeFrame();
+            // กำหนดให้ปุ่ม submit มี style เป็น button ui
+            $("input[type=submit]").button();
+
+            // ใส่  username ให้กับหน้านี้
+            var userName;
+            if (window.parent.document.getElementById("spanUserName")) {
+                userName = window.parent.document.getElementById("spanUserName").innerText;
+            } else {
+                userName = 'test';
+            }
+            $("#USERTextBox").val(userName);
+
+            $('#toggle-view #tableBusiness').hide();
+            $('#toggle-view #buslabel').click(function () {
+                var text = $(this).parent().children('#tableBusiness');
+                if (text.is(':hidden')) {
+                    text.slideDown('200');
+                    $(this).children('span').html('-');
+                } else {
+                    text.slideUp('200');
+                    $(this).children('span').html('+');
+
+                }
+            });
+
+
 
             $(".data").addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
 			.find(".data-header")
@@ -123,6 +153,13 @@
                 $(this).parents(".data:first").find(".data-content").toggle();
             });
             $(".data-header").click(); // กำหนดให้คลิกครั้งแรก คือ กำหนดให้ซ่อนก่อน
+
+            $("#tab1").find("input[type=text]").attr("readonly", "true");
+            $("#tab2").find("input[type=text]").attr("readonly", "true");
+            $("#tab3").find("input[type=text]").attr("readonly", "true");
+            $("#tab4").find("input[type=text]").attr("readonly", "true");
+            $("#tab5").find("input[type=text]").attr("readonly", "true");
+            $("#tab6").find("input[type=text]").attr("readonly", "true");
 
 
             D8 = $("#SALES_CMTextBox");
@@ -265,6 +302,11 @@
 
             CURRENT_ASSET_OTHER = $("#CURRENT_ASSET_OTHER_CMTextBox");
 
+            REFINANCE_WORKING_CAPITAL_BAYTextBox = $("#REFINANCE_WORKING_CAPITAL_BAY_CMTextBox");
+            REFINANCE_WORKING_LOAN_BAYTextBox = $("#REFINANCE_WORKING_LOAN_BAY_CMTextBox");
+            REFINANCE_REPAYMENT_BAYTextBox = $("#REFINANCE_REPAYMENT_BAY_CMTextBox")
+            NEW_WORKING_CAPITAL_CALTextBox = $("#NEW_WORKING_CAPITAL_CAL_CMTextBox")
+
 
             MARGIN_TABLE = $("#MARGIN_TABLETextBox");
             DSCR_TABLE = $("#DSCR_TABLETextBox");
@@ -277,15 +319,13 @@
             CONTRACT_TABLE = $("#CONTRACT_TABLETextBox");
 
 
-            var CALCULATE_EL = N43.add(N44).add(I30).add(I31).add(N30).add(N31);
+            var CALCULATE_EL = N43.add(N44).add(I30).add(I31).add(N30).add(N31).add();
             CALCULATE_EL.autoNumeric({ aPad: true, vMin: '-9999999999.99', vMax: '9999999999.99' });
-
 
             var DIGIT2_EL = $("#LTV_THIS_TIMETextBox").add("#DE_THIS_TIMETextBox").add("#DSCR_THIS_TIMETextBox").add("#LTV_THIS_TIMETextBox")
             .add("#GROSS_PROFITTextBox");
             DIGIT2_EL.autoNumeric({ aPad: true, vMin: '-9999999999.99', vMax: '9999999999.99' });
 
-            $("input[type=text]").autoNumeric({ aPad: false });
 
             // กำหนดให้หน้านี้ใช้ table default จากระบบ 1=ใช้,0=ไม่ใช้
             obj.setUSE_TABLE(1);
@@ -663,10 +703,26 @@
             if (CURRENT_ASSET_OTHER.val() == '') {
                 obj.setCURRENT_ASSET_OTHER(0);
             } else {
-
                 obj.setCURRENT_ASSET_OTHER(parseFloat(CURRENT_ASSET_OTHER.val()));
-
             }
+
+            // ฟิวเพิ่ม 6/3/2556
+            if (REFINANCE_WORKING_CAPITAL_BAYTextBox.val() == '') {
+                obj.setREFINANCE_WORKING_CAPITAL_BAY(0);
+            } else {
+                obj.setREFINANCE_WORKING_CAPITAL_BAY(parseFloat(REFINANCE_WORKING_CAPITAL_BAYTextBox.autoNumericGet()));
+            }
+            if (REFINANCE_WORKING_LOAN_BAYTextBox.val() == '') {
+                obj.setREFINANCE_WORKING_LOAN_BAY(0);
+            } else {
+                obj.setREFINANCE_WORKING_LOAN_BAY(parseFloat(REFINANCE_WORKING_LOAN_BAYTextBox.autoNumericGet()));
+            }
+            if (REFINANCE_REPAYMENT_BAYTextBox.val() == '') {
+                obj.setREFINANCE_REPAYMENT_BAY(0);
+            } else {
+                obj.setREFINANCE_REPAYMENT_BAY(parseFloat(REFINANCE_REPAYMENT_BAYTextBox.autoNumericGet()));
+            }
+
 
             //            if (DX06.val() == '') {
             //                obj.setDX06(0);
@@ -734,6 +790,11 @@
 
             $("#BOND_DEPOSIT_PLEDGETextBox").val(I44.val());
 
+            $("#REFINANCE_WORKING_CAPITAL_BAYTextBox").val(REFINANCE_WORKING_CAPITAL_BAYTextBox.val());
+            $("#REFINANCE_WORKING_LOAN_BAYTextBox").val(REFINANCE_WORKING_CAPITAL_BAYTextBox.val());
+            $("#REFINANCE_REPAYMENT_BAYTextBox").val(REFINANCE_REPAYMENT_BAYTextBox.val());
+            $("#NEW_WORKING_CAPITAL_CALTextBox").val(NEW_WORKING_CAPITAL_CALTextBox.val());
+
             // คำนวณค่า total จาก % ของ dscr
             $("#TOTAL_AMOUNT_OF_COLLATERALTextBox").autoNumericSet(obj.T17());
 
@@ -744,13 +805,17 @@
 
             $("#ACCOUNT_PAYABLE_CALTextBox").autoNumericSet(obj.N9());
             $("#CURRENT_LIABILITY_BAY_CALTextBox").autoNumericSet(obj.N10());
+
             $("#OTHER_CURRENT_LIABILITY_CALTextBox").autoNumericSet(obj.N11());
+
             $("#TOTAL_CURRENT_LIABILITY_CALTextBox").autoNumericSet(obj.N13());
             $("#LONG_TERM_LIABILITY_BAY_CALTextBox").autoNumericSet(obj.N15());
             $("#OTHER_LONG_TERM_LIABILITY_CALTextBox").autoNumericSet(obj.N16());
             $("#TOTAL_LIABILITY_CALTextBox").autoNumericSet(obj.N18());
             $("#LOANS_REL_CO_DIRECTORS_CALTextBox").autoNumericSet(obj.N20());
-            $("#EQUITY_CALTextBox").autoNumericSet(obj.N21());
+
+            $("#EQUITY_CALTextBox").val(obj.N21());
+
             $("#LIABILITY_EQUITY_CALTextBox").autoNumericSet(obj.N22());
             $("#OWNERS_EQUITY_CALTextBox").autoNumericSet(obj.N25());
             //            
@@ -878,32 +943,8 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            // กำหนด size frame
-            sizeFrame();
-            // กำหนดให้ปุ่ม submit มี style เป็น button ui
-            $("input[type=submit]").button();
-
-            // ใส่  username ให้กับหน้านี้
-            var userName;
-            if (window.parent.document.getElementById("spanUserName")) {
-                userName = window.parent.document.getElementById("spanUserName").innerText;
-            } else {
-                userName = 'test';
-            }
-            $("#USERTextBox").val(userName);
-
-            $('#toggle-view #tableBusiness').hide();
-            $('#toggle-view #buslabel').click(function () {
-                var text = $(this).parent().children('#tableBusiness');
-                if (text.is(':hidden')) {
-                    text.slideDown('200');
-                    $(this).children('span').html('-');
-                } else {
-                    text.slideUp('200');
-                    $(this).children('span').html('+');
-
-                }
-            });
+            
+     
 
         });
         function sizeFrame() {
@@ -1729,6 +1770,62 @@
                         </tr>
                         <tr>
                             <td class="style4">
+                                <strong>เฉพาะการขออนุัมัติครั้งนี้มีการ Refinance Bay</strong></td>
+                            <td class="style25">
+                                &nbsp;</td>
+                            <td class="style26">
+                                &nbsp;</td>
+                            <td class="style23">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="style4">
+                                Refinance Working Capital กับ Bay</td>
+                            <td class="style25">
+                            <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_BAY_RMTextBox" runat="server" Width="85px"
+                                ToolTip="" />
+                            </td>
+                            <td class="style26">
+                            <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_BAY_CMTextBox" runat="server" Width="85px"
+                                ToolTip="" />
+                            </td>
+                            <td class="style23">
+                            <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_BAYTextBox" runat="server" Width="85px"
+                                ToolTip="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style4">
+                                Refinance Loan กับ Bay</td>
+                            <td class="style25">
+                            <asp:TextBox ID="REFINANCE_WORKING_LOAN_BAY_RMTextBox" runat="server" Width="85px" ToolTip=""
+                                CELL="" />
+                            </td>
+                            <td class="style26">
+                            <asp:TextBox ID="REFINANCE_WORKING_LOAN_BAY_CMTextBox" runat="server" Width="85px" ToolTip=""
+                                CELL="" />
+                            </td>
+                            <td class="style23">
+                            <asp:TextBox ID="REFINANCE_WORKING_LOAN_BAYTextBox" runat="server" Width="85px" ToolTip=""
+                                CELL="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style4">
+                                ภาระการผ่อนหนี้ Loan ที่ Refinance
+                                กับ Bay</td>
+                            <td class="style25">
+                            <asp:TextBox ID="REFINANCE_REPAYMENT_BAY_RMTextBox" ToolTip="" Width="85px" runat="server"></asp:TextBox>
+                            </td>
+                            <td class="style26">
+                            <asp:TextBox ID="REFINANCE_REPAYMENT_BAY_CMTextBox" ToolTip="" Width="85px" runat="server"></asp:TextBox>
+                            </td>
+                            <td class="style23">
+                            <asp:TextBox ID="REFINANCE_REPAYMENT_BAYTextBox" ToolTip="" Width="85px" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style4">
                                 <strong>หลักประกันรวมทั้งหมด </strong>
                             </td>
                             <td class="style25">
@@ -1992,6 +2089,19 @@
                             </td>
                             <td class="style30">
                                 <asp:TextBox ID="CURRENT_ASSET_OTHER_CALTextBox" Width="85px" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style22">
+                                สินทรัพย์หมุนเวียนเกิดใหม่</td>
+                            <td class="style79">
+                        <asp:TextBox ID="NEW_WORKING_CAPITAL_CAL_RMTextBox" Width="85px" runat="server" />
+                            </td>
+                            <td class="style2">
+                        <asp:TextBox ID="NEW_WORKING_CAPITAL_CAL_CMTextBox" Width="85px" runat="server" />
+                            </td>
+                            <td class="style30">
+                        <asp:TextBox ID="NEW_WORKING_CAPITAL_CALTextBox" Width="85px" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -3093,14 +3203,29 @@
                 </tr>
                 <tr>
                     <td class="style9">
-                        &nbsp;
-                    </td>
+                        Customer Grade</td>
                     <td class="style11">
-                        &nbsp;
+                        <asp:Label ID="CustomerGradeLabel" runat="server" Text=""></asp:Label>
                     </td>
                     <td>
                         &nbsp;
                     </td>
+                </tr>
+                <tr>
+                    <td class="style9">
+                        &nbsp;</td>
+                    <td class="style11">
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="style9">
+                        &nbsp;</td>
+                    <td class="style11">
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
                 </tr>
             </table>
         </div>

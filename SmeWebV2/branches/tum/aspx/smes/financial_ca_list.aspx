@@ -107,7 +107,8 @@
                         <Columns>
                             <asp:TemplateField HeaderText="เลขที่ CA" InsertVisible="False" SortExpression="CA_ID">
                                 <ItemTemplate>
-                                    <a href="#" title="click to view detail" onclick="return jsPop('financial_main.aspx?REF_ID=<%# DataBinder.Eval (Container.DataItem,"ID")%>&TEMPLATE_ID=<%#  DataBinder.Eval (Container.DataItem,"TEMPLATE_ID")%>&SMES_ID=<%# DataBinder.Eval(Container.DataItem, "SMES_ID")%>', 'win01', 700, 600);">
+                                    <a href="#" title="click to view detail" 
+                                    onclick="return jsPop('financial_main.aspx?SMES_ID=<%# DataBinder.Eval(Container.DataItem, "SMES_ID")%>&REF_ID=<%# DataBinder.Eval (Container.DataItem,"ID")%>&TEMPLATE_ID=<%#  DataBinder.Eval (Container.DataItem,"TEMPLATE_ID")%>&TEMPLATE_NAME=<%# DataBinder.Eval(Container.DataItem,"TEMPLATE_NAME") %>', 'win01', 700, 600);">
                                         <%# DataBinder.Eval(Container.DataItem, "CA_ID")%></a>
                                 </ItemTemplate>
                             </asp:TemplateField>

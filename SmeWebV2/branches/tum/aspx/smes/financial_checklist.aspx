@@ -229,6 +229,7 @@
          <%--   <asp:BoundField DataField="RATING_LIST_RESULT" HeaderText="Rating" ReadOnly="true" />--%>
           <%--  <asp:BoundField DataField="LEGAL_LIST_RESULT" HeaderText="Legal" ReadOnly="true" />--%>
             <asp:BoundField DataField="DPD_RESULT" HeaderText="DPD" ReadOnly="true" />
+            <asp:BoundField DataField="GRADE" HeaderText="GRADE" ReadOnly="true" />
 
            </Columns>
         <FooterStyle BackColor="#CCCC99" />
