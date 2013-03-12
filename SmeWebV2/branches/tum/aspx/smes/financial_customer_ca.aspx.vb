@@ -62,13 +62,20 @@ Partial Class smes_financial_customer
         If TEMPLATE = "" Then
             TEMPLATE = Request.QueryString("TEMPLATE_ID")
         End If
-        If TEMPLATE <> "1" Then  ' ถ้าเป็น template อื่น ๆ ที่ไม่ใช่ ss แสดง
-            DPDT3Panel.Visible = True
-            DPDT1Panel.Visible = False
-        Else
+      
+        If TEMPLATE = "1" Then
             DPDT3Panel.Visible = False
             DPDT1Panel.Visible = True
         End If
+        If TEMPLATE = "2" Or TEMPLATE = "3" Or TEMPLATE = "4" Then  ' ถ้าเป็น template อื่น ๆ ที่ไม่ใช่ ss แสดง
+            DPDT3Panel.Visible = True
+            DPDT1Panel.Visible = False
+        End If
+        If TEMPLATE = "5" Or TEMPLATE = "6" Then  ' template ss และ s 
+            DPDT3Panel.Visible = False  ' dpd 10-30
+            DPDT1Panel.Visible = True '  dpd 0-30
+        End If
+
         If isDebugEnabled Then
             log.Debug("template=" & TEMPLATE)
         End If

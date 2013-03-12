@@ -925,7 +925,7 @@ SSProject.prototype = {
         return this;
     },
     getMARGIN: function () {
-         return this.MARGIN;
+        return this.MARGIN;
     },
     setMARGIN: function (input) {
         this.MARGIN = (new MyNumber(input)).getValue();
@@ -989,50 +989,50 @@ SSProject.prototype = {
         return this.NEW_WORKING_CAPITAL;
     }
    , setCURRENT_ASSET_OTHER: function (newCURRENT_ASSET_OTHER) {
-        this.CURRENT_ASSET_OTHER = newCURRENT_ASSET_OTHER;
-    },
+       this.CURRENT_ASSET_OTHER = newCURRENT_ASSET_OTHER;
+   },
     getCURRENT_ASSET_OTHER: function () {
         return this.CURRENT_ASSET_OTHER;
     }
    , setREFINANCE_WORKING_CAPITAL_BAY: function (newREFINANCE_WORKING_CAPITAL_BAY) {
-        this.REFINANCE_WORKING_CAPITAL_BAY = newREFINANCE_WORKING_CAPITAL_BAY;
-    },
+       this.REFINANCE_WORKING_CAPITAL_BAY = newREFINANCE_WORKING_CAPITAL_BAY;
+   },
     getREFINANCE_WORKING_CAPITAL_BAY: function () {
         return this.REFINANCE_WORKING_CAPITAL_BAY;
     }
   , setREFINANCE_WORKING_LOAN_BAY: function (newREFINANCE_WORKING_LOAN_BAY) {
-        this.REFINANCE_WORKING_LOAN_BAY = newREFINANCE_WORKING_LOAN_BAY;
-    },
+      this.REFINANCE_WORKING_LOAN_BAY = newREFINANCE_WORKING_LOAN_BAY;
+  },
     getREFINANCE_WORKING_LOAN_BAY: function () {
         return this.REFINANCE_WORKING_LOAN_BAY;
     }
-    ,setREFINANCE_REPAYMENT_BAY: function (newREFINANCE_REPAYMENT_BAY) {
+    , setREFINANCE_REPAYMENT_BAY: function (newREFINANCE_REPAYMENT_BAY) {
         this.REFINANCE_REPAYMENT_BAY = newREFINANCE_REPAYMENT_BAY;
     },
     getREFINANCE_REPAYMENT_BAY: function () {
         return this.REFINANCE_REPAYMENT_BAY;
     }
-  
+
 
     //calculator functional
    , I9: function () {
        return this.getD28() + this.getI37();
    }
     , I10: function () {
-        if (this.USE_TABLE == 1) { 
-             // ยอดขาย * % ขายเชื่อ * AR_table / 30
-             return this.getD8() * this.getD9() * this.getAR() / 30;
+        if (this.USE_TABLE == 1) {
+            // ยอดขาย * % ขายเชื่อ * AR_table / 30
+            return this.getD8() * this.getD9() * this.getAR() / 30;
         } else {
-          if (this.getD8() * this.getD9() > 0) {
-                if (this.getD10() == 0) { 
-                    return 0; 
+            if (this.getD8() * this.getD9() > 0) {
+                if (this.getD10() == 0) {
+                    return 0;
                 } else {
                     return this.getD8() * this.getD9() * this.getD10() / 30;
                 }
             } else {
                 return 0;
-            } 
-         } // use table
+            }
+        } // use table
     }
     , I11: function () {
         if (this.USE_TABLE == 1) {
@@ -1082,13 +1082,13 @@ SSProject.prototype = {
 
     }
     , I25: function (useNop) {  // ebida
-         if (this.USE_TABLE == 1) { 
-             // ยอดขาย * 12 (เป็นปี) * Margin table * % ebda
-             return (this.getD8() * 12 * this.getMARGIN()) * this.H25();
-         }  else {
-             // ยอดขาย * 12 (เป็นปี) * กำไรจากการดำเนินการ * % ebda
-             return (this.getD8() * 12 * this.getD17()) * this.H25();
-         }
+        if (this.USE_TABLE == 1) {
+            // ยอดขาย * 12 (เป็นปี) * Margin table * % ebda
+            return (this.getD8() * 12 * this.getMARGIN()) * this.H25();
+        } else {
+            // ยอดขาย * 12 (เป็นปี) * กำไรจากการดำเนินการ * % ebda
+            return (this.getD8() * 12 * this.getD17()) * this.H25();
+        }
     }
     , I26: function () {
 
@@ -1199,11 +1199,11 @@ SSProject.prototype = {
         if (this.USE_TABLE == 1) {
             //alert(this.getAP() );
             // ยอดซื้อ * % ซื้อเชื่อ * ap_table / 30
-             return this.getD13() * this.getD14() * this.getAP() / 30;
+            return this.getD13() * this.getD14() * this.getAP() / 30;
         } else {
             if (this.getD13() * this.getD14() > 0) {
-               // alert('not use table');
-                 return this.getD13() * this.getD14() * this.getD15() / 30;
+                // alert('not use table');
+                return this.getD13() * this.getD14() * this.getD15() / 30;
             } else {
                 if (this.getD30() > 0) {
                     return 0; //"ลูกค้าไม่มีรายการซื้อเชื่อ";
@@ -1214,16 +1214,26 @@ SSProject.prototype = {
         }
     }
     , N10: function () {
+        //alert('getD31=' + this.getD31());
+        // alert('getI33=' + this.getI33());
+        //  alert('getREFINANCE_WORKING_CAPITAL_BAY()=' + this.getREFINANCE_WORKING_CAPITAL_BAY());
         return this.getD31() + this.getI33() - this.getREFINANCE_WORKING_CAPITAL_BAY();
     }
     , N11: function () {
         if (this.getI33() + this.getI34() == 0) {
+           // alert('s1');
             return this.getD32() + this.getD33();
         } else {
+            //alert(this.getD32() + this.getD33());
+            //alert(this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY());
             return this.getD32() + this.getD33() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY());
         }
     }
     , N13: function () {
+        // alert('N9=' + this.N9());
+        // alert('N10=' + this.N10());
+        //  alert('N11=' + this.N11());
+
         return this.N9() + this.N10() + this.N11();
     }
     , N15: function () {
@@ -1237,12 +1247,21 @@ SSProject.prototype = {
         }
     }
     , N18: function () {
+        //  alert('N13=' + this.N13());
+        // alert('N15=' + this.N15());
+        //  alert('N16=' + this.N16());
+
         return this.N13() + this.N15() + this.N16();
     }
     , N20: function () {
         return this.getD40();
     }
     , N21: function () {
+
+        //        alert('I22=' + this.I22());
+        //        alert('N18=' + this.N18());
+        //        alert('N20=' + this.N20());
+
         return this.I22() - this.N18() - this.N20();
     }
     , N22: function () {
@@ -1279,14 +1298,14 @@ SSProject.prototype = {
                     I30 = 0;
                 }
 
-                if ((this.I25() / this.getO35() / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY())) > 0) {
-                    if (((this.I25() / this.getO35()) / 12) - ((I30 * this.M27()) / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY())) > 0) {
+                if ((this.I25() / this.getO35() / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() - this.getREFINANCE_REPAYMENT_BAY())) > 0) {
+                    if (((this.I25() / this.getO35()) / 12) - ((I30 * this.M27()) / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() - this.getREFINANCE_REPAYMENT_BAY())) > 0) {
                         return this.RoundDown(I30 - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
                     } else {
-                        return this.RoundDown(((((this.I25() / this.getO35()) / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()))) * 12) / this.M27() - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
+                        return this.RoundDown(((((this.I25() / this.getO35()) / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() - this.getREFINANCE_REPAYMENT_BAY()))) * 12) / this.M27() - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
                     }
                 } else {
-                    return this.RoundDown(0 - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
+                    return this.RoundDown(0 - (this.N10() + this.N11() - (this.getD43() - this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
                 }
             }
         } else { //use my function
@@ -1398,7 +1417,11 @@ SSProject.prototype = {
         if (this.getO34() != 0) {
             temp = -1 * this.PMT(this.getM34() / 12, this.getO34() * 12, this.getI34());
         }
-        return ((this.I25() / 12) / (this.getD39() + this.getD37() + this.getD35() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()) + (((this.getD31() + this.getD32() + this.getD33() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())) * this.M27()) / 12) + ((this.getI33() * this.getM33()) / 12) + temp));
+        var a = ((this.I25() / 12) / (this.getD39() + this.getD37() + this.getD35() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()) + (((this.getD31() + this.getD32() + this.getD33() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())) * this.M27()) / 12) + ((this.getI33() * this.getM33()) / 12) + temp));
+        // alert(a);
+        //alert(this.RoundDown(a, 2));
+        return this.RoundDown(a, 2);
+
         // }
     }
     , M36: function () {
@@ -1438,7 +1461,7 @@ SSProject.prototype = {
             return 0;
         } else {
             // (ebida / dscr /12) -  (หนี้สินหมุนเวียน * อัตราดอกเบี้ย /12) -(ทุก ๆ ภาระผ่อนชำระหนี้ต่อเดือน )
-            x = (((this.I25() / this.getO35()) / 12) - ((this.N11() * this.M27() / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() + this.getREFINANCE_REPAYMENT_BAY()))));
+            x = (((this.I25() / this.getO35()) / 12) - ((this.N11() * this.M27() / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() - this.getREFINANCE_REPAYMENT_BAY()))));
             //alert('x=' + x);
             if (x > 0) {
                 y = ((this.N40() * this.M27()) / 12);

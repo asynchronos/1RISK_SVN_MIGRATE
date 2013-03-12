@@ -223,13 +223,19 @@
         var CURRENT_ASSET_OTHERTextBox;
         var CURRENT_ASSET_OTHER_CALTextBox;
 
+
         var REFINANCE_WORKING_CAPITAL_BAYTextBox;
         var REFINANCE_WORKING_LOAN_BAYTextBox;
-
         var REFINANCE_REPAYMENT_BAYTextBox;
+
 
         var NEW_WORKING_CAPITAL_CALTextBox;
         var NEW_WORKING_CAPITAL_CAL_EL;
+
+        var SME_SS_OLD_VALUETextBox
+        var SME_SS_THIS_TIME_VALUETextBox
+        var SME_S_LTV_PERCENTTextBox
+        var TCG_FEE_YEAR_PERCENTTextBox;
 
         $(document).ready(function () {
 
@@ -406,14 +412,17 @@
             CURRENT_ASSET_OTHER_CALTextBox = $("#CURRENT_ASSET_OTHER_CALTextBox");
 
             CURRENT_ASSET_OTHERTextBox.autoNumeric({ aPad: false });
-            CURRENT_ASSET_OTHER_CALTextBox.autoNumeric({ aPad: false });
+
 
             REFINANCE_WORKING_CAPITAL_BAYTextBox = $("#REFINANCE_WORKING_CAPITAL_BAYTextBox");
             REFINANCE_WORKING_LOAN_BAYTextBox = $("#REFINANCE_WORKING_LOAN_BAYTextBox");
             REFINANCE_REPAYMENT_BAYTextBox = $("#REFINANCE_REPAYMENT_BAYTextBox");
             NEW_WORKING_CAPITAL_CALTextBox = $("#NEW_WORKING_CAPITAL_CALTextBox");
 
-
+            SME_SS_OLD_VALUETextBox = $("#SME_SS_OLD_VALUETextBox");
+            SME_SS_THIS_TIME_VALUETextBox = $("#SME_SS_THIS_TIME_VALUETextBox")
+            SME_S_LTV_PERCENTTextBox = $("#SME_S_LTV_PERCENTTextBox");
+            TCG_FEE_YEAR_PERCENTTextBox = $("#TCG_FEE_YEAR_PERCENTTextBox");
 
             // ประกาศตัวแปรกลุ่มของ element ที่เกี่ยวข้องกัน
 
@@ -452,6 +461,7 @@
             OTHER_CURRENT_LIABILITY_CAL_EL = $(D32).add(D33).add(D43).add(I33).add(I34);
 
             TOTAL_CURRENT_LIABILITY_CAL_EL = $(N9).add(N10).add(N11);
+
             LONG_TERM_LIABILITY_BAY_CAL_EL = $(D34).add(I34).add(REFINANCE_WORKING_LOAN_BAYTextBox);
             OTHER_LONG_TERM_LIABILITY_CAL_EL = $(D36).add(D38).add(D44).add(I33).add(I34);
             TOTAL_LIABILITY_CAL_EL = $(N13).add(N15).add(N16);
@@ -460,7 +470,7 @@
             EQUITY_CAL_EL = $(I22).add(N18).add(N20);
             LIABILITY_EQUITY_CAL_EL = $(N18).add(N20).add(N21);
 
-            WORKING_CAPITAL_APPROVE_CAL_EL = $(D35).add(D37).add(D39).add(D43).add(D45).add(REFINANCE_REPAYMENT_BAYTextBox).add(I25).add(I30).add(O35).add(M27).add(N10).add(N11); // N30
+            WORKING_CAPITAL_APPROVE_CAL_EL = $(D35).add(D37).add(D39).add(D43).add(D45).add(REFINANCE_WORKING_CAPITAL_BAYTextBox).add(REFINANCE_REPAYMENT_BAYTextBox).add(I25).add(I30).add(O35).add(M27).add(N10).add(N11); // N30
             LOAN_APPROVE_CAL_EL = $(O34).add(O35).add(M27).add(O27).add(I25).add(D31).add(D32).add(D33).add(D35).add(D37).add(D39).add(D43).add(D45).add(REFINANCE_REPAYMENT_BAYTextBox).add(I33).add(M33).add(M34).add(I34); // N31
 
             DSCR_THIS_TIME_EL = $(D31).add(D32).add(D33).add(D35).add(D37).add(D39).add(D43).add(D45).add(REFINANCE_WORKING_CAPITAL_BAYTextBox).add(REFINANCE_REPAYMENT_BAYTextBox).add(I25).add(I33).add(I25).add(I34).add(M27).add(M33).add(M34).add(O34);
@@ -481,10 +491,10 @@
 
             INPUT_EL = $(D8).add(D9).add(D10).add(D13).add(D14).add(D15).add(D17).add(D20).add(D21).add(D24).add(D25).add(D26).add(D27).add(D28).add(D29).add(D30).add(D31).add(D32).add(D33).add(D34).add(D35).add(D37).add(D36).add(D38).add(D39).add(D40).add(D41).add(D43).add(D44).add(D45).add(REFINANCE_REPAYMENT_BAYTextBox).add(I39).add(I40).add(I41).add(I42).add(I43).add(I44).add(I45).add(I46).add(I47).add(I33).add(I34).add(I35).add(I36).add(M33).add(M34).add(O34);
             INPUT_EL = $(INPUT_EL).add(COST_OF_SALESTextBox).add(COST_OF_SALES_PERCENTTextBox).add(OPERATING_EXPENSESTextBox).add(OPERATING_EXPENSES_PERCENTTextBox).add(TAXTextBox).add(OTHER_FIXED_ASSETS_OTHER_BANKTextBox).add(CURRENT_ASSET_OTHERTextBox);
-            INPUT_EL = $(INPUT_EL).add(REFINANCE_WORKING_CAPITAL_BAYTextBox).add(REFINANCE_WORKING_LOAN_BAYTextBox).add(REFINANCE_REPAYMENT_BAYTextBox);
+            INPUT_EL = $(INPUT_EL).add(REFINANCE_WORKING_CAPITAL_BAYTextBox).add(REFINANCE_WORKING_LOAN_BAYTextBox).add(REFINANCE_REPAYMENT_BAYTextBox).add(SME_SS_OLD_VALUETextBox).add(SME_SS_THIS_TIME_VALUETextBox).add(SME_S_LTV_PERCENTTextBox).add(TCG_FEE_YEAR_PERCENTTextBox);
             // เพิ่ม element ให้กับ calculate
-            CALCULATE_EL = $(CALCULATE_EL).add(OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox).add(CURRENT_ASSET_OTHER_CALTextBox);
-            CALCULATE_EL = $(I9).add(I10).add(I11).add(I13).add(I15).add(I16).add(I17).add(I18).add(I20).add(I22).add(H25).add(I25).add(I26).add(I27).add(I28).add(J28).add(J29).add(I30).add(I31).add(N9).add(N10).add(N11).add(N13).add(N15).add(N16).add(N18).add(N20).add(N21).add(N22).add(N25).add(M27).add(O27).add(O28).add(O28).add(N30).add(N31).add(M35).add(M36).add(M37).add(N40).add(N41).add(N43).add(N44).add(O35).add(O37).add(NEW_WORKING_CAPITAL_CALTextBox);
+            CALCULATE_EL = $(I9).add(I10).add(I11).add(I13).add(I15).add(I16).add(I17).add(I18).add(I20).add(I22).add(H25).add(I25).add(I26).add(I27).add(I28).add(J28).add(J29).add(I30).add(I31).add(N9).add(N10).add(N11).add(N13).add(N15).add(N16).add(N18).add(N20).add(N21).add(N22).add(N25).add(M27).add(O27).add(O28).add(O28).add(N30).add(N31).add(M35).add(M36).add(M37).add(N40).add(N41).add(N43).add(N44).add(O35).add(O37).add(NEW_WORKING_CAPITAL_CALTextBox).add(OTHER_FIXED_ASSETS_OTHER_BANK_CALTextBox).add(CURRENT_ASSET_OTHER_CALTextBox);
+
             //CALCULATE_EL.addClass('purpleBG');
 
 
@@ -506,6 +516,7 @@
             M36.autoNumeric({ aPad: true, vMin: '-9999999.99', vMax: '9999999.99' });  // กำหนดให้มีค่าติดลบได้และมีจุดทศนิยม
             O37.autoNumeric({ aPad: true });  // กำหนดให้มีจุดทศนิยม
             O34.autoNumeric({ aPad: true, vMin: '0', vMax: '100' });
+           
             O35.autoNumeric({ aPad: true });
             H25.autoNumeric({ aPad: true });
             M25.autoNumeric({ aPad: true });
@@ -522,12 +533,13 @@
 
             COST_OF_SALES_PERCENTTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
             OPERATING_EXPENSES_PERCENTTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
-
-
-
+            SME_S_LTV_PERCENTTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
+            TCG_FEE_YEAR_PERCENTTextBox.autoNumeric({ aPad: true, vMin: '0.00', vMax: '100.00' });
 
             T17.hide();
             D16.hide();
+
+
 
             //        N30.autoNumeric({ vMin: '-9999999999', vMax: '9999999999' });
             //        N18.autoNumeric({ vMin: '-9999999999', vMax: '9999999999' });
@@ -1513,6 +1525,7 @@
             });
 
             $(TOTAL_CURRENT_LIABILITY_CAL_EL).change(function () {
+
                 var checkErr = false;
                 $.each(TOTAL_CURRENT_LIABILITY_CAL_EL, function (i, ele) {
                     if ($(ele).val() == '') { checkErr = true; }
@@ -1614,15 +1627,10 @@
             });
 
             TOTAL_LIABILITY_CAL_EL.change(function () {
-                var TOTAL_LIABILITY_CAL_EL_ERR = false;
-                $.each(TOTAL_LIABILITY_CAL_EL, function (i, ele) {
-                    if ($(ele).val() == '') { TOTAL_LIABILITY_CAL_EL_ERR = true; }
-                });
 
-                if (TOTAL_LIABILITY_CAL_EL_ERR == false) {
-                    N18.autoNumericSet(obj.N18());
-                    N18.change();
-                }
+                N18.autoNumericSet(obj.N18());
+                N18.change();
+
             });
 
             //  END N18   รวมหนี้สิน 
@@ -2487,7 +2495,7 @@
             setAllObjValue();
 
 
-        });                                                                                                                    // end document ready
+        });                                                                                                                            // end document ready
 
         function maxD8() {
             return D8.autoNumericGet()
@@ -2840,8 +2848,25 @@
                     obj.setCURRENT_ASSET_OTHER(0);
                 } else {
                     obj.setCURRENT_ASSET_OTHER(parseFloat(CURRENT_ASSET_OTHERTextBox.autoNumericGet()));
+                
+                }
+                if (REFINANCE_WORKING_CAPITAL_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_WORKING_CAPITAL_BAY(0);
+                } else {
+                    obj.setREFINANCE_WORKING_CAPITAL_BAY(parseFloat(REFINANCE_WORKING_CAPITAL_BAYTextBox.autoNumericGet()));
                 }
 
+                if (REFINANCE_WORKING_LOAN_BAYTextBox.val() == '') {
+                    obj.setREFINANCE_WORKING_LOAN_BAY(0);
+                } else {
+                    obj.setREFINANCE_WORKING_LOAN_BAY(parseFloat(REFINANCE_WORKING_LOAN_BAYTextBox.autoNumericGet()));
+                }
+                if (REFINANCE_REPAYMENT_BAYTextBox.val()=='') {
+                    obj.setREFINANCE_REPAYMENT_BAY(0);
+                } else {
+                    obj.setREFINANCE_REPAYMENT_BAY(parseFloat(REFINANCE_REPAYMENT_BAYTextBox.autoNumericGet()));
+                }
+            
 
             } //  if SMES_IDTextBox <> ''
             else {
@@ -2911,6 +2936,10 @@
                 obj.setO37(0);
                 obj.setDX06(0);
                 obj.setCURRENT_ASSET_OTHER(0);
+                
+                obj.setREFINANCE_WORKING_LOAN_BAY(0);
+                obj.setREFINANCE_WORKING_CAPITAL_BAY(0);
+                obj.setREFINANCE_REPAYMENT_BAY(0);
 
                 obj.setRATE(0);
                 obj.setWORKING_CAPITAL(0);
@@ -4019,6 +4048,61 @@
                         <td>
                             &nbsp;
                         </td>
+                    </tr>
+                    <tr>
+                        <td>
+                              <span class="ui-state-highlight"><strong>SME _SS Program </strong>
+                            </span>&nbsp;</td>
+                        <td class="style27">
+                            &nbsp;</td>
+                        <td class="style5">
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>สินเชื่อ SME_SS เดิมที่มีอยู่แล้ว</span></td>
+                        <td class="style27">
+                            <asp:TextBox ID="SME_SS_OLD_VALUETextBox" runat="server" ToolTip=""
+                                Width="85px"/>
+                        </td>
+                        <td class="style5">
+                            บาท</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>สินเชื่อ SME_SS ที่ขอครั้งนี้</span></td>
+                        <td class="style27">
+                           <asp:TextBox ID="SME_SS_THIS_TIME_VALUETextBox" runat="server" ToolTip=""
+                                Width="85px"/></td>
+                        <td class="style5">
+                            บาท</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <span> % LTV ของสินเชื่อ SME_S</span></td>
+                        <td class="style27">
+                           <asp:TextBox ID="SME_S_LTV_PERCENTTextBox" runat="server" ToolTip="" text="100"
+                                Width="45px"/></td>
+                        <td class="style5">
+                            %</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><span>ค่าธรรมเนียม บสย./ปี</span></td>
+                        <td class="style27">
+                           <asp:TextBox ID="TCG_FEE_YEAR_PERCENTTextBox" runat="server" ToolTip=""
+                                Width="45px"/></td>
+                        <td class="style5">
+                            %</td>
+                        <td>
+                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td>

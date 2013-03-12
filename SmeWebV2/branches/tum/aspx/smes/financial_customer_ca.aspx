@@ -29,9 +29,13 @@
             }
             $("#USERTextBox").val(userName);
 
-            //            if (window.parent.document.getElementById("spanTemplateID")) {
-            //                templateID = window.parent.document.getElementById("spanTemplateID").innerText;
-            //            }
+            templateID = $("#TemplateTextBox").val();
+            if (templateID == '') {
+                if (window.parent.document.getElementById("spanTemplateID")) {
+                    templateID = window.parent.document.getElementById("spanTemplateID").innerText;
+                }
+            }
+
 
             sizeFrame();
 
@@ -162,13 +166,22 @@
             }
         }
         $(document).ready(function () {
-
             $("#tabs").tabs({ cookie: { expires: 30} });
+            if (templateID == '1' || templateID == '5') {  // ไม่มีบสย
+                $("#tabs").tabs("option", "disabled", [1]); // or setting after init
+            }
+            if (templateID == '2' || templateID == '3' || templateID == '4') {
+
+            }
+            if ( templateID == '6') {
+           
+            }
+           
 
             //            if (templateID == 3) {
             //            } else {
             ////              $("#aTab3").hide();
-            ////              $("#tabs-3").hide();
+            ////              $("#tabs3").hide();
             //                $(".trTemplate3").hide();
             //            }
 
@@ -180,77 +193,7 @@
 
 
             var dateBefore = null;
-            //$("#BirthDateTextBox").datepicker();
-
-            // $(selector).datepicker($.datepicker.regional['th']);
-            //  calendar  นี้ต้องมี extension พุธศักราช ด้วย jquery.ui.datepicker.ext.be.js
-            // เวลารับค่า text จาก code behind จะรับเป็น คศ ให้ระวังด้วย
-            //$("#BirthDateTextBox,#RegisterDateTextBox,#OperateDateTextBox").datepicker({
-            //            $("#BirthDateTextBox").datepicker({
-            //                isBE: true, //  option นี้ต้องมี extension พุธศักราช ด้วย                 
-            //                monthNames: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.'],
-            //                dayNames: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
-            //                dayNamesMin: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
-            //                dateFormat: 'dd/mm/yy'
-            //            });
-            //            alert($("#BirthDateTextBox").val());
-            //            $("#BirthDateTextBox").datepicker("setDate", $("#BirthDateTextBox").val());
-
-            // $("#BirthDateTextBox").datepicker("setDate", this.val())
-
-            //            $("#BirthDateTextBox,#RegisterDateTextBox,#OperateDateTextBox").datepicker({
-            //                isBE: true,   //  option นี้ต้องมี extension พุธศักราช ด้วย
-            //                autoConversionField: true,   //  option นี้ต้องมี extension พุธศักราช ด้วย
-            //                dateFormat: 'dd/mm/yy',
-            //                showOn: 'button',
-            //                buttonImage: 'images/calendar.gif',
-            //                buttonImageOnly: true,
-            //                dayNamesMin: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
-            //                monthNamesShort: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พค.', 'มิย.', 'กค.', 'สค.', 'กย.', 'ตค.', 'พย.', 'ธค.'],
-            //                changeMonth: true,
-            //                changeYear: true,
-            //                beforeShow: function () {
-            //                    if ($(this).val() != "") {
-            //                        var arrayDate = $(this).val().split("/");
-            //                        if (parseInt(arrayDate[2]) > 2500);
-            //                        {
-            //                             arrayDate[2] = parseInt(arrayDate[2]) - 543;
-            //                        }
-            //                        $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]);
-            //                    }
-            //                    setTimeout(function () {
-            //                        $.each($(".ui-datepicker-year option"), function (j, k) {
-            //                            var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
-            //                            $(".ui-datepicker-year option").eq(j).text(textYear);
-            //                        });
-            //                    }, 50);
-
-            //                },
-            //                onChangeMonthYear: function () {
-            //                    alert('change');
-            //                    setTimeout(function () {
-            //                        $.each($(".ui-datepicker-year option"), function (j, k) {
-            //                            var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
-            //                            $(".ui-datepicker-year option").eq(j).text(textYear);
-            //                        });
-            //                    }, 50);
-            //                },
-            //                onClose: function () {
-            //                    if ($(this).val() != "" && $(this).val() == dateBefore) {
-            //                        var arrayDate = dateBefore.split("/");
-            //                        arrayDate[2] = parseInt(arrayDate[2]) + 543;
-            //                        $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]);
-            //                    }
-            //                },
-            //                onSelect: function (dateText, inst) {
-            //                    alert('select');
-            //                    dateBefore = $(this).val();
-            //                    var arrayDate = dateText.split("/");
-            //                    arrayDate[2] = parseInt(arrayDate[2]) + 543;
-            //                    $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]);
-            //                }
-
-            //            });
+              
             $("input[type=submit]").button();
 
             // หาความสูงของปุ่ม อัพเดท หรือ insert เพื่อสร้าง dialog
@@ -266,6 +209,8 @@
             } else {
                 msgTop = 200;
             }
+
+          
 
         });
 
@@ -377,6 +322,11 @@
         {
             width: 52px;
         }
+        
+        .ui-tabs .ui-state-disabled { 
+            display: none; /* disabled tabs don't show up */ 
+        }
+        
     </style>
 </head>
 <body>
@@ -434,13 +384,13 @@
         </table>
     </div>
     <div id="divForm" runat="server">
-        <div id="tabs">
+        <div id="tabs"  runat="server">
             <ul>
-                <li><a id="aTab1" href="#tabs-1">ข้อมูลลูกค้า</a></li>
-                <%-- <li><a id="aTab2" href="#tabs-2" >ข้อมูลสินเชื่อ(บสย)</a></li>--%>
-                <li><a id="aTab3" href="#tabs-3">ข้อมูลประวัติ Credit Checking</a></li>
+                <li runat="server"><a id="aTab1" href="#tabs1">ข้อมูลลูกค้า</a></li>
+                <li runat="server"><a id="aTab2" href="#tabs2" >ข้อมูลสินเชื่อ(บสย)</a></li>
+                <li runat="server"><a id="aTab3" href="#tabs3">ข้อมูลประวัติ Credit Checking</a></li>
             </ul>
-            <div id="tabs-1">
+            <div id="tabs1" runat="server">
                 <table id="tableForm">
                     <tr>
                         <td colspan="4">
@@ -748,7 +698,7 @@
                     </tr>
                 </table>
             </div>
-            <div id="tabs-2">
+            <div id="tabs2" runat="server">
                 <table>
                     <tr>
                         <td>
@@ -767,16 +717,16 @@
                                         &nbsp;
                                     </td>
                                     <td class="style7">
-                                        <asp:Label runat="server" ID="label5" Visible="false" Text="สินเชื่อ"></asp:Label>
+                                        <asp:Label runat="server" ID="label5" Text="สินเชื่อ"></asp:Label>
                                     </td>
                                     <td class="style7">
-                                        <asp:Label runat="server" ID="label6" Visible="false" Text=" วงเงิน(บาท)"></asp:Label>
+                                        <asp:Label runat="server" ID="label6" Text=" วงเงิน(บาท)"></asp:Label>
                                     </td>
                                     <td class="style7">
-                                        <asp:Label runat="server" ID="label7" Visible="false" Text=" บสย ค้ำ(บาท)"></asp:Label>
+                                        <asp:Label runat="server" ID="label7" Text=" บสย ค้ำ(บาท)"></asp:Label>
                                     </td>
                                     <td class="style7">
-                                        <asp:Label runat="server" ID="label8" Visible="false" Text=" วันที่ใช้วงเงิน"></asp:Label>
+                                        <asp:Label runat="server" ID="label8"  Text=" วันที่ใช้วงเงิน"></asp:Label>
                                     </td>
                                     <td>
                                         &nbsp;
@@ -787,23 +737,22 @@
                                         &nbsp;
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="DebtDropDownList" runat="server" Visible="false">
+                                        <asp:DropDownList ID="DebtDropDownList" runat="server" >
                                         </asp:DropDownList>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="ValueTextBox" runat="server" MaxLength="10" Width="100" Visible="false"></asp:TextBox>
+                                        <asp:TextBox ID="ValueTextBox" runat="server" MaxLength="10" Width="100" ></asp:TextBox>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="GUARANTEE_VALUETextBox" runat="server" MaxLength="10" Width="100"
-                                            Visible="false"></asp:TextBox>
+                                        <asp:TextBox ID="GUARANTEE_VALUETextBox" runat="server" MaxLength="10" Width="100"></asp:TextBox>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="UseValueDateTextBox" runat="server" MaxLength="10" Width="100" Visible="false"></asp:TextBox>
+                                        <asp:TextBox ID="UseValueDateTextBox" runat="server" MaxLength="10" Width="100"></asp:TextBox>
                                         <ajaxToolkit:CalendarExtender ID="UseVAlueDateCalendarExtender" runat="server" TargetControlID="UseValueDateTextBox"
                                             PopupPosition="TopRight" />
                                     </td>
                                     <td>
-                                        <asp:Button ID="AddDebtButton" runat="server" Text="เพิ่มสินเชื่อ" Visible="false" />
+                                        <asp:Button ID="AddDebtButton" runat="server" Text="เพิ่มสินเชื่อ" />
                                         &nbsp;
                                     </td>
                                 </tr>
@@ -811,7 +760,7 @@
                             <asp:GridView ID="DebtGridView" runat="server" AutoGenerateColumns="False" BackColor="White"
                                 BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" EnableModelValidation="True"
                                 OnRowDeleting="DebtGridDeleteCommand" ForeColor="Black" HeaderStyle-CssClass=" ui-widget-header"
-                                GridLines="Vertical" Visible="False">
+                                GridLines="Vertical" >
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:TemplateField>
@@ -852,7 +801,7 @@
                     </tr>
                 </table>
             </div>
-            <div id="tabs-3">
+            <div id="tabs3" runat="server">
                 <table>
                     <tr class="trTemplate3">
                         <td class="style1">
