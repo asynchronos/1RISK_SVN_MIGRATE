@@ -4628,6 +4628,30 @@ namespace SME.UserSystem.Core
         private Nullable<global::System.DateTime> _EXPIRE_DATE;
         partial void OnEXPIRE_DATEChanging(Nullable<global::System.DateTime> value);
         partial void OnEXPIRE_DATEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String test
+        {
+            get
+            {
+                return _test;
+            }
+            set
+            {
+                OntestChanging(value);
+                ReportPropertyChanging("test");
+                _test = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("test");
+                OntestChanged();
+            }
+        }
+        private global::System.String _test;
+        partial void OntestChanging(global::System.String value);
+        partial void OntestChanged();
 
         #endregion
     
