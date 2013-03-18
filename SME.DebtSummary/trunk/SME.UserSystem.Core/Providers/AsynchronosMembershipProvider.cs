@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Objects;
 using System.Linq;
 using System.Web.Security;
 using log4net;
@@ -164,8 +164,8 @@ namespace SME.UserSystem.Core.Providers
                                                       user.LAST_CHANGE_PASS_DATE,
                                                       user.DEL_FLAG);
 
-                    status = MembershipCreateStatus.Success;
                     uow.Save();
+                    status = MembershipCreateStatus.Success;
                 }
                 catch (Exception ex)
                 {
@@ -373,85 +373,84 @@ namespace SME.UserSystem.Core.Providers
 
                 using (UnitOfWork uow = new UnitOfWork())
                 {
-                    USER_DATA user = uow.UserDataRepo
+                    IQueryable<USER_DATA> userQuery = uow.UserDataRepo
                         .FindBy(u => u.EMP_ID.Equals(username)
-                                && u.DEL_FLAG != true)
-                        .FirstOrDefault<USER_DATA>();
+                                && u.DEL_FLAG != true);
 
-                    //if (isDebugEnabled) log.Debug(((ObjectQuery)user).ToTraceString());
+                    if (isDebugEnabled) log.Debug(((ObjectQuery)userQuery).ToTraceString());
 
-                    if (user != null)
+                    USER_DATA user = userQuery.FirstOrDefault<USER_DATA>();
+
+                    if (user == null)
                     {
-                        //check expire date (All App)
-                        if (user.EXPIRE_DATE != null
-                            && user.EXPIRE_DATE < currentDate)
+                        UserInfoException ex = new UserInfoException
+                            ("Can't find user data " + username + ".");
+                        log.Error(ex);
+                        throw ex;
+                    }
+
+                    //check expire date (All App)
+                    if (user.EXPIRE_DATE != null
+                        && user.EXPIRE_DATE < currentDate)
+                    {
+                        UserInfoException ex = new UserInfoException
+                                ("Your account is expired on "
+                                + user
+                                .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
+                        log.Error(ex);
+                        throw (ex);
+                    }
+
+                    //get categoryList
+                    userQuery.Where(u => u.CATE_AND_EMP
+                        .Where(cae => cae.DEL_FLAG.Value != true
+                            && cae.CATEGORY.CATE_AND_APP
+                                .Any(caa => caa.APPLICATION.APP_DESC == ApplicationName)))
+                        .Select(cae);
+                    IQueryable<CATE_AND_EMP> categoryList = user
+                        .CATE_AND_EMP.Where(cae => cae.DEL_FLAG.Value != true
+                            && cae.CATEGORY.CATE_AND_APP
+                                .Any(caa => caa.APPLICATION.APP_DESC == ApplicationName))
+                        .AsQueryable<CATE_AND_EMP>();
+
+                    //get profile
+                    APP_PROFILE profile = userQuery
+                        .APP_PROFILE.Where(p => p.APPLICATION.APP_DESC == ApplicationName)
+                        .FirstOrDefault();
+
+                    if (profile != null) //&& profile.APPLICATION.APP_DESC.Equals(ApplicationName)
+                    {
+                        if (profile.EXPIRE_DATE != null
+                            && DateTime.Now > profile.EXPIRE_DATE.Value)
                         {
                             UserInfoException ex = new UserInfoException
-                                    ("Your account is expired on "
-                                    + user
-                                    .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
+                                ("Your account permission ["
+                                + ApplicationName
+                                + "] is expired on "
+                                + userQuery
+                                .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
                             log.Error(ex);
-                            throw (ex);
+                            throw ex;
                         }
 
-                        //get categoryList
-                        List<CATE_AND_EMP> categoryList = user
-                            .CATE_AND_EMP.Where(cae => cae.DEL_FLAG.Value != true
-                                && cae.CATEGORY.CATE_AND_APP
-                                    .Any(caa => caa.APPLICATION.APP_DESC == ApplicationName))
-                            .ToList<CATE_AND_EMP>();
-
-
-                        
-                        //get profile
-                        APP_PROFILE profile = user
-                            .APP_PROFILE.Where(p => p.APPLICATION.APP_DESC == ApplicationName)
-                            .FirstOrDefault();
-
-                        if (profile != null) //&& profile.APPLICATION.APP_DESC.Equals(ApplicationName)
+                        if (categoryList != null
+                            && categoryList.Count >= 1)
                         {
-                            
+                            result = true;
 
-                            if (profile.EXPIRE_DATE != null
-                                && DateTime.Now > profile.EXPIRE_DATE.Value)
-                            {
-                                UserInfoException ex = new UserInfoException
-                                    ("Your account permission ["
-                                    + ApplicationName
-                                    + "] is expired on "
-                                    + user
-                                    .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
-                                log.Error(ex);
-                                throw ex;
-                            }
+                            profile.LAST_ACTIVITY_DATE = DateTime.Now;
+                            profile.LAST_ACTIVITY = "Sign On.";
+                            profile.IS_AUTHENTICATED = true;
 
-                            if (categoryList != null
-                                && categoryList.Count >= 1)
-                            {
-                                result = true;
+                            userQuery.LAST_SIGN_ON_DATE = DateTime.Now;
 
-                                profile.LAST_ACTIVITY_DATE = DateTime.Now;
-                                profile.LAST_ACTIVITY = "Sign On.";
-                                profile.IS_AUTHENTICATED = true;
-
-                                user.LAST_SIGN_ON_DATE = DateTime.Now;
-
-                                //update profile
-                                uow.Save();
-                            }
-                            else
-                            {
-                                UserInfoException ex = new UserInfoException
-                                    ("You don't have any roles on application "
-                                    + ApplicationName + ".");
-                                log.Error(ex);
-                                throw ex;
-                            }
+                            //update profile
+                            uow.Save();
                         }
                         else
                         {
                             UserInfoException ex = new UserInfoException
-                                ("You don't have permission to use application "
+                                ("You don't have any roles on application "
                                 + ApplicationName + ".");
                             log.Error(ex);
                             throw ex;
@@ -460,7 +459,8 @@ namespace SME.UserSystem.Core.Providers
                     else
                     {
                         UserInfoException ex = new UserInfoException
-                            ("Can't find user data " + username + ".");
+                            ("You don't have permission to use application "
+                            + ApplicationName + ".");
                         log.Error(ex);
                         throw ex;
                     }
