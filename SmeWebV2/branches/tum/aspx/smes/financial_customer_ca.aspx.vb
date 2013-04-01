@@ -913,12 +913,7 @@ Partial Class smes_financial_customer
             err = True
             errMsg += " กรุณาระบุวงเงินค้ำประกัน "
         End If
-        If UseValueDateTextBox.Text <> "" Then  ' ถ้ามีการะบุค่าต้องเช็คว่าค่าถูกมั้ย
-            If IsDate(UseValueDateTextBox.Text) = False Then
-                err = True
-                errMsg += " กรุณาระบุวันที่ใช้วงเงิน "
-            End If
-        End If
+
 
 
         If err = True Then
