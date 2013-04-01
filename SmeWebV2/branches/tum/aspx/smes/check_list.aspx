@@ -196,7 +196,7 @@
             <br />
             <br />
            
-              <asp:Button ID="ButtonSave" runat="server" Text="    บันทึกผล    " class ="ui-widget-header2" /> 
+              <asp:Button ID="ButtonSave" runat="server" Text="บันทึกผล" class ="ui-widget-header2" />
        <asp:Button ID="ButtonPrint" runat="server" Text="แสดงผลพิมพ์"   
                 class ="ui-widget-header2 noPrint" onclientclick="HideButtons();return false;" UseSubmitBehavior="False" 
                />
@@ -211,7 +211,7 @@
         </asp:Panel>
     </div>
     <div class ="clear ckName ui-widget-contentChk" align="right">
-    <asp:Button ID="ButtonSave2"  runat="server" Text="     บันทึกผล    " class ="ui-widget-header2"/></div>
+    <asp:Button ID="ButtonSave2"  runat="server" Text="บันทึกผล" class ="ui-widget-header2"/></div>
     </form>
 </body>
 </html>
