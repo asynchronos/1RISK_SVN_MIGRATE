@@ -31,7 +31,8 @@ Partial Class aspx_report_ReportPassALSCOM
                         & " FROM   DWHADMIN.ALSCOM_APPLICATION  T" _
                         & " INNER JOIN  DWHADMIN.ALSCOM_APPLICANTS  C" _
                         & " ON  T.APPNUMBER=C.APPNUMBER " _
-                        & " WHERE T.CIF =" & Right("00000000000000" & cif, 14)
+                        & " WHERE T.CIF =" & Right("00000000000000" & cif, 14) _
+                        & " ORDER BY  T.APPNUMBER DESC "
 
         Dim command As OracleCommand = New OracleCommand(sqlSTring)
         command.Connection = con

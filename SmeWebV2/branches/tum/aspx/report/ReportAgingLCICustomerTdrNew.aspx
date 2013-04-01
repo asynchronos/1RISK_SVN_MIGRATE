@@ -9,10 +9,6 @@
         {
             width: 465px;
         }
-        .style2
-        {
-            width: 202px;
-        }
         .style3
         {
             width: 203px;
@@ -82,6 +78,7 @@
                     </tr>
                     <tr>
                         <td class="style3">
+                            0. = None ไม่มียอดหนี้<br />
                             1. = 0
                             <br />
                             2. &gt; 0,=&lt; 0.15<br />
