@@ -154,16 +154,27 @@
     </script>
     <script type="text/javascript">
         function checkPerson() {
+
+            $('[template]').hide();
+            $('[template*=' + templateID + ']').show();   // แสดง template
+         
             if ($("#CustomerTypeDropDownList  option:selected").val() == 'CU01') {
-                $(".clsPerson").show();
-                $(".clsBusiness").hide();
+
+       
+                $('[custype=person]').show();
+                $('[custype=person]').not('[template*=' + templateID + ']').hide();  // บุคคลที่ไม่ใช่ template ซ่อน
+                $('[custype=business]').hide();
+
             } else if ($("#CustomerTypeDropDownList  option:selected").val() == 'CU02') {
-                $(".clsPerson").hide();
-                $(".clsBusiness").show();
-            } else {
-                $(".clsPerson").hide();
-                $(".clsBusiness").hide();
+                //$('[custype=business]').add('[template*=' + templateID + ']').show();
+               // $('[template]').hide();
+                //  $('[custype=business][template*=' + templateID + ']').show();
+
+                $('[custype=business]').show();
+               $('[custype=business]').not('[template*=' + templateID + ']').hide();  // บุคคลที่ไม่ใช่ template ซ่อน
+               $('[custype=person]').hide();
             }
+
         }
         $(document).ready(function () {
             $("#tabs").tabs({ cookie: { expires: 30} });
@@ -176,17 +187,10 @@
             if ( templateID == '6') {
            
             }
-           
 
-            //            if (templateID == 3) {
-            //            } else {
-            ////              $("#aTab3").hide();
-            ////              $("#tabs3").hide();
-            //                $(".trTemplate3").hide();
-            //            }
+            checkPerson();  // เช็คว่าเป็นโชวนิติ หรือบุคล
+      
 
-
-            checkPerson();
             $("#CustomerTypeDropDownList").change(function () {
                 checkPerson();
             });
@@ -393,7 +397,7 @@
             <div id="tabs1" runat="server">
                 <table id="tableForm">
                     <tr>
-                        <td colspan="4">
+                        <td colspan="2">
                             <asp:Label ID="ActionLabel" runat="server" Style="font-weight: 700; font-size: medium"></asp:Label>
                         </td>
                     </tr>
@@ -401,17 +405,17 @@
                         <td>
                             CIF
                         </td>
-                        <td colspan="3">
+                        <td>
                             <asp:TextBox ID="CIFTextBox" runat="server" Width="100"></asp:TextBox>
                             <asp:ImageButton ID="CustomerSearchImageButton" runat="server" BorderColor="#CCCCCC"
                                 ImageUrl="~/aspx/smes/images/Magnifying Glass.gif" />
-                            &nbsp;<asp:TextBox ID="CIFNameTextBox" runat="server" Width="300"></asp:TextBox>
+                            <asp:TextBox ID="CIFNameTextBox" runat="server" Width="300"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             ลูกค้าใหม่ / เดิม</td>
-                        <td colspan="3">
+                        <td>
                             <asp:DropDownList ID="CustomerNewDropDownList" runat="server">
                             </asp:DropDownList>
                         </td>
@@ -423,278 +427,251 @@
                             <asp:DropDownList ID="CustomerTypeDropDownList" runat="server">
                             </asp:DropDownList>
                         </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
+                  
                     </tr>
-                    <tr class="clsPerson">
+                    <tr>
                         <td>
-                            วันเกิดผู้กู้ (dd/mm/yyyy) พ.ศ.
+                            <asp:Label ID="BirthDateLabel" runat="server" Text="วันเกิดผู้กู้ (dd/mm/yyyy) พ.ศ." custype="person" template="123456"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="BirthDateTextBox" runat="server" ViewStateMode="Enabled" Width="100"></asp:TextBox>
+                            <asp:TextBox ID="BirthDateTextBox" runat="server" ViewStateMode="Enabled" Width="100" custype="person" template="123456"></asp:TextBox>
                             <ajaxToolkit:CalendarExtender ID="cal1" runat="server" TargetControlID="BirthDateTextBox"
                                 PopupPosition="Right" />
-                            <img id="imgClearAnnalsDate" runat="server" alt="clear date" onclick="clearDate('BirthDateTextBox')"
-                                src="images/close_button.gif" />&nbsp;
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr class="clsPerson">
-                        <td>
-                            <%-- สถานะทางกฎหมายผู้กู้--%>
-                        </td>
-                        <td colspan="3">
-                            <asp:DropDownList ID="LegalDropDownList" runat="server" Visible="False">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            วันเกิดผู้กู้ร่วมผู้ค้ำ (dd/mm/yyyy) พ.ศ.
-                        </td>
-                        <td>
-                            <asp:TextBox ID="CO_BirthDateTextBox" runat="server" ViewStateMode="Enabled" Width="100"></asp:TextBox>
-                            <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="CO_BirthDateTextBox"
-                                PopupPosition="Right" />
-                            <img id="img4" runat="server" alt="clear date" onclick="clearDate('CO_BirthDateTextBox')"
-                                src="images/close_button.gif" />&nbsp;
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <%--     สถานะทางกฎหมายผู้กู้ร่วมผู้ค้ำ--%>
-                        </td>
-                        <td colspan="3">
-                            <asp:DropDownList ID="CO_LegalDropDownList" runat="server" Visible="False">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr class="clsPerson">
-                        <td>
-                            <%-- สัญชาติ--%>
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="NationalityDropDownList" runat="server" Visible="False">
-                            </asp:DropDownList>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                    <tr class="clsBusiness">
-                        <td>
-                            วันที่จดทะเบียน (dd/mm/yyyy) พ.ศ.
-                        </td>
-                        <td>
-                            <asp:TextBox ID="RegisterDateTextBox" runat="server" Width="100"></asp:TextBox>
-                            <ajaxToolkit:CalendarExtender ID="CalendarExtender3" runat="server" TargetControlID="RegisterDateTextBox"
-                                PopupPosition="Right" />
-                            <img id="img2" runat="server" alt="clear date" onclick="clearDate('RegisterDateTextBox')"
+                            <img id="imgClearAnnalsDate" runat="server" alt="clear date" onclick="clearDate('BirthDateTextBox')" custype="person" template="123456"
                                 src="images/close_button.gif" />
                         </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
+
                     </tr>
-                    <tr class="clsBusiness">
+                    <tr>
                         <td>
-                            ประเภทธุรกิจ
+                            <asp:Label ID="Nationality" runat="server" Text="สัญชาติ" custype="person" template="1234"></asp:Label>
                         </td>
-                        <td colspan="3">
-                            <asp:DropDownList ID="JuristicDropDownList" runat="server">
+                        <td>
+                            <asp:DropDownList ID="NationalityDropDownList" runat="server" template="1234" custype="person" >
+                            </asp:DropDownList>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="LegalLabel" runat="server" Text="สถานะทางกฏหมายผู้กู้"  template="1234" custype="person"></asp:Label>  </td>
+                        <td>
+                            <asp:DropDownList ID="LegalDropDownList" runat="server" custype="person" template="1234">
                             </asp:DropDownList>
                         </td>
                     </tr>
-                    <tr class="clsBusiness">
+                    <tr>
                         <td>
-                            อายุผู้บริหาร
+                            <asp:Label ID="CO_BirthDateLabel" runat="server" Text="วันเกิดผู้กู้ร่วมผู้ค้ำ (dd/mm/yyyy) พ.ศ." template="56"></asp:Label> 
                         </td>
                         <td>
-                            <asp:TextBox ID="CEOAgeTextBox" runat="server" Width="50" MaxLength="2"></asp:TextBox>&nbsp;ปี
+                            <asp:TextBox ID="CO_BirthDateTextBox" runat="server" ViewStateMode="Enabled" Width="100" template="56"></asp:TextBox>
+                            <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="CO_BirthDateTextBox"
+                                PopupPosition="Right" />
+                            <img id="img4" runat="server" alt="clear date" onclick="clearDate('CO_BirthDateTextBox')" template="56"
+                                src="images/close_button.gif" />
                         </td>
+
+                    </tr>
+                    <tr>
                         <td>
-                            &nbsp;
-                        </td>
+                            <asp:Label ID="CO_LegalLabel" runat="server" Text="สถานะทางกฎหมายผู้กู้ร่วมผู้ค้ำ" template=""></asp:Label>
+                     </td>
                         <td>
-                            &nbsp;
+                            <asp:DropDownList ID="CO_LegalDropDownList" runat="server" template=""></asp:DropDownList>
                         </td>
                     </tr>
-                    <tr class="clsBusiness">
+                    <tr>
                         <td>
-                            วันที่ดำเนินกิจการ (dd/mm/yyyy) พ.ศ.
+                            <asp:Label ID="LabelRegisterDate" runat="server" Text="วันที่จดทะเบียน (dd/mm/yyyy) พ.ศ." custype="business" template="123456"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="OperateDateTextBox" runat="server" Width="100"></asp:TextBox>
+                            <asp:TextBox ID="RegisterDateTextBox" runat="server" Width="100" custype="business" template="123456"></asp:TextBox>
+                            <ajaxToolkit:CalendarExtender ID="CalendarExtender3" runat="server" TargetControlID="RegisterDateTextBox" 
+                                PopupPosition="Right" />
+                            <img id="img2" runat="server" alt="clear date" onclick="clearDate('RegisterDateTextBox')" custype="business" template="123456"
+                                src="images/close_button.gif" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="JuristicLabel" runat="server" Text="ประเภทธุรกิจ" custype="business" template="123456"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="JuristicDropDownList" runat="server" custype="business" template="123456">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="CEOAgeLabel" runat="server" Text="อายุผู้บริหาร (ปี)" custype="business" template="123456"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="CEOAgeTextBox" runat="server" Width="50" MaxLength="2" custype="business" template="123456"></asp:TextBox>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                                <asp:Label ID="BNationalityLabel" runat="server" Text="สัญชาติ" template="1234"  custype="business" ></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="BNationalityDropDownList" runat="server" template="1234"  custype="business" >
+                            </asp:DropDownList>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="OperateDateLabel" runat="server" Text="วันที่ดำเนินกิจการ (dd/mm/yyyy) พ.ศ." custype="business" template="123456"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="OperateDateTextBox" runat="server" Width="100" custype="business" template="123456"></asp:TextBox>
                             <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="OperateDateTextBox"
                                 PopupPosition="Right" />
-                            <img id="img1" runat="server" alt="clear date" onclick="clearDate('OperateDateTextBox')"
-                                src="images/close_button.gif" />&nbsp;
+                            <img id="img1" runat="server" alt="clear date" onclick="clearDate('OperateDateTextBox')" custype="business" template="123456"
+                                src="images/close_button.gif" />
                         </td>
-                        <td>
-                            <%--  สัญชาติ--%>
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="BNationalityDropDownList" runat="server" Visible="False">
-                            </asp:DropDownList>
-                        </td>
+
                     </tr>
                     <tr>
                         <td>
-                            <%--BlackList--%>
+                            <asp:Label ID="BlackListLabel" runat="server" Text="BlackList" template="1234"></asp:Label>
+                            
                         </td>
                         <td>
-                            <asp:DropDownList ID="BlackListDropDownList" runat="server" Visible="False">
-                            </asp:DropDownList>
+                            <asp:DropDownList ID="BlackListDropDownList" runat="server" template="1234"></asp:DropDownList>
                         </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
+
                     </tr>
                     <tr>
                         <td>
-                            <%-- Rating--%>
+                            <asp:Label ID="RatingLabel" runat="server" Text="RATING" template="1234"></asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList ID="RatingDropDownList" runat="server" Visible="False">
+                            <asp:DropDownList ID="RatingDropDownList" runat="server" template="1234">
                             </asp:DropDownList>
                         </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
+
                     </tr>
                     <tr>
                         <td>
-                            <asp:Label runat="server" ID="labeldoc" Visible="false" Text="เอกสารการจดทะเบียน">
+                            <asp:Label runat="server" ID="labeldoc"  Text="เอกสารการจดทะเบียน" custype="business" template="1234">
                             </asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList ID="RegisDocDropDownList" runat="server" Visible="false">
+                            <asp:DropDownList ID="RegisDocDropDownList" runat="server" custype="business" template="1234">
                             </asp:DropDownList>
                         </td>
+
+                    </tr>
+                    <tr>
                         <td>
-                            <asp:Label runat="server" ID="labelShareHol" Text="ผู้ถือหุ้น" Visible="false"></asp:Label>
+                            <asp:Label runat="server" ID="labelShareHol" Text="ผู้ถือหุ้น" custype="business" template="1234"></asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList ID="ShareHolderDropDownList" runat="server" Visible="false">
+                            <asp:DropDownList ID="ShareHolderDropDownList" runat="server" custype="business" template="1234">
+                            </asp:DropDownList>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                           <asp:Label ID="TDRLabel" runat="server" Text="TDR" template="1234"></asp:Label>
+                            </td>
+                        <td>
+                            <asp:DropDownList ID="TDRDropDownList" runat="server" template="1234">
                             </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <%-- TDR--%>
+                            <asp:Label ID="ExperienceLabel" runat="server" Text="ประสบการณ์ในธุรกิจ (ปี)" ></asp:Label>
                         </td>
-                        <td colspan="3">
-                            <asp:DropDownList ID="TDRDropDownList" runat="server" Visible="False">
-                            </asp:DropDownList>
+                        <td>
+                            <asp:TextBox ID="ExperienceTextBox" runat="server" Width="50" ></asp:TextBox>
+                          
                         </td>
+
                     </tr>
                     <tr>
                         <td>
-                            ประสบการณ์ในธุรกิจ
+                            <asp:Label runat="server" ID="POSITIVE_EQUITYLabel"  Text="ส่วนของผู้ถือหุ้นไม่ติดลบ" template="1234"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="ExperienceTextBox" runat="server" Width="50"></asp:TextBox>
-                            &nbsp;ปี
+                            <asp:DropDownList ID="POSITIVE_EQUITYDropDownList" runat="server" template="1234">
+                            </asp:DropDownList>
                         </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
+
                     </tr>
                     <tr>
                         <td>
-                            <asp:Label runat="server" ID="label4" Visible="false" Text="สถานะการดำเนินงาน DSS">
-                            </asp:Label>
+                            <asp:Label runat="server" ID="DSS_OPERATE_STATUSlabel" Text="สถานะการดำเนินงาน DSS" template="1234"> </asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList ID="DSS_OPERATE_STATUSDropDownList" runat="server" Visible="false">
-                            </asp:DropDownList>
+                            <asp:DropDownList ID="DSS_OPERATE_STATUSDropDownList" runat="server" template="1234"> </asp:DropDownList>
                         </td>
-                        <td>
-                            <asp:Label runat="server" ID="label1" Visible="false" Text="ส่วนของผู้ถือหุ้นไม่ติดลบ"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="POSITIVE_EQUITYDropDownList" Visible="false" runat="server">
-                            </asp:DropDownList>
-                        </td>
+
                     </tr>
+
                     <tr class="trTemplate3">
                         <td>
-                            เช็คคืนในรอบ 6 เดือน
+                            <asp:Label ID="CHEQUE_RETURN_6MONTHLabel" runat="server" Text="เช็คคืนในรอบ 6 เดือน (ฉบับ)" template="56"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="CHEQUE_RETURN_6MONTHTextBox" runat="server" Width="50px" MaxLength="2"
+                            <asp:TextBox ID="CHEQUE_RETURN_6MONTHTextBox" runat="server" Width="50px" MaxLength="2" template="56"
                                 Height="22px"></asp:TextBox>
-                            &nbsp;ฉบับ
                         </td>
-                        <td>
-                            เช็คการค้าคืน
-                        </td>
-                        <td>
-                            <asp:TextBox ID="TRADING_CHEQUE_RETURN_VAL_6MONTHTextBox" runat="server" Width="100"
-                                MaxLength="12"></asp:TextBox>
-                            &nbsp;% ของเงินเข้ารายเดือน
-                        </td>
+
                     </tr>
                     <tr class="trTemplate3">
                         <td>
-                            OD Utilization
+                            <asp:Label ID="TRADING_CHEQUELabel" runat="server"  template="56"  Text="เช็คการค้าคืน (%ของเงินเข้ารายเดือน)" ></asp:Label>  
                         </td>
                         <td>
-                            <asp:TextBox ID="OD_UTILIZATION_PERCENTTextBox" runat="server" Width="50" MaxLength="3"></asp:TextBox>
-                            &nbsp;%
+                            <asp:TextBox ID="TRADING_CHEQUE_RETURN_VAL_6MONTHTextBox" runat="server" Width="50"  MaxLength="12" template="56"></asp:TextBox>
                         </td>
-                        <td>
-                            OD Swing
-                        </td>
-                        <td>
-                            <asp:TextBox ID="OD_SWING_PERCENTTextBox" runat="server" Width="50" MaxLength="3"></asp:TextBox>
-                            &nbsp;%
-                        </td>
+
                     </tr>
                     <tr class="trTemplate3">
                         <td>
-                            จำนวนครั้งที่เกินวงเงิน OD
+                            <asp:Label ID="OD_SWINGLabel" runat="server" Text="OD SWING (%)" template="56"></asp:Label>
+                           
                         </td>
                         <td>
-                            <asp:TextBox ID="OD_OVER_NUMBERTextBox" runat="server" Width="50" MaxLength="2"></asp:TextBox>
-                            &nbsp;ครั้ง
+                            <asp:TextBox ID="OD_SWING_PERCENTTextBox" runat="server" Width="50" MaxLength="3" template="56"></asp:TextBox>
+                            </td>
+
+                    </tr>
+                    <tr class="trTemplate3">
+                        <td>
+                            <asp:Label ID="OD_UTILIZATION_PERCENTLabel" runat="server" Text=" OD Utilization %" template="56"></asp:Label>
                         </td>
                         <td>
-                            <asp:Label runat="server" ID="label2" Visible="false" Text="มูลค่าทรัพย์สินถาวรไม่รวมที่ดิน"></asp:Label>
+                            <asp:TextBox ID="OD_UTILIZATION_PERCENTTextBox" runat="server" Width="50" MaxLength="3" template="56"></asp:TextBox>
+                            </td>
+
+                    </tr>
+                    <tr class="trTemplate3">
+                        <td><asp:Label ID="OD_OVERLabel" runat="server" Text="จำนวนครั้งที่เกินวงเงิน OD (ครั้ง)" template="56"></asp:Label>
+                         
                         </td>
                         <td>
-                            <asp:TextBox ID="FIXED_ASSET_NO_LANDTextBox" runat="server" Width="100px" MaxLength="12"
-                                Height="22px" Visible="false"></asp:TextBox>
-                            <asp:Label runat="server" ID="label3" Visible="false" Text="บาท"></asp:Label>
+                            <asp:TextBox ID="OD_OVER_NUMBERTextBox" runat="server" Width="50" MaxLength="2" template="56"></asp:TextBox>
+                            </td>
+
+                    </tr>
+                    <tr class="trTemplate3">
+                        <td>
+                            <asp:Label runat="server" ID="FIXED_ASSETlabel"  Text="มูลค่าทรัพย์สินถาวรไม่รวมที่ดิน (บาท)" template=""></asp:Label>
+                         
                         </td>
+                        <td>
+                            <asp:TextBox ID="FIXED_ASSET_NO_LANDTextBox" runat="server" Width="100px" MaxLength="12" template=""
+                                Height="22px" ></asp:TextBox>
+                        </td>
+
                     </tr>
                 </table>
             </div>

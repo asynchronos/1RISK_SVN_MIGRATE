@@ -445,11 +445,18 @@ SSProject.prototype = {
         this.D29 = (new MyNumber(input)).getValue();
         return this;
     },
-    getD29: function () {
+    getD29: function () {   //  ค่าอัตราดอกเบี้ย  ถ้ามีค่าเป็น 0 ให้กำหนดให้เท่ากับ default
         if (!this.D29 && this.D29 != 0) {
             return this.ShowNotAssignedMsg("D29");
         } else {
-            return this.D29 / 100;  // return percent value 
+            if (this.D29 == 0) {
+                //  alert(this.getRATE());
+                return this.getRATE();
+            } else {
+                // alert(this.D29 / 100);
+                return this.D29 / 100;  // return percent value 
+            }
+
         }
     },
 
@@ -856,7 +863,14 @@ SSProject.prototype = {
         if (!this.M33 && this.M33 != 0) {
             return this.ShowNotAssignedMsg("M33");
         } else {
-            return this.M33 / 100;  // get ค่าเป็น percent
+            //return this.M33 / 100;  // get ค่าเป็น percent
+            if (this.M33 == 0) {
+                //  alert(this.getRATE());
+                return this.getRATE();
+            } else {
+                // alert(this.M33 / 100);
+                return this.M33 / 100;  // return percent value 
+            }
         }
     },
 
@@ -868,7 +882,14 @@ SSProject.prototype = {
         if (!this.M34 && this.M34 != 0) {
             return this.ShowNotAssignedMsg("M34");
         } else {
-            return this.M34 / 100; // get ค่าเป็น percent
+            //return this.M34 / 100; // get ค่าเป็น percent
+            if (this.M34 == 0) {
+                //  alert(this.getRATE());
+                return this.getRATE();
+            } else {
+                // alert(this.M33 / 100);
+                return this.M34 / 100;  // return percent value 
+            }
         }
     },
 
@@ -985,7 +1006,7 @@ SSProject.prototype = {
         this.NEW_WORKING_CAPITAL = newCURRENT_ASSET_OTHER;
     },
     getNEW_WORKING_CAPITAL: function () {
-        this.NEW_WORKING_CAPITAL = this.getI33() + this.getI34() + this.getI36();
+        this.NEW_WORKING_CAPITAL = (this.getI33() + this.getI34() ) - this.getI36();
         return this.NEW_WORKING_CAPITAL;
     }
    , setCURRENT_ASSET_OTHER: function (newCURRENT_ASSET_OTHER) {
@@ -1213,21 +1234,22 @@ SSProject.prototype = {
             }
         }
     }
-    , N10: function () {
+    , N10: function () {  // หนี้สินหมุนเวียน bay
         //alert('getD31=' + this.getD31());
         // alert('getI33=' + this.getI33());
-        //  alert('getREFINANCE_WORKING_CAPITAL_BAY()=' + this.getREFINANCE_WORKING_CAPITAL_BAY());
-        return this.getD31() + this.getI33() - this.getREFINANCE_WORKING_CAPITAL_BAY();
+        //alert('getREFINANCE_WORKING_CAPITAL_BAY()=' + this.getREFINANCE_WORKING_CAPITAL_BAY());
+                                                                                          
+        return (this.getD31() + this.getI33()) - this.getREFINANCE_WORKING_CAPITAL_BAY();
     }
-    , N11: function () {
-        if (this.getI33() + this.getI34() == 0) {
-           // alert('s1');
-            return this.getD32() + this.getD33();
-        } else {
+    , N11: function () {   // หนี้สินหมุนเวียนอื่น
+       // if (this.getI33() + this.getI34() == 0) {
+             //alert('s1');
+       //     return this.getD32() + this.getD33();
+       // } else {
             //alert(this.getD32() + this.getD33());
             //alert(this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY());
-            return this.getD32() + this.getD33() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY());
-        }
+            return (this.getD32() + this.getD33()) - this.getD43();
+        //}
     }
     , N13: function () {
         // alert('N9=' + this.N9());
@@ -1298,14 +1320,24 @@ SSProject.prototype = {
                     I30 = 0;
                 }
 
-                if ((this.I25() / this.getO35() / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() - this.getREFINANCE_REPAYMENT_BAY())) > 0) {
-                    if (((this.I25() / this.getO35()) / 12) - ((I30 * this.M27()) / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() - this.getREFINANCE_REPAYMENT_BAY())) > 0) {
-                        return this.RoundDown(I30 - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
+                if ((this.I25() / this.getO35() / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45() - this.getREFINANCE_REPAYMENT_BAY()) > 0) {
+                    if (((this.I25() / this.getO35()) / 12) - ((I30 * this.M27()) / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45() - this.getREFINANCE_REPAYMENT_BAY()) > 0) {
+                        //alert('1');
+                        //alert('I30=' + I30);
+                        //alert(this.N10());
+                        //alert(this.N11());
+                        // alert('N10+N11=' + (this.N10() + this.N11()));
+                        // alert('D43=' + this.getD43());
+                        // alert('getREFINANCE_WORKING_CAPITAL_BAY=' + this.getREFINANCE_WORKING_CAPITAL_BAY());
+                        //alert((this.N10() + this.N11()) - (this.getD43()) - (this.getREFINANCE_WORKING_CAPITAL_BAY()));
+                        return this.RoundDown(I30 - ( this.N10() + this.N11()), -4);
                     } else {
-                        return this.RoundDown(((((this.I25() / this.getO35()) / 12) - (this.getD35() + this.getD37() + this.getD39() - (this.getD45() - this.getREFINANCE_REPAYMENT_BAY()))) * 12) / this.M27() - (this.N10() + this.N11() - (this.getD43() + this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
+                        //alert('2');
+                        return this.RoundDown(((((this.I25() / this.getO35()) / 12) - (this.getD35() + this.getD37() + this.getD39() - this.getD45() - this.getREFINANCE_REPAYMENT_BAY())) * 12) / this.M27() - (this.N10() + this.N11()), -4);
                     }
                 } else {
-                    return this.RoundDown(0 - (this.N10() + this.N11() - (this.getD43() - this.getREFINANCE_WORKING_CAPITAL_BAY())), -4);
+                    //alert('3');
+                    return this.RoundDown(0 - (this.N10() + this.N11()), -4);
                 }
             }
         } else { //use my function
