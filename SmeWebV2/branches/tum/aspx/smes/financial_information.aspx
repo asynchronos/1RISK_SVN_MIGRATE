@@ -73,6 +73,7 @@
                     param = param + "&WORKING_CAPITAL_TABLETextBox=" + "WORKING_CAPITAL_TABLETextBox";
                     param = param + "&RATE_TABLETextBox=" + "RATE_TABLETextBox";
                     param = param + "&CONTRACT_TABLETextBox=" + "CONTRACT_TABLETextBox";
+                    param = param + "&TEMPLATE_ID=" + templateID;
 
                     changeIframeSrcById(myId
                 , url

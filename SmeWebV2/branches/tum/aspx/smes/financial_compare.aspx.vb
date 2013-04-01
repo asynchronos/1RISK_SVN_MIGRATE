@@ -368,8 +368,8 @@ Partial Class smes_financial_compare
                     End If
                 End If
 
-                If IsDBNull(dt.Rows(i).Item("CUSTOMER_LIST_ID")) = False Then
-                    If dt.Rows(i).Item("CUSTOMER_LIST_ID") = "CN01" Then
+                If IsDBNull(dt.Rows(i).Item("CUSTOMER_NEW_LIST_ID")) = False Then
+                    If dt.Rows(i).Item("CUSTOMER_NEW_LIST_ID") = "CN01" Then
                         Grade_B = Grade_B + 1
                     End If
                 End If

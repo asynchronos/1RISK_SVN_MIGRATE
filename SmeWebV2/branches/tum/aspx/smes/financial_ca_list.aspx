@@ -67,6 +67,7 @@
                 type="text/css" />
             <script type="text/javascript">
                 $(document).ready(function () {
+                 
                     $("input[type=submit]").button();
                 });
                 function jsPop(jsURL, jsWindowNm, jsWidth, jsHeight) {

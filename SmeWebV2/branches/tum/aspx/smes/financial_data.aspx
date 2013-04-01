@@ -3736,89 +3736,7 @@
                         บาท
                     </td>
                 </tr>
-                <tr>
-                    <td class="style38" colspan="3">
-                        <strong>เฉพาะการขออนุัมัติครั้งนี้มีการ Refinance </strong>&nbsp;&nbsp; &nbsp;&nbsp;</td>
-                </tr>
-                <tr>
-                        <td>
-                            Refinance Working Capital
-                            <br />
-                            จากสถาบันอื่น
-                        </td>
-                        <td>
-                            <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_OTHERTextBox" runat="server" Width="85px"
-                                ToolTip="D43: Refinance Working Capital จากสถาบันอื่น" CELL="D43" Text='<%# Bind("REFINANCE_WORKING_CAPITAL_OTHER") %>' />
-                        </td>
-                        <td class="style5">
-                            บาท
-                        </td>
-                </tr>
-                <tr>
-                        <td>
-                            Refinance Loan จากสถาบันอื่น
-                        </td>
-                        <td>
-                            <asp:TextBox ID="REFINANCE_WORKING_LOAN_OTHERTextBox" runat="server" Width="85px"
-                                ToolTip="D44: Refinance Loan จากสถาบันอื่น" CELL="D44" Text='<%# Bind("REFINANCE_WORKING_LOAN_OTHER") %>' />
-                        </td>
-                        <td class="style5">
-                            บาท
-                        </td>
-                </tr>
-                <tr>
-                        <td>
-                            ภาระการผ่อนหนี้ Loan ที่ Refinance
-                        </td>
-                        <td>
-                            <asp:TextBox ID="REFINANCE_REPAYMENTTextBox" ToolTip="D45: ภาระการผ่อนหนี้ Loan ที่ Refinance"
-                                Width="85px" CELL="D45" runat="server" Text='<%# Bind("REFINANCE_REPAYMENT") %>' />
-                        </td>
-                        <td class="style5">
-                            บาท/เดือน
-                        </td>
-                </tr>
-                <tr>
-                        <td colspan="3">
-                            <strong>เฉพาะการขออนุัมัติครั้งนี้มีการ Refinance กับ Bay</strong> &nbsp; </td>
-                </tr>
-                <tr>
-                        <td>
-                            Refinance Working Capital
-                            <br />
-                            กับ Bay
-                        </td>
-                        <td>
-                            <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_BAYTextBox" runat="server" Width="85px"
-                                ToolTip="" />
-                        </td>
-                        <td class="style5">
-                            บาท
-                        </td>
-                </tr>
-                <tr>
-                        <td>
-                            Refinance Loan กับ Bay
-                        </td>
-                        <td>
-                            <asp:TextBox ID="REFINANCE_WORKING_LOAN_BAYTextBox" runat="server" Width="85px" ToolTip=""
-                                CELL="" />
-                        </td>
-                        <td class="style5">
-                            บาท
-                        </td>
-                </tr>
-                <tr>
-                        <td>
-                            ภาระการผ่อนหนี้ Loan ที่ Refinance
-                        </td>
-                        <td>
-                            <asp:TextBox ID="REFINANCE_REPAYMENT_BAYTextBox" ToolTip="" Width="85px" runat="server"></asp:TextBox>
-                        </td>
-                        <td class="style5">
-                            บาท/เดือน
-                        </td>
-                </tr>
+              
                 <tr>
                     <td class="style35">
                         <strong>หลักประกันรวมทั้งหมด </strong>
@@ -3955,7 +3873,7 @@
             <div id="tab4">
                 <table width="100%">
                     <tr>
-                        <td colspan="4">
+                        <td colspan="3">
                             <span class="ui-state-highlight"><strong>วงเงินสินเชื่อที่ขออนุมัติครั้งนี้ </strong>
                             </span>&nbsp;
                         </td>
@@ -3969,8 +3887,7 @@
                         </td>
                         <td class="style5">
                             บาท</td>
-                        <td>
-                            &nbsp;</td>
+              
                     </tr>
                     <tr>
                         <td>
@@ -3982,8 +3899,7 @@
                         <td class="style5">
                             %
                         </td>
-                        <td>
-                            &nbsp;</td>
+
                     </tr>
                     <tr>
                         <td>
@@ -3993,8 +3909,7 @@
                         </td>
                         <td class="style5">
                             บาท</td>
-                        <td>
-                            &nbsp;</td>
+  
                     </tr>
                     <tr>
                         <td>
@@ -4005,8 +3920,7 @@
                         </td>
                         <td class="style5">
                             %</td>
-                        <td>
-                            &nbsp;</td>
+        
                     </tr>
                     <tr>
                         <td>
@@ -4018,8 +3932,7 @@
                         <td class="style5">
                             ปี
                         </td>
-                        <td>
-                            &nbsp;</td>
+  
                     </tr>
                     <tr>
                         <td>
@@ -4031,9 +3944,7 @@
                         </td>
                         <td class="style5">
                             บาท</td>
-                        <td>
-                            &nbsp;
-                        </td>
+      
                     </tr>
                     <tr>
                         <td>
@@ -4045,10 +3956,91 @@
                         </td>
                         <td class="style5">
                             บาท&nbsp;</td>
-                        <td>
-                            &nbsp;
-                        </td>
+  
                     </tr>
+                      <tr>
+                    <td class="style38" colspan="3">
+                        <strong class="ui-state-highlight">การขออนุัมัติครั้งนี้มีการ Refinance </strong>&nbsp;&nbsp; &nbsp;&nbsp;</td>
+                </tr>
+                <tr>
+                        <td>
+                            Refinance Working Capital
+                            <br />
+                            จากสถาบันอื่น
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_OTHERTextBox" runat="server" Width="85px"
+                                ToolTip="D43: Refinance Working Capital จากสถาบันอื่น" CELL="D43" Text='<%# Bind("REFINANCE_WORKING_CAPITAL_OTHER") %>' />
+                        </td>
+                        <td class="style5">
+                            บาท
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                            Refinance Loan จากสถาบันอื่น
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_WORKING_LOAN_OTHERTextBox" runat="server" Width="85px"
+                                ToolTip="D44: Refinance Loan จากสถาบันอื่น" CELL="D44" Text='<%# Bind("REFINANCE_WORKING_LOAN_OTHER") %>' />
+                        </td>
+                        <td class="style5">
+                            บาท
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                            ภาระการผ่อนหนี้ Loan ที่ Refinance
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_REPAYMENTTextBox" ToolTip="D45: ภาระการผ่อนหนี้ Loan ที่ Refinance"
+                                Width="85px" CELL="D45" runat="server" Text='<%# Bind("REFINANCE_REPAYMENT") %>' />
+                        </td>
+                        <td class="style5">
+                            บาท/เดือน
+                        </td>
+                </tr>
+                <tr>
+                        <td colspan="3">
+                            <strong class="ui-state-highlight">การขออนุัมัติครั้งนี้มีการ Refinance กับ Bay</strong> &nbsp; </td>
+                </tr>
+                <tr>
+                        <td>
+                            Refinance Working Capital
+                            <br />
+                            กับ Bay
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_WORKING_CAPITAL_BAYTextBox" runat="server" Width="85px"
+                                ToolTip="" />
+                        </td>
+                        <td class="style5">
+                            บาท
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                            Refinance Loan กับ Bay
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_WORKING_LOAN_BAYTextBox" runat="server" Width="85px" ToolTip=""
+                                CELL="" />
+                        </td>
+                        <td class="style5">
+                            บาท
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                            ภาระการผ่อนหนี้ Loan ที่ Refinance
+                        </td>
+                        <td>
+                            <asp:TextBox ID="REFINANCE_REPAYMENT_BAYTextBox" ToolTip="" Width="85px" runat="server"></asp:TextBox>
+                        </td>
+                        <td class="style5">
+                            บาท/เดือน
+                        </td>
+                </tr>
                     <tr>
                         <td>
                               <span class="ui-state-highlight"><strong>SME _SS Program </strong>
@@ -4057,8 +4049,7 @@
                             &nbsp;</td>
                         <td class="style5">
                             &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
+
                     </tr>
                     <tr>
                         <td>
@@ -4069,8 +4060,7 @@
                         </td>
                         <td class="style5">
                             บาท</td>
-                        <td>
-                            &nbsp;</td>
+
                     </tr>
                     <tr>
                         <td>
@@ -4080,8 +4070,7 @@
                                 Width="85px"/></td>
                         <td class="style5">
                             บาท</td>
-                        <td>
-                            &nbsp;</td>
+
                     </tr>
                     <tr>
                         <td>
@@ -4091,8 +4080,7 @@
                                 Width="45px"/></td>
                         <td class="style5">
                             %</td>
-                        <td>
-                            &nbsp;</td>
+
                     </tr>
                     <tr>
                         <td><span>ค่าธรรมเนียม บสย./ปี</span></td>
@@ -4101,8 +4089,7 @@
                                 Width="45px"/></td>
                         <td class="style5">
                             %</td>
-                        <td>
-                            &nbsp;</td>
+
                     </tr>
                     <tr>
                         <td>
@@ -4111,8 +4098,7 @@
                             &nbsp;</td>
                         <td class="style5">
                             &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
+
                     </tr>
                     <tr>
                         <td colspan="4">
