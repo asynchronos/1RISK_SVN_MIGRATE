@@ -131,17 +131,20 @@ namespace SME.UserSystem.Core.AD
                     throw new LDAPInfoException("Username " + username + " in AD is Locked.");
                 }
 
-                log.Error(cex);
+                log.Error(cex.Message);
+                log.Error(cex.StackTrace);
                 throw new LDAPInfoException(cex.Message, cex);
             }
             catch (COMException comEx)
             {
-                log.Error(comEx);
+                log.Error(comEx.Message);
+                log.Error(comEx.StackTrace);
                 throw new LDAPInfoException(comEx.Message, comEx);
             }
             catch (System.Exception ex)
             {
-                log.Error(ex);
+                log.Error(ex.Message);
+                log.Error(ex.StackTrace);
                 throw ex;
             }
 
@@ -251,6 +254,7 @@ namespace SME.UserSystem.Core.AD
             catch (System.Exception ex)
             {
                 log.Error("Error obtaining group names. " + ex.Message);
+                log.Error(ex.StackTrace);
                 throw new LDAPInfoException("Error obtaining group names. " + ex.Message);
             }
             return groupNames.ToString();

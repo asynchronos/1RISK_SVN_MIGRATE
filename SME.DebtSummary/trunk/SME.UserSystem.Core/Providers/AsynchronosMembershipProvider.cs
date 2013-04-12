@@ -7,10 +7,13 @@ using log4net;
 using SME.UserSystem.Core.AD;
 using SME.UserSystem.Core.DAL;
 using SME.UserSystem.Core.Exceptions;
+using System.Security.Cryptography;
+using System.Text;
+using WebMatrix.WebData;
 
 namespace SME.UserSystem.Core.Providers
 {
-    public class AsynchronosMembershipProvider : MembershipProvider
+    public class AsynchronosMembershipProvider : ExtendedMembershipProvider
     {
         private static readonly ILog log = LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -377,6 +380,7 @@ namespace SME.UserSystem.Core.Providers
                         .FindBy(u => u.EMP_ID.Equals(username)
                                 && u.DEL_FLAG != true);
 
+                    //write log
                     if (isDebugEnabled) log.Debug(((ObjectQuery)userQuery).ToTraceString());
 
                     USER_DATA user = userQuery.FirstOrDefault<USER_DATA>();
@@ -401,70 +405,71 @@ namespace SME.UserSystem.Core.Providers
                         throw (ex);
                     }
 
-                    //get categoryList
-                    userQuery.Where(u => u.CATE_AND_EMP
-                        .Where(cae => cae.DEL_FLAG.Value != true
-                            && cae.CATEGORY.CATE_AND_APP
-                                .Any(caa => caa.APPLICATION.APP_DESC == ApplicationName)))
-                        .Select(cae);
-                    IQueryable<CATE_AND_EMP> categoryList = user
-                        .CATE_AND_EMP.Where(cae => cae.DEL_FLAG.Value != true
-                            && cae.CATEGORY.CATE_AND_APP
-                                .Any(caa => caa.APPLICATION.APP_DESC == ApplicationName))
-                        .AsQueryable<CATE_AND_EMP>();
+                    ////get categoryList
+                    //userQuery.Where(u => u.CATE_AND_EMP
+                    //    .Where(cae => cae.DEL_FLAG.Value != true
+                    //        && cae.CATEGORY.CATE_AND_APP
+                    //            .Any(caa => caa.APPLICATION.APP_DESC == ApplicationName)))
+                    //    .Select(cae);
+                    //IQueryable<CATE_AND_EMP> categoryList = user
+                    //    .CATE_AND_EMP.Where(cae => cae.DEL_FLAG.Value != true
+                    //        && cae.CATEGORY.CATE_AND_APP
+                    //            .Any(caa => caa.APPLICATION.APP_DESC == ApplicationName))
+                    //    .AsQueryable<CATE_AND_EMP>();
 
-                    //get profile
-                    APP_PROFILE profile = userQuery
-                        .APP_PROFILE.Where(p => p.APPLICATION.APP_DESC == ApplicationName)
-                        .FirstOrDefault();
+                    ////get profile
+                    //APP_PROFILE profile = userQuery
+                    //    .APP_PROFILE.Where(p => p.APPLICATION.APP_DESC == ApplicationName)
+                    //    .FirstOrDefault();
 
-                    if (profile != null) //&& profile.APPLICATION.APP_DESC.Equals(ApplicationName)
-                    {
-                        if (profile.EXPIRE_DATE != null
-                            && DateTime.Now > profile.EXPIRE_DATE.Value)
-                        {
-                            UserInfoException ex = new UserInfoException
-                                ("Your account permission ["
-                                + ApplicationName
-                                + "] is expired on "
-                                + userQuery
-                                .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
-                            log.Error(ex);
-                            throw ex;
-                        }
+                    //if (profile != null) //&& profile.APPLICATION.APP_DESC.Equals(ApplicationName)
+                    //{
+                    //    if (profile.EXPIRE_DATE != null
+                    //        && DateTime.Now > profile.EXPIRE_DATE.Value)
+                    //    {
+                    //        UserInfoException ex = new UserInfoException
+                    //            ("Your account permission ["
+                    //            + ApplicationName
+                    //            + "] is expired on "
+                    //            + userQuery
+                    //            .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
+                    //        log.Error(ex);
+                    //        throw ex;
+                    //    }
 
-                        if (categoryList != null
-                            && categoryList.Count >= 1)
-                        {
-                            result = true;
+                    //    if (categoryList != null
+                    //        && categoryList.Count >= 1)
+                    //    {
+                    //        result = true;
 
-                            profile.LAST_ACTIVITY_DATE = DateTime.Now;
-                            profile.LAST_ACTIVITY = "Sign On.";
-                            profile.IS_AUTHENTICATED = true;
+                    //        profile.LAST_ACTIVITY_DATE = DateTime.Now;
+                    //        profile.LAST_ACTIVITY = "Sign On.";
+                    //        profile.IS_AUTHENTICATED = true;
 
-                            userQuery.LAST_SIGN_ON_DATE = DateTime.Now;
+                    //        userQuery.LAST_SIGN_ON_DATE = DateTime.Now;
 
-                            //update profile
-                            uow.Save();
-                        }
-                        else
-                        {
-                            UserInfoException ex = new UserInfoException
-                                ("You don't have any roles on application "
-                                + ApplicationName + ".");
-                            log.Error(ex);
-                            throw ex;
-                        }
-                    }
-                    else
-                    {
-                        UserInfoException ex = new UserInfoException
-                            ("You don't have permission to use application "
-                            + ApplicationName + ".");
-                        log.Error(ex);
-                        throw ex;
-                    }
+                    //        //update profile
+                    //        uow.Save();
+                    //    }
+                    //    else
+                    //    {
+                    //        UserInfoException ex = new UserInfoException
+                    //            ("You don't have any roles on application "
+                    //            + ApplicationName + ".");
+                    //        log.Error(ex);
+                    //        throw ex;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    UserInfoException ex = new UserInfoException
+                    //        ("You don't have permission to use application "
+                    //        + ApplicationName + ".");
+                    //    log.Error(ex);
+                    //    throw ex;
+                    //}
                 }
+                result = true;
             }
 
             return result;
@@ -545,6 +550,88 @@ namespace SME.UserSystem.Core.Providers
                 }
             }
             return membershipUser;
+        }
+
+        public static string GetMD5Hash(string value)
+        {
+            MD5 md5Hasher = MD5.Create();
+            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(value));
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+            return sBuilder.ToString();
+        }
+
+        public override bool ConfirmAccount(string accountConfirmationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool ConfirmAccount(string userName, string accountConfirmationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CreateAccount(string userName, string password, bool requireConfirmationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CreateUserAndAccount(string userName, string password, bool requireConfirmation, System.Collections.Generic.IDictionary<string, object> values)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool DeleteAccount(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GeneratePasswordResetToken(string userName, int tokenExpirationInMinutesFromNow)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override System.Collections.Generic.ICollection<OAuthAccountData> GetAccountsForUser(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override DateTime GetCreateDate(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override DateTime GetLastPasswordFailureDate(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override DateTime GetPasswordChangedDate(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int GetPasswordFailuresSinceLastSuccess(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int GetUserIdFromPasswordResetToken(string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsConfirmed(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool ResetPasswordWithToken(string token, string newPassword)
+        {
+            throw new NotImplementedException();
         }
     }
 }

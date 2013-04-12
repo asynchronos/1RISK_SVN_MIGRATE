@@ -685,7 +685,6 @@
           <NavigationProperty Name="APP_PROFILE" Relationship="UserSystemEntitiesModel.FK_APP_PROFILE_USER_DATA" FromRole="USER_DATA" ToRole="APP_PROFILE" />
           <NavigationProperty Name="TB_EMPLOYEE" Relationship="UserSystemEntitiesModel.USER_DATATB_EMPLOYEE" FromRole="USER_DATA" ToRole="TB_EMPLOYEE" />
           <Property Type="DateTime" Name="EXPIRE_DATE" />
-          <Property Type="String" Name="test" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <Association Name="FK_CATE_AND_CUS_CATEGORY">
           <End Type="UserSystemEntitiesModel.CATEGORY" Role="CATEGORY" Multiplicity="1" />
@@ -1028,7 +1027,6 @@
             <ScalarProperty Name="level_id" ColumnName="level_id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="USER_DATA"><EntityTypeMapping TypeName="UserSystemEntitiesModel.USER_DATA"><MappingFragment StoreEntitySet="USER_DATA">
-            <ScalarProperty Name="test" ColumnName="test" />
                 <ScalarProperty Name="EXPIRE_DATE" ColumnName="EXPIRE_DATE" />
                 <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
             <ScalarProperty Name="EMP_TITLE" ColumnName="EMP_TITLE" />
@@ -1110,7 +1108,7 @@
         <EntityTypeShape EntityType="UserSystemEntitiesModel.CATEGORY_TYPE" Width="1.5" PointX="0.75" PointY="6.875" Height="2.0853483080863953" IsExpanded="true" />
         <EntityTypeShape EntityType="UserSystemEntitiesModel.MENU_MASTER" Width="1.5" PointX="3" PointY="2.5" Height="2.9070849609375031" IsExpanded="true" />
         <EntityTypeShape EntityType="UserSystemEntitiesModel.TB_EMPLOYEE" Width="1.5" PointX="8.25" PointY="14.125" Height="7.6731575520833388" IsExpanded="true" />
-        <EntityTypeShape EntityType="UserSystemEntitiesModel.USER_DATA" Width="1.5" PointX="3" PointY="14" Height="4.0575162760416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserSystemEntitiesModel.USER_DATA" Width="1.5" PointX="3" PointY="14" Height="3.8931689453125031" IsExpanded="true" />
         <AssociationConnector Association="UserSystemEntitiesModel.FK_CATE_AND_CUS_CATEGORY">
           <ConnectorPoint PointX="4.5000000000000009" PointY="9.6107796223958317" />
           <ConnectorPoint PointX="4.875" PointY="9.9857796223958317" />
