@@ -388,7 +388,7 @@ namespace SME.UserSystem.Core.Providers
                     if (user == null)
                     {
                         UserInfoException ex = new UserInfoException
-                            ("Can't find user data " + username + ".");
+                            ("Can't find user data " + username + " in database.");
                         log.Error(ex);
                         throw ex;
                     }
