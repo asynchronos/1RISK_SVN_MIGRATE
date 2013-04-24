@@ -349,6 +349,14 @@
                                             &nbsp;
                                         </td>
                                     </tr>
+                                    <tr style="background-color: Gray">
+                                        <td align="left">
+                                            <img alt="" src="../images/ball_glass_yellowS.gif" style="width: 16px; height: 16px" /><asp:HyperLink
+                                                ID="HyperLink4" runat="server" Font-Bold="True" Font-Size="10pt" ForeColor="White"
+                                                NavigateUrl="~/aspx/download/CreditReview.aspx">Customer
+                    Credit Review (ฝ่ายสอบทาน)</asp:HyperLink>
+                                        </td>
+                                    </tr>
                                 </table>
                             </td>
                         </tr>
