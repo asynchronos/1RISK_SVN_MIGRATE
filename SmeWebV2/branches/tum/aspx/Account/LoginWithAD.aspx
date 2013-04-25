@@ -78,5 +78,16 @@
             <TitleTextStyle BackColor="#507CD1" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
         </asp:Login>
         <asp:Label ID="Label3" runat="server" Text="ติดต่อผู้ดูแลระบบ 1797,4703,2630,1748"></asp:Label>
+      <p>
+      <br />
+      <br />
+       <a href="mailto:Theerasak Chengthum/BAY?Subject=Request_Leader1_User">
+           แจ้งขอสิทธิ์การใช้งานผ่านทาง email 
+          <%--  <a href="mailto:pichaya.prasartporn@krungsri.com?Subject=Request_Leader1_User">--%> 
+         
+             ** คลิกที่นี่ **
+         </a><br />
+          (แจ้ง รหัสพนักงาน ชื่อ นามสกุล ไทย,อังกฤษ และหน่วยงาน)
+      </p>
     </div>
 </asp:Content>
