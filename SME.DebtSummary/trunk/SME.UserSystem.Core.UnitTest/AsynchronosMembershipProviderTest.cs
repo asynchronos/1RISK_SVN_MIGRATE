@@ -63,7 +63,7 @@ namespace SME.UserSystem.Core.UnitTest
         #endregion Additional test attributes
 
         private string testUsername = "249888";
-        private string testPassword = "big@7426";
+        private string testPassword = "big#7426";
 
         /// <summary>
         ///A test for AsynchronosMembershipProvider Constructor
@@ -348,8 +348,8 @@ namespace SME.UserSystem.Core.UnitTest
         public void ValidateUserTest()
         {
             AsynchronosMembershipProvider target = new AsynchronosMembershipProvider(); // TODO: Initialize to an appropriate value
-            string username = testUsername; // TODO: Initialize to an appropriate value
-            string password = testPassword; // TODO: Initialize to an appropriate value
+            string username = "249888"; // TODO: Initialize to an appropriate value
+            string password = "big#7426"; // TODO: Initialize to an appropriate value
             bool expected = true; // TODO: Initialize to an appropriate value
             bool actual;
             actual = target.ValidateUser(username, password);
