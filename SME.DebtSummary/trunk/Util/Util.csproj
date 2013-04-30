@@ -50,11 +50,16 @@
     <Compile Include="Aspx\MyAspxPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Log4net\HttpContextURLProvider.cs" />
+    <Compile Include="Log4net\HttpContextUserNameProvider.cs" />
     <Compile Include="Log4net\Log4NetFileCleanupTask.cs" />
     <Compile Include="Log4net\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "D:\workspaces\2013\SMEApplication\CommonDLL\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
