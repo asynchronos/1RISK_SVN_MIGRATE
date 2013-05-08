@@ -15,7 +15,7 @@ Partial Class aspx_report_ReportCustomerCimHightRisk
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         Dim strConnString As String
-        strConnString = ConfigurationManager.ConnectionStrings("EDWConnectionstring").ToString
+        strConnString = ConfigurationManager.ConnectionStrings("EDW_Connectionstring").ToString
         objConn = New OracleConnection(strConnString)
         objConn.Open()
         If Not Page.IsPostBack() Then
