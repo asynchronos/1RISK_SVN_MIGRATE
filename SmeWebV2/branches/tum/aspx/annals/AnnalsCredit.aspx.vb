@@ -45,8 +45,6 @@ Partial Class _AnnalsCredit
         Return strJson
     End Function
 
-
-
 #End Region
 
 #Region "Search"
@@ -362,46 +360,52 @@ Partial Class _AnnalsCredit
                 tbcm_remark.Text = obj.CMRemark
 
 
+                Try
+                    Dim ds1 As DataSet = Session("ds1")
+                    ds1.Tables.Remove("acc")  '  ลบของเดิมออก จาก sub create เริ่มต้น
+                    ds1.Tables.Remove("process")
+                    ds1.Tables.Remove("customer")
 
+                    ' MsgBox(ds1.Tables("acc").Rows.Count)
 
-                Dim ds1 As DataSet = Session("ds1")
-                ds1.Tables.Remove("acc")  '  ลบของเดิมออก จาก sub create เริ่มต้น
-                ds1.Tables.Remove("process")
-                ds1.Tables.Remove("customer")
+                    Dim conn As New SqlConnection
+                    conn = ConnectionUtil.getSqlConnectionFromWebConfig
+                    Dim sql As String = "select  *  from  v_annals_account "
+                    sql += " where  id='" & tbID.Text & "' order by iden asc "
+                    Dim da1 As SqlDataAdapter = New SqlDataAdapter(sql, conn)
+                    da1.Fill(ds1, "acc")
 
-                ' MsgBox(ds1.Tables("acc").Rows.Count)
+                    If IsNothing(ds1.Tables("acc")) = False And ds1.Tables("acc").Rows.Count > 0 Then
+                        'SearchCif(ds1.Tables("acc").Rows(0).Item("cif"), "add")
+                    End If
+                    'MsgBox(ds1.Tables("acc").Rows.Count)
 
-                Dim conn As New SqlConnection
-                conn = ConnectionUtil.getSqlConnectionFromWebConfig
-                Dim sql As String = "select  *  from  v_annals_account "
-                sql += " where  id='" & tbID.Text & "' order by iden asc "
-                Dim da1 As SqlDataAdapter = New SqlDataAdapter(sql, conn)
-                da1.Fill(ds1, "acc")
+                    Dim sql2 As String = "select  *  from v_annals_process"
+                    sql2 += " where id='" & tbID.Text & "' order by process_date"
+                    Dim da2 As SqlDataAdapter = New SqlDataAdapter(sql2, conn)
+                    da2.Fill(ds1, "process")
 
-                If IsNothing(ds1.Tables("acc")) = False And ds1.Tables("acc").Rows.Count > 0 Then
-                    'SearchCif(ds1.Tables("acc").Rows(0).Item("cif"), "add")
-                End If
-                'MsgBox(ds1.Tables("acc").Rows.Count)
+                    Dim sql3 As String = "select  *  from v_annals_cus_ca"
+                    sql3 += " where id='" & tbID.Text & "' order by cif"
+                    Dim da3 As SqlDataAdapter = New SqlDataAdapter(sql3, conn)
+                    da3.Fill(ds1, "customer")
 
-                Dim sql2 As String = "select  *  from v_annals_process"
-                sql2 += " where id='" & tbID.Text & "' order by process_date"
-                Dim da2 As SqlDataAdapter = New SqlDataAdapter(sql2, conn)
-                da2.Fill(ds1, "process")
+                    conn.Close()
+                    conn = Nothing
 
-                Dim sql3 As String = "select  *  from v_annals_cus_ca"
-                sql3 += " where id='" & tbID.Text & "' order by cif"
-                Dim da3 As SqlDataAdapter = New SqlDataAdapter(sql3, conn)
-                da3.Fill(ds1, "customer")
+                    Session("ds1") = ds1
+                    bindGridDetail(-1, "acc")
+                    bindGridProcessDetail(-1, "process")
+                    bindgridCustomer(-1, "customer")
+                    BindListCA()
+                    PreUpdate()
+                Catch ex As Exception
 
-                conn.Close()
-                conn = Nothing
+                    MsgBox(ex.Message)
 
-                Session("ds1") = ds1
-                bindGridDetail(-1, "acc")
-                bindGridProcessDetail(-1, "process")
-                bindgridCustomer(-1, "customer")
-                BindListCA()
-                PreUpdate()
+                End Try
+
+               
 
 
             End If
@@ -1545,9 +1549,10 @@ Partial Class _AnnalsCredit
         Dim ddlSUBJECT As DropDownList = GridAnnalsCreditAccount.Rows(e.RowIndex).FindControl("ddlSUBJECT")
 
         Dim ddlPROGRAM As DropDownList = GridAnnalsCreditAccount.Rows(e.RowIndex).FindControl("ddlPROGRAM")
-        Dim ddlPROJECT As DropDownList = GridAnnalsCreditAccount.Rows(e.RowIndex).Cells(0).FindControl("ddlPROJECT")
+
         Dim ddlPRODUCT As DropDownList = GridAnnalsCreditAccount.Rows(e.RowIndex).FindControl("ddlPRODUCT")
         Dim ddlPRODUCT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(e.RowIndex).Cells(0).FindControl("ddlPRODUCT_CODE")
+        Dim ddlPROJECT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(e.RowIndex).Cells(0).FindControl("ddlPROJECT_CODE")
 
 
 
@@ -1692,6 +1697,9 @@ Partial Class _AnnalsCredit
         End If
 
 
+
+
+
         If ddlSUBJECT_DETAIL_ID.SelectedValue.Length = 0 Then
             str += " Please insert  Subject "
             ddlSUBJECT_DETAIL_ID.BackColor = Drawing.Color.Red
@@ -1700,19 +1708,24 @@ Partial Class _AnnalsCredit
         End If
 
 
-        If ddlPROJECT.SelectedIndex < 0 Then
+        If ddlPRODUCT.SelectedIndex < 0 Then
             str += " Please insert  Program."
             ddlPROGRAM.BackColor = Drawing.Color.Red
-            ddlPROJECT.BackColor = Drawing.Color.Red
+
         Else
             ddlPROGRAM.BackColor = Drawing.Color.White
-            ddlPROJECT.BackColor = Drawing.Color.White
+
         End If
 
+        Dim LabelMsg As Label = GridAnnalsCreditAccount.Rows(e.RowIndex).FindControl("LabelMsg")
 
 
         If str <> "" Then
+            LabelMsg.Text = str
+            LabelMsg.BackColor = Drawing.Color.Red
             Exit Sub
+        Else
+            LabelMsg.Visible = False
         End If
 
         Dim Nrow = GridAnnalsCreditAccount.PageIndex * GridAnnalsCreditAccount.PageSize ' หา reccord ปัจจุบันของ grid
@@ -1756,14 +1769,6 @@ Partial Class _AnnalsCredit
         row("PROGRAM_ID") = ddlPROGRAM.Items(ddlPROGRAM.SelectedIndex).Value
         row("PROGRAM_NAME") = ddlPROGRAM.Items(ddlPROGRAM.SelectedIndex).Text
 
-        If ddlPROJECT.SelectedIndex > -1 Then
-            row("PROJECT_ID") = ddlPROJECT.Items(ddlPROJECT.SelectedIndex).Value
-            row("PROJECT_NAME") = ddlPROJECT.Items(ddlPROJECT.SelectedIndex).Text
-        Else
-            row("PROJECT_ID") = " "
-            row("PROJECT_NAME") = " "
-        End If
-
 
 
         If ddlPRODUCT.SelectedIndex > -1 Then
@@ -1776,7 +1781,7 @@ Partial Class _AnnalsCredit
 
         If ddlPRODUCT_CODE.SelectedIndex > -1 Then
             row("PRODUCT_CODE") = ddlPRODUCT_CODE.Items(ddlPRODUCT_CODE.SelectedIndex).Value
-            row("PROJECT_CODE") = ddlPRODUCT_CODE.Items(ddlPRODUCT_CODE.SelectedIndex).Text
+            row("PROJECT_CODE") = ddlPROJECT_CODE.Items(ddlPROJECT_CODE.SelectedIndex).Text
         Else
             row("PRODUCT_CODE") = " "
             row("PROJECT_CODE") = " "
@@ -1858,9 +1863,10 @@ Partial Class _AnnalsCredit
         Dim TableAccountForm As Table = GridAnnalsCreditAccount.Rows(EditRow).FindControl("TableAccountForm")
 
         Dim ddlPROGRAM As DropDownList = GridAnnalsCreditAccount.Rows(EditRow).FindControl("ddlPROGRAM")
-        Dim ddlPROJECT As DropDownList = GridAnnalsCreditAccount.Rows(EditRow).FindControl("ddlPROJECT")
+
         Dim ddlPRODUCT As DropDownList = GridAnnalsCreditAccount.Rows(EditRow).FindControl("ddlPRODUCT")
         Dim ddlPRODUCT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(EditRow).FindControl("ddlPRODUCT_CODE")
+        Dim ddlPROJECT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(EditRow).FindControl("ddlPROJECT_CODE")
 
 
         ddlPROGRAM.DataSource = Session("PROGRAM")
@@ -2059,30 +2065,25 @@ Partial Class _AnnalsCredit
             If IsDBNull(.Item("PROGRAM_ID")) = False Then
                 ddlPROGRAM.SelectedIndex = ddlPROGRAM.Items.IndexOf(ddlPROGRAM.Items.FindByValue(.Item("PROGRAM_ID")))
                 If ddlPROGRAM.SelectedValue <> "" Then
-                    ChangeProject()
+                    ChangeProgram()
                 End If
             End If
 
 
-            If IsDBNull(.Item("PROJECT_ID")) = False Then
-
-                ddlPROJECT.SelectedIndex = ddlPROJECT.Items.IndexOf(ddlPROJECT.Items.FindByValue(.Item("PROJECT_ID")))
-
-            End If
-
             ddlDECB_RD_ID.SelectedIndex = ddlDECB_RD_ID.Items.IndexOf(ddlDECB_RD_ID.Items.FindByValue(.Item("DECB_RD_ID")))
 
-            If ddlPROJECT.SelectedValue <> "" Then
-                ChangeProduct()
-            End If
+
 
             If IsDBNull(.Item("PRODUCT_ID")) = False Then
 
                 If ddlPRODUCT.Items.Count > 0 Then
                     ddlPRODUCT.SelectedIndex = ddlPRODUCT.Items.IndexOf(ddlPRODUCT.Items.FindByValue(.Item("PRODUCT_ID")))
                 End If
-                If ddlPRODUCT_CODE.Items.Count > 0 And ddlPRODUCT_CODE.Items.Count > 0 Then
+                If ddlPRODUCT_CODE.Items.Count > 0 Then
                     ddlPRODUCT_CODE.SelectedIndex = ddlPRODUCT.SelectedIndex
+                End If
+                If ddlPROJECT_CODE.Items.Count > 0 Then
+                    ddlPROJECT_CODE.SelectedIndex = ddlPRODUCT.SelectedIndex
                 End If
 
             End If
@@ -2108,8 +2109,8 @@ Partial Class _AnnalsCredit
         '         OBJSUBJECT.HASVALUE = 1
         '    End If
 
-
         ' ---- กำหนดค่า grid ให้แสดงตามประเภท
+
         With GridAnnalsCreditAccount
             Select Case OBJSUBJECT.HASVALUE
                 'Select Case Mid(StringSubject, 1, 1)
@@ -2164,56 +2165,7 @@ Partial Class _AnnalsCredit
         GridAnnalsCreditAccount.DataSource = ds1.Tables("acc")
         GridAnnalsCreditAccount.DataBind()
     End Sub
-    Protected Sub ChangeProject()
-
-        Dim gINdex As Integer = 0
-        If Session("event") = "add" Then
-            gINdex = 0
-        Else
-            gINdex = GridAnnalsCreditAccount.SelectedIndex
-        End If
-
-
-        Dim ddlPROGRAM As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROGRAM")
-        Dim ddlPROJECT As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROJECT")
-        Dim ddlPRODUCT As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPRODUCT")
-        Dim ddlPRODUCT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPRODUCT_CODE")
-
-        Dim PROGRAM_ID As String = ddlPROGRAM.SelectedValue
-
-
-
-        Dim conn As SqlConnection = Nothing
-        conn = ConnectionUtil.getSqlConnectionFromWebConfig()
-        Dim sqlProgram As String = "SELECT * FROM ANNALS_PROJECT WHERE PROGRAM_ID = '" & PROGRAM_ID & "' AND DEL_FLAG <> 1 ORDER BY  PRIORITY"
-        Dim sqlCmd As New SqlCommand(sqlProgram, conn)
-
-        Dim dr = sqlCmd.ExecuteReader(CommandBehavior.CloseConnection)
-        Dim dt As New DataTable
-        dt.Load(dr)
-
-        ddlPROJECT.Items.Clear()
-
-        ddlPROJECT.DataSource = dt
-        ddlPROJECT.DataValueField = "PROJECT_ID"
-        ddlPROJECT.DataTextField = "PROJECT_NAME"
-        ddlPROJECT.DataBind()
-
-        ChangeGL()
-
-        ' เคลียโปรดัก
-        If ddlPROJECT.Items.Count > 0 Then
-            ChangeProduct()
-        Else
-            ddlPRODUCT.Items.Clear()
-            ddlPRODUCT_CODE.Items.Clear()
-        End If
-
-
-
-
-
-    End Sub
+ 
     Protected Sub ChangeProductIndex()
         Dim gINdex As Integer = 0
         If Session("event") = "add" Then
@@ -2224,12 +2176,14 @@ Partial Class _AnnalsCredit
 
         Dim ddlPRODUCT As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPRODUCT")
         Dim ddlPRODUCT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPRODUCT_CODE")
+        Dim ddlPROJECT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROJECT_CODE")
 
         ddlPRODUCT_CODE.SelectedIndex = ddlPRODUCT.SelectedIndex
+        ddlPROJECT_CODE.SelectedIndex = ddlPRODUCT.SelectedIndex
 
 
     End Sub
-    Protected Sub ChangeProduct()
+    Protected Sub ChangeProgram()
 
         Dim gINdex As Integer = 0
         If Session("event") = "add" Then
@@ -2238,96 +2192,48 @@ Partial Class _AnnalsCredit
             gINdex = GridAnnalsCreditAccount.SelectedIndex
         End If
 
+        Dim ddlPROGRAM As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROGRAM")
         Dim ddlDECB_RD_ID As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlDECB_RD_ID")
-        Dim ddlPROJECT As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROJECT")
         Dim ddlPRODUCT As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPRODUCT")
         Dim ddlPRODUCT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPRODUCT_CODE")
+        Dim ddlPROJECT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROJECT_CODE")
 
 
-        If ddlDECB_RD_ID.Items.Count > 0 Then
-            If ddlDECB_RD_ID.SelectedIndex < 0 Then
-                ddlDECB_RD_ID.SelectedIndex = 0
-            End If
-        End If
+        Dim PROGRAM_ID As String = ddlPROGRAM.SelectedValue
 
-        Dim DECB_RD_ID As String = ddlDECB_RD_ID.SelectedValue
-        Dim PROJECT_ID As String = ddlPROJECT.SelectedValue
+        'If PROGRAM_ID = "" Or DECB_RD_ID = "" Or DECB_RD_ID = "0000" Then
+        '    Exit Sub
+        'End If
 
-        If PROJECT_ID = "" Or DECB_RD_ID = "" Or DECB_RD_ID = "0000" Then
+        If PROGRAM_ID = "" Then
             Exit Sub
         End If
 
         Dim conn As SqlConnection = Nothing
         conn = ConnectionUtil.getSqlConnectionFromWebConfig()
-        Dim sqlProgram As String = "SELECT * FROM ANNALS_PRODUCT WHERE  PROJECT_ID = " & PROJECT_ID & " AND DECB_RD_ID='" & DECB_RD_ID & "' AND DEL_FLAG <> 1 "
-        Dim sqlCmd As New SqlCommand(sqlProgram, conn)
-
-        Dim dr = sqlCmd.ExecuteReader(CommandBehavior.CloseConnection)
-        Dim dt As New DataTable
-        dt.Load(dr)
 
 
-        ddlPRODUCT.Items.Clear()
+        Dim sqlGL As String = ""
 
-        ddlPRODUCT.DataSource = dt
-        ddlPRODUCT.DataValueField = "PRODUCT_ID"
-        ddlPRODUCT.DataTextField = "PRODUCT_NAME"
-        ddlPRODUCT.DataBind()
-
-
-
-        ddlPRODUCT_CODE.Items.Clear()
-        ddlPRODUCT_CODE.DataSource = dt
-        ddlPRODUCT_CODE.DataValueField = "PRODUCT_CODE"
-        ddlPRODUCT_CODE.DataTextField = "PROJECT_CODE"
-        ddlPRODUCT_CODE.DataBind()
+        sqlGL += "   SELECT DISTINCT G.* FROM ANNALS_GL_TYPE G"
+        sqlGL += "   INNER JOIN ANNALS_PRODUCT D ON G.DECB_RD_ID= D.DECB_RD_ID"
+        sqlGL += "   INNER JOIN  ANNALS_PROGRAM P ON P.PROGRAM_ID = D.PROGRAM_ID"
+        sqlGL += "   WHERE  P.PROGRAM_ID = " & PROGRAM_ID & " AND  P.DEL_FLAG <> 1 "
 
 
-    End Sub
-    Protected Sub ChangeGL()
+        Dim sqlCmd2 As New SqlCommand(sqlGL, conn)
 
-        Dim gINdex As Integer = 0
-        If Session("event") = "add" Then
-            gINdex = 0
-        Else
-            gINdex = GridAnnalsCreditAccount.SelectedIndex
-        End If
+        Dim dr2 = sqlCmd2.ExecuteReader()
+        Dim dt2 As New DataTable
+        dt2.Load(dr2)
 
-        Dim ddlDECB_RD_ID As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlDECB_RD_ID")
-        Dim ddlPROGRAM As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROGRAM")
-        Dim PROGRAM_ID As String = ddlPROGRAM.SelectedValue
+        ddlDECB_RD_ID.Items.Clear()
+        ddlDECB_RD_ID.DataSource = dt2
+        ddlDECB_RD_ID.DataValueField = "DECB_RD_ID"
+        ddlDECB_RD_ID.DataTextField = "DECB_RD"
+        ddlDECB_RD_ID.DataBind()
 
-        Dim conn As SqlConnection = Nothing
-        conn = ConnectionUtil.getSqlConnectionFromWebConfig()
-
-        If PROGRAM_ID = 0 Or PROGRAM_ID = "" Then
-            ' ถ้าไม่มีโปรแกรมไม่ต้องหา
-        Else
-
-
-            Dim sqlProgram As String = ""
-
-            sqlProgram += "   SELECT DISTINCT G.* FROM ANNALS_GL_TYPE G"
-            sqlProgram += "   INNER JOIN ANNALS_PRODUCT D ON G.DECB_RD_ID= D.DECB_RD_ID"
-            sqlProgram += "   INNER JOIN  ANNALS_PROJECT J  ON  D.PROJECT_ID=J.PROJECT_ID"
-            sqlProgram += "   INNER JOIN  ANNALS_PROGRAM P ON P.PROGRAM_ID = J.PROGRAM_ID"
-            sqlProgram += "   WHERE  P.PROGRAM_ID = " & PROGRAM_ID & " AND  P.DEL_FLAG <> 1 "
-
-            Dim sqlCmd As New SqlCommand(sqlProgram, conn)
-
-            Dim dr = sqlCmd.ExecuteReader()
-            Dim dt As New DataTable
-            dt.Load(dr)
-
-            ddlDECB_RD_ID.Items.Clear()
-
-            ddlDECB_RD_ID.DataSource = dt
-            ddlDECB_RD_ID.DataValueField = "DECB_RD_ID"
-            ddlDECB_RD_ID.DataTextField = "DECB_RD"
-            ddlDECB_RD_ID.DataBind()
-        End If
-
-
+        ' กรณีที่เป็น program ที่ไม่ได้ระบุ product ให้หา list ของ gl อีกครั้ง คือดึงมาทั้งหมด
         Dim findAgain As Boolean = False
         If ddlDECB_RD_ID.Items.Count = 0 Then
             findAgain = True
@@ -2337,21 +2243,217 @@ Partial Class _AnnalsCredit
         End If
         If findAgain = True Then
             ' ถ้าเป็น 0 ให้แสดง product ทั้งหมด
-            Dim sqlProgram As String
-            sqlProgram = "   SELECT DISTINCT * FROM ANNALS_GL_TYPE G"
-            Dim sqlCmd2 As New SqlCommand(sqlProgram, conn)
+            Dim sqlGL2 As String
+            sqlGL2 = "   SELECT DISTINCT * FROM ANNALS_GL_TYPE G"
+            Dim sqlCmd3 As New SqlCommand(sqlGL2, conn)
 
-            Dim dr2 = sqlCmd2.ExecuteReader(CommandBehavior.CloseConnection)
-            Dim dt2 As New DataTable
-            dt2.Load(dr2)
+            Dim dr3 = sqlCmd3.ExecuteReader()
+            Dim dt3 As New DataTable
+            dt3.Load(dr3)
 
             ddlDECB_RD_ID.Items.Clear()
-            ddlDECB_RD_ID.DataSource = dt2
+            ddlDECB_RD_ID.DataSource = dt3
             ddlDECB_RD_ID.DataValueField = "DECB_RD_ID"
             ddlDECB_RD_ID.DataTextField = "DECB_RD"
             ddlDECB_RD_ID.DataBind()
 
+            If ddlDECB_RD_ID.Items.Count >= 0 Then
+                ddlDECB_RD_ID.SelectedIndex = 0
+            End If
+
         End If
+
+        If ddlDECB_RD_ID.Items.Count > 0 Then
+            If ddlDECB_RD_ID.SelectedIndex < 0 Then
+                ddlDECB_RD_ID.SelectedIndex = 0
+            End If
+        End If
+
+        Dim DECB_RD_ID As String = ddlDECB_RD_ID.SelectedValue
+
+        Dim sqlProduct As String
+
+
+        If DECB_RD_ID = "" Or DECB_RD_ID = "0000" Then
+            sqlProduct = "SELECT * FROM ANNALS_PRODUCT WHERE  PROGRAM_ID = " & PROGRAM_ID & "  AND DEL_FLAG <> 1 "
+        Else
+            sqlProduct = "SELECT * FROM ANNALS_PRODUCT WHERE  PROGRAM_ID = " & PROGRAM_ID & " AND DECB_RD_ID = '" & DECB_RD_ID & "' AND DEL_FLAG <> 1 "
+        End If
+
+        ' MsgBox(sqlProduct)
+
+        Dim sqlCmd As New SqlCommand(sqlProduct, conn)
+
+        Dim dr = sqlCmd.ExecuteReader()
+        Dim dt As New DataTable
+        dt.Load(dr)
+
+        ddlPRODUCT.Items.Clear()
+        ddlPRODUCT.DataSource = dt
+        ddlPRODUCT.DataValueField = "PRODUCT_ID"
+        ddlPRODUCT.DataTextField = "PRODUCT_NAME"
+        ddlPRODUCT.DataBind()
+
+        ddlPRODUCT_CODE.Items.Clear()
+        ddlPRODUCT_CODE.DataSource = dt
+        ddlPRODUCT_CODE.DataValueField = "PRODUCT_CODE"
+        ddlPRODUCT_CODE.DataTextField = "PRODUCT_CODE"
+        ddlPRODUCT_CODE.DataBind()
+
+        ddlPROJECT_CODE.Items.Clear()
+        ddlPROJECT_CODE.DataSource = dt
+        ddlPROJECT_CODE.DataValueField = "PROJECT_CODE"
+        ddlPROJECT_CODE.DataTextField = "PROJECT_CODE"
+        ddlPROJECT_CODE.DataBind()
+
+
+        conn.Close()
+
+
+    End Sub
+    'Protected Sub ChangeGL()
+
+    '    Dim gINdex As Integer = 0
+    '    If Session("event") = "add" Then
+    '        gINdex = 0
+    '    Else
+    '        gINdex = GridAnnalsCreditAccount.SelectedIndex
+    '    End If
+
+    '    Dim ddlDECB_RD_ID As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlDECB_RD_ID")
+    '    Dim ddlPROGRAM As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROGRAM")
+    '    Dim PROGRAM_ID As String = ddlPROGRAM.SelectedValue
+
+    '    Dim conn As SqlConnection = Nothing
+    '    conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+
+    '    If PROGRAM_ID = 0 Or PROGRAM_ID = "" Then
+    '        ' ถ้าไม่มีโปรแกรมไม่ต้องหา
+    '    Else
+
+
+    '        Dim sqlProgram As String = ""
+
+    '        sqlProgram += "   SELECT DISTINCT G.* FROM ANNALS_GL_TYPE G"
+    '        sqlProgram += "   INNER JOIN ANNALS_PRODUCT D ON G.DECB_RD_ID= D.DECB_RD_ID"
+    '        sqlProgram += "   INNER JOIN  ANNALS_PROGRAM P ON P.PROGRAM_ID = D.PROGRAM_ID"
+    '        sqlProgram += "   WHERE  P.PROGRAM_ID = " & PROGRAM_ID & " AND  P.DEL_FLAG <> 1 "
+
+    '        Dim sqlCmd As New SqlCommand(sqlProgram, conn)
+
+    '        Dim dr = sqlCmd.ExecuteReader()
+    '        Dim dt As New DataTable
+    '        dt.Load(dr)
+
+    '        ddlDECB_RD_ID.Items.Clear()
+
+    '        ddlDECB_RD_ID.DataSource = dt
+    '        ddlDECB_RD_ID.DataValueField = "DECB_RD_ID"
+    '        ddlDECB_RD_ID.DataTextField = "DECB_RD"
+    '        ddlDECB_RD_ID.DataBind()
+    '    End If
+
+
+    '    Dim findAgain As Boolean = False
+    '    If ddlDECB_RD_ID.Items.Count = 0 Then
+    '        findAgain = True
+    '    End If
+    '    If PROGRAM_ID = 0 Then
+    '        findAgain = True
+    '    End If
+    '    If findAgain = True Then
+    '        ' ถ้าเป็น 0 ให้แสดง product ทั้งหมด
+    '        Dim sqlProgram As String
+    '        sqlProgram = "   SELECT DISTINCT * FROM ANNALS_GL_TYPE G"
+    '        Dim sqlCmd2 As New SqlCommand(sqlProgram, conn)
+
+    '        Dim dr2 = sqlCmd2.ExecuteReader(CommandBehavior.CloseConnection)
+    '        Dim dt2 As New DataTable
+    '        dt2.Load(dr2)
+
+    '        ddlDECB_RD_ID.Items.Clear()
+    '        ddlDECB_RD_ID.DataSource = dt2
+    '        ddlDECB_RD_ID.DataValueField = "DECB_RD_ID"
+    '        ddlDECB_RD_ID.DataTextField = "DECB_RD"
+    '        ddlDECB_RD_ID.DataBind()
+
+    '        If ddlDECB_RD_ID.Items.Count >= 0 Then
+    '            ddlDECB_RD_ID.SelectedIndex = 0
+    '        End If
+
+    '    End If
+
+    '    SelectGL()
+
+    'End Sub
+    Protected Sub SelectGL()
+
+
+        Dim gINdex As Integer = 0
+        If Session("event") = "add" Then
+            gINdex = 0
+        Else
+            gINdex = GridAnnalsCreditAccount.SelectedIndex
+        End If
+
+        Dim ddlPROGRAM As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROGRAM")
+        Dim ddlDECB_RD_ID As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlDECB_RD_ID")
+        Dim ddlPRODUCT As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPRODUCT")
+        Dim ddlPRODUCT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPRODUCT_CODE")
+        Dim ddlPROJECT_CODE As DropDownList = GridAnnalsCreditAccount.Rows(gINdex).Cells(0).FindControl("ddlPROJECT_CODE")
+
+        If ddlDECB_RD_ID.Items.Count > 0 Then
+            If ddlDECB_RD_ID.SelectedIndex < 0 Then
+                ddlDECB_RD_ID.SelectedIndex = 0
+            End If
+        End If
+
+        Dim DECB_RD_ID As String = ddlDECB_RD_ID.SelectedValue
+        Dim PROGRAM_ID As String = ddlPROGRAM.SelectedValue
+
+
+        If PROGRAM_ID = "" Or DECB_RD_ID = "" Or DECB_RD_ID = "0000" Then
+            Exit Sub
+        End If
+
+
+        Dim conn As SqlConnection = Nothing
+        conn = ConnectionUtil.getSqlConnectionFromWebConfig()
+
+        Dim sqlProgram As String
+
+        sqlProgram = "SELECT * FROM  ANNALS_PRODUCT  WHERE  PROGRAM_ID = " & PROGRAM_ID & " AND  DECB_RD_ID = '" & DECB_RD_ID & "'  AND DEL_FLAG <> 1 "
+
+
+
+        Dim sqlCmd As New SqlCommand(sqlProgram, conn)
+
+        Dim dr = sqlCmd.ExecuteReader(CommandBehavior.CloseConnection)
+        Dim dt As New DataTable
+        dt.Load(dr)
+
+
+        ddlPRODUCT.Items.Clear()
+        ddlPRODUCT.DataSource = dt
+        ddlPRODUCT.DataValueField = "PRODUCT_ID"
+        ddlPRODUCT.DataTextField = "PRODUCT_NAME"
+        ddlPRODUCT.DataBind()
+
+        ddlPRODUCT_CODE.Items.Clear()
+        ddlPRODUCT_CODE.DataSource = dt
+        ddlPRODUCT_CODE.DataValueField = "PRODUCT_CODE"
+        ddlPRODUCT_CODE.DataTextField = "PRODUCT_CODE"
+        ddlPRODUCT_CODE.DataBind()
+
+
+        ddlPROJECT_CODE.Items.Clear()
+        ddlPROJECT_CODE.DataSource = dt
+        ddlPROJECT_CODE.DataValueField = "PROJECT_CODE"
+        ddlPROJECT_CODE.DataTextField = "PROJECT_CODE"
+        ddlPROJECT_CODE.DataBind()
+
+
+
     End Sub
     Protected Sub ChangeSubjectDetail()
 
@@ -3211,8 +3313,8 @@ Partial Class _AnnalsCredit
         Else
             createAlert(msg)
         End If
-
         'comment by big
+
         Search_Annals(annals_id)
 
         'Response.Redirect(Request.Url.AbsolutePath + "?annals_id=" + annals_id)
@@ -3564,8 +3666,8 @@ Partial Class _AnnalsCredit
             .Add("Cif", System.Type.GetType("System.String"))
             .Add("ACCNO", System.Type.GetType("System.String"))
             .Add("PRODUCT_CODE", System.Type.GetType("System.String"))
-            .Add("PROJECT_CODE", System.Type.GetType("System.String"))
-            .Add("PROJECT_NAME", System.Type.GetType("System.String"))
+            .Add("PROJECT_CODE", System.Type.GetType("System.String"))  ' change get from tb product
+            '.Add("PROJECT_NAME", System.Type.GetType("System.String"))  ' remove 11 april 2013
             '.Add("NBRTHAI", System.Type.GetType("System.String"))
             .Add("PROPOSAL_ID", System.Type.GetType("System.String"))
             .Add("PROPOSAL_NAME", System.Type.GetType("System.String"))
@@ -3586,7 +3688,7 @@ Partial Class _AnnalsCredit
             .Add("RM_ID", System.Type.GetType("System.String"))
             .Add("PROGRAM_ID", System.Type.GetType("System.String"))
             .Add("PROGRAM_NAME", System.Type.GetType("System.String"))
-            .Add("PROJECT_ID", System.Type.GetType("System.String"))
+            '.Add("PROJECT_ID", System.Type.GetType("System.String"))  ' remove  11 april 2013
             .Add("PRODUCT_ID", System.Type.GetType("System.String"))
             .Add("PRODUCT_NAME", System.Type.GetType("System.String"))
 
@@ -3601,7 +3703,7 @@ Partial Class _AnnalsCredit
             .Add("ACCNO", System.Type.GetType("System.String"))
             .Add("PRODUCT_CODE", System.Type.GetType("System.String"))
             .Add("PROJECT_CODE", System.Type.GetType("System.String"))
-            .Add("PROJECT_NAME", System.Type.GetType("System.String"))
+            '.Add("PROJECT_NAME", System.Type.GetType("System.String"))  ' remove  11 april 2013
             '.Add("NBRTHAI", System.Type.GetType("System.String"))
             .Add("PROPOSAL_ID", System.Type.GetType("System.String"))
             .Add("PROPOSAL_NAME", System.Type.GetType("System.String"))
@@ -3622,7 +3724,7 @@ Partial Class _AnnalsCredit
             .Add("RM_ID", System.Type.GetType("System.String"))
             .Add("PROGRAM_ID", System.Type.GetType("System.String"))
             .Add("PROGRAM_NAME", System.Type.GetType("System.String"))
-            .Add("PROJECT_ID", System.Type.GetType("System.String"))
+            '.Add("PROJECT_ID", System.Type.GetType("System.String")) ' remove  11 april 2013
             .Add("PRODUCT_ID", System.Type.GetType("System.String"))
             .Add("PRODUCT_NAME", System.Type.GetType("System.String"))
 
@@ -3654,7 +3756,7 @@ Partial Class _AnnalsCredit
         Addrow("RM_ID") = ""
         Addrow("PROGRAM_ID") = ""
         Addrow("PROGRAM_NAME") = ""
-        Addrow("PROJECT_ID") = ""
+        'Addrow("PROJECT_ID") = ""  ' remove  11 april 2013
         Addrow("PRODUCT_ID") = ""
         Addrow("PRODUCT_NAME") = ""
 

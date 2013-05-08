@@ -1100,6 +1100,7 @@
                                                         ImageUrl="~/images/qmv_bb_preview.gif" />
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
+                                                    <asp:Label ID="LabelMsg" runat="server" Text=""></asp:Label>
                                                     <table style="width: 41px" style="border-color: Black; padding-left: 100px; border: 0px;
                                                         background-color: #AABBAA">
                                                         <tr>
@@ -1209,42 +1210,46 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="LabelProgram" runat="server" Text="Program" Font-Bold="true"></asp:Label>
+                                                                    <asp:Label ID="LabelProgram" runat="server" Text="1.เลือก Program" Font-Bold="true"></asp:Label>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:DropDownList ID="ddlPROGRAM" runat="server" OnSelectedIndexChanged="ChangeProject"
+                                                                    <asp:DropDownList ID="ddlPROGRAM" runat="server" OnSelectedIndexChanged="ChangeProgram"
                                                                         AutoPostBack="true">
                                                                     </asp:DropDownList>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:Label ID="Label18" runat="server" Text="Project" Font-Bold="true"></asp:Label>
-                                                                </td>
+                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <asp:DropDownList ID="ddlPROJECT" runat="server" OnSelectedIndexChanged="ChangeProduct"
-                                                                            AutoPostBack="true">
-                                                                        </asp:DropDownList>
+
                                                                     </div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label43" runat="server" Font-Bold="true" Text="Product Name"></asp:Label>
+                                                                    <asp:Label ID="Label43" runat="server" Font-Bold="true" Text="2.เลือก Product GL"></asp:Label>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:DropDownList ID="ddlDECB_RD_ID" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ChangeProduct">
+                                                                    <asp:DropDownList ID="ddlDECB_RD_ID" runat="server" AutoPostBack="true" OnSelectedIndexChanged="SelectGL">
                                                                     </asp:DropDownList>
                                                                 </td>
-                                                                <td>
-                                                                    <asp:Label ID="LabelProduct" runat="server" Text="Product Code" Font-Bold="true"></asp:Label>
+                                                             </tr>
+                                                            <tr>
+                                                              <td>
+                                                                    <asp:Label ID="LabelProduct" runat="server" Text="3. เลือก Product " Font-Bold="true"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:DropDownList ID="ddlPRODUCT" runat="server" OnSelectedIndexChanged="ChangeProductIndex"
                                                                         AutoPostBack="true">
                                                                     </asp:DropDownList>
-                                                                    <asp:DropDownList ID="ddlPRODUCT_CODE" runat="server" OnSelectedIndexChanged="ChangeProductIndex"
-                                                                        AutoPostBack="true">
-                                                                    </asp:DropDownList>
+                                                                  
+                                                                </td>
+                                                                <td>
+                                                                        <asp:Label ID="Label4" runat="server" Text="Product Code/Project Code" Font-Bold="true"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:DropDownList ID="ddlPRODUCT_CODE" runat="server" onclick="this.blur();" ></asp:DropDownList>/
+                                                                    <asp:DropDownList ID="ddlPROJECT_CODE" runat="server" onclick="this.blur();" ></asp:DropDownList>
                                                                 </td>
                                                             </tr>
                                                             <tr>

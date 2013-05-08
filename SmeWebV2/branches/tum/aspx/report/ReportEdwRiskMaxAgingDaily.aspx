@@ -5,46 +5,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="../../js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-        $(".showmeanning").toggle(function() {
+        $(".showmeanning").toggle(function () {
             hideE(".meanning");
-        }, function() {
+        }, function () {
             showE(".meanning");
         });
-        $(".showdaily").toggle(function() {
+        $(".showdaily").toggle(function () {
             hideE(".daily");
-        }, function() {
+        }, function () {
             showE(".daily");
         });
-        $(".showmonthly").toggle(function() {
+        $(".showmonthly").toggle(function () {
             hideE(".monthly");
-        }, function() {
+        }, function () {
             showE(".monthly");
         });
-        $(".showtdr").toggle(function() {
+        $("#showtdr").hide();
+        hideE(".tdr");
+        $(".showtdr").toggle(function () {
             hideE(".tdr");
-        }, function() {
+        }, function () {
             showE(".tdr");
         });
-        $(".showlaw").toggle(function() {
+        $("#showlaw").hide();
+        hideE(".law");
+        $(".showlaw").toggle(function () {
             hideE(".law");
-        }, function() {
+        }, function () {
             showE(".law");
         });
-        $(".showalscom").toggle(function() {
+        $(".showalscom").toggle(function () {
             hideE(".alscom");
-        }, function() {
+        }, function () {
             showE(".alscom");
         });
-        $(".showblacklist").toggle(function() {
+        $(".showblacklist").toggle(function () {
             hideE(".blacklist");
-        }, function() {
+        }, function () {
             showE(".blacklist");
         });
 
         if ($("span[myid='labelCIF']")) {
-           var cif = $("span[myid='labelCIF']").html()
+            var cif = $("span[myid='labelCIF']").html()
             //            //       ส่งค่าชื่อและนามสกุลไปยัง frame blacklist
             $('#iframeALSCOM').attr('src', 'ReportPassALSCOM.aspx?cif=' + cif);
             // alert($('#iframeBlackList').attr('src'));
@@ -56,9 +60,9 @@
             var lastname = $("span[myid='labelCUS_LAST']").html();
             //            //       ส่งค่าชื่อและนามสกุลไปยัง frame blacklist
             $('#iframeBlackList').attr('src', 'ReportPassBlackList.aspx?name=' + escape(name) + '&lastname=' + escape(lastname));
-           // alert($('#iframeBlackList').attr('src'));
+            // alert($('#iframeBlackList').attr('src'));
         }
-        
+
     });
     
     function showE(e) {
@@ -294,10 +298,12 @@ border: thin solid #C0C0C0; font-size: small; background-color: #FFFFCC;
         <tr>
             <td class="style98">
     <asp:SqlDataSource ID="SqlDataSourceRISK" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>" 
-        SelectCommandType="StoredProcedure">
+            ConnectionString="<%$ ConnectionStrings:BAY01ConnectionString %>" 
+            SelectCommandType="StoredProcedure"
+            SelectCommand = "REPORT_EDW_RISK_MAXAGING_DAILY_FACT" 
+        >
         <SelectParameters>
-            <asp:QueryStringParameter DefaultValue="0" Name="CIF" QueryStringField="cif" />
+              <asp:QueryStringParameter  Name="CIF" QueryStringField="cif" />
         </SelectParameters>
     </asp:SqlDataSource>
             </td>
@@ -758,7 +764,7 @@ border: thin solid #C0C0C0; font-size: small; background-color: #FFFFCC;
                     </td>
                 </tr>
             </table>
-        <b><a href="#" class="showtdr" runat="server" id="showtdr">แสดงข้อมูลการทำ TDR </a></b> 
+    <%--    <b><a href="#" class="showtdr" runat="server" id="showtdr">แสดงข้อมูลการทำ TDR </a></b> --%>
        <table  class="tdr" >
       <tr>
          <td><asp:label class="subject" runat="server" Text="ทำ TDR ครั้งที่ :" ID="LabelHTDRCount" />
@@ -786,7 +792,9 @@ border: thin solid #C0C0C0; font-size: small; background-color: #FFFFCC;
         </td>
       </tr>
       </table>
-     <b><a href="#" class="showlaw" runat="server" id="showlaw"> แสดงข้อมูลขั้นตอนกฎหมาย</a></b>
+      <br />
+   <%--  <b>
+     <a href="#" class="showlaw" runat="server" id="showlaw"> แสดงข้อมูลขั้นตอนกฎหมาย</a></b>--%>
        <table  class="law">
       <tr>
          <td><asp:label class="subject" runat="server" Text="ขั้นตอนกฏหมาย :" ID="LabelHCLineS" />
@@ -850,10 +858,8 @@ border: thin solid #C0C0C0; font-size: small; background-color: #FFFFCC;
             </asp:Panel>
             <DIV style="page-break-after:always"></DIV>
             <b>
-              <a href='https://www.krungsri-bl-wl.net/'  target="_blank"><b>ข้อมูล blacklist ของลูกค้ารายนี้กรุณาคลิกที่นี่เพื่อเข้าระบบ krungsri Blacklist System</b></a>
-
+            **  <a href='https://www.krungsri-bl-wl.net/'  target="_blank"><b>ข้อมูล blacklist ของลูกค้ารายนี้กรุณาคลิกที่นี่เพื่อเข้าระบบ krungsri Blacklist System</b></a>
          </b>
-  
             <asp:Panel ID="PanelBlackList" runat="server">
             </asp:Panel>
             <br/> 

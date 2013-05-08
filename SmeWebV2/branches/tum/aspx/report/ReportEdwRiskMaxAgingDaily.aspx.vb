@@ -175,13 +175,13 @@ Partial Class ReportEdwRiskMaxAgingDaily
             PanelBlackList.Visible = False
         End If
     End Sub
-    Protected Sub SqlDataSourceRISK_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles SqlDataSourceRISK.Load
-        If Request.QueryString("cif") = "" Then
-            SqlDataSourceRISK.SelectCommand = ""
-        Else
-            SqlDataSourceRISK.SelectCommand = "REPORT_EDW_RISK_MAXAGING_DAILY_FACT"
-        End If
-    End Sub
+    'Protected Sub SqlDataSourceRISK_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles SqlDataSourceRISK.Load
+    '    'If Request.QueryString("cif") = "" Then
+    '    '    SqlDataSourceRISK.SelectCommand = ""
+    '    'Else
+    '    ' SqlDataSourceRISK.SelectCommand = "REPORT_EDW_RISK_MAXAGING_DAILY_FACT"
+    '    'End If
+    'End Sub
 
     Protected Sub tbsearch_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles tbsearch.Click
         If IsNumeric(tbcif.Text) = False Then

@@ -412,13 +412,13 @@ Public Class AnnalsCreditDAL
                     End If
 
                     sqlCmd.Parameters.AddWithValue("@Others", .Item("Others"))
-                    sqlCmd.Parameters.AddWithValue("@PROJECT_CODE", .Item("PROJECT_CODE"))
-                    sqlCmd.Parameters.AddWithValue("@PRODUCT_CODE", .Item("PRODUCT_CODE"))
+                    sqlCmd.Parameters.AddWithValue("@PROJECT_CODE", System.DBNull.Value)
+                    sqlCmd.Parameters.AddWithValue("@PRODUCT_CODE", System.DBNull.Value)
                     sqlCmd.Parameters.AddWithValue("@PROPOSAL_ID", .Item("PROPOSAL_ID"))  ' เพิ่มวันที่ 18 /03/2009
                     sqlCmd.Parameters.AddWithValue("@RM_ID", .Item("RM_ID"))  ' เพิ่มวันที่ 18 /03/2009
 
-                    sqlCmd.Parameters.AddWithValue("@PROGRAM_ID", .Item("PROGRAM_ID"))
-                    sqlCmd.Parameters.AddWithValue("@PROJECT_ID", .Item("PROJECT_ID"))
+                    sqlCmd.Parameters.AddWithValue("@PROGRAM_ID", System.DBNull.Value)
+                    sqlCmd.Parameters.AddWithValue("@PROJECT_ID", System.DBNull.Value)
                     sqlCmd.Parameters.AddWithValue("@PRODUCT_ID", .Item("PRODUCT_ID"))
 
 
@@ -455,8 +455,8 @@ Public Class AnnalsCreditDAL
             sqlCmd.Transaction.Commit()
         Catch ex As Exception
             sqlCmd.Transaction.Rollback()
-            'MsgBox(ex.StackTrace)
             Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            'MsgBox(ex.StackTrace)
         Finally
             If (conn.State = ConnectionState.Open) Then
                 conn.Close()
@@ -740,17 +740,16 @@ Public Class AnnalsCreditDAL
                     End If
 
                     sqlCmd.Parameters.AddWithValue("@Others", .Item("Others"))
-                    sqlCmd.Parameters.AddWithValue("@PROJECT_CODE", .Item("PROJECT_CODE"))
-                    sqlCmd.Parameters.AddWithValue("@PRODUCT_CODE", .Item("PRODUCT_CODE"))
+                    sqlCmd.Parameters.AddWithValue("@PROJECT_CODE", System.DBNull.Value)
+                    sqlCmd.Parameters.AddWithValue("@PRODUCT_CODE", System.DBNull.Value)
                     sqlCmd.Parameters.AddWithValue("@PROPOSAL_ID", .Item("PROPOSAL_ID"))  ' เพิ่มวันที่ 18 /03/2009
                     sqlCmd.Parameters.AddWithValue("@RM_ID", .Item("RM_ID"))  ' เพิ่มวันที่ 10 /01/2011
-
-                    sqlCmd.Parameters.AddWithValue("@PROGRAM_ID", .Item("PROGRAM_ID"))
-                    sqlCmd.Parameters.AddWithValue("@PROJECT_ID", .Item("PROJECT_ID"))
+                    sqlCmd.Parameters.AddWithValue("@PROGRAM_ID", System.DBNull.Value)
+                    sqlCmd.Parameters.AddWithValue("@PROJECT_ID", System.DBNull.Value)
                     sqlCmd.Parameters.AddWithValue("@PRODUCT_ID", .Item("PRODUCT_ID"))
-
-
                     sqlCmd.ExecuteNonQuery()
+
+
                 End With
             Next
 
@@ -782,8 +781,9 @@ Public Class AnnalsCreditDAL
             sqlCmd.Transaction.Commit()
         Catch ex As Exception
             sqlCmd.Transaction.Rollback()
-            'MsgBox(ex.StackTrace)
+
             Throw New Exception(ex.Message & " : " & ex.StackTrace)
+            ' MsgBox(ex.StackTrace)
         Finally
             If (conn.State = ConnectionState.Open) Then
                 conn.Close()
