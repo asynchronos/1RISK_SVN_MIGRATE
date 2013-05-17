@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace SME.UserSystem.Core.Exceptions
 {
     [Serializable]
-    public class AsynchronosProviderException : ProviderException
+    public class AsynchronosProviderException : UserSystemException
     {
         public AsynchronosProviderException()
         {

@@ -21,11 +21,16 @@ namespace SME.UserSystem.Core.AD
         private static string _path;
         private static string _filterAttribute;
 
+        private string _LDAPUser;
+        private string _LDAPPass;
+
         public LdapAuthentication()
         {
             _domainName = System.Configuration.ConfigurationManager.AppSettings["LDAP_SERVER"];
             _path = "LDAP://" + _domainName
                 + ":" + System.Configuration.ConfigurationManager.AppSettings["LDAP_PORT"];
+            _LDAPUser = System.Configuration.ConfigurationManager.AppSettings["LDAP_USERNAME"];
+            _LDAPPass = System.Configuration.ConfigurationManager.AppSettings["LDAP_PASSWORD"];
         }
 
         public LdapAuthentication(string ldapServer)
@@ -33,6 +38,8 @@ namespace SME.UserSystem.Core.AD
             _domainName = ldapServer;
             _path = "LDAP://" + _domainName
                 + ":" + System.Configuration.ConfigurationManager.AppSettings["LDAP_PORT"];
+            _LDAPUser = System.Configuration.ConfigurationManager.AppSettings["LDAP_USERNAME"];
+            _LDAPPass = System.Configuration.ConfigurationManager.AppSettings["LDAP_PASSWORD"];
         }
 
         /*
@@ -49,103 +56,100 @@ namespace SME.UserSystem.Core.AD
         /// <returns></returns>
         public bool IsAuthenticated(string username, string pwd)
         {
+            bool authenticated = false;
+
             if (isDebugEnabled)
             {
                 log.Debug(username + " Start Authenticate.");
             }
 
-            bool authenticated = false;
-
-            try
+            using (DirectoryEntry userEntry = new DirectoryEntry(_path
+                , _domainName + @"\" + username
+                , pwd
+                , AuthenticationTypes.Secure))
             {
-                using (DirectoryEntry entry = new DirectoryEntry(_path, _domainName + @"\" + username, pwd))
+                DirectorySearcher searcher = new DirectorySearcher(userEntry);
+                searcher.Filter = "(SAMAccountName=" + username + ")";
+                //searcher.PropertiesToLoad.Add("cn");
+                SearchResult userSearchResult = null;
+
+                try
                 {
-                    // Bind to the native AdsObject to force authentication.
-                    //Object obj = entry.NativeObject;
-                    DirectorySearcher search = new DirectorySearcher(entry);
-                    search.Filter = "(SAMAccountName=" + username + ")";
-                    search.PropertiesToLoad.Add("cn");
-
-                    if (null == search)
+                    userSearchResult = searcher.FindOne();
+                }catch(DirectoryServicesCOMException cex){
+                    if (IsUserLocked(username))
                     {
+                        log.Info("Username " + username + "in AD is Locked.");
+                        throw new LDAPInfoException("Username " + username + " in AD is Locked.");
                     }
 
-                    SearchResult result = search.FindOne();
+                    log.Error(cex.GetType().ToString());
+                    log.Error(cex.Message);
+                    log.Error(cex.StackTrace);
+                    throw new LDAPInfoException(cex.Message,cex);
+                }
+                catch (COMException comEx)
+                {
+                    log.Error(comEx.GetType().ToString());
+                    log.Error(comEx.Message);
+                    log.Error(comEx.StackTrace);
 
-                    if (null == result)
+                    throw new LDAPInfoException(comEx.Message, comEx);
+                }
+                catch (System.Exception ex)
+                {
+                    log.Error(ex.GetType().ToString());
+                    log.Error(ex.Message);
+                    log.Error(ex.StackTrace);
+                    throw ex;
+                }
+
+                #region ListLDAPProperties
+
+                if (false)//(isDebugEnabled)
+                {
+                    //username = "249987";
+                    //search = new DirectorySearcher(entry);
+                    //search.Filter = "(SAMAccountName=" + username + ")";
+                    //search.PropertiesToLoad.Add("cn");
+                    //result = search.FindOne();
+
+                    log.Debug("");
+                    log.Debug("result.Path:" + userSearchResult.Path);
+                    log.Debug("filterAttribute:" + (String)userSearchResult.Properties["cn"][0]);
+
+                    DirectoryEntry entry2 = userSearchResult.GetDirectoryEntry();
+                    //log.Debug("entry2.Username:" + entry2.Username);
+                    //log.Debug("entry2.AuthenticationType:" + entry2.AuthenticationType);
+                    //log.Debug("entry2.Children:" + entry2.Children);
+                    log.Debug("entry2.Name:" + entry2.Name);
+                    //log.Debug("entry2.Parent.Username:" + entry2.Parent.Username);
+                    log.Debug("entry2.Properties.Count:" + entry2.Properties.Count);
+
+                    IDictionaryEnumerator myEnumerator = entry2.Properties.GetEnumerator();
+                    while (myEnumerator.MoveNext())
                     {
-                        authenticated = false;
-                    }
+                        log.Debug(myEnumerator.Key + ":" + myEnumerator.Value);
 
-                    if (false)//(isDebugEnabled)
-                    {
-                        //username = "249987";
-                        //search = new DirectorySearcher(entry);
-                        //search.Filter = "(SAMAccountName=" + username + ")";
-                        //search.PropertiesToLoad.Add("cn");
-                        //result = search.FindOne();
-
-                        log.Debug("");
-                        log.Debug("result.Path:" + result.Path);
-                        log.Debug("filterAttribute:" + (String)result.Properties["cn"][0]);
-
-                        DirectoryEntry entry2 = result.GetDirectoryEntry();
-                        //log.Debug("entry2.Username:" + entry2.Username);
-                        //log.Debug("entry2.AuthenticationType:" + entry2.AuthenticationType);
-                        //log.Debug("entry2.Children:" + entry2.Children);
-                        log.Debug("entry2.Name:" + entry2.Name);
-                        //log.Debug("entry2.Parent.Username:" + entry2.Parent.Username);
-                        log.Debug("entry2.Properties.Count:" + entry2.Properties.Count);
-
-                        IDictionaryEnumerator myEnumerator = entry2.Properties.GetEnumerator();
-                        while (myEnumerator.MoveNext())
+                        IEnumerator myEnumerator2 = ((PropertyValueCollection)myEnumerator.Value).GetEnumerator();
+                        while (myEnumerator2.MoveNext())
                         {
-                            log.Debug(myEnumerator.Key + ":" + myEnumerator.Value);
-
-                            IEnumerator myEnumerator2 = ((PropertyValueCollection)myEnumerator.Value).GetEnumerator();
-                            while (myEnumerator2.MoveNext())
-                            {
-                                log.Debug("   " + myEnumerator2.Current.ToString());
-                            }
+                            log.Debug("   " + myEnumerator2.Current.ToString());
                         }
                     }
-
-                    // Update the new path to the user in the directory
-                    _path = result.Path;
-                    _filterAttribute = (String)result.Properties["cn"][0];
-
-                    authenticated = true;
-
-                    if (isDebugEnabled)
-                    {
-                        log.Debug(username + " authenticated:" + authenticated);
-                    }
                 }
-            }
+                #endregion
 
-            catch (DirectoryServicesCOMException cex)
-            {
-                if (IsUserLocked(username))
+                // Update the new path to the user in the directory
+                //_path = userSearchResult.Path;
+                //_filterAttribute = (String)userSearchResult.Properties["cn"][0];
+
+                authenticated = true;
+
+                if (isDebugEnabled)
                 {
-                    log.Info("Username " + username + "in AD is Locked.");
-                    throw new LDAPInfoException("Username " + username + " in AD is Locked.");
+                    log.Debug(username + " authenticated:" + authenticated);
                 }
-
-                log.Error(cex.Message);
-                log.Error(cex.StackTrace);
-                throw new LDAPInfoException(cex.Message, cex);
-            }
-            catch (COMException comEx)
-            {
-                log.Error(comEx.Message);
-                log.Error(comEx.StackTrace);
-                throw new LDAPInfoException(comEx.Message, comEx);
-            }
-            catch (System.Exception ex)
-            {
-                log.Error(ex.Message);
-                log.Error(ex.StackTrace);
-                throw ex;
             }
 
             return authenticated;
@@ -155,27 +159,57 @@ namespace SME.UserSystem.Core.AD
         {
             bool isLocked = false;
 
-            string LDAPUser = System.Configuration.ConfigurationManager.AppSettings["LDAP_USERNAME"];
-            string LDAPPass = System.Configuration.ConfigurationManager.AppSettings["LDAP_PASSWORD"];
-
-            using (DirectoryEntry entry = new DirectoryEntry(_path, _domainName + @"\" + LDAPUser, LDAPPass))
+            using (DirectoryEntry rootEntry = new DirectoryEntry(_path
+                , _domainName + @"\" + _LDAPUser
+                , _LDAPPass
+                , AuthenticationTypes.Secure))
             {
-                // Bind to the native AdsObject to force authentication.
-                //Object obj = entry.NativeObject;
-                DirectorySearcher search = new DirectorySearcher(entry);
-                search.Filter = "(SAMAccountName=" + username + ")";
-                search.PropertiesToLoad.Add("cn");
-                SearchResult result = search.FindOne();
-                if (null == result)
+                //rootEntry.RefreshCache();
+
+                DirectorySearcher searcher = new DirectorySearcher(rootEntry);
+                searcher.Filter = "(SAMAccountName=" + username + ")";
+                //searcher.PropertiesToLoad.Add("cn");
+                SearchResult searchResult = null;
+
+                try
                 {
-                    log.Info("Can't not find username " + username + "in AD");
-                    throw new LDAPInfoException("Can't not find username " + username + " in AD.");
+                    searchResult = searcher.FindOne();
                 }
-                else
+                catch (DirectoryServicesCOMException comEx)
                 {
-                    DirectoryEntry getSearchEntry = result.GetDirectoryEntry();
+                    if (comEx.Message.Equals("Logon failure: unknown user name or bad password."))
+                    {
+                        log.Info("Username " + username + "in not exists.");
+                        throw new LDAPInfoException("Username " + username + "in not exists.");
+                    }
+                    else
+                    {
+                        log.Error(comEx.Message);
+                        log.Error(comEx.StackTrace);
+                        throw new LDAPInfoException(comEx.Message, comEx);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex.Message);
+                    log.Error(ex.StackTrace);
+                    throw new LDAPInfoException(ex.Message, ex);
+                }
+
+                using(DirectoryEntry getSearchEntry = searchResult.GetDirectoryEntry())
+                {
                     isLocked = Convert.ToBoolean(getSearchEntry.InvokeGet("IsAccountLocked"));
-                    log.Debug("IsAccountLocked Type:" + getSearchEntry.InvokeGet("IsAccountLocked").ToString());
+                }
+
+                if(isDebugEnabled)
+                {
+                    log.Debug("IsAccountLocked Type:" + isLocked.ToString());
+                }
+
+                if (isLocked)
+                {
+                    log.Info("Username " + username + "in AD is Locked.");
+                    throw new LDAPInfoException("Username " + username + " in AD is Locked.");
                 }
             }
 
@@ -259,5 +293,7 @@ namespace SME.UserSystem.Core.AD
             }
             return groupNames.ToString();
         }
+
+        
     }
 }

@@ -1,26 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
+using System.Runtime.InteropServices;
+
 
 namespace SME.UserSystem.Core.Exceptions
 {
-    [Serializable]
-    public class LDAPInfoException : UserSystemException
+    public class UserSystemException :  Exception,ISerializable
     {
-        public LDAPInfoException()
+        public UserSystemException()
         {
         }
 
-        public LDAPInfoException(string message)
+        public UserSystemException(string message)
             : base(message)
         {
         }
 
-        public LDAPInfoException(string message, System.Exception innerException)
+        public UserSystemException(string message, System.Exception innerException)
             : base(message, innerException)
         {
         }
 
-        protected LDAPInfoException(SerializationInfo info, StreamingContext context)
+        protected UserSystemException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }

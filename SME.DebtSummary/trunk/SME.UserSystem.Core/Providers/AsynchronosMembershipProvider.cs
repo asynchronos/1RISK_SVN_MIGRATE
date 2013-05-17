@@ -22,6 +22,8 @@ namespace SME.UserSystem.Core.Providers
         private string _appName;
         private string _providerName;
 
+        private LdapAuthentication adAuth = new LdapAuthentication();
+
         public override string ApplicationName
         {
             get
@@ -61,6 +63,8 @@ namespace SME.UserSystem.Core.Providers
             if (string.IsNullOrEmpty(name))
                 name = "AsynchronosProfileProvider";
             _providerName = name;
+
+            log.Info(_providerName + " initialized");
 
             base.Initialize(name, config);
         }
@@ -242,10 +246,13 @@ namespace SME.UserSystem.Core.Providers
         /// GetUser
         /// </summary>
         /// <param name="username">รหัสพนักงาน</param>
-        /// <param name="userIsOnline">Flag ว่าจะเก็บค่า Last Activity หรือไม่</param>
+        /// <param name="userIsOnline">เก็บข้อมูลว่า Online อยู่หรือไม่ (ยังไม่รองรับ)</param>
         /// <returns></returns>
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
+            if (isDebugEnabled)
+                log.Debug("Invoke " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             return GetUserFromLinq(username, userIsOnline);
         }
 
@@ -253,10 +260,13 @@ namespace SME.UserSystem.Core.Providers
         /// GetUser
         /// </summary>
         /// <param name="providerUserKey">รหัสพนักงาน</param>
-        /// <param name="userIsOnline">Flag ว่าจะเก็บค่า Last Activity หรือไม่</param>
+        /// <param name="userIsOnline">เก็บข้อมูลว่า Online อยู่หรือไม่ (ยังไม่รองรับ)</param>
         /// <returns></returns>
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
+            if (isDebugEnabled)
+                log.Debug("Invoke " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             return GetUserFromLinq(providerUserKey.ToString(), userIsOnline);
         }
 
@@ -363,9 +373,11 @@ namespace SME.UserSystem.Core.Providers
 
         public override bool ValidateUser(string username, string password)
         {
+            if (isDebugEnabled)
+                log.Debug("Invoke " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             bool result = false;
 
-            LdapAuthentication adAuth = new LdapAuthentication();
             bool adResult = adAuth.IsAuthenticated(username, password);
 
             if (adResult)
@@ -378,7 +390,8 @@ namespace SME.UserSystem.Core.Providers
                 {
                     IQueryable<USER_DATA> userQuery = uow.UserDataRepo
                         .FindBy(u => u.EMP_ID.Equals(username)
-                                && u.DEL_FLAG != true);
+                                //&& u.DEL_FLAG != true
+                                );
 
                     //write log
                     if (isDebugEnabled) log.Debug(((ObjectQuery)userQuery).ToTraceString());
@@ -393,14 +406,30 @@ namespace SME.UserSystem.Core.Providers
                         throw ex;
                     }
 
-                    //check expire date (All App)
-                    if (user.EXPIRE_DATE != null
-                        && user.EXPIRE_DATE < currentDate)
+                    if (user.DEL_FLAG == null 
+                        || user.DEL_FLAG != false)
                     {
                         UserInfoException ex = new UserInfoException
-                                ("Your account is expired on "
-                                + user
-                                .EXPIRE_DATE.Value.ToString("dd/MM/yyyy") + ".");
+                            ("The user "+username + " is locked.");
+                        log.Error(ex);
+                        throw ex;
+                    }
+
+                    //check expire date (All App)
+                    if (user.EXPIRE_DATE == null
+                        || user.EXPIRE_DATE < currentDate)
+                    {
+                        string expireDate = "Null";
+
+                        if (user.EXPIRE_DATE != null)
+                        {
+                            expireDate = user.EXPIRE_DATE.Value.ToString("dd/MMM/yyyy");
+                        }
+
+                        UserInfoException ex = new UserInfoException
+                                ("Your account is expired. [" + expireDate + "]");
+                        
+
                         log.Error(ex);
                         throw (ex);
                     }
@@ -479,10 +508,13 @@ namespace SME.UserSystem.Core.Providers
         /// GetUserFromLinq
         /// </summary>
         /// <param name="empId">รหัสพนักงาน</param>
-        /// <param name="userIsOnline">จะเก็บค่า Last Activity หรือไม่</param>
+        /// <param name="userIsOnline">เก็บข้อมูลว่า Online อยู่หรือไม่ (ยังไม่รองรับ)</param>
         /// <returns>MembershipUser</returns>
         private MembershipUser GetUserFromLinq(string empId, bool userIsOnline)
         {
+            if (isDebugEnabled)
+                log.Debug("Invoke " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             AsynchronosMembershipUser membershipUser = null;
 
             using (UnitOfWork uow = new UnitOfWork())
@@ -490,7 +522,7 @@ namespace SME.UserSystem.Core.Providers
                 USER_DATA user = uow.UserDataRepo.FindBy(u => u.EMP_ID == empId)
                     .FirstOrDefault<USER_DATA>();
 
-                if (null != user)
+                if (null == user)
                 {
                     throw new AsynchronosProviderException("Can't find user " + empId);
                 }
@@ -526,6 +558,7 @@ namespace SME.UserSystem.Core.Providers
                                                   user.LAST_CHANGE_PASS_DATE,
                                                   user.DEL_FLAG);
 
+                
                 if (userIsOnline)
                 {
                     if (null == profile)
