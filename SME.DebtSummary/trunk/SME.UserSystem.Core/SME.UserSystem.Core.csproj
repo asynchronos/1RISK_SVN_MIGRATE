@@ -72,6 +72,7 @@
     <Compile Include="Exceptions\LDAPInfoException.cs" />
     <Compile Include="Exceptions\UserInfoException.cs" />
     <Compile Include="DTO\UserProfileDTO.cs" />
+    <Compile Include="Exceptions\UserSystemException.cs" />
     <Compile Include="Profile\UserProfileBase.cs" />
     <Compile Include="Profile\ProfileCommon.cs">
       <SubType>Code</SubType>

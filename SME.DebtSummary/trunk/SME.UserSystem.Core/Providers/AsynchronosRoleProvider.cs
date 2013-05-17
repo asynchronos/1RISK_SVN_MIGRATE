@@ -7,6 +7,7 @@ using System.Web.Security;
 using log4net;
 using SME.UserSystem.Core.DAL;
 using SME.UserSystem.Core.Exceptions;
+using System.Data.Objects;
 
 namespace SME.UserSystem.Core.Providers
 {
@@ -280,18 +281,90 @@ namespace SME.UserSystem.Core.Providers
 
             using (UnitOfWork uow = new UnitOfWork())
             {
-                result = uow.CateAndEMPRepo
-                            .FindBy(cae => cae.DEL_FLAG != true
-                                && cae.EMP_ID == username
-                                && cae.CATEGORY.DEL_FLAG != true
-                                && cae.CATEGORY.CATE_AND_APP
-                                    .Any(caa =>
-                                        caa.APPLICATION.APP_DESC == ApplicationName
-                                        && caa.DEL_FLAG != true))
-                            .Select(cae => cae.CATEGORY_KEY)
-                            .AsEnumerable<int>()
-                            .Select(key => key.ToString())
-                            .ToArray<string>();
+                //get application key
+                IQueryable<APPLICATION> appQuery = uow.ApplicationRepo
+                    .FindBy(a => a.DEL_FLAG == false
+                        && a.APP_DESC == ApplicationName);
+                if (isDebugEnabled) log.Debug(((ObjectQuery)appQuery).ToTraceString());
+                int appKey = appQuery.Select(a => a.APP_KEY).FirstOrDefault();
+                if (isDebugEnabled) log.Debug("Application Key:" + appKey);
+
+                //get category can use this application
+                IQueryable<CATE_AND_APP> cateAndAppQuery = uow.CateAndAppRepo
+                    .FindBy(caa => caa.DEL_FLAG == false
+                        && caa.APP_KEY == appKey);
+                if (isDebugEnabled) log.Debug(((ObjectQuery)cateAndAppQuery).ToTraceString());
+                List<int> listOfExistsCateAndAppCategory = cateAndAppQuery.Select(c => c.CATEGORY_KEY.Value).ToList<int>();
+                if (isDebugEnabled)
+                {
+                    log.Debug("Total listOfExistsCateAndAppCategory records: " + listOfExistsCateAndAppCategory.Count);
+
+                    foreach (int categoryKey in listOfExistsCateAndAppCategory)
+                    {
+                        log.Debug(categoryKey);
+                    }
+                }
+
+                //get exists catagory
+                IQueryable<CATEGORY> categoryQuery = uow.CategoryRepo
+                    .FindBy(c => c.DEL_FLAG == false
+                        && listOfExistsCateAndAppCategory.Contains(c.CATEGORY_KEY));
+                if (isDebugEnabled) log.Debug(((ObjectQuery)categoryQuery).ToTraceString());
+                List<int> listOfExistsCategory = categoryQuery.Select(c => c.CATEGORY_KEY).ToList<int>();
+                if (isDebugEnabled)
+                {
+                    log.Debug("Total listOfExistsCategory records: " + listOfExistsCategory.Count);
+
+                    foreach (int categoryKey in listOfExistsCategory)
+                    {
+                        log.Debug(categoryKey);
+                    }
+                }
+
+                //get exists category for user
+                IQueryable<CATE_AND_EMP> cateAndEmpQuery = uow.CateAndEMPRepo
+                    .FindBy(cae => cae.DEL_FLAG == false
+                        && cae.EMP_ID == username
+                        && listOfExistsCategory.Contains(cae.CATEGORY_KEY));
+                //write log
+                if (isDebugEnabled) log.Debug(((ObjectQuery)cateAndEmpQuery).ToTraceString());
+                List<int> listOfExistsCateAndEmpCategory = cateAndEmpQuery.Select(c => c.CATEGORY_KEY).ToList<int>();
+                if (isDebugEnabled)
+                {
+                    log.Debug("Total listOfExistsCateAndEmpCategory records: " + listOfExistsCateAndEmpCategory.Count);
+
+                    foreach (int categoryKey in listOfExistsCateAndEmpCategory)
+                    {
+                        log.Debug(categoryKey);
+                    }
+                }
+
+                result = listOfExistsCateAndEmpCategory
+                    .Select(key => key.ToString())
+                    .ToArray<string>();               
+
+                //result = uow.CateAndEMPRepo
+                //            .FindBy(cae => cae.DEL_FLAG == false
+                //                && cae.EMP_ID == username
+                //                && cae.CATEGORY.DEL_FLAG == false
+                //                && cae.CATEGORY.CATE_AND_APP
+                //                    .Any(caa =>
+                //                        caa.APPLICATION.APP_DESC == ApplicationName
+                //                        && caa.DEL_FLAG == false))
+                //            .Select(cae => cae.CATEGORY_KEY)
+                //            .AsEnumerable<int>()
+                //            .Select(key => key.ToString())
+                //            .ToArray<string>();
+            }
+
+            if (isDebugEnabled)
+            {
+                log.Debug("Total Roles: "+ result.Length);
+
+                foreach (string role in result)
+                {
+                    log.Debug(role);
+                }
             }
 
             return result;
