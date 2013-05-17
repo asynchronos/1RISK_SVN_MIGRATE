@@ -12,7 +12,7 @@ namespace SME.DebtSummary
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect(Page.ResolveUrl("~/Report/SMEDebtSummary.aspx?") + QS_KEY_ROOT_EMP_ID + "=" + User.Identity.Name);
+            //Response.Redirect(Page.ResolveUrl("~/Report/SMEDebtSummary.aspx?") + QS_KEY_ROOT_EMP_ID + "=" + User.Identity.Name);
         }
     }
 }

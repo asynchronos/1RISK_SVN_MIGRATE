@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Security;
 using log4net;
 using SME.UserSystem.Core.Exceptions;
+using Util.Log4net;
 
 namespace SME.DebtSummary
 {
@@ -14,6 +15,9 @@ namespace SME.DebtSummary
 
         private void Application_Start(object sender, EventArgs e)
         {
+            log4net.GlobalContext.Properties["user"] = new HttpContextUserNameProvider();
+            log4net.GlobalContext.Properties["url"] = new HttpContextURLProvider();
+
             // Code that runs on application startup
             log.Info("============================");
             log.Info("    Starting application");

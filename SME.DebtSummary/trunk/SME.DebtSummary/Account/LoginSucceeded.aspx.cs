@@ -21,11 +21,11 @@ namespace SME.DebtSummary.Account
                 log.Debug("IsAuthenticated:" + User.Identity.IsAuthenticated);
                 log.Debug("IsInRole(admin):" + User.IsInRole("admin"));
 
-                log.Debug("---------------Profile---------------");
-                log.Debug("UserName:" + Context.Profile.UserName);
-                log.Debug("Profile EMP_FULLNAME:" + ((UserProfileBase)Context.Profile).EMP_FULLNAME);
-                log.Debug("Profile EMP_FULLNAME:" + Context.Profile.PropertyValues["EMP_FULLNAME"]);
-                log.Debug("Profile.Context:" + Context.Profile.Context);
+                //log.Debug("---------------Profile---------------");
+                //log.Debug("UserName:" + Context.Profile.UserName);
+                //log.Debug("Profile EMP_FULLNAME:" + ((UserProfileBase)Context.Profile).EMP_FULLNAME);
+                //log.Debug("Profile EMP_FULLNAME:" + Context.Profile.PropertyValues["EMP_FULLNAME"]);
+                //log.Debug("Profile.Context:" + Context.Profile.Context);
             }
 
             Response.Write("Authenticate Finish.");
@@ -44,11 +44,15 @@ namespace SME.DebtSummary.Account
             Response.Write("<br/>");
             Response.Write("IsInRole(1165):" + User.IsInRole("1165"));
             Response.Write("<br/>");
+            Response.Write("IsInRole(2672):" + User.IsInRole("2672"));
+            Response.Write("<br/>");
 
-            Response.Write("----- Profile Section -----");
-            Response.Write("<br/>");
-            Response.Write("Profile EMP_FULLNAME:" + ((UserProfileBase)Context.Profile).EMP_FULLNAME);
-            Response.Write("<br/>");
+            Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+
+            //Response.Write("----- Profile Section -----");
+            //Response.Write("<br/>");
+            //Response.Write("Profile EMP_FULLNAME:" + ((UserProfileBase)Context.Profile).EMP_FULLNAME);
+            //Response.Write("<br/>");
 
             //Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
         }
