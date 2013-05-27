@@ -14,7 +14,8 @@ Partial Class LoginSuccess
 
 
         Dim dal = New TbEmployeeDAL()
-        Dim emp As TbEmployee = dal.getTbEmployeeByUsername(User.Identity.Name)
+        'Dim emp As TbEmployee = dal.getTbEmployeeByUsername(User.Identity.Name)
+        Dim emp As TbEmployee = dal.getTbEmployeeByEMP_ID(User.Identity.Name)
 
         'have user
         If Not IsNothing(emp) Then
@@ -62,18 +63,18 @@ Partial Class LoginSuccess
 
                 log.Info(Request.UserHostAddress & ":" & User.Identity.Name & ":Checking Roles Pass.")
 
-                If (isDebugEnabled) Then
-                    log.Debug("Check ReturnUrl.")
-                End If
+                'If (isDebugEnabled) Then
+                '    log.Debug("Check ReturnUrl.")
+                'End If
 
-                If (hasQueryString("ReturnUrl")) Then
-                    If (isDebugEnabled) Then
-                        log.Debug("ReturnUrl:" + getQueryString("ReturnUrl"))
-                    End If
-                    Response.Redirect("~" & getQueryString("ReturnUrl"))
-                Else
-                    Response.Redirect("~/aspx/mainpage.aspx")
-                End If
+                'If (hasQueryString("ReturnUrl")) Then
+                '    If (isDebugEnabled) Then
+                '        log.Debug("ReturnUrl:" + getQueryString("ReturnUrl"))
+                '    End If
+                '    Response.Redirect(Page.ResolveUrl("~" & getQueryString("ReturnUrl")))
+                'Else
+                Response.Redirect("~/aspx/mainpage.aspx")
+                'End If
 
 
                 Exit Sub
@@ -81,7 +82,8 @@ Partial Class LoginSuccess
                 'user don't have role
                 showError("Your username don't have role.")
             End If
-
+        Else
+            showError("Can't find username[" + User.Identity.Name + "] in system, Please contact administrator.")
         End If
 
         showError("Unkown Error, Please contact administrator.")
