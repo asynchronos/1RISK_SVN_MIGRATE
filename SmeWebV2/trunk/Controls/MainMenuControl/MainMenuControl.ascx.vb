@@ -1,9 +1,13 @@
 Imports System.Diagnostics
+Imports log4net
 
 Namespace aspx.userControl
 
     Partial Class MainMenuControl
         Inherits System.Web.UI.UserControl
+
+        Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
+        Private Shared isDebugEnabled As Boolean = log.IsDebugEnabled
 
 #Region "custom code"
 
@@ -53,6 +57,10 @@ Namespace aspx.userControl
 
             'When the ticket was created, the UserData property was assigned a pipe delimited string of role names.
             Dim roles As String() = authTicket.UserData.Split(New Char() {"|"})
+
+            If isDebugEnabled Then
+                log.Debug("Roles:" + authTicket.UserData)
+            End If
 
             'ถ้ามี roles อะไรก็แล้วแต่ อย่างน้อย1 roles ให้แสดงเมนู
             If IsNothing(roles) Or IsNothing(Session.Item(SessionKeyConst.EMP_ID)) Then

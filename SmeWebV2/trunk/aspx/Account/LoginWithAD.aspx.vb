@@ -3,6 +3,10 @@ Partial Class LoginWithAD
     Inherits aspx.MyPageClass
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If (hasQueryString("ReturnUrl")) Then
+            Response.Redirect(FormsAuthentication.LoginUrl)
+        End If
+
         Dim liter As Literal = DirectCast(Login1.FindControl("FailureText"), Literal)
         liter.Text = String.Empty
 
@@ -21,7 +25,7 @@ Partial Class LoginWithAD
         If hasQueryString("pages") Then
             errorsMsg = errorsMsg & "Page : " + getQueryString("pages") + "<br />"
         End If
-        
+
 
         If Not errorsMsg.Equals(String.Empty) Then
             If errorsMsg.IndexOf("in AD is Locked") >= 0 Then
