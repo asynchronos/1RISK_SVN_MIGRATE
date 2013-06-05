@@ -20,6 +20,9 @@
         'Dim dateStart As DateTime? = DateTime.Now.AddDays(-5)
         'Dim task As Log4NetFileCleanupTask = New Log4NetFileCleanupTask()
         'task.CleanUp(dateStart)
+        
+        log4net.GlobalContext.Properties("user") = New HttpContextUserNameProvider()
+        log4net.GlobalContext.Properties("url") = new HttpContextURLProvider()
 
         log.Info("============================")
         log.Info(ConfigurationManager.AppSettings("APPLICATION_NAME") & "Started.")
