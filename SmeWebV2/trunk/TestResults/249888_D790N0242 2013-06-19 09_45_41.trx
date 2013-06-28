@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="635fa145-32d3-454e-8a46-3bc034a93055" name="249888@D790N0242 2013-06-19 09:45:41" runUser="BAYAD\249888" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c491b1a0-8371-4556-9e0f-c16df634ba10">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="249888_D790N0242 2013-06-19 09_45_41">
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModule\bin\Debug\RiskRatingProgressModule.dll" />
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log4net.dll" />
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\Util.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-06-19T09:45:41.7294234+07:00" queuing="2013-06-19T09:45:43.1016954+07:00" start="2013-06-19T09:45:43.2420414+07:00" finish="2013-06-19T09:45:44.0997114+07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="16" executed="16" error="0" failed="16" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="DeleteStatusMasterTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="84610bde-f334-0c64-c368-47c38dc4742a">
+      <Execution id="7064ce47-08a8-43cd-b58f-72dc8082e6f9" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteStatusMasterTest" />
+    </UnitTest>
+    <UnitTest name="UpdateIssuesTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="58684e6e-3922-9915-b1cc-f2a33e562873">
+      <Execution id="02222da2-6bc6-4080-aef9-b645e0f19124" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateIssuesTest" />
+    </UnitTest>
+    <UnitTest name="GetStatusMasterByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="ef8ff8a2-58af-ce80-06a9-972f4675aaac">
+      <Execution id="43692dd7-1efd-4377-9121-089db887a9f1" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetStatusMasterByKeyTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesAllTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="447847c5-ab16-350d-361b-1760ab8f1d59">
+      <Execution id="ab23f57f-3006-434e-b075-9cc4c7a5840d" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesAllTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByUpDateStatusKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="a0d5c397-0919-b642-3905-42be5c826f7a">
+      <Execution id="9e5f4234-bd9c-415b-84e3-63834c543846" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByUpDateStatusKeyTest" />
+    </UnitTest>
+    <UnitTest name="UpdateStatusMasterTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="eeb2fd20-abb8-17bb-8b69-399713edb1f3">
+      <Execution id="11c9b98c-5c43-425c-b2d9-edb3940f6ca7" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateStatusMasterTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByEMPIDTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="70413819-cb8d-d06b-9ab3-5fbdb963798e">
+      <Execution id="73cb5ae4-51f0-461c-bce6-5046abbfbd28" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByEMPIDTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByCIFTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="18b2c02f-7dc2-ba4b-98df-7a6ad7f8bc45">
+      <Execution id="51ed1076-bd1d-4487-8b6a-eeaa9684d46f" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByCIFTest" />
+    </UnitTest>
+    <UnitTest name="DeleteIssuesTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="8f529d6e-922e-2800-eecd-473e69f337e5">
+      <Execution id="d920be9c-32aa-4500-a38d-6952ccee5e42" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteIssuesTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="c8cbf14c-572f-75cb-4d4f-b6f1222c7cb8">
+      <Execution id="39fe0db1-2393-431b-8260-392547c6edd9" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByKeyTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByUpDateStatusDescTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="7eca3545-77ad-d5fa-ca50-b316ff92a12d">
+      <Execution id="624ef215-3360-4281-a7d0-0d88d252448d" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByUpDateStatusDescTest" />
+    </UnitTest>
+    <UnitTest name="RRPServiceConstructorTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="6b082581-857d-1ac5-e596-6e73cf7931dc">
+      <Execution id="18d0cf33-714a-4287-9e90-e712cf73ac6b" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RRPServiceConstructorTest" />
+    </UnitTest>
+    <UnitTest name="UpdateIssuesExceptionTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="888f80c7-a840-c617-453f-8216704c68f7">
+      <Execution id="63ddb548-9e87-405f-966c-05b8b34ac75d" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateIssuesExceptionTest" />
+    </UnitTest>
+    <UnitTest name="GetStatusMasterAllTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="0322cfd0-9aba-ecb8-9323-c76ade4770b1">
+      <Execution id="c7244a5e-cae5-4fd1-b370-0b50b7b7d784" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetStatusMasterAllTest" />
+    </UnitTest>
+    <UnitTest name="DeleteIssuesByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="5ddc1206-2658-94bc-1442-7484895c9e9e">
+      <Execution id="f81549e0-0a68-4578-a2f9-dac2393e8319" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteIssuesByKeyTest" />
+    </UnitTest>
+    <UnitTest name="DeleteStatusMasterByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="d43455c6-bc27-5417-8970-b200d7b7d089">
+      <Execution id="9a7182c8-98d2-4900-a45c-bde821685832" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteStatusMasterByKeyTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="0322cfd0-9aba-ecb8-9323-c76ade4770b1" executionId="c7244a5e-cae5-4fd1-b370-0b50b7b7d784" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18b2c02f-7dc2-ba4b-98df-7a6ad7f8bc45" executionId="51ed1076-bd1d-4487-8b6a-eeaa9684d46f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="447847c5-ab16-350d-361b-1760ab8f1d59" executionId="ab23f57f-3006-434e-b075-9cc4c7a5840d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="58684e6e-3922-9915-b1cc-f2a33e562873" executionId="02222da2-6bc6-4080-aef9-b645e0f19124" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ddc1206-2658-94bc-1442-7484895c9e9e" executionId="f81549e0-0a68-4578-a2f9-dac2393e8319" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b082581-857d-1ac5-e596-6e73cf7931dc" executionId="18d0cf33-714a-4287-9e90-e712cf73ac6b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="70413819-cb8d-d06b-9ab3-5fbdb963798e" executionId="73cb5ae4-51f0-461c-bce6-5046abbfbd28" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7eca3545-77ad-d5fa-ca50-b316ff92a12d" executionId="624ef215-3360-4281-a7d0-0d88d252448d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="84610bde-f334-0c64-c368-47c38dc4742a" executionId="7064ce47-08a8-43cd-b58f-72dc8082e6f9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="888f80c7-a840-c617-453f-8216704c68f7" executionId="63ddb548-9e87-405f-966c-05b8b34ac75d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8f529d6e-922e-2800-eecd-473e69f337e5" executionId="d920be9c-32aa-4500-a38d-6952ccee5e42" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0d5c397-0919-b642-3905-42be5c826f7a" executionId="9e5f4234-bd9c-415b-84e3-63834c543846" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c8cbf14c-572f-75cb-4d4f-b6f1222c7cb8" executionId="39fe0db1-2393-431b-8260-392547c6edd9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d43455c6-bc27-5417-8970-b200d7b7d089" executionId="9a7182c8-98d2-4900-a45c-bde821685832" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eeb2fd20-abb8-17bb-8b69-399713edb1f3" executionId="11c9b98c-5c43-425c-b2d9-edb3940f6ca7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef8ff8a2-58af-ce80-06a9-972f4675aaac" executionId="43692dd7-1efd-4377-9121-089db887a9f1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="c7244a5e-cae5-4fd1-b370-0b50b7b7d784" testId="0322cfd0-9aba-ecb8-9323-c76ade4770b1" testName="GetStatusMasterAllTest" computerName="D790N0242" duration="00:00:00.1490541" startTime="2013-06-19T09:45:43.4447634+07:00" endTime="2013-06-19T09:45:43.9437714+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c7244a5e-cae5-4fd1-b370-0b50b7b7d784">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="51ed1076-bd1d-4487-8b6a-eeaa9684d46f" testId="18b2c02f-7dc2-ba4b-98df-7a6ad7f8bc45" testName="GetIssuesByCIFTest" computerName="D790N0242" duration="00:00:00.0006221" startTime="2013-06-19T09:45:43.9437714+07:00" endTime="2013-06-19T09:45:43.9437714+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="51ed1076-bd1d-4487-8b6a-eeaa9684d46f">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ab23f57f-3006-434e-b075-9cc4c7a5840d" testId="447847c5-ab16-350d-361b-1760ab8f1d59" testName="GetIssuesAllTest" computerName="D790N0242" duration="00:00:00.0006157" startTime="2013-06-19T09:45:43.9593654+07:00" endTime="2013-06-19T09:45:43.9593654+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ab23f57f-3006-434e-b075-9cc4c7a5840d">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="02222da2-6bc6-4080-aef9-b645e0f19124" testId="58684e6e-3922-9915-b1cc-f2a33e562873" testName="UpdateIssuesTest" computerName="D790N0242" duration="00:00:00.0006539" startTime="2013-06-19T09:45:43.9593654+07:00" endTime="2013-06-19T09:45:43.9593654+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="02222da2-6bc6-4080-aef9-b645e0f19124">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f81549e0-0a68-4578-a2f9-dac2393e8319" testId="5ddc1206-2658-94bc-1442-7484895c9e9e" testName="DeleteIssuesByKeyTest" computerName="D790N0242" duration="00:00:00.0003992" startTime="2013-06-19T09:45:43.9593654+07:00" endTime="2013-06-19T09:45:43.9749594+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f81549e0-0a68-4578-a2f9-dac2393e8319">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="18d0cf33-714a-4287-9e90-e712cf73ac6b" testId="6b082581-857d-1ac5-e596-6e73cf7931dc" testName="RRPServiceConstructorTest" computerName="D790N0242" duration="00:00:00.0006073" startTime="2013-06-19T09:45:43.9749594+07:00" endTime="2013-06-19T09:45:43.9749594+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18d0cf33-714a-4287-9e90-e712cf73ac6b">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="73cb5ae4-51f0-461c-bce6-5046abbfbd28" testId="70413819-cb8d-d06b-9ab3-5fbdb963798e" testName="GetIssuesByEMPIDTest" computerName="D790N0242" duration="00:00:00.0007112" startTime="2013-06-19T09:45:43.9749594+07:00" endTime="2013-06-19T09:45:43.9905534+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="73cb5ae4-51f0-461c-bce6-5046abbfbd28">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="624ef215-3360-4281-a7d0-0d88d252448d" testId="7eca3545-77ad-d5fa-ca50-b316ff92a12d" testName="GetIssuesByUpDateStatusDescTest" computerName="D790N0242" duration="00:00:00.0005981" startTime="2013-06-19T09:45:44.0061474+07:00" endTime="2013-06-19T09:45:44.0061474+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="624ef215-3360-4281-a7d0-0d88d252448d">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7064ce47-08a8-43cd-b58f-72dc8082e6f9" testId="84610bde-f334-0c64-c368-47c38dc4742a" testName="DeleteStatusMasterTest" computerName="D790N0242" duration="00:00:00.0005763" startTime="2013-06-19T09:45:44.0061474+07:00" endTime="2013-06-19T09:45:44.0061474+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7064ce47-08a8-43cd-b58f-72dc8082e6f9">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="63ddb548-9e87-405f-966c-05b8b34ac75d" testId="888f80c7-a840-c617-453f-8216704c68f7" testName="UpdateIssuesExceptionTest" computerName="D790N0242" duration="00:00:00.0007746" startTime="2013-06-19T09:45:44.0061474+07:00" endTime="2013-06-19T09:45:44.0217414+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="63ddb548-9e87-405f-966c-05b8b34ac75d">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d920be9c-32aa-4500-a38d-6952ccee5e42" testId="8f529d6e-922e-2800-eecd-473e69f337e5" testName="DeleteIssuesTest" computerName="D790N0242" duration="00:00:00.0005869" startTime="2013-06-19T09:45:44.0217414+07:00" endTime="2013-06-19T09:45:44.0217414+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d920be9c-32aa-4500-a38d-6952ccee5e42">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9e5f4234-bd9c-415b-84e3-63834c543846" testId="a0d5c397-0919-b642-3905-42be5c826f7a" testName="GetIssuesByUpDateStatusKeyTest" computerName="D790N0242" duration="00:00:00.0005925" startTime="2013-06-19T09:45:44.0217414+07:00" endTime="2013-06-19T09:45:44.0217414+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9e5f4234-bd9c-415b-84e3-63834c543846">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="39fe0db1-2393-431b-8260-392547c6edd9" testId="c8cbf14c-572f-75cb-4d4f-b6f1222c7cb8" testName="GetIssuesByKeyTest" computerName="D790N0242" duration="00:00:00.0005863" startTime="2013-06-19T09:45:44.0217414+07:00" endTime="2013-06-19T09:45:44.0373354+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="39fe0db1-2393-431b-8260-392547c6edd9">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9a7182c8-98d2-4900-a45c-bde821685832" testId="d43455c6-bc27-5417-8970-b200d7b7d089" testName="DeleteStatusMasterByKeyTest" computerName="D790N0242" duration="00:00:00.0005774" startTime="2013-06-19T09:45:44.0373354+07:00" endTime="2013-06-19T09:45:44.0373354+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9a7182c8-98d2-4900-a45c-bde821685832">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="11c9b98c-5c43-425c-b2d9-edb3940f6ca7" testId="eeb2fd20-abb8-17bb-8b69-399713edb1f3" testName="UpdateStatusMasterTest" computerName="D790N0242" duration="00:00:00.0004229" startTime="2013-06-19T09:45:44.0373354+07:00" endTime="2013-06-19T09:45:44.0373354+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="11c9b98c-5c43-425c-b2d9-edb3940f6ca7">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="43692dd7-1efd-4377-9121-089db887a9f1" testId="ef8ff8a2-58af-ce80-06a9-972f4675aaac" testName="GetStatusMasterByKeyTest" computerName="D790N0242" duration="00:00:00.0005861" startTime="2013-06-19T09:45:44.0373354+07:00" endTime="2013-06-19T09:45:44.0529294+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43692dd7-1efd-4377-9121-089db887a9f1">
+      <Output>
+        <Exception>Exception has been thrown by the target of an invocation.</Exception>
+        <ErrorInfo>
+          <Message>Unable to create instance of class RiskRatingProgressModuleTest.RRPServiceTest. Error: System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Service.RRPService' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at RiskRatingProgressModule.Service.RRPService..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 22
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Service.RRPService..ctor()
+   at RiskRatingProgressModuleTest.RRPServiceTest..ctor() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

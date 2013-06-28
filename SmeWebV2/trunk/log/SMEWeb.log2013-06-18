@@ -1,0 +1,132 @@
+2013-06-18 08:40:25,612 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 08:40:25,674 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 08:40:25,674 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 08:40:25,674 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 09:01:34,089 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:01:34,089 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 09:01:34,089 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:01:34,089 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 09:13:47,705 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:13:47,720 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 09:13:47,720 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:13:47,720 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 09:21:33,280 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:21:33,295 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 09:21:33,295 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:21:33,295 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 09:26:51,251 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:26:51,266 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 09:26:51,266 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:26:51,266 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 09:30:47,967 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:30:47,967 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 09:30:47,967 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:30:47,967 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 09:37:02,212 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:37:02,212 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 09:37:02,212 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:37:02,212 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 09:37:05,617 [3072] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/UpdateStatusMasterJson?entity={"UPDATE_STATUS_KEY":1,"UPDATE_STATUS_DESC":"Pending+ที่+CM","ORDERING":1,"CREATE_DATE":"2013-06-10+12:00:00.000","UPDATE_DATE":"2013-06-17+10:17:30.740","CREATE_BY":"249888","UPDATE_BY":"249888","DEL_FLAG":true} - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'UpdateStatusMaster' in contract 'IRRPService' has a query variable named 'entity' of type 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel', but type 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel' is not convertible by 'QueryStringConverter'.  Variables for UriTemplate query values must have types that can be converted by 'QueryStringConverter'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'UpdateStatusMaster' in contract 'IRRPService' has a query variable named 'entity' of type 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel', but type 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel' is not convertible by 'QueryStringConverter'.  Variables for UriTemplate query values must have types that can be converted by 'QueryStringConverter'.. ---> System.InvalidOperationException: Operation 'UpdateStatusMaster' in contract 'IRRPService' has a query variable named 'entity' of type 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel', but type 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel' is not convertible by 'QueryStringConverter'.  Variables for UriTemplate query values must have types that can be converted by 'QueryStringConverter'.
+   at System.ServiceModel.Dispatcher.UriTemplateClientFormatter.Populate(Dictionary`2& pathMapping, Dictionary`2& queryMapping, Int32& totalNumUTVars, UriTemplate& uriTemplate, OperationDescription operationDescription, QueryStringConverter qsc, String contractName)
+   at System.ServiceModel.Description.WebHttpBehavior.GetRequestDispatchFormatter(OperationDescription operationDescription, ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.WebHttpBehavior.ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-18 09:40:39,650 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:40:39,665 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 09:40:39,665 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:40:39,665 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 09:54:38,215 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:54:38,230 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 09:54:38,230 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:54:38,230 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 09:57:36,530 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:57:36,530 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 09:57:36,530 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 09:57:36,530 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 10:00:43,156 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:00:43,172 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 10:00:43,172 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:00:43,172 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 10:21:35,917 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:21:35,933 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 10:21:35,933 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:21:35,933 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 10:28:03,769 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:28:03,784 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 10:28:03,784 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:28:03,784 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 10:46:53,036 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:46:53,052 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 10:46:53,052 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:46:53,052 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 10:56:15,756 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:56:15,772 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 10:56:15,772 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 10:56:15,772 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 11:36:00,106 [8556] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 11:36:00,122 [8556] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 11:36:00,122 [8556] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 11:36:00,122 [8556] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 18:59:33,968 [6320] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 18:59:33,984 [6320] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 18:59:33,984 [6320] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 18:59:33,984 [6320] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:04:30,281 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:04:30,296 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:04:30,296 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:04:30,296 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:10:17,943 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:10:17,959 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:10:17,959 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:10:17,959 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:16:43,157 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:16:43,173 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:16:43,173 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:16:43,173 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:26:23,812 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:26:23,812 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:26:23,812 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:26:23,812 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:31:29,330 [6136] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:31:29,330 [6136] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:31:29,330 [6136] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:31:29,346 [6136] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:33:58,480 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:33:58,496 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:33:58,496 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:33:58,496 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:39:23,543 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:39:23,559 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:39:23,559 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:39:23,559 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:45:29,371 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:45:29,386 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:45:29,386 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:45:29,386 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:47:56,067 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:47:56,083 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:47:56,083 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:47:56,083 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 19:56:45,497 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:56:45,512 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 19:56:45,512 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 19:56:45,512 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-18 20:09:57,524 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 20:09:57,539 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-18 20:09:57,539 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-18 20:09:57,539 [7232] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True

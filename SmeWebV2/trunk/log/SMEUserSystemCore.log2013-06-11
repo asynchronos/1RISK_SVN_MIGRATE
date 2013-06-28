@@ -1,0 +1,10 @@
+2013-06-11 11:43:52,076 [9116] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/Account/LoginWithAD.aspx - 249888 Start Authenticate.
+2013-06-11 11:43:52,373 [9116] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/Account/LoginWithAD.aspx - 249888 authenticated:True
+2013-06-11 16:08:14,842 [11900] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/Account/LoginWithAD.aspx - 249888 Start Authenticate.
+2013-06-11 16:08:15,295 [11900] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/Account/LoginWithAD.aspx - 249888 authenticated:True
+2013-06-11 16:39:07,656 [8480] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/Account/LoginWithAD.aspx - 249888 Start Authenticate.
+2013-06-11 16:39:07,688 [8480] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/Account/LoginWithAD.aspx - 249888 authenticated:True
+2013-06-11 16:43:06,293 [8264] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/Account/LoginWithAD.aspx - 249888 Start Authenticate.
+2013-06-11 16:43:06,324 [8264] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/Account/LoginWithAD.aspx - 249888 authenticated:True
+2013-06-11 16:46:38,088 [14568] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/account/LoginWithAD.aspx - 249888 Start Authenticate.
+2013-06-11 16:46:38,103 [14568] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost:22748/SmeWebV2/aspx/account/LoginWithAD.aspx - 249888 authenticated:True

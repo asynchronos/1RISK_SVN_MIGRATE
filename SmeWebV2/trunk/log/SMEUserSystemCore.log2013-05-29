@@ -1,0 +1,2 @@
+2013-05-29 13:44:49,753 [4004] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost/SmeWeb/aspx/Account/LoginWithAD.aspx - 249888 Start Authenticate.
+2013-05-29 13:44:49,878 [4004] DEBUG SME.UserSystem.Core.AD.LdapAuthentication (null) http://localhost/SmeWeb/aspx/Account/LoginWithAD.aspx - 249888 authenticated:True

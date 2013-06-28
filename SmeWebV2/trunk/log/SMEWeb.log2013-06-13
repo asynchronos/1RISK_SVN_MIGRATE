@@ -1,0 +1,803 @@
+2013-06-13 07:41:49,296 [3360] INFO  ASP.global_asax (null) http://localhost/SMEweb/aspx/account/loginWithAD.aspx - ============================
+2013-06-13 07:41:49,312 [3360] INFO  ASP.global_asax (null) http://localhost/SMEweb/aspx/account/loginWithAD.aspx - SmeWebStarted.
+2013-06-13 07:41:49,312 [3360] INFO  ASP.global_asax (null) http://localhost/SMEweb/aspx/account/loginWithAD.aspx - ============================
+2013-06-13 07:41:49,312 [3360] INFO  ASP.global_asax (null) http://localhost/SMEweb/aspx/account/loginWithAD.aspx - IsDebugEnabled : True
+2013-06-13 07:47:08,541 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 07:47:15,041 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/ - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 08:02:43,208 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 08:02:43,224 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 08:02:43,224 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 08:02:43,224 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 08:02:43,364 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 08:03:06,812 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 08:03:17,247 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 08:03:20,356 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 08:03:27,667 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 09:03:57,631 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - ============================
+2013-06-13 09:03:57,631 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - SmeWebStarted.
+2013-06-13 09:03:57,631 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - ============================
+2013-06-13 09:03:57,631 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - IsDebugEnabled : True
+2013-06-13 09:03:58,162 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 09:04:00,971 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 09:06:32,551 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 09:06:32,567 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 09:06:32,567 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 09:06:32,567 [3360] INFO  ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 09:06:33,004 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 09:06:37,124 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/jsdebug - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 09:07:44,414 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAll - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 09:08:09,607 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 09:08:23,639 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc?wsdl - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 09:08:45,663 [3360] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc?wsdl - The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 09:12:04,178 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc?wsdl - ============================
+2013-06-13 09:12:04,194 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc?wsdl - SmeWebStarted.
+2013-06-13 09:12:04,194 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc?wsdl - ============================
+2013-06-13 09:12:04,194 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc?wsdl - IsDebugEnabled : True
+2013-06-13 09:18:53,118 [7112] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/jsdebug - ============================
+2013-06-13 09:18:53,118 [7112] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/jsdebug - SmeWebStarted.
+2013-06-13 09:18:53,118 [7112] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/jsdebug - ============================
+2013-06-13 09:18:53,118 [7112] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/jsdebug - IsDebugEnabled : True
+2013-06-13 09:24:00,504 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 09:24:00,520 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 09:24:00,520 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 09:24:00,520 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 09:28:56,201 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 09:28:56,216 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 09:28:56,216 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 09:28:56,216 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 09:35:05,935 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/test - ============================
+2013-06-13 09:35:05,951 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/test - SmeWebStarted.
+2013-06-13 09:35:05,951 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/test - ============================
+2013-06-13 09:35:05,951 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/test - IsDebugEnabled : True
+2013-06-13 09:39:33,366 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/Test - ============================
+2013-06-13 09:39:33,381 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/Test - SmeWebStarted.
+2013-06-13 09:39:33,381 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/Test - ============================
+2013-06-13 09:39:33,381 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/Test - IsDebugEnabled : True
+2013-06-13 10:01:38,125 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 10:01:38,125 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 10:01:38,125 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 10:01:38,125 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 10:12:18,714 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 10:12:18,714 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 10:12:18,714 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 10:12:18,714 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 10:15:21,671 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/ - ============================
+2013-06-13 10:15:21,686 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/ - SmeWebStarted.
+2013-06-13 10:15:21,686 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/ - ============================
+2013-06-13 10:15:21,686 [6528] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/ - IsDebugEnabled : True
+2013-06-13 10:15:21,842 [6528] ERROR ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/ - The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 10:15:24,983 [5384] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 10:16:28,637 [5384] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 11:26:02,797 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - ============================
+2013-06-13 11:26:02,828 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - SmeWebStarted.
+2013-06-13 11:26:02,828 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - ============================
+2013-06-13 11:26:02,828 [6528] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - IsDebugEnabled : True
+2013-06-13 11:26:03,110 [6528] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 11:28:13,641 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - ============================
+2013-06-13 11:28:13,641 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - SmeWebStarted.
+2013-06-13 11:28:13,641 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - ============================
+2013-06-13 11:28:13,641 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - IsDebugEnabled : True
+2013-06-13 11:28:15,469 [9020] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc - The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 11:28:34,139 [8340] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc/Test - The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 11:28:56,996 [8340] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc/GetResult - The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 11:30:03,881 [8004] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc/players - The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 11:35:13,194 [9008] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 11:35:13,210 [9008] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 11:35:13,210 [9008] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 11:35:13,210 [9008] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 11:53:34,641 [9956] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/Player - ============================
+2013-06-13 11:53:34,656 [9956] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/Player - SmeWebStarted.
+2013-06-13 11:53:34,656 [9956] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/Player - ============================
+2013-06-13 11:53:34,656 [9956] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/Player - IsDebugEnabled : True
+2013-06-13 13:20:32,294 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 13:20:32,309 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 13:20:32,309 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 13:20:32,309 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 13:24:48,676 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 13:24:48,692 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 13:24:48,692 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 13:24:48,692 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 13:45:17,385 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 13:45:17,400 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 13:45:17,400 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 13:45:17,400 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 13:59:23,574 [11204] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 13:59:23,589 [11204] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 13:59:23,589 [11204] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 13:59:23,589 [11204] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 14:06:17,409 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 14:06:17,409 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 14:06:17,409 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 14:06:17,409 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 14:06:17,628 [9020] ERROR ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The service class of type RiskRatingProgressModule.Service.RRPService both defines a ServiceContract and inherits a ServiceContract from type RiskRatingProgressModule.Service.IRRPService. Contract inheritance can only be used among interface types.  If a class is marked with ServiceContractAttribute, it must be the only type in the hierarchy with ServiceContractAttribute.  Consider moving the ServiceContractAttribute on type RiskRatingProgressModule.Service.IRRPService to a separate interface that type RiskRatingProgressModule.Service.IRRPService implements..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The service class of type RiskRatingProgressModule.Service.RRPService both defines a ServiceContract and inherits a ServiceContract from type RiskRatingProgressModule.Service.IRRPService. Contract inheritance can only be used among interface types.  If a class is marked with ServiceContractAttribute, it must be the only type in the hierarchy with ServiceContractAttribute.  Consider moving the ServiceContractAttribute on type RiskRatingProgressModule.Service.IRRPService to a separate interface that type RiskRatingProgressModule.Service.IRRPService implements.. ---> System.InvalidOperationException: The service class of type RiskRatingProgressModule.Service.RRPService both defines a ServiceContract and inherits a ServiceContract from type RiskRatingProgressModule.Service.IRRPService. Contract inheritance can only be used among interface types.  If a class is marked with ServiceContractAttribute, it must be the only type in the hierarchy with ServiceContractAttribute.  Consider moving the ServiceContractAttribute on type RiskRatingProgressModule.Service.IRRPService to a separate interface that type RiskRatingProgressModule.Service.IRRPService implements.
+   at System.ServiceModel.Description.ServiceReflector.GetInterfaces(Type service)
+   at System.ServiceModel.ServiceHost.CreateDescription(IDictionary`2& implementedContracts)
+   at System.ServiceModel.ServiceHostBase.InitializeDescription(UriSchemeKeyedCollection baseAddresses)
+   at System.ServiceModel.ServiceHost.InitializeDescription(Type serviceType, UriSchemeKeyedCollection baseAddresses)
+   at System.ServiceModel.ServiceHost..ctor(Type serviceType, Uri[] baseAddresses)
+   at System.ServiceModel.Activation.WebScriptServiceHostFactory.CreateServiceHost(Type serviceType, Uri[] baseAddresses)
+   at System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(String constructorString, Uri[] baseAddresses)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.CreateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 14:07:30,711 [11776] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 14:07:30,727 [11776] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 14:07:30,727 [11776] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 14:07:30,727 [11776] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 14:22:35,680 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 14:22:35,680 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 14:22:35,680 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 14:22:35,680 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 14:25:33,611 [11712] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/Players - ============================
+2013-06-13 14:25:33,611 [11712] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/Players - SmeWebStarted.
+2013-06-13 14:25:33,611 [11712] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/Players - ============================
+2013-06-13 14:25:33,611 [11712] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/TestService.svc/Players - IsDebugEnabled : True
+2013-06-13 14:37:26,630 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 14:37:26,630 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 14:37:26,630 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 14:37:26,630 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 15:27:12,994 [11684] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc/players - ============================
+2013-06-13 15:27:13,041 [11684] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc/players - SmeWebStarted.
+2013-06-13 15:27:13,041 [11684] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc/players - ============================
+2013-06-13 15:27:13,041 [11684] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc/players - IsDebugEnabled : True
+2013-06-13 15:29:38,682 [7772] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 15:29:38,698 [7772] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-13 15:29:38,698 [7772] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 15:29:38,698 [7772] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-13 15:32:05,323 [11076] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:32:05,323 [11076] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 15:32:05,323 [11076] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:32:05,323 [11076] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 15:32:05,870 [11172] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/GetIssuesAllJson?{"idenKey":"1"} - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients.. ---> System.InvalidOperationException: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients.
+   at System.ServiceModel.Description.CallbackDebugBehavior.System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(ServiceEndpoint serviceEndpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 15:32:15,446 [11172] ERROR ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients.. ---> System.InvalidOperationException: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients.
+   at System.ServiceModel.Description.CallbackDebugBehavior.System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(ServiceEndpoint serviceEndpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 15:32:49,751 [11640] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 15:32:49,767 [11640] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-13 15:32:49,767 [11640] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 15:32:49,767 [11640] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-13 15:33:49,020 [10236] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:33:49,036 [10236] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 15:33:49,036 [10236] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:33:49,036 [10236] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 15:33:49,910 [9784] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/GetIssuesAllJson?{"idenKey":"1"} - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients.. ---> System.InvalidOperationException: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients.
+   at System.ServiceModel.Description.CallbackDebugBehavior.System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(ServiceEndpoint serviceEndpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 15:34:41,415 [11824] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:34:41,431 [11824] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 15:34:41,431 [11824] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:34:41,431 [11824] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 15:34:41,931 [9020] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/GetIssuesAllJson?{"idenKey":"1"} - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients.. ---> System.InvalidOperationException: The IEndpointBehavior 'CallbackDebugBehavior' cannot be used on the server side; this behavior can only be applied to clients.
+   at System.ServiceModel.Description.CallbackDebugBehavior.System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(ServiceEndpoint serviceEndpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 15:35:18,111 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:35:18,126 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 15:35:18,126 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:35:18,126 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 15:43:07,402 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 15:43:07,402 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-13 15:43:07,402 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-13 15:43:07,402 [9020] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-13 15:49:28,025 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:49:28,025 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 15:49:28,025 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:49:28,025 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 15:53:43,729 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:53:43,729 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 15:53:43,729 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 15:53:43,729 [9020] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 16:01:31,226 [11828] INFO  ASP.global_asax (null) http://localhost/SmeWeb/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 16:01:31,241 [11828] INFO  ASP.global_asax (null) http://localhost/SmeWeb/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 16:01:31,241 [11828] INFO  ASP.global_asax (null) http://localhost/SmeWeb/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 16:01:31,241 [11828] INFO  ASP.global_asax (null) http://localhost/SmeWeb/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 16:02:13,181 [11828] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAllJson?{"idenKey":"1"} - The service '/SMEWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SMEWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 16:02:27,181 [11828] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/RRPService.svc/GetIssuesAllJson - The service '/SMEWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SMEWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 16:02:55,885 [11828] ERROR ASP.global_asax (null) http://localhost/SmeWeb/webservice/TestService.svc/players - The service '/SMEWeb/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SMEWeb/webservice/TestService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-13 17:12:56,997 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc - ============================
+2013-06-13 17:12:57,044 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc - SmeWebStarted.
+2013-06-13 17:12:57,044 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc - ============================
+2013-06-13 17:12:57,044 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc - IsDebugEnabled : True
+2013-06-13 17:46:16,413 [11956] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc?wsdl - ============================
+2013-06-13 17:46:16,460 [11956] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc?wsdl - SmeWebStarted.
+2013-06-13 17:46:16,460 [11956] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc?wsdl - ============================
+2013-06-13 17:46:16,460 [11956] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/TestService.svc?wsdl - IsDebugEnabled : True
+2013-06-13 17:54:59,451 [9280] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 17:54:59,467 [9280] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-13 17:54:59,467 [9280] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 17:54:59,467 [9280] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-13 18:01:10,952 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 18:01:10,968 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 18:01:10,968 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 18:01:10,968 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 18:08:21,008 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 18:08:21,024 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-13 18:08:21,024 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-13 18:08:21,024 [7864] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-13 18:18:07,987 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:18:08,003 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-13 18:18:08,003 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:18:08,003 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-13 18:25:58,289 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:25:58,304 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-13 18:25:58,304 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:25:58,304 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-13 18:29:43,195 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:29:43,211 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-13 18:29:43,211 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:29:43,211 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-13 18:33:56,937 [11540] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:33:56,937 [11540] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-13 18:33:56,937 [11540] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:33:56,937 [11540] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-13 18:42:29,896 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:42:29,911 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-13 18:42:29,911 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:42:29,911 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-13 18:47:27,549 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:47:27,549 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-13 18:47:27,549 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-13 18:47:27,549 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True

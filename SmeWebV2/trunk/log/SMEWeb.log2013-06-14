@@ -1,0 +1,232 @@
+2013-06-14 10:07:30,203 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 10:07:30,219 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 10:07:30,219 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 10:07:30,219 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 10:07:31,516 [7864] ERROR ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: In contract 'IRRPService', there are multiple operations with Method 'GET' and a UriTemplate that is equivalent to 'GetIssuesAllJson'. Each operation requires a unique combination of UriTemplate and Method to unambiguously dispatch messages. Use WebGetAttribute or WebInvokeAttribute to alter the UriTemplate and Method values of an operation..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: In contract 'IRRPService', there are multiple operations with Method 'GET' and a UriTemplate that is equivalent to 'GetIssuesAllJson'. Each operation requires a unique combination of UriTemplate and Method to unambiguously dispatch messages. Use WebGetAttribute or WebInvokeAttribute to alter the UriTemplate and Method values of an operation.. ---> System.InvalidOperationException: In contract 'IRRPService', there are multiple operations with Method 'GET' and a UriTemplate that is equivalent to 'GetIssuesAllJson'. Each operation requires a unique combination of UriTemplate and Method to unambiguously dispatch messages. Use WebGetAttribute or WebInvokeAttribute to alter the UriTemplate and Method values of an operation.
+   at System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector..ctor(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.WebHttpBehavior.GetOperationSelector(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.WebHttpBehavior.ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-14 10:10:09,612 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 10:10:09,627 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 10:10:09,627 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 10:10:09,627 [7864] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 10:10:09,737 [7864] ERROR ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute.. ---> System.InvalidOperationException: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute.
+   at System.ServiceModel.Description.WebHttpBehavior.ValidateGETHasNoBody(OperationDescription operation, String method)
+   at System.ServiceModel.Description.WebHttpBehavior.ValidateBodyParameters(OperationDescription operation, Boolean request)
+   at System.ServiceModel.Description.WebHttpBehavior.<>c__DisplayClass10.<>c__DisplayClass13.<GetRequestDispatchFormatter>b__d()
+   at System.ServiceModel.Description.WebHttpBehavior.<>c__DisplayClass10.<GetRequestDispatchFormatter>b__c()
+   at System.ServiceModel.Description.WebHttpBehavior.HideReplyMessage(OperationDescription operationDescription, Effect effect)
+   at System.ServiceModel.Description.WebHttpBehavior.GetRequestDispatchFormatter(OperationDescription operationDescription, ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.WebHttpBehavior.ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-14 10:13:53,800 [11580] INFO  ASP.global_asax (null) http://localhost/smeweb/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 10:13:53,815 [11580] INFO  ASP.global_asax (null) http://localhost/smeweb/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 10:13:53,815 [11580] INFO  ASP.global_asax (null) http://localhost/smeweb/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 10:13:53,815 [11580] INFO  ASP.global_asax (null) http://localhost/smeweb/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 10:13:54,675 [11580] ERROR ASP.global_asax (null) http://localhost/smeweb/webservice/RRPService.svc/GetIssuesAllJson - The service '/SMEWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'..
+System.ServiceModel.ServiceActivationException: The service '/SMEWeb/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.. ---> System.InvalidOperationException: Endpoints using 'UriTemplate' cannot be used with 'System.ServiceModel.Description.WebScriptEnablingBehavior'.
+   at System.ServiceModel.Description.WebScriptEnablingBehavior.Validate(ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.ServiceEndpoint.Validate(Boolean runOperationValidators, Boolean isForService)
+   at System.ServiceModel.Description.DispatcherBuilder.ValidateDescription(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-14 11:19:23,267 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 11:19:23,299 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-14 11:19:23,299 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 11:19:23,299 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-14 14:49:57,440 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 14:49:57,471 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 14:49:57,471 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 14:49:57,471 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 15:06:52,814 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 15:06:52,829 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 15:06:52,829 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 15:06:52,829 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 15:20:00,974 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 15:20:00,990 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 15:20:00,990 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 15:20:00,990 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 15:44:06,472 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 15:44:06,488 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 15:44:06,488 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 15:44:06,488 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 15:55:17,026 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 15:55:17,026 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 15:55:17,026 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 15:55:17,026 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 16:21:27,384 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 16:21:27,399 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 16:21:27,399 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 16:21:27,399 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 16:36:33,747 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 16:36:33,763 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 16:36:33,763 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 16:36:33,763 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 16:42:27,821 [4928] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesByKeyJson - ============================
+2013-06-14 16:42:27,821 [4928] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesByKeyJson - SmeWebStarted.
+2013-06-14 16:42:27,821 [4928] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesByKeyJson - ============================
+2013-06-14 16:42:27,821 [4928] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesByKeyJson - IsDebugEnabled : True
+2013-06-14 16:46:45,958 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 16:46:45,974 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - SmeWebStarted.
+2013-06-14 16:46:45,974 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - ============================
+2013-06-14 16:46:45,974 [3448] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAllJson - IsDebugEnabled : True
+2013-06-14 16:56:38,482 [7388] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 16:56:38,498 [7388] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-14 16:56:38,498 [7388] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 16:56:38,498 [7388] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-14 17:07:47,083 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 17:07:47,098 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-14 17:07:47,098 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 17:07:47,098 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-14 18:01:45,328 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 18:01:45,344 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-14 18:01:45,344 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 18:01:45,344 [3448] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-14 18:04:56,631 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/ - ============================
+2013-06-14 18:04:56,647 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/ - SmeWebStarted.
+2013-06-14 18:04:56,647 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/ - ============================
+2013-06-14 18:04:56,647 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/ - IsDebugEnabled : True
+2013-06-14 18:16:25,338 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/GetIssuesByKeyJson - ============================
+2013-06-14 18:16:25,353 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/GetIssuesByKeyJson - SmeWebStarted.
+2013-06-14 18:16:25,353 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/GetIssuesByKeyJson - ============================
+2013-06-14 18:16:25,353 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/GetIssuesByKeyJson - IsDebugEnabled : True
+2013-06-14 18:40:37,960 [2816] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-14 18:40:37,960 [2816] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - SmeWebStarted.
+2013-06-14 18:40:37,960 [2816] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - ============================
+2013-06-14 18:40:37,960 [2816] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesAll - IsDebugEnabled : True
+2013-06-14 18:53:57,934 [8796] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 18:53:57,934 [8796] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-14 18:53:57,934 [8796] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 18:53:57,934 [8796] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-14 19:46:54,100 [2816] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetStatusMasterAll - ============================
+2013-06-14 19:46:54,115 [2816] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetStatusMasterAll - SmeWebStarted.
+2013-06-14 19:46:54,115 [2816] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetStatusMasterAll - ============================
+2013-06-14 19:46:54,115 [2816] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetStatusMasterAll - IsDebugEnabled : True
+2013-06-14 19:53:53,032 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 19:53:53,047 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-14 19:53:53,047 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 19:53:53,047 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-14 19:53:55,422 [5832] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/GetIssuesByKeyJson?{"idenKey":1} - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute.. ---> System.InvalidOperationException: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute.
+   at System.ServiceModel.Description.WebHttpBehavior.ValidateGETHasNoBody(OperationDescription operation, String method)
+   at System.ServiceModel.Description.WebHttpBehavior.ValidateBodyParameters(OperationDescription operation, Boolean request)
+   at System.ServiceModel.Description.WebHttpBehavior.<>c__DisplayClass10.<>c__DisplayClass13.<GetRequestDispatchFormatter>b__d()
+   at System.ServiceModel.Description.WebHttpBehavior.<>c__DisplayClass10.<GetRequestDispatchFormatter>b__c()
+   at System.ServiceModel.Description.WebHttpBehavior.HideReplyMessage(OperationDescription operationDescription, Effect effect)
+   at System.ServiceModel.Description.WebHttpBehavior.GetRequestDispatchFormatter(OperationDescription operationDescription, ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.WebHttpBehavior.ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-14 19:56:45,858 [8044] ERROR ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesByKey - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute.. ---> System.InvalidOperationException: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute.
+   at System.ServiceModel.Description.WebHttpBehavior.ValidateGETHasNoBody(OperationDescription operation, String method)
+   at System.ServiceModel.Description.WebHttpBehavior.ValidateBodyParameters(OperationDescription operation, Boolean request)
+   at System.ServiceModel.Description.WebHttpBehavior.<>c__DisplayClass10.<>c__DisplayClass13.<GetRequestDispatchFormatter>b__d()
+   at System.ServiceModel.Description.WebHttpBehavior.<>c__DisplayClass10.<GetRequestDispatchFormatter>b__c()
+   at System.ServiceModel.Description.WebHttpBehavior.HideReplyMessage(OperationDescription operationDescription, Effect effect)
+   at System.ServiceModel.Description.WebHttpBehavior.GetRequestDispatchFormatter(OperationDescription operationDescription, ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.WebHttpBehavior.ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-14 19:57:15,029 [8636] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/webservice/RRPService.svc/GetIssuesByKey?{"idenKey":1} - The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute..
+System.ServiceModel.ServiceActivationException: The service '/SmeWebV2/webservice/RRPService.svc' cannot be activated due to an exception during compilation.  The exception message is: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute.. ---> System.InvalidOperationException: Operation 'GetIssuesByKeyJson' in contract 'IRRPService' uses GET, but also has body parameter 'idenKey'. GET operations cannot have a body. Either make the parameter 'idenKey' a UriTemplate parameter, or switch from WebGetAttribute to WebInvokeAttribute.
+   at System.ServiceModel.Description.WebHttpBehavior.ValidateGETHasNoBody(OperationDescription operation, String method)
+   at System.ServiceModel.Description.WebHttpBehavior.ValidateBodyParameters(OperationDescription operation, Boolean request)
+   at System.ServiceModel.Description.WebHttpBehavior.<>c__DisplayClass10.<>c__DisplayClass13.<GetRequestDispatchFormatter>b__d()
+   at System.ServiceModel.Description.WebHttpBehavior.<>c__DisplayClass10.<GetRequestDispatchFormatter>b__c()
+   at System.ServiceModel.Description.WebHttpBehavior.HideReplyMessage(OperationDescription operationDescription, Effect effect)
+   at System.ServiceModel.Description.WebHttpBehavior.GetRequestDispatchFormatter(OperationDescription operationDescription, ServiceEndpoint endpoint)
+   at System.ServiceModel.Description.WebHttpBehavior.ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
+   at System.ServiceModel.Description.DispatcherBuilder.InitializeServiceHost(ServiceDescription description, ServiceHostBase serviceHost)
+   at System.ServiceModel.ServiceHostBase.InitializeRuntime()
+   at System.ServiceModel.ServiceHostBase.OnBeginOpen()
+   at System.ServiceModel.ServiceHostBase.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open()
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.ActivateService(String normalizedVirtualPath)
+   at System.ServiceModel.ServiceHostingEnvironment.HostingManager.EnsureServiceAvailable(String normalizedVirtualPath)
+   --- End of inner exception stack trace ---
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.End(IAsyncResult result)
+   at System.ServiceModel.Activation.HostedHttpRequestAsyncResult.ExecuteSynchronous(HttpApplication context, String routeServiceVirtualPath, Boolean flowContext, Boolean ensureWFService)
+   at System.ServiceModel.Activation.HttpHandler.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-14 19:59:52,777 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 19:59:52,793 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-14 19:59:52,793 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-14 19:59:52,793 [2816] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-14 20:04:23,395 [5664] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesByKey - ============================
+2013-06-14 20:04:23,411 [5664] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesByKey - SmeWebStarted.
+2013-06-14 20:04:23,411 [5664] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesByKey - ============================
+2013-06-14 20:04:23,411 [5664] INFO  ASP.global_asax (null) http://localhost:22748/smewebv2/webservice/RRPService.svc/GetIssuesByKey - IsDebugEnabled : True
