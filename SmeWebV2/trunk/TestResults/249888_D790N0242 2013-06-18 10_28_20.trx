@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="b60d5c38-6580-4362-8ddd-676c8a797c2b" name="249888@D790N0242 2013-06-18 10:28:20" runUser="BAYAD\249888" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c491b1a0-8371-4556-9e0f-c16df634ba10">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="249888_D790N0242 2013-06-18 10_28_20">
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModule\bin\Debug\RiskRatingProgressModule.dll" />
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log4net.dll" />
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\Util.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-06-18T10:28:20.8297048+07:00" queuing="2013-06-18T10:28:20.8765747+07:00" start="2013-06-18T10:28:20.8921980+07:00" finish="2013-06-18T10:28:21.3921436+07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="UpdateStatusMasterTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="eeb2fd20-abb8-17bb-8b69-399713edb1f3">
+      <Execution id="26a06dbd-2d80-4b73-b38c-edd985f3c7d1" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateStatusMasterTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="eeb2fd20-abb8-17bb-8b69-399713edb1f3" executionId="26a06dbd-2d80-4b73-b38c-edd985f3c7d1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="26a06dbd-2d80-4b73-b38c-edd985f3c7d1" testId="eeb2fd20-abb8-17bb-8b69-399713edb1f3" testName="UpdateStatusMasterTest" computerName="D790N0242" duration="00:00:00.2076149" startTime="2013-06-18T10:28:20.9078213+07:00" endTime="2013-06-18T10:28:21.3140271+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="26a06dbd-2d80-4b73-b38c-edd985f3c7d1">
+      <Output>
+        <StdOut>log4net: XmlHierarchyConfigurator: Configuration update mode [Merge].
+log4net: XmlHierarchyConfigurator: Logger [root] Level string is [DEBUG].
+log4net: XmlHierarchyConfigurator: Logger [root] level set to [name="DEBUG",value=30000].
+log4net: XmlHierarchyConfigurator: Loading Appender [DebugAppender] type: [log4net.Appender.DebugAppender]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: XmlHierarchyConfigurator: Created Appender [DebugAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [DebugAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Loading Appender [FileAppender] type: [log4net.Appender.RollingFileAppender]
+log4net: XmlHierarchyConfigurator: Parameter [file] specified subtype [log4net.Util.PatternString]
+log4net: PatternParser: Converter [literal] Option [./log/RiskRatingProgress.log] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Performing additional conversion of value from [PatternString] to [String]
+log4net: XmlHierarchyConfigurator: Setting Property [File] to String value [./log/RiskRatingProgress.log]
+log4net: XmlHierarchyConfigurator: Setting Property [AppendToFile] to Boolean value [True]
+log4net: XmlHierarchyConfigurator: Setting Property [RollingStyle] to RollingMode value [Date]
+log4net: XmlHierarchyConfigurator: Setting Property [DatePattern] to String value [yyyy-MM-dd]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: RollingFileAppender: Type = [0], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [1], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [2], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [3], r0 = [1970-01-01], r1 = [1970-01-02]
+log4net: RollingFileAppender: Searched for existing files in [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log]
+log4net: RollingFileAppender: curSizeRollBackups starts at [0]
+log4net: RollingFileAppender: [2013-06-18] vs. [2013-06-18]
+log4net: FileAppender: Opening file for writing [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] append [True]
+log4net: XmlHierarchyConfigurator: Created Appender [FileAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [FileAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Hierarchy Threshold []</StdOut>
+        <DebugTrace>log4net: XmlHierarchyConfigurator: Configuration update mode [Merge].
+log4net: XmlHierarchyConfigurator: Logger [root] Level string is [DEBUG].
+log4net: XmlHierarchyConfigurator: Logger [root] level set to [name="DEBUG",value=30000].
+log4net: XmlHierarchyConfigurator: Loading Appender [DebugAppender] type: [log4net.Appender.DebugAppender]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: XmlHierarchyConfigurator: Created Appender [DebugAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [DebugAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Loading Appender [FileAppender] type: [log4net.Appender.RollingFileAppender]
+log4net: XmlHierarchyConfigurator: Parameter [file] specified subtype [log4net.Util.PatternString]
+log4net: PatternParser: Converter [literal] Option [./log/RiskRatingProgress.log] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Performing additional conversion of value from [PatternString] to [String]
+log4net: XmlHierarchyConfigurator: Setting Property [File] to String value [./log/RiskRatingProgress.log]
+log4net: XmlHierarchyConfigurator: Setting Property [AppendToFile] to Boolean value [True]
+log4net: XmlHierarchyConfigurator: Setting Property [RollingStyle] to RollingMode value [Date]
+log4net: XmlHierarchyConfigurator: Setting Property [DatePattern] to String value [yyyy-MM-dd]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: RollingFileAppender: Type = [0], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [1], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [2], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [3], r0 = [1970-01-01], r1 = [1970-01-02]
+log4net: RollingFileAppender: Searched for existing files in [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log]
+log4net: RollingFileAppender: curSizeRollBackups starts at [0]
+log4net: RollingFileAppender: [2013-06-18] vs. [2013-06-18]
+log4net: FileAppender: Opening file for writing [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] append [True]
+log4net: XmlHierarchyConfigurator: Created Appender [FileAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [FileAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Hierarchy Threshold []
+RiskRatingProgressModule.Service.RRPService: 2013-06-18 10:28:21,267 [Agent: adapter run thread for test 'UpdateStatusMasterTest' with id '26a06dbd-2d80-4b73-b38c-edd985f3c7d1'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - UpdateStatusMaster Invoking.
+RiskRatingProgressModule.Service.RRPService: 2013-06-18 10:28:21,267 [Agent: adapter run thread for test 'UpdateStatusMasterTest' with id '26a06dbd-2d80-4b73-b38c-edd985f3c7d1'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - UnitOfWork Scope.
+RiskRatingProgressModule.Service.RRPService: 2013-06-18 10:28:21,282 [Agent: adapter run thread for test 'UpdateStatusMasterTest' with id '26a06dbd-2d80-4b73-b38c-edd985f3c7d1'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - rrpsEntity is not null.
+</DebugTrace>
+        <ErrorInfo>
+          <Message>Test method RiskRatingProgressModuleTest.RRPServiceTest.UpdateStatusMasterTest threw exception: 
+System.InvalidOperationException: The object cannot be attached because it is already in the object context. An object can only be reattached when it is in an unchanged state. </Message>
+          <StackTrace>    at System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet&amp; entitySet, Boolean&amp; isNoOperation)
+   at System.Data.Objects.ObjectContext.AttachTo(String entitySetName, Object entity)
+   at System.Data.Objects.ObjectSet`1.Attach(TEntity entity)
+   at RiskRatingProgressModule.UOW.GenericRespository`1.Edit(T entity) in D:\workspaces\2012\RiskRatingProgressModule\UOW\GenericRespository.cs:line 64
+   at RiskRatingProgressModule.Service.RRPService.UpdateStatusMaster(RiskRatingProgressStatusModel entity) in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 421
+   at RiskRatingProgressModuleTest.RRPServiceTest.UpdateStatusMasterTest() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 411
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

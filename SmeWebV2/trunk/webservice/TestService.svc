@@ -1,0 +1,3 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" 
+Service="RiskRatingProgressModule.Service.TestService" 
+Factory="System.ServiceModel.Activation.WebScriptServiceHostFactory"%>

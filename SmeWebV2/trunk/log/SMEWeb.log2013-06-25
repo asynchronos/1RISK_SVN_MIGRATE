@@ -1,0 +1,88 @@
+2013-06-25 19:05:18,058 [8056] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-25 19:05:18,183 [8056] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - SmeWebStarted.
+2013-06-25 19:05:18,183 [8056] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - ============================
+2013-06-25 19:05:18,183 [8056] INFO  ASP.global_asax (null) http://localhost:22748/SmeWebV2/aspx/follow/RiskRatingProgress.aspx - IsDebugEnabled : True
+2013-06-25 19:05:29,537 [8124] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/DataSimlet.js?_dc=1372161929490 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:05:29,537 [8056] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/Simlet.js?_dc=1372161929443 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:05:29,537 [5900] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/JsonSimlet.js?_dc=1372161929506 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:06:53,457 [8056] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/Simlet.js?_dc=1372162013445 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:06:53,473 [5900] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/JsonSimlet.js?_dc=1372162013447 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:06:53,473 [7840] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/DataSimlet.js?_dc=1372162013445 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:07:06,386 [7192] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/JsonSimlet.js?_dc=1372162026363 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:07:06,386 [7376] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/DataSimlet.js?_dc=1372162026361 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:07:06,386 [8124] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/Simlet.js?_dc=1372162026356 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:09:57,094 [7488] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/DataSimlet.js?_dc=1372162197089 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:09:57,094 [7192] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/Simlet.js?_dc=1372162197083 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-06-25 19:09:57,110 [6468] ERROR ASP.global_asax (null) http://localhost:22748/SmeWebV2/js/ext-4.2.0.663/src/ux/ajax/JsonSimlet.js?_dc=1372162197092 - File does not exist.
+System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

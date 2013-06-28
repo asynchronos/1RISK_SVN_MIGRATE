@@ -88,19 +88,18 @@
         'redirect to error page
         'If err.GetType().Equals(GetType(System.Runtime.InteropServices.COMException)) Or
         '    err.GetType().Equals(GetType(System.DirectoryServices.DirectoryServicesCOMException)) Then
-        If err.GetType().Equals(GetType(SME.UserSystem.Core.Exceptions.LDAPInfoException)) _
-            Or err.GetType().Equals(GetType(SME.UserSystem.Core.Exceptions.UserProfileException)) Then
+        If err.GetType().Equals(GetType(SME.UserSystem.Core.Exceptions.UserSystemException)) Then
             Response.Redirect("~/aspx/account/LoginWithAD.aspx?pages=" _
-                              & PageError.ToString() _
-                              & "&msg=" + DirectCast(LastError, Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
+                              & Application("PageError").ToString() _
+                              & "&msg=" + DirectCast(Application("LastError"), Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
         ElseIf err.GetType().Equals(GetType(System.Security.SecurityException)) Then
             Response.Redirect("~/aspx/error/unauthorized.aspx")
         Else
             'Response.Redirect("~/aspx/error/defaultError.aspx?page=" & Server.UrlEncode(Request.RawUrl) _
             '    & "&msg=" & err.InnerException.Message & err.InnerException.StackTrace)
             Response.Redirect("~/aspx/error/defaultError.aspx?pages=" _
-                              & PageError.ToString() _
-                              & "&msg=" + DirectCast(LastError, Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
+                              & Application("PageError").ToString() _
+                              & "&msg=" + DirectCast(Application("LastError"), Exception).Message.ToString().Replace("&#13;", "<br/>").TrimStart().TrimEnd())
         End If
     End Sub
 

@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="f0ef35f4-b53f-4eea-b505-4a5016be7fc7" name="249888@D790N0242 2013-06-17 10:17:26" runUser="BAYAD\249888" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c491b1a0-8371-4556-9e0f-c16df634ba10">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="249888_D790N0242 2013-06-17 10_17_26">
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModule\bin\Debug\RiskRatingProgressModule.dll" />
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log4net.dll" />
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\Util.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-06-17T10:17:26.2244096+07:00" queuing="2013-06-17T10:17:28.7864504+07:00" start="2013-06-17T10:17:28.9114280+07:00" finish="2013-06-17T10:17:32.3639342+07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="16" executed="16" passed="14" error="0" failed="2" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="DeleteStatusMasterTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="84610bde-f334-0c64-c368-47c38dc4742a">
+      <Execution id="acb6966e-8529-4ed9-9db2-b1e29f892b85" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteStatusMasterTest" />
+    </UnitTest>
+    <UnitTest name="UpdateIssuesTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="58684e6e-3922-9915-b1cc-f2a33e562873">
+      <Execution id="5586da9b-8e9a-49bc-8c42-7002d98d388f" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateIssuesTest" />
+    </UnitTest>
+    <UnitTest name="GetStatusMasterByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="ef8ff8a2-58af-ce80-06a9-972f4675aaac">
+      <Execution id="73c8f8bb-cb57-4f21-b83c-6c23024dbc8a" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetStatusMasterByKeyTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesAllTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="447847c5-ab16-350d-361b-1760ab8f1d59">
+      <Execution id="ac1b7d19-219b-4971-a895-7c174d4a0059" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesAllTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByUpDateStatusKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="a0d5c397-0919-b642-3905-42be5c826f7a">
+      <Execution id="9fc170a8-fe37-41a7-85b1-9151a206529a" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByUpDateStatusKeyTest" />
+    </UnitTest>
+    <UnitTest name="UpdateStatusMasterTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="eeb2fd20-abb8-17bb-8b69-399713edb1f3">
+      <Execution id="632c517c-ebb3-4a40-aea3-60ae01e53bb4" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateStatusMasterTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByEMPIDTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="70413819-cb8d-d06b-9ab3-5fbdb963798e">
+      <Execution id="46096fb0-a366-4573-92b5-7e0f5860f6db" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByEMPIDTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByCIFTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="18b2c02f-7dc2-ba4b-98df-7a6ad7f8bc45">
+      <Execution id="cb05f87a-c396-4d79-8eee-930fad45fcbf" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByCIFTest" />
+    </UnitTest>
+    <UnitTest name="DeleteIssuesTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="8f529d6e-922e-2800-eecd-473e69f337e5">
+      <Execution id="49bf516f-6f36-4fef-901d-169a5c1686d0" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteIssuesTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="c8cbf14c-572f-75cb-4d4f-b6f1222c7cb8">
+      <Execution id="09641882-0b8c-4831-a67c-8469daf3a907" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByKeyTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByUpDateStatusDescTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="7eca3545-77ad-d5fa-ca50-b316ff92a12d">
+      <Execution id="5bfd1fa4-9227-4f4c-8d64-1bce09e28edc" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByUpDateStatusDescTest" />
+    </UnitTest>
+    <UnitTest name="RRPServiceConstructorTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="6b082581-857d-1ac5-e596-6e73cf7931dc">
+      <Execution id="40406d28-698a-4aa6-adf1-9f4fa0e69f45" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RRPServiceConstructorTest" />
+    </UnitTest>
+    <UnitTest name="UpdateIssuesExceptionTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="888f80c7-a840-c617-453f-8216704c68f7">
+      <Execution id="f9f1c47c-c5c2-4624-bc49-7adf27e20796" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateIssuesExceptionTest" />
+    </UnitTest>
+    <UnitTest name="GetStatusMasterAllTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="0322cfd0-9aba-ecb8-9323-c76ade4770b1">
+      <Execution id="7b0927a1-d0b1-4e8f-b4a7-57f4bec23d30" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetStatusMasterAllTest" />
+    </UnitTest>
+    <UnitTest name="DeleteIssuesByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="5ddc1206-2658-94bc-1442-7484895c9e9e">
+      <Execution id="9718718a-c649-4b9b-b922-a0984ef0ae1b" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteIssuesByKeyTest" />
+    </UnitTest>
+    <UnitTest name="DeleteStatusMasterByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="d43455c6-bc27-5417-8970-b200d7b7d089">
+      <Execution id="68854bec-3240-482c-a75c-9f686808ac7d" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteStatusMasterByKeyTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="0322cfd0-9aba-ecb8-9323-c76ade4770b1" executionId="7b0927a1-d0b1-4e8f-b4a7-57f4bec23d30" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18b2c02f-7dc2-ba4b-98df-7a6ad7f8bc45" executionId="cb05f87a-c396-4d79-8eee-930fad45fcbf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="447847c5-ab16-350d-361b-1760ab8f1d59" executionId="ac1b7d19-219b-4971-a895-7c174d4a0059" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="58684e6e-3922-9915-b1cc-f2a33e562873" executionId="5586da9b-8e9a-49bc-8c42-7002d98d388f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ddc1206-2658-94bc-1442-7484895c9e9e" executionId="9718718a-c649-4b9b-b922-a0984ef0ae1b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b082581-857d-1ac5-e596-6e73cf7931dc" executionId="40406d28-698a-4aa6-adf1-9f4fa0e69f45" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="70413819-cb8d-d06b-9ab3-5fbdb963798e" executionId="46096fb0-a366-4573-92b5-7e0f5860f6db" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7eca3545-77ad-d5fa-ca50-b316ff92a12d" executionId="5bfd1fa4-9227-4f4c-8d64-1bce09e28edc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="84610bde-f334-0c64-c368-47c38dc4742a" executionId="acb6966e-8529-4ed9-9db2-b1e29f892b85" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="888f80c7-a840-c617-453f-8216704c68f7" executionId="f9f1c47c-c5c2-4624-bc49-7adf27e20796" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8f529d6e-922e-2800-eecd-473e69f337e5" executionId="49bf516f-6f36-4fef-901d-169a5c1686d0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0d5c397-0919-b642-3905-42be5c826f7a" executionId="9fc170a8-fe37-41a7-85b1-9151a206529a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c8cbf14c-572f-75cb-4d4f-b6f1222c7cb8" executionId="09641882-0b8c-4831-a67c-8469daf3a907" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d43455c6-bc27-5417-8970-b200d7b7d089" executionId="68854bec-3240-482c-a75c-9f686808ac7d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eeb2fd20-abb8-17bb-8b69-399713edb1f3" executionId="632c517c-ebb3-4a40-aea3-60ae01e53bb4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef8ff8a2-58af-ce80-06a9-972f4675aaac" executionId="73c8f8bb-cb57-4f21-b83c-6c23024dbc8a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="7b0927a1-d0b1-4e8f-b4a7-57f4bec23d30" testId="0322cfd0-9aba-ecb8-9323-c76ade4770b1" testName="GetStatusMasterAllTest" computerName="D790N0242" duration="00:00:00.5687599" startTime="2013-06-17T10:17:28.9739168+07:00" endTime="2013-06-17T10:17:29.9112488+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7b0927a1-d0b1-4e8f-b4a7-57f4bec23d30">
+      <Output>
+        <StdOut>log4net: XmlHierarchyConfigurator: Configuration update mode [Merge].
+log4net: XmlHierarchyConfigurator: Logger [root] Level string is [DEBUG].
+log4net: XmlHierarchyConfigurator: Logger [root] level set to [name="DEBUG",value=30000].
+log4net: XmlHierarchyConfigurator: Loading Appender [DebugAppender] type: [log4net.Appender.DebugAppender]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: XmlHierarchyConfigurator: Created Appender [DebugAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [DebugAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Loading Appender [FileAppender] type: [log4net.Appender.RollingFileAppender]
+log4net: XmlHierarchyConfigurator: Parameter [file] specified subtype [log4net.Util.PatternString]
+log4net: PatternParser: Converter [literal] Option [./log/RiskRatingProgress.log] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Performing additional conversion of value from [PatternString] to [String]
+log4net: XmlHierarchyConfigurator: Setting Property [File] to String value [./log/RiskRatingProgress.log]
+log4net: XmlHierarchyConfigurator: Setting Property [AppendToFile] to Boolean value [True]
+log4net: XmlHierarchyConfigurator: Setting Property [RollingStyle] to RollingMode value [Date]
+log4net: XmlHierarchyConfigurator: Setting Property [DatePattern] to String value [yyyy-MM-dd]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: RollingFileAppender: Type = [0], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [1], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [2], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [3], r0 = [1970-01-01], r1 = [1970-01-02]
+log4net: RollingFileAppender: Searched for existing files in [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log]
+log4net: RollingFileAppender: curSizeRollBackups starts at [0]
+log4net: RollingFileAppender: [2013-06-14] vs. [2013-06-17]
+log4net: RollingFileAppender: Initial roll over to [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log2013-06-14]
+log4net: RollingFileAppender: Moving [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] -&gt; [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log2013-06-14]
+log4net: RollingFileAppender: curSizeRollBackups after rollOver at [0]
+log4net: FileAppender: Opening file for writing [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] append [True]
+log4net: XmlHierarchyConfigurator: Created Appender [FileAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [FileAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Hierarchy Threshold []</StdOut>
+        <DebugTrace>log4net: XmlHierarchyConfigurator: Configuration update mode [Merge].
+log4net: XmlHierarchyConfigurator: Logger [root] Level string is [DEBUG].
+log4net: XmlHierarchyConfigurator: Logger [root] level set to [name="DEBUG",value=30000].
+log4net: XmlHierarchyConfigurator: Loading Appender [DebugAppender] type: [log4net.Appender.DebugAppender]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: XmlHierarchyConfigurator: Created Appender [DebugAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [DebugAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Loading Appender [FileAppender] type: [log4net.Appender.RollingFileAppender]
+log4net: XmlHierarchyConfigurator: Parameter [file] specified subtype [log4net.Util.PatternString]
+log4net: PatternParser: Converter [literal] Option [./log/RiskRatingProgress.log] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Performing additional conversion of value from [PatternString] to [String]
+log4net: XmlHierarchyConfigurator: Setting Property [File] to String value [./log/RiskRatingProgress.log]
+log4net: XmlHierarchyConfigurator: Setting Property [AppendToFile] to Boolean value [True]
+log4net: XmlHierarchyConfigurator: Setting Property [RollingStyle] to RollingMode value [Date]
+log4net: XmlHierarchyConfigurator: Setting Property [DatePattern] to String value [yyyy-MM-dd]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: RollingFileAppender: Type = [0], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [1], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [2], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [3], r0 = [1970-01-01], r1 = [1970-01-02]
+log4net: RollingFileAppender: Searched for existing files in [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log]
+log4net: RollingFileAppender: curSizeRollBackups starts at [0]
+log4net: RollingFileAppender: [2013-06-14] vs. [2013-06-17]
+log4net: RollingFileAppender: Initial roll over to [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log2013-06-14]
+log4net: RollingFileAppender: Moving [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] -&gt; [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log2013-06-14]
+log4net: RollingFileAppender: curSizeRollBackups after rollOver at [0]
+log4net: FileAppender: Opening file for writing [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] append [True]
+log4net: XmlHierarchyConfigurator: Created Appender [FileAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [FileAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Hierarchy Threshold []
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cb05f87a-c396-4d79-8eee-930fad45fcbf" testId="18b2c02f-7dc2-ba4b-98df-7a6ad7f8bc45" testName="GetIssuesByCIFTest" computerName="D790N0242" duration="00:00:00.1251407" startTime="2013-06-17T10:17:29.9112488+07:00" endTime="2013-06-17T10:17:30.0362264+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cb05f87a-c396-4d79-8eee-930fad45fcbf">
+    </UnitTestResult>
+    <UnitTestResult executionId="ac1b7d19-219b-4971-a895-7c174d4a0059" testId="447847c5-ab16-350d-361b-1760ab8f1d59" testName="GetIssuesAllTest" computerName="D790N0242" duration="00:00:00.0564518" startTime="2013-06-17T10:17:30.0518486+07:00" endTime="2013-06-17T10:17:30.1143374+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ac1b7d19-219b-4971-a895-7c174d4a0059">
+    </UnitTestResult>
+    <UnitTestResult executionId="5586da9b-8e9a-49bc-8c42-7002d98d388f" testId="58684e6e-3922-9915-b1cc-f2a33e562873" testName="UpdateIssuesTest" computerName="D790N0242" duration="00:00:00.3462289" startTime="2013-06-17T10:17:30.1143374+07:00" endTime="2013-06-17T10:17:30.4580258+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5586da9b-8e9a-49bc-8c42-7002d98d388f">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;False&gt;. Actual:&lt;True&gt;. </Message>
+          <StackTrace>   at RiskRatingProgressModuleTest.RRPServiceTest.UpdateIssuesTest() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 355
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9718718a-c649-4b9b-b922-a0984ef0ae1b" testId="5ddc1206-2658-94bc-1442-7484895c9e9e" testName="DeleteIssuesByKeyTest" computerName="D790N0242" duration="00:00:00.0255473" startTime="2013-06-17T10:17:30.4580258+07:00" endTime="2013-06-17T10:17:30.4892702+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9718718a-c649-4b9b-b922-a0984ef0ae1b">
+    </UnitTestResult>
+    <UnitTestResult executionId="40406d28-698a-4aa6-adf1-9f4fa0e69f45" testId="6b082581-857d-1ac5-e596-6e73cf7931dc" testName="RRPServiceConstructorTest" computerName="D790N0242" duration="00:00:00.0001908" startTime="2013-06-17T10:17:30.4892702+07:00" endTime="2013-06-17T10:17:30.4892702+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="40406d28-698a-4aa6-adf1-9f4fa0e69f45">
+    </UnitTestResult>
+    <UnitTestResult executionId="46096fb0-a366-4573-92b5-7e0f5860f6db" testId="70413819-cb8d-d06b-9ab3-5fbdb963798e" testName="GetIssuesByEMPIDTest" computerName="D790N0242" duration="00:00:00.0702469" startTime="2013-06-17T10:17:30.4892702+07:00" endTime="2013-06-17T10:17:30.5673812+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46096fb0-a366-4573-92b5-7e0f5860f6db">
+    </UnitTestResult>
+    <UnitTestResult executionId="5bfd1fa4-9227-4f4c-8d64-1bce09e28edc" testId="7eca3545-77ad-d5fa-ca50-b316ff92a12d" testName="GetIssuesByUpDateStatusDescTest" computerName="D790N0242" duration="00:00:00.0203369" startTime="2013-06-17T10:17:30.5673812+07:00" endTime="2013-06-17T10:17:30.5986256+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5bfd1fa4-9227-4f4c-8d64-1bce09e28edc">
+    </UnitTestResult>
+    <UnitTestResult executionId="acb6966e-8529-4ed9-9db2-b1e29f892b85" testId="84610bde-f334-0c64-c368-47c38dc4742a" testName="DeleteStatusMasterTest" computerName="D790N0242" duration="00:00:00.0272428" startTime="2013-06-17T10:17:30.5986256+07:00" endTime="2013-06-17T10:17:30.6298700+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="acb6966e-8529-4ed9-9db2-b1e29f892b85">
+    </UnitTestResult>
+    <UnitTestResult executionId="f9f1c47c-c5c2-4624-bc49-7adf27e20796" testId="888f80c7-a840-c617-453f-8216704c68f7" testName="UpdateIssuesExceptionTest" computerName="D790N0242" duration="00:00:00.0182031" startTime="2013-06-17T10:17:30.6298700+07:00" endTime="2013-06-17T10:17:30.6454922+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f9f1c47c-c5c2-4624-bc49-7adf27e20796">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method RiskRatingProgressModuleTest.RRPServiceTest.UpdateIssuesExceptionTest did not throw expected exception System.Data.SqlClient.SqlException.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="49bf516f-6f36-4fef-901d-169a5c1686d0" testId="8f529d6e-922e-2800-eecd-473e69f337e5" testName="DeleteIssuesTest" computerName="D790N0242" duration="00:00:00.0224978" startTime="2013-06-17T10:17:30.6454922+07:00" endTime="2013-06-17T10:17:30.6767366+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="49bf516f-6f36-4fef-901d-169a5c1686d0">
+    </UnitTestResult>
+    <UnitTestResult executionId="9fc170a8-fe37-41a7-85b1-9151a206529a" testId="a0d5c397-0919-b642-3905-42be5c826f7a" testName="GetIssuesByUpDateStatusKeyTest" computerName="D790N0242" duration="00:00:00.0161109" startTime="2013-06-17T10:17:30.6767366+07:00" endTime="2013-06-17T10:17:30.6923588+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9fc170a8-fe37-41a7-85b1-9151a206529a">
+    </UnitTestResult>
+    <UnitTestResult executionId="09641882-0b8c-4831-a67c-8469daf3a907" testId="c8cbf14c-572f-75cb-4d4f-b6f1222c7cb8" testName="GetIssuesByKeyTest" computerName="D790N0242" duration="00:00:00.0073920" startTime="2013-06-17T10:17:30.6923588+07:00" endTime="2013-06-17T10:17:30.7079810+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="09641882-0b8c-4831-a67c-8469daf3a907">
+    </UnitTestResult>
+    <UnitTestResult executionId="68854bec-3240-482c-a75c-9f686808ac7d" testId="d43455c6-bc27-5417-8970-b200d7b7d089" testName="DeleteStatusMasterByKeyTest" computerName="D790N0242" duration="00:00:00.0118948" startTime="2013-06-17T10:17:30.7079810+07:00" endTime="2013-06-17T10:17:30.7236032+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="68854bec-3240-482c-a75c-9f686808ac7d">
+    </UnitTestResult>
+    <UnitTestResult executionId="632c517c-ebb3-4a40-aea3-60ae01e53bb4" testId="eeb2fd20-abb8-17bb-8b69-399713edb1f3" testName="UpdateStatusMasterTest" computerName="D790N0242" duration="00:00:00.0485268" startTime="2013-06-17T10:17:30.7236032+07:00" endTime="2013-06-17T10:17:30.7860920+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="632c517c-ebb3-4a40-aea3-60ae01e53bb4">
+    </UnitTestResult>
+    <UnitTestResult executionId="73c8f8bb-cb57-4f21-b83c-6c23024dbc8a" testId="ef8ff8a2-58af-ce80-06a9-972f4675aaac" testName="GetStatusMasterByKeyTest" computerName="D790N0242" duration="00:00:00.0096467" startTime="2013-06-17T10:17:30.7860920+07:00" endTime="2013-06-17T10:17:30.8017142+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="73c8f8bb-cb57-4f21-b83c-6c23024dbc8a">
+    </UnitTestResult>
+  </Results>
+</TestRun>

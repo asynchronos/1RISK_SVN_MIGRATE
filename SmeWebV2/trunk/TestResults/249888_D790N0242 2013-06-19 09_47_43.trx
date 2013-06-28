@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="1958e91f-13da-4f4a-a21c-afba5e4bc5a0" name="249888@D790N0242 2013-06-19 09:47:43" runUser="BAYAD\249888" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c491b1a0-8371-4556-9e0f-c16df634ba10">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="249888_D790N0242 2013-06-19 09_47_43">
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModule\bin\Debug\RiskRatingProgressModule.dll" />
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log4net.dll" />
+      <DeploymentItem filename="D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\Util.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-06-19T09:47:43.2378714+07:00" queuing="2013-06-19T09:47:43.3314354+07:00" start="2013-06-19T09:47:43.3314354+07:00" finish="2013-06-19T09:47:52.7813994+07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="16" executed="16" passed="11" error="0" failed="5" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="DeleteStatusMasterTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="84610bde-f334-0c64-c368-47c38dc4742a">
+      <Execution id="73188de1-fe8a-4dcf-ab8a-589273b55fe8" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteStatusMasterTest" />
+    </UnitTest>
+    <UnitTest name="UpdateIssuesTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="58684e6e-3922-9915-b1cc-f2a33e562873">
+      <Execution id="6c0e9f09-1042-46b4-8af9-54d56633c1e5" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateIssuesTest" />
+    </UnitTest>
+    <UnitTest name="GetStatusMasterByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="ef8ff8a2-58af-ce80-06a9-972f4675aaac">
+      <Execution id="455a3d31-1245-4063-a9fc-256dee07a8eb" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetStatusMasterByKeyTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesAllTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="447847c5-ab16-350d-361b-1760ab8f1d59">
+      <Execution id="8ffd67dc-6f47-40a1-be36-d751917f26a2" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesAllTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByUpDateStatusKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="a0d5c397-0919-b642-3905-42be5c826f7a">
+      <Execution id="e81f293d-51e8-4d77-bcf8-d72c74fa8b31" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByUpDateStatusKeyTest" />
+    </UnitTest>
+    <UnitTest name="UpdateStatusMasterTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="eeb2fd20-abb8-17bb-8b69-399713edb1f3">
+      <Execution id="ba076675-686a-4d58-86ee-ed20914ca295" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateStatusMasterTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByEMPIDTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="70413819-cb8d-d06b-9ab3-5fbdb963798e">
+      <Execution id="b6ededfe-abbe-493a-a51b-5b8404ee3c64" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByEMPIDTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByCIFTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="18b2c02f-7dc2-ba4b-98df-7a6ad7f8bc45">
+      <Execution id="38b4bd48-ca04-46a5-8705-45814cbb7075" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByCIFTest" />
+    </UnitTest>
+    <UnitTest name="DeleteIssuesTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="8f529d6e-922e-2800-eecd-473e69f337e5">
+      <Execution id="4cb314f2-22df-47ce-b2ae-1c031e7f875c" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteIssuesTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="c8cbf14c-572f-75cb-4d4f-b6f1222c7cb8">
+      <Execution id="db5860b7-5eba-4ce2-898a-a5c938c30cfb" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByKeyTest" />
+    </UnitTest>
+    <UnitTest name="GetIssuesByUpDateStatusDescTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="7eca3545-77ad-d5fa-ca50-b316ff92a12d">
+      <Execution id="37aee918-d57e-4395-8c32-c7a04899d930" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetIssuesByUpDateStatusDescTest" />
+    </UnitTest>
+    <UnitTest name="RRPServiceConstructorTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="6b082581-857d-1ac5-e596-6e73cf7931dc">
+      <Execution id="6897030d-46c0-468e-9a0e-a2045ecece44" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RRPServiceConstructorTest" />
+    </UnitTest>
+    <UnitTest name="UpdateIssuesExceptionTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="888f80c7-a840-c617-453f-8216704c68f7">
+      <Execution id="150e49c9-7aae-4726-adb5-ba4d869720c5" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UpdateIssuesExceptionTest" />
+    </UnitTest>
+    <UnitTest name="GetStatusMasterAllTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="0322cfd0-9aba-ecb8-9323-c76ade4770b1">
+      <Execution id="7d6c74cf-30d3-4a3a-8265-6c7fa3891e7f" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetStatusMasterAllTest" />
+    </UnitTest>
+    <UnitTest name="DeleteIssuesByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="5ddc1206-2658-94bc-1442-7484895c9e9e">
+      <Execution id="45ec2c9e-4df5-4d64-aeb7-85d9b41855dc" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteIssuesByKeyTest" />
+    </UnitTest>
+    <UnitTest name="DeleteStatusMasterByKeyTest" storage="d:\workspaces\2012\riskratingprogressmoduletest\bin\debug\riskratingprogressmoduletest.dll" id="d43455c6-bc27-5417-8970-b200d7b7d089">
+      <Execution id="5f691f0d-ed37-4724-ad06-a019d6ee05fa" />
+      <TestMethod codeBase="D:/workspaces/2012/RiskRatingProgressModuleTest/bin/Debug/RiskRatingProgressModuleTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RiskRatingProgressModuleTest.RRPServiceTest, RiskRatingProgressModuleTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DeleteStatusMasterByKeyTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="0322cfd0-9aba-ecb8-9323-c76ade4770b1" executionId="7d6c74cf-30d3-4a3a-8265-6c7fa3891e7f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18b2c02f-7dc2-ba4b-98df-7a6ad7f8bc45" executionId="38b4bd48-ca04-46a5-8705-45814cbb7075" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="447847c5-ab16-350d-361b-1760ab8f1d59" executionId="8ffd67dc-6f47-40a1-be36-d751917f26a2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="58684e6e-3922-9915-b1cc-f2a33e562873" executionId="6c0e9f09-1042-46b4-8af9-54d56633c1e5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ddc1206-2658-94bc-1442-7484895c9e9e" executionId="45ec2c9e-4df5-4d64-aeb7-85d9b41855dc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b082581-857d-1ac5-e596-6e73cf7931dc" executionId="6897030d-46c0-468e-9a0e-a2045ecece44" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="70413819-cb8d-d06b-9ab3-5fbdb963798e" executionId="b6ededfe-abbe-493a-a51b-5b8404ee3c64" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7eca3545-77ad-d5fa-ca50-b316ff92a12d" executionId="37aee918-d57e-4395-8c32-c7a04899d930" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="84610bde-f334-0c64-c368-47c38dc4742a" executionId="73188de1-fe8a-4dcf-ab8a-589273b55fe8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="888f80c7-a840-c617-453f-8216704c68f7" executionId="150e49c9-7aae-4726-adb5-ba4d869720c5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8f529d6e-922e-2800-eecd-473e69f337e5" executionId="4cb314f2-22df-47ce-b2ae-1c031e7f875c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0d5c397-0919-b642-3905-42be5c826f7a" executionId="e81f293d-51e8-4d77-bcf8-d72c74fa8b31" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c8cbf14c-572f-75cb-4d4f-b6f1222c7cb8" executionId="db5860b7-5eba-4ce2-898a-a5c938c30cfb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d43455c6-bc27-5417-8970-b200d7b7d089" executionId="5f691f0d-ed37-4724-ad06-a019d6ee05fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eeb2fd20-abb8-17bb-8b69-399713edb1f3" executionId="ba076675-686a-4d58-86ee-ed20914ca295" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef8ff8a2-58af-ce80-06a9-972f4675aaac" executionId="455a3d31-1245-4063-a9fc-256dee07a8eb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="7d6c74cf-30d3-4a3a-8265-6c7fa3891e7f" testId="0322cfd0-9aba-ecb8-9323-c76ade4770b1" testName="GetStatusMasterAllTest" computerName="D790N0242" duration="00:00:05.4236761" startTime="2013-06-19T09:47:43.3470294+07:00" endTime="2013-06-19T09:47:48.9140874+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d6c74cf-30d3-4a3a-8265-6c7fa3891e7f">
+      <Output>
+        <StdOut>log4net: XmlHierarchyConfigurator: Configuration update mode [Merge].
+log4net: XmlHierarchyConfigurator: Logger [root] Level string is [DEBUG].
+log4net: XmlHierarchyConfigurator: Logger [root] level set to [name="DEBUG",value=30000].
+log4net: XmlHierarchyConfigurator: Loading Appender [DebugAppender] type: [log4net.Appender.DebugAppender]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: XmlHierarchyConfigurator: Created Appender [DebugAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [DebugAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Loading Appender [FileAppender] type: [log4net.Appender.RollingFileAppender]
+log4net: XmlHierarchyConfigurator: Parameter [file] specified subtype [log4net.Util.PatternString]
+log4net: PatternParser: Converter [literal] Option [./log/RiskRatingProgress.log] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Performing additional conversion of value from [PatternString] to [String]
+log4net: XmlHierarchyConfigurator: Setting Property [File] to String value [./log/RiskRatingProgress.log]
+log4net: XmlHierarchyConfigurator: Setting Property [AppendToFile] to Boolean value [True]
+log4net: XmlHierarchyConfigurator: Setting Property [RollingStyle] to RollingMode value [Date]
+log4net: XmlHierarchyConfigurator: Setting Property [DatePattern] to String value [yyyy-MM-dd]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: RollingFileAppender: Type = [0], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [1], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [2], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [3], r0 = [1970-01-01], r1 = [1970-01-02]
+log4net: RollingFileAppender: Searched for existing files in [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log]
+log4net: RollingFileAppender: curSizeRollBackups starts at [0]
+log4net: RollingFileAppender: [2013-06-18] vs. [2013-06-19]
+log4net: RollingFileAppender: Initial roll over to [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log2013-06-18]
+log4net: RollingFileAppender: Moving [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] -&gt; [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log2013-06-18]
+log4net: RollingFileAppender: curSizeRollBackups after rollOver at [0]
+log4net: FileAppender: Opening file for writing [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] append [True]
+log4net: XmlHierarchyConfigurator: Created Appender [FileAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [FileAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Hierarchy Threshold []</StdOut>
+        <DebugTrace>log4net: XmlHierarchyConfigurator: Configuration update mode [Merge].
+log4net: XmlHierarchyConfigurator: Logger [root] Level string is [DEBUG].
+log4net: XmlHierarchyConfigurator: Logger [root] level set to [name="DEBUG",value=30000].
+log4net: XmlHierarchyConfigurator: Loading Appender [DebugAppender] type: [log4net.Appender.DebugAppender]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: XmlHierarchyConfigurator: Created Appender [DebugAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [DebugAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Loading Appender [FileAppender] type: [log4net.Appender.RollingFileAppender]
+log4net: XmlHierarchyConfigurator: Parameter [file] specified subtype [log4net.Util.PatternString]
+log4net: PatternParser: Converter [literal] Option [./log/RiskRatingProgress.log] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Performing additional conversion of value from [PatternString] to [String]
+log4net: XmlHierarchyConfigurator: Setting Property [File] to String value [./log/RiskRatingProgress.log]
+log4net: XmlHierarchyConfigurator: Setting Property [AppendToFile] to Boolean value [True]
+log4net: XmlHierarchyConfigurator: Setting Property [RollingStyle] to RollingMode value [Date]
+log4net: XmlHierarchyConfigurator: Setting Property [DatePattern] to String value [yyyy-MM-dd]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [ConversionPattern] to String value [%date [%thread] %-5level %logger %property{user} %property{url} - %message%newline]
+log4net: PatternParser: Converter [date] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [user] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [property] Option [url] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: PatternParser: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: XmlHierarchyConfigurator: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: RollingFileAppender: Type = [0], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [1], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [2], r0 = [1970-01-01], r1 = [1970-01-01]
+log4net: RollingFileAppender: Type = [3], r0 = [1970-01-01], r1 = [1970-01-02]
+log4net: RollingFileAppender: Searched for existing files in [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log]
+log4net: RollingFileAppender: curSizeRollBackups starts at [0]
+log4net: RollingFileAppender: [2013-06-18] vs. [2013-06-19]
+log4net: RollingFileAppender: Initial roll over to [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log2013-06-18]
+log4net: RollingFileAppender: Moving [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] -&gt; [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log2013-06-18]
+log4net: RollingFileAppender: curSizeRollBackups after rollOver at [0]
+log4net: FileAppender: Opening file for writing [D:\workspaces\2012\RiskRatingProgressModuleTest\bin\Debug\log\RiskRatingProgress.log] append [True]
+log4net: XmlHierarchyConfigurator: Created Appender [FileAppender]
+log4net: XmlHierarchyConfigurator: Adding appender named [FileAppender] to logger [root].
+log4net: XmlHierarchyConfigurator: Hierarchy Threshold []
+</DebugTrace>
+        <ErrorInfo>
+          <Message>Test method RiskRatingProgressModuleTest.RRPServiceTest.GetStatusMasterAllTest threw exception: 
+System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Model\RiskRatingProgressStatusModel.cs:line 11
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..ctor()
+   at lambda_method(Closure , Shaper )
+   at System.Data.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at RiskRatingProgressModule.Service.RRPService.GetStatusMasterAll() in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 471
+   at RiskRatingProgressModuleTest.RRPServiceTest.GetStatusMasterAllTest() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 165
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="38b4bd48-ca04-46a5-8705-45814cbb7075" testId="18b2c02f-7dc2-ba4b-98df-7a6ad7f8bc45" testName="GetIssuesByCIFTest" computerName="D790N0242" duration="00:00:00.8214264" startTime="2013-06-19T09:47:48.9140874+07:00" endTime="2013-06-19T09:47:49.7405694+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="38b4bd48-ca04-46a5-8705-45814cbb7075">
+    </UnitTestResult>
+    <UnitTestResult executionId="8ffd67dc-6f47-40a1-be36-d751917f26a2" testId="447847c5-ab16-350d-361b-1760ab8f1d59" testName="GetIssuesAllTest" computerName="D790N0242" duration="00:00:00.0379372" startTime="2013-06-19T09:47:49.7405694+07:00" endTime="2013-06-19T09:47:49.7873514+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8ffd67dc-6f47-40a1-be36-d751917f26a2">
+    </UnitTestResult>
+    <UnitTestResult executionId="6c0e9f09-1042-46b4-8af9-54d56633c1e5" testId="58684e6e-3922-9915-b1cc-f2a33e562873" testName="UpdateIssuesTest" computerName="D790N0242" duration="00:00:00.5046783" startTime="2013-06-19T09:47:49.7873514+07:00" endTime="2013-06-19T09:47:50.3019534+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6c0e9f09-1042-46b4-8af9-54d56633c1e5">
+      <Output>
+        <DebugTrace>RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:49,802 [Agent: adapter run thread for test 'UpdateIssuesTest' with id '6c0e9f09-1042-46b4-8af9-54d56633c1e5'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - UpdateStatusMasterJson Invoking.
+RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:49,818 [Agent: adapter run thread for test 'UpdateIssuesTest' with id '6c0e9f09-1042-46b4-8af9-54d56633c1e5'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - idenKey:1
+RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:50,286 [Agent: adapter run thread for test 'UpdateIssuesTest' with id '6c0e9f09-1042-46b4-8af9-54d56633c1e5'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - UpdateStatusMasterJson Invoking.
+RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:50,286 [Agent: adapter run thread for test 'UpdateIssuesTest' with id '6c0e9f09-1042-46b4-8af9-54d56633c1e5'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - idenKey:1
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="45ec2c9e-4df5-4d64-aeb7-85d9b41855dc" testId="5ddc1206-2658-94bc-1442-7484895c9e9e" testName="DeleteIssuesByKeyTest" computerName="D790N0242" duration="00:00:00.0176019" startTime="2013-06-19T09:47:50.3019534+07:00" endTime="2013-06-19T09:47:50.3175474+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="45ec2c9e-4df5-4d64-aeb7-85d9b41855dc">
+      <Output>
+        <DebugTrace>RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:50,317 [Agent: adapter run thread for test 'DeleteIssuesByKeyTest' with id '45ec2c9e-4df5-4d64-aeb7-85d9b41855dc'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - UpdateStatusMasterJson Invoking.
+RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:50,317 [Agent: adapter run thread for test 'DeleteIssuesByKeyTest' with id '45ec2c9e-4df5-4d64-aeb7-85d9b41855dc'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - idenKey:1
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6897030d-46c0-468e-9a0e-a2045ecece44" testId="6b082581-857d-1ac5-e596-6e73cf7931dc" testName="RRPServiceConstructorTest" computerName="D790N0242" duration="00:00:00.0001402" startTime="2013-06-19T09:47:50.3175474+07:00" endTime="2013-06-19T09:47:50.3175474+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6897030d-46c0-468e-9a0e-a2045ecece44">
+    </UnitTestResult>
+    <UnitTestResult executionId="b6ededfe-abbe-493a-a51b-5b8404ee3c64" testId="70413819-cb8d-d06b-9ab3-5fbdb963798e" testName="GetIssuesByEMPIDTest" computerName="D790N0242" duration="00:00:00.0449425" startTime="2013-06-19T09:47:50.3331414+07:00" endTime="2013-06-19T09:47:50.3799234+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b6ededfe-abbe-493a-a51b-5b8404ee3c64">
+      <Output>
+        <DebugTrace>RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:50,333 [Agent: adapter run thread for test 'GetIssuesByEMPIDTest' with id 'b6ededfe-abbe-493a-a51b-5b8404ee3c64'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - empId:245191
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="37aee918-d57e-4395-8c32-c7a04899d930" testId="7eca3545-77ad-d5fa-ca50-b316ff92a12d" testName="GetIssuesByUpDateStatusDescTest" computerName="D790N0242" duration="00:00:00.0826646" startTime="2013-06-19T09:47:50.3799234+07:00" endTime="2013-06-19T09:47:50.4578934+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="37aee918-d57e-4395-8c32-c7a04899d930">
+    </UnitTestResult>
+    <UnitTestResult executionId="73188de1-fe8a-4dcf-ab8a-589273b55fe8" testId="84610bde-f334-0c64-c368-47c38dc4742a" testName="DeleteStatusMasterTest" computerName="D790N0242" duration="00:00:00.1151593" startTime="2013-06-19T09:47:50.4578934+07:00" endTime="2013-06-19T09:47:50.5826454+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="73188de1-fe8a-4dcf-ab8a-589273b55fe8">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method RiskRatingProgressModuleTest.RRPServiceTest.DeleteStatusMasterTest threw exception: 
+System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Model\RiskRatingProgressStatusModel.cs:line 11
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..ctor()
+   at lambda_method(Closure , Shaper )
+   at System.Data.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.&lt;GetElementFunction&gt;b__1[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at RiskRatingProgressModule.Service.RRPService.GetStatusMasterByKey(Int32 idenKey) in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 486
+   at RiskRatingProgressModuleTest.RRPServiceTest.DeleteStatusMasterTest() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 132
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="150e49c9-7aae-4726-adb5-ba4d869720c5" testId="888f80c7-a840-c617-453f-8216704c68f7" testName="UpdateIssuesExceptionTest" computerName="D790N0242" duration="00:00:00.4398100" startTime="2013-06-19T09:47:50.5826454+07:00" endTime="2013-06-19T09:47:51.0348714+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="150e49c9-7aae-4726-adb5-ba4d869720c5">
+      <Output>
+        <DebugTrace>RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:50,582 [Agent: adapter run thread for test 'UpdateIssuesExceptionTest' with id '150e49c9-7aae-4726-adb5-ba4d869720c5'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - UpdateStatusMasterJson Invoking.
+RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:50,582 [Agent: adapter run thread for test 'UpdateIssuesExceptionTest' with id '150e49c9-7aae-4726-adb5-ba4d869720c5'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - idenKey:1
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4cb314f2-22df-47ce-b2ae-1c031e7f875c" testId="8f529d6e-922e-2800-eecd-473e69f337e5" testName="DeleteIssuesTest" computerName="D790N0242" duration="00:00:00.0230791" startTime="2013-06-19T09:47:51.0348714+07:00" endTime="2013-06-19T09:47:51.0504654+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4cb314f2-22df-47ce-b2ae-1c031e7f875c">
+      <Output>
+        <DebugTrace>RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:51,034 [Agent: adapter run thread for test 'DeleteIssuesTest' with id '4cb314f2-22df-47ce-b2ae-1c031e7f875c'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - UpdateStatusMasterJson Invoking.
+RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:51,034 [Agent: adapter run thread for test 'DeleteIssuesTest' with id '4cb314f2-22df-47ce-b2ae-1c031e7f875c'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - idenKey:1
+RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:51,050 [Agent: adapter run thread for test 'DeleteIssuesTest' with id '4cb314f2-22df-47ce-b2ae-1c031e7f875c'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - UpdateStatusMasterJson Invoking.
+RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:51,050 [Agent: adapter run thread for test 'DeleteIssuesTest' with id '4cb314f2-22df-47ce-b2ae-1c031e7f875c'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - idenKey:1
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e81f293d-51e8-4d77-bcf8-d72c74fa8b31" testId="a0d5c397-0919-b642-3905-42be5c826f7a" testName="GetIssuesByUpDateStatusKeyTest" computerName="D790N0242" duration="00:00:00.0131435" startTime="2013-06-19T09:47:51.0504654+07:00" endTime="2013-06-19T09:47:51.0660594+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e81f293d-51e8-4d77-bcf8-d72c74fa8b31">
+    </UnitTestResult>
+    <UnitTestResult executionId="db5860b7-5eba-4ce2-898a-a5c938c30cfb" testId="c8cbf14c-572f-75cb-4d4f-b6f1222c7cb8" testName="GetIssuesByKeyTest" computerName="D790N0242" duration="00:00:00.0099317" startTime="2013-06-19T09:47:51.0816534+07:00" endTime="2013-06-19T09:47:51.0972474+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="db5860b7-5eba-4ce2-898a-a5c938c30cfb">
+      <Output>
+        <DebugTrace>RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:51,081 [Agent: adapter run thread for test 'GetIssuesByKeyTest' with id 'db5860b7-5eba-4ce2-898a-a5c938c30cfb'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - UpdateStatusMasterJson Invoking.
+RiskRatingProgressModule.Service.RRPService: 2013-06-19 09:47:51,081 [Agent: adapter run thread for test 'GetIssuesByKeyTest' with id 'db5860b7-5eba-4ce2-898a-a5c938c30cfb'] DEBUG RiskRatingProgressModule.Service.RRPService (null) (null) - idenKey:1
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5f691f0d-ed37-4724-ad06-a019d6ee05fa" testId="d43455c6-bc27-5417-8970-b200d7b7d089" testName="DeleteStatusMasterByKeyTest" computerName="D790N0242" duration="00:00:00.0294950" startTime="2013-06-19T09:47:51.0972474+07:00" endTime="2013-06-19T09:47:51.1284354+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5f691f0d-ed37-4724-ad06-a019d6ee05fa">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method RiskRatingProgressModuleTest.RRPServiceTest.DeleteStatusMasterByKeyTest threw exception: 
+System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Model\RiskRatingProgressStatusModel.cs:line 11
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..ctor()
+   at lambda_method(Closure , Shaper )
+   at System.Data.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.&lt;GetElementFunction&gt;b__1[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at RiskRatingProgressModule.Service.RRPService.GetStatusMasterByKey(Int32 idenKey) in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 486
+   at RiskRatingProgressModuleTest.RRPServiceTest.DeleteStatusMasterByKeyTest() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 118
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ba076675-686a-4d58-86ee-ed20914ca295" testId="eeb2fd20-abb8-17bb-8b69-399713edb1f3" testName="UpdateStatusMasterTest" computerName="D790N0242" duration="00:00:00.0076593" startTime="2013-06-19T09:47:51.1284354+07:00" endTime="2013-06-19T09:47:51.1440294+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ba076675-686a-4d58-86ee-ed20914ca295">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method RiskRatingProgressModuleTest.RRPServiceTest.UpdateStatusMasterTest threw exception: 
+System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Model\RiskRatingProgressStatusModel.cs:line 11
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..ctor()
+   at lambda_method(Closure , Shaper )
+   at System.Data.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.&lt;GetElementFunction&gt;b__1[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at RiskRatingProgressModule.Service.RRPService.GetStatusMasterByKey(Int32 idenKey) in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 486
+   at RiskRatingProgressModuleTest.RRPServiceTest.UpdateStatusMasterTest() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 403
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="455a3d31-1245-4063-a9fc-256dee07a8eb" testId="ef8ff8a2-58af-ce80-06a9-972f4675aaac" testName="GetStatusMasterByKeyTest" computerName="D790N0242" duration="00:00:00.0078814" startTime="2013-06-19T09:47:51.1440294+07:00" endTime="2013-06-19T09:47:51.1596234+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="455a3d31-1245-4063-a9fc-256dee07a8eb">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method RiskRatingProgressModuleTest.RRPServiceTest.GetStatusMasterByKeyTest threw exception: 
+System.TypeInitializationException: The type initializer for 'RiskRatingProgressModule.Model.RiskRatingProgressStatusModel' threw an exception. ---&gt; System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..cctor() in D:\workspaces\2012\RiskRatingProgressModule\Model\RiskRatingProgressStatusModel.cs:line 11
+ --- End of inner exception stack trace ---
+    at RiskRatingProgressModule.Model.RiskRatingProgressStatusModel..ctor()
+   at lambda_method(Closure , Shaper )
+   at System.Data.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   at System.Data.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.&lt;GetElementFunction&gt;b__1[TResult](IEnumerable`1 sequence)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at RiskRatingProgressModule.Service.RRPService.GetStatusMasterByKey(Int32 idenKey) in D:\workspaces\2012\RiskRatingProgressModule\Service\RRPService.cs:line 486
+   at RiskRatingProgressModuleTest.RRPServiceTest.GetStatusMasterByKeyTest() in D:\workspaces\2012\RiskRatingProgressModuleTest\RRPServiceTest.cs:line 431
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

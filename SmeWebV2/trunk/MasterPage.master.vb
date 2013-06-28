@@ -7,9 +7,12 @@ Namespace SMEWeb
         Inherits System.Web.UI.MasterPage
 
         Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
-            addHeaderLinkAt(0, "~/js/ext3.0/resources/css/ext-all.css")
-            addHeaderScriptAt(1, "~/js/ext3.0/adapter/ext/ext-base.js")
-            addHeaderScriptAt(2, "~/js/ext3.0/ext-all.js")
+            'addHeaderLinkAt(0, "~/js/ext3.0/resources/css/ext-all.css")
+            'addHeaderScriptAt(1, "~/js/ext3.0/adapter/ext/ext-base.js")
+            'addHeaderScriptAt(2, "~/js/ext3.0/ext-all.js")
+
+            addHeaderLinkAt(0, "~/js/ext-4.2.0.663/resources/css/ext-all.css")
+            addHeaderScriptAt(1, "~/js/ext-4.2.0.663/ext-all-debug.js")
 
             addHeaderLinkAt(3, "~/theme/MyStyleSheet.css")
 
