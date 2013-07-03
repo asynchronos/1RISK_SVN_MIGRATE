@@ -15,45 +15,46 @@
 			</authorization>
 		</system.web>
 	</location>
+	<!--<location path="~/webservice/RRPService.svc/jsdebug">
+    <system.web>
+      <authorization>
+        <allow users="*"/>
+      </authorization>
+    </system.web>
+  </location>-->
 	<appSettings>
-		<add key="ReleaseNote" value="Ver 1.0.02 (12-Feb-2013)" />
-		<add key="APPLICATION_NAME" value="SmeWeb"/>
-		<add key="ChartImageHandler" value="storage=file;timeout=20;dir=c:\TempImageFiles\;"/>
-		<add key="LDAP_PORT" value="389"/>
+		<add key="DetailNote" value="SME Credit Risk Division" />
+		<add key="ReleaseNote" value="Ver 1.1.01 (03-Jul-2013)" />
+		<add key="APPLICATION_NAME" value="SmeWeb" />
+		<add key="ChartImageHandler" value="storage=file;timeout=20;Url=~/images/dundas/;" />
+		<add key="LDAP_PORT" value="389" />
 		<add key="LDAP_USERNAME" value="leader1_adm" />
 		<add key="LDAP_PASSWORD" value="E6ncTK@D" />
-		<add key="IsProduction" value="1"/>
+		<add key="IsProduction" value="1" />
 		<add key="LDAP_SERVER" value="bayad.co.th"/>
+
 		<!--Dev-->
 		<!--<add key="Log4netConfigPath" value="D:\workspaces\2012\SmeWebV2\Log4net.SMEWeb.config"/>-->
 		<!--Production-->
 		<add key="Log4netConfigPath" value="E:\Web\SmeWeb\Log4net.SMEWeb.config"/>
 	</appSettings>
 	<!--Dev-->
-	<!--<connectionStrings>
-		<add name="BAY01ConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=BAY01;Persist Security Info=True;User ID=smeweb;Password=sa0123;Max Pool Size=10;Min Pool Size=3;"
-		 providerName="System.Data.SqlClient" />
-		<add name="SMConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=SM;User ID=smeweb;Password=sa0123"
-		 providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;" />
-		<add name="NEW_DEPConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=NEW_DEP;Persist Security Info=True;User ID=smeweb;Password=sa0123;Max Pool Size=10;Min Pool Size=3;"
-		 providerName="System.Data.SqlClient" />
-		<add name="STOPConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=STOP;User ID=smeweb;Password=sa0123"
-		 providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;" />
-		-->
-	<!--<add name="EDW_Connectionstring" connectionString="Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.32.52)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edw)));User Id=SMETEAM;Password=SME#2010;"
-		 providerName="System.Data.OracleClient" />-->
 	<!--
-		<add name="EDWConnectionString" connectionString="DATA SOURCE=EDW;PASSWORD=sme#2010;PERSIST SECURITY INFO=True;USER ID=SMETEAM"
-		providerName="Oracle.DataAccess.Client" />
-	</connectionStrings>-->
+	<connectionStrings>
+		<add name="BAY01ConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=BAY01;Persist Security Info=True;User ID=smeweb;Password=sa0123;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
+		<add name="SMConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=SM;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
+		<add name="NEW_DEPConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=NEW_DEP;Persist Security Info=True;User ID=smeweb;Password=sa0123;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
+		<add name="STOPConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=STOP;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
+		<add name="EDWConnectionString" connectionString="DATA SOURCE=EDW;PASSWORD=sme#2010;PERSIST SECURITY INFO=True;USER ID=SMETEAM" providerName="Oracle.DataAccess.Client"/>
+		<add name="UserSystemEntities" connectionString="metadata=res://*/UserSystemEntitiesModel.csdl|res://*/UserSystemEntitiesModel.ssdl|res://*/UserSystemEntitiesModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=172.19.54.2;Initial Catalog=SME;Persist Security Info=True;User ID=sa;Password=sa0123;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient"/>
+		<add name="RRPEntities" connectionString="metadata=res://*/RiskRatingProgressModel.csdl|res://*/RiskRatingProgressModel.ssdl|res://*/RiskRatingProgressModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=172.19.54.2;initial catalog=BAY01;persist security info=True;user id=smeweb;password=sa0123;min pool size=3;max pool size=10;multipleactiveresultsets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient"/>
+	</connectionStrings>
+	-->
 	<!--Production-->
 	<connectionStrings>
-		<add name="BAY01ConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=BAY01;Persist Security Info=True;User ID=smeweb;Password=Web#11sme;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
-		<add name="SMConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=SM;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
-		<add name="NEW_DEPConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=NEW_DEP;Persist Security Info=True;User ID=smeweb;Password=Web#11sme;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
-		<add name="STOPConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=STOP;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
+		<add name="BAY01ConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=BAY01;Persist Security Info=True;User ID=smeweb;Password=Web#11sme;Max Pool Size=30;Min Pool Size=3;Connect Timeout=120;" providerName="System.Data.SqlClient"/>
 		<add name="EDWConnectionString" connectionString="DATA SOURCE=EDW;PASSWORD=sme#2010;PERSIST SECURITY INFO=True;USER ID=SMETEAM" providerName="Oracle.DataAccess.Client" />
-		<!--<add name="UserSystemEntities" connectionString="metadata=res://*/UserSystemEntitiesModel.csdl|res://*/UserSystemEntitiesModel.ssdl|res://*/UserSystemEntitiesModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=172.19.14.244;Initial Catalog=SME;Persist Security Info=True;User ID=sa;Password=sa0123;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient"/>-->
+		<add name="RRPEntities" connectionString="metadata=res://*/RiskRatingProgressModel.csdl|res://*/RiskRatingProgressModel.ssdl|res://*/RiskRatingProgressModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=192.168.33.106,9677;initial catalog=BAY01;persist security info=True;user ID=smeweb;Password=Web#11sme;min pool size=3;max pool size=10;multipleactiveresultsets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient"/>
 	</connectionStrings>
 	<system.web>
 		<httpRuntime maxRequestLength="307200" executionTimeout="360"/>
@@ -132,9 +133,21 @@
 		<membership defaultProvider="MyMembershipProvider">
 			<providers>
 				<clear/>
-				<add name="MyMembershipProvider" type="SME.UserSystem.Core.Providers.AsynchronosMembershipProvider" connectionStringName="ApplicationServices" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="false" requiresUniqueEmail="false" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="6" minRequiredNonalphanumericCharacters="0" passwordAttemptWindow="10" applicationName="/"/>
+				<add name="MyMembershipProvider" type="SME.UserSystem.Core.Providers.AsynchronosMembershipProvider" connectionStringName="ApplicationServices" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="false" requiresUniqueEmail="false" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="6" minRequiredNonalphanumericCharacters="0" passwordAttemptWindow="10" applicationName="/" LDAPOnly="true" />
 			</providers>
 		</membership>
+		<!--
+		<profile defaultProvider="MyProfileProvider">
+		  <providers>
+			<clear/>
+			<add name="MyProfileProvider" type="SME.UserSystem.Core.Providers.AsynchronosProfileProvider" connectionStringName="UserSystemEntities" applicationName="/"/>
+		  </providers>
+		  <properties>
+			<clear/>
+			<add name="ProfileViewModel" type="SME.UserSystem.Core.Model.ProfileViewModel"/>
+		  </properties>
+		</profile>
+		-->
 		<!--
             The <customErrors> section enables configuration
             of what to do if/when an unhandled error occurs
@@ -164,59 +177,9 @@
 				<binding name="webHttpsBinding">
 					<security mode="Transport" />
 				</binding>
-			</webHttpBinding>
-		</bindings>
-		<behaviors>
-			<endpointBehaviors>
-				<behavior name="CustomerWCFServiceAspNetAjaxBehavior">
-					<enableWebScript/>
-				</behavior>
-				<behavior name="EmployeeWCFServiceAspNetAjaxBehavior">
-					<enableWebScript/>
-				</behavior>
-				<behavior name="BranchWCFServiceAspNetAjaxBehavior">
-					<enableWebScript/>
-				</behavior>
-				<behavior name="BusinessTypeWCFServiceAspNetAjaxBehavior">
-					<enableWebScript/>
-				</behavior>
-				<behavior name="StopProgramWCFServiceAspNetAjaxBehavior">
-					<enableWebScript/>
-				</behavior>
-				<behavior name="CAWCFServiceAspNetAjaxBehavior">
-					<enableWebScript/>
-				</behavior>
-			</endpointBehaviors>
-		</behaviors>
-		<serviceHostingEnvironment aspNetCompatibilityEnabled="true"/>
-		<services>
-			<service name="webservice.wcf.service.CustomerWCFService">
-				<endpoint address="" behaviorConfiguration="CustomerWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.CustomerWCFService"/>
-			</service>
-			<service name="webservice.wcf.service.EmployeeWCFService">
-				<endpoint address="" behaviorConfiguration="EmployeeWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.EmployeeWCFService"/>
-			</service>
-			<service name="webservice.wcf.service.BranchWCFService">
-				<endpoint address="" behaviorConfiguration="BranchWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.BranchWCFService"/>
-			</service>
-			<service name="webservice.wcf.service.BusinessTypeWCFService">
-				<endpoint address="" behaviorConfiguration="BusinessTypeWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.BusinessTypeWCFService"/>
-			</service>
-			<service name="webservice.wcf.service.StopProgramWCFService">
-				<endpoint address="" behaviorConfiguration="StopProgramWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.StopProgramWCFService"/>
-			</service>
-			<service name="webservice.wcf.service.CAWCFService">
-				<endpoint address="" behaviorConfiguration="CAWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.CAWCFService"/>
-			</service>
-		</services>
-	</system.serviceModel>
-	<!--Dev-->
-	<!--
-	<system.serviceModel>
-		<bindings>
-			<webHttpBinding>
-				<binding name="webHttpsBinding">
-					<security mode="Transport" />
+				<binding name="StreamedRequestWebBinding" bypassProxyOnLocal="true" useDefaultWebProxy="false" hostNameComparisonMode="WeakWildcard" sendTimeout="10:15:00" openTimeout="10:15:00" receiveTimeout="10:15:00" maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" maxBufferPoolSize="2147483647" transferMode="StreamedRequest">
+					<security mode="Transport"/>
+					<readerQuotas maxArrayLength="2147483647" maxStringContentLength="2147483647"/>
 				</binding>
 			</webHttpBinding>
 		</bindings>
@@ -240,9 +203,92 @@
 				<behavior name="CAWCFServiceAspNetAjaxBehavior">
 					<enableWebScript/>
 				</behavior>
+				<behavior name="RRPServiceAspNetAjaxBehavior">
+					<webHttp defaultBodyStyle="WrappedResponse" defaultOutgoingResponseFormat="Json" />
+				</behavior>
 			</endpointBehaviors>
+			<serviceBehaviors>
+				<behavior name="RRPServiceAspNetSOAPBehavior">
+					<serviceMetadata httpGetEnabled="false"/>
+					<serviceDebug includeExceptionDetailInFaults="true"/>
+				</behavior>
+			</serviceBehaviors>
 		</behaviors>
 		<serviceHostingEnvironment aspNetCompatibilityEnabled="true"/>
+		<services>
+			<service name="webservice.wcf.service.CustomerWCFService">
+				<endpoint address="" behaviorConfiguration="CustomerWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.CustomerWCFService"/>
+			</service>
+			<service name="webservice.wcf.service.EmployeeWCFService">
+				<endpoint address="" behaviorConfiguration="EmployeeWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.EmployeeWCFService"/>
+			</service>
+			<service name="webservice.wcf.service.BranchWCFService">
+				<endpoint address="" behaviorConfiguration="BranchWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.BranchWCFService"/>
+			</service>
+			<service name="webservice.wcf.service.BusinessTypeWCFService">
+				<endpoint address="" behaviorConfiguration="BusinessTypeWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.BusinessTypeWCFService"/>
+			</service>
+			<service name="webservice.wcf.service.StopProgramWCFService">
+				<endpoint address="" behaviorConfiguration="StopProgramWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.StopProgramWCFService"/>
+			</service>
+			<service name="webservice.wcf.service.CAWCFService">
+				<endpoint address="" behaviorConfiguration="CAWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.CAWCFService"/>
+			</service>
+			<service name="RiskRatingProgressModule.Service.RRPService" behaviorConfiguration="RRPServiceAspNetSOAPBehavior">
+				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange" />
+				<endpoint address="" behaviorConfiguration="RRPServiceAspNetAjaxBehavior"
+						  binding="webHttpBinding" bindingConfiguration="StreamedRequestWebBinding"
+						  contract="RiskRatingProgressModule.Service.IRRPService"
+						  name="RiskRatingProgressModule.Service.IRRPService" />
+			</service>
+		</services>
+	</system.serviceModel>
+	<!--Dev-->
+	<!--
+	<system.serviceModel>
+		<bindings>
+			<webHttpBinding>
+				<binding name="webHttpsBinding">
+					<security mode="Transport"/>
+				</binding>
+				<binding name="StreamedRequestWebBinding" bypassProxyOnLocal="true" useDefaultWebProxy="false" hostNameComparisonMode="WeakWildcard" sendTimeout="10:15:00" openTimeout="10:15:00" receiveTimeout="10:15:00" maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" maxBufferPoolSize="2147483647" transferMode="StreamedRequest">
+					<security mode="Transport"/>
+					<readerQuotas maxArrayLength="2147483647" maxStringContentLength="2147483647"/>
+				</binding>
+			</webHttpBinding>
+		</bindings>
+		<behaviors>
+			<endpointBehaviors>
+				<behavior name="CustomerWCFServiceAspNetAjaxBehavior">
+					<enableWebScript/>
+				</behavior>
+				<behavior name="EmployeeWCFServiceAspNetAjaxBehavior">
+					<enableWebScript/>
+				</behavior>
+				<behavior name="BranchWCFServiceAspNetAjaxBehavior">
+					<enableWebScript/>
+				</behavior>
+				<behavior name="BusinessTypeWCFServiceAspNetAjaxBehavior">
+					<enableWebScript/>
+				</behavior>
+				<behavior name="StopProgramWCFServiceAspNetAjaxBehavior">
+					<enableWebScript/>
+				</behavior>
+				<behavior name="CAWCFServiceAspNetAjaxBehavior">
+					<enableWebScript/>
+				</behavior>
+				<behavior name="RRPServiceAspNetAjaxBehavior">
+					<webHttp defaultBodyStyle="WrappedResponse" defaultOutgoingResponseFormat="Json" />
+				</behavior>
+			</endpointBehaviors>
+			<serviceBehaviors>
+				<behavior name="RRPServiceAspNetSOAPBehavior">
+					<serviceMetadata httpGetEnabled="false"/>
+					<serviceDebug includeExceptionDetailInFaults="true"/>
+				</behavior>
+			</serviceBehaviors>
+		</behaviors>
+		<serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true" />
 		<services>
 			<service name="webservice.wcf.service.CustomerWCFService">
 				<endpoint address="" behaviorConfiguration="CustomerWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="webservice.wcf.service.CustomerWCFService"/>
@@ -261,6 +307,16 @@
 			</service>
 			<service name="webservice.wcf.service.CAWCFService">
 				<endpoint address="" behaviorConfiguration="CAWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="webservice.wcf.service.CAWCFService"/>
+			</service>
+			<service name="RiskRatingProgressModule.Service.TestService">
+				<endpoint address="" behaviorConfiguration="RRPServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="RiskRatingProgressModule.Service.TestService"/>
+			</service>
+			<service name="RiskRatingProgressModule.Service.RRPService" behaviorConfiguration="RRPServiceAspNetSOAPBehavior">
+				<endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange" />
+				<endpoint address="" behaviorConfiguration="RRPServiceAspNetAjaxBehavior"
+						  binding="webHttpBinding"
+						  contract="RiskRatingProgressModule.Service.IRRPService"
+						  name="RiskRatingProgressModule.Service.IRRPService" />
 			</service>
 		</services>
 	</system.serviceModel>
