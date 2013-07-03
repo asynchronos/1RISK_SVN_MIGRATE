@@ -7,12 +7,12 @@ Namespace SMEWeb
         Inherits System.Web.UI.MasterPage
 
         Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
-            'addHeaderLinkAt(0, "~/js/ext3.0/resources/css/ext-all.css")
-            'addHeaderScriptAt(1, "~/js/ext3.0/adapter/ext/ext-base.js")
-            'addHeaderScriptAt(2, "~/js/ext3.0/ext-all.js")
+            addHeaderLinkAt(0, "~/js/ext3.0/resources/css/ext-all.css")
+            addHeaderScriptAt(1, "~/js/ext3.0/adapter/ext/ext-base.js")
+            addHeaderScriptAt(2, "~/js/ext3.0/ext-all.js")
 
-            addHeaderLinkAt(0, "~/js/ext-4.2.0.663/resources/css/ext-all.css")
-            addHeaderScriptAt(1, "~/js/ext-4.2.0.663/ext-all-debug.js")
+            'addHeaderLinkAt(0, "~/js/ext-4.2.0.663/resources/css/ext-all.css")
+            'addHeaderScriptAt(1, "~/js/ext-4.2.0.663/ext-all-debug.js")
 
             addHeaderLinkAt(3, "~/theme/MyStyleSheet.css")
 
@@ -21,14 +21,15 @@ Namespace SMEWeb
 
             addHeaderScriptAt(6, "~/js/jquery.js")
             addHeaderScriptAt(7, "~/js/common.js")
+
         End Sub
 
         Protected Sub addHeaderLinkAt(ByVal index As Integer, ByVal href As String)
-            head.Controls.AddAt(index, New LiteralControl("<link type='text/css' rel='stylesheet' href='" + Page.ResolveUrl(href) + "'/>"))
+            head.Controls.AddAt(index, New LiteralControl("<link type='text/css' id='link" + index.ToString() + "' rel='stylesheet' href='" + Page.ResolveUrl(href) + "'/>"))
         End Sub
 
         Protected Sub addHeaderScriptAt(ByVal index As Integer, ByVal src As String)
-            head.Controls.AddAt(index, New LiteralControl("<script type='text/javascript' src='" + Page.ResolveUrl(src) + "'></script>"))
+            head.Controls.AddAt(index, New LiteralControl("<script type='text/javascript' id='script" + index.ToString() + "' src='" + Page.ResolveUrl(src) + "'></script>"))
         End Sub
 
         Public ReadOnly Property BodyTag() As HtmlGenericControl
