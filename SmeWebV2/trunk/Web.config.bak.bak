@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<!--
+    Note: As an alternative to hand editing this file you can use the
+    web admin tool to configure settings for your application. Use
+    the Website->Asp.Net Configuration option in Visual Studio.
+    A full list of settings and comments can be found in
+    machine.config.comments usually located in
+    \Windows\Microsoft.Net\Framework\v2.x\Config
+-->
+<configuration>
+  <!--<location path="~/webservice/RRPService.svc/jsdebug">
+    <system.web>
+      <authorization>
+        <allow users="*"/>
+      </authorization>
+    </system.web>
+  </location>-->
+  <appSettings>
+    <add key="ReleaseNote" value="Ver 1.0.02 (12-Feb-2013)"/>
+    <add key="APPLICATION_NAME" value="SmeWeb"/>
+    <add key="ChartImageHandler" value="storage=file;timeout=20;dir=c:\TempImageFiles\;"/>
+    <add key="LDAP_PORT" value="389"/>
+    <add key="LDAP_USERNAME" value="leader1_adm"/>
+    <add key="LDAP_PASSWORD" value="E6ncTK@D"/>
+    <add key="IsProduction" value="1"/>
+    <add key="LDAP_SERVER" value="bayad.co.th"/>
+    <!--Dev-->
+    <add key="Log4netConfigPath" value="D:\workspaces\2012\SmeWebV2\Log4net.SMEWeb.config"/>
+    <!--Production-->
+    <!--<add key="Log4netConfigPath" value="E:\Web\SmeWeb\Log4net.SMEWeb.config"/>-->
+  </appSettings>
+  <!--Dev-->
+  <connectionStrings>
+    <add name="BAY01ConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=BAY01;Persist Security Info=True;User ID=smeweb;Password=sa0123;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
+    <add name="SMConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=SM;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
+    <add name="NEW_DEPConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=NEW_DEP;Persist Security Info=True;User ID=smeweb;Password=sa0123;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
+    <add name="STOPConnectionString" connectionString="Data Source=172.19.54.2;Initial Catalog=STOP;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
+    <!--<add name="EDW_Connectionstring" connectionString="Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.32.52)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edw)));User Id=SMETEAM;Password=SME#2010;"
+     providerName="System.Data.OracleClient" />-->
+    <add name="EDWConnectionString" connectionString="DATA SOURCE=EDW;PASSWORD=sme#2010;PERSIST SECURITY INFO=True;USER ID=SMETEAM" providerName="Oracle.DataAccess.Client"/>
+    <add name="UserSystemEntities" connectionString="metadata=res://*/UserSystemEntitiesModel.csdl|res://*/UserSystemEntitiesModel.ssdl|res://*/UserSystemEntitiesModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=172.19.14.244;Initial Catalog=SME;Persist Security Info=True;User ID=sa;Password=sa0123;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient"/>
+    <add name="RRPEntities" connectionString="metadata=res://*/RiskRatingProgressModel.csdl|res://*/RiskRatingProgressModel.ssdl|res://*/RiskRatingProgressModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=172.19.54.2;initial catalog=BAY01;persist security info=True;user id=smeweb;password=sa0123;min pool size=3;max pool size=10;multipleactiveresultsets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient"/>
+  </connectionStrings>
+  <!--Production-->
+  <!--<connectionStrings>
+    <add name="BAY01ConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=BAY01;Persist Security Info=True;User ID=smeweb;Password=Web#11sme;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
+    <add name="SMConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=SM;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
+    <add name="NEW_DEPConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=NEW_DEP;Persist Security Info=True;User ID=smeweb;Password=Web#11sme;Max Pool Size=10;Min Pool Size=3;" providerName="System.Data.SqlClient"/>
+    <add name="STOPConnectionString" connectionString="Data Source=192.168.33.106,9677;Initial Catalog=STOP;User ID=smeweb;Password=sa0123" providerName="System.Data.SqlClient;Max Pool Size=10;Min Pool Size=3;"/>
+    <add name="EDWConnectionString" connectionString="DATA SOURCE=EDW;PASSWORD=sme#2010;PERSIST SECURITY INFO=True;USER ID=SMETEAM" providerName="Oracle.DataAccess.Client" />
+    -->
+  <!--<add name="UserSystemEntities" connectionString="metadata=res://*/UserSystemEntitiesModel.csdl|res://*/UserSystemEntitiesModel.ssdl|res://*/UserSystemEntitiesModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=172.19.14.244;Initial Catalog=SME;Persist Security Info=True;User ID=sa;Password=sa0123;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient"/>-->
+  <!--
+  </connectionStrings>-->
+  <system.web>
+    <httpRuntime maxRequestLength="307200" executionTimeout="360"/>
+    <sessionState timeout="30"/>
+    <!--
+            Set compilation debug="true" to insert debugging
+            symbols into the compiled page. Because this
+            affects performance, set this value to true only
+            during development.
+
+            Visual Basic options:
+            Set strict="true" to disallow all data type conversions
+            where data loss can occur.
+            Set explicit="true" to force declaration of all variables.
+        -->
+    <globalization culture="th-TH" uiCulture="th-TH"/>
+    <compilation debug="true" batch="false" strict="false" explicit="true" targetFramework="4.0">
+      <assemblies>
+        <add assembly="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A"/>
+        <add assembly="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Web.Extensions.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add assembly="System.Data.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+        <add assembly="System.Web.DynamicData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add assembly="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add assembly="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add assembly="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add assembly="System.Data.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Data.OracleClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.DirectoryServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A"/>
+        <add assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add assembly="System.Web.DataVisualization.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <!--ODP 32BIT-->
+        <!--<add assembly="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89B483F429C47342"/>-->
+        <add assembly="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89B483F429C47342"/>
+        <add assembly="System.Data.OracleClient, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+      </assemblies>
+    </compilation>
+    <httpHandlers>
+      <add path="ChartAxd.axd" verb="*" type="Dundas.Charting.WebControl.ChartHttpHandler" validate="false"/>
+      <add path="ChartImg.axd" verb="GET,HEAD,POST" type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" validate="false"/>
+    </httpHandlers>
+    <pages controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID">
+      <namespaces>
+        <clear/>
+        <add namespace="System"/>
+        <add namespace="System.Collections"/>
+        <add namespace="System.Collections.Specialized"/>
+        <add namespace="System.Configuration"/>
+        <add namespace="System.Text"/>
+        <add namespace="System.Text.RegularExpressions"/>
+        <add namespace="System.Web"/>
+        <add namespace="System.Web.Caching"/>
+        <add namespace="System.Web.SessionState"/>
+        <add namespace="System.Web.Security"/>
+        <add namespace="System.Web.Profile"/>
+        <add namespace="System.Web.UI"/>
+        <add namespace="System.Web.UI.WebControls"/>
+        <add namespace="System.Web.UI.WebControls.WebParts"/>
+        <add namespace="System.Web.UI.HtmlControls"/>
+      </namespaces>
+      <controls>
+        <add tagPrefix="asp" namespace="System.Web.UI.DataVisualization.Charting" assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+      </controls>
+    </pages>
+    <!--
+            The <authentication> section enables configuration
+            of the security authentication mode used by
+            ASP.NET to identify an incoming user.
+        -->
+    <authentication mode="Forms">
+      <forms name="SmeWebTestAuthCookie" loginUrl="~/aspx/Account/LoginWithAD.aspx" defaultUrl="~/aspx/Account/LoginSuccess.aspx" timeout="1440"/>
+    </authentication>
+    <authorization>
+      <deny users="?"/>
+    </authorization>
+    <membership defaultProvider="MyMembershipProvider">
+      <providers>
+        <clear/>
+        <add name="MyMembershipProvider" type="SME.UserSystem.Core.Providers.AsynchronosMembershipProvider" connectionStringName="ApplicationServices" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="false" requiresUniqueEmail="false" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="6" minRequiredNonalphanumericCharacters="0" passwordAttemptWindow="10" applicationName="/"/>
+      </providers>
+    </membership>
+    <!--<profile defaultProvider="MyProfileProvider">
+      <providers>
+        <clear/>
+        <add name="MyProfileProvider" type="SME.UserSystem.Core.Providers.AsynchronosProfileProvider" connectionStringName="UserSystemEntities" applicationName="/"/>
+      </providers>
+      <properties>
+        <clear/>
+        <add name="ProfileViewModel" type="SME.UserSystem.Core.Model.ProfileViewModel"/>
+      </properties>
+    </profile>-->
+    <!--
+            The <customErrors> section enables configuration
+            of what to do if/when an unhandled error occurs
+            during the execution of a request. Specifically,
+            it enables developers to configure html error pages
+            to be displayed in place of a error stack trace.
+
+        <customErrors mode="RemoteOnly" defaultRedirect="GenericErrorPage.htm">
+            <error statusCode="403" redirect="NoAccess.htm" />
+            <error statusCode="404" redirect="FileNotFound.htm" />
+        </customErrors>
+        -->
+    <trace enabled="true" localOnly="false" mostRecent="true" pageOutput="false" requestLimit="1000"/>
+  </system.web>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true"/>
+    <validation validateIntegratedModeConfiguration="false"/>
+    <handlers>
+      <remove name="UrlRoutingHandler"/>
+      <remove name="ChartImageHandler"/>
+      <add name="ChartImageHandler" preCondition="integratedMode" verb="GET,HEAD,POST" path="ChartImg.axd" type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+    </handlers>
+  </system.webServer>
+  <!--Production-->
+  <!--<system.serviceModel>
+    <bindings>
+      <webHttpBinding>
+        <binding name="webHttpsBinding">
+          <security mode="Transport" />
+        </binding>
+      </webHttpBinding>
+    </bindings>
+    <behaviors>
+      <endpointBehaviors>
+        <behavior name="CustomerWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="EmployeeWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="BranchWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="BusinessTypeWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="StopProgramWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="CAWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+      </endpointBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true"/>
+    <services>
+      <service name="webservice.wcf.service.CustomerWCFService">
+        <endpoint address="" behaviorConfiguration="CustomerWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.CustomerWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.EmployeeWCFService">
+        <endpoint address="" behaviorConfiguration="EmployeeWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.EmployeeWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.BranchWCFService">
+        <endpoint address="" behaviorConfiguration="BranchWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.BranchWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.BusinessTypeWCFService">
+        <endpoint address="" behaviorConfiguration="BusinessTypeWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.BusinessTypeWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.StopProgramWCFService">
+        <endpoint address="" behaviorConfiguration="StopProgramWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.StopProgramWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.CAWCFService">
+        <endpoint address="" behaviorConfiguration="CAWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="webHttpsBinding" contract="webservice.wcf.service.CAWCFService"/>
+      </service>
+    </services>
+  </system.serviceModel>-->
+  <!--Dev-->
+  <system.serviceModel>
+    <bindings>
+      <webHttpBinding>
+        <binding name="default"/>
+        <binding name="webHttpsBinding">
+          <security mode="Transport"/>
+        </binding>
+        <binding name="StreamedRequestWebBinding" bypassProxyOnLocal="true" useDefaultWebProxy="false" hostNameComparisonMode="WeakWildcard" sendTimeout="10:15:00" openTimeout="10:15:00" receiveTimeout="10:15:00" maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" maxBufferPoolSize="2147483647" transferMode="StreamedRequest">
+          <readerQuotas maxArrayLength="2147483647" maxStringContentLength="2147483647"/>
+        </binding>
+      </webHttpBinding>
+    </bindings>
+    <behaviors>
+      <endpointBehaviors>
+        <behavior name="CustomerWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="EmployeeWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="BranchWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="BusinessTypeWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="StopProgramWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="CAWCFServiceAspNetAjaxBehavior">
+          <enableWebScript/>
+        </behavior>
+        <behavior name="RRPServiceAspNetAjaxBehavior">
+          <webHttp defaultBodyStyle="WrappedResponse" defaultOutgoingResponseFormat="Json"/>
+          <!--<callbackDebug includeExceptionDetailInFaults="false"/>-->
+        </behavior>
+      </endpointBehaviors>
+      <serviceBehaviors>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true"/>
+          <serviceDebug includeExceptionDetailInFaults="true"/>
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true"/>
+    <services>
+      <service name="webservice.wcf.service.CustomerWCFService">
+        <endpoint address="" behaviorConfiguration="CustomerWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="webservice.wcf.service.CustomerWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.EmployeeWCFService">
+        <endpoint address="" behaviorConfiguration="EmployeeWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="webservice.wcf.service.EmployeeWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.BranchWCFService">
+        <endpoint address="" behaviorConfiguration="BranchWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="webservice.wcf.service.BranchWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.BusinessTypeWCFService">
+        <endpoint address="" behaviorConfiguration="BusinessTypeWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="webservice.wcf.service.BusinessTypeWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.StopProgramWCFService">
+        <endpoint address="" behaviorConfiguration="StopProgramWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="webservice.wcf.service.StopProgramWCFService"/>
+      </service>
+      <service name="webservice.wcf.service.CAWCFService">
+        <endpoint address="" behaviorConfiguration="CAWCFServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="webservice.wcf.service.CAWCFService"/>
+      </service>
+      <service name="RiskRatingProgressModule.Service.TestService">
+        <endpoint address="" behaviorConfiguration="RRPServiceAspNetAjaxBehavior" binding="webHttpBinding" contract="RiskRatingProgressModule.Service.TestService"/>
+      </service>
+      <service name="RiskRatingProgressModule.Service.RRPService">
+        <endpoint address="" behaviorConfiguration="RRPServiceAspNetAjaxBehavior" binding="webHttpBinding" bindingConfiguration="default" contract="RiskRatingProgressModule.Service.IRRPService"/>
+        <!--<endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange"/>-->
+      </service>
+    </services>
+  </system.serviceModel>
+</configuration>
