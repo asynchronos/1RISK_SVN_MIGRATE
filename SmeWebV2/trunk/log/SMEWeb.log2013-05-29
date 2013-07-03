@@ -1,7 +1,0 @@
-2013-05-29 13:44:33,164 [4004] INFO  ASP.global_asax (null) http://localhost/smeweb/aspx/account/loginWithAD.aspx - ============================
-2013-05-29 13:44:33,180 [4004] INFO  ASP.global_asax (null) http://localhost/smeweb/aspx/account/loginWithAD.aspx - SmeWebStarted.
-2013-05-29 13:44:33,180 [4004] INFO  ASP.global_asax (null) http://localhost/smeweb/aspx/account/loginWithAD.aspx - ============================
-2013-05-29 13:44:33,180 [4004] INFO  ASP.global_asax (null) http://localhost/smeweb/aspx/account/loginWithAD.aspx - IsDebugEnabled : True
-2013-05-29 13:44:49,925 [4004] DEBUG LoginSuccess 249888 http://localhost/SmeWeb/aspx/Account/LoginSuccess.aspx - 249888 login.Now Checking Roles.
-2013-05-29 13:44:50,190 [4004] INFO  LoginSuccess 249888 http://localhost/SmeWeb/aspx/Account/LoginSuccess.aspx - 127.0.0.1:249888:Checking Roles Pass.
-2013-05-29 13:44:52,484 [4004] DEBUG aspx.userControl.MainMenuControl 249888 http://localhost/SmeWeb/aspx/mainpage.aspx - Roles:0000000001|0000000007
