@@ -1067,8 +1067,8 @@
     <div id="tableDiv3" class="tableLayout" style="width: 800px; vertical-align: top;">
         <div class="tableRow">
             <div class="leftTableCell" style="width: 100%; text-align: center;">
-                <asp:Chart ID="ChartPrevious1Year" runat="server" Height="1100px" Width="800px" AlternateText="ChartPrevious1Year"
-                    ImageStorageMode="UseImageLocation" ImageLocation="~/images/dundas/Previous1Year_#SEQ(300,3)"
+                <asp:Chart ID="ChartPrevious1Year" runat="server" Height="1100px" Width="800px" 
+                    AlternateText="ChartPrevious1Year" ImageStorageMode="UseHttpHandler"
                     Palette="None">
                     <Annotations>
                         <asp:CalloutAnnotation Name="Callout1" Font="Microsoft Sans Serif, 12pt" Text="*** Debt&lt;0 (�Դź) = Deposit ***"
@@ -1197,8 +1197,8 @@
         </div>
         <div class="tableRow">
             <div class="leftTableCell" style="width: 100%; text-align: center;">
-                <asp:Chart ID="ChartPast2Years" runat="server" Height="1100px" Width="800px" AlternateText="ChartPast2Years"
-                    ImageStorageMode="UseImageLocation" ImageLocation="~/images/dundas/Past2Years_#SEQ(300,3)"
+                <asp:Chart ID="ChartPast2Years" runat="server" Height="1100px" Width="800px" 
+                    AlternateText="ChartPast2Years" ImageStorageMode="UseHttpHandler"
                     Palette="None">
                     <Annotations>
                         <asp:CalloutAnnotation Name="Callout1" Font="Microsoft Sans Serif, 12pt" Text="*** Debt&lt;0 (�Դź) = Deposit ***"
