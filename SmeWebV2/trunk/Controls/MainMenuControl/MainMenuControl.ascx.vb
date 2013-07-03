@@ -29,6 +29,9 @@ Namespace aspx.userControl
 
             'ซ่อนเมนูรอพี่นพเช็คข้อมูลใหม่ก่อน
             ReportPN2OD.Style.Item("display") = "none"
+
+            'Follow Up Menu
+            FollowMenu.Style.Item("display") = "inline"
         End Sub
 
         Private Sub authenFormWithCookie()
@@ -97,6 +100,8 @@ Namespace aspx.userControl
                     ReportNPLMovement.Style.Item("display") = "none"
                     ReportOdUtilization.Style.Item("display") = "none"
                     ReportPN2OD.Style.Item("display") = "none"
+
+                    FollowMenu.Style.Item("display") = "none"
                 End If
 
                 'check ว่ามี role audit attach หรือไม่
