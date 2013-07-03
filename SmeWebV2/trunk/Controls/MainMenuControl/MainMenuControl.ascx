@@ -70,6 +70,10 @@
                     <li id="HomeMenu" runat="server" style="display: none; white-space: nowrap;">
                         <asp:HyperLink ID="HyperLink1" runat="server" Target="_self" ToolTip="หน้าแรก" NavigateUrl="~/aspx/mainpage.aspx">Home</asp:HyperLink>
                     </li>
+                    <li id="FollowMenu" runat="server" style="display: none; white-space: nowrap;">
+                        <asp:HyperLink ID="FollowHyperLink" runat="server" rel="DropFollowMenu" ToolTip="Follow Up"
+                            NavigateUrl="JavaScript:void(0);">Follow</asp:HyperLink>
+                    </li>
                     <li id="PortfolioMenu" runat="server" style="display: none; white-space: nowrap;">
                         <asp:HyperLink ID="PortfolioLink" runat="server" rel="DropPortfolioMenu" ToolTip="Portfolio"
                             NavigateUrl="JavaScript:void(0);">Portfolio</asp:HyperLink></li>
@@ -106,6 +110,11 @@
             </div>
             <!--LoginStatus1 drop down menu -->
             <div id="DropLoginStatus1" class="dropmenudiv">
+            </div>
+            <!--FollowMenu drop down menu -->
+            <div id="DropFollowMenu" class="dropmenudiv">
+                <asp:HyperLink ID="HyperLink2" runat="server" Target="_self" ToolTip="Rating Follow Up"
+                    NavigateUrl="~/aspx/follow/RiskRatingProgress.aspx">Rating</asp:HyperLink>
             </div>
             <!--PortfolioMenu drop down menu -->
             <div id="DropPortfolioMenu" class="dropmenudiv">
