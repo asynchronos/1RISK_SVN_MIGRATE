@@ -61,7 +61,8 @@ Namespace aspx.userControl
             'When the ticket was created, the UserData property was assigned a pipe delimited string of role names.
             Dim roles As String() = authTicket.UserData.Split(New Char() {"|"})
 
-            If isDebugEnabled Then
+            If isDebugEnabled And log4net.GlobalContext.Properties("url") _
+                .Equals(Page.ResolveUrl("~/aspx/mainpage.aspx")) Then
                 log.Debug("Roles:" + authTicket.UserData)
             End If
 

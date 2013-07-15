@@ -65,8 +65,8 @@
 
                             statusStore.each(function (record) {
                                 var recordArray = [
-                                    record.get("UPDATE_STATUS_DESC"),
-                                    record.get("UPDATE_STATUS_DESC")
+                                    record.get('UPDATE_STATUS_DESC'),
+                                    record.get('UPDATE_STATUS_DESC')
                                 ];
                                 statusArray.push(recordArray);
                             });
