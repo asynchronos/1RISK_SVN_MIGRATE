@@ -72,7 +72,7 @@
                     </li>
                     <li id="FollowMenu" runat="server" style="display: none; white-space: nowrap;">
                         <asp:HyperLink ID="FollowHyperLink" runat="server" rel="DropFollowMenu" ToolTip="Follow Up"
-                            NavigateUrl="JavaScript:void(0);">Follow</asp:HyperLink>
+                            NavigateUrl="JavaScript:void(0);">Follow Up</asp:HyperLink>
                     </li>
                     <li id="PortfolioMenu" runat="server" style="display: none; white-space: nowrap;">
                         <asp:HyperLink ID="PortfolioLink" runat="server" rel="DropPortfolioMenu" ToolTip="Portfolio"

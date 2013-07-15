@@ -16,7 +16,7 @@ Partial Class aspx_error_DefaultError
 
         Dim errorsMsg As String = String.Empty
 
-        If hasQueryString("msg") Then
+        If hasQueryString("m") Then
             errorsMsg = errorsMsg & "Message : " + getQueryString("msg") + "<br />"
         End If
         If hasQueryString("pages") Then

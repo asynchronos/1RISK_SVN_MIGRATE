@@ -1,6 +1,10 @@
-﻿
+﻿Imports log4net
+
 Partial Class LoginWithAD
     Inherits aspx.MyPageClass
+
+    Private Shared ReadOnly log As ILog = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
+    Private Shared isDebugEnabled As Boolean = log.IsDebugEnabled
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If (hasQueryString("ReturnUrl")) Then
@@ -19,8 +23,8 @@ Partial Class LoginWithAD
 
         Dim errorsMsg As String = String.Empty
 
-        If hasQueryString("msg") Then
-            errorsMsg = errorsMsg & "Message : " + getQueryString("msg") + "<br />"
+        If hasQueryString("m") Then
+            errorsMsg = errorsMsg & "Message : " + getQueryString("m") + "<br />"
         End If
         If hasQueryString("pages") Then
             errorsMsg = errorsMsg & "Page : " + getQueryString("pages") + "<br />"
