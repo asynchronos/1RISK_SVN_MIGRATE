@@ -402,8 +402,20 @@
                     dataIndex: 'ATTACH_FILE_NAME',
                     //locked: true,
                     width: 120,
-                    editor: {
-                        allowBlank: true
+                    renderer: function (value) {
+                        return '<a href="' + value + '">' + value + '</a>';
+                    },
+                    viewConfig: {
+                        listeners: {
+                            cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
+                                var linkClicked = (e.target.tagName == 'A');
+                                var clickedDataIndex = view.panel.headerCt.getHeaderAtIndex(cellIndex).dataIndex;
+
+                                if (linkClicked && clickedDataIndex == '...') {
+                                    alert(record.get('id'));
+                                }
+                            }
+                        }
                     }
                 }, {
                     xtype: 'checkcolumn',
