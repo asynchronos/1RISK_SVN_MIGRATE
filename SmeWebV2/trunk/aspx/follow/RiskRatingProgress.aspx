@@ -403,7 +403,8 @@
                     //locked: true,
                     width: 120,
                     renderer: function (value) {
-                        return '<a href="' + value + '">' + value + '</a>';
+                        var pdfPath = 'http://172.19.54.2/Creditreview/PDF/';
+                        return '<a href="' + pdfPath + value + '">' + value + '</a>';
                     },
                     viewConfig: {
                         listeners: {

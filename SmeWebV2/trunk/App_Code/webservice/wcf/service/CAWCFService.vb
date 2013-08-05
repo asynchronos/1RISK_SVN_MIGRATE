@@ -18,6 +18,7 @@ Namespace webservice.wcf.service
                 Using conn As New SqlConnection(ConfigurationManager.ConnectionStrings("BAY01ConnectionString").ConnectionString)
                     Dim cmd As New SqlCommand("CA_REPORT.P_CA_IN_PROCESS_JOB", conn)
                     cmd.CommandType = System.Data.CommandType.StoredProcedure
+                    cmd.CommandTimeout = 180
                     cmd.Parameters.AddWithValue("@EMP_ID", empId)
 
                     conn.Open()
@@ -43,6 +44,7 @@ Namespace webservice.wcf.service
                 Using conn As New SqlConnection(ConfigurationManager.ConnectionStrings("BAY01ConnectionString").ConnectionString)
                     Dim cmd As New SqlCommand("CA_REPORT.P_CA_IN_PROCESS_TOTAL_BY_LEVEL", conn)
                     cmd.CommandType = System.Data.CommandType.StoredProcedure
+                    cmd.CommandTimeout = 180
                     cmd.Parameters.AddWithValue("@EMP_ID", empId)
 
                     conn.Open()

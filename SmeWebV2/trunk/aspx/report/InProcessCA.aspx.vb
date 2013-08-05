@@ -36,6 +36,13 @@ Namespace aspx.report
             End If
         End Sub
 
+        Protected Sub DS_LevelGrouping_Selecting(sender As Object, e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles DS_LevelGrouping.Selecting
+            e.Command.CommandTimeout = 180
+        End Sub
+
+        Protected Sub DS_InProcessCA_Selecting(sender As Object, e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles DS_InProcessCA.Selecting
+            e.Command.CommandTimeout = 180
+        End Sub
     End Class
 End Namespace
 
