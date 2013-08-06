@@ -11,41 +11,49 @@ Namespace aspx.userControl
         Private _menu1Url As String = String.Empty
         Private _menu1Text As String = String.Empty
         Private _menu1_TargetIframe_myid As String = String.Empty
+        Private _menu1Visible As Boolean = True
 
         Private _menu2HasOnClientClick As Boolean = False
         Private _menu2Url As String = String.Empty
         Private _menu2Text As String = String.Empty
         Private _menu2_TargetIframe_myid As String = String.Empty
+        Private _menu2Visible As Boolean = True
 
         Private _menu3HasOnClientClick As Boolean = False
         Private _menu3Url As String = String.Empty
         Private _menu3Text As String = String.Empty
         Private _menu3_TargetIframe_myid As String = String.Empty
+        Private _menu3Visible As Boolean = True
 
         Private _menu4HasOnClientClick As Boolean = False
         Private _menu4Url As String = String.Empty
         Private _menu4Text As String = String.Empty
         Private _menu4_TargetIframe_myid As String = String.Empty
+        Private _menu4Visible As Boolean = True
 
         Private _menu5HasOnClientClick As Boolean = False
         Private _menu5Url As String = String.Empty
         Private _menu5Text As String = String.Empty
         Private _menu5_TargetIframe_myid As String = String.Empty
+        Private _menu5Visible As Boolean = True
 
         Private _menu6HasOnClientClick As Boolean = False
         Private _menu6Url As String = String.Empty
         Private _menu6Text As String = String.Empty
         Private _menu6_TargetIframe_myid As String = String.Empty
+        Private _menu6Visible As Boolean = True
 
         Private _menu7HasOnClientClick As Boolean = False
         Private _menu7Url As String = String.Empty
         Private _menu7Text As String = String.Empty
         Private _menu7_TargetIframe_myid As String = String.Empty
+        Private _menu7Visible As Boolean = True
 
         Private _menu8HasOnClientClick As Boolean = False
         Private _menu8Url As String = String.Empty
         Private _menu8Text As String = String.Empty
         Private _menu8_TargetIframe_myid As String = String.Empty
+        Private _menu8Visible As Boolean = True
 
 #Region "Properties"
 
@@ -115,6 +123,16 @@ Namespace aspx.userControl
             End Set
         End Property
 
+        <ComponentModel.Browsable(True), ComponentModel.Category("Menu1"), ComponentModel.Description("Menu1Visible")> _
+        Property Menu1Visible() As Boolean
+            Get
+                Return _menu1Visible
+            End Get
+            Set(ByVal value As Boolean)
+                _menu1Visible = value
+            End Set
+        End Property
+
         <ComponentModel.Browsable(True), ComponentModel.Category("Menu2"), ComponentModel.Description("Menu2OnClientClick")> _
         Property Menu2OnClientClick() As String
             Get
@@ -152,6 +170,16 @@ Namespace aspx.userControl
             End Get
             Set(ByVal value As String)
                 _menu2_TargetIframe_myid = value
+            End Set
+        End Property
+
+        <ComponentModel.Browsable(True), ComponentModel.Category("Menu2"), ComponentModel.Description("Menu2Visible")> _
+        Property Menu2Visible() As Boolean
+            Get
+                Return _menu2Visible
+            End Get
+            Set(ByVal value As Boolean)
+                _menu2Visible = value
             End Set
         End Property
 
@@ -195,6 +223,16 @@ Namespace aspx.userControl
             End Set
         End Property
 
+        <ComponentModel.Browsable(True), ComponentModel.Category("Menu3"), ComponentModel.Description("Menu3Visible")> _
+        Property Menu3Visible() As Boolean
+            Get
+                Return _menu3Visible
+            End Get
+            Set(ByVal value As Boolean)
+                _menu3Visible = value
+            End Set
+        End Property
+
         <ComponentModel.Browsable(True), ComponentModel.Category("Menu4"), ComponentModel.Description("Menu4OnClientClick")> _
         Property Menu4OnClientClick() As String
             Get
@@ -232,6 +270,16 @@ Namespace aspx.userControl
             End Get
             Set(ByVal value As String)
                 _menu4_TargetIframe_myid = value
+            End Set
+        End Property
+
+        <ComponentModel.Browsable(True), ComponentModel.Category("Menu4"), ComponentModel.Description("Menu4Visible")> _
+        Property Menu4Visible() As Boolean
+            Get
+                Return _menu4Visible
+            End Get
+            Set(ByVal value As Boolean)
+                _menu4Visible = value
             End Set
         End Property
 
@@ -275,6 +323,16 @@ Namespace aspx.userControl
             End Set
         End Property
 
+        <ComponentModel.Browsable(True), ComponentModel.Category("Menu5"), ComponentModel.Description("Menu5Visible")> _
+        Property Menu5Visible() As Boolean
+            Get
+                Return _menu5Visible
+            End Get
+            Set(ByVal value As Boolean)
+                _menu5Visible = value
+            End Set
+        End Property
+
         <ComponentModel.Browsable(True), ComponentModel.Category("Menu6"), ComponentModel.Description("Menu6OnClientClick")> _
         Property Menu6OnClientClick() As String
             Get
@@ -312,6 +370,16 @@ Namespace aspx.userControl
             End Get
             Set(ByVal value As String)
                 _menu6_TargetIframe_myid = value
+            End Set
+        End Property
+
+        <ComponentModel.Browsable(True), ComponentModel.Category("Menu6"), ComponentModel.Description("Menu6Visible")> _
+        Property Menu6Visible() As Boolean
+            Get
+                Return _menu6Visible
+            End Get
+            Set(ByVal value As Boolean)
+                _menu6Visible = value
             End Set
         End Property
 
@@ -355,6 +423,16 @@ Namespace aspx.userControl
             End Set
         End Property
 
+        <ComponentModel.Browsable(True), ComponentModel.Category("Menu7"), ComponentModel.Description("Menu7Visible")> _
+        Property Menu7Visible() As Boolean
+            Get
+                Return _menu7Visible
+            End Get
+            Set(ByVal value As Boolean)
+                _menu7Visible = value
+            End Set
+        End Property
+
         <ComponentModel.Browsable(True), ComponentModel.Category("Menu8"), ComponentModel.Description("Menu8OnClientClick")> _
         Property Menu8OnClientClick() As String
             Get
@@ -392,6 +470,16 @@ Namespace aspx.userControl
             End Get
             Set(ByVal value As String)
                 _menu8_TargetIframe_myid = value
+            End Set
+        End Property
+
+        <ComponentModel.Browsable(True), ComponentModel.Category("Menu8"), ComponentModel.Description("Menu8Visible")> _
+        Property Menu8Visible() As Boolean
+            Get
+                Return _menu8Visible
+            End Get
+            Set(ByVal value As Boolean)
+                _menu8Visible = value
             End Set
         End Property
 #End Region
@@ -496,6 +584,16 @@ Namespace aspx.userControl
             If _menu8HasOnClientClick.Equals(False) Then
                 Menu8OnClientClick = "changeIframeSrc('" + Menu8_TargetIframe_myid + "','" + iframeLoaderUrl + Page.ResolveUrl(Menu8Url) + "','cif=" + CIF + "');return false;"
             End If
+
+            'Visible Check
+            LinkButt_Menu1.Visible = _menu1Visible
+            LinkButt_Menu2.Visible = _menu2Visible
+            LinkButt_Menu3.Visible = _menu3Visible
+            LinkButt_Menu4.Visible = _menu4Visible
+            LinkButt_Menu5.Visible = _menu5Visible
+            LinkButt_Menu6.Visible = _menu6Visible
+            LinkButt_Menu7.Visible = _menu7Visible
+            LinkButt_Menu8.Visible = _menu8Visible
         End Sub
     End Class
 End Namespace

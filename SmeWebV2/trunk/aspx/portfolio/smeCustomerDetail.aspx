@@ -13,16 +13,15 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
-            <uc1:CustomerMenuControl ID="CustomerMenuControl1" runat="server" Menu1_TargetIframe_myid="iframeMain"
-                Menu1Url="~/aspx/customer/SmeCustomerManagement.aspx" Menu1Text="รายละเอียดทั่วไป"
-                Menu2_TargetIframe_myid="iframeMain" Menu2Url="~/aspx/customer/SmeGroupManagement.aspx"
-                Menu2Text="จัดกลุ่มลูกค้า" Menu3_TargetIframe_myid="iframeMain" Menu3Url="~/aspx/customer/CustomerDebt.aspx"
-                Menu3Text="ภาระหนี้" Menu4_TargetIframe_myid="iframeMain" Menu4Url="~/aspx/customer/CustomerDebtPrev.aspx"
-                Menu4Text="ภาระหนี้ย้อนหลัง" Menu5_TargetIframe_myid="iframeMain" Menu5Url="~/aspx/customer/CustomerClassDebt.aspx"
-                Menu5Text="ชั้นหนี้/เรตติ้ง" Menu6_TargetIframe_myid="iframeMain" Menu6Url="~/aspx/customer/CustomerCollateral.aspx"
-                Menu6Text="รายละเอียดหลักประกัน" Menu7_TargetIframe_myid="iframeMain" Menu7Url="~/aspx/customer/CustomerCollateralPerson.aspx"
-                Menu7Text="บุคคลค้ำประกัน" Menu8_TargetIframe_myid="iframeMain" Menu8Url="~/aspx/customer/CustomerLaw.aspx"
-                Menu8Text="สถานะขั้นตอนกฎหมายล่าสุด" />
+            <uc1:CustomerMenuControl ID="CustomerMenuControl1" runat="server"
+                Menu1_TargetIframe_myid="iframeMain" Menu1Url="~/aspx/customer/SmeCustomerManagement.aspx" Menu1Text="รายละเอียดทั่วไป"
+                Menu2_TargetIframe_myid="iframeMain" Menu2Url="~/aspx/customer/SmeGroupManagement.aspx" Menu2Text="จัดกลุ่มลูกค้า"
+                Menu3_TargetIframe_myid="iframeMain" Menu3Url="~/aspx/customer/CustomerDebt.aspx" Menu3Text="ภาระหนี้"
+                Menu4_TargetIframe_myid="iframeMain" Menu4Url="~/aspx/customer/CustomerDebtPrev.aspx" Menu4Text="ภาระหนี้ย้อนหลัง"
+                Menu5_TargetIframe_myid="iframeMain" Menu5Url="~/aspx/customer/CustomerClassDebt.aspx" Menu5Text="ชั้นหนี้"
+                Menu6_TargetIframe_myid="iframeMain" Menu6Url="~/aspx/customer/CustomerCollateral.aspx" Menu6Text="รายละเอียดหลักประกัน" Menu6Visible="false"
+                Menu7_TargetIframe_myid="iframeMain" Menu7Url="~/aspx/customer/CustomerCollateralPerson.aspx" Menu7Text="บุคคลค้ำประกัน" Menu7Visible="false"
+                Menu8_TargetIframe_myid="iframeMain" Menu8Url="~/aspx/customer/CustomerLaw.aspx" Menu8Text="สถานะขั้นตอนกฎหมายล่าสุด" Menu8Visible="false" />
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

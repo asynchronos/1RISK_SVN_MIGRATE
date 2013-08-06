@@ -8,7 +8,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    <div style="width: 100%; text-align: Lef;">
+    <div style="width: 100%; text-align: Left;">
         <asp:Label ID="lblHeader" runat="server" Text="Classify" Font-Bold="True" ForeColor="#C00000"></asp:Label>
         <asp:FormView ID="ClassDebtFormView" runat="server" CellPadding="4" DataKeyNames="Cif_No"
             DataSourceID="ClassDebtDS" ForeColor="#333333">
@@ -63,7 +63,7 @@
                                 </tr>
                                 <tr style="background-color: #FFFBD6; color: #333333" align="center">
                                     <td style="font-style: oblique;">
-                                        2005
+                                        2548
                                     </td>
                                     <td>
                                         <%#MappingClassify(Eval("Class4801"))%>
@@ -104,7 +104,7 @@
                                 </tr>
                                 <tr style="background-color: White; color: #333333" align="center">
                                     <td style="font-style: oblique;">
-                                        2006
+                                        2549
                                     </td>
                                     <td>
                                         <%#MappingClassify(Eval("Class4901"))%>
@@ -145,7 +145,7 @@
                                 </tr>
                                 <tr style="background-color: #FFFBD6; color: #333333" align="center">
                                     <td style="font-style: oblique;">
-                                        2007
+                                        2550
                                     </td>
                                     <td>
                                         <%#MappingClassify(Eval("Class5001"))%>
@@ -184,9 +184,9 @@
                                         <%#MappingClassify(Eval("Class5012"))%>
                                     </td>
                                 </tr>
-                                <tr style="background-color: #FFFBD6; color: #333333" align="center">
+                                <tr style="background-color: White; color: #333333" align="center">
                                     <td style="font-style: oblique;">
-                                        2008
+                                        2551
                                     </td>
                                     <td>
                                         <%#MappingClassify(Eval("Class5101"))%>
@@ -227,7 +227,7 @@
                                 </tr>
                                 <tr style="background-color: #FFFBD6; color: #333333" align="center">
                                     <td style="font-style: oblique;">
-                                        2009
+                                        2552
                                     </td>
                                     <td>
                                         <%#MappingClassify(Eval("Class5201"))%>
@@ -268,7 +268,7 @@
                                 </tr>
                                 <tr style="background-color: White; color: #333333" align="center">
                                     <td style="font-style: oblique;">
-                                        2010
+                                        2553
                                     </td>
                                     <td>
                                         <%#MappingClassify(Eval("Class5301"))%>
@@ -307,9 +307,9 @@
                                         <%#MappingClassify(Eval("Class5312"))%>
                                     </td>
                                 </tr>
-                                <tr style="background-color: White; color: #333333" align="center">
+                                <tr style="background-color: #FFFBD6; color: #333333" align="center">
                                     <td style="font-style: oblique;">
-                                        2011
+                                        2554
                                     </td>
                                     <td>
                                         <%#MappingClassify(Eval("Class5401"))%>
@@ -350,7 +350,7 @@
                                 </tr>
                                 <tr style="background-color: White; color: #333333" align="center">
                                     <td style="font-style: oblique;">
-                                        2012
+                                        2555
                                     </td>
                                     <td>
                                         <%#MappingClassify(Eval("Class5501"))%>
@@ -387,6 +387,47 @@
                                     </td>
                                     <td style="background-color: #DD0000; color: White;">
                                         <%#MappingClassify(Eval("Class5512"))%>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #FFFBD6; color: #333333" align="center">
+                                    <td style="font-style: oblique;">
+                                        2556
+                                    </td>
+                                    <td>
+                                        <%#MappingClassify(Eval("Class5601"))%>
+                                    </td>
+                                    <td>
+                                        <%#MappingClassify(Eval("Class5602"))%>
+                                    </td>
+                                    <td style="background-color: #DD0000; color: White;">
+                                        <%#MappingClassify(Eval("Class5603"))%>
+                                    </td>
+                                    <td>
+                                        <%#MappingClassify(Eval("Class5604"))%>
+                                    </td>
+                                    <td>
+                                        <%#MappingClassify(Eval("Class5605"))%>
+                                    </td>
+                                    <td style="background-color: #DD0000; color: White;">
+                                        <%#MappingClassify(Eval("Class5606"))%>
+                                    </td>
+                                    <td>
+                                        <%#MappingClassify(Eval("Class5607"))%>
+                                    </td>
+                                    <td>
+                                        <%#MappingClassify(Eval("Class5608"))%>
+                                    </td>
+                                    <td style="background-color: #DD0000; color: White;">
+                                        <%#MappingClassify(Eval("Class5609"))%>
+                                    </td>
+                                    <td>
+                                        <%#MappingClassify(Eval("Class5610"))%>
+                                    </td>
+                                    <td>
+                                        <%#MappingClassify(Eval("Class5611"))%>
+                                    </td>
+                                    <td style="background-color: #DD0000; color: White;">
+                                        <%#MappingClassify(Eval("Class5612"))%>
                                     </td>
                                 </tr>
                             </table>
