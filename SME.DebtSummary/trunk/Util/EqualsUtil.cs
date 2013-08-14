@@ -2,6 +2,33 @@
 
 namespace Util
 {
+	/*
+		@Override public boolean equals(Object aThat) {
+		//check for self-comparison
+		if ( this == aThat ) return true;
+
+		//use instanceof instead of getClass here for two reasons
+		//1. if need be, it can match any supertype, and not just one class;
+		//2. it renders an explict check for "that == null" redundant, since
+		//it does the check for null already - "null instanceof [type]" always
+		//returns false. (See Effective Java by Joshua Bloch.)
+		if ( !(aThat instanceof Car) ) return false;
+		//Alternative to the above line :
+		//if ( aThat == null || aThat.getClass() != this.getClass() ) return false;
+
+		//cast to native object is now safe
+		Car that = (Car)aThat;
+
+		//now a proper field-by-field evaluation can be made
+		return
+		  EqualsUtil.areEqual(this.fName, that.fName) &&
+		  EqualsUtil.areEqual(this.fNumDoors, that.fNumDoors) &&
+		  EqualsUtil.areEqual(this.fOptions, that.fOptions) &&
+		  EqualsUtil.areEqual(this.fGasMileage, that.fGasMileage) &&
+		  EqualsUtil.areEqual(this.fColor, that.fColor) &&
+		  Arrays.equals(this.fMaintenanceChecks, that.fMaintenanceChecks);
+	  }
+	*/
     public sealed class EqualsUtil
     {
         static public bool areEqual(bool aThis, bool aThat)

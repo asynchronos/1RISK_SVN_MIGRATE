@@ -57,6 +57,7 @@ namespace SME.UserSystem.Core.AD
         public bool IsAuthenticated(string username, string pwd)
         {
             bool authenticated = false;
+            
 
             if (isDebugEnabled)
             {
@@ -68,77 +69,80 @@ namespace SME.UserSystem.Core.AD
                 , pwd
                 , AuthenticationTypes.Secure))
             {
-                DirectorySearcher searcher = new DirectorySearcher(userEntry);
-                searcher.Filter = "(SAMAccountName=" + username + ")";
-                //searcher.PropertiesToLoad.Add("cn");
-                SearchResult userSearchResult = null;
-
-                try
+                using (DirectorySearcher searcher = new DirectorySearcher(userEntry))
                 {
-                    userSearchResult = searcher.FindOne();
-                }catch(DirectoryServicesCOMException cex){
-                    if (IsUserLocked(username))
+                    SearchResult userSearchResult = null;
+                    searcher.Filter = "(SAMAccountName=" + username + ")";
+                    //searcher.PropertiesToLoad.Add("cn");
+                    
+                    try
                     {
-                        log.Info("Username " + username + "in AD is Locked.");
-                        throw new LDAPInfoException("Username " + username + " in AD is Locked.");
+                        userSearchResult = searcher.FindOne();
+                    }
+                    catch (DirectoryServicesCOMException cex)
+                    {
+                        if (IsUserLocked(username))
+                        {
+                            log.Info("Username " + username + "in AD is Locked.");
+                            throw new LDAPInfoException("Username " + username + " in AD is Locked.");
+                        }
+
+                        log.Error(cex.GetType().ToString());
+                        log.Error(cex.Message);
+                        log.Error(cex.StackTrace);
+                        throw new LDAPInfoException(cex.Message, cex);
+                    }
+                    catch (COMException comEx)
+                    {
+                        log.Error(comEx.GetType().ToString());
+                        log.Error(comEx.Message);
+                        log.Error(comEx.StackTrace);
+
+                        throw new LDAPInfoException(comEx.Message, comEx);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        log.Error(ex.GetType().ToString());
+                        log.Error(ex.Message);
+                        log.Error(ex.StackTrace);
+                        throw ex;
                     }
 
-                    log.Error(cex.GetType().ToString());
-                    log.Error(cex.Message);
-                    log.Error(cex.StackTrace);
-                    throw new LDAPInfoException(cex.Message,cex);
-                }
-                catch (COMException comEx)
-                {
-                    log.Error(comEx.GetType().ToString());
-                    log.Error(comEx.Message);
-                    log.Error(comEx.StackTrace);
+                    #region ListLDAPProperties
 
-                    throw new LDAPInfoException(comEx.Message, comEx);
-                }
-                catch (System.Exception ex)
-                {
-                    log.Error(ex.GetType().ToString());
-                    log.Error(ex.Message);
-                    log.Error(ex.StackTrace);
-                    throw ex;
-                }
-
-                #region ListLDAPProperties
-
-                if (false)//(isDebugEnabled)
-                {
-                    //username = "249987";
-                    //search = new DirectorySearcher(entry);
-                    //search.Filter = "(SAMAccountName=" + username + ")";
-                    //search.PropertiesToLoad.Add("cn");
-                    //result = search.FindOne();
-
-                    log.Debug("");
-                    log.Debug("result.Path:" + userSearchResult.Path);
-                    log.Debug("filterAttribute:" + (String)userSearchResult.Properties["cn"][0]);
-
-                    DirectoryEntry entry2 = userSearchResult.GetDirectoryEntry();
-                    //log.Debug("entry2.Username:" + entry2.Username);
-                    //log.Debug("entry2.AuthenticationType:" + entry2.AuthenticationType);
-                    //log.Debug("entry2.Children:" + entry2.Children);
-                    log.Debug("entry2.Name:" + entry2.Name);
-                    //log.Debug("entry2.Parent.Username:" + entry2.Parent.Username);
-                    log.Debug("entry2.Properties.Count:" + entry2.Properties.Count);
-
-                    IDictionaryEnumerator myEnumerator = entry2.Properties.GetEnumerator();
-                    while (myEnumerator.MoveNext())
+                    if (false)//(isDebugEnabled)
                     {
-                        log.Debug(myEnumerator.Key + ":" + myEnumerator.Value);
+                        username = "249888";
+                        searcher.Filter = "(SAMAccountName=" + username + ")";
+                        userSearchResult = searcher.FindOne();
 
-                        IEnumerator myEnumerator2 = ((PropertyValueCollection)myEnumerator.Value).GetEnumerator();
-                        while (myEnumerator2.MoveNext())
+                        log.Debug("");
+                        log.Debug("result.Path:" + userSearchResult.Path);
+                        log.Debug("filterAttribute:" + (String)userSearchResult.Properties["cn"][0]);
+
+                        DirectoryEntry entry2 = userSearchResult.GetDirectoryEntry();
+                        //log.Debug("entry2.Username:" + entry2.Username);
+                        //log.Debug("entry2.AuthenticationType:" + entry2.AuthenticationType);
+                        //log.Debug("entry2.Children:" + entry2.Children);
+                        log.Debug("entry2.Name:" + entry2.Name);
+                        //log.Debug("entry2.Parent.Username:" + entry2.Parent.Username);
+                        log.Debug("entry2.Properties.Count:" + entry2.Properties.Count);
+
+                        IDictionaryEnumerator myEnumerator = entry2.Properties.GetEnumerator();
+                        while (myEnumerator.MoveNext())
                         {
-                            log.Debug("   " + myEnumerator2.Current.ToString());
+                            log.Debug(myEnumerator.Key + ":" + myEnumerator.Value);
+
+                            IEnumerator myEnumerator2 = ((PropertyValueCollection)myEnumerator.Value).GetEnumerator();
+                            while (myEnumerator2.MoveNext())
+                            {
+                                log.Debug("   " + myEnumerator2.Current.ToString());
+                            }
                         }
                     }
+                    #endregion
                 }
-                #endregion
+                
 
                 // Update the new path to the user in the directory
                 //_path = userSearchResult.Path;

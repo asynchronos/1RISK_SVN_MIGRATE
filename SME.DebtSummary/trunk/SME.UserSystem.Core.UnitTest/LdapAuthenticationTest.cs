@@ -127,7 +127,7 @@ namespace SME.UserSystem.Core.UnitTest
         public void AuthenticatedSuccessTest()
         {
             string username = "249888";
-            string pwd = "big#7426";
+            string pwd = "big%7426";
 
             bool expected = true;
             LdapAuthentication target = new LdapAuthentication();
