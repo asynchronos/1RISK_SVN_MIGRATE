@@ -21,6 +21,8 @@ namespace SME.UserSystem.Core.Providers
 
         private string _appName;
         private string _providerName;
+        private bool _requiresQuestionAndAnswer = false;
+        private bool _ldapOnly = true;
 
         private LdapAuthentication adAuth = new LdapAuthentication();
 
@@ -44,6 +46,14 @@ namespace SME.UserSystem.Core.Providers
             }
         }
 
+        public bool LDAP_Only
+        {
+            get
+            {
+                return _ldapOnly;
+            }
+        }
+
         public override void Initialize(string name, System.Collections.Specialized.NameValueCollection config)
         {
             if (config == null)
@@ -58,12 +68,27 @@ namespace SME.UserSystem.Core.Providers
                 _appName = config["applicationName"];
             }
 
+            if (_appName == null)
+            {
+                throw new AsynchronosProviderException("Can't find application name in any config.");
+            }
+
             if (name == null || name.Length == 0)
-                name = "AsynchronosProfileProvider";
+                name = config["name"];
             if (string.IsNullOrEmpty(name))
-                name = "AsynchronosProfileProvider";
+                name = "AsynchronosMembershipProvider";
             _providerName = name;
 
+            if (config["requiresQuestionAndAnswer"] != null)
+            {
+                bool.TryParse(config["requiresQuestionAndAnswer"], out _requiresQuestionAndAnswer);
+            }
+
+            if (config["LDAPOnly"] != null)
+            {
+                bool.TryParse(config["LDAPOnly"], out _ldapOnly);
+            }
+            
             log.Info(_providerName + " initialized");
 
             base.Initialize(name, config);
@@ -81,6 +106,11 @@ namespace SME.UserSystem.Core.Providers
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
+            if (LDAP_Only)
+            {
+                throw new Exception("Can't create user in LDAP only mode.");
+            }
+
             AsynchronosMembershipUser membershipUser = null;
             status = MembershipCreateStatus.UserRejected;
 
@@ -129,6 +159,12 @@ namespace SME.UserSystem.Core.Providers
                         APPLICATION app = uow.ApplicationRepo
                             .FindBy(a => a.APP_DESC == ApplicationName)
                             .FirstOrDefault<APPLICATION>();
+
+                        if (app == null)
+                        {
+                            throw new AsynchronosProviderException("Application " + ApplicationName
+                                + " is not exists.");
+                        }
 
                         profile = new APP_PROFILE();
                         profile.APP_KEY = app.APP_KEY;
@@ -187,6 +223,11 @@ namespace SME.UserSystem.Core.Providers
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
         {
+            if (LDAP_Only)
+            {
+                throw new Exception("Can't delete user in LDAP only mode.");
+            }
+
             bool result = false;
 
             using (UnitOfWork uow = new UnitOfWork())
@@ -309,8 +350,7 @@ namespace SME.UserSystem.Core.Providers
         {
             get
             {
-                throw new System.NotImplementedException();
-                //return false;
+                return _requiresQuestionAndAnswer;
             }
         }
 
@@ -337,6 +377,11 @@ namespace SME.UserSystem.Core.Providers
 
         public override void UpdateUser(MembershipUser user)
         {
+            if (LDAP_Only)
+            {
+                throw new Exception("Can't update user in LDAP only mode.");
+            }
+
             using (UnitOfWork uow = new UnitOfWork())
             {
                 USER_DATA userData = uow.UserDataRepo
@@ -379,6 +424,15 @@ namespace SME.UserSystem.Core.Providers
             bool result = false;
 
             bool adResult = adAuth.IsAuthenticated(username, password);
+            if (isDebugEnabled)
+            {
+                log.Debug("Username " + username +" authenticate "+adAuth);
+            }
+
+            if (LDAP_Only)
+            {
+                return adResult;
+            }
 
             if (adResult)
             {
@@ -512,6 +566,11 @@ namespace SME.UserSystem.Core.Providers
         /// <returns>MembershipUser</returns>
         private MembershipUser GetUserFromLinq(string empId, bool userIsOnline)
         {
+            if (LDAP_Only)
+            {
+                throw new Exception("Can't get user in LDAP only mode.");
+            }
+
             if (isDebugEnabled)
                 log.Debug("Invoke " + System.Reflection.MethodBase.GetCurrentMethod().Name);
 

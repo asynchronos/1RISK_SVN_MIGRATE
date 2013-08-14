@@ -2,6 +2,7 @@
 using System.Web.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SME.UserSystem.Core.Providers;
+using System.Collections.Specialized;
 
 namespace SME.UserSystem.Core.UnitTest
 {
@@ -13,6 +14,9 @@ namespace SME.UserSystem.Core.UnitTest
     public class AsynchronosMembershipProviderTest
     {
         private TestContext testContextInstance;
+
+        private NameValueCollection config;
+        private AsynchronosMembershipProvider target;
 
         /// <summary>
         ///Gets or sets the test context which provides
@@ -48,17 +52,27 @@ namespace SME.UserSystem.Core.UnitTest
         //}
         //
         //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
+        [TestInitialize()]
+        public void MyTestInitialize()
+        {
+            config = new NameValueCollection();
+            config.Add("applicationName", "SME_WEB");
+            config.Add("name", "AsynchronosMembershipProvider");
+            config.Add("connectionStringName", "UserSystemEntities");
+            config.Add("requiresQuestionAndAnswer", "false");
+
+            target = new AsynchronosMembershipProvider();
+            target.Initialize(config["name"],config);
+        }
+        
         //Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
+        [TestCleanup()]
+        public void MyTestCleanup()
+        {
+            target = null;
+            config = null;
+        }
+        
 
         #endregion Additional test attributes
 
@@ -71,8 +85,10 @@ namespace SME.UserSystem.Core.UnitTest
         [TestMethod()]
         public void AsynchronosMembershipProviderConstructorTest()
         {
-            AsynchronosMembershipProvider target = new AsynchronosMembershipProvider();
             Assert.IsNotNull(target);
+            Assert.AreEqual(config["applicationName"], target.ApplicationName);
+            Assert.AreEqual(config["name"], target.Name);
+            Assert.AreEqual(bool.Parse(config["requiresQuestionAndAnswer"]), target.RequiresQuestionAndAnswer);
         }
 
         /// <summary>
@@ -116,7 +132,6 @@ namespace SME.UserSystem.Core.UnitTest
         [TestMethod()]
         public void CreateUserTest()
         {
-            AsynchronosMembershipProvider target = new AsynchronosMembershipProvider(); // TODO: Initialize to an appropriate value
             string username = "TestCreate"; // TODO: Initialize to an appropriate value
             string password = "test"; // TODO: Initialize to an appropriate value
             string email = "test@mail.com"; // TODO: Initialize to an appropriate value
@@ -347,9 +362,8 @@ namespace SME.UserSystem.Core.UnitTest
         [TestMethod()]
         public void ValidateUserTest()
         {
-            AsynchronosMembershipProvider target = new AsynchronosMembershipProvider(); // TODO: Initialize to an appropriate value
             string username = "249888"; // TODO: Initialize to an appropriate value
-            string password = "big#7426"; // TODO: Initialize to an appropriate value
+            string password = "big$7426"; // TODO: Initialize to an appropriate value
             bool expected = true; // TODO: Initialize to an appropriate value
             bool actual;
             actual = target.ValidateUser(username, password);
@@ -363,11 +377,9 @@ namespace SME.UserSystem.Core.UnitTest
         [TestMethod()]
         public void ApplicationNameTest()
         {
-            AsynchronosMembershipProvider target = new AsynchronosMembershipProvider(); // TODO: Initialize to an appropriate value
             string expected = ConfigurationManager.AppSettings["APPLICATION_NAME"]; // TODO: Initialize to an appropriate value
             string actual;
-            //no set method
-            //target.ApplicationName = expected;
+            
             actual = target.ApplicationName;
             Assert.AreEqual(expected, actual);
         }
